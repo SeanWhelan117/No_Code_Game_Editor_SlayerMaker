@@ -8,7 +8,6 @@
 #include <iostream>
 
 
-
 /// <summary>
 /// default constructor
 /// setup the window properties
@@ -16,7 +15,7 @@
 /// load and setup thne image
 /// </summary>
 Game::Game() :
-	m_window{ sf::VideoMode{ 800U, 600U, 32U }, "SFML Game" },
+	m_window{ sf::VideoMode{  gameWidth, gameHeight, 32U }, "SlayerMaker" },
 	m_exitGame{false} //when true game will exit
 {
 	setupFontAndText(); // load font 

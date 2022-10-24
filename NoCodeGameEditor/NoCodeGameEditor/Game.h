@@ -22,6 +22,9 @@ public:
 	/// </summary>
 	void run();
 
+	unsigned gameWidth = sf::VideoMode::getDesktopMode().width * 0.8;
+	unsigned gameHeight = sf::VideoMode::getDesktopMode().height * 0.8;
+
 private:
 
 	void processEvents();

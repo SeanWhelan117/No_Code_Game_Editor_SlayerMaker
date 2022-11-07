@@ -11,19 +11,31 @@
 /// Don't forget the endif at the bottom
 /// </summary>
 #include <SFML/Graphics.hpp>
+#include "Grid.h"
+#include "Cell.h"
+#include "Globals.h"
+#include "Wall.h"
 
 class Game
 {
 public:
 	Game();
 	~Game();
+
+	Grid myGrid;
+	Globals globals;
+	Wall myWalls[100];
+
 	/// <summary>
 	/// main method for game
 	/// </summary>
 	void run();
 
-	unsigned gameWidth = sf::VideoMode::getDesktopMode().width * 0.8;
-	unsigned gameHeight = sf::VideoMode::getDesktopMode().height * 0.8;
+	//unsigned gameWidth = sf::VideoMode::getDesktopMode().width * 0.8;
+	//unsigned gameHeight = sf::VideoMode::getDesktopMode().height * 0.8;
+
+	/*unsigned gameWidth = 2000;
+	unsigned gameHeight = 2000;*/
 
 private:
 
@@ -32,14 +44,8 @@ private:
 	void update(sf::Time t_deltaTime);
 	void render();
 	
-	void setupFontAndText();
-	void setupSprite();
 
 	sf::RenderWindow m_window; // main SFML window
-	sf::Font m_ArialBlackfont; // font used by message
-	sf::Text m_welcomeMessage; // text used for message on screen
-	sf::Texture m_logoTexture; // texture used for sfml logo
-	sf::Sprite m_logoSprite; // sprite used for sfml logo
 	bool m_exitGame; // control exiting game
 
 };

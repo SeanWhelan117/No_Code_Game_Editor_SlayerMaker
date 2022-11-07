@@ -20,6 +20,7 @@
 
 
 #include "Game.h"
+#include "Globals.h"
 
 /// <summary>
 /// main enrtry point
@@ -27,6 +28,7 @@
 /// <returns>success or failure</returns>
 int main()
 {
+	Globals globals;
 	Game game;
 	game.run();
 

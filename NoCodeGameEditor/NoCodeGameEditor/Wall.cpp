@@ -7,8 +7,9 @@ Wall::Wall()
 	{
 		wallSprites[i].setPosition(1750, 500);
 		wallSprites[i].setTexture(wallTexture);
-		wallSprites[i].setOrigin(wallSprites[i].getGlobalBounds().width / 2, wallSprites[i].getGlobalBounds().height / 2);}
+		wallSprites[i].setOrigin(wallSprites[i].getGlobalBounds().width / 2, wallSprites[i].getGlobalBounds().height / 2);
 	}
+}
 
 void Wall::loadFiles()
 {
@@ -19,7 +20,7 @@ void Wall::loadFiles()
 	}
 }
 
-void Wall::update(sf::Time t_deltaTime, sf::RenderWindow& t_window)
+void Wall::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, std::vector<Cell>& t_grid)
 {
 	sf::Vector2i mousePos = sf::Mouse::getPosition(t_window);
 	checkForMousePosAndClick(t_window, mousePos);
@@ -28,7 +29,7 @@ void Wall::update(sf::Time t_deltaTime, sf::RenderWindow& t_window)
 	{
 		wallSprites[pickedWall].setPosition(mousePos.x, mousePos.y);
 
-		checkForPlacement();
+		checkForPlacement(t_grid);
 	}
 }
 
@@ -54,10 +55,30 @@ void Wall::checkForMousePosAndClick(sf::RenderWindow& t_window, sf::Vector2i t_m
 
 }
 
-void Wall::checkForPlacement()
+void Wall::checkForPlacement(std::vector<Cell>& t_grid)
 {
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Right))
 	{
+		isClicked = false;
+		snapWallPositionToGrid(t_grid);
+	}
+}
 
+void Wall::snapWallPositionToGrid(std::vector<Cell>& t_grid)
+{
+	for (int i = 0; i < 100; i++)
+	{
+		sf::FloatRect test = t_grid[i].getCellRect().getGlobalBounds();
+
+
+		if (test.contains(wallSprites[pickedWall].getPosition()))
+		{
+			sf::Vector2f currentCellPos = t_grid[i].getCellRect().getPosition();
+			wallSprites[pickedWall].setPosition(currentCellPos);
+
+			sf::Vector2f currentWallPos = wallSprites[pickedWall].getPosition();
+
+			wallSprites[pickedWall].setPosition(currentWallPos);
+		}
 	}
 }

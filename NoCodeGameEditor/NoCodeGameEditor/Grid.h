@@ -16,7 +16,6 @@ using namespace std;
 class Grid
 {
 
-	std::vector<Cell> gridVector;
 	const int MAX_CELLS = 2500;
 
 	bool startPositionFoundBool = false;
@@ -28,6 +27,7 @@ class Grid
 
 	Cell* atIndex(int t_id);
 public:
+	std::vector<Cell> gridVector;
 	Grid();
 	~Grid();
 	void setNeighbours(Cell* t_cell);

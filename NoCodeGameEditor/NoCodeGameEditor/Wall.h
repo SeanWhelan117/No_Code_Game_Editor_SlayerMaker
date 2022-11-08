@@ -12,14 +12,17 @@ public:
 
 	void render(sf::RenderWindow& t_window);
 
-	void checkForMousePosAndClick(sf::RenderWindow& t_window);
+	void checkForMousePosAndClick(sf::RenderWindow& t_window, sf::Vector2i t_mousePos);
+
+	void checkForPlacement();
 
 
-	sf::Sprite wallSprite;
+	sf::Sprite wallSprites[100];
 
 private:
 
-
+	bool isClicked = false;
+	int pickedWall;
 
 	sf::Texture wallTexture;
 

@@ -105,8 +105,9 @@ void Game::update(sf::Time t_deltaTime)
 	myGrid.selectStartEndPositions(m_window);
 	for (int i = 0; i < 100; i++)
 	{
-		myWalls[i].update(t_deltaTime, m_window);
+		myWalls.update(t_deltaTime, m_window);
 	}
+
 }
 
 /// <summary>
@@ -118,7 +119,7 @@ void Game::render()
 	myGrid.render(m_window);
 	for (int i = 0; i < 100; i++)
 	{
-		myWalls[i].render(m_window);
+		myWalls.render(m_window);
 	}
 	m_window.display();
 }

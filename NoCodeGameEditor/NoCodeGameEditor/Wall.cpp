@@ -3,9 +3,12 @@
 Wall::Wall()
 {
 	loadFiles();
-	wallSprite.setPosition(1750, 500);
-	wallSprite.setTexture(wallTexture);
-	wallSprite.setOrigin(wallSprite.getGlobalBounds().width / 2, wallSprite.getGlobalBounds().height / 2);}
+	for (int i = 0; i < 100; i++)
+	{
+		wallSprites[i].setPosition(1750, 500);
+		wallSprites[i].setTexture(wallTexture);
+		wallSprites[i].setOrigin(wallSprites[i].getGlobalBounds().width / 2, wallSprites[i].getGlobalBounds().height / 2);}
+	}
 
 void Wall::loadFiles()
 {
@@ -18,24 +21,43 @@ void Wall::loadFiles()
 
 void Wall::update(sf::Time t_deltaTime, sf::RenderWindow& t_window)
 {
-	checkForMousePosAndClick(t_window);
+	sf::Vector2i mousePos = sf::Mouse::getPosition(t_window);
+	checkForMousePosAndClick(t_window, mousePos);
+
+	if (isClicked == true)
+	{
+		wallSprites[pickedWall].setPosition(mousePos.x, mousePos.y);
+
+		checkForPlacement();
+	}
 }
 
 void Wall::render(sf::RenderWindow& t_window)
 {
-	t_window.draw(wallSprite);
+	for (int i = 0; i < 100; i++)
+	{
+		t_window.draw(wallSprites[i]);
+	}
 }
 
-void Wall::checkForMousePosAndClick(sf::RenderWindow& t_window)
+void Wall::checkForMousePosAndClick(sf::RenderWindow& t_window, sf::Vector2i t_mousePos)
 {
-	sf::Vector2i mousePos = sf::Mouse::getPosition(t_window);
 	//std::cout << mousePos.x << mousePos.y << std::endl;
-	
-	if (wallSprite.getGlobalBounds().contains(mousePos.x, mousePos.y))
+	for (int i = 0; i < 100; i++)
 	{
-		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+		if (wallSprites[i].getGlobalBounds().contains(t_mousePos.x, t_mousePos.y) && sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
-			std::cout << "YUP" << std::endl;
+			isClicked = true;
+			pickedWall = i;
 		}
+	}
+
+}
+
+void Wall::checkForPlacement()
+{
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Right))
+	{
+
 	}
 }

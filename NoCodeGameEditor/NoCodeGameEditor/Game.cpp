@@ -100,12 +100,21 @@ void Game::update(sf::Time t_deltaTime)
 		m_window.close();
 	}
 
-	myGrid.update(t_deltaTime);
-	myGrid.selectStartEndPositions(m_window);
-	for (int i = 0; i < 100; i++)
+	if (myState == GameState::createGame)
 	{
-		myWalls.update(t_deltaTime, m_window, myGrid.gridVector);
+		myGrid.update(t_deltaTime);
+		myGrid.selectStartEndPositions(m_window);
+		for (int i = 0; i < 100; i++)
+		{
+			myWalls.update(t_deltaTime, m_window, myGrid.gridVector);
+		}
 	}
+
+	if (myState == GameState::mainmenu)
+	{
+		myMenu.update(myState, m_window);
+	}
+	
 
 }
 
@@ -115,10 +124,18 @@ void Game::update(sf::Time t_deltaTime)
 void Game::render()
 {
 	m_window.clear(sf::Color::White);
-	myGrid.render(m_window);
-	for (int i = 0; i < 100; i++)
+	if (myState == GameState::createGame)
 	{
-		myWalls.render(m_window);
+		myGrid.render(m_window);
+		for (int i = 0; i < 100; i++)
+		{
+			myWalls.render(m_window);
+		}
+	}
+
+	if (myState == GameState::mainmenu)
+	{
+		myMenu.render(m_window);
 	}
 	m_window.display();
 }

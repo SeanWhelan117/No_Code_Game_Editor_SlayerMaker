@@ -14,6 +14,8 @@
 #include "Grid.h"
 #include "Cell.h"
 #include "Wall.h"
+#include "GameState.h"
+#include "MainMenu.h"
 
 class Game
 {
@@ -23,6 +25,8 @@ public:
 
 	Grid myGrid;
 	Wall myWalls;
+	GameState myState{ GameState::mainmenu };
+	MainMenu myMenu;
 
 	/// <summary>
 	/// main method for game

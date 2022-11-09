@@ -65,29 +65,29 @@ void Grid::selectStartEndPositions(sf::RenderWindow& t_window)
 	{
 		if (gridVector.at(i).getCellRect().getGlobalBounds().contains(mousePosition))
 		{
-			if (startPositionFoundBool == false)
-			{
-				// for the start position  for the algorithim
-				if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-				{
-					cout << std::to_string(gridVector.at(i).getID()) << endl;
-					gridVector.at(i).setStartColour();
-					gridVector.at(i).setStartPoint(true);
-					startPositionFoundBool = true;
-				}
-			}
+			//if (startPositionFoundBool == false)
+			//{
+			//	// for the start position  for the algorithim
+			//	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+			//	{
+			//		cout << std::to_string(gridVector.at(i).getID()) << endl;
+			//		gridVector.at(i).setStartColour();
+			//		gridVector.at(i).setStartPoint(true);
+			//		startPositionFoundBool = true;
+			//	}
+			//}
 
-			if (endPositionFoundBool == false)
-			{
-				// for the start position  for the algorithim
-				if (sf::Mouse::isButtonPressed(sf::Mouse::Right))
-				{
-					cout << std::to_string(gridVector.at(i).getID()) << endl;
-					gridVector.at(i).setEndColour();
-					gridVector.at(i).setEndPoint(true);
-					endPositionFoundBool = true;
-				}
-			}
+			//if (endPositionFoundBool == false)
+			//{
+			//	// for the start position  for the algorithim
+			//	if (sf::Mouse::isButtonPressed(sf::Mouse::Right))
+			//	{
+			//		cout << std::to_string(gridVector.at(i).getID()) << endl;
+			//		gridVector.at(i).setEndColour();
+			//		gridVector.at(i).setEndPoint(true);
+			//		endPositionFoundBool = true;
+			//	}
+			//}
 
 		}
 	}

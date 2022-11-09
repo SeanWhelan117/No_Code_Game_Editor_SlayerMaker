@@ -18,8 +18,8 @@ class Grid
 
 	const int MAX_CELLS = 2500;
 
-	bool startPositionFoundBool = false;
-	bool endPositionFoundBool = false;
+	//bool startPositionFoundBool = false;
+	//bool endPositionFoundBool = false;
 	//Grid is 50 * 50 in size
 
 	const static int MAX_ROWS = 50;

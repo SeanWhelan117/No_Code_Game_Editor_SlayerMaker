@@ -65,6 +65,7 @@ void Cell::setID(int t_id)
 
 void Cell::setPos(sf::Vector2f t_position)
 {
+    m_pos = sf::Vector2f(t_position.x, t_position.y);
     cellRect.setPosition(t_position);
 }
 
@@ -80,11 +81,17 @@ void Cell::setupCellRect()
     cellRect.setFillColor(sf::Color::Transparent);
     cellRect.setOutlineColor(sf::Color::Cyan);
     cellRect.setOutlineThickness(1.5f);
-    cellRect.setSize(sf::Vector2f{ static_cast<float>(globals.gameWidth) / 50,static_cast<float>(globals.gameHeight) / 50 });
+    cellRect.setSize(sf::Vector2f( gridSize / 50, gridSize / 50));
 }
 
 void Cell::setNeighbours(Cell* t_neighbour)
 {
     t_neighbour->setEndColour();
     m_neighbour.push_back(t_neighbour);
+}
+
+
+sf::Vector2f& Cell::getPos()
+{
+    return m_pos;
 }

@@ -13,7 +13,6 @@
 #include <SFML/Graphics.hpp>
 #include "Grid.h"
 #include "Cell.h"
-#include "Globals.h"
 #include "Wall.h"
 
 class Game
@@ -23,7 +22,6 @@ public:
 	~Game();
 
 	Grid myGrid;
-	Globals globals;
 	Wall myWalls;
 
 	/// <summary>
@@ -31,11 +29,9 @@ public:
 	/// </summary>
 	void run();
 
-	//unsigned gameWidth = sf::VideoMode::getDesktopMode().width * 0.8;
-	//unsigned gameHeight = sf::VideoMode::getDesktopMode().height * 0.8;
+	unsigned gameWidth = sf::VideoMode::getDesktopMode().width * 0.8;
+	unsigned gameHeight = sf::VideoMode::getDesktopMode().height * 0.8;
 
-	/*unsigned gameWidth = 2000;
-	unsigned gameHeight = 2000;*/
 
 private:
 

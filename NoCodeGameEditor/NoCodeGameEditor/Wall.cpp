@@ -66,19 +66,18 @@ void Wall::checkForPlacement(std::vector<Cell>& t_grid)
 
 void Wall::snapWallPositionToGrid(std::vector<Cell>& t_grid)
 {
-	for (int i = 0; i < 100; i++)
+
+	for (int i = 0; i < 2500; i++)
 	{
-		sf::FloatRect test = t_grid[i].getCellRect().getGlobalBounds();
-
-
-		if (test.contains(wallSprites[pickedWall].getPosition()))
+		if (t_grid[i].getCellRect().getGlobalBounds().contains(wallSprites[pickedWall].getPosition()))
 		{
-			sf::Vector2f currentCellPos = t_grid[i].getCellRect().getPosition();
+			sf::Vector2f currentCellPos = t_grid[i].getPos();
+
+			currentCellPos = sf::Vector2f(currentCellPos.x + offset, currentCellPos.y + offset);
+
 			wallSprites[pickedWall].setPosition(currentCellPos);
-
-			sf::Vector2f currentWallPos = wallSprites[pickedWall].getPosition();
-
-			wallSprites[pickedWall].setPosition(currentWallPos);
 		}
 	}
+
+	
 }

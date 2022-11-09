@@ -15,10 +15,9 @@
 /// load and setup thne image
 /// </summary>
 Game::Game() :
-	m_window{ sf::VideoMode{  2000, 2000, 32U }, "SlayerMaker" },
+	m_window{ sf::VideoMode{  gameWidth, gameHeight, 32U }, "SlayerMaker" },
 	m_exitGame{false} //when true game will exit
 {
-
 }
 
 /// <summary>

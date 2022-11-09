@@ -30,6 +30,6 @@ private:
 
 	sf::Texture wallTexture;
 
-
+	int offset = 15;
 };
 

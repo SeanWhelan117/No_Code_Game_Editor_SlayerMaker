@@ -8,22 +8,23 @@
 /// <summary>
 /// Constructor function for the main menu
 /// </summary>
-MainMenu::MainMenu()
+MainMenu::MainMenu(float t_gameWidth, float t_gameHeight)
 {
-
-	int buttonPosX = 600;//600;
-	int buttonPosY = 200;//200;
+	std::cout << t_gameWidth << t_gameHeight << std::endl;
+	int buttonPosX = 100;
+	int buttonPosY = t_gameHeight * 0.4; //691
+	int startPosY = buttonPosY;
 
 	for (int i = 0; i < MAX_BUTTONS; i++)
 	{
-		buttons[i].setFillColor(sf::Color::Green);
-		buttons[i].setSize(sf::Vector2f(200, 50));
-		buttonPosY = buttonPosY + 120;
+		buttons[i].setFillColor(sf::Color(0,0,0,0));
+		buttons[i].setSize(sf::Vector2f(525, 125));
+		buttonPosY = buttonPosY + 200;
 		buttons[i].setPosition(sf::Vector2f(buttonPosX, buttonPosY));
 	}
 
 	loadAssets();
-	setupButtonText();
+	setupButtonText(startPosY);
 
 	
 }
@@ -31,7 +32,7 @@ MainMenu::MainMenu()
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void MainMenu::loadAssets()
 {
-	if (!m_font.loadFromFile("./ASSETS/FONTS/arial.ttf"))
+	if (!m_font.loadFromFile("./ASSETS/FONTS/NewYork.ttf"))
 	{
 		std::cout << "Error loading font..." << std::endl;
 	}
@@ -67,23 +68,19 @@ void MainMenu::render(sf::RenderWindow& t_window)
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void MainMenu::setupButtonText()
+void MainMenu::setupButtonText(int t_yPos)
 {
-	int buttonYPos = 320;
-	int buttonOffset = 120;
 	for (int i = 0; i < MAX_BUTTONS; i++)
 	{
 		sf::FloatRect textRect = buttonTexts[i].getLocalBounds();
 		buttonTexts[i].Bold;
 		buttonTexts[i].setFont(m_font);
-		buttonTexts[i].setCharacterSize(32u);
+		buttonTexts[i].setCharacterSize(64u);
 		buttonTexts[i].setOrigin(textRect.width / 2, textRect.height / 2);
-		buttonTexts[i].setPosition(buttons[i].getPosition().x, buttonYPos);
-		buttonTexts[i].setFillColor(sf::Color::Black);
+		buttonTexts[i].setPosition(buttons[i].getPosition().x, buttons[i].getPosition().y);
+		buttonTexts[i].setFillColor(sf::Color::Red);
 		buttonTexts[i].setString(buttonText[i]);
-		buttonYPos += buttonOffset;
 	}
-
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -112,16 +109,16 @@ void MainMenu::mouseButtonCollision(sf::Vector2i t_mousePos, GameState& t_gameSt
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void MainMenu::resetButtons(int t_current)
 {
-	buttons[t_current].setFillColor(sf::Color::Green);
+	buttons[t_current].setFillColor(sf::Color(0, 0, 0, 0));
 	buttons[t_current].setScale(1, 1);
 	buttonTexts[t_current].setScale(1, 1);
 }
 
 void MainMenu::changeButtons(int current_Button)
 {
-	buttons[current_Button].setFillColor(sf::Color::Yellow);
-	buttons[current_Button].setScale(1.25, 1.25);
-	buttonTexts[current_Button].setScale(1.25, 1.25);
+	//buttons[current_Button].setFillColor(sf::Color::Yellow);
+	//buttons[current_Button].setScale(1.25, 1.25);
+	buttonTexts[current_Button].setScale(1.5, 1.5);
 }
 
 void MainMenu::changeGameState(int stateNum, GameState& t_gameState)
@@ -140,7 +137,7 @@ void MainMenu::changeGameState(int stateNum, GameState& t_gameState)
 	}
 	else if (stateNum == 3)
 	{
-	
+		t_gameState = GameState::exitGame;
 	}
 }
 

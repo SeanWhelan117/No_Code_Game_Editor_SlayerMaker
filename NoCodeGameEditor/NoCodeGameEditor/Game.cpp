@@ -18,6 +18,7 @@ Game::Game() :
 	m_window{ sf::VideoMode{  gameWidth, gameHeight, 32U }, "SlayerMaker" },
 	m_exitGame{false} //when true game will exit
 {
+
 }
 
 /// <summary>
@@ -95,7 +96,7 @@ void Game::processKeys(sf::Event t_event)
 /// <param name="t_deltaTime">time interval per frame</param>
 void Game::update(sf::Time t_deltaTime)
 {
-	if (m_exitGame)
+	if (m_exitGame || myState == GameState::exitGame)
 	{
 		m_window.close();
 	}

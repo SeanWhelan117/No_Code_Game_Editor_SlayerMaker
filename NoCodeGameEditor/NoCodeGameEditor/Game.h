@@ -20,21 +20,22 @@
 class Game
 {
 public:
+	unsigned gameWidth = sf::VideoMode::getDesktopMode().width * 0.8;
+	unsigned gameHeight = sf::VideoMode::getDesktopMode().height * 0.8;
 	Game();
 	~Game();
 
 	Grid myGrid;
 	Wall myWalls;
 	GameState myState{ GameState::mainmenu };
-	MainMenu myMenu;
+	MainMenu myMenu{ gameWidth, gameHeight };
+
 
 	/// <summary>
 	/// main method for game
 	/// </summary>
 	void run();
 
-	unsigned gameWidth = sf::VideoMode::getDesktopMode().width * 0.8;
-	unsigned gameHeight = sf::VideoMode::getDesktopMode().height * 0.8;
 
 
 private:

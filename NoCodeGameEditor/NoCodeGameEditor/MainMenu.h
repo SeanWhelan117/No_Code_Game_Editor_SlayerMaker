@@ -10,12 +10,11 @@
 #include <SFML/Audio.hpp>
 
 #include "GameState.h"
-
 class MainMenu
 {
 public:
-	
-	MainMenu();
+
+	MainMenu(float t_gameWidth, float t_gameHeight);
 	void loadAssets();
 
 	void update(GameState& t_gameState, sf::RenderWindow& t_window);
@@ -24,7 +23,7 @@ public:
 
 private:
 
-	void setupButtonText(); // setups font colour all that stuff for the button text
+	void setupButtonText(int t_yPos); // setups font colour all that stuff for the button text
 
 	void mouseButtonCollision(sf::Vector2i t_mousePos, GameState& t_gameState); // checks for collision with the mouse and buttons.
 	//if the mouse is hovering changes that specific button

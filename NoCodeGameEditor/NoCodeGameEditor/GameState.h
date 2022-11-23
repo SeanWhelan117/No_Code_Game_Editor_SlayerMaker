@@ -9,5 +9,8 @@ enum class GameState
 {
 	mainmenu,
 	createGame,
+	chooseGame,
+	play,
+	options,
 	exitGame,
 };

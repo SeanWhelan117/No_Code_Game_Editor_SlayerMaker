@@ -37,6 +37,11 @@ void MainMenu::loadAssets()
 		std::cout << "Error loading font..." << std::endl;
 	}
 
+	if (!m_font2.loadFromFile("./ASSETS/FONTS/Another-Danger.ttf"))
+	{		
+		std::cout << "Error loading font..." << std::endl;
+	}
+
 
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -65,6 +70,8 @@ void MainMenu::render(sf::RenderWindow& t_window)
 		t_window.draw(buttonTexts[i]);
 	}
 
+	t_window.draw(title);
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -81,6 +88,16 @@ void MainMenu::setupButtonText(int t_yPos)
 		buttonTexts[i].setFillColor(sf::Color::Red);
 		buttonTexts[i].setString(buttonText[i]);
 	}
+	sf::FloatRect titleTextRect = title.getLocalBounds();
+
+	title.Bold;
+	title.setFont(m_font2);
+	title.setCharacterSize(200u);
+	title.setOrigin(titleTextRect.width / 2, titleTextRect.height / 2);
+	title.setPosition(40,20);
+	title.setFillColor(sf::Color::Black);
+	title.setString(titleText);
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

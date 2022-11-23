@@ -41,12 +41,14 @@ private:
 	sf::RectangleShape buttons[MAX_BUTTONS]; // buttons array for menu buttons
 
 	sf::Font m_font; // arial.ttf font
+	sf::Font m_font2;
 
 	//text for each button stating what they are
 
 	//just sf text array for the buttons
 
 	sf::Text buttonTexts[MAX_BUTTONS];
+	sf::Text title;
 
 	sf::Vector2i mousePos; // mouses current position
 
@@ -56,7 +58,8 @@ private:
 	float spriteX = 0; //the x and y size of every specific sprite in the spritesheet 
 	float spriteY = 0;
 
-	std::string buttonText[MAX_BUTTONS] = { "Play","Instructions","Options","Exit" };
+	std::string buttonText[MAX_BUTTONS] = { "Create","Play","Options","Exit" };
+	std::string titleText = "Slayer Maker";
 
 };
 

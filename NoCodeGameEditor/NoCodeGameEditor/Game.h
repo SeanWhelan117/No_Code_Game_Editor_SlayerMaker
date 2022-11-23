@@ -16,6 +16,7 @@
 #include "Wall.h"
 #include "GameState.h"
 #include "MainMenu.h"
+#include "GameOptions.h"
 
 class Game
 {
@@ -29,6 +30,7 @@ public:
 	Wall myWalls;
 	GameState myState{ GameState::mainmenu };
 	MainMenu myMenu{ gameWidth, gameHeight };
+	GameOptions gameOptions;
 
 
 	/// <summary>

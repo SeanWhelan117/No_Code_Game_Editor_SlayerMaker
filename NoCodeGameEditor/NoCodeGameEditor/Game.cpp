@@ -116,6 +116,11 @@ void Game::update(sf::Time t_deltaTime)
 		myMenu.update(myState, m_window);
 	}
 	
+	if (myState == GameState::gameOptions)
+	{
+		gameOptions.update(t_deltaTime, m_window);
+	}
+	
 
 }
 
@@ -137,6 +142,11 @@ void Game::render()
 	if (myState == GameState::mainmenu)
 	{
 		myMenu.render(m_window);
+	}
+
+	if (myState == GameState::gameOptions)
+	{
+		gameOptions.render(m_window);
 	}
 	m_window.display();
 }

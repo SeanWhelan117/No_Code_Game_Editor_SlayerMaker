@@ -142,15 +142,15 @@ void MainMenu::changeGameState(int stateNum, GameState& t_gameState)
 {
 	if (stateNum == 0)
 	{
-		t_gameState = GameState::createGame;
+		t_gameState = GameState::gameOptions;
 	}
 	else if (stateNum == 1)
 	{
-		
+		t_gameState = GameState::play;
 	}
 	else if (stateNum == 2)
 	{
-		
+		t_gameState = GameState::options;
 	}
 	else if (stateNum == 3)
 	{

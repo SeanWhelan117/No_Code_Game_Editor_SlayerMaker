@@ -8,6 +8,7 @@
 enum class GameState
 {
 	mainmenu,
+	gameOptions,
 	createGame,
 	chooseGame,
 	play,

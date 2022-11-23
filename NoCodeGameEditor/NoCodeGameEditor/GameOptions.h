@@ -9,20 +9,24 @@
 #include <iostream>
 
 #include "GameState.h"
-class MainMenu
+
+class GameOptions
 {
 public:
+	GameOptions();
 
-	MainMenu(float t_gameWidth, float t_gameHeight);
-	void loadAssets();
+	void loadFiles();
 
-	void update(GameState& t_gameState, sf::RenderWindow& t_window);
+	void update(sf::Time t_deltaTime, sf::RenderWindow& t_window);
+
 	void render(sf::RenderWindow& t_window);
 
 
 private:
 
-	void setupButtonText(int t_yPos); // setups font colour all that stuff for the button text
+	void setupButtonText(); // setups font colour all that stuff for the button text
+
+	void setupContinueButton();
 
 	void mouseButtonCollision(sf::Vector2i t_mousePos, GameState& t_gameState); // checks for collision with the mouse and buttons.
 	//if the mouse is hovering changes that specific button
@@ -36,29 +40,19 @@ private:
 	void changeGameState(int stateNum, GameState& t_gameState);
 
 
-	static const int MAX_BUTTONS = 4;
-	sf::RectangleShape buttons[MAX_BUTTONS]; // buttons array for menu buttons
+	sf::RectangleShape continueButton; // buttons array for menu buttons
 
 	sf::Font m_font; //newyork.ttf font
-	sf::Font m_font2;
 
 	//text for each button stating what they are
 
 	//just sf text array for the buttons
 
-	sf::Text buttonTexts[MAX_BUTTONS];
-	sf::Text title;
+	sf::Text continueButtonText;
 
 	sf::Vector2i mousePos; // mouses current position
 
-
-
-	
-	float spriteX = 0; //the x and y size of every specific sprite in the spritesheet 
-	float spriteY = 0;
-
-	std::string buttonText[MAX_BUTTONS] = { "Create","Play","Options","Exit" };
-	std::string titleText = "Slayer Maker";
+	std::string buttonText = "Continue";
 
 };
 

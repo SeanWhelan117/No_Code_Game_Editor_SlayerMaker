@@ -13,7 +13,7 @@
 class GameOptions
 {
 public:
-	GameOptions();
+	GameOptions(float t_gameWidth, float t_gameHeight);
 
 	void loadFiles();
 
@@ -27,6 +27,10 @@ private:
 	void setupButtonText(); // setups font colour all that stuff for the button text
 
 	void setupContinueButton();
+
+	void setupTriangles();
+
+	void setupGridSizeBox();
 
 	void mouseButtonCollision(sf::Vector2i t_mousePos, GameState& t_gameState); // checks for collision with the mouse and buttons.
 	//if the mouse is hovering changes that specific button
@@ -48,11 +52,27 @@ private:
 
 	//just sf text array for the buttons
 
-	sf::Text continueButtonText;
 
 	sf::Vector2i mousePos; // mouses current position
+	sf::Vector2f gameSize;
 
+	sf::Text continueButtonText;
 	std::string buttonText = "Continue";
+
+
+	sf::Text chooseGridSizeText;
+	std::string chooseGridSize = "What size for game grid";
+	static const int NUM_OF_TRIANGLES = 2;
+	sf::Sprite triangles[NUM_OF_TRIANGLES];
+	sf::Texture triangleTexture;
+	sf::RectangleShape gridSizeBox;
+
+	sf::FloatRect gridSizeTextRect;
+
+	int offset = 5;
+
+	/*sf::Text continueButtonText;
+	std::string buttonText = "Continue";*/
 
 };
 

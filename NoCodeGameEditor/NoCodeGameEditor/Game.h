@@ -30,7 +30,7 @@ public:
 	Wall myWalls;
 	GameState myState{ GameState::mainmenu };
 	MainMenu myMenu{ gameWidth, gameHeight };
-	GameOptions gameOptions;
+	GameOptions gameOptions{ gameWidth, gameHeight };
 
 
 	/// <summary>

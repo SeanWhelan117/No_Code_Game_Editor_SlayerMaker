@@ -13,7 +13,7 @@ GameOptions::GameOptions(float t_gameWidth, float t_gameHeight)
 	gameSize.y = t_gameHeight;
 	loadFiles();
 	setupContinueButton();
-	setupButtonText();
+	setupText();
 	setupGridSizeBox();
 	setupTriangles();
 }
@@ -34,6 +34,9 @@ void GameOptions::loadFiles()
 
 void GameOptions::update(sf::Time t_deltaTime, sf::RenderWindow& t_window)
 {
+	mousePos = sf::Mouse::getPosition(t_window);
+
+	checkMousePos();
 }
 
 void GameOptions::render(sf::RenderWindow& t_window)
@@ -47,19 +50,20 @@ void GameOptions::render(sf::RenderWindow& t_window)
 	{
 		t_window.draw(triangles[i]);
 	}
+	t_window.draw(currentGridSize);
 }
 
-void GameOptions::setupButtonText()
+void GameOptions::setupText()
 {
-	sf::FloatRect continueTextRect = continueButtonText.getLocalBounds();
 
 	continueButtonText.Bold;
 	continueButtonText.setFont(m_font);
+	continueButtonText.setString(buttonText);
 	continueButtonText.setCharacterSize(64u);
+	sf::FloatRect continueTextRect = continueButtonText.getLocalBounds();
 	continueButtonText.setOrigin(continueTextRect.width / 2, continueTextRect.height / 2);
 	continueButtonText.setPosition(continueButton.getPosition().x, continueButton.getPosition().y);
 	continueButtonText.setFillColor(sf::Color::Red);
-	continueButtonText.setString(buttonText);
 
 
 
@@ -70,14 +74,18 @@ void GameOptions::setupButtonText()
 	gridSizeTextRect = chooseGridSizeText.getLocalBounds();
 	chooseGridSizeText.setOrigin(gridSizeTextRect.width / 2, gridSizeTextRect.height / 2);
 	chooseGridSizeText.setPosition(gameSize.x / 2, gameSize.y * 0.2);
-	chooseGridSizeText.setFillColor(sf::Color::Red);
+	chooseGridSizeText.setFillColor(sf::Color::Black);
+
+	
+
 }
 
 void GameOptions::setupContinueButton()
 {
 	continueButton.setFillColor(sf::Color(0, 0, 0, 0));
 	continueButton.setSize(sf::Vector2f(525, 125));
-	continueButton.setPosition(sf::Vector2f(gameSize.x / 2 - (continueButton.getSize().x / 2), gameSize.y * 0.8));
+	continueButton.setOrigin(continueButton.getSize().x, continueButton.getSize().y);
+	continueButton.setPosition(sf::Vector2f(gameSize.x / 2, gameSize.y * 0.8));
 }
 
 
@@ -88,7 +96,16 @@ void GameOptions::setupGridSizeBox()
 	gridSizeBox.setFillColor(sf::Color::White);
 	gridSizeBox.setOutlineColor(sf::Color::Black);
 	gridSizeBox.setOrigin(gridSizeBox.getSize().x / 2, gridSizeBox.getSize().y / 2);
-	gridSizeBox.setPosition(chooseGridSizeText.getPosition().x, chooseGridSizeText.getPosition().y + gridSizeBox.getSize().y + offset);
+	gridSizeBox.setPosition(chooseGridSizeText.getPosition().x, chooseGridSizeText.getPosition().y + gridSizeBox.getSize().y + (offset * 2));
+
+	currentGridSize.Bold;
+	currentGridSize.setFont(m_font);
+	currentGridSize.setString(gridSizeNums[0]);
+	currentGridSize.setCharacterSize(32u);
+	sf::FloatRect numTextRect = currentGridSize.getLocalBounds();
+	currentGridSize.setOrigin(numTextRect.width / 2, numTextRect.height / 2);
+	currentGridSize.setPosition(gameSize.x / 2, gridSizeBox.getPosition().y);
+	currentGridSize.setFillColor(sf::Color::Black);
 }
 
 void GameOptions::setupTriangles()
@@ -105,5 +122,25 @@ void GameOptions::setupTriangles()
 
 	triangles[1].setPosition(gridSizeBox.getPosition().x + gridSizeBox.getOrigin().x + (offset * 3), gridSizeBox.getPosition().y - gridSizeBox.getOrigin().y - offset);
 	
+}
+
+void GameOptions::checkMousePos()
+{
+	for (int i = 0; i < NUM_OF_TRIANGLES; i++)
+	{
+		if (triangles[i].getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePos)))
+		{
+			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+			{
+				if (currentGridString < NUM_OF_GRIDSIZES)
+				{
+					currentGridSize.setString(gridSizeNums[currentGridString + 1]);
+					currentGridString = currentGridString + 1;
+				}
+				
+			}
+		}
+	}
+
 }
 

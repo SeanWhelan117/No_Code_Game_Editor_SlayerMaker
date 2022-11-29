@@ -24,11 +24,13 @@ public:
 
 private:
 
-	void setupButtonText(); // setups font colour all that stuff for the button text
+	void setupText(); // setups font colour all that stuff for the button text
 
 	void setupContinueButton();
 
 	void setupTriangles();
+
+	void checkMousePos();
 
 	void setupGridSizeBox();
 
@@ -69,7 +71,13 @@ private:
 
 	sf::FloatRect gridSizeTextRect;
 
+	static const int NUM_OF_GRIDSIZES= 5;
+
+	sf::Text currentGridSize;
+	std::string gridSizeNums[NUM_OF_GRIDSIZES] = { "30 x 30", "40 x 40", "50 x 50", "60 x 60", "70 x 70" };
+	int currentGridString = 0;
 	int offset = 5;
+
 
 	/*sf::Text continueButtonText;
 	std::string buttonText = "Continue";*/

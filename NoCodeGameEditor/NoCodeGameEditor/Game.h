@@ -39,16 +39,23 @@ public:
 	void run();
 
 
+	void checkMousePos();
 
+	bool changeGridSize = false;
 private:
+
+	sf::Vector2i mousePos; // mouses current position
 
 	void processEvents();
 	void processKeys(sf::Event t_event);
+	void processMouseClicks(sf::Event t_event);
 	void update(sf::Time t_deltaTime);
 	void render();	
 
 	sf::RenderWindow m_window; // main SFML window
 	bool m_exitGame; // control exiting game
+
+
 
 };
 

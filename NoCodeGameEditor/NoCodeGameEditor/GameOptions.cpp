@@ -35,8 +35,6 @@ void GameOptions::loadFiles()
 void GameOptions::update(sf::Time t_deltaTime, sf::RenderWindow& t_window)
 {
 	mousePos = sf::Mouse::getPosition(t_window);
-
-	checkMousePos();
 }
 
 void GameOptions::render(sf::RenderWindow& t_window)
@@ -116,31 +114,37 @@ void GameOptions::setupTriangles()
 		triangles[i].setTexture(triangleTexture);
 		triangles[i].setScale(0.5, 0.5);
 	}
+
+	//triangle0 :: left of gridSize
+	//triangle1 :: right of gridSize
 	triangles[0].setRotation(180);
 	triangles[0].setPosition(gridSizeBox.getPosition().x - gridSizeBox.getOrigin().x - (offset * 3), gridSizeBox.getPosition().y  + gridSizeBox.getOrigin().y);
 
-
 	triangles[1].setPosition(gridSizeBox.getPosition().x + gridSizeBox.getOrigin().x + (offset * 3), gridSizeBox.getPosition().y - gridSizeBox.getOrigin().y - offset);
-	
 }
 
-void GameOptions::checkMousePos()
+void GameOptions::changeGridSize(int t_triangleNum)
 {
-	for (int i = 0; i < NUM_OF_TRIANGLES; i++)
+	int current = currentGridStringNum;
+	int triangleClicked = t_triangleNum;
+
+	if (triangleClicked == 0)
 	{
-		if (triangles[i].getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePos)))
+		if (currentGridStringNum != 0)
 		{
-			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-			{
-				if (currentGridString < NUM_OF_GRIDSIZES)
-				{
-					currentGridSize.setString(gridSizeNums[currentGridString + 1]);
-					currentGridString = currentGridString + 1;
-				}
-				
-			}
+			currentGridSize.setString(gridSizeNums[currentGridStringNum - 1]);
+			currentGridStringNum = currentGridStringNum - 1;
+
+
 		}
 	}
-
+	else if (triangleClicked == 1)
+	{
+		if (currentGridStringNum < NUM_OF_GRIDSIZES - 1)
+		{
+			currentGridSize.setString(gridSizeNums[currentGridStringNum + 1]);
+			currentGridStringNum = currentGridStringNum + 1;
+		}
+	}
 }
 

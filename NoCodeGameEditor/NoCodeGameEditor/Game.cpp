@@ -74,6 +74,10 @@ void Game::processEvents()
 		{
 			processKeys(newEvent);
 		}
+		if (sf::Event::MouseButtonPressed == newEvent.type)
+		{
+			processMouseClicks(newEvent);
+		}
 	}
 }
 
@@ -88,6 +92,16 @@ void Game::processKeys(sf::Event t_event)
 	{
 		m_exitGame = true;
 	}
+
+	
+}
+
+void Game::processMouseClicks(sf::Event t_event)
+{
+	if (sf::Mouse::Left == t_event.mouseButton.button)
+	{
+		changeGridSize = true;
+	}
 }
 
 /// <summary>
@@ -96,6 +110,7 @@ void Game::processKeys(sf::Event t_event)
 /// <param name="t_deltaTime">time interval per frame</param>
 void Game::update(sf::Time t_deltaTime)
 {
+	mousePos = sf::Mouse::getPosition(m_window);
 	if (m_exitGame || myState == GameState::exitGame)
 	{
 		m_window.close();
@@ -119,6 +134,7 @@ void Game::update(sf::Time t_deltaTime)
 	if (myState == GameState::gameOptions)
 	{
 		gameOptions.update(t_deltaTime, m_window);
+		checkMousePos();
 	}
 	
 
@@ -148,5 +164,28 @@ void Game::render()
 	{
 		gameOptions.render(m_window);
 	}
+	else
+	{
+		changeGridSize = false;
+	}
 	m_window.display();
+}
+
+
+void Game::checkMousePos()
+{
+	
+
+	for (int i = 0; i < gameOptions.NUM_OF_TRIANGLES; i++)
+	{
+		if (gameOptions.triangles[i].getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePos)))
+		{
+			if (changeGridSize == true)
+			{
+				changeGridSize = false;
+				gameOptions.changeGridSize(i);
+			}
+		}
+
+	}
 }

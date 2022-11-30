@@ -21,7 +21,10 @@ public:
 
 	void render(sf::RenderWindow& t_window);
 
+	static const int NUM_OF_TRIANGLES = 2;
+	sf::Sprite triangles[NUM_OF_TRIANGLES];
 
+	void changeGridSize(int t_triangleNum);
 private:
 
 	void setupText(); // setups font colour all that stuff for the button text
@@ -29,8 +32,6 @@ private:
 	void setupContinueButton();
 
 	void setupTriangles();
-
-	void checkMousePos();
 
 	void setupGridSizeBox();
 
@@ -64,8 +65,7 @@ private:
 
 	sf::Text chooseGridSizeText;
 	std::string chooseGridSize = "What size for game grid";
-	static const int NUM_OF_TRIANGLES = 2;
-	sf::Sprite triangles[NUM_OF_TRIANGLES];
+	
 	sf::Texture triangleTexture;
 	sf::RectangleShape gridSizeBox;
 
@@ -75,7 +75,7 @@ private:
 
 	sf::Text currentGridSize;
 	std::string gridSizeNums[NUM_OF_GRIDSIZES] = { "30 x 30", "40 x 40", "50 x 50", "60 x 60", "70 x 70" };
-	int currentGridString = 0;
+	int currentGridStringNum = 0;
 	int offset = 5;
 
 

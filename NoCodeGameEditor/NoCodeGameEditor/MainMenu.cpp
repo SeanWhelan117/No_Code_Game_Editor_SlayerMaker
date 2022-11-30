@@ -146,7 +146,7 @@ void MainMenu::changeGameState(int stateNum, GameState& t_gameState)
 	}
 	else if (stateNum == 1)
 	{
-		t_gameState = GameState::play;
+		t_gameState = GameState::chooseGame;
 	}
 	else if (stateNum == 2)
 	{

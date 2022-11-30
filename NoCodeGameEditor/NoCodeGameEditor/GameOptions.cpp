@@ -32,9 +32,12 @@ void GameOptions::loadFiles()
 	}
 }
 
-void GameOptions::update(sf::Time t_deltaTime, sf::RenderWindow& t_window)
+void GameOptions::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, GameState& t_gameState)
 {
 	mousePos = sf::Mouse::getPosition(t_window);
+
+	std::cout << mousePos.x << "----" << mousePos.y << std::endl;
+	checkForMousePos(t_gameState);
 }
 
 void GameOptions::render(sf::RenderWindow& t_window)
@@ -147,4 +150,40 @@ void GameOptions::changeGridSize(int t_triangleNum)
 		}
 	}
 }
+
+void GameOptions::checkForMousePos(GameState& t_gameState)
+{
+	/*for (int i = 0; i < MAX_BUTTONS; i++)
+	{
+		sf::FloatRect boundingBox = buttons[i].getGlobalBounds();
+
+		if (boundingBox.contains(static_cast<sf::Vector2f>(t_mousePos)))
+		{
+			changeButtons(i);
+			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+			{
+				changeGameState(i, t_gameState);
+			}
+		}
+		else
+		{
+			resetButtons(i);
+		}
+
+	}*/
+
+	if (continueButton.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePos)))
+	{
+		continueButtonText.setScale(1.25, 1.25);
+		continueButton.setScale(1.25, 1.25);
+	}
+	else
+	{
+		continueButtonText.setScale(1, 1);
+		continueButton.setScale(1, 1);
+	}
+
+}
+
+
 

@@ -17,7 +17,7 @@ public:
 
 	void loadFiles();
 
-	void update(sf::Time t_deltaTime, sf::RenderWindow& t_window);
+	void update(sf::Time t_deltaTime, sf::RenderWindow& t_window, GameState& t_gameState);
 
 	void render(sf::RenderWindow& t_window);
 
@@ -35,10 +35,8 @@ private:
 
 	void setupGridSizeBox();
 
-	void mouseButtonCollision(sf::Vector2i t_mousePos, GameState& t_gameState); // checks for collision with the mouse and buttons.
-	//if the mouse is hovering changes that specific button
-	//resets changes when it leaves that button
-	//checks for that buttons click aswell
+
+	void checkForMousePos(GameState& t_gameState);
 
 	void resetButtons(int t_current); //small function which is called to reset buttons after they are not being hoverd over anymore
 

@@ -93,7 +93,26 @@ void Game::processKeys(sf::Event t_event)
 		m_exitGame = true;
 	}
 
-	
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Tab))
+	{
+		
+		if (myState == GameState::gameOptions)
+		{
+			myState = GameState::mainmenu;
+		}
+		else if (myState == GameState::createGame)
+		{
+			myState = GameState::gameOptions;
+		}
+		else if (myState == GameState::chooseGame)
+		{
+			myState = GameState::mainmenu;
+		}
+		else if (myState == GameState::options)
+		{
+			myState = GameState::mainmenu;
+		}
+	}
 }
 
 void Game::processMouseClicks(sf::Event t_event)
@@ -133,7 +152,7 @@ void Game::update(sf::Time t_deltaTime)
 	
 	if (myState == GameState::gameOptions)
 	{
-		gameOptions.update(t_deltaTime, m_window);
+		gameOptions.update(t_deltaTime, m_window, myState);
 		checkMousePos();
 	}
 	

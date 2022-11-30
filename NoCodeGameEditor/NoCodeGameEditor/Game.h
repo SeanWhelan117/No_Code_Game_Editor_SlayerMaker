@@ -26,11 +26,11 @@ public:
 	Game();
 	~Game();
 
+	MainMenu myMenu{ gameWidth, gameHeight };
+	GameOptions gameOptions{ gameWidth, gameHeight };
 	Grid myGrid;
 	Wall myWalls;
 	GameState myState{ GameState::mainmenu };
-	MainMenu myMenu{ gameWidth, gameHeight };
-	GameOptions gameOptions{ gameWidth, gameHeight };
 
 
 	/// <summary>

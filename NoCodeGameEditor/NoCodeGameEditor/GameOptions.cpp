@@ -85,7 +85,7 @@ void GameOptions::setupContinueButton()
 {
 	continueButton.setFillColor(sf::Color(0, 0, 0, 0));
 	continueButton.setSize(sf::Vector2f(525, 125));
-	continueButton.setOrigin(continueButton.getSize().x, continueButton.getSize().y);
+	continueButton.setOrigin(continueButton.getSize().x / 2, continueButton.getSize().y / 2);
 	continueButton.setPosition(sf::Vector2f(gameSize.x / 2, gameSize.y * 0.8));
 }
 
@@ -153,29 +153,16 @@ void GameOptions::changeGridSize(int t_triangleNum)
 
 void GameOptions::checkForMousePos(GameState& t_gameState)
 {
-	/*for (int i = 0; i < MAX_BUTTONS; i++)
-	{
-		sf::FloatRect boundingBox = buttons[i].getGlobalBounds();
 
-		if (boundingBox.contains(static_cast<sf::Vector2f>(t_mousePos)))
-		{
-			changeButtons(i);
-			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-			{
-				changeGameState(i, t_gameState);
-			}
-		}
-		else
-		{
-			resetButtons(i);
-		}
-
-	}*/
 
 	if (continueButton.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePos)))
 	{
 		continueButtonText.setScale(1.25, 1.25);
 		continueButton.setScale(1.25, 1.25);
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+		{
+			t_gameState = GameState::createGame;
+		}
 	}
 	else
 	{

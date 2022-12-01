@@ -6,92 +6,31 @@
 
 #include "Cell.h"
 
-void Cell::setStartColour()
+Cell::Cell()
 {
-    cellRect.setFillColor(sf::Color::Green);
+	initVars();
 }
 
-
-//bool Cell::getMarked()
-//{
-//    return markedBool;
-//}
-
-
-void Cell::setMarked(bool t_marked)
+void Cell::setPos(sf::Vector2f t_pos)
 {
-    markedBool = t_marked;
+	cellShape.setPosition(t_pos);
 }
 
-
-void Cell::setEndColour()
+void Cell::initVars()
 {
-    cellRect.setFillColor(sf::Color::Red);
+	cellShape.setFillColor(sf::Color::Transparent);
+	cellShape.setOutlineColor(sf::Color::Cyan);
+	cellShape.setOutlineThickness(2u);
+	cellShape.setSize(sf::Vector2f{ 30,30 });
 }
-
-//bool Cell::getEndPoint()
-//{
-//    return endPointSquare;
-//}
-
-int Cell::getID()
-{
-    return ID;
-}
-
-//bool Cell::getStartPoint()
-//{
-//    return startPointSquare;
-//}
-
-void Cell::setEndPoint(bool t_endPointSet)
-{
-    endPointSquare = t_endPointSet;
-    std::cout << "end point set" << std::endl;
-}
-
-void Cell::setStartPoint(bool t_startPointSet)
-{
-    startPointSquare = t_startPointSet;
-    std::cout << "start point set" << std::endl;
-}
-
-
 
 void Cell::setID(int t_id)
 {
-    ID = t_id;
-}
-
-void Cell::setPos(sf::Vector2f t_position)
-{
-    m_pos = sf::Vector2f(t_position.x, t_position.y);
-    cellRect.setPosition(t_position);
+	cellID = t_id;
 }
 
 
-
-sf::RectangleShape Cell::getCellRect()
+sf::RectangleShape& Cell::getCellShape()
 {
-    return cellRect;
-}
-
-void Cell::setupCellRect()
-{
-    cellRect.setFillColor(sf::Color::Transparent);
-    cellRect.setOutlineColor(sf::Color::Cyan);
-    cellRect.setOutlineThickness(1.5f);
-    cellRect.setSize(sf::Vector2f( gridSize / 50, gridSize / 50));
-}
-
-void Cell::setNeighbours(Cell* t_neighbour)
-{
-    t_neighbour->setEndColour();
-    m_neighbour.push_back(t_neighbour);
-}
-
-
-sf::Vector2f& Cell::getPos()
-{
-    return m_pos;
+	return cellShape;
 }

@@ -15,25 +15,24 @@ using namespace std;
 
 class Grid
 {
+	Cell* myCell;
 
-	const int MAX_CELLS = 2500;
 
-	//bool startPositionFoundBool = false;
-	//bool endPositionFoundBool = false;
-	//Grid is 50 * 50 in size
+	const static int MAX_CELLS = 900;
+	const static int MAX_ROWS = 30;
+	const static int MAX_COLS = 30;
 
-	const static int MAX_ROWS = 50;
-	const static int MAX_COLS = 50;
+	float gameWidth = 0;
+	float gameHeight = 0;
 
-	Cell* atIndex(int t_id);
 public:
-	std::vector<Cell> gridVector;
-	Grid();
-	~Grid();
-	void setNeighbours(Cell* t_cell);
-	void selectStartEndPositions(sf::RenderWindow& t_window);
+	std::vector<std::vector<Cell>> theGrid;
+
+	Grid(float t_gameWidth, float t_gameHeight);
+
 	void setupGrid();
+
+	void update(sf::Time& t_deltaTime);
 	void render(sf::RenderWindow& t_window);
-	void update(sf::Time& t_deltatime);
 
 };

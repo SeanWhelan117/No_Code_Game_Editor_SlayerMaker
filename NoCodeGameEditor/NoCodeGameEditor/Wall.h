@@ -10,15 +10,15 @@ public:
 
 	void loadFiles();
 
-	void update(sf::Time t_deltaTime, sf::RenderWindow& t_window, std::vector<Cell>& t_grid);
+	void update(sf::Time t_deltaTime, sf::RenderWindow& t_window, std::vector<std::vector<Cell>>& t_grid);
 
 	void render(sf::RenderWindow& t_window);
 
 	void checkForMousePosAndClick(sf::RenderWindow& t_window, sf::Vector2i t_mousePos);
 
-	void checkForPlacement(std::vector<Cell>& t_grid);
+	void checkForPlacement(std::vector<std::vector<Cell>>& t_grid);
 
-	void snapWallPositionToGrid(std::vector<Cell>& t_grid);
+	void snapWallPositionToGrid(std::vector<std::vector<Cell>>& t_grid);
 
 
 	sf::Sprite wallSprites[100];

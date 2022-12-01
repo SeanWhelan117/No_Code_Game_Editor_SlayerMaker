@@ -28,7 +28,7 @@ public:
 
 	MainMenu myMenu{ gameWidth, gameHeight };
 	GameOptions gameOptions{ gameWidth, gameHeight };
-	Grid myGrid;
+	Grid myGrid{ gameWidth, gameHeight };
 	Wall myWalls;
 	GameState myState{ GameState::mainmenu };
 

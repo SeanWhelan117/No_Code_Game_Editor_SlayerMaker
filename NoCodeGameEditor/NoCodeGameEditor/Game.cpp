@@ -138,10 +138,9 @@ void Game::update(sf::Time t_deltaTime)
 	if (myState == GameState::createGame)
 	{
 		myGrid.update(t_deltaTime);
-		myGrid.selectStartEndPositions(m_window);
 		for (int i = 0; i < 100; i++)
 		{
-			myWalls.update(t_deltaTime, m_window, myGrid.gridVector);
+			myWalls.update(t_deltaTime, m_window, myGrid.theGrid);
 		}
 	}
 

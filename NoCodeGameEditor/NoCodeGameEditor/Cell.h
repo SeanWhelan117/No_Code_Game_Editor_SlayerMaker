@@ -10,48 +10,18 @@
 
 class Cell
 {
+	sf::RectangleShape cellShape;
+	int cellID;
 
-	int ID = 0;
-	bool markedBool = false;
-	bool startPointSquare = false;
-	bool endPointSquare = false;
-
-	sf::Vector2f m_pos;
 public:
-	sf::RectangleShape cellRect;
-	//bool getEndPoint();
-	void setEndPoint(bool t_endPointSet);
-	void setStartPoint(bool t_startPointSet);
-
-	//bool getStartPoint();
-	//bool getMarked();
-	void setMarked(bool t_marked);
-
-	void setStartColour();
-	void setEndColour();
-
-	int getID();
-
-
+	Cell();
+	void setPos(sf::Vector2f t_pos);
+	void initVars();
 	void setID(int t_id);
-
-	void setPos(sf::Vector2f t_position);
-
-	sf::RectangleShape getCellRect();
-	void setupCellRect();
-
 
 
 	int xPos;
 	int yPos;
-
-
-	std::vector<Cell*> m_neighbour;
-	void setNeighbours(Cell* t_neighbour);
-
-	sf::Vector2f& getPos();
-
-
-	float gridSize = 1500.0f;
+	sf::RectangleShape& getCellShape();
 
 };

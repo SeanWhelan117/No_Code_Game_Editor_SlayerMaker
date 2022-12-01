@@ -172,5 +172,36 @@ void GameOptions::checkForMousePos(GameState& t_gameState)
 
 }
 
+int GameOptions::getGridSize()
+{
+
+	//{ "30 x 30", "40 x 40", "50 x 50", "60 x 60", "70 x 70" };
+	int gridNum = 0;
+
+	if (currentGridStringNum == 0)
+	{
+		gridNum = 30;
+	}
+	else if (currentGridStringNum == 1)
+	{
+		gridNum = 40;
+	}
+	else if (currentGridStringNum == 2)
+	{
+		gridNum = 50;
+	}
+	else if (currentGridStringNum == 3)
+	{
+		gridNum = 60;
+	}
+	else if (currentGridStringNum == 4)
+	{
+		gridNum = 70;
+	}
+
+
+	return gridNum;
+}
+
 
 

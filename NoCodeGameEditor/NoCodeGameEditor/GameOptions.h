@@ -25,6 +25,9 @@ public:
 	sf::Sprite triangles[NUM_OF_TRIANGLES];
 
 	void changeGridSize(int t_triangleNum);
+
+	int getGridSize();
+
 private:
 
 	void setupText(); // setups font colour all that stuff for the button text
@@ -37,6 +40,7 @@ private:
 
 
 	void checkForMousePos(GameState& t_gameState);
+
 
 	void resetButtons(int t_current); //small function which is called to reset buttons after they are not being hoverd over anymore
 

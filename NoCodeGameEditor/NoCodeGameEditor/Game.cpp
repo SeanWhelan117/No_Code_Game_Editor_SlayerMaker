@@ -137,20 +137,28 @@ void Game::update(sf::Time t_deltaTime)
 
 	if (myState == GameState::createGame)
 	{
+		if (gridCreated == false)
+		{
+			gridSize = gameOptions.getGridSize();
+			myGrid.setupGrid(gridSize);
+			gridCreated = true;
+		}
 		myGrid.update(t_deltaTime);
 		for (int i = 0; i < 100; i++)
 		{
-			myWalls.update(t_deltaTime, m_window, myGrid.theGrid);
+			myWalls.update(t_deltaTime, m_window, myGrid.theGrid, gridSize);
 		}
 	}
 
 	if (myState == GameState::mainmenu)
 	{
+		gridCreated = false;
 		myMenu.update(myState, m_window);
 	}
 	
 	if (myState == GameState::gameOptions)
 	{
+		gridCreated = false;
 		gameOptions.update(t_deltaTime, m_window, myState);
 		checkMousePos();
 	}
@@ -166,11 +174,16 @@ void Game::render()
 	m_window.clear(sf::Color::White);
 	if (myState == GameState::createGame)
 	{
-		myGrid.render(m_window);
-		for (int i = 0; i < 100; i++)
+		if (gridCreated == true)
 		{
-			myWalls.render(m_window);
+			gridSize = gameOptions.getGridSize();
+			myGrid.render(m_window, gridSize);
+			for (int i = 0; i < 100; i++)
+			{
+				myWalls.render(m_window);
+			}
 		}
+		
 	}
 
 	if (myState == GameState::mainmenu)

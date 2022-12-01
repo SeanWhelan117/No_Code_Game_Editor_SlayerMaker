@@ -30,9 +30,9 @@ public:
 
 	Grid(float t_gameWidth, float t_gameHeight);
 
-	void setupGrid();
+	void setupGrid(int t_gridParams);
 
 	void update(sf::Time& t_deltaTime);
-	void render(sf::RenderWindow& t_window);
+	void render(sf::RenderWindow& t_window, int t_gridParams);
 
 };

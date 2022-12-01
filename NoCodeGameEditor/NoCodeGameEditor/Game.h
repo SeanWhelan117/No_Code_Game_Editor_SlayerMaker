@@ -55,8 +55,9 @@ private:
 	sf::RenderWindow m_window; // main SFML window
 	bool m_exitGame; // control exiting game
 
+	bool gridCreated = false;
 
-
+	int gridSize = 30;
 };
 
 #endif // !GAME_HPP

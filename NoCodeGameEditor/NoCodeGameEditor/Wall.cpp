@@ -20,7 +20,7 @@ void Wall::loadFiles()
 	}
 }
 
-void Wall::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, std::vector<std::vector<Cell>>& t_grid)
+void Wall::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, std::vector<std::vector<Cell>>& t_grid, int t_gridParams)
 {
 	sf::Vector2i mousePos = sf::Mouse::getPosition(t_window);
 	checkForMousePosAndClick(t_window, mousePos);
@@ -29,7 +29,7 @@ void Wall::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, std::vector<
 	{
 		wallSprites[pickedWall].setPosition(mousePos.x, mousePos.y);
 
-		checkForPlacement(t_grid);
+		checkForPlacement(t_grid, t_gridParams);
 	}
 }
 
@@ -55,21 +55,21 @@ void Wall::checkForMousePosAndClick(sf::RenderWindow& t_window, sf::Vector2i t_m
 
 }
 
-void Wall::checkForPlacement(std::vector<std::vector<Cell>>& t_grid)
+void Wall::checkForPlacement(std::vector<std::vector<Cell>>& t_grid, int t_gridParams)
 {
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Right))
 	{
 		isClicked = false;
-		snapWallPositionToGrid(t_grid);
+		snapWallPositionToGrid(t_grid, t_gridParams);
 	}
 }
 
-void Wall::snapWallPositionToGrid(std::vector<std::vector<Cell>>& t_grid)
+void Wall::snapWallPositionToGrid(std::vector<std::vector<Cell>>& t_grid, int t_gridParams)
 {
 
-	for (int i = 0; i < 30; i++)
+	for (int i = 0; i < t_gridParams; i++)
 	{
-		for (int m = 0; m < 30; m++)
+		for (int m = 0; m < t_gridParams; m++)
 		{
 			if (t_grid.at(m).at(i).getCellShape().getGlobalBounds().contains(wallSprites[pickedWall].getPosition()))
 			{

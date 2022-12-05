@@ -140,6 +140,10 @@ void Game::update(sf::Time t_deltaTime)
 		if (gridCreated == false)
 		{
 			gridSize = gameOptions.getGridSize();
+			if (myGrid.theGrid.size() > 0)
+			{
+				myGrid.theGrid.clear();
+			}
 			myGrid.setupGrid(gridSize);
 			gridCreated = true;
 		}
@@ -205,8 +209,6 @@ void Game::render()
 
 void Game::checkMousePos()
 {
-	
-
 	for (int i = 0; i < gameOptions.NUM_OF_TRIANGLES; i++)
 	{
 		if (gameOptions.triangles[i].getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePos)))

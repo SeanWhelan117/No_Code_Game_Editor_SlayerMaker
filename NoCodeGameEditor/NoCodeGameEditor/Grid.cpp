@@ -9,7 +9,6 @@ Grid::Grid(float t_gameWidth, float t_gameHeight)
 {
 	gameWidth = t_gameWidth;
 	gameHeight = t_gameHeight;
-	//setupGrid();
 }
 
 void Grid::setupGrid(int t_gridParams)

@@ -17,6 +17,7 @@
 #include "GameState.h"
 #include "MainMenu.h"
 #include "GameOptions.h"
+#include "ToolBar.h"
 
 class Game
 {
@@ -31,6 +32,7 @@ public:
 	Grid myGrid{ gameWidth, gameHeight };
 	Wall myWalls;
 	GameState myState{ GameState::mainmenu };
+	ToolBar myTools;
 
 
 	/// <summary>

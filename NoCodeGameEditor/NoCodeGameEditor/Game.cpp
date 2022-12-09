@@ -186,6 +186,7 @@ void Game::render()
 			{
 				myWalls.render(m_window);
 			}
+			myTools.render(m_window);
 		}
 		
 	}

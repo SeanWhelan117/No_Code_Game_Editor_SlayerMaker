@@ -17,7 +17,7 @@ void Grid::setupGrid(int t_gridParams)
 	int maxCols = t_gridParams;
 	int maxRows = t_gridParams;
 
-	sf::Vector2f pos{ 100,100 };
+	sf::Vector2f pos{ gameWidth / 3,gameHeight / 5 };
 	for (int i = 0; i < maxRows; i++)
 	{
 		std::vector<Cell> tempVec;
@@ -32,13 +32,13 @@ void Grid::setupGrid(int t_gridParams)
 		Cell tempCell;
 		tempCell.xPos = x;
 		tempCell.yPos = y;
-		tempCell.initVars();
+		tempCell.setupCells();
 		tempCell.setPos(pos);
 		pos.x += tempCell.getCellShape().getSize().x;
 		if (tempCurrent == maxCols)
 		{
 			pos.y += tempCell.getCellShape().getSize().y;
-			pos.x = 100;
+			pos.x = gameWidth / 3;
 			tempCurrent = 0;
 		}
 		tempCell.setID(x + (y * maxRows));

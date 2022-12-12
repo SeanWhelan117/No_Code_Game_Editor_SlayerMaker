@@ -5,7 +5,7 @@
 class ToolBar
 {
 public:
-	ToolBar();
+	ToolBar(float t_gameWidth, float t_gameHeight);
 
 	void loadFiles();
 
@@ -17,6 +17,9 @@ public:
 
 	void checkForMousePosAndClick(sf::RenderWindow& t_window, sf::Vector2i t_mousePos);
 
+	void resetTools(int t_current); //small function which is called to reset buttons after they are not being hoverd over anymore
+
+	void changeTools(int t_currentTool);
 
 private:
 
@@ -28,5 +31,10 @@ private:
 
 	sf::Sprite fillToolSprite;
 	sf::Texture fillToolTexture;
+
+	float gameWidth = 0;
+	float gameHeight = 0;
+
+	bool brushToolSelected = false;
 
 };

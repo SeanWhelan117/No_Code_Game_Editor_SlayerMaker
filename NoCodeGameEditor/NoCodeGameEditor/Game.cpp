@@ -152,6 +152,7 @@ void Game::update(sf::Time t_deltaTime)
 		{
 			myWalls.update(t_deltaTime, m_window, myGrid.theGrid, gridSize);
 		}
+		myTools.update(t_deltaTime, m_window);
 	}
 
 	if (myState == GameState::mainmenu)

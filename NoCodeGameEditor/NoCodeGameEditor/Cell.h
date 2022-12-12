@@ -16,7 +16,7 @@ class Cell
 public:
 	Cell();
 	void setPos(sf::Vector2f t_pos);
-	void initVars();
+	void setupCells();
 	void setID(int t_id);
 
 

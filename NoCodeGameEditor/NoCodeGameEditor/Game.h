@@ -32,7 +32,7 @@ public:
 	Grid myGrid{ gameWidth, gameHeight };
 	Wall myWalls;
 	GameState myState{ GameState::mainmenu };
-	ToolBar myTools;
+	ToolBar myTools{ gameWidth, gameHeight };
 
 
 	/// <summary>

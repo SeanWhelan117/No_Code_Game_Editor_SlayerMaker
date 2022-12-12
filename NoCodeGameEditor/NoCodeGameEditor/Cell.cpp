@@ -8,7 +8,7 @@
 
 Cell::Cell()
 {
-	initVars();
+	setupCells();
 }
 
 void Cell::setPos(sf::Vector2f t_pos)
@@ -16,7 +16,7 @@ void Cell::setPos(sf::Vector2f t_pos)
 	cellShape.setPosition(t_pos);
 }
 
-void Cell::initVars()
+void Cell::setupCells()
 {
 	cellShape.setFillColor(sf::Color::Transparent);
 	cellShape.setOutlineColor(sf::Color::Cyan);

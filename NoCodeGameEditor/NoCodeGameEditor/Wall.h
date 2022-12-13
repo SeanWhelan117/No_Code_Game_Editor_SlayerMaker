@@ -11,7 +11,7 @@ public:
 
 	void loadFiles();
 
-	void update(sf::Time t_deltaTime, sf::RenderWindow& t_window, std::vector<std::vector<Cell>>& t_grid, int t_gridParams);
+	void update(sf::Time t_deltaTime, sf::RenderWindow& t_window, std::vector<std::vector<Cell>>& t_grid, int t_gridParams, bool t_wallsPlaced);
 
 	void render(sf::RenderWindow& t_window);
 
@@ -20,6 +20,8 @@ public:
 	void checkForPlacement(std::vector<std::vector<Cell>>& t_grid, int t_gridParams);
 
 	void snapWallPositionToGrid(std::vector<std::vector<Cell>>& t_grid, int t_gridParams);
+
+	void placeWallsOnGrid(std::vector<std::vector<Cell>>& t_grid, int t_gridParams);
 
 
 	sf::Sprite wallSprites[100];

@@ -112,7 +112,7 @@ void ToolBar::checkForMousePosAndClick(sf::RenderWindow& t_window, sf::Vector2i 
 	{
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
-			wallsPlaced == true;
+			wallsPlaced = true;
 		}
 	}
 }

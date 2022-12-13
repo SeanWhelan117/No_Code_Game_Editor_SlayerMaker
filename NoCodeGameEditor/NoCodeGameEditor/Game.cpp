@@ -150,7 +150,7 @@ void Game::update(sf::Time t_deltaTime)
 		myGrid.update(t_deltaTime);
 		for (int i = 0; i < 100; i++)
 		{
-			myWalls.update(t_deltaTime, m_window, myGrid.theGrid, gridSize);
+			myWalls.update(t_deltaTime, m_window, myGrid.theGrid, gridSize, myTools.wallsPlaced);
 		}
 		myTools.update(t_deltaTime, m_window, myGrid.theGrid, gridSize);
 	}

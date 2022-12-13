@@ -34,7 +34,7 @@ sf::RectangleShape& Cell::getCellShape()
 	return cellShape;
 }
 
-void Cell::setMarked(int t_id)
+void Cell::setMarked()
 {
 	cellShape.setFillColor(sf::Color::Red);
 }

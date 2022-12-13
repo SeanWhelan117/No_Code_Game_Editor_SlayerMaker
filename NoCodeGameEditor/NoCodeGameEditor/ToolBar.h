@@ -23,6 +23,7 @@ public:
 	void changeTools(int t_currentTool);
 
 	void setGridCellToMarked(std::vector<std::vector<Cell>>& t_grid, int t_gridParams, sf::Vector2i t_mousePos);
+	bool wallsPlaced = false;
 
 private:
 
@@ -39,5 +40,7 @@ private:
 	float gameHeight = 0;
 
 	bool brushToolSelected = false;
+
+	sf::RectangleShape addWallsButton;
 
 };

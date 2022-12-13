@@ -17,7 +17,7 @@ public:
 	void setPos(sf::Vector2f t_pos);
 	void setupCells();
 	void setID(int t_id);
-	void setMarked(int t_id);
+	void setMarked();
 
 	int getID();
 

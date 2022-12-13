@@ -5,7 +5,7 @@ Wall::Wall()
 	loadFiles();
 	for (int i = 0; i < 100; i++)
 	{
-		wallSprites[i].setPosition(1750, 500);
+		wallSprites[i].setPosition(200, 500);
 		wallSprites[i].setTexture(wallTexture);
 		wallSprites[i].setOrigin(wallSprites[i].getGlobalBounds().width / 2, wallSprites[i].getGlobalBounds().height / 2);
 	}

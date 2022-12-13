@@ -8,6 +8,11 @@ ToolBar::ToolBar(float t_gameWidth, float t_gameHeight)
 	gameHeight = t_gameHeight;
 
 	setupSprites();
+
+	addWallsButton.setFillColor(sf::Color::Green);
+	addWallsButton.setSize(sf::Vector2f(150, 100));
+	addWallsButton.setOrigin(75, 50);
+	addWallsButton.setPosition(gameWidth / 2 + 350, 100);
 }
 
 void ToolBar::loadFiles()
@@ -64,6 +69,11 @@ void ToolBar::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, std::vect
 	{
 		setGridCellToMarked(t_grid, t_gridParams, mousePos);
 	}
+
+	if (wallsPlaced == true)
+	{
+
+	}
 }
 
 
@@ -72,6 +82,9 @@ void ToolBar::render(sf::RenderWindow& t_window)
 	t_window.draw(toolBarSprite);
 	t_window.draw(brushToolSprite);
 	t_window.draw(fillToolSprite);
+	t_window.draw(addWallsButton);
+
+	
 
 
 }
@@ -93,6 +106,14 @@ void ToolBar::checkForMousePosAndClick(sf::RenderWindow& t_window, sf::Vector2i 
 	else
 	{
 		resetTools(2);
+	}
+
+	if (addWallsButton.getGlobalBounds().contains(static_cast<sf::Vector2f>(t_mousePos)))
+	{
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+		{
+			wallsPlaced == true;
+		}
 	}
 }
 
@@ -123,8 +144,7 @@ void ToolBar::setGridCellToMarked(std::vector<std::vector<Cell>>& t_grid, int t_
 			{
 				if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 				{
-					int tempID = t_grid.at(m).at(i).getID();
-					t_grid.at(m).at(i).setMarked(tempID);
+					t_grid.at(m).at(i).setMarked();
 				}
 				
 			}

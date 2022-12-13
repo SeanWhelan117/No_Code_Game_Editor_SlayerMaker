@@ -52,14 +52,20 @@ void ToolBar::setupSprites()
 	fillToolSprite.setPosition(toolBarSprite.getPosition().x + toolBarSprite.getLocalBounds().width / 3, toolBarSprite.getPosition().y);
 }
 
-void ToolBar::update(sf::Time t_deltaTime, sf::RenderWindow& t_window)
+void ToolBar::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, std::vector<std::vector<Cell>>& t_grid, int t_gridParams)
 {
 	sf::Vector2i mousePos = sf::Mouse::getPosition(t_window);
 
 	std::cout << mousePos.x << "----" << mousePos.y << std::endl;
 	std::cout << mousePos.x << "----" << mousePos.y << std::endl;
 	checkForMousePosAndClick(t_window, mousePos);
+
+	if (brushToolSelected == true)
+	{
+		setGridCellToMarked(t_grid, t_gridParams, mousePos);
+	}
 }
+
 
 void ToolBar::render(sf::RenderWindow& t_window)
 {
@@ -103,6 +109,26 @@ void ToolBar::resetTools(int t_current)
 	if (t_current == 2)
 	{
 		brushToolSprite.setScale(0.3, 0.3);
+	}
+}
+
+void ToolBar::setGridCellToMarked(std::vector<std::vector<Cell>>& t_grid, int t_gridParams, sf::Vector2i t_mousePos)
+{
+
+	for (int i = 0; i < t_gridParams; i++)
+	{
+		for (int m = 0; m < t_gridParams; m++)
+		{
+			if (t_grid.at(m).at(i).getCellShape().getGlobalBounds().contains(static_cast<sf::Vector2f>(t_mousePos)))
+			{
+				if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+				{
+					int tempID = t_grid.at(m).at(i).getID();
+					t_grid.at(m).at(i).setMarked(tempID);
+				}
+				
+			}
+		}
 	}
 }
 

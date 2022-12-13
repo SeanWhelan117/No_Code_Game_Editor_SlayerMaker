@@ -29,8 +29,18 @@ void Cell::setID(int t_id)
 	cellID = t_id;
 }
 
-
 sf::RectangleShape& Cell::getCellShape()
 {
 	return cellShape;
+}
+
+void Cell::setMarked(int t_id)
+{
+	cellShape.setFillColor(sf::Color::Red);
+}
+
+int Cell::getID()
+{
+
+	return cellID;
 }

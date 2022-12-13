@@ -10,18 +10,24 @@
 
 class Cell
 {
-	sf::RectangleShape cellShape;
-	int cellID;
+	
 
 public:
 	Cell();
 	void setPos(sf::Vector2f t_pos);
 	void setupCells();
 	void setID(int t_id);
+	void setMarked(int t_id);
+
+	int getID();
 
 
 	int xPos;
 	int yPos;
 	sf::RectangleShape& getCellShape();
+
+private:
+	sf::RectangleShape cellShape;
+	int cellID;
 
 };

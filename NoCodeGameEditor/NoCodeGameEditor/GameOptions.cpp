@@ -16,6 +16,7 @@ GameOptions::GameOptions(float t_gameWidth, float t_gameHeight)
 	setupText();
 	setupGridSizeBox();
 	setupTriangles();
+	setUpGameName();
 }
 
 void GameOptions::loadFiles()
@@ -38,13 +39,15 @@ void GameOptions::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, GameS
 
 	std::cout << mousePos.x << "----" << mousePos.y << std::endl;
 	checkForMousePos(t_gameState);
+
+	gameNameText.setString(gameName);
 }
 
 void GameOptions::render(sf::RenderWindow& t_window)
 {
 	t_window.draw(continueButtonText);
 	t_window.draw(chooseGridSizeText);
-
+	
 
 	t_window.draw(gridSizeBox);
 	for (int i = 0; i < NUM_OF_TRIANGLES; i++)
@@ -52,6 +55,9 @@ void GameOptions::render(sf::RenderWindow& t_window)
 		t_window.draw(triangles[i]);
 	}
 	t_window.draw(currentGridSize);
+
+	t_window.draw(gameNameRect);
+	t_window.draw(gameNameText);
 }
 
 void GameOptions::setupText()
@@ -76,8 +82,6 @@ void GameOptions::setupText()
 	chooseGridSizeText.setOrigin(gridSizeTextRect.width / 2, gridSizeTextRect.height / 2);
 	chooseGridSizeText.setPosition(gameSize.x / 2, gameSize.y * 0.2);
 	chooseGridSizeText.setFillColor(sf::Color::Black);
-
-	
 
 }
 
@@ -170,6 +174,23 @@ void GameOptions::checkForMousePos(GameState& t_gameState)
 		continueButton.setScale(1, 1);
 	}
 
+	if (gameNameRect.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePos)))
+	{
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+		{
+			gameNameRect.setFillColor(sf::Color(128, 128, 128, 64));
+			canType = true;
+		}
+	}
+	else 
+	{
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+		{
+			gameNameRect.setFillColor(sf::Color::White);
+			canType = false;
+		}
+	}
+
 }
 
 int GameOptions::getGridSize()
@@ -202,6 +223,25 @@ int GameOptions::getGridSize()
 
 	return gridNum;
 }
+
+void GameOptions::setUpGameName()
+{
+	gameNameRect.setSize(sf::Vector2f(350, 65));
+	gameNameRect.setOutlineThickness(5);
+	gameNameRect.setFillColor(sf::Color::White);
+	gameNameRect.setOutlineColor(sf::Color::Black);
+	gameNameRect.setOrigin(gameNameRect.getSize().x / 2, gameNameRect.getSize().y / 2);
+	gameNameRect.setPosition(gameSize.x / 2, gameSize.y / 2);
+	
+	gameNameText.Bold;
+	gameNameText.setFont(m_font);
+	gameNameText.setCharacterSize(48u);
+	sf::FloatRect gameNameTextRect = currentGridSize.getLocalBounds();
+	gameNameText.setOrigin(gameNameTextRect.width / 2, gameNameTextRect.height / 2);
+	gameNameText.setPosition(gameNameRect.getPosition().x - 130, gameNameRect.getPosition().y);
+	gameNameText.setFillColor(sf::Color::Black);
+}
+
 
 
 

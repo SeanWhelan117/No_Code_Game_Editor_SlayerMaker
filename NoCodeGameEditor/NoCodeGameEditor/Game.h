@@ -51,6 +51,7 @@ private:
 	void processEvents();
 	void processKeys(sf::Event t_event);
 	void processMouseClicks(sf::Event t_event);
+	void processTextEntered(sf::Event t_event);
 	void update(sf::Time t_deltaTime);
 	void render();	
 

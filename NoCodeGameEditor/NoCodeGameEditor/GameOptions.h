@@ -28,6 +28,9 @@ public:
 
 	int getGridSize();
 
+	bool canType;
+	std::string gameName = "";
+
 private:
 
 	void setupText(); // setups font colour all that stuff for the button text
@@ -38,8 +41,12 @@ private:
 
 	void setupGridSizeBox();
 
+	void setUpGameName();
 
 	void checkForMousePos(GameState& t_gameState);
+
+	void checkForKeyPress();
+
 
 
 	void resetButtons(int t_current); //small function which is called to reset buttons after they are not being hoverd over anymore
@@ -81,8 +88,10 @@ private:
 	int offset = 5;
 
 
-	/*sf::Text continueButtonText;
-	std::string buttonText = "Continue";*/
+	sf::Text gameNameText;
+
+	sf::RectangleShape gameNameRect;
+
 
 };
 

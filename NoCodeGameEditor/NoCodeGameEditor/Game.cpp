@@ -78,6 +78,10 @@ void Game::processEvents()
 		{
 			processMouseClicks(newEvent);
 		}
+		if (sf::Event::TextEntered == newEvent.type)
+		{
+			processTextEntered(newEvent);
+		}
 	}
 }
 
@@ -93,9 +97,8 @@ void Game::processKeys(sf::Event t_event)
 		m_exitGame = true;
 	}
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Tab))
+	if (sf::Keyboard::Tab == t_event.key.code)
 	{
-		
 		if (myState == GameState::gameOptions)
 		{
 			myState = GameState::mainmenu;
@@ -113,6 +116,21 @@ void Game::processKeys(sf::Event t_event)
 			myState = GameState::mainmenu;
 		}
 	}
+
+	if (gameOptions.canType == true)
+	{
+		if (sf::Keyboard::BackSpace == t_event.key.code)
+		{
+			if (!gameOptions.gameName.empty())
+			{
+				gameOptions.gameName.pop_back();
+			}
+
+			//gameOptions.gameName.erase(gameOptions.gameName.size() - 1);
+		}
+	}
+
+	
 }
 
 void Game::processMouseClicks(sf::Event t_event)
@@ -120,6 +138,17 @@ void Game::processMouseClicks(sf::Event t_event)
 	if (sf::Mouse::Left == t_event.mouseButton.button)
 	{
 		changeGridSize = true;
+	}
+}
+
+void Game::processTextEntered(sf::Event t_event)
+{
+	if (gameOptions.canType == true)
+	{
+		if (t_event.text.unicode != 8)
+		{
+			gameOptions.gameName += t_event.text.unicode;
+		}
 	}
 }
 

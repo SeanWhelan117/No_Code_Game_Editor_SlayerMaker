@@ -25,6 +25,8 @@ public:
 	void setGridCellToMarked(std::vector<std::vector<Cell>>& t_grid, int t_gridParams, sf::Vector2i t_mousePos);
 	bool wallsPlaced = false;
 
+	bool wallPosSaved = false;
+
 private:
 
 	sf::Sprite toolBarSprite;
@@ -36,11 +38,14 @@ private:
 	sf::Sprite fillToolSprite;
 	sf::Texture fillToolTexture;
 
+
 	float gameWidth = 0;
 	float gameHeight = 0;
 
 	bool brushToolSelected = false;
 
 	sf::RectangleShape addWallsButton;
+	sf::RectangleShape saveWallPosButton;
+
 
 };

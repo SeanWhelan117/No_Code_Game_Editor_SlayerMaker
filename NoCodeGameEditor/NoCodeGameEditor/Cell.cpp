@@ -36,7 +36,10 @@ sf::RectangleShape& Cell::getCellShape()
 
 void Cell::setMarked()
 {
-	cellShape.setFillColor(sf::Color::Red);
+	if (cellShape.getFillColor() == sf::Color::Transparent)
+	{
+		cellShape.setFillColor(sf::Color::Red);
+	}
 }
 
 int Cell::getID()

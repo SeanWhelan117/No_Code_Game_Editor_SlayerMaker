@@ -1,0 +1,21 @@
+Wall Placement and wall Object rewrite
+
+Saving placements to a text document
+
+Level Creation / scene to choose level
+
+Load placements from a text document
+
+Animation class, modular can animate any spritesheet with given parameters
+
+Player, simple movement, animated sprite
+
+One enemy which seeks player
+
+Enemy attack
+
+Multiple enemies
+
+Creating Executable with neccessary assets for specific level
+
+Customisation, 3 wall types, 3 ground types, 3 player types, 3 enemy types

@@ -28,6 +28,8 @@ void Wall::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, std::vector<
 	{
 		placeWallsOnGrid(t_grid, t_gridParams);
 	}
+
+	checkForMousePosAndClick(mousePos, t_gridParams, t_grid);
 }
 
 void Wall::render(sf::RenderWindow& t_window)
@@ -54,4 +56,35 @@ void Wall::placeWallsOnGrid(std::vector<std::vector<Cell>>& t_grid, int t_gridPa
 			}
 		}
 	}
+}
+
+void Wall::checkForMousePosAndClick(sf::Vector2i t_mousePos, int t_gridParams, std::vector<std::vector<Cell>>& t_grid)
+{
+	for (int i = 0; i < wallTemp; i++)
+	{
+		if (wallSprites[i].getGlobalBounds().contains(static_cast<sf::Vector2f>(t_mousePos)))
+		{
+			if (sf::Mouse::isButtonPressed(sf::Mouse::Right))
+			{
+				resetWall(i, t_gridParams, t_grid);
+			}
+		}
+	}
+
+}
+
+void Wall::resetWall(int t_currentWall, int t_gridParams, std::vector<std::vector<Cell>>& t_grid)
+{
+	for (int i = 0; i < t_gridParams; i++)
+	{
+		for (int m = 0; m < t_gridParams; m++)
+		{
+			if (t_grid.at(m).at(i).getCellShape().getGlobalBounds().contains(wallSprites[t_currentWall].getPosition()))
+			{
+				t_grid.at(m).at(i).getCellShape().setFillColor(sf::Color::Transparent);
+			}
+		}
+	}
+
+	wallSprites[t_currentWall].setPosition(-200, -200);
 }

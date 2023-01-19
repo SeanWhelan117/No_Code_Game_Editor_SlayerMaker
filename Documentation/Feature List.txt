@@ -1,5 +1,9 @@
 Wall Placement and wall Object rewrite
 
+Scene Navigation
+
+sf::View control. Zooming etc
+
 Saving placements to a text document
 
 Level Creation / scene to choose level

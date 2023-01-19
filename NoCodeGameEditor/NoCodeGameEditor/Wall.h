@@ -17,6 +17,10 @@ public:
 
 	void placeWallsOnGrid(std::vector<std::vector<Cell>>& t_grid, int t_gridParams);
 
+	void checkForMousePosAndClick(sf::Vector2i t_mousePos, int t_gridParams, std::vector<std::vector<Cell>>& t_grid);
+
+	void resetWall(int t_currentWall, int t_gridParams, std::vector<std::vector<Cell>>& t_grid);
+
 
 	static const int MAX_WALLS = 900;
 	sf::Sprite wallSprites[MAX_WALLS];

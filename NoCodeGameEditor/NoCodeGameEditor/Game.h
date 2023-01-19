@@ -18,7 +18,6 @@
 #include "MainMenu.h"
 #include "GameOptions.h"
 #include "ToolBar.h"
-
 class Game
 {
 public:
@@ -30,10 +29,9 @@ public:
 	MainMenu myMenu{ gameWidth, gameHeight };
 	GameOptions gameOptions{ gameWidth, gameHeight };
 	Grid myGrid{ gameWidth, gameHeight };
-	Wall myWalls;
+	Wall myWall[900];
 	GameState myState{ GameState::mainmenu };
 	ToolBar myTools{ gameWidth, gameHeight };
-
 
 	/// <summary>
 	/// main method for game
@@ -60,6 +58,8 @@ private:
 	bool gridCreated = false;
 
 	int gridSize = 30;
+
+	static const int MAX_GRID_CELLS = 900;
 };
 
 #endif // !GAME_HPP

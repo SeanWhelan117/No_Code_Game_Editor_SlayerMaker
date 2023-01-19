@@ -148,9 +148,17 @@ void Game::update(sf::Time t_deltaTime)
 			gridCreated = true;
 		}
 		myGrid.update(t_deltaTime);
-		for (int i = 0; i < 100; i++)
+		/*for (int i = 0; i < MAX_GRID_CELLS; i++)
 		{
-			myWalls.update(t_deltaTime, m_window, myGrid.theGrid, gridSize, myTools.wallsPlaced);
+			myWall[i].update(t_deltaTime, m_window, myGrid.theGrid, gridSize, myTools.wallsPlaced);
+		}*/
+
+		if (myTools.wallsPlaced == true)
+		{
+			for (int i = 0; i < MAX_GRID_CELLS; i++)
+			{
+				myWall[i].placeWallsOnGrid(myGrid.theGrid, gridSize);
+			}
 		}
 		myTools.update(t_deltaTime, m_window, myGrid.theGrid, gridSize);
 	}
@@ -183,9 +191,9 @@ void Game::render()
 		{
 			gridSize = gameOptions.getGridSize();
 			myGrid.render(m_window, gridSize);
-			for (int i = 0; i < 100; i++)
+			for (int i = 0; i < MAX_GRID_CELLS; i++)
 			{
-				myWalls.render(m_window);
+				myWall[i].render(m_window);
 			}
 			myTools.render(m_window);
 		}

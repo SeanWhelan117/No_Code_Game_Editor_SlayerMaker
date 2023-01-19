@@ -15,13 +15,7 @@ public:
 
 	void render(sf::RenderWindow& t_window);
 
-	/*void checkForMousePosAndClick(sf::RenderWindow& t_window, sf::Vector2i t_mousePos);
-
-	void checkForPlacement(std::vector<std::vector<Cell>>& t_grid, int t_gridParams);
-
-	void snapWallPositionToGrid(std::vector<std::vector<Cell>>& t_grid, int t_gridParams);
-
-	void placeWallsOnGrid(std::vector<std::vector<Cell>>& t_grid, int t_gridParams);*/
+	void placeWallsOnGrid(std::vector<std::vector<Cell>>& t_grid, int t_gridParams);
 
 
 	sf::Sprite wallSprite;

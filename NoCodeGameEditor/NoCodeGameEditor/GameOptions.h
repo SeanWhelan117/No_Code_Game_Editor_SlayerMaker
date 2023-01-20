@@ -73,7 +73,10 @@ private:
 
 
 	sf::Text chooseGridSizeText;
-	std::string chooseGridSize = "What size for game grid";
+	std::string chooseGridSize = "What size for game grid?";
+
+	sf::Text chooseGameNameText;
+	std::string chooseGameName = "What is the name of your game?";
 	
 	sf::Texture triangleTexture;
 	sf::RectangleShape gridSizeBox;

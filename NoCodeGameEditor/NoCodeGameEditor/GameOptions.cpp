@@ -56,6 +56,7 @@ void GameOptions::render(sf::RenderWindow& t_window)
 	}
 	t_window.draw(currentGridSize);
 
+	t_window.draw(chooseGameNameText);
 	t_window.draw(gameNameRect);
 	t_window.draw(gameNameText);
 }
@@ -82,7 +83,6 @@ void GameOptions::setupText()
 	chooseGridSizeText.setOrigin(gridSizeTextRect.width / 2, gridSizeTextRect.height / 2);
 	chooseGridSizeText.setPosition(gameSize.x / 2, gameSize.y * 0.2);
 	chooseGridSizeText.setFillColor(sf::Color::Black);
-
 }
 
 void GameOptions::setupContinueButton()
@@ -238,8 +238,18 @@ void GameOptions::setUpGameName()
 	gameNameText.setCharacterSize(48u);
 	sf::FloatRect gameNameTextRect = currentGridSize.getLocalBounds();
 	gameNameText.setOrigin(gameNameTextRect.width / 2, gameNameTextRect.height / 2);
-	gameNameText.setPosition(gameNameRect.getPosition().x - 130, gameNameRect.getPosition().y);
+	gameNameText.setPosition(gameNameRect.getPosition().x - 120, gameNameRect.getPosition().y - 10);
 	gameNameText.setFillColor(sf::Color::Black);
+
+
+	chooseGameNameText.Bold;
+	chooseGameNameText.setFont(m_font);
+	chooseGameNameText.setString(chooseGameName);
+	chooseGameNameText.setCharacterSize(40u);
+
+	//chooseGameNameText.setOrigin(chooseGameNameText.width / 2, gridSizeTextRect.height / 2);
+	chooseGameNameText.setPosition(gameNameRect.getPosition().x - 300, gameNameRect.getPosition().y - 100);
+	chooseGameNameText.setFillColor(sf::Color::Black);
 }
 
 

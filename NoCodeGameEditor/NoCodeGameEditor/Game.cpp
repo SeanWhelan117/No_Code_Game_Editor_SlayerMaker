@@ -147,7 +147,10 @@ void Game::processTextEntered(sf::Event t_event)
 	{
 		if (t_event.text.unicode != 8)
 		{
-			gameOptions.gameName += t_event.text.unicode;
+			if (gameOptions.gameName.size() < 12)
+			{
+				gameOptions.gameName += t_event.text.unicode;
+			}
 		}
 	}
 }

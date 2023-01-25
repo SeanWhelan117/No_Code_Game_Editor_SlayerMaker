@@ -26,6 +26,8 @@ public:
 	bool wallsPlaced = false;
 
 	bool wallPosSaved = false;
+	
+	bool testingGame = false;
 
 private:
 
@@ -46,6 +48,7 @@ private:
 
 	sf::RectangleShape addWallsButton;
 	sf::RectangleShape saveWallPosButton;
+	sf::RectangleShape testGameButton;
 
 
 };

@@ -18,6 +18,12 @@ ToolBar::ToolBar(float t_gameWidth, float t_gameHeight)
 	saveWallPosButton.setSize(sf::Vector2f(150, 100));
 	saveWallPosButton.setOrigin(75, 50);
 	saveWallPosButton.setPosition(gameWidth / 2 + 550, 100);
+
+
+	testGameButton.setFillColor(sf::Color::Red);
+	testGameButton.setSize(sf::Vector2f(150, 100));
+	testGameButton.setOrigin(75, 50);
+	testGameButton.setPosition(gameWidth / 2 + 750, 100);
 }
 
 
@@ -85,6 +91,7 @@ void ToolBar::render(sf::RenderWindow& t_window)
 	t_window.draw(fillToolSprite);
 	t_window.draw(addWallsButton);
 	t_window.draw(saveWallPosButton);
+	t_window.draw(testGameButton);
 	
 
 
@@ -122,6 +129,14 @@ void ToolBar::checkForMousePosAndClick(sf::RenderWindow& t_window, sf::Vector2i 
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
 			wallPosSaved = true;
+		}
+	}
+
+	if (testGameButton.getGlobalBounds().contains(static_cast<sf::Vector2f>(t_mousePos)))
+	{
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+		{
+			testingGame = true;
 		}
 	}
 }

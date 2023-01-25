@@ -215,7 +215,16 @@ void Game::update(sf::Time t_deltaTime)
 		gameOptions.update(t_deltaTime, m_window, myState);
 		checkMousePos();
 	}
+
+	if (myState == GameState::testGame)
+	{
+		myPlayer.update();
+	}
 	
+	if (myTools.testingGame == true)
+	{
+		myState = GameState::testGame;
+	}
 
 }
 
@@ -259,6 +268,18 @@ void Game::render()
 	else
 	{
 		changeGridSize = false;
+	}
+
+	if (myState == GameState::testGame)
+	{
+		myPlayer.render(m_window);
+
+		for (int i = 0; i < wallVector.size(); i++)
+		{
+			wallVector.at(i).loadFiles();
+			sf::Sprite tempSprite = wallVector.at(i).getWall();
+			m_window.draw(tempSprite);
+		}
 	}
 	m_window.display();
 }

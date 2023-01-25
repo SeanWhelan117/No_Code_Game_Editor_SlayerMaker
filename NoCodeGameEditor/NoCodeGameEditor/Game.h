@@ -18,6 +18,7 @@
 #include "MainMenu.h"
 #include "GameOptions.h"
 #include "ToolBar.h"
+#include "Player.h"
 
 class Game
 {
@@ -33,6 +34,7 @@ public:
 	//Wall myWalls;
 	GameState myState{ GameState::mainmenu };
 	ToolBar myTools{ gameWidth, gameHeight };
+	Player myPlayer{ gameWidth, gameHeight };
 
 
 	/// <summary>

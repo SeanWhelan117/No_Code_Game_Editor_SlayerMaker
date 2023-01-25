@@ -10,6 +10,7 @@ enum class GameState
 	mainmenu,
 	gameOptions,
 	createGame,
+	testGame,
 	chooseGame,
 	play,
 	options,

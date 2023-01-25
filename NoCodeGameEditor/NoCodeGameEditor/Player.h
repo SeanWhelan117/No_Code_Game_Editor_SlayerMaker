@@ -25,11 +25,14 @@ public:
 
 private:
 	void playerMovement();
+	void move(float t_x, float t_y);
 	sf::RectangleShape player;
 
 	sf::Vector2f gameSize;
 
 	int speed = 5;
+
+	sf::Vector2f position = sf::Vector2f(0, 0);
 
 };
 

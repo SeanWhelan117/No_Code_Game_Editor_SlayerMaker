@@ -38,21 +38,36 @@ void Player::playerMovement()
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
-		player.move(0, -speed);
+		move(0, -speed);
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	{
-		player.move(0, speed);
+		move(0, speed);
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
-		player.move(-speed, 0);
+		move(-speed, 0);
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
-		player.move(speed, 0);
+		move(speed, 0);
 	}
+
+	player.setPosition(position);
+}
+
+void Player::move(float t_x, float t_y) 
+{
+	position = player.getPosition();
+	position.x += t_x;
+	//updateAABB();
+	//checkCollisions(); // collect info of all tiles player intersects with
+	//resolveXCollisions();
+	position.y += t_y;
+	//updateAABB();
+	//checkCollisions();
+	//resolveYCollisions();
 }

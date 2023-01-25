@@ -115,6 +115,10 @@ void Game::processKeys(sf::Event t_event)
 		{
 			myState = GameState::mainmenu;
 		}
+		else if (myState == GameState::testGame)
+		{
+			myState = GameState::createGame;
+		}
 	}
 
 	if (gameOptions.canType == true)
@@ -214,6 +218,12 @@ void Game::update(sf::Time t_deltaTime)
 		gridCreated = false;
 		gameOptions.update(t_deltaTime, m_window, myState);
 		checkMousePos();
+
+		if (wallVectorCreated == true)
+		{
+			
+			wallVector.clear();
+		}
 	}
 
 	if (myState == GameState::testGame)
@@ -224,6 +234,7 @@ void Game::update(sf::Time t_deltaTime)
 	if (myTools.testingGame == true)
 	{
 		myState = GameState::testGame;
+		myTools.testingGame = false;
 	}
 
 }
@@ -246,7 +257,7 @@ void Game::render()
 				for (int i = 0; i < wallVector.size(); i++)
 				{
 					wallVector.at(i).loadFiles();
-				sf:: Sprite tempSprite = wallVector.at(i).getWall();
+					sf:: Sprite tempSprite = wallVector.at(i).getWall();
 					m_window.draw(tempSprite);
 				}
 			}

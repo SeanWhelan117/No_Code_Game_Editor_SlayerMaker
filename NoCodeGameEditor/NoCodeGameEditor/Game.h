@@ -30,7 +30,7 @@ public:
 	MainMenu myMenu{ gameWidth, gameHeight };
 	GameOptions gameOptions{ gameWidth, gameHeight };
 	Grid myGrid{ gameWidth, gameHeight };
-	Wall myWalls;
+	//Wall myWalls;
 	GameState myState{ GameState::mainmenu };
 	ToolBar myTools{ gameWidth, gameHeight };
 
@@ -43,7 +43,11 @@ public:
 
 	void checkMousePos();
 
+	void createWallVector(sf::Vector2f t_wallPos);
+
 	bool changeGridSize = false;
+
+	std::vector<Wall> wallVector;
 private:
 
 	sf::Vector2i mousePos; // mouses current position
@@ -61,6 +65,10 @@ private:
 	bool gridCreated = false;
 
 	int gridSize = 30;
+
+	int numOfWalls = 0;
+
+	bool wallVectorCreated = false;
 };
 
 #endif // !GAME_HPP

@@ -180,10 +180,26 @@ void Game::update(sf::Time t_deltaTime)
 			gridCreated = true;
 		}
 		myGrid.update(t_deltaTime);
-		for (int i = 0; i < 100; i++)
+
+		if (myTools.wallsPlaced == true)
 		{
-			myWalls.update(t_deltaTime, m_window, myGrid.theGrid, gridSize, myTools.wallsPlaced);
+
+			for (int i = 0; i < gridSize; i++)
+			{
+				for (int m = 0; m < gridSize; m++)
+				{
+					if (myGrid.theGrid.at(m).at(i).getCellShape().getFillColor() == sf::Color::Red)
+					{
+						createWallVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition());
+						numOfWalls++;
+					}
+				}
+			}
+
+			myTools.wallsPlaced = false;
+			wallVectorCreated = true;
 		}
+
 		myTools.update(t_deltaTime, m_window, myGrid.theGrid, gridSize);
 	}
 
@@ -215,10 +231,17 @@ void Game::render()
 		{
 			gridSize = gameOptions.getGridSize();
 			myGrid.render(m_window, gridSize);
-			for (int i = 0; i < 100; i++)
+			
+			if (wallVectorCreated == true)
 			{
-				myWalls.render(m_window);
+				for (int i = 0; i < wallVector.size(); i++)
+				{
+					wallVector.at(i).loadFiles();
+				sf:: Sprite tempSprite = wallVector.at(i).getWall();
+					m_window.draw(tempSprite);
+				}
 			}
+			
 			myTools.render(m_window);
 		}
 		
@@ -255,4 +278,13 @@ void Game::checkMousePos()
 		}
 
 	}
+}
+
+void Game::createWallVector(sf::Vector2f t_wallPos)
+{
+	Wall tempWall;
+
+	tempWall.setupWall(t_wallPos);
+
+	wallVector.push_back(tempWall);
 }

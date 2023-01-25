@@ -67,8 +67,8 @@ void ToolBar::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, std::vect
 {
 	sf::Vector2i mousePos = sf::Mouse::getPosition(t_window);
 
-	std::cout << mousePos.x << "----" << mousePos.y << std::endl;
-	std::cout << mousePos.x << "----" << mousePos.y << std::endl;
+	//std::cout << mousePos.x << "----" << mousePos.y << std::endl;
+	//std::cout << mousePos.x << "----" << mousePos.y << std::endl;
 	checkForMousePosAndClick(t_window, mousePos);
 
 	if (brushToolSelected == true)

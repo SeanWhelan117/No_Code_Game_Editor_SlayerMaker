@@ -37,7 +37,7 @@ void GameOptions::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, GameS
 {
 	mousePos = sf::Mouse::getPosition(t_window);
 
-	std::cout << mousePos.x << "----" << mousePos.y << std::endl;
+	//std::cout << mousePos.x << "----" << mousePos.y << std::endl;
 	checkForMousePos(t_gameState);
 
 	gameNameText.setString(gameName);
@@ -251,7 +251,3 @@ void GameOptions::setUpGameName()
 	chooseGameNameText.setPosition(gameNameRect.getPosition().x - 300, gameNameRect.getPosition().y - 100);
 	chooseGameNameText.setFillColor(sf::Color::Black);
 }
-
-
-
-

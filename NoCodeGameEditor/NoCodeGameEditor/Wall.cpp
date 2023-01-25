@@ -12,6 +12,7 @@ void Wall::loadFiles()
 		// simple error message if previous call fails
 		std::cout << "problem loading wall (wallTest)" << std::endl;
 	}
+	wallSprite.setTexture(wallTexture);
 }
 
 void Wall::setupWall(sf::Vector2f t_pos)

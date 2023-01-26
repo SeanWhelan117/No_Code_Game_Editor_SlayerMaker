@@ -47,6 +47,8 @@ public:
 
 	void createWallVector(sf::Vector2f t_wallPos);
 
+	void removeWallVector();
+
 	bool changeGridSize = false;
 
 	std::vector<Wall> wallVector;

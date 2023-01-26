@@ -47,6 +47,12 @@ void ToolBar::loadFiles()
 		std::cout << "problem loading FillTool (FillTool)" << std::endl;
 	}
 
+	if (!rubberToolTexture.loadFromFile("ASSETS\\IMAGES\\rubberTool.png"))
+	{
+		// simple error message if previous call fails
+		std::cout << "problem loading rubberTool (rubberTool)" << std::endl;
+	}
+
 }
 
 void ToolBar::setupSprites()
@@ -67,6 +73,11 @@ void ToolBar::setupSprites()
 	fillToolSprite.setScale(0.5, 0.5);
 	fillToolSprite.setOrigin(fillToolSprite.getLocalBounds().width / 2, fillToolSprite.getLocalBounds().height / 2);
 	fillToolSprite.setPosition(toolBarSprite.getPosition().x + toolBarSprite.getLocalBounds().width / 3, toolBarSprite.getPosition().y);
+
+	rubberToolSprite.setTexture(rubberToolTexture);
+	rubberToolSprite.setScale(0.3, 0.3);
+	rubberToolSprite.setOrigin(rubberToolSprite.getLocalBounds().width / 2, rubberToolSprite.getLocalBounds().height / 2);
+	rubberToolSprite.setPosition(toolBarSprite.getPosition().x - toolBarSprite.getLocalBounds().width / 3, toolBarSprite.getPosition().y);
 }
 
 void ToolBar::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, std::vector<std::vector<Cell>>& t_grid, int t_gridParams)
@@ -79,8 +90,13 @@ void ToolBar::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, std::vect
 
 	if (brushToolSelected == true)
 	{
-		setGridCellToMarked(t_grid, t_gridParams, mousePos);
+		setGridCellToMarked(t_grid, t_gridParams, mousePos, "Brush");
 	}
+	else if (rubberToolSelected == true)
+	{
+		setGridCellToMarked(t_grid, t_gridParams, mousePos, "Rubber");
+	}
+
 }
 
 
@@ -92,14 +108,29 @@ void ToolBar::render(sf::RenderWindow& t_window)
 	t_window.draw(addWallsButton);
 	t_window.draw(saveWallPosButton);
 	t_window.draw(testGameButton);
+	t_window.draw(rubberToolSprite);
 	
-
-
 }
 
 void ToolBar::checkForMousePosAndClick(sf::RenderWindow& t_window, sf::Vector2i t_mousePos)
 {
-	//1 is click and place, 2 is brush tool,  3 is fill tool
+	//1 is rubberTool, 2 is brush tool,  3 is fill tool
+
+	if (rubberToolSprite.getGlobalBounds().contains(static_cast<sf::Vector2f>(t_mousePos)))
+	{
+		changeTools(1);
+
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+		{
+			//brush is selected
+			rubberToolSelected = true;
+			brushToolSelected = false;
+		}
+	}
+	else
+	{
+		resetTools(1);
+	}
 
 	if (brushToolSprite.getGlobalBounds().contains(static_cast<sf::Vector2f>(t_mousePos)))
 	{
@@ -109,12 +140,15 @@ void ToolBar::checkForMousePosAndClick(sf::RenderWindow& t_window, sf::Vector2i 
 		{
 			//brush is selected
 			brushToolSelected = true;
+			rubberToolSelected = false;
 		}
 	}
 	else
 	{
 		resetTools(2);
 	}
+
+	
 
 	if (addWallsButton.getGlobalBounds().contains(static_cast<sf::Vector2f>(t_mousePos)))
 	{
@@ -143,7 +177,11 @@ void ToolBar::checkForMousePosAndClick(sf::RenderWindow& t_window, sf::Vector2i 
 
 void ToolBar::changeTools(int t_currentTool)
 {
-	if (t_currentTool == 2)
+	if (t_currentTool == 1)
+	{
+		rubberToolSprite.setScale(0.5, 0.5);
+	}
+	else if (t_currentTool == 2)
 	{
 		brushToolSprite.setScale(0.5, 0.5);
 	}
@@ -151,13 +189,17 @@ void ToolBar::changeTools(int t_currentTool)
 
 void ToolBar::resetTools(int t_current)
 {
-	if (t_current == 2)
+	if (t_current == 1)
+	{
+		rubberToolSprite.setScale(0.3, 0.3);
+	}
+	else if (t_current == 2)
 	{
 		brushToolSprite.setScale(0.3, 0.3);
 	}
 }
 
-void ToolBar::setGridCellToMarked(std::vector<std::vector<Cell>>& t_grid, int t_gridParams, sf::Vector2i t_mousePos)
+void ToolBar::setGridCellToMarked(std::vector<std::vector<Cell>>& t_grid, int t_gridParams, sf::Vector2i t_mousePos, std::string t_toolChosen)
 {
 
 	for (int i = 0; i < t_gridParams; i++)
@@ -168,7 +210,14 @@ void ToolBar::setGridCellToMarked(std::vector<std::vector<Cell>>& t_grid, int t_
 			{
 				if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 				{
-					t_grid.at(m).at(i).setMarked();
+					if (t_toolChosen == "Brush")
+					{
+						t_grid.at(m).at(i).setMarked();
+					}
+					else if (t_toolChosen == "Rubber")
+					{
+						t_grid.at(m).at(i).setUnmarked();
+					}
 				}
 				
 			}

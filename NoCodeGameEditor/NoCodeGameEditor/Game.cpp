@@ -237,6 +237,8 @@ void Game::update(sf::Time t_deltaTime)
 		myTools.testingGame = false;
 	}
 
+	removeWallVector();
+
 }
 
 /// <summary>
@@ -319,4 +321,19 @@ void Game::createWallVector(sf::Vector2f t_wallPos)
 	tempWall.setupWall(t_wallPos);
 
 	wallVector.push_back(tempWall);
+}
+
+void Game::removeWallVector()
+{
+	if (wallVectorCreated == true)
+	{
+		if (!wallVector.empty())
+		{
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
+			{
+				wallVector.pop_back();
+			}
+
+		}
+	}
 }

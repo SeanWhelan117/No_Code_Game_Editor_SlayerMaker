@@ -22,7 +22,7 @@ public:
 
 	void changeTools(int t_currentTool);
 
-	void setGridCellToMarked(std::vector<std::vector<Cell>>& t_grid, int t_gridParams, sf::Vector2i t_mousePos);
+	void setGridCellToMarked(std::vector<std::vector<Cell>>& t_grid, int t_gridParams, sf::Vector2i t_mousePos, std::string t_toolChosen);
 	bool wallsPlaced = false;
 
 	bool wallPosSaved = false;
@@ -40,11 +40,15 @@ private:
 	sf::Sprite fillToolSprite;
 	sf::Texture fillToolTexture;
 
+	sf::Sprite rubberToolSprite;
+	sf::Texture rubberToolTexture;
+
 
 	float gameWidth = 0;
 	float gameHeight = 0;
 
 	bool brushToolSelected = false;
+	bool rubberToolSelected = false;
 
 	sf::RectangleShape addWallsButton;
 	sf::RectangleShape saveWallPosButton;

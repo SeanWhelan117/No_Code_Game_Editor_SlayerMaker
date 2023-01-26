@@ -19,6 +19,8 @@ public:
 	void setID(int t_id);
 	void setMarked();
 
+	void setUnmarked();
+
 	int getID();
 
 

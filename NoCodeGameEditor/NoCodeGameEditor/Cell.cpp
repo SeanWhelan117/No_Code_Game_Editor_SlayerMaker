@@ -42,6 +42,14 @@ void Cell::setMarked()
 	}
 }
 
+void Cell::setUnmarked()
+{
+	if (cellShape.getFillColor() == sf::Color::Red)
+	{
+		cellShape.setFillColor(sf::Color::Transparent);
+	}
+}
+
 int Cell::getID()
 {
 

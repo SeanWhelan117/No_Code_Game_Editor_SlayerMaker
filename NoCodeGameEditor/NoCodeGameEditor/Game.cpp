@@ -18,7 +18,7 @@ Game::Game() :
 	m_window{ sf::VideoMode{  gameWidth, gameHeight, 32U }, "SlayerMaker" },
 	m_exitGame{false} //when true game will exit
 {
-
+	viewsCreation();
 }
 
 /// <summary>
@@ -235,6 +235,8 @@ void Game::update(sf::Time t_deltaTime)
 	{
 		myState = GameState::testGame;
 		myTools.testingGame = false;
+		testView.setCenter(myPlayer.getPlayer().getPosition());
+		m_window.setView(testView);
 	}
 
 	removeWallVector();
@@ -343,4 +345,9 @@ void Game::removeWallVector()
 			}
 		}
 	}
+}
+
+void Game::viewsCreation()
+{
+	testView.reset(sf::FloatRect(100,100, 100, 100));
 }

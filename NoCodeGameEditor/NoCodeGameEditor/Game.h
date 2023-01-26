@@ -38,6 +38,7 @@ public:
 	ToolBar myTools{ gameWidth, gameHeight };
 	Player myPlayer{ gameWidth, gameHeight };
 
+	sf::View testView;
 
 	/// <summary>
 	/// main method for game
@@ -50,6 +51,8 @@ public:
 	void createWallVector(sf::Vector2f t_wallPos);
 
 	void removeWallVector();
+
+	void viewsCreation();
 
 	bool changeGridSize = false;
 

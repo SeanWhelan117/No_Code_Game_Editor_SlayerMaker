@@ -22,6 +22,8 @@ public:
 
 	void render(sf::RenderWindow& t_window);
 
+	sf::RectangleShape getPlayer();
+
 
 private:
 	void playerMovement();

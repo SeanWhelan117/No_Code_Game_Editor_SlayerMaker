@@ -34,6 +34,8 @@ void Player::render(sf::RenderWindow& t_window)
 
 }
 
+
+
 void Player::playerMovement()
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
@@ -70,4 +72,9 @@ void Player::move(float t_x, float t_y)
 	//updateAABB();
 	//checkCollisions();
 	//resolveYCollisions();
+}
+
+sf::RectangleShape Player::getPlayer()
+{
+	return player;
 }

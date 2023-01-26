@@ -32,7 +32,9 @@ private:
 
 	sf::Vector2f gameSize;
 
-	int speed = 5;
+	int speed = 1;
+	int speedX = 0;
+	int speedY = 0;
 
 	sf::Vector2f position = sf::Vector2f(0, 0);
 

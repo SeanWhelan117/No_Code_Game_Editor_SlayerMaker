@@ -235,8 +235,8 @@ void Game::update(sf::Time t_deltaTime)
 	{
 		myState = GameState::testGame;
 		myTools.testingGame = false;
-		testView.setCenter(myPlayer.getPlayer().getPosition());
-		m_window.setView(testView);
+		//testView.setCenter(myPlayer.getPlayer().getPosition());
+		//m_window.setView(testView);
 	}
 
 	removeWallVector();
@@ -349,5 +349,5 @@ void Game::removeWallVector()
 
 void Game::viewsCreation()
 {
-	testView.reset(sf::FloatRect(100,100, 100, 100));
+	testView.reset(sf::FloatRect(100,100, 400, 400));
 }

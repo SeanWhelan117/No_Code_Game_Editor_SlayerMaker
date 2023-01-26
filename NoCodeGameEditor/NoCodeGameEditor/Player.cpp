@@ -40,23 +40,25 @@ void Player::playerMovement()
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
-		move(0, -speed);
+		speedY -= speed;
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	{
-		move(0, speed);
+		speedY += speed;
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
-		move(-speed, 0);
+		speedX -= speed;
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
-		move(speed, 0);
+		speedX += speed;
 	}
+	
+	move(speedX, speedY);
 
 	player.setPosition(position);
 }

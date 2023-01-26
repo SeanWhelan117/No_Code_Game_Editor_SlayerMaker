@@ -329,11 +329,18 @@ void Game::removeWallVector()
 	{
 		if (!wallVector.empty())
 		{
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
+			for (int i = 0; i < wallVector.size(); i++)
 			{
-				wallVector.pop_back();
+				if (wallVector.at(i).getWall().getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePos)))
+				{
+					if(myTools.rubberToolSelected)
+					{
+						vector<Wall>::iterator begin = wallVector.begin();
+						begin += i;
+						vector<Wall>::iterator remove = wallVector.erase(begin);
+					}
+				}
 			}
-
 		}
 	}
 }

@@ -11,6 +11,8 @@
 /// Don't forget the endif at the bottom
 /// </summary>
 #include <SFML/Graphics.hpp>
+#include <vector>
+
 #include "Grid.h"
 #include "Cell.h"
 #include "Wall.h"

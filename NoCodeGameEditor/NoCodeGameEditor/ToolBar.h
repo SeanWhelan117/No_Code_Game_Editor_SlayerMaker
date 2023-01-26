@@ -29,6 +29,9 @@ public:
 	
 	bool testingGame = false;
 
+	bool brushToolSelected = false;
+	bool rubberToolSelected = false;
+
 private:
 
 	sf::Sprite toolBarSprite;
@@ -47,8 +50,7 @@ private:
 	float gameWidth = 0;
 	float gameHeight = 0;
 
-	bool brushToolSelected = false;
-	bool rubberToolSelected = false;
+
 
 	sf::RectangleShape addWallsButton;
 	sf::RectangleShape saveWallPosButton;

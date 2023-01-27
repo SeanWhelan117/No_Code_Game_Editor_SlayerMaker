@@ -82,6 +82,12 @@ void Game::processEvents()
 		{
 			processTextEntered(newEvent);
 		}
+		
+		
+		/*if (sf::Event::MouseWheelScrollEvent == newEvent.type)
+		{
+			processMouseWheel(newEvent);
+		}*/
 	}
 }
 
@@ -158,6 +164,21 @@ void Game::processTextEntered(sf::Event t_event)
 	}
 }
 
+void Game::processMouseWheel(sf::Event t_event)
+{
+	/*if (mainViewActive == true)
+	{
+		if (t_event.mouseWheel.delta >= 0)
+		{
+			zoomAmount += 0.001;
+		}
+		else if (t_event.mouseWheel.delta < 0)
+		{
+			zoomAmount -= 0.001;
+		}
+	}*/
+}
+
 /// <summary>
 /// Update the game world
 /// </summary>
@@ -172,7 +193,10 @@ void Game::update(sf::Time t_deltaTime)
 
 	if (myState == GameState::createGame)
 	{
+		//mainView.zoom(1+zoomAmount);
 		m_window.setView(mainView);
+		mainViewActive = true;
+		testViewActive = false;
 		if (gridCreated == false)
 		{
 			gridSize = gameOptions.getGridSize();

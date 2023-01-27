@@ -66,6 +66,7 @@ private:
 	void processKeys(sf::Event t_event);
 	void processMouseClicks(sf::Event t_event);
 	void processTextEntered(sf::Event t_event);
+	void processMouseWheel(sf::Event t_event);
 	void update(sf::Time t_deltaTime);
 	void render();	
 
@@ -79,6 +80,12 @@ private:
 	int numOfWalls = 0;
 
 	bool wallVectorCreated = false;
+
+	bool mainViewActive = true;
+
+	bool testViewActive = false;
+
+	double zoomAmount = 0.0;
 };
 
 #endif // !GAME_HPP

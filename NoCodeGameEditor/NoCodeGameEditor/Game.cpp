@@ -130,7 +130,6 @@ void Game::processKeys(sf::Event t_event)
 				gameOptions.gameName.pop_back();
 			}
 
-			//gameOptions.gameName.erase(gameOptions.gameName.size() - 1);
 		}
 	}
 
@@ -173,6 +172,7 @@ void Game::update(sf::Time t_deltaTime)
 
 	if (myState == GameState::createGame)
 	{
+		m_window.setView(mainView);
 		if (gridCreated == false)
 		{
 			gridSize = gameOptions.getGridSize();
@@ -335,12 +335,16 @@ void Game::removeWallVector()
 			{
 				if (wallVector.at(i).getWall().getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePos)))
 				{
-					if(myTools.rubberToolSelected)
+					if (sf::Mouse::isButtonPressed(sf::Mouse::Left()))
 					{
-						vector<Wall>::iterator begin = wallVector.begin();
-						begin += i;
-						vector<Wall>::iterator remove = wallVector.erase(begin);
+						if (myTools.rubberToolSelected)
+						{
+							vector<Wall>::iterator begin = wallVector.begin();
+							begin += i;
+							vector<Wall>::iterator remove = wallVector.erase(begin);
+						}
 					}
+					
 				}
 			}
 		}
@@ -349,5 +353,6 @@ void Game::removeWallVector()
 
 void Game::viewsCreation()
 {
+	mainView.reset(sf::FloatRect(0,0, gameWidth, gameHeight ));
 	testView.reset(sf::FloatRect(100,100, 400, 400));
 }

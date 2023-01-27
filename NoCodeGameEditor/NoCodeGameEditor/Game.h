@@ -38,6 +38,7 @@ public:
 	ToolBar myTools{ gameWidth, gameHeight };
 	Player myPlayer{ gameWidth, gameHeight };
 
+	sf::View mainView;
 	sf::View testView;
 
 	/// <summary>

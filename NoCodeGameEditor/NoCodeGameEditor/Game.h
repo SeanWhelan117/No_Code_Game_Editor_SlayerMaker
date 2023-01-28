@@ -85,7 +85,11 @@ private:
 
 	bool testViewActive = false;
 
-	double zoomAmount = 0.0;
+	double zoomAmount = 1;
+
+	bool zoomingIn = false;
+	bool zoomingOut = false;
+
 };
 
 #endif // !GAME_HPP

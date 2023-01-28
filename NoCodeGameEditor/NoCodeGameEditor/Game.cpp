@@ -82,12 +82,11 @@ void Game::processEvents()
 		{
 			processTextEntered(newEvent);
 		}
-		
-		
-		/*if (sf::Event::MouseWheelScrollEvent == newEvent.type)
+		if (sf::Event::MouseWheelScrolled == newEvent.type)
 		{
+			//std::cout << newEvent.mouseWheelScroll.delta << std::endl;
 			processMouseWheel(newEvent);
-		}*/
+		}
 	}
 }
 
@@ -148,6 +147,8 @@ void Game::processMouseClicks(sf::Event t_event)
 	{
 		changeGridSize = true;
 	}
+
+
 }
 
 void Game::processTextEntered(sf::Event t_event)
@@ -166,17 +167,22 @@ void Game::processTextEntered(sf::Event t_event)
 
 void Game::processMouseWheel(sf::Event t_event)
 {
-	/*if (mainViewActive == true)
+	
+	if (mainViewActive == true)
 	{
-		if (t_event.mouseWheel.delta >= 0)
+		if (t_event.mouseWheelScroll.delta == 1)
 		{
-			zoomAmount += 0.001;
+			zoomAmount += 0.1;
+			mainView.zoom(zoomAmount);
 		}
-		else if (t_event.mouseWheel.delta < 0)
+		else if (t_event.mouseWheelScroll.delta == -1)
 		{
-			zoomAmount -= 0.001;
+			zoomAmount -= 0.1;
+			mainView.zoom(zoomAmount);
 		}
-	}*/
+		std::cout << zoomAmount << std::endl;
+		zoomAmount = 1;
+	}
 }
 
 /// <summary>
@@ -193,7 +199,7 @@ void Game::update(sf::Time t_deltaTime)
 
 	if (myState == GameState::createGame)
 	{
-		//mainView.zoom(1+zoomAmount);
+		
 		m_window.setView(mainView);
 		mainViewActive = true;
 		testViewActive = false;

@@ -170,18 +170,35 @@ void Game::processMouseWheel(sf::Event t_event)
 	
 	if (mainViewActive == true)
 	{
-		if (t_event.mouseWheelScroll.delta == 1)
+		if (scrolling == false)
 		{
-			zoomAmount += 0.1;
-			mainView.zoom(zoomAmount);
+			if (t_event.mouseWheelScroll.delta == 1)
+			{
+				zoomAmount -= 0.1;
+				mainView.zoom(zoomAmount);
+			}
+			else if (t_event.mouseWheelScroll.delta == -1)
+			{
+				zoomAmount += 0.1;
+				mainView.zoom(zoomAmount);
+			}
+			//std::cout << zoomAmount << std::endl;
+			zoomAmount = 1;
 		}
-		else if (t_event.mouseWheelScroll.delta == -1)
+		else if (scrolling)
 		{
-			zoomAmount -= 0.1;
-			mainView.zoom(zoomAmount);
+			sf::Vector2f viewPos = mainView.getCenter();
+			if (t_event.mouseWheelScroll.delta == 1)
+			{
+				viewPos.y -= 15;
+				mainView.setCenter(viewPos);
+			}
+			else if (t_event.mouseWheelScroll.delta == -1)
+			{
+				viewPos.y += 15;
+				mainView.setCenter(viewPos);
+			}
 		}
-		std::cout << zoomAmount << std::endl;
-		zoomAmount = 1;
 	}
 }
 
@@ -197,10 +214,18 @@ void Game::update(sf::Time t_deltaTime)
 		m_window.close();
 	}
 
+	if (myState != GameState::testGame)
+	{
+		m_window.setView(mainView);
+		if (myState != GameState::createGame)
+		{
+			mainView.reset(sf::FloatRect(0, 0, gameWidth, gameHeight));
+		}
+	}
+
 	if (myState == GameState::createGame)
 	{
 		
-		m_window.setView(mainView);
 		mainViewActive = true;
 		testViewActive = false;
 		if (gridCreated == false)
@@ -235,12 +260,22 @@ void Game::update(sf::Time t_deltaTime)
 		}
 
 		myTools.update(t_deltaTime, m_window, myGrid.theGrid, gridSize);
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::LAlt))
+		{
+			scrolling = true;
+		}
+		else
+		{
+			scrolling = false;
+		}
 	}
 
 	if (myState == GameState::mainmenu)
 	{
 		gridCreated = false;
 		myMenu.update(myState, m_window);
+
 	}
 	
 	if (myState == GameState::gameOptions)

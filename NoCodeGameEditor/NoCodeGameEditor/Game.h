@@ -87,9 +87,7 @@ private:
 
 	double zoomAmount = 1;
 
-	bool zoomingIn = false;
-	bool zoomingOut = false;
-
+	bool scrolling = false;
 };
 
 #endif // !GAME_HPP

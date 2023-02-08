@@ -16,6 +16,8 @@ public:
 	sf::Sprite& getWall();
 
 	sf::Texture wallTexture;
+	sf::Texture wallTexture2;
+	sf::Texture wallTexture3;
 private:
 
 	sf::Sprite wallSprite;

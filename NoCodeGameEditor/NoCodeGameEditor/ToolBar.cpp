@@ -82,19 +82,21 @@ void ToolBar::setupSprites()
 
 void ToolBar::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, std::vector<std::vector<Cell>>& t_grid, int t_gridParams)
 {
-	sf::Vector2i mousePos = sf::Mouse::getPosition(t_window);
+	setToolPosForView(t_window);
 
+	sf::Vector2i mousePos = sf::Mouse::getPosition(t_window);
+	MousePosReal = t_window.mapPixelToCoords(mousePos);
 	//std::cout << mousePos.x << "----" << mousePos.y << std::endl;
 	//std::cout << mousePos.x << "----" << mousePos.y << std::endl;
-	checkForMousePosAndClick(t_window, mousePos);
+	checkForMousePosAndClick(t_window, MousePosReal);
 
 	if (brushToolSelected == true)
 	{
-		setGridCellToMarked(t_grid, t_gridParams, mousePos, "Brush");
+		setGridCellToMarked(t_grid, t_gridParams, MousePosReal, "Brush");
 	}
 	else if (rubberToolSelected == true)
 	{
-		setGridCellToMarked(t_grid, t_gridParams, mousePos, "Rubber");
+		setGridCellToMarked(t_grid, t_gridParams, MousePosReal, "Rubber");
 	}
 
 }
@@ -112,11 +114,11 @@ void ToolBar::render(sf::RenderWindow& t_window)
 	
 }
 
-void ToolBar::checkForMousePosAndClick(sf::RenderWindow& t_window, sf::Vector2i t_mousePos)
+void ToolBar::checkForMousePosAndClick(sf::RenderWindow& t_window, sf::Vector2f t_mousePos)
 {
 	//1 is rubberTool, 2 is brush tool,  3 is fill tool
 
-	if (rubberToolSprite.getGlobalBounds().contains(static_cast<sf::Vector2f>(t_mousePos)))
+	if (rubberToolSprite.getGlobalBounds().contains(t_mousePos))
 	{
 		changeTools(1);
 
@@ -132,7 +134,7 @@ void ToolBar::checkForMousePosAndClick(sf::RenderWindow& t_window, sf::Vector2i 
 		resetTools(1);
 	}
 
-	if (brushToolSprite.getGlobalBounds().contains(static_cast<sf::Vector2f>(t_mousePos)))
+	if (brushToolSprite.getGlobalBounds().contains(t_mousePos))
 	{
 		changeTools(2);
 
@@ -150,7 +152,7 @@ void ToolBar::checkForMousePosAndClick(sf::RenderWindow& t_window, sf::Vector2i 
 
 	
 
-	if (addWallsButton.getGlobalBounds().contains(static_cast<sf::Vector2f>(t_mousePos)))
+	if (addWallsButton.getGlobalBounds().contains(t_mousePos))
 	{
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
@@ -158,7 +160,7 @@ void ToolBar::checkForMousePosAndClick(sf::RenderWindow& t_window, sf::Vector2i 
 		}
 	}
 
-	if (saveWallPosButton.getGlobalBounds().contains(static_cast<sf::Vector2f>(t_mousePos)))
+	if (saveWallPosButton.getGlobalBounds().contains(t_mousePos))
 	{
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
@@ -166,7 +168,7 @@ void ToolBar::checkForMousePosAndClick(sf::RenderWindow& t_window, sf::Vector2i 
 		}
 	}
 
-	if (testGameButton.getGlobalBounds().contains(static_cast<sf::Vector2f>(t_mousePos)))
+	if (testGameButton.getGlobalBounds().contains(t_mousePos))
 	{
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
@@ -199,14 +201,14 @@ void ToolBar::resetTools(int t_current)
 	}
 }
 
-void ToolBar::setGridCellToMarked(std::vector<std::vector<Cell>>& t_grid, int t_gridParams, sf::Vector2i t_mousePos, std::string t_toolChosen)
+void ToolBar::setGridCellToMarked(std::vector<std::vector<Cell>>& t_grid, int t_gridParams, sf::Vector2f t_mousePos, std::string t_toolChosen)
 {
 
 	for (int i = 0; i < t_gridParams; i++)
 	{
 		for (int m = 0; m < t_gridParams; m++)
 		{
-			if (t_grid.at(m).at(i).getCellShape().getGlobalBounds().contains(static_cast<sf::Vector2f>(t_mousePos)))
+			if (t_grid.at(m).at(i).getCellShape().getGlobalBounds().contains(t_mousePos))
 			{
 				if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 				{
@@ -223,6 +225,26 @@ void ToolBar::setGridCellToMarked(std::vector<std::vector<Cell>>& t_grid, int t_
 			}
 		}
 	}
+}
+
+void ToolBar::setToolPosForView(sf::RenderWindow& t_window)
+{
+	sf::Vector2f pos(gameWidth / 2, 100);
+	pos = t_window.mapPixelToCoords(static_cast<sf::Vector2i>(pos));
+	toolBarSprite.setPosition(pos);
+
+	sf::Vector2f pos2(gameWidth / 2, 100);
+	pos2 = t_window.mapPixelToCoords(static_cast<sf::Vector2i>(pos2));
+	brushToolSprite.setPosition(pos2);
+
+	sf::Vector2f pos3(gameWidth / 2 + toolBarSprite.getLocalBounds().width / 3, 100);
+	pos3 = t_window.mapPixelToCoords(static_cast<sf::Vector2i>(pos3));
+	fillToolSprite.setPosition(pos3);
+
+	sf::Vector2f pos4(gameWidth / 2 - toolBarSprite.getLocalBounds().width / 3, 100);
+	pos4 = t_window.mapPixelToCoords(static_cast<sf::Vector2i>(pos4));
+	rubberToolSprite.setPosition(pos4);
+
 }
 
 

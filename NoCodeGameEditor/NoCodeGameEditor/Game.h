@@ -60,7 +60,7 @@ public:
 	std::vector<Wall> wallVector;
 private:
 
-	sf::Vector2i mousePos; // mouses current position
+	sf::Vector2f mousePos; // mouses current position
 
 	void processEvents();
 	void processKeys(sf::Event t_event);

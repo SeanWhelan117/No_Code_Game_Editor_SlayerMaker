@@ -7,11 +7,25 @@ Wall::Wall()
 
 void Wall::loadFiles()
 {
-	if (!wallTexture.loadFromFile("ASSETS\\IMAGES\\wallTest.png"))
+	if (!wallTexture.loadFromFile("ASSETS\\IMAGES\\WALLS\\wallGrey.png"))
 	{
 		// simple error message if previous call fails
-		std::cout << "problem loading wall (wallTest)" << std::endl;
+		std::cout << "problem loading wall (wallGrey)" << std::endl;
 	}
+
+	if (!wallTexture2.loadFromFile("ASSETS\\IMAGES\\WALLS\\wallBrown.png"))
+	{
+		// simple error message if previous call fails
+		std::cout << "problem loading wall (wallBrown)" << std::endl;
+	}
+
+	if (!wallTexture3.loadFromFile("ASSETS\\IMAGES\\WALLS\\wallRed.png"))
+	{
+		// simple error message if previous call fails
+		std::cout << "problem loading wall (wallRed)" << std::endl;
+	}
+	
+	
 	wallSprite.setTexture(wallTexture);
 }
 

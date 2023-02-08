@@ -174,6 +174,7 @@ void Game::processMouseWheel(sf::Event t_event)
 		{
 			if (t_event.mouseWheelScroll.delta == 1)
 			{
+				//Zooming In
 				zoomAmount -= 0.1;
 				mainView.zoom(zoomAmount);
 			}
@@ -208,7 +209,9 @@ void Game::processMouseWheel(sf::Event t_event)
 /// <param name="t_deltaTime">time interval per frame</param>
 void Game::update(sf::Time t_deltaTime)
 {
-	mousePos = sf::Mouse::getPosition(m_window);
+
+	mousePos = m_window.mapPixelToCoords(sf::Mouse::getPosition(m_window));
+
 	if (m_exitGame || myState == GameState::exitGame)
 	{
 		m_window.close();
@@ -369,7 +372,7 @@ void Game::checkMousePos()
 {
 	for (int i = 0; i < gameOptions.NUM_OF_TRIANGLES; i++)
 	{
-		if (gameOptions.triangles[i].getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePos)))
+		if (gameOptions.triangles[i].getGlobalBounds().contains(mousePos))
 		{
 			if (changeGridSize == true)
 			{
@@ -398,7 +401,7 @@ void Game::removeWallVector()
 		{
 			for (int i = 0; i < wallVector.size(); i++)
 			{
-				if (wallVector.at(i).getWall().getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePos)))
+				if (wallVector.at(i).getWall().getGlobalBounds().contains(mousePos))
 				{
 					if (sf::Mouse::isButtonPressed(sf::Mouse::Left()))
 					{

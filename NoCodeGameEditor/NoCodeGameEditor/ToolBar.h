@@ -16,13 +16,14 @@ public:
 
 	void render(sf::RenderWindow& t_window);
 
-	void checkForMousePosAndClick(sf::RenderWindow& t_window, sf::Vector2i t_mousePos);
+	void checkForMousePosAndClick(sf::RenderWindow& t_window, sf::Vector2f t_mousePos);
 
 	void resetTools(int t_current); //small function which is called to reset buttons after they are not being hoverd over anymore
 
 	void changeTools(int t_currentTool);
 
-	void setGridCellToMarked(std::vector<std::vector<Cell>>& t_grid, int t_gridParams, sf::Vector2i t_mousePos, std::string t_toolChosen);
+	void setGridCellToMarked(std::vector<std::vector<Cell>>& t_grid, int t_gridParams, sf::Vector2f t_mousePos, std::string t_toolChosen);
+	void setToolPosForView(sf::RenderWindow& t_window);
 	bool wallsPlaced = false;
 
 	bool wallPosSaved = false;
@@ -32,9 +33,9 @@ public:
 	bool brushToolSelected = false;
 	bool rubberToolSelected = false;
 
+	sf::Sprite toolBarSprite;
 private:
 
-	sf::Sprite toolBarSprite;
 	sf::Texture toolBarTexture;
 
 	sf::Sprite brushToolSprite;
@@ -55,6 +56,8 @@ private:
 	sf::RectangleShape addWallsButton;
 	sf::RectangleShape saveWallPosButton;
 	sf::RectangleShape testGameButton;
+
+	sf::Vector2f MousePosReal;
 
 
 };

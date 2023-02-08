@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Cell.cpp" />
+    <ClCompile Include="ChoiceBar.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameOptions.cpp" />
     <ClCompile Include="Grid.cpp" />
@@ -31,6 +32,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cell.h" />
+    <ClInclude Include="ChoiceBar.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameOptions.h" />
     <ClInclude Include="GameState.h" />

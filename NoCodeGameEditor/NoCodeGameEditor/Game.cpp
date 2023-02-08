@@ -263,6 +263,8 @@ void Game::update(sf::Time t_deltaTime)
 		}
 
 		myTools.update(t_deltaTime, m_window, myGrid.theGrid, gridSize);
+		myChoice.update(t_deltaTime, m_window);
+
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::LAlt))
 		{
@@ -335,6 +337,7 @@ void Game::render()
 			}
 			
 			myTools.render(m_window);
+			myChoice.render(m_window);
 		}
 		
 	}

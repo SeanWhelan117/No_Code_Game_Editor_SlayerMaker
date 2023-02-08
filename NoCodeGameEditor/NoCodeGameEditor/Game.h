@@ -21,6 +21,7 @@
 #include "GameOptions.h"
 #include "ToolBar.h"
 #include "Player.h"
+#include "ChoiceBar.h"
 
 class Game
 {
@@ -37,6 +38,7 @@ public:
 	GameState myState{ GameState::mainmenu };
 	ToolBar myTools{ gameWidth, gameHeight };
 	Player myPlayer{ gameWidth, gameHeight };
+	ChoiceBar myChoice{ gameWidth, gameHeight };
 
 	sf::View mainView;
 	sf::View testView;

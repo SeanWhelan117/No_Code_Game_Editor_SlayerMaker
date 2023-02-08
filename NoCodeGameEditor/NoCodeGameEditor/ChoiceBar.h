@@ -21,7 +21,7 @@ private:
 
 	void resetTools(int t_current); //small function which is called to reset buttons after they are not being hoverd over anymore
 
-	void changeTools(int t_currentTool);
+	void changeTools(int t_current);
 
 	void setToolPosForView(sf::RenderWindow& t_window);
 
@@ -31,5 +31,11 @@ private:
 	sf::Sprite choiceBarSprite;
 	sf::Texture choiceBarTexture;
 
+	static const int MAX_WALL_CHOICES = 3;
+	sf::Sprite wallChoiceSprite[MAX_WALL_CHOICES];
+
+	sf::Texture wallChoiceTex1;
+	sf::Texture wallChoiceTex2;
+	sf::Texture wallChoiceTex3;
 };
 

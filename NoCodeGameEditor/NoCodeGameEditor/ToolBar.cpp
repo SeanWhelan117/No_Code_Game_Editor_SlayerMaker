@@ -80,7 +80,7 @@ void ToolBar::setupSprites()
 	rubberToolSprite.setPosition(toolBarSprite.getPosition().x - toolBarSprite.getLocalBounds().width / 3, toolBarSprite.getPosition().y);
 }
 
-void ToolBar::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, std::vector<std::vector<Cell>>& t_grid, int t_gridParams)
+void ToolBar::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, std::vector<std::vector<Cell>>& t_grid, int t_gridParams, bool t_choice, int t_choiceNum)
 {
 	setToolPosForView(t_window);
 
@@ -90,13 +90,13 @@ void ToolBar::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, std::vect
 	//std::cout << mousePos.x << "----" << mousePos.y << std::endl;
 	checkForMousePosAndClick(t_window, MousePosReal);
 
-	if (brushToolSelected == true)
+	if (brushToolSelected == true && t_choice == true)
 	{
-		setGridCellToMarked(t_grid, t_gridParams, MousePosReal, "Brush");
+		setGridCellToMarked(t_grid, t_gridParams, MousePosReal, "Brush", t_choiceNum);
 	}
 	else if (rubberToolSelected == true)
 	{
-		setGridCellToMarked(t_grid, t_gridParams, MousePosReal, "Rubber");
+		setGridCellToMarked(t_grid, t_gridParams, MousePosReal, "Rubber", t_choiceNum);
 	}
 
 }
@@ -201,7 +201,7 @@ void ToolBar::resetTools(int t_current)
 	}
 }
 
-void ToolBar::setGridCellToMarked(std::vector<std::vector<Cell>>& t_grid, int t_gridParams, sf::Vector2f t_mousePos, std::string t_toolChosen)
+void ToolBar::setGridCellToMarked(std::vector<std::vector<Cell>>& t_grid, int t_gridParams, sf::Vector2f t_mousePos, std::string t_toolChosen, int t_choiceNum)
 {
 
 	for (int i = 0; i < t_gridParams; i++)
@@ -214,7 +214,7 @@ void ToolBar::setGridCellToMarked(std::vector<std::vector<Cell>>& t_grid, int t_
 				{
 					if (t_toolChosen == "Brush")
 					{
-						t_grid.at(m).at(i).setMarked();
+						t_grid.at(m).at(i).setMarked(t_choiceNum);
 					}
 					else if (t_toolChosen == "Rubber")
 					{

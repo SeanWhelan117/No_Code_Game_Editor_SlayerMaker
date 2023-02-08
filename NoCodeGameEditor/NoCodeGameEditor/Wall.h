@@ -7,7 +7,7 @@
 class Wall
 {
 public:
-	Wall();
+	Wall(int t_wallTextNum);
 
 	void loadFiles();
 
@@ -23,5 +23,7 @@ private:
 	sf::Sprite wallSprite;
 
 	int offset = 15;
+
+	int wallTextureNumber = 0;
 };
 

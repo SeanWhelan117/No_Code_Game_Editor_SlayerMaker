@@ -12,7 +12,7 @@ public:
 
 	void setupSprites();
 
-	void update(sf::Time t_deltaTime, sf::RenderWindow& t_window, std::vector<std::vector<Cell>>& t_grid, int t_gridParams);
+	void update(sf::Time t_deltaTime, sf::RenderWindow& t_window, std::vector<std::vector<Cell>>& t_grid, int t_gridParams, bool t_choice, int t_choiceNum);
 
 	void render(sf::RenderWindow& t_window);
 
@@ -22,7 +22,7 @@ public:
 
 	void changeTools(int t_currentTool);
 
-	void setGridCellToMarked(std::vector<std::vector<Cell>>& t_grid, int t_gridParams, sf::Vector2f t_mousePos, std::string t_toolChosen);
+	void setGridCellToMarked(std::vector<std::vector<Cell>>& t_grid, int t_gridParams, sf::Vector2f t_mousePos, std::string t_toolChosen, int t_choiceNum);
 	void setToolPosForView(sf::RenderWindow& t_window);
 	bool wallsPlaced = false;
 

@@ -1,7 +1,8 @@
 #include "Wall.h"
 
-Wall::Wall()
+Wall::Wall(int t_wallTextNum)
 {
+	wallTextureNumber = t_wallTextNum;
 	loadFiles();
 }
 
@@ -25,8 +26,18 @@ void Wall::loadFiles()
 		std::cout << "problem loading wall (wallRed)" << std::endl;
 	}
 	
-	
-	wallSprite.setTexture(wallTexture);
+	if (wallTextureNumber == 0)
+	{
+		wallSprite.setTexture(wallTexture);
+	}
+	else if (wallTextureNumber == 1)
+	{
+		wallSprite.setTexture(wallTexture2);
+	}
+	else if (wallTextureNumber == 2)
+	{
+		wallSprite.setTexture(wallTexture3);
+	}
 }
 
 void Wall::setupWall(sf::Vector2f t_pos)

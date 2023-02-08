@@ -86,9 +86,8 @@ void ChoiceBar::checkForMousePosAndClick(sf::RenderWindow& t_window, sf::Vector2
 
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 			{
-				//brush is selected
-			/*	rubberToolSelected = true;
-				brushToolSelected = false;*/
+				currentChoice = i;
+				choiceMade = true;
 			}
 		}
 		else

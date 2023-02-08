@@ -34,12 +34,23 @@ sf::RectangleShape& Cell::getCellShape()
 	return cellShape;
 }
 
-void Cell::setMarked()
+void Cell::setMarked(int t_choiceNum)
 {
-	if (cellShape.getFillColor() == sf::Color::Transparent)
-	{
-		cellShape.setFillColor(sf::Color::Red);
-	}
+	//if (cellShape.getFillColor() == sf::Color::Transparent)
+	//{
+		if (t_choiceNum == 0)
+		{
+			cellShape.setFillColor(sf::Color::Red);
+		}
+		else if (t_choiceNum == 1)
+		{
+			cellShape.setFillColor(sf::Color::Green);
+		}
+		else if (t_choiceNum == 2)
+		{
+			cellShape.setFillColor(sf::Color::Blue);
+		}
+	//}
 }
 
 void Cell::setUnmarked()

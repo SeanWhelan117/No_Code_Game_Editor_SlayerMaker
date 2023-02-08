@@ -252,7 +252,17 @@ void Game::update(sf::Time t_deltaTime)
 				{
 					if (myGrid.theGrid.at(m).at(i).getCellShape().getFillColor() == sf::Color::Red)
 					{
-						createWallVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition());
+						createWallVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 0);
+						numOfWalls++;
+					}
+					else if (myGrid.theGrid.at(m).at(i).getCellShape().getFillColor() == sf::Color::Green)
+					{
+						createWallVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 1);
+						numOfWalls++;
+					}
+					else if (myGrid.theGrid.at(m).at(i).getCellShape().getFillColor() == sf::Color::Blue)
+					{
+						createWallVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 2);
 						numOfWalls++;
 					}
 				}
@@ -261,8 +271,7 @@ void Game::update(sf::Time t_deltaTime)
 			myTools.wallsPlaced = false;
 			wallVectorCreated = true;
 		}
-
-		myTools.update(t_deltaTime, m_window, myGrid.theGrid, gridSize);
+		myTools.update(t_deltaTime, m_window, myGrid.theGrid, gridSize, myChoice.choiceMade, myChoice.currentChoice);
 		myChoice.update(t_deltaTime, m_window);
 
 
@@ -387,9 +396,9 @@ void Game::checkMousePos()
 	}
 }
 
-void Game::createWallVector(sf::Vector2f t_wallPos)
+void Game::createWallVector(sf::Vector2f t_wallPos, int t_wallTextNum)
 {
-	Wall tempWall;
+	Wall tempWall{t_wallTextNum};
 
 	tempWall.setupWall(t_wallPos);
 

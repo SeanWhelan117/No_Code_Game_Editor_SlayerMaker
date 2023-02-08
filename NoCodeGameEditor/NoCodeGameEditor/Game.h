@@ -51,7 +51,7 @@ public:
 
 	void checkMousePos();
 
-	void createWallVector(sf::Vector2f t_wallPos);
+	void createWallVector(sf::Vector2f t_wallPos, int t_wallTextNum);
 
 	void removeWallVector();
 

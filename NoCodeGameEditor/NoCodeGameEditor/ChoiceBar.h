@@ -16,6 +16,8 @@ public:
 
 	void render(sf::RenderWindow& t_window);
 
+	int currentChoice = 0;
+	bool choiceMade = false;
 private:
 	void checkForMousePosAndClick(sf::RenderWindow& t_window, sf::Vector2f t_mousePos);
 
@@ -37,5 +39,6 @@ private:
 	sf::Texture wallChoiceTex1;
 	sf::Texture wallChoiceTex2;
 	sf::Texture wallChoiceTex3;
+
 };
 

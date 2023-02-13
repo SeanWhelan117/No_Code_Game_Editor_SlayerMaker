@@ -267,7 +267,10 @@ void Game::update(sf::Time t_deltaTime)
 					}
 				}
 			}
-
+			for (int i = 0; i < wallVector.size(); i++)
+			{
+				wallVector.at(i).loadFiles();
+			}
 			myTools.wallsPlaced = false;
 			wallVectorCreated = true;
 		}
@@ -339,7 +342,7 @@ void Game::render()
 			{
 				for (int i = 0; i < wallVector.size(); i++)
 				{
-					wallVector.at(i).loadFiles();
+					//wallVector.at(i).loadFiles();
 					sf:: Sprite tempSprite = wallVector.at(i).getWall();
 					m_window.draw(tempSprite);
 				}

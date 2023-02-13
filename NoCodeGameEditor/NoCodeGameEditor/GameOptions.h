@@ -35,6 +35,10 @@ private:
 
 	void setupText(); // setups font colour all that stuff for the button text
 
+	void setupChooseBackgroundRect();
+	
+	void setupBGChoices();
+
 	void setupContinueButton();
 
 	void setupTriangles();
@@ -95,6 +99,18 @@ private:
 
 	sf::RectangleShape gameNameRect;
 
+	sf::Text chooseBGText;
+	sf::RectangleShape chooseBGRect;
+	sf::FloatRect chooseBGTextRect;
+	std::string chooseBGString = "Choose Game Background!";
 
+	bool showBGChoices = false;
+
+	static const int MAX_BG_CHOICES = 3;
+	sf::Sprite bgChoiceSprite[MAX_BG_CHOICES];
+
+	sf::Texture bgChoiceTex1;
+	sf::Texture bgChoiceTex2;
+	sf::Texture bgChoiceTex3;
 };
 

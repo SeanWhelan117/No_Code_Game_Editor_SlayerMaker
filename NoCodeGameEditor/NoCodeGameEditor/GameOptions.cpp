@@ -14,6 +14,8 @@ GameOptions::GameOptions(float t_gameWidth, float t_gameHeight)
 	loadFiles();
 	setupContinueButton();
 	setupText();
+	setupChooseBackgroundRect();
+	setupBGChoices();
 	setupGridSizeBox();
 	setupTriangles();
 	setUpGameName();
@@ -31,6 +33,25 @@ void GameOptions::loadFiles()
 		// simple error message if previous call fails
 		std::cout << "problem loading triangle (triangle)" << std::endl;
 	}
+
+	if (!bgChoiceTex1.loadFromFile("ASSETS\\IMAGES\\BACKGROUNDS\\BGGrass.png"))
+	{
+		// simple error message if previous call fails
+		std::cout << "problem loading bgChoiceTex1 (BGGrass)" << std::endl;
+	}
+
+	if (!bgChoiceTex2.loadFromFile("ASSETS\\IMAGES\\BACKGROUNDS\\BGSand.png"))
+	{
+		// simple error message if previous call fails
+		std::cout << "problem loading bgChoiceTex2 (BGSand)" << std::endl;
+	}
+
+	if (!bgChoiceTex3.loadFromFile("ASSETS\\IMAGES\\BACKGROUNDS\\BGSnow.png"))
+	{
+		// simple error message if previous call fails
+		std::cout << "problem loading bgChoiceTex3 (BGSnow)" << std::endl;
+	}
+
 }
 
 void GameOptions::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, GameState& t_gameState)
@@ -59,6 +80,17 @@ void GameOptions::render(sf::RenderWindow& t_window)
 	t_window.draw(chooseGameNameText);
 	t_window.draw(gameNameRect);
 	t_window.draw(gameNameText);
+	t_window.draw(chooseBGRect);
+	t_window.draw(chooseBGText);
+
+	if(showBGChoices == true)
+	{
+		for (int i = 0; i < MAX_BG_CHOICES; i++)
+		{
+			t_window.draw(bgChoiceSprite[i]);
+		}
+	}
+
 }
 
 void GameOptions::setupText()
@@ -83,6 +115,41 @@ void GameOptions::setupText()
 	chooseGridSizeText.setOrigin(gridSizeTextRect.width / 2, gridSizeTextRect.height / 2);
 	chooseGridSizeText.setPosition(gameSize.x / 2, gameSize.y * 0.2);
 	chooseGridSizeText.setFillColor(sf::Color::Black);
+
+
+	chooseBGText.Bold;
+	chooseBGText.setFont(m_font);
+	chooseBGText.setString(chooseBGString);
+	chooseBGText.setCharacterSize(40u);
+	chooseBGTextRect = chooseBGText.getLocalBounds();
+	chooseBGText.setOrigin(chooseBGTextRect.width / 2, chooseBGTextRect.height / 2);
+	chooseBGText.setPosition(gameSize.x / 2, gameSize.y * 0.65);
+	chooseBGText.setFillColor(sf::Color::Black);
+}
+
+void GameOptions::setupChooseBackgroundRect()
+{
+	chooseBGRect.setSize(sf::Vector2f(550, 75));
+	chooseBGRect.setOrigin(chooseBGRect.getSize().x / 2, chooseBGRect.getSize().y / 2);
+	chooseBGRect.setPosition(chooseBGText.getPosition());
+	chooseBGRect.setFillColor(sf::Color::Red);
+}
+
+void GameOptions::setupBGChoices()
+{
+	int yPos = gameSize.y * 0.1;
+
+	bgChoiceSprite[0].setTexture(bgChoiceTex1);
+	bgChoiceSprite[1].setTexture(bgChoiceTex2);
+	bgChoiceSprite[2].setTexture(bgChoiceTex3);
+
+	for (int i = 0; i < MAX_BG_CHOICES; i++)
+	{
+		bgChoiceSprite[i].scale(0.5, 0.5);
+		bgChoiceSprite[i].setOrigin(bgChoiceSprite[i].getLocalBounds().width / 2, bgChoiceSprite[i].getLocalBounds().height / 2);
+		bgChoiceSprite[i].setPosition(gameSize.x * 0.85, yPos);
+		yPos += gameSize.y * 0.3;
+	}
 }
 
 void GameOptions::setupContinueButton()
@@ -188,6 +255,15 @@ void GameOptions::checkForMousePos(GameState& t_gameState)
 		{
 			gameNameRect.setFillColor(sf::Color::White);
 			canType = false;
+		}
+	}
+
+	if (chooseBGRect.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePos)))
+	{
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+		{
+			std::cout << "TESTTSS" << std::endl;
+			showBGChoices = true;
 		}
 	}
 

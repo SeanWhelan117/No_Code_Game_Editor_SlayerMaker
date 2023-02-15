@@ -17,50 +17,59 @@ void Player::loadFiles()
 void Player::setupPlayer()
 {
 	player.setFillColor(sf::Color::Green);
-	player.setSize(sf::Vector2f(30, 50));
+	player.setSize(sf::Vector2f(30, 30));
 	player.setOrigin(player.getSize().x / 2, player.getSize().y / 2);
 	player.setPosition(gameSize.x / 2, gameSize.y / 2);
 
 }
 
-void Player::update()
+void Player::update(sf::RenderWindow& t_window)
 {
+	mousePos = t_window.mapPixelToCoords(sf::Mouse::getPosition(t_window));
+
 	playerMovement();
+	rotatePlayerView();
 }
 
 void Player::render(sf::RenderWindow& t_window)
 {
 	t_window.draw(player);
-
 }
-
-
 
 void Player::playerMovement()
 {
+	sf::Vector2f currentPos = player.getPosition();
+
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
-		speedY -= speed;
+		//speedY -= speed;
+		currentPos.y -= speed;
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	{
-		speedY += speed;
+		//speedY += speed;
+		currentPos.y += speed;
+
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
-		speedX -= speed;
+		//speedX -= speed;
+		currentPos.x -= speed;
+
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
-		speedX += speed;
+		//speedX += speed;
+		currentPos.x += speed;
 	}
 	
-	move(speedX, speedY);
+	//move(speedX, speedY);
 
-	player.setPosition(position);
+	//player.setPosition(position);
+	player.setPosition(currentPos);
 }
 
 void Player::move(float t_x, float t_y) 
@@ -79,4 +88,14 @@ void Player::move(float t_x, float t_y)
 sf::RectangleShape Player::getPlayer()
 {
 	return player;
+}
+
+void Player::rotatePlayerView()
+{
+	sf::Vector2f playerPos = player.getPosition();
+
+	float dx = playerPos.x - mousePos.x;
+	float dy = playerPos.y - mousePos.y;
+	double mouseAngle = static_cast<double>(-atan2(dx, dy)) * 180.0f / PI; //finding the angle that the mouse is at vs the players location
+	player.setRotation(mouseAngle + 180.0f);
 }

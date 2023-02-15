@@ -224,6 +224,8 @@ void Game::update(sf::Time t_deltaTime)
 		{
 			mainView.reset(sf::FloatRect(0, 0, gameWidth, gameHeight));
 		}
+		m_window.setMouseCursorVisible(true);
+
 	}
 
 	if (myState == GameState::createGame)
@@ -310,7 +312,9 @@ void Game::update(sf::Time t_deltaTime)
 
 	if (myState == GameState::testGame)
 	{
-		myPlayer.update();
+		myPlayer.update(m_window);
+		myCrosshair.update(m_window);
+		m_window.setMouseCursorVisible(false);
 	}
 	
 	if (myTools.testingGame == true)
@@ -374,6 +378,7 @@ void Game::render()
 		{
 			wallVector.at(i).render(m_window);
 		}
+		myCrosshair.render(m_window);
 	}
 	m_window.display();
 }

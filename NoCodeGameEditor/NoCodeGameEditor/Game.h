@@ -22,6 +22,7 @@
 #include "ToolBar.h"
 #include "Player.h"
 #include "ChoiceBar.h"
+#include "Crosshair.h"
 
 class Game
 {
@@ -39,6 +40,7 @@ public:
 	ToolBar myTools{ gameWidth, gameHeight };
 	Player myPlayer{ gameWidth, gameHeight };
 	ChoiceBar myChoice{ gameWidth, gameHeight };
+	Crosshair myCrosshair;
 
 	sf::View mainView;
 	sf::View testView;

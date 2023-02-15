@@ -18,11 +18,13 @@ public:
 
 	void setupPlayer();
 
-	void update();
+	void update(sf::RenderWindow& t_window);
 
 	void render(sf::RenderWindow& t_window);
 
 	sf::RectangleShape getPlayer();
+
+	void rotatePlayerView();
 
 
 private:
@@ -32,11 +34,15 @@ private:
 
 	sf::Vector2f gameSize;
 
-	int speed = 1;
+	int speed = 5;
 	int speedX = 0;
 	int speedY = 0;
 
 	sf::Vector2f position = sf::Vector2f(0, 0);
+
+	sf::Vector2f mousePos;
+
+	const double PI = 3.141592654;
 
 };
 

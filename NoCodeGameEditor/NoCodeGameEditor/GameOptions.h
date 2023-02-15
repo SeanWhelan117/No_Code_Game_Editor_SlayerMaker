@@ -112,5 +112,7 @@ private:
 	sf::Texture bgChoiceTex1;
 	sf::Texture bgChoiceTex2;
 	sf::Texture bgChoiceTex3;
+
+	sf::RectangleShape choiceSquare;
 };
 

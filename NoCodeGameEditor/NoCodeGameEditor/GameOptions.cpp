@@ -82,6 +82,7 @@ void GameOptions::render(sf::RenderWindow& t_window)
 	t_window.draw(gameNameText);
 	t_window.draw(chooseBGRect);
 	t_window.draw(chooseBGText);
+	t_window.draw(choiceSquare);
 
 	if(showBGChoices == true)
 	{
@@ -137,7 +138,7 @@ void GameOptions::setupChooseBackgroundRect()
 
 void GameOptions::setupBGChoices()
 {
-	int yPos = gameSize.y * 0.1;
+	int yPos = gameSize.y * 0.2;
 
 	bgChoiceSprite[0].setTexture(bgChoiceTex1);
 	bgChoiceSprite[1].setTexture(bgChoiceTex2);
@@ -145,11 +146,17 @@ void GameOptions::setupBGChoices()
 
 	for (int i = 0; i < MAX_BG_CHOICES; i++)
 	{
-		bgChoiceSprite[i].scale(0.5, 0.5);
+		bgChoiceSprite[i].scale(0.4, 0.4);
 		bgChoiceSprite[i].setOrigin(bgChoiceSprite[i].getLocalBounds().width / 2, bgChoiceSprite[i].getLocalBounds().height / 2);
 		bgChoiceSprite[i].setPosition(gameSize.x * 0.85, yPos);
-		yPos += gameSize.y * 0.3;
+		yPos += gameSize.y * 0.28;
 	}
+
+	choiceSquare.setSize(sf::Vector2f(bgChoiceSprite[1].getGlobalBounds().width + 15, bgChoiceSprite[1].getGlobalBounds().height + 15));
+	choiceSquare.setFillColor(sf::Color::Green);
+	choiceSquare.setPosition(-300, -300);
+	choiceSquare.setOrigin(choiceSquare.getGlobalBounds().width / 2, choiceSquare.getGlobalBounds().height / 2);
+
 }
 
 void GameOptions::setupContinueButton()
@@ -208,8 +215,6 @@ void GameOptions::changeGridSize(int t_triangleNum)
 		{
 			currentGridSize.setString(gridSizeNums[currentGridStringNum - 1]);
 			currentGridStringNum = currentGridStringNum - 1;
-
-
 		}
 	}
 	else if (triangleClicked == 1)
@@ -262,8 +267,19 @@ void GameOptions::checkForMousePos(GameState& t_gameState)
 	{
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
-			std::cout << "TESTTSS" << std::endl;
+			//std::cout << "TESTTSS" << std::endl;
 			showBGChoices = true;
+		}
+	}
+
+	for (int i = 0; i < MAX_BG_CHOICES; i++)
+	{
+		if (bgChoiceSprite[i].getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePos)))
+		{
+			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+			{
+				choiceSquare.setPosition(bgChoiceSprite[i].getPosition());
+			}
 		}
 	}
 

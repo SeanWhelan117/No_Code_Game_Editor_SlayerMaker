@@ -48,6 +48,11 @@ void Wall::setupWall(sf::Vector2f t_pos)
 	wallSprite.setPosition(t_pos.x + offset, t_pos.y + offset);
 }
 
+void Wall::render(sf::RenderWindow& t_window)
+{
+	t_window.draw(wallSprite);
+}
+
 sf::Sprite& Wall::getWall()
 {
 	return wallSprite;

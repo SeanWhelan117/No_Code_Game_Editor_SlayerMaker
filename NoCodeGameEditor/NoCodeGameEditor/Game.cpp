@@ -342,9 +342,7 @@ void Game::render()
 			{
 				for (int i = 0; i < wallVector.size(); i++)
 				{
-					//wallVector.at(i).loadFiles();
-					sf:: Sprite tempSprite = wallVector.at(i).getWall();
-					m_window.draw(tempSprite);
+					wallVector.at(i).render(m_window);
 				}
 			}
 			
@@ -374,9 +372,7 @@ void Game::render()
 
 		for (int i = 0; i < wallVector.size(); i++)
 		{
-			wallVector.at(i).loadFiles();
-			sf::Sprite tempSprite = wallVector.at(i).getWall();
-			m_window.draw(tempSprite);
+			wallVector.at(i).render(m_window);
 		}
 	}
 	m_window.display();

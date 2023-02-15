@@ -13,6 +13,9 @@ public:
 
 	void setupWall(sf::Vector2f t_pos);
 
+	void render(sf::RenderWindow& t_window);
+
+
 	sf::Sprite& getWall();
 
 	sf::Texture wallTexture;

@@ -26,7 +26,6 @@ void Bullet::update()
 void Bullet::render(sf::RenderWindow& t_window)
 {
 	t_window.draw(bullet);
-
 }
 
 sf::RectangleShape Bullet::getBullet()
@@ -36,9 +35,16 @@ sf::RectangleShape Bullet::getBullet()
 
 void Bullet::createMovementVector()
 {
+	sf::Vector2f endPosition;
 
-	movementVector.x = mousePos.x - playerPosition.x;
-	movementVector.y = mousePos.y - playerPosition.y;
+	int randXOffset = rand() % 25 - 15;
+	int randYOffset = rand() % 25 - 15;
+
+	endPosition.x = mousePos.x + randXOffset;
+	endPosition.y = mousePos.y + randYOffset;
+
+	movementVector.x = endPosition.x - playerPosition.x;
+	movementVector.y = endPosition.y - playerPosition.y;
 
 	velocity.x = (movementVector.x * (1.0f / 30.0f));
 	velocity.y = (movementVector.y * (1.0f / 30.0f));

@@ -209,7 +209,6 @@ void Game::processMouseWheel(sf::Event t_event)
 /// <param name="t_deltaTime">time interval per frame</param>
 void Game::update(sf::Time t_deltaTime)
 {
-
 	mousePos = m_window.mapPixelToCoords(sf::Mouse::getPosition(m_window));
 
 	if (m_exitGame || myState == GameState::exitGame)

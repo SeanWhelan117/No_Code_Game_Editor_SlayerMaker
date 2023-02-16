@@ -27,6 +27,7 @@
 /// <returns>success or failure</returns>
 int main()
 {
+	srand(time(NULL));
 	Game game;
 	game.run();
 

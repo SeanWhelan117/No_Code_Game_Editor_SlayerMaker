@@ -33,6 +33,7 @@ private:
 	void playerMovement();
 	void move(float t_x, float t_y);
 	void shoot(sf::RenderWindow& t_window);
+	void removeBullet(int t_bulletNum);
 	sf::RectangleShape player;
 
 	sf::Vector2f gameSize;

@@ -35,10 +35,25 @@ void Player::update(sf::RenderWindow& t_window)
 		shoot(t_window);
 	}
 
-	for (int i = 0; i < bulletVector.size(); i++)
+	if (bulletVector.size() > 0)
 	{
-		bulletVector.at(i).update();
+		for (int i = 0; i < bulletVector.size(); i++)
+		{
+			bulletVector.at(i).update();
+
+			if (bulletVector.at(i).getBullet().getPosition().x > gameSize.x ||
+				bulletVector.at(i).getBullet().getPosition().x < 0 ||
+				bulletVector.at(i).getBullet().getPosition().y > gameSize.y ||
+				bulletVector.at(i).getBullet().getPosition().y < 0)
+			{
+				//remove from vector. destruct object
+				removeBullet(i);
+			}
+		}
 	}
+
+	std::cout << bulletVector.size() << std::endl;
+	
 }
 
 void Player::render(sf::RenderWindow& t_window)
@@ -120,4 +135,16 @@ void Player::shoot(sf::RenderWindow& t_window)
 	Bullet tempBullet{t_window, player.getPosition()};
 
 	bulletVector.push_back(tempBullet);
+}
+
+void Player::removeBullet(int t_bulletNum)
+{
+	std::vector<Bullet>::iterator begin = bulletVector.begin();
+
+	for (int i = 0; i < t_bulletNum ; i++)
+	{
+		begin++;
+	}
+
+	bulletVector.erase(begin);
 }

@@ -48,5 +48,4 @@ void Bullet::createMovementVector()
 
 	velocity.x = (movementVector.x * (1.0f / 30.0f));
 	velocity.y = (movementVector.y * (1.0f / 30.0f));
-
 }

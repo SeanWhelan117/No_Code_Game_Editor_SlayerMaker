@@ -46,7 +46,7 @@ void Player::update(sf::RenderWindow& t_window)
 				bulletVector.at(i).getBullet().getPosition().y > gameSize.y ||
 				bulletVector.at(i).getBullet().getPosition().y < 0)
 			{
-				//remove from vector. destruct object
+				//remove from vector. destruct object too pls
 				removeBullet(i);
 			}
 		}
@@ -145,6 +145,5 @@ void Player::removeBullet(int t_bulletNum)
 	{
 		begin++;
 	}
-
 	bulletVector.erase(begin);
 }

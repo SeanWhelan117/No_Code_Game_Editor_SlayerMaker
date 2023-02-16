@@ -225,7 +225,6 @@ void Game::update(sf::Time t_deltaTime)
 			mainView.reset(sf::FloatRect(0, 0, gameWidth, gameHeight));
 		}
 		m_window.setMouseCursorVisible(true);
-
 	}
 
 	if (myState == GameState::createGame)

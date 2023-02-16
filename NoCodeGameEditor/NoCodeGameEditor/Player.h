@@ -7,6 +7,7 @@
 #pragma once
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include "Bullet.h"
 
 class Player
 {
@@ -26,10 +27,12 @@ public:
 
 	void rotatePlayerView();
 
+	std::vector<Bullet> bulletVector;
 
 private:
 	void playerMovement();
 	void move(float t_x, float t_y);
+	void shoot(sf::RenderWindow& t_window);
 	sf::RectangleShape player;
 
 	sf::Vector2f gameSize;

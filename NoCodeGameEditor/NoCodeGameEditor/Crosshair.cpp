@@ -20,6 +20,8 @@ void Crosshair::loadFiles()
 void Crosshair::update(sf::RenderWindow& t_window)
 {
 	mousePos = t_window.mapPixelToCoords(sf::Mouse::getPosition(t_window));
+	mousePos.x -= 18;
+	mousePos.y -= 18;
 	crosshair.setPosition(mousePos);
 }
 

@@ -29,11 +29,26 @@ void Player::update(sf::RenderWindow& t_window)
 
 	playerMovement();
 	rotatePlayerView();
+
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+	{
+		shoot(t_window);
+	}
+
+	for (int i = 0; i < bulletVector.size(); i++)
+	{
+		bulletVector.at(i).update();
+	}
 }
 
 void Player::render(sf::RenderWindow& t_window)
 {
 	t_window.draw(player);
+
+	for (int i = 0; i < bulletVector.size(); i++)
+	{
+		t_window.draw(bulletVector.at(i).getBullet());
+	}
 }
 
 void Player::playerMovement()
@@ -98,4 +113,11 @@ void Player::rotatePlayerView()
 	float dy = playerPos.y - mousePos.y;
 	double mouseAngle = static_cast<double>(-atan2(dx, dy)) * 180.0f / PI; //finding the angle that the mouse is at vs the players location
 	player.setRotation(mouseAngle + 180.0f);
+}
+
+void Player::shoot(sf::RenderWindow& t_window)
+{
+	Bullet tempBullet{t_window, player.getPosition()};
+
+	bulletVector.push_back(tempBullet);
 }

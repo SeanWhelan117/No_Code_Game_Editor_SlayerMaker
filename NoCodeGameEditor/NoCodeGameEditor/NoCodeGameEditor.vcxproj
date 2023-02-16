@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="ChoiceBar.cpp" />
     <ClCompile Include="Crosshair.cpp" />
@@ -32,6 +33,7 @@
     <ClCompile Include="Wall.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bullet.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="ChoiceBar.h" />
     <ClInclude Include="Crosshair.h" />

@@ -11,6 +11,11 @@ Bullet::Bullet(sf::RenderWindow& t_window, sf::Vector2f t_playerPos)
 	createMovementVector();
 }
 
+Bullet::~Bullet()
+{
+
+}
+
 void Bullet::setupSprites()
 {
 	bullet.setFillColor(sf::Color::Black);

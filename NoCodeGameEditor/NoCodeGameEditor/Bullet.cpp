@@ -25,7 +25,7 @@ void Bullet::setupSprites()
 
 void Bullet::update()
 {
-	bullet.move(velocity);
+	bullet.move(velocity.x * 15, velocity.y * 15);
 }
 
 void Bullet::render(sf::RenderWindow& t_window)
@@ -51,6 +51,7 @@ void Bullet::createMovementVector()
 	movementVector.x = endPosition.x - playerPosition.x;
 	movementVector.y = endPosition.y - playerPosition.y;
 
-	velocity.x = (movementVector.x * (1.0f / 30.0f));
-	velocity.y = (movementVector.y * (1.0f / 30.0f));
+	float temp = sqrt(movementVector.x * movementVector.x + movementVector.y * movementVector.y);
+	velocity.x = (movementVector.x / temp);
+	velocity.y = (movementVector.y / temp);
 }

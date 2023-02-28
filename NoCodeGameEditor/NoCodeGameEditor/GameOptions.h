@@ -1,6 +1,6 @@
 /// <summary>
 /// @author Sean Whelan
-/// @date 2022
+/// @date 2022/23
 /// @license Attribution-NonCommercial 4.0 International
 /// </summary>
 
@@ -30,6 +30,8 @@ public:
 
 	bool canType;
 	std::string gameName = "";
+
+	int chosenBG = 0;
 
 private:
 

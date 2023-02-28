@@ -1,6 +1,6 @@
 /// <summary>
 /// @author Sean Whelan
-/// @date 2022
+/// @date 2022/23
 /// @license Attribution-NonCommercial 4.0 International
 /// </summary>
 #ifndef GAME_HPP
@@ -23,6 +23,7 @@
 #include "Player.h"
 #include "ChoiceBar.h"
 #include "Crosshair.h"
+#include "Background.h"
 
 class Game
 {
@@ -41,6 +42,7 @@ public:
 	Player myPlayer{ gameWidth, gameHeight };
 	ChoiceBar myChoice{ gameWidth, gameHeight };
 	Crosshair myCrosshair;
+	Background myBackground{gameWidth, gameHeight};
 
 	sf::View mainView;
 	sf::View testView;

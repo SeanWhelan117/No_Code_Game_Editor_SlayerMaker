@@ -313,6 +313,7 @@ void Game::update(sf::Time t_deltaTime)
 		myPlayer.update(m_window);
 		myCrosshair.update(m_window);
 		m_window.setMouseCursorVisible(false);
+		myBackground.update(gameOptions.chosenBG);
 	}
 	
 	if (myTools.testingGame == true)
@@ -370,6 +371,7 @@ void Game::render()
 
 	if (myState == GameState::testGame)
 	{
+		myBackground.render(m_window);
 		myPlayer.render(m_window);
 
 		for (int i = 0; i < wallVector.size(); i++)

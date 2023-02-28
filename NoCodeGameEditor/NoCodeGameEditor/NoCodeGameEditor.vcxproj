@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Background.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="ChoiceBar.cpp" />
@@ -33,6 +34,7 @@
     <ClCompile Include="Wall.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Background.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="ChoiceBar.h" />

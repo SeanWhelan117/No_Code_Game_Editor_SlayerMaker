@@ -279,6 +279,7 @@ void GameOptions::checkForMousePos(GameState& t_gameState)
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 			{
 				choiceSquare.setPosition(bgChoiceSprite[i].getPosition());
+				chosenBG = i;
 			}
 		}
 	}

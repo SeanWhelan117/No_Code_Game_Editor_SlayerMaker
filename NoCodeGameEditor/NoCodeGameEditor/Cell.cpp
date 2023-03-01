@@ -69,9 +69,7 @@ void Cell::setMarked(int t_choiceNum)
 
 void Cell::setUnmarked()
 {
-	if (cellShape.getFillColor() == sf::Color::Red ||
-		cellShape.getFillColor() == sf::Color::Green ||
-		cellShape.getFillColor() == sf::Color::Blue)
+	if (cellShape.getFillColor() != sf::Color::Transparent)
 	{
 		cellShape.setFillColor(sf::Color::Transparent);
 	}

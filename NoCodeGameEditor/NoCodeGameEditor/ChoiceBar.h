@@ -18,7 +18,7 @@ public:
 
 	void setupSprites();
 
-	void update(sf::Time t_deltaTime, sf::RenderWindow& t_window);
+	void update(sf::Time t_deltaTime, sf::RenderWindow& t_window, std::string t_currentMode);
 
 	void render(sf::RenderWindow& t_window);
 
@@ -45,6 +45,8 @@ private:
 	sf::Texture wallChoiceTex1;
 	sf::Texture wallChoiceTex2;
 	sf::Texture wallChoiceTex3;
+
+	std::string currentMode = "WALLS";
 
 };
 

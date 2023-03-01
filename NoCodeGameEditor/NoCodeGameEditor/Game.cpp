@@ -275,7 +275,7 @@ void Game::update(sf::Time t_deltaTime)
 			wallVectorCreated = true;
 		}
 		myTools.update(t_deltaTime, m_window, myGrid.theGrid, gridSize, myChoice.choiceMade, myChoice.currentChoice);
-		myChoice.update(t_deltaTime, m_window);
+		myChoice.update(t_deltaTime, m_window, myTools.currentMode);
 
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::LAlt))

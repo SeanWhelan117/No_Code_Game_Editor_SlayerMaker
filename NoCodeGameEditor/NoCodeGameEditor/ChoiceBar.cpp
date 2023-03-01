@@ -61,40 +61,57 @@ void ChoiceBar::setupSprites()
 	
 }
 
-void ChoiceBar::update(sf::Time t_deltaTime, sf::RenderWindow& t_window)
+void ChoiceBar::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, std::string t_currentMode)
 {
+
+	currentMode = t_currentMode;
+
 	sf::Vector2f mousePos = t_window.mapPixelToCoords(sf::Mouse::getPosition(t_window));
 	checkForMousePosAndClick(t_window, mousePos);
 }
 
 void ChoiceBar::render(sf::RenderWindow& t_window)
 {
+	
 	t_window.draw(choiceBarSprite);
-	for (int i = 0; i < MAX_WALL_CHOICES; i++)
+	
+	if (currentMode == "WALLS")
 	{
-		t_window.draw(wallChoiceSprite[i]);
+		for (int i = 0; i < MAX_WALL_CHOICES; i++)
+		{
+			t_window.draw(wallChoiceSprite[i]);
+		}
 	}
 }
 
 void ChoiceBar::checkForMousePosAndClick(sf::RenderWindow& t_window, sf::Vector2f t_mousePos)
 {
-	for (int i = 0; i < MAX_WALL_CHOICES; i++)
-	{
-		if (wallChoiceSprite[i].getGlobalBounds().contains(t_mousePos))
+	
+		for (int i = 0; i < MAX_WALL_CHOICES; i++)
 		{
-			changeTools(i);
-
-			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+			if (currentMode == "WALLS")
 			{
-				currentChoice = i;
-				choiceMade = true;
+				if (wallChoiceSprite[i].getGlobalBounds().contains(t_mousePos))
+				{
+					changeTools(i);
+
+					if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+					{
+						currentChoice = i;
+						choiceMade = true;
+					}
+				}
+				else
+				{
+					resetTools(i);
+				}
+			}
+			else if (currentMode == "ENEMIES")
+			{
+
 			}
 		}
-		else
-		{
-			resetTools(i);
-		}
-	}
+	
 }
 
 void ChoiceBar::resetTools(int t_current)

@@ -133,16 +133,16 @@ void ToolBar::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, std::vect
 void ToolBar::render(sf::RenderWindow& t_window)
 {
 	t_window.draw(toolBarSprite);
+	t_window.draw(brushToolSprite);
+	t_window.draw(rubberToolSprite);
 	if (currentMode == "WALLS")
 	{
-		t_window.draw(brushToolSprite);
 		t_window.draw(fillToolSprite);
 		t_window.draw(addWallsButton);
 		t_window.draw(saveWallPosButton);
-		t_window.draw(testGameButton);
-		t_window.draw(rubberToolSprite);
 	}
 	
+		t_window.draw(testGameButton);
 	
 	for (int i = 0; i < MAX_NAV_TRIANGLES; i++)
 	{

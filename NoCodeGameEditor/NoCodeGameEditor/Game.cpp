@@ -426,7 +426,7 @@ void Game::removeWallVector()
 						{
 							vector<Wall>::iterator begin = wallVector.begin();
 							begin += i;
-							vector<Wall>::iterator remove = wallVector.erase(begin);
+							wallVector.erase(begin);
 						}
 					}
 					

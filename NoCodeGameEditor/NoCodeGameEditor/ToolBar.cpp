@@ -273,6 +273,7 @@ void ToolBar::setGridCellToMarked(std::vector<std::vector<Cell>>& t_grid, int t_
 					else if (t_toolChosen == "Rubber")
 					{
 						t_grid.at(m).at(i).setUnmarked();
+						std::cout << m << "---" << i << std::endl;
 					}
 				}
 				

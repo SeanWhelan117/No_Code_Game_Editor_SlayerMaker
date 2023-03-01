@@ -62,7 +62,6 @@ void Cell::setMarked(int t_choiceNum)
 		else if (t_choiceNum == 5)
 		{
 			cellShape.setFillColor(sf::Color::Yellow);
-
 		}
 	}
 }

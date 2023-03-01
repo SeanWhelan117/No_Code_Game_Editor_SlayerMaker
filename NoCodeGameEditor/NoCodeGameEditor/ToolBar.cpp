@@ -53,6 +53,12 @@ void ToolBar::loadFiles()
 		std::cout << "problem loading rubberTool (rubberTool)" << std::endl;
 	}
 
+	if (!navTriangleTexture.loadFromFile("ASSETS\\IMAGES\\triangle.png"))
+	{
+		// simple error message if previous call fails
+		std::cout << "problem loading triangle (triangle)" << std::endl;
+	}
+
 }
 
 void ToolBar::setupSprites()
@@ -78,6 +84,23 @@ void ToolBar::setupSprites()
 	rubberToolSprite.setScale(0.3, 0.3);
 	rubberToolSprite.setOrigin(rubberToolSprite.getLocalBounds().width / 2, rubberToolSprite.getLocalBounds().height / 2);
 	rubberToolSprite.setPosition(toolBarSprite.getPosition().x - toolBarSprite.getLocalBounds().width / 3, toolBarSprite.getPosition().y);
+
+	
+
+	for (int i = 0; i < MAX_NAV_TRIANGLES; i++)
+	{
+		navigationTriangles[i].setTexture(navTriangleTexture);
+		navigationTriangles[i].setScale(1.5, 1.5);
+		navigationTriangles[i].setOrigin(navigationTriangles[i].getLocalBounds().width / 2, navigationTriangles[i].getLocalBounds().height / 2);
+
+	}
+		navigationTriangles[0].setRotation(180);
+		navigationTriangles[0].setPosition(125, toolBarSprite.getPosition().y + 25);
+
+		navigationTriangles[1].setRotation(0);
+		navigationTriangles[1].setPosition(gameWidth - 125, toolBarSprite.getPosition().y +25);
+
+
 }
 
 void ToolBar::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, std::vector<std::vector<Cell>>& t_grid, int t_gridParams, bool t_choice, int t_choiceNum)
@@ -99,18 +122,32 @@ void ToolBar::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, std::vect
 		setGridCellToMarked(t_grid, t_gridParams, MousePosReal, "Rubber", t_choiceNum);
 	}
 
+	if (pulseTheTriangles == true)
+	{
+		pulseTriangles();
+	}
+
 }
 
 
 void ToolBar::render(sf::RenderWindow& t_window)
 {
 	t_window.draw(toolBarSprite);
-	t_window.draw(brushToolSprite);
-	t_window.draw(fillToolSprite);
-	t_window.draw(addWallsButton);
-	t_window.draw(saveWallPosButton);
-	t_window.draw(testGameButton);
-	t_window.draw(rubberToolSprite);
+	if (currentMode == "WALLS")
+	{
+		t_window.draw(brushToolSprite);
+		t_window.draw(fillToolSprite);
+		t_window.draw(addWallsButton);
+		t_window.draw(saveWallPosButton);
+		t_window.draw(testGameButton);
+		t_window.draw(rubberToolSprite);
+	}
+	
+	
+	for (int i = 0; i < MAX_NAV_TRIANGLES; i++)
+	{
+		t_window.draw(navigationTriangles[i]);
+	}
 	
 }
 
@@ -175,6 +212,23 @@ void ToolBar::checkForMousePosAndClick(sf::RenderWindow& t_window, sf::Vector2f 
 			testingGame = true;
 		}
 	}
+	for (int i = 0; i < MAX_NAV_TRIANGLES; i++)
+	{
+		if (navigationTriangles[i].getGlobalBounds().contains(t_mousePos))
+		{
+			pulseTheTriangles = false;
+			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+			{
+				changeMode(i);
+			}
+		}
+		else
+		{
+			pulseTheTriangles = true;
+		}
+	}
+
+	
 }
 
 void ToolBar::changeTools(int t_currentTool)
@@ -245,6 +299,58 @@ void ToolBar::setToolPosForView(sf::RenderWindow& t_window)
 	pos4 = t_window.mapPixelToCoords(static_cast<sf::Vector2i>(pos4));
 	rubberToolSprite.setPosition(pos4);
 
+}
+
+void ToolBar::pulseTriangles()
+{
+	
+	if (scalingUp && navigationTriangles[0].getScale().x < maxScale.x)
+	{
+		for (int i = 0; i < MAX_NAV_TRIANGLES; i++)
+		{
+			navigationTriangles[i].setScale(navigationTriangles[i].getScale().x + 0.01, navigationTriangles[i].getScale().y + 0.01);
+		}
+	}
+	else if (scalingDown && navigationTriangles[0].getScale().x > minScale.x)
+	{
+		for (int i = 0; i < MAX_NAV_TRIANGLES; i++)
+		{
+			navigationTriangles[i].setScale(navigationTriangles[i].getScale().x - 0.01, navigationTriangles[i].getScale().y - 0.01);
+		}
+	}
+
+	if (navigationTriangles[0].getScale().x <= minScale.x)
+	{
+		scalingUp = true;
+		scalingDown = false;
+	}
+
+	if (navigationTriangles[0].getScale().x >= maxScale.x)
+	{
+		scalingDown = true;
+		scalingUp = false;
+	}
+}
+
+void ToolBar::changeMode(int t_triangleClicked)
+{
+	if (currentMode == "WALLS" && t_triangleClicked == 0)
+	{
+		// do nothing for now...
+	}
+	else if (currentMode == "WALLS" && t_triangleClicked == 1)
+	{
+		currentMode = "ENEMIES";
+	}
+
+	if (currentMode == "ENEMIES" && t_triangleClicked == 0)
+	{
+		currentMode = "WALLS";
+	}
+	else if (currentMode == "ENEMIES" && t_triangleClicked == 1)
+	{
+		//do nothing for now...
+	}
 }
 
 

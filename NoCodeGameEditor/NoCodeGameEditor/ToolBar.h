@@ -30,6 +30,8 @@ public:
 
 	void setGridCellToMarked(std::vector<std::vector<Cell>>& t_grid, int t_gridParams, sf::Vector2f t_mousePos, std::string t_toolChosen, int t_choiceNum);
 	void setToolPosForView(sf::RenderWindow& t_window);
+	void pulseTriangles();
+	void changeMode(int t_triangleClicked);
 	bool wallsPlaced = false;
 
 	bool wallPosSaved = false;
@@ -40,6 +42,9 @@ public:
 	bool rubberToolSelected = false;
 
 	sf::Sprite toolBarSprite;
+
+	std::string currentMode = "WALLS";
+
 private:
 
 	sf::Texture toolBarTexture;
@@ -65,5 +70,15 @@ private:
 
 	sf::Vector2f MousePosReal;
 
+	static const int MAX_NAV_TRIANGLES = 2;
+	sf::Sprite navigationTriangles[MAX_NAV_TRIANGLES];
+	sf::Texture navTriangleTexture;
+
+	sf::Vector2f maxScale = sf::Vector2f(1.8, 1.8);
+	sf::Vector2f minScale = sf::Vector2f(1.2, 1.2);
+
+	bool scalingUp = true;
+	bool scalingDown = false;
+	bool pulseTheTriangles = true;
 
 };

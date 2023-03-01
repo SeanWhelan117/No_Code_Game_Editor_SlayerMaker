@@ -314,14 +314,15 @@ void Game::update(sf::Time t_deltaTime)
 		myCrosshair.update(m_window);
 		m_window.setMouseCursorVisible(false);
 		myBackground.update(gameOptions.chosenBG);
+		testView.setCenter(myPlayer.getPlayer().getPosition());
+		m_window.setView(testView);
 	}
 	
 	if (myTools.testingGame == true)
 	{
 		myState = GameState::testGame;
 		myTools.testingGame = false;
-		//testView.setCenter(myPlayer.getPlayer().getPosition());
-		//m_window.setView(testView);
+		
 	}
 
 	removeWallVector();
@@ -438,5 +439,5 @@ void Game::removeWallVector()
 void Game::viewsCreation()
 {
 	mainView.reset(sf::FloatRect(0,0, gameWidth, gameHeight ));
-	testView.reset(sf::FloatRect(100,100, 400, 400));
+	testView.reset(sf::FloatRect(100,100, gameWidth * 0.3, gameHeight * 0.3));
 }

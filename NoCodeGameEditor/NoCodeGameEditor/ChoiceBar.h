@@ -39,12 +39,17 @@ private:
 	sf::Sprite choiceBarSprite;
 	sf::Texture choiceBarTexture;
 
-	static const int MAX_WALL_CHOICES = 3;
-	sf::Sprite wallChoiceSprite[MAX_WALL_CHOICES];
+	static const int MAX_CHOICES = 3;
+	sf::Sprite wallChoiceSprite[MAX_CHOICES];
+	sf::Sprite enemyChoiceSprite[MAX_CHOICES];
 
 	sf::Texture wallChoiceTex1;
 	sf::Texture wallChoiceTex2;
 	sf::Texture wallChoiceTex3;
+
+	sf::Texture enemyChoiceTex1;
+	sf::Texture enemyChoiceTex2;
+	sf::Texture enemyChoiceTex3;
 
 	std::string currentMode = "WALLS";
 

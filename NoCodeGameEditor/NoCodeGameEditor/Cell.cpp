@@ -36,8 +36,8 @@ sf::RectangleShape& Cell::getCellShape()
 
 void Cell::setMarked(int t_choiceNum)
 {
-	//if (cellShape.getFillColor() == sf::Color::Transparent)
-	//{
+	if (cellShape.getFillColor() == sf::Color::Transparent)
+	{
 		if (t_choiceNum == 0)
 		{
 			cellShape.setFillColor(sf::Color::Red);
@@ -50,7 +50,21 @@ void Cell::setMarked(int t_choiceNum)
 		{
 			cellShape.setFillColor(sf::Color::Blue);
 		}
-	//}
+		else if (t_choiceNum == 3)
+		{
+			cellShape.setFillColor(sf::Color::Magenta);
+		}
+		else if (t_choiceNum == 4)
+		{
+			cellShape.setFillColor(sf::Color::Cyan);
+
+		}
+		else if (t_choiceNum == 5)
+		{
+			cellShape.setFillColor(sf::Color::Yellow);
+
+		}
+	}
 }
 
 void Cell::setUnmarked()

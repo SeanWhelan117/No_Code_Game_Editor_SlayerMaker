@@ -17,6 +17,9 @@ void ChoiceBar::loadFiles()
 		std::cout << "problem loading toolbar (choicebar.png)" << std::endl;
 	}
 
+	//WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS
+	//WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS
+
 	if (!wallChoiceTex1.loadFromFile("ASSETS\\IMAGES\\WALLS\\wallGrey.png"))
 	{
 		// simple error message if previous call fails
@@ -35,6 +38,26 @@ void ChoiceBar::loadFiles()
 		std::cout << "problem loading wall (wallRed)" << std::endl;
 	}
 
+	//ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES
+	//ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES
+
+	if (!enemyChoiceTex1.loadFromFile("ASSETS\\IMAGES\\ENEMIES\\ENEMY1\\Enemy1-choice.png"))
+	{
+		// simple error message if previous call fails
+		std::cout << "problem loading enemyChoiceTex1 (Enemy1-choice)" << std::endl;
+	}
+
+	if (!enemyChoiceTex2.loadFromFile("ASSETS\\IMAGES\\ENEMIES\\ENEMY2\\Enemy2-choice.png"))
+	{
+		// simple error message if previous call fails
+		std::cout << "problem loading enemyChoiceTex2 (Enemy2-choice)" << std::endl;
+	}
+
+	if (!enemyChoiceTex3.loadFromFile("ASSETS\\IMAGES\\ENEMIES\\ENEMY3\\Enemy3-choice.png"))
+	{
+		// simple error message if previous call fails
+		std::cout << "problem loading enemyChoiceTex3 (Enemy3-choice)" << std::endl;
+	}
 }
 
 void ChoiceBar::setupSprites()
@@ -49,14 +72,27 @@ void ChoiceBar::setupSprites()
 	wallChoiceSprite[1].setTexture(wallChoiceTex2);
 	wallChoiceSprite[2].setTexture(wallChoiceTex3);
 
+	enemyChoiceSprite[0].setTexture(enemyChoiceTex1);
+	enemyChoiceSprite[1].setTexture(enemyChoiceTex2);
+	enemyChoiceSprite[2].setTexture(enemyChoiceTex3);
+
 	int yPos = choiceBarSprite.getPosition().y - choiceBarSprite.getLocalBounds().height / 3;
-	for (int i = 0; i < MAX_WALL_CHOICES; i++)
+	for (int i = 0; i < MAX_CHOICES; i++)
 	{
 		wallChoiceSprite[i].scale(3, 3);
 		wallChoiceSprite[i].setOrigin(wallChoiceSprite[i].getLocalBounds().width / 2, wallChoiceSprite[i].getLocalBounds().height / 2);
 		wallChoiceSprite[i].setPosition(choiceBarSprite.getPosition().x, yPos);
+
+		enemyChoiceSprite[i].scale(3, 3);
+		enemyChoiceSprite[i].setOrigin(enemyChoiceSprite[i].getLocalBounds().width / 2, enemyChoiceSprite[i].getLocalBounds().height / 2);
+		enemyChoiceSprite[i].setPosition(choiceBarSprite.getPosition().x, yPos);
+		
+		
 		yPos += choiceBarSprite.getLocalBounds().height / 3;
 	}
+
+
+
 
 	
 }
@@ -74,12 +110,15 @@ void ChoiceBar::render(sf::RenderWindow& t_window)
 {
 	
 	t_window.draw(choiceBarSprite);
-	
-	if (currentMode == "WALLS")
+	for (int i = 0; i < MAX_CHOICES; i++)
 	{
-		for (int i = 0; i < MAX_WALL_CHOICES; i++)
+		if (currentMode == "WALLS")
 		{
 			t_window.draw(wallChoiceSprite[i]);
+		}
+		else if (currentMode == "ENEMIES")
+		{
+			t_window.draw(enemyChoiceSprite[i]);
 		}
 	}
 }
@@ -87,7 +126,7 @@ void ChoiceBar::render(sf::RenderWindow& t_window)
 void ChoiceBar::checkForMousePosAndClick(sf::RenderWindow& t_window, sf::Vector2f t_mousePos)
 {
 	
-		for (int i = 0; i < MAX_WALL_CHOICES; i++)
+		for (int i = 0; i < MAX_CHOICES; i++)
 		{
 			if (currentMode == "WALLS")
 			{
@@ -108,7 +147,20 @@ void ChoiceBar::checkForMousePosAndClick(sf::RenderWindow& t_window, sf::Vector2
 			}
 			else if (currentMode == "ENEMIES")
 			{
+				if (enemyChoiceSprite[i].getGlobalBounds().contains(t_mousePos))
+				{
+					changeTools(i);
 
+					if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+					{
+						currentChoice = i + 3;
+						choiceMade = true;
+					}
+				}
+				else
+				{
+					resetTools(i);
+				}
 			}
 		}
 	
@@ -116,10 +168,29 @@ void ChoiceBar::checkForMousePosAndClick(sf::RenderWindow& t_window, sf::Vector2
 
 void ChoiceBar::resetTools(int t_current)
 {
-	wallChoiceSprite[t_current].setScale(3, 3);
+	if (currentMode == "WALLS")
+	{
+		wallChoiceSprite[t_current].setScale(3, 3);
+
+	}
+	else if (currentMode == "ENEMIES")
+	{
+		enemyChoiceSprite[t_current].setScale(3, 3);
+
+	}
 }
 
 void ChoiceBar::changeTools(int t_current)
 {
-	wallChoiceSprite[t_current].setScale(4, 4);
+
+	if (currentMode == "WALLS")
+	{
+		wallChoiceSprite[t_current].setScale(4, 4);
+
+	}
+	else if (currentMode == "ENEMIES")
+	{
+		enemyChoiceSprite[t_current].setScale(4, 4);
+
+	}
 }

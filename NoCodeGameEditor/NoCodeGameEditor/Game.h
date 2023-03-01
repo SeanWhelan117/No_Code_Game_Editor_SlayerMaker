@@ -24,6 +24,7 @@
 #include "ChoiceBar.h"
 #include "Crosshair.h"
 #include "Background.h"
+#include "Enemy.h"
 
 class Game
 {

@@ -252,24 +252,25 @@ void Game::update(sf::Time t_deltaTime)
 				{
 					if (myGrid.theGrid.at(m).at(i).getCellShape().getFillColor() == sf::Color::Red)
 					{
-						createWallVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 0);
+						wallVector.push_back(new Wall(createWallVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 0)));
 						numOfWalls++;
 					}
 					else if (myGrid.theGrid.at(m).at(i).getCellShape().getFillColor() == sf::Color::Green)
 					{
-						createWallVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 1);
+						wallVector.push_back(new Wall(createWallVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 1)));
+						
 						numOfWalls++;
 					}
 					else if (myGrid.theGrid.at(m).at(i).getCellShape().getFillColor() == sf::Color::Blue)
 					{
-						createWallVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 2);
+						wallVector.push_back(new Wall(createWallVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 2)));
 						numOfWalls++;
 					}
 				}
 			}
 			for (int i = 0; i < wallVector.size(); i++)
 			{
-				wallVector.at(i).loadFiles();
+				wallVector.at(i)->loadFiles();
 			}
 			myTools.wallsPlaced = false;
 			wallVectorCreated = true;
@@ -346,7 +347,7 @@ void Game::render()
 			{
 				for (int i = 0; i < wallVector.size(); i++)
 				{
-					wallVector.at(i).render(m_window);
+					wallVector.at(i)->render(m_window);
 				}
 			}
 			
@@ -377,7 +378,7 @@ void Game::render()
 
 		for (int i = 0; i < wallVector.size(); i++)
 		{
-			wallVector.at(i).render(m_window);
+			wallVector.at(i)->render(m_window);
 		}
 		myCrosshair.render(m_window);
 	}
@@ -401,13 +402,11 @@ void Game::checkMousePos()
 	}
 }
 
-void Game::createWallVector(sf::Vector2f t_wallPos, int t_wallTextNum)
+Wall Game::createWallVector(sf::Vector2f t_wallPos, int t_wallTextNum)
 {
-	Wall tempWall{t_wallTextNum};
+	Wall tempWall{t_wallTextNum, t_wallPos };
 
-	tempWall.setupWall(t_wallPos);
-
-	wallVector.push_back(tempWall);
+	return tempWall;
 }
 
 void Game::removeWallVector()
@@ -418,14 +417,16 @@ void Game::removeWallVector()
 		{
 			for (int i = 0; i < wallVector.size(); i++)
 			{
-				if (wallVector.at(i).getWall().getGlobalBounds().contains(mousePos))
+				if (wallVector.at(i)->getWall().getGlobalBounds().contains(mousePos))
 				{
 					if (sf::Mouse::isButtonPressed(sf::Mouse::Left()))
 					{
 						if (myTools.rubberToolSelected)
 						{
-							vector<Wall>::iterator begin = wallVector.begin();
+							vector<Wall *>::iterator begin = wallVector.begin();
 							begin += i;
+							wallVector.at(i) = NULL;
+							delete wallVector.at(i);
 							wallVector.erase(begin);
 						}
 					}

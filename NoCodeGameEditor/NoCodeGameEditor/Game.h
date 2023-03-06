@@ -56,7 +56,7 @@ public:
 
 	void checkMousePos();
 
-	void createWallVector(sf::Vector2f t_wallPos, int t_wallTextNum);
+	Wall createWallVector(sf::Vector2f t_wallPos, int t_wallTextNum);
 
 	void removeWallVector();
 
@@ -64,7 +64,7 @@ public:
 
 	bool changeGridSize = false;
 
-	std::vector<Wall> wallVector;
+	std::vector<Wall *> wallVector;
 private:
 
 	sf::Vector2f mousePos; // mouses current position

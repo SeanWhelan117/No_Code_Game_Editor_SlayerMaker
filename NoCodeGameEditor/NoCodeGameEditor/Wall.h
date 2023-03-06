@@ -13,7 +13,7 @@
 class Wall
 {
 public:
-	Wall(int t_wallTextNum);
+	Wall(int t_wallTextNum, sf::Vector2f t_wallPos);
 
 	void loadFiles();
 

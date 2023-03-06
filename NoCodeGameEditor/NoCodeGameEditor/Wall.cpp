@@ -1,9 +1,10 @@
 #include "Wall.h"
 
-Wall::Wall(int t_wallTextNum)
+Wall::Wall(int t_wallTextNum, sf::Vector2f t_wallPos)
 {
 	wallTextureNumber = t_wallTextNum;
 	loadFiles();
+	setupWall(t_wallPos);
 }
 
 void Wall::loadFiles()
@@ -38,12 +39,13 @@ void Wall::loadFiles()
 	{
 		wallSprite.setTexture(wallTexture3);
 	}
+
 }
 
 void Wall::setupWall(sf::Vector2f t_pos)
 {
-	loadFiles();
-	wallSprite.setTexture(wallTexture);
+	//loadFiles();
+	//wallSprite.setTexture(wallTexture);
 	wallSprite.setOrigin(wallSprite.getGlobalBounds().width / 2, wallSprite.getGlobalBounds().height / 2);
 	wallSprite.setPosition(t_pos.x + offset, t_pos.y + offset);
 }

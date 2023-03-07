@@ -7,7 +7,7 @@
 #pragma once
 #include <iostream>
 #include <SFML/Graphics.hpp>
-#include "GameState.h"
+#include "Enemy.h"
 
 class EnemySpawner
 {
@@ -21,7 +21,9 @@ public:
 
 	void render(sf::RenderWindow& t_window);
 
-	void update(GameState& t_gameState);
+	void update();
+
+	Enemy EnemySpawner::addToEnemyVector();
 
 
 	sf::Sprite& getSpawner();
@@ -29,6 +31,8 @@ public:
 	sf::Texture spawnerTexture;
 	sf::Texture spawnerTexture2;
 	sf::Texture spawnerTexture3;
+
+	std::vector<Enemy*> EnemyVector;
 private:
 
 	sf::Sprite spawnerSprite;
@@ -36,5 +40,8 @@ private:
 	int offset = 15;
 
 	int spawnerTextureNumber = 0;
+
+	int test = 0;
+
 };
 

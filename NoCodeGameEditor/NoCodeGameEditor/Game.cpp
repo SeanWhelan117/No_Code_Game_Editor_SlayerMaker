@@ -353,6 +353,15 @@ void Game::update(sf::Time t_deltaTime)
 		m_window.setMouseCursorVisible(false);
 		myBackground.update(gameOptions.chosenBG);
 		testView.setCenter(myPlayer.getPlayer().getPosition());
+
+		if (enemySpawnerVectorCreated == true)
+		{
+			for (int i = 0; i < enemySpawnerVector.size(); i++)
+			{
+				enemySpawnerVector.at(i)->update();
+			}
+		}
+
 		m_window.setView(testView);
 	}
 	

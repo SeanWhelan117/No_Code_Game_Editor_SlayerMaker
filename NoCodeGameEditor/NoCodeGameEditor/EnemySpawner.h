@@ -7,6 +7,7 @@
 #pragma once
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include "GameState.h"
 
 class EnemySpawner
 {
@@ -19,6 +20,8 @@ public:
 	void setupSpawner(sf::Vector2f t_pos);
 
 	void render(sf::RenderWindow& t_window);
+
+	void update(GameState& t_gameState);
 
 
 	sf::Sprite& getSpawner();

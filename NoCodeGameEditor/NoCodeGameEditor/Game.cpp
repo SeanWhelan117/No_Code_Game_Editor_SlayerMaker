@@ -495,7 +495,29 @@ void Game::removeWallVector()
 
 void Game::removeEnemySpawnerVector()
 {
-
+	if (enemySpawnerVectorCreated == true)
+	{
+		if (!enemySpawnerVector.empty())
+		{
+			for (int i = 0; i < enemySpawnerVector.size(); i++)
+			{
+				if (enemySpawnerVector.at(i)->getSpawner().getGlobalBounds().contains(mousePos))
+				{
+					if (sf::Mouse::isButtonPressed(sf::Mouse::Left()))
+					{
+						if (myTools.rubberToolSelected)
+						{
+							vector<EnemySpawner*>::iterator begin = enemySpawnerVector.begin();
+							begin += i;
+							enemySpawnerVector.at(i) = NULL;
+							delete enemySpawnerVector.at(i);
+							enemySpawnerVector.erase(begin);
+						}
+					}
+				}
+			}
+		}
+	}
 }
 
 void Game::viewsCreation()

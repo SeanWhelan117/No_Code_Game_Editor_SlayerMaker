@@ -56,6 +56,12 @@ void EnemySpawner::render(sf::RenderWindow& t_window)
 	t_window.draw(spawnerSprite);
 }
 
+void EnemySpawner::update(GameState& t_gameState)
+{
+
+
+}
+
 sf::Sprite& EnemySpawner::getSpawner()
 {
 	return spawnerSprite;

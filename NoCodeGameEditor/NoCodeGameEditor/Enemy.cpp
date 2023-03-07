@@ -15,13 +15,13 @@ void Enemy::loadFiles()
 		std::cout << "problem loading enemyTexture (Enemy1-choice)" << std::endl;
 	}
 
-	if (!enemyTexture2.loadFromFile("ASSETS\\IMAGES\\ENEMIES\\ENEMY1\\Enemy2-choice.png"))
+	if (!enemyTexture2.loadFromFile("ASSETS\\IMAGES\\ENEMIES\\ENEMY2\\Enemy2-choice.png"))
 	{
 		// simple error message if previous call fails
 		std::cout << "problem loading enemyTexture2 (Enemy2-choice)" << std::endl;
 	}
 
-	if (!enemyTexture3.loadFromFile("ASSETS\\IMAGES\\ENEMIES\\ENEMY1\\Enemy3-choice.png"))
+	if (!enemyTexture3.loadFromFile("ASSETS\\IMAGES\\ENEMIES\\ENEMY3\\Enemy3-choice.png"))
 	{
 		// simple error message if previous call fails
 		std::cout << "problem loading enemyTexture3 (Enemy3-choice)" << std::endl;

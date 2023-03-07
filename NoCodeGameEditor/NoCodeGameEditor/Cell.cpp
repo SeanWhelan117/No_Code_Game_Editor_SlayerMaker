@@ -34,13 +34,13 @@ sf::RectangleShape& Cell::getCellShape()
 	return cellShape;
 }
 
-void Cell::setMarked(int t_choiceNum)
+void Cell::setMarked(int t_choiceNum, int& t_spawnsOne, int& t_spawnsTwo, int& t_spawnsThree)
 {
 	if (cellShape.getFillColor() == sf::Color::Transparent)
 	{
 		if (t_choiceNum == 0)
 		{
-			cellShape.setFillColor(sf::Color::Red);
+			cellShape.setFillColor(sf::Color::Red); // ----WALLS----
 		}
 		else if (t_choiceNum == 1)
 		{
@@ -52,21 +52,32 @@ void Cell::setMarked(int t_choiceNum)
 		}
 		else if (t_choiceNum == 3)
 		{
-			cellShape.setFillColor(sf::Color::Magenta);
+			if (t_spawnsOne < 3)
+			{
+				cellShape.setFillColor(sf::Color::Magenta); // ----ENEMIES----
+				t_spawnsOne++;
+			}
 		}
 		else if (t_choiceNum == 4)
 		{
-			cellShape.setFillColor(sf::Color::Cyan);
-
+			if (t_spawnsTwo < 3)
+			{
+				cellShape.setFillColor(sf::Color::Cyan);
+				t_spawnsTwo++;
+			}
 		}
 		else if (t_choiceNum == 5)
 		{
-			cellShape.setFillColor(sf::Color::Yellow);
+			if (t_spawnsThree < 3)
+			{
+				cellShape.setFillColor(sf::Color::Yellow);
+				t_spawnsThree++;
+			}
 		}
 	}
 }
 
-void Cell::setUnmarked()
+void Cell::setUnmarked(int& t_spawnsOne, int& t_spawnsTwo, int& t_spawnsThree)
 {
 	if (cellShape.getFillColor() == sf::Color::Red ||
 		cellShape.getFillColor() == sf::Color::Green ||
@@ -74,6 +85,22 @@ void Cell::setUnmarked()
 	{
 		cellShape.setFillColor(sf::Color::Transparent);
 	}
+
+	if (cellShape.getFillColor() == sf::Color::Magenta)
+	{
+		t_spawnsOne--;
+		cellShape.setFillColor(sf::Color::Transparent);
+	}
+	else if (cellShape.getFillColor() == sf::Color::Cyan)
+	{
+		t_spawnsTwo--;
+		cellShape.setFillColor(sf::Color::Transparent);
+	}
+	else if (cellShape.getFillColor() == sf::Color::Yellow)
+	{
+		t_spawnsThree--;
+		cellShape.setFillColor(sf::Color::Transparent);
+	}		
 }
 
 int Cell::getID()

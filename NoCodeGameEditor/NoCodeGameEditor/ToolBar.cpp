@@ -24,6 +24,11 @@ ToolBar::ToolBar(float t_gameWidth, float t_gameHeight)
 	testGameButton.setSize(sf::Vector2f(150, 100));
 	testGameButton.setOrigin(75, 50);
 	testGameButton.setPosition(gameWidth / 2 + 750, 100);
+
+	addEnemySpawnersButton.setFillColor(sf::Color::Green);
+	addEnemySpawnersButton.setSize(sf::Vector2f(150, 100));
+	addEnemySpawnersButton.setOrigin(75, 50);
+	addEnemySpawnersButton.setPosition(gameWidth / 2 + 350, 100);
 }
 
 
@@ -137,12 +142,16 @@ void ToolBar::render(sf::RenderWindow& t_window)
 	t_window.draw(rubberToolSprite);
 	if (currentMode == "WALLS")
 	{
-		t_window.draw(fillToolSprite);
 		t_window.draw(addWallsButton);
+		t_window.draw(fillToolSprite);
 		t_window.draw(saveWallPosButton);
 	}
+	if (currentMode == "ENEMIES")
+	{
+		t_window.draw(addEnemySpawnersButton);
+	}
 	
-		t_window.draw(testGameButton);
+	t_window.draw(testGameButton);
 	
 	for (int i = 0; i < MAX_NAV_TRIANGLES; i++)
 	{
@@ -212,6 +221,15 @@ void ToolBar::checkForMousePosAndClick(sf::RenderWindow& t_window, sf::Vector2f 
 			testingGame = true;
 		}
 	}
+
+	if (addEnemySpawnersButton.getGlobalBounds().contains(t_mousePos))
+	{
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+		{
+			enemySpawnersPlaced = true;
+		}
+	}
+
 	for (int i = 0; i < MAX_NAV_TRIANGLES; i++)
 	{
 		if (navigationTriangles[i].getGlobalBounds().contains(t_mousePos))
@@ -268,12 +286,11 @@ void ToolBar::setGridCellToMarked(std::vector<std::vector<Cell>>& t_grid, int t_
 				{
 					if (t_toolChosen == "Brush")
 					{
-						t_grid.at(m).at(i).setMarked(t_choiceNum);
+						t_grid.at(m).at(i).setMarked(t_choiceNum, enemyOneSpawnsPlaced, enemyTwoSpawnsPlaced, enemyThreeSpawnsPlaced);
 					}
 					else if (t_toolChosen == "Rubber")
 					{
-						t_grid.at(m).at(i).setUnmarked();
-						std::cout << m << "---" << i << std::endl;
+						t_grid.at(m).at(i).setUnmarked(enemyOneSpawnsPlaced, enemyTwoSpawnsPlaced, enemyThreeSpawnsPlaced);
 					}
 				}
 				

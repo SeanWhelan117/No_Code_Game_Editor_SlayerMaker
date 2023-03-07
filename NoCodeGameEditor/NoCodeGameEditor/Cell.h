@@ -17,9 +17,9 @@ public:
 	void setPos(sf::Vector2f t_pos);
 	void setupCells();
 	void setID(int t_id);
-	void setMarked(int t_choiceNum);
+	void setMarked(int t_choiceNum, int& t_spawnsOne, int& t_spawnsTwo, int& t_spawnsThree);
 
-	void setUnmarked();
+	void setUnmarked(int& t_spawnsOne, int& t_spawnsTwo, int& t_spawnsThree);
 
 	int getID();
 

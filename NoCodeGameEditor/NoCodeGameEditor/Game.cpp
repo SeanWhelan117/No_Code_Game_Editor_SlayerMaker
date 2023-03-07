@@ -275,6 +275,38 @@ void Game::update(sf::Time t_deltaTime)
 			myTools.wallsPlaced = false;
 			wallVectorCreated = true;
 		}
+		if (myTools.enemySpawnersPlaced == true)
+		{
+
+			for (int i = 0; i < gridSize; i++)
+			{
+				for (int m = 0; m < gridSize; m++)
+				{
+					if (myGrid.theGrid.at(m).at(i).getCellShape().getFillColor() == sf::Color::Magenta)
+					{
+						enemySpawnerVector.push_back(new EnemySpawner(createSpawnerVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 0)));
+						numOfSpawners++;
+
+					}
+					if (myGrid.theGrid.at(m).at(i).getCellShape().getFillColor() == sf::Color::Cyan)
+					{
+						enemySpawnerVector.push_back(new EnemySpawner(createSpawnerVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 1)));
+						numOfSpawners++;
+					}
+					if (myGrid.theGrid.at(m).at(i).getCellShape().getFillColor() == sf::Color::Yellow)
+					{
+						enemySpawnerVector.push_back(new EnemySpawner(createSpawnerVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 2)));
+						numOfSpawners++;
+					}
+				}
+			}
+			for (int i = 0; i < enemySpawnerVector.size(); i++)
+			{
+				enemySpawnerVector.at(i)->loadFiles();
+			}
+			enemySpawnerVectorCreated = true;
+			myTools.enemySpawnersPlaced = false;
+		}
 		myTools.update(t_deltaTime, m_window, myGrid.theGrid, gridSize, myChoice.choiceMade, myChoice.currentChoice);
 		myChoice.update(t_deltaTime, m_window, myTools.currentMode);
 
@@ -307,6 +339,11 @@ void Game::update(sf::Time t_deltaTime)
 			
 			wallVector.clear();
 		}
+
+		if (enemySpawnerVectorCreated == true)
+		{
+			enemySpawnerVector.clear();
+		}
 	}
 
 	if (myState == GameState::testGame)
@@ -327,7 +364,7 @@ void Game::update(sf::Time t_deltaTime)
 	}
 
 	removeWallVector();
-
+	removeEnemySpawnerVector();
 }
 
 /// <summary>
@@ -348,6 +385,14 @@ void Game::render()
 				for (int i = 0; i < wallVector.size(); i++)
 				{
 					wallVector.at(i)->render(m_window);
+				}
+			}
+
+			if (enemySpawnerVectorCreated == true)
+			{
+				for (int i = 0; i < enemySpawnerVector.size(); i++)
+				{
+					enemySpawnerVector.at(i)->render(m_window);
 				}
 			}
 			
@@ -380,6 +425,11 @@ void Game::render()
 		{
 			wallVector.at(i)->render(m_window);
 		}
+
+		for (int i = 0; i < enemySpawnerVector.size(); i++)
+		{
+			enemySpawnerVector.at(i)->render(m_window);
+		}
 		myCrosshair.render(m_window);
 	}
 	m_window.display();
@@ -409,6 +459,13 @@ Wall Game::createWallVector(sf::Vector2f t_wallPos, int t_wallTextNum)
 	return tempWall;
 }
 
+EnemySpawner Game::createSpawnerVector(sf::Vector2f t_spawnerPos, int t_spawnerTextNum)
+{
+	EnemySpawner tempSpawner{ t_spawnerTextNum, t_spawnerPos };
+
+	return tempSpawner;
+}
+
 void Game::removeWallVector()
 {
 	if (wallVectorCreated == true)
@@ -429,12 +486,16 @@ void Game::removeWallVector()
 							delete wallVector.at(i);
 							wallVector.erase(begin);
 						}
-					}
-					
+					}																											
 				}
 			}
 		}
 	}
+}
+
+void Game::removeEnemySpawnerVector()
+{
+
 }
 
 void Game::viewsCreation()

@@ -33,6 +33,7 @@ public:
 	void pulseTriangles();
 	void changeMode(int t_triangleClicked);
 	bool wallsPlaced = false;
+	bool enemySpawnersPlaced = false;
 
 	bool wallPosSaved = false;
 	
@@ -68,6 +69,9 @@ private:
 	sf::RectangleShape saveWallPosButton;
 	sf::RectangleShape testGameButton;
 
+	sf::RectangleShape addEnemySpawnersButton;
+
+
 	sf::Vector2f MousePosReal;
 
 	static const int MAX_NAV_TRIANGLES = 2;
@@ -80,5 +84,9 @@ private:
 	bool scalingUp = true;
 	bool scalingDown = false;
 	bool pulseTheTriangles = true;
+
+	int enemyOneSpawnsPlaced = 0;
+	int enemyTwoSpawnsPlaced = 0;
+	int enemyThreeSpawnsPlaced = 0;
 
 };

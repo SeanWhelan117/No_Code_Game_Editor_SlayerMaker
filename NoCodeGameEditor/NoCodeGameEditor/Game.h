@@ -25,6 +25,7 @@
 #include "Crosshair.h"
 #include "Background.h"
 #include "Enemy.h"
+#include "EnemySpawner.h"
 
 class Game
 {
@@ -58,13 +59,17 @@ public:
 
 	Wall createWallVector(sf::Vector2f t_wallPos, int t_wallTextNum);
 
+	EnemySpawner createSpawnerVector(sf::Vector2f t_spawnerPos, int t_spawnerTextNum);
+
 	void removeWallVector();
+	void removeEnemySpawnerVector();
 
 	void viewsCreation();
 
 	bool changeGridSize = false;
 
 	std::vector<Wall *> wallVector;
+	std::vector<EnemySpawner*> enemySpawnerVector;
 private:
 
 	sf::Vector2f mousePos; // mouses current position
@@ -86,7 +91,11 @@ private:
 
 	int numOfWalls = 0;
 
+	int numOfSpawners = 0;
+
 	bool wallVectorCreated = false;
+
+	bool enemySpawnerVectorCreated = false;
 
 	bool mainViewActive = true;
 

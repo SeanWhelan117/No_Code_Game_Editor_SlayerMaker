@@ -25,6 +25,7 @@
     <ClCompile Include="ChoiceBar.cpp" />
     <ClCompile Include="Crosshair.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="EnemySpawner.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameOptions.cpp" />
     <ClCompile Include="Grid.cpp" />
@@ -41,6 +42,7 @@
     <ClInclude Include="ChoiceBar.h" />
     <ClInclude Include="Crosshair.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="EnemySpawner.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameOptions.h" />
     <ClInclude Include="GameState.h" />

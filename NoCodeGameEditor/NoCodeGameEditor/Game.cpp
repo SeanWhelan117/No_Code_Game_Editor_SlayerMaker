@@ -252,17 +252,19 @@ void Game::update(sf::Time t_deltaTime)
 				{
 					if (myGrid.theGrid.at(m).at(i).getCellShape().getFillColor() == sf::Color::Red)
 					{
+						myGrid.theGrid.at(m).at(i).getCellShape().setFillColor(sf::Color::Black);
 						wallVector.push_back(new Wall(createWallVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 0)));
 						numOfWalls++;
 					}
 					else if (myGrid.theGrid.at(m).at(i).getCellShape().getFillColor() == sf::Color::Green)
 					{
+						myGrid.theGrid.at(m).at(i).getCellShape().setFillColor(sf::Color::Black);
 						wallVector.push_back(new Wall(createWallVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 1)));
-						
 						numOfWalls++;
 					}
 					else if (myGrid.theGrid.at(m).at(i).getCellShape().getFillColor() == sf::Color::Blue)
 					{
+						myGrid.theGrid.at(m).at(i).getCellShape().setFillColor(sf::Color::Black);
 						wallVector.push_back(new Wall(createWallVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 2)));
 						numOfWalls++;
 					}
@@ -284,17 +286,20 @@ void Game::update(sf::Time t_deltaTime)
 				{
 					if (myGrid.theGrid.at(m).at(i).getCellShape().getFillColor() == sf::Color::Magenta)
 					{
+						myGrid.theGrid.at(m).at(i).getCellShape().setFillColor(sf::Color::Black);
 						enemySpawnerVector.push_back(new EnemySpawner(createSpawnerVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 0)));
 						numOfSpawners++;
 
 					}
 					if (myGrid.theGrid.at(m).at(i).getCellShape().getFillColor() == sf::Color::Cyan)
 					{
+						myGrid.theGrid.at(m).at(i).getCellShape().setFillColor(sf::Color::Black);
 						enemySpawnerVector.push_back(new EnemySpawner(createSpawnerVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 1)));
 						numOfSpawners++;
 					}
 					if (myGrid.theGrid.at(m).at(i).getCellShape().getFillColor() == sf::Color::Yellow)
 					{
+						myGrid.theGrid.at(m).at(i).getCellShape().setFillColor(sf::Color::Black);
 						enemySpawnerVector.push_back(new EnemySpawner(createSpawnerVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 2)));
 						numOfSpawners++;
 					}

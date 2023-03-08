@@ -24,6 +24,8 @@ public:
 
 	void moveEnemy();
 
+	sf::Vector2f createRandomStartPos(sf::Vector2f t_spawnerPos);
+
 	sf::Texture enemyTexture;
 	sf::Texture enemyTexture2;
 	sf::Texture enemyTexture3;
@@ -39,5 +41,7 @@ private:
 	sf::Texture currentTexture;
 
 	int timesCalled = 0;
+
+	int randomSpawn = 0;
 };
 

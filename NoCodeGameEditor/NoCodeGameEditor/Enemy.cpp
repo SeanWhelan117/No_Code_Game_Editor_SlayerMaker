@@ -52,6 +52,7 @@ void Enemy::setupEnemy(sf::Vector2f t_pos)
 	enemySprite.setTexture(currentTexture);
 	enemySprite.setOrigin(enemySprite.getGlobalBounds().width / 2, enemySprite.getGlobalBounds().height / 2);
 	enemySprite.setPosition(t_pos.x + 100, t_pos.y + 100);
+	enemySetup = true;
 }
 
 void Enemy::render(sf::RenderWindow& t_window)

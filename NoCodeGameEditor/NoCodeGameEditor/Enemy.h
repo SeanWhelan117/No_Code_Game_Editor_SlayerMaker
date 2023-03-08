@@ -27,6 +27,8 @@ public:
 	sf::Texture enemyTexture;
 	sf::Texture enemyTexture2;
 	sf::Texture enemyTexture3;
+
+	bool enemySetup = false;
 private:
 
 	sf::Sprite enemySprite;

@@ -85,7 +85,10 @@ void EnemySpawner::update()
 	{
 		for (int i = 0; i < enemyVector.size(); i++)
 		{
-			enemyVector.at(i)->setupEnemy(getSpawner().getPosition());
+			if (enemyVector.at(i)->enemySetup == false)
+			{
+				enemyVector.at(i)->setupEnemy(getSpawner().getPosition());
+			}
 			enemyVector.at(i)->update();
 		}
 	}

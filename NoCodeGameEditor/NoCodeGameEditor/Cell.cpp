@@ -87,16 +87,59 @@ void Cell::setMarked(int t_choiceNum, int& t_spawnsOne, int& t_spawnsTwo, int& t
 
 void Cell::setUnmarked(int& t_spawnsOne, int& t_spawnsTwo, int& t_spawnsThree)
 {
-	//WALLS
-	if (type == "wall1" || type == "wall2" || type == "wall3")
+	////WALLS
+	//if (type == "wall1" || type == "wall2" || type == "wall3")
+	//{
+	//	cellShape.setFillColor(sf::Color::Transparent);
+	//	type = "empty";
+	//}
+
+
+	////ENEMIES
+	//if (type == "enemy1")
+	//{
+	//	t_spawnsOne--;
+	//	cellShape.setFillColor(sf::Color::Transparent);
+	//	type = "empty";
+	//}
+	//else if (type == "enemy2")
+	//{
+	//	t_spawnsTwo--;
+	//	cellShape.setFillColor(sf::Color::Transparent);
+	//	type = "empty";
+	//}
+	//else if (type == "enemy3")
+	//{
+	//	t_spawnsThree--;
+	//	cellShape.setFillColor(sf::Color::Transparent);
+	//	type = "empty";
+	//}		
+
+
+	if (type == "filled")
+	{
+		if (cellShape.getFillColor() == sf::Color::Magenta)
+		{
+			t_spawnsOne--;
+		}
+		else if (cellShape.getFillColor() == sf::Color::Cyan)
+		{
+			t_spawnsTwo--;
+		}
+		else if (cellShape.getFillColor() == sf::Color::Yellow)
+		{
+			t_spawnsThree--;
+		}
+
+		cellShape.setFillColor(sf::Color::Transparent);
+		type = "empty";
+	}
+	else if(type == "wall1" || type == "wall2" || type == "wall3")
 	{
 		cellShape.setFillColor(sf::Color::Transparent);
 		type = "empty";
 	}
-
-
-	//ENEMIES
-	if (type == "enemy1")
+	else if (type == "enemy1")
 	{
 		t_spawnsOne--;
 		cellShape.setFillColor(sf::Color::Transparent);
@@ -113,7 +156,7 @@ void Cell::setUnmarked(int& t_spawnsOne, int& t_spawnsTwo, int& t_spawnsThree)
 		t_spawnsThree--;
 		cellShape.setFillColor(sf::Color::Transparent);
 		type = "empty";
-	}		
+	}	
 }
 
 int Cell::getID()

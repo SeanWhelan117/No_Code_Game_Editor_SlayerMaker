@@ -250,19 +250,19 @@ void Game::update(sf::Time t_deltaTime)
 			{
 				for (int m = 0; m < gridSize; m++)
 				{
-					if (myGrid.theGrid.at(m).at(i).getCellShape().getFillColor() == sf::Color::Red)
+					if (myGrid.theGrid.at(m).at(i).getType() == "wall1")
 					{
 						myGrid.theGrid.at(m).at(i).getCellShape().setFillColor(sf::Color::Black);
 						wallVector.push_back(new Wall(createWallVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 0)));
 						numOfWalls++;
 					}
-					else if (myGrid.theGrid.at(m).at(i).getCellShape().getFillColor() == sf::Color::Green)
+					else if (myGrid.theGrid.at(m).at(i).getType() == "wall2")
 					{
 						myGrid.theGrid.at(m).at(i).getCellShape().setFillColor(sf::Color::Black);
 						wallVector.push_back(new Wall(createWallVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 1)));
 						numOfWalls++;
 					}
-					else if (myGrid.theGrid.at(m).at(i).getCellShape().getFillColor() == sf::Color::Blue)
+					else if (myGrid.theGrid.at(m).at(i).getType() == "wall3")
 					{
 						myGrid.theGrid.at(m).at(i).getCellShape().setFillColor(sf::Color::Black);
 						wallVector.push_back(new Wall(createWallVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 2)));
@@ -284,20 +284,20 @@ void Game::update(sf::Time t_deltaTime)
 			{
 				for (int m = 0; m < gridSize; m++)
 				{
-					if (myGrid.theGrid.at(m).at(i).getCellShape().getFillColor() == sf::Color::Magenta)
+					if (myGrid.theGrid.at(m).at(i).getType() == "enemy1")
 					{
 						myGrid.theGrid.at(m).at(i).getCellShape().setFillColor(sf::Color::Black);
 						enemySpawnerVector.push_back(new EnemySpawner(createSpawnerVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 0)));
 						numOfSpawners++;
 
 					}
-					if (myGrid.theGrid.at(m).at(i).getCellShape().getFillColor() == sf::Color::Cyan)
+					if (myGrid.theGrid.at(m).at(i).getType() == "enemy2")
 					{
 						myGrid.theGrid.at(m).at(i).getCellShape().setFillColor(sf::Color::Black);
 						enemySpawnerVector.push_back(new EnemySpawner(createSpawnerVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 1)));
 						numOfSpawners++;
 					}
-					if (myGrid.theGrid.at(m).at(i).getCellShape().getFillColor() == sf::Color::Yellow)
+					if (myGrid.theGrid.at(m).at(i).getType() == "enemy3")
 					{
 						myGrid.theGrid.at(m).at(i).getCellShape().setFillColor(sf::Color::Black);
 						enemySpawnerVector.push_back(new EnemySpawner(createSpawnerVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 2)));

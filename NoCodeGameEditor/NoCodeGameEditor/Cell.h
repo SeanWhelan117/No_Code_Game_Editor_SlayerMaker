@@ -23,10 +23,14 @@ public:
 
 	int getID();
 
+	std::string getType();
+
 
 	int xPos;
 	int yPos;
 	sf::RectangleShape& getCellShape();
+
+	std::string type = "empty";
 
 private:
 	sf::RectangleShape cellShape;

@@ -41,20 +41,26 @@ void Cell::setMarked(int t_choiceNum, int& t_spawnsOne, int& t_spawnsTwo, int& t
 		if (t_choiceNum == 0)
 		{
 			cellShape.setFillColor(sf::Color::Red); // ----WALLS----
+			type = "wall1";
 		}
 		else if (t_choiceNum == 1)
 		{
 			cellShape.setFillColor(sf::Color::Green);
+			type = "wall2";
+
 		}
 		else if (t_choiceNum == 2)
 		{
 			cellShape.setFillColor(sf::Color::Blue);
+			type = "wall3";
+
 		}
 		else if (t_choiceNum == 3)
 		{
 			if (t_spawnsOne < 3)
 			{
 				cellShape.setFillColor(sf::Color::Magenta); // ----ENEMIES----
+				type = "enemy1";
 				t_spawnsOne++;
 			}
 		}
@@ -63,6 +69,7 @@ void Cell::setMarked(int t_choiceNum, int& t_spawnsOne, int& t_spawnsTwo, int& t
 			if (t_spawnsTwo < 3)
 			{
 				cellShape.setFillColor(sf::Color::Cyan);
+				type = "enemy2";
 				t_spawnsTwo++;
 			}
 		}
@@ -71,6 +78,7 @@ void Cell::setMarked(int t_choiceNum, int& t_spawnsOne, int& t_spawnsTwo, int& t
 			if (t_spawnsThree < 3)
 			{
 				cellShape.setFillColor(sf::Color::Yellow);
+				type = "enemy3";
 				t_spawnsThree++;
 			}
 		}
@@ -79,27 +87,32 @@ void Cell::setMarked(int t_choiceNum, int& t_spawnsOne, int& t_spawnsTwo, int& t
 
 void Cell::setUnmarked(int& t_spawnsOne, int& t_spawnsTwo, int& t_spawnsThree)
 {
-	if (cellShape.getFillColor() == sf::Color::Red ||
-		cellShape.getFillColor() == sf::Color::Green ||
-		cellShape.getFillColor() == sf::Color::Blue)
+	//WALLS
+	if (type == "wall1" || type == "wall2" || type == "wall3")
 	{
 		cellShape.setFillColor(sf::Color::Transparent);
+		type = "empty";
 	}
 
-	if (cellShape.getFillColor() == sf::Color::Magenta)
+
+	//ENEMIES
+	if (type == "enemy1")
 	{
 		t_spawnsOne--;
 		cellShape.setFillColor(sf::Color::Transparent);
+		type = "empty";
 	}
-	else if (cellShape.getFillColor() == sf::Color::Cyan)
+	else if (type == "enemy2")
 	{
 		t_spawnsTwo--;
 		cellShape.setFillColor(sf::Color::Transparent);
+		type = "empty";
 	}
-	else if (cellShape.getFillColor() == sf::Color::Yellow)
+	else if (type == "enemy3")
 	{
 		t_spawnsThree--;
 		cellShape.setFillColor(sf::Color::Transparent);
+		type = "empty";
 	}		
 }
 
@@ -107,4 +120,9 @@ int Cell::getID()
 {
 
 	return cellID;
+}
+
+std::string Cell::getType()
+{
+	return type;
 }

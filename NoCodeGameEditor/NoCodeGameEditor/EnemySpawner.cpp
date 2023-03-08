@@ -2,7 +2,7 @@
 
 EnemySpawner::EnemySpawner(int t_spawnerTextNum, sf::Vector2f t_spawnerPos)
 {
-	std::cout << "EnemySpawner Created" << std::endl;
+	//std::cout << "EnemySpawner Created" << std::endl;
 	spawnerTextureNumber = t_spawnerTextNum;
 	loadFiles();
 	setupSpawner(t_spawnerPos);

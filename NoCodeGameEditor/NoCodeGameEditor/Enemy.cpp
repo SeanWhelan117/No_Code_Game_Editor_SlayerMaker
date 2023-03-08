@@ -4,7 +4,7 @@ Enemy::Enemy(int t_EnemyTextNum)
 {
 	enemyTextureNumber = t_EnemyTextNum;
 	loadFiles();
-	std::cout << "Enemy Created" << std::endl;
+	//std::cout << "Enemy Created" << std::endl;
 }
 
 void Enemy::loadFiles()

@@ -54,16 +54,40 @@ void EnemySpawner::setupSpawner(sf::Vector2f t_pos)
 void EnemySpawner::render(sf::RenderWindow& t_window)
 {
 	t_window.draw(spawnerSprite);
+
+	if (enemyVector.size() > 0)
+	{
+		for (int i = 0; i < enemyVector.size(); i++)
+		{
+			t_window.draw(enemyVector.at(i)->getEnemy());
+		}
+	}
+
 }
 
 void EnemySpawner::update()
 {
 	test++;
+	//std::cout << totalEnemies << std::endl;
 
-	if (test >= 50)
+	if (test >= 100 )
 	{
 		test = 0;
-		EnemyVector.push_back(new Enemy(addToEnemyVector()));
+		if (totalEnemies < MAX_ENEMIES)
+		{
+			enemyVector.push_back(new Enemy(createEnemy()));
+			totalEnemies++;
+		}
+		
+	}
+
+	if (enemyVector.size() > 0)
+	{
+		for (int i = 0; i < enemyVector.size(); i++)
+		{
+			enemyVector.at(i)->setupEnemy(getSpawner().getPosition());
+			enemyVector.at(i)->update();
+		}
 	}
 }
 
@@ -72,7 +96,9 @@ sf::Sprite& EnemySpawner::getSpawner()
 	return spawnerSprite;
 }
 
-Enemy EnemySpawner::addToEnemyVector()
+Enemy EnemySpawner::createEnemy()
 {
+	Enemy tempEnemy{ spawnerTextureNumber };
 
+	return tempEnemy;
 }

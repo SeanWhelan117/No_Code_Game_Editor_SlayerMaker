@@ -8,10 +8,9 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
-
 class Enemy
 {
-
+public:
 	Enemy(int t_enemyTextNum);
 
 	void loadFiles();
@@ -20,8 +19,10 @@ class Enemy
 
 	void render(sf::RenderWindow& t_window);
 
-
+	void update();
 	sf::Sprite& getEnemy();
+
+	void moveEnemy();
 
 	sf::Texture enemyTexture;
 	sf::Texture enemyTexture2;
@@ -33,5 +34,8 @@ private:
 	int offset = 15;
 
 	int enemyTextureNumber = 0;
+	sf::Texture currentTexture;
+
+	int timesCalled = 0;
 };
 

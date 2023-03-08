@@ -23,25 +23,29 @@ public:
 
 	void update();
 
-	Enemy EnemySpawner::addToEnemyVector();
-
-
 	sf::Sprite& getSpawner();
+
+	Enemy createEnemy();
 
 	sf::Texture spawnerTexture;
 	sf::Texture spawnerTexture2;
 	sf::Texture spawnerTexture3;
 
-	std::vector<Enemy*> EnemyVector;
+	std::vector<Enemy*> enemyVector;
+
+	int spawnerTextureNumber = 0;
 private:
 
 	sf::Sprite spawnerSprite;
 
 	int offset = 15;
 
-	int spawnerTextureNumber = 0;
 
 	int test = 0;
+
+	int totalEnemies = 0;
+	static const int MAX_ENEMIES = 10;
+	int timesCalled = 0;
 
 };
 

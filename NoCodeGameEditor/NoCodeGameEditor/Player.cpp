@@ -53,7 +53,7 @@ void Player::update(sf::RenderWindow& t_window)
 		}
 	}
 
-	std::cout << bulletVector.size() << std::endl;
+	//std::cout << bulletVector.size() << std::endl;
 	
 }
 

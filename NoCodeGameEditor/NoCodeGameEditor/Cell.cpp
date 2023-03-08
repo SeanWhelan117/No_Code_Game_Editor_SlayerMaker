@@ -36,7 +36,7 @@ sf::RectangleShape& Cell::getCellShape()
 
 void Cell::setMarked(int t_choiceNum, int& t_spawnsOne, int& t_spawnsTwo, int& t_spawnsThree)
 {
-	if (cellShape.getFillColor() == sf::Color::Transparent)
+	if (cellShape.getFillColor() == sf::Color::Transparent && type == "empty")
 	{
 		if (t_choiceNum == 0)
 		{
@@ -125,4 +125,9 @@ int Cell::getID()
 std::string Cell::getType()
 {
 	return type;
+}
+
+void Cell::getType(std::string t_newType)
+{
+	type = t_newType;
 }

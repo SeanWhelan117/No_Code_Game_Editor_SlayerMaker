@@ -66,10 +66,9 @@ void EnemySpawner::render(sf::RenderWindow& t_window)
 
 }
 
-void EnemySpawner::update()
+void EnemySpawner::update(sf::Vector2f t_playerPos)
 {
 	test++;
-	//std::cout << totalEnemies << std::endl;
 
 	if (test >= 100 )
 	{
@@ -91,7 +90,7 @@ void EnemySpawner::update()
 				timesCalled++;
 				enemyVector.at(i)->setupEnemy(getSpawner().getPosition());
 			}
-			enemyVector.at(i)->update();
+			enemyVector.at(i)->update(t_playerPos);
 		}
 	}
 }

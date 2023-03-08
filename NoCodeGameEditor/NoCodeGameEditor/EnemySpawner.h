@@ -21,7 +21,7 @@ public:
 
 	void render(sf::RenderWindow& t_window);
 
-	void update();
+	void update(sf::Vector2f t_playerPos);
 
 	sf::Sprite& getSpawner();
 

@@ -54,6 +54,7 @@ void Enemy::setupEnemy(sf::Vector2f t_pos)
 	enemySprite.setTexture(currentTexture);
 	enemySprite.setOrigin(enemySprite.getGlobalBounds().width / 2, enemySprite.getGlobalBounds().height / 2);
 	enemySprite.setPosition(createRandomStartPos(t_pos));
+	speed = createRandomSpeed();
 }
 
 void Enemy::render(sf::RenderWindow& t_window)
@@ -61,9 +62,9 @@ void Enemy::render(sf::RenderWindow& t_window)
 	t_window.draw(enemySprite);
 }
 
-void Enemy::update()
+void Enemy::update(sf::Vector2f t_playerPos)
 {
-	moveEnemy();
+	moveEnemy(t_playerPos);
 }
 
 sf::Sprite& Enemy::getEnemy()
@@ -71,19 +72,30 @@ sf::Sprite& Enemy::getEnemy()
 	return enemySprite;
 }
 
-void Enemy::moveEnemy()
+void Enemy::moveEnemy(sf::Vector2f t_playerPos)
 {
 
-	sf::Vector2f currentPos = getEnemy().getPosition();
+	sf::Vector2f currentPos = enemySprite.getPosition();
 
+	if (currentPos.x < t_playerPos.x)
+	{
+		currentPos.x += speed;
+	}
+	else if (currentPos.x > t_playerPos.x)
+	{
+		currentPos.x -= speed;
+	}
+
+	if (currentPos.y < t_playerPos.y)
+	{
+		currentPos.y += speed;
+	}
+	else if (currentPos.y > t_playerPos.y)
+	{
+		currentPos.y -= speed;
+	}
 	
-	currentPos.y += 1;
-	currentPos.x += 1;
-
-	//move(speedX, speedY);
-
-	//player.setPosition(position);
-	getEnemy().setPosition(currentPos);
+	enemySprite.setPosition(currentPos);
 }
 
 sf::Vector2f Enemy::createRandomStartPos(sf::Vector2f t_spawnerPos)
@@ -114,4 +126,13 @@ sf::Vector2f Enemy::createRandomStartPos(sf::Vector2f t_spawnerPos)
 	}
 
 	return spawnPos;
+}
+
+float Enemy::createRandomSpeed()
+{
+	float tempSpeed = 1.5f + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (4.5f - 1.5f)));
+
+	std::cout << tempSpeed << std::endl;
+
+	return tempSpeed;
 }

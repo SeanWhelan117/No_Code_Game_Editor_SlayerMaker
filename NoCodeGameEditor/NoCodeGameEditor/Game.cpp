@@ -252,19 +252,19 @@ void Game::update(sf::Time t_deltaTime)
 				{
 					if (myGrid.theGrid.at(m).at(i).getType() == "wall1")
 					{
-						myGrid.theGrid.at(m).at(i).getCellShape().setFillColor(sf::Color::Black);
+						myGrid.theGrid.at(m).at(i).getType("filled");
 						wallVector.push_back(new Wall(createWallVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 0)));
 						numOfWalls++;
 					}
 					else if (myGrid.theGrid.at(m).at(i).getType() == "wall2")
 					{
-						myGrid.theGrid.at(m).at(i).getCellShape().setFillColor(sf::Color::Black);
+						myGrid.theGrid.at(m).at(i).getType("filled");
 						wallVector.push_back(new Wall(createWallVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 1)));
 						numOfWalls++;
 					}
 					else if (myGrid.theGrid.at(m).at(i).getType() == "wall3")
 					{
-						myGrid.theGrid.at(m).at(i).getCellShape().setFillColor(sf::Color::Black);
+						myGrid.theGrid.at(m).at(i).getType("filled");
 						wallVector.push_back(new Wall(createWallVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 2)));
 						numOfWalls++;
 					}
@@ -286,20 +286,20 @@ void Game::update(sf::Time t_deltaTime)
 				{
 					if (myGrid.theGrid.at(m).at(i).getType() == "enemy1")
 					{
-						myGrid.theGrid.at(m).at(i).getCellShape().setFillColor(sf::Color::Black);
+						myGrid.theGrid.at(m).at(i).getType("filled");
 						enemySpawnerVector.push_back(new EnemySpawner(createSpawnerVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 0)));
 						numOfSpawners++;
 
 					}
 					if (myGrid.theGrid.at(m).at(i).getType() == "enemy2")
 					{
-						myGrid.theGrid.at(m).at(i).getCellShape().setFillColor(sf::Color::Black);
+						myGrid.theGrid.at(m).at(i).getType("filled");
 						enemySpawnerVector.push_back(new EnemySpawner(createSpawnerVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 1)));
 						numOfSpawners++;
 					}
 					if (myGrid.theGrid.at(m).at(i).getType() == "enemy3")
 					{
-						myGrid.theGrid.at(m).at(i).getCellShape().setFillColor(sf::Color::Black);
+						myGrid.theGrid.at(m).at(i).getType("filled");
 						enemySpawnerVector.push_back(new EnemySpawner(createSpawnerVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 2)));
 						numOfSpawners++;
 					}
@@ -363,7 +363,7 @@ void Game::update(sf::Time t_deltaTime)
 		{
 			for (int i = 0; i < enemySpawnerVector.size(); i++)
 			{
-				enemySpawnerVector.at(i)->update();
+				enemySpawnerVector.at(i)->update(myPlayer.getPlayer().getPosition());
 			}
 		}
 

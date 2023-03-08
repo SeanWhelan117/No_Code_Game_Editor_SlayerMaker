@@ -25,6 +25,8 @@ public:
 
 	std::string getType();
 
+	void getType(std::string t_newType);
+
 
 	int xPos;
 	int yPos;

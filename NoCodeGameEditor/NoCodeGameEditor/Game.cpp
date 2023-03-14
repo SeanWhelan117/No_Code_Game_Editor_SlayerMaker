@@ -564,6 +564,7 @@ void Game::saveDataToCSV()
 {
 	std::ofstream myFile;
 	myFile.open(".\\ASSETS\\GAMEDATA\\" + gameOptions.gameName + ".csv");
+	myFile << "WALLS,\n";
 	myFile << "X,Y,Type,\n";
 	//myfile << "a,b,c,\n";
 	
@@ -579,6 +580,8 @@ void Game::saveDataToCSV()
 
 	myFile << "\n";
 	myFile << "\n";
+	myFile << "SPAWNERS,\n";
+	myFile << "X,Y,Type,\n";
 
 	for (int i = 0; i < enemySpawnerVector.size(); i++)
 	{

@@ -35,7 +35,7 @@ public:
 	bool wallsPlaced = false;
 	bool enemySpawnersPlaced = false;
 
-	bool wallPosSaved = false;
+	bool saved = false;
 	
 	bool testingGame = false;
 
@@ -66,7 +66,7 @@ private:
 
 
 	sf::RectangleShape addWallsButton;
-	sf::RectangleShape saveWallPosButton;
+	sf::RectangleShape saveButton;
 	sf::RectangleShape testGameButton;
 
 	sf::RectangleShape addEnemySpawnersButton;

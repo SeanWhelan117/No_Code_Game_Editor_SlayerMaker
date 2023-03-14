@@ -226,6 +226,9 @@ void Game::update(sf::Time t_deltaTime)
 		m_window.setMouseCursorVisible(true);
 	}
 
+	//CREATE GAME CREATE GAME CREATE GAME CREATE GAME CREATE GAME CREATE GAME CREATE GAME CREATE GAME CREATE GAME
+	//CREATE GAME CREATE GAME CREATE GAME CREATE GAME CREATE GAME CREATE GAME CREATE GAME CREATE GAME CREATE GAME 
+	//CREATE GAME CREATE GAME CREATE GAME CREATE GAME CREATE GAME CREATE GAME CREATE GAME CREATE GAME CREATE GAME 
 	if (myState == GameState::createGame)
 	{
 		
@@ -277,6 +280,7 @@ void Game::update(sf::Time t_deltaTime)
 			myTools.wallsPlaced = false;
 			wallVectorCreated = true;
 		}
+
 		if (myTools.enemySpawnersPlaced == true)
 		{
 
@@ -315,6 +319,10 @@ void Game::update(sf::Time t_deltaTime)
 		myTools.update(t_deltaTime, m_window, myGrid.theGrid, gridSize, myChoice.choiceMade, myChoice.currentChoice);
 		myChoice.update(t_deltaTime, m_window, myTools.currentMode);
 
+		if (enemySpawnerVectorCreated && wallVectorCreated && myTools.saved)
+		{
+			saveDataToCSV();
+		}
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::LAlt))
 		{
@@ -326,6 +334,10 @@ void Game::update(sf::Time t_deltaTime)
 		}
 	}
 
+	//MAINMENU MAINMENU MAINMENU MAINMENU MAINMENU MAINMENU MAINMENU MAINMENU MAINMENU MAINMENU MAINMENU MAINMENU 
+	//MAINMENU MAINMENU MAINMENU MAINMENU MAINMENU MAINMENU MAINMENU MAINMENU MAINMENU MAINMENU MAINMENU MAINMENU 
+	//MAINMENU MAINMENU MAINMENU MAINMENU MAINMENU MAINMENU MAINMENU MAINMENU MAINMENU MAINMENU MAINMENU MAINMENU 
+
 	if (myState == GameState::mainmenu)
 	{
 		gridCreated = false;
@@ -333,6 +345,10 @@ void Game::update(sf::Time t_deltaTime)
 
 	}
 	
+	//GAME OPTIONS GAME OPTIONS GAME OPTIONS GAME OPTIONS GAME OPTIONS GAME OPTIONS GAME OPTIONS GAME OPTIONS 
+	//GAME OPTIONS GAME OPTIONS GAME OPTIONS GAME OPTIONS GAME OPTIONS GAME OPTIONS GAME OPTIONS GAME OPTIONS 
+	//GAME OPTIONS GAME OPTIONS GAME OPTIONS GAME OPTIONS GAME OPTIONS GAME OPTIONS GAME OPTIONS GAME OPTIONS 
+
 	if (myState == GameState::gameOptions)
 	{
 		gridCreated = false;
@@ -350,6 +366,10 @@ void Game::update(sf::Time t_deltaTime)
 			enemySpawnerVector.clear();
 		}
 	}
+
+	//TEST GAME TEST GAME TEST GAME TEST GAME TEST GAME TEST GAME TEST GAME TEST GAME TEST GAME TEST GAME TEST GAME
+	//TEST GAME TEST GAME TEST GAME TEST GAME TEST GAME TEST GAME TEST GAME TEST GAME TEST GAME TEST GAME TEST GAME
+	//TEST GAME TEST GAME TEST GAME TEST GAME TEST GAME TEST GAME TEST GAME TEST GAME TEST GAME TEST GAME TEST GAME
 
 	if (myState == GameState::testGame)
 	{
@@ -538,4 +558,16 @@ void Game::viewsCreation()
 {
 	mainView.reset(sf::FloatRect(0,0, gameWidth, gameHeight ));
 	testView.reset(sf::FloatRect(100,100, gameWidth * 0.3, gameHeight * 0.3));
+}
+
+void Game::saveDataToCSV()
+{
+	std::ofstream myfile;
+	myfile.open(".\\ASSETS\\GAMEDATA\\" + gameOptions.gameName + ".csv");
+	myfile << "This is the first cell in the first column.\n";
+	myfile << "a,b,c,\n";
+	myfile << "c,s,v,\n";
+	myfile << "1,2,3.456\n";
+	myfile << "semi;colon";
+	myfile.close();
 }

@@ -12,6 +12,7 @@
 /// </summary>
 #include <SFML/Graphics.hpp>
 #include <vector>
+#include <fstream>
 
 #include "Grid.h"
 #include "Cell.h"
@@ -64,6 +65,8 @@ public:
 	void removeEnemySpawnerVector();
 
 	void viewsCreation();
+
+	void saveDataToCSV();
 
 	bool changeGridSize = false;
 

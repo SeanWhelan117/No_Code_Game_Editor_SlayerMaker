@@ -237,7 +237,10 @@ void GameOptions::checkForMousePos(GameState& t_gameState)
 		continueButton.setScale(1.25, 1.25);
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
-			t_gameState = GameState::createGame;
+			if (gameName != "")
+			{
+				t_gameState = GameState::createGame;
+			}
 		}
 	}
 	else

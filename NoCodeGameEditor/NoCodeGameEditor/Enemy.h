@@ -7,10 +7,12 @@
 #pragma once
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include "Animator.h"
 
 class Enemy
 {
 public:
+	Animator myAnim;
 	Enemy(int t_enemyTextNum);
 
 	void loadFiles();

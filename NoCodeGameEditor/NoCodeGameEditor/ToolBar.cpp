@@ -293,7 +293,6 @@ void ToolBar::setGridCellToMarked(std::vector<std::vector<Cell>>& t_grid, int t_
 						t_grid.at(m).at(i).setUnmarked(enemyOneSpawnsPlaced, enemyTwoSpawnsPlaced, enemyThreeSpawnsPlaced);
 					}
 				}
-				
 			}
 		}
 	}

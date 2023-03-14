@@ -12,7 +12,7 @@ void Enemy::loadFiles()
 	if (!enemyTexture.loadFromFile("ASSETS\\IMAGES\\ENEMIES\\ENEMY1\\Enemy1-choice.png"))
 	{
 		// simple error message if previous call fails
-		std::cout << "problem loading enemyTexture (Enemy1-choice)" << std::endl;
+		std::cout << "problem loading enemyTexture (Enemy1-Walking)" << std::endl;
 	}
 
 	if (!enemyTexture2.loadFromFile("ASSETS\\IMAGES\\ENEMIES\\ENEMY2\\Enemy2-choice.png"))
@@ -132,7 +132,7 @@ float Enemy::createRandomSpeed()
 {
 	float tempSpeed = 1.5f + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (4.5f - 1.5f)));
 
-	std::cout << tempSpeed << std::endl;
+	//std::cout << tempSpeed << std::endl;
 
 	return tempSpeed;
 }

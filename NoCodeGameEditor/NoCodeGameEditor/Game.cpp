@@ -19,6 +19,14 @@ Game::Game() :
 	m_exitGame{false} //when true game will exit
 {
 	viewsCreation();
+	//if (__cplusplus == 202101L) std::cout << "C++23";
+	//else if (__cplusplus == 202002L) std::cout << "C++20";
+	//else if (__cplusplus == 201703L) std::cout << "C++17";
+	//else if (__cplusplus == 201402L) std::cout << "C++14";
+	//else if (__cplusplus == 201103L) std::cout << "C++11";
+	//else if (__cplusplus == 199711L) std::cout << "C++98";
+	//else std::cout << "pre-standard C++." << __cplusplus;
+	//std::cout << "\n";
 }
 
 /// <summary>
@@ -389,6 +397,15 @@ void Game::update(sf::Time t_deltaTime)
 
 		m_window.setView(testView);
 	}
+
+	//CHOOSE GAME CHOOSE GAME CHOOSE GAME CHOOSE GAME CHOOSE GAME CHOOSE GAME CHOOSE GAME CHOOSE GAME CHOOSE GAME CHOOSE GAME
+	//CHOOSE GAME CHOOSE GAME CHOOSE GAME CHOOSE GAME CHOOSE GAME CHOOSE GAME CHOOSE GAME CHOOSE GAME CHOOSE GAME CHOOSE GAME 
+	//CHOOSE GAME CHOOSE GAME CHOOSE GAME CHOOSE GAME CHOOSE GAME CHOOSE GAME CHOOSE GAME CHOOSE GAME CHOOSE GAME CHOOSE GAME 
+
+	if (myState == GameState::chooseGame)
+	{
+		gameChoice.update(t_deltaTime, m_window);
+	}
 	
 	if (myTools.testingGame == true)
 	{
@@ -465,6 +482,11 @@ void Game::render()
 			enemySpawnerVector.at(i)->render(m_window);
 		}
 		myCrosshair.render(m_window);
+	}
+
+	if (myState == GameState::chooseGame)
+	{
+		gameChoice.render(m_window);
 	}
 	m_window.display();
 }

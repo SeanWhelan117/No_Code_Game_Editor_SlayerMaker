@@ -26,6 +26,7 @@
 #include "Crosshair.h"
 #include "Background.h"
 #include "EnemySpawner.h"
+#include "ChooseGame.h"
 
 class Game
 {
@@ -45,6 +46,7 @@ public:
 	ChoiceBar myChoice{ gameWidth, gameHeight };
 	Crosshair myCrosshair;
 	Background myBackground{gameWidth, gameHeight};
+	ChooseGame gameChoice{ gameWidth, gameHeight };
 
 	sf::View mainView;
 	sf::View testView;

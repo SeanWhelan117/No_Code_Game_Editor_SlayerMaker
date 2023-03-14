@@ -562,12 +562,37 @@ void Game::viewsCreation()
 
 void Game::saveDataToCSV()
 {
-	std::ofstream myfile;
-	myfile.open(".\\ASSETS\\GAMEDATA\\" + gameOptions.gameName + ".csv");
-	myfile << "This is the first cell in the first column.\n";
-	myfile << "a,b,c,\n";
-	myfile << "c,s,v,\n";
-	myfile << "1,2,3.456\n";
-	myfile << "semi;colon";
-	myfile.close();
+	std::ofstream myFile;
+	myFile.open(".\\ASSETS\\GAMEDATA\\" + gameOptions.gameName + ".csv");
+	myFile << "X,Y,Type,\n";
+	//myfile << "a,b,c,\n";
+	
+	for (int i = 0; i < wallVector.size(); i++)
+	{
+		myFile << static_cast<int>(wallVector.at(i)->getWall().getPosition().x);
+		myFile << ",";
+		myFile << static_cast<int>(wallVector.at(i)->getWall().getPosition().y);
+		myFile << ",";
+		myFile << wallVector.at(i)->wallTextureNumber;
+		myFile << "\n";
+	}
+
+	myFile << "\n";
+	myFile << "\n";
+
+	for (int i = 0; i < enemySpawnerVector.size(); i++)
+	{
+		myFile << static_cast<int>(enemySpawnerVector.at(i)->getSpawner().getPosition().x);
+		myFile << ",";
+		myFile << static_cast<int>(enemySpawnerVector.at(i)->getSpawner().getPosition().y);
+		myFile << ",";
+		myFile << enemySpawnerVector.at(i)->spawnerTextureNumber;
+		myFile << "\n";
+	}
+	
+	
+	//myfile << "c,s,v,\n";
+	//myfile << "1,2,3.456\n";
+	//myfile << "semi;colon";
+	myFile.close();
 }

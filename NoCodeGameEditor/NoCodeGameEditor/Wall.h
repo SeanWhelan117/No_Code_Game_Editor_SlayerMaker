@@ -27,12 +27,12 @@ public:
 	sf::Texture wallTexture;
 	sf::Texture wallTexture2;
 	sf::Texture wallTexture3;
+	int wallTextureNumber = 0;
 private:
 
 	sf::Sprite wallSprite;
 
 	int offset = 15;
 
-	int wallTextureNumber = 0;
 };
 

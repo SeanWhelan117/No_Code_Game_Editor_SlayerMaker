@@ -14,10 +14,14 @@ void ChooseGame::findFiles()
 
 	for (auto& p : std::filesystem::directory_iterator(p1))
 	{
+		//std::cout << p.path() << std::endl;
+		gameNames.push_back(p.path().string());
 		++fileCount;
 	}
 
 	std::cout << "# of files in " << p1 << ": " << fileCount << '\n';
+
+	
 }
 
 void ChooseGame::setupSprites()
@@ -43,6 +47,11 @@ void ChooseGame::setupSprites()
 		games.push_back(testRect);
 	}
 
+	for (int i = 0; i < gameNames.size(); i++)
+	{
+		std::cout << gameNames.at(i) << std::endl;
+	}
+	
 	levelRectsCreated = true;
 }
 

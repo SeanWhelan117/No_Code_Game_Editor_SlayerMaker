@@ -31,5 +31,6 @@ private:
 	sf::Vector2f initialPos = { 100, 100 };
 
 	bool levelRectsCreated = false;
+	std::vector <std::string> gameNames;
 };
 

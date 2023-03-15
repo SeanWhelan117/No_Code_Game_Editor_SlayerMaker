@@ -102,6 +102,8 @@ void ChooseGame::update(sf::Time t_deltaTime, sf::RenderWindow& t_window)
 	mousePos = t_window.mapPixelToCoords(sf::Mouse::getPosition(t_window));
 
 	checkForMousePos();
+
+	loader.update(t_deltaTime);
 }
 
 void ChooseGame::render(sf::RenderWindow& t_window)
@@ -125,7 +127,8 @@ void ChooseGame::checkForMousePos()
 		{
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 			{
-				
+				std::cout << gameNames.at(i) << std::endl;
+				loader.loadFile(gameNames.at(i));
 			}
 		}
 	}

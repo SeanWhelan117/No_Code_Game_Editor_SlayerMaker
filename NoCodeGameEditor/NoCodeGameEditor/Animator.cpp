@@ -2,7 +2,7 @@
 
 Animator::Animator()
 {
-    std::cout << "Animator ready" << std::endl;
+   // std::cout << "Animator ready" << std::endl;
 }
 
 sf::IntRect Animator::animate(sf::Texture t_texture, int t_numOfFrames, int t_frameWidth, int t_frameHeight, int t_cols, int t_rows, int t_time)

@@ -8,6 +8,8 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <fstream>
+#include <string>
+#include <sstream>
 
 class LoadFromFile
 {
@@ -15,6 +17,11 @@ public:
 	LoadFromFile();
 
 	void loadFile(std::string t_gameName);
+
+	void update(sf::Time t_deltaTime);
 private:
+
+	bool dataRead = false;
+	std::vector<std::string> gameData;
 };
 

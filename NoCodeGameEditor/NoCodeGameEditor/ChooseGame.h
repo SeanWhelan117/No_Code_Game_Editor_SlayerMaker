@@ -8,11 +8,13 @@
 #include <SFML/Graphics.hpp>
 #include <filesystem>
 #include <fstream>
+#include "LoadFromFile.h"
 
 class ChooseGame
 {
 public:
 	ChooseGame(float t_gameWidth, float t_gameHeight);
+	LoadFromFile loader;
 
 	void loadFont();
 

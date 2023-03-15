@@ -120,6 +120,10 @@ void Game::processKeys(sf::Event t_event)
 		else if (myState == GameState::createGame)
 		{
 			myState = GameState::gameOptions;
+			myTools.enemyOneSpawnsPlaced = 0;
+			myTools.enemyTwoSpawnsPlaced = 0;
+			myTools.enemyThreeSpawnsPlaced = 0;
+
 		}
 		else if (myState == GameState::chooseGame)
 		{
@@ -445,7 +449,7 @@ void Game::render()
 			{
 				for (int i = 0; i < enemySpawnerVector.size(); i++)
 				{
-					enemySpawnerVector.at(i)->render(m_window);
+					enemySpawnerVector.at(i)->render(m_window, "create");
 				}
 			}
 			
@@ -481,7 +485,7 @@ void Game::render()
 
 		for (int i = 0; i < enemySpawnerVector.size(); i++)
 		{
-			enemySpawnerVector.at(i)->render(m_window);
+			enemySpawnerVector.at(i)->render(m_window, "test");
 		}
 		myCrosshair.render(m_window);
 	}

@@ -19,7 +19,7 @@ public:
 
 	void setupSpawner(sf::Vector2f t_pos);
 
-	void render(sf::RenderWindow& t_window);
+	void render(sf::RenderWindow& t_window, std::string t_state);
 
 	void update(sf::Vector2f t_playerPos);
 

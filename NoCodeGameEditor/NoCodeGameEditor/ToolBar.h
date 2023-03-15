@@ -46,6 +46,10 @@ public:
 
 	std::string currentMode = "WALLS";
 
+	int enemyOneSpawnsPlaced = 0;
+	int enemyTwoSpawnsPlaced = 0;
+	int enemyThreeSpawnsPlaced = 0;
+
 private:
 
 	sf::Texture toolBarTexture;
@@ -85,8 +89,6 @@ private:
 	bool scalingDown = false;
 	bool pulseTheTriangles = true;
 
-	int enemyOneSpawnsPlaced = 0;
-	int enemyTwoSpawnsPlaced = 0;
-	int enemyThreeSpawnsPlaced = 0;
+
 
 };

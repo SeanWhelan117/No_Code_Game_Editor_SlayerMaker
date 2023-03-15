@@ -52,18 +52,20 @@ void EnemySpawner::setupSpawner(sf::Vector2f t_pos)
 
 }
 
-void EnemySpawner::render(sf::RenderWindow& t_window)
+void EnemySpawner::render(sf::RenderWindow& t_window, std::string t_state)
 {
 	t_window.draw(spawnerSprite);
 
-	if (enemyVector.size() > 0)
+	if (t_state == "test")
 	{
-		for (int i = 0; i < enemyVector.size(); i++)
+		if (enemyVector.size() > 0)
 		{
-			t_window.draw(enemyVector.at(i)->getEnemy());
+			for (int i = 0; i < enemyVector.size(); i++)
+			{
+				t_window.draw(enemyVector.at(i)->getEnemy());
+			}
 		}
 	}
-
 }
 
 void EnemySpawner::update(sf::Vector2f t_playerPos)

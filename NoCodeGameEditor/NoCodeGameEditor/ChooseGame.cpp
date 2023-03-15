@@ -4,8 +4,18 @@ ChooseGame::ChooseGame(float t_gameWidth, float t_gameHeight)
 {
 	gameWidth = t_gameWidth;
 	gameHeight = t_gameHeight;
+	loadFont();
 	findFiles();
 	setupSprites();
+	setupNames();
+}
+
+void ChooseGame::loadFont()
+{
+	if (!font.loadFromFile("./ASSETS/FONTS/NewYork.ttf"))
+	{
+		std::cout << "Error loading font..." << std::endl;
+	}
 }
 
 void ChooseGame::findFiles()
@@ -15,7 +25,14 @@ void ChooseGame::findFiles()
 	for (auto& p : std::filesystem::directory_iterator(p1))
 	{
 		//std::cout << p.path() << std::endl;
-		gameNames.push_back(p.path().string());
+		std::string tempString = p.path().string();
+		tempString.erase(0, 18);
+		for (int i = 0; i < 4; i++)
+		{
+			tempString.pop_back();
+		}
+		
+		gameNames.push_back(tempString);
 		++fileCount;
 	}
 
@@ -30,8 +47,8 @@ void ChooseGame::setupSprites()
 	for (int i = 0; i < fileCount; i++)
 	{
 		sf::RectangleShape testRect;
-		testRect.setFillColor(sf::Color::Blue);
-		testRect.setSize(sf::Vector2f( 100, 100));
+		testRect.setFillColor(sf::Color::Yellow);
+		testRect.setSize(sf::Vector2f( 300, 100));
 		testRect.setPosition(initialPos);
 		count++;
 		if (count > 4)
@@ -42,7 +59,7 @@ void ChooseGame::setupSprites()
 		}
 		else
 		{
-			initialPos.x += 150;
+			initialPos.x += 400;
 		}
 		games.push_back(testRect);
 	}
@@ -53,6 +70,21 @@ void ChooseGame::setupSprites()
 	}
 	
 	levelRectsCreated = true;
+}
+
+void ChooseGame::setupNames()
+{
+
+	for (int i = 0; i < fileCount; i++)
+	{
+		sf::Text tempText;
+		tempText.setFont(font);
+		tempText.setFillColor(sf::Color::Black);
+		tempText.setCharacterSize(30u);
+		tempText.setString(gameNames.at(i));
+		tempText.setPosition(games.at(i).getPosition());
+		nameTexts.push_back(tempText);
+	}
 }
 
 void ChooseGame::update(sf::Time t_deltaTime, sf::RenderWindow& t_window)
@@ -67,6 +99,7 @@ void ChooseGame::render(sf::RenderWindow& t_window)
 		for (int i = 0; i < games.size(); i++)
 		{
 			t_window.draw(games.at(i));
+			t_window.draw(nameTexts.at(i));
 		}
 	}
 	

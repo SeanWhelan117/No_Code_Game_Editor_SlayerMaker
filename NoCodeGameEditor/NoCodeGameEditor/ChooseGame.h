@@ -14,9 +14,13 @@ class ChooseGame
 public:
 	ChooseGame(float t_gameWidth, float t_gameHeight);
 
+	void loadFont();
+
 	void findFiles();
 
 	void setupSprites();
+
+	void setupNames();
 
 	void update(sf::Time t_deltaTime, sf::RenderWindow& t_window);
 
@@ -32,5 +36,9 @@ private:
 
 	bool levelRectsCreated = false;
 	std::vector <std::string> gameNames;
+
+
+	std::vector<sf::Text> nameTexts;
+	sf::Font font;
 };
 

@@ -26,6 +26,8 @@ public:
 
 	void render(sf::RenderWindow& t_window);
 
+	void checkForMousePos();
+
 	std::vector<sf::RectangleShape> games;
 	int fileCount = 0;
 private:
@@ -37,8 +39,9 @@ private:
 	bool levelRectsCreated = false;
 	std::vector <std::string> gameNames;
 
-
 	std::vector<sf::Text> nameTexts;
 	sf::Font font;
+
+	sf::Vector2f mousePos;
 };
 

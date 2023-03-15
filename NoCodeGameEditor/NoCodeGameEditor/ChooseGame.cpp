@@ -89,7 +89,9 @@ void ChooseGame::setupNames()
 
 void ChooseGame::update(sf::Time t_deltaTime, sf::RenderWindow& t_window)
 {
+	mousePos = t_window.mapPixelToCoords(sf::Mouse::getPosition(t_window));
 
+	checkForMousePos();
 }
 
 void ChooseGame::render(sf::RenderWindow& t_window)
@@ -103,4 +105,18 @@ void ChooseGame::render(sf::RenderWindow& t_window)
 		}
 	}
 	
+}
+
+void ChooseGame::checkForMousePos()
+{
+	for (int i = 0; i < games.size(); i++)
+	{
+		if (games.at(i).getGlobalBounds().contains(mousePos))
+		{
+			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+			{
+				
+			}
+		}
+	}
 }

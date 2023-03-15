@@ -6,8 +6,8 @@ ChooseGame::ChooseGame(float t_gameWidth, float t_gameHeight)
 	gameHeight = t_gameHeight;
 	loadFont();
 	findFiles();
-	setupSprites();
-	setupNames();
+	//setupSprites();
+	//setupNames();
 }
 
 void ChooseGame::loadFont()
@@ -20,6 +20,15 @@ void ChooseGame::loadFont()
 
 void ChooseGame::findFiles()
 {
+	if (gameNames.size() != 0)
+	{
+		gameNames.clear();
+		fileCount = 0;
+		games.clear();
+		nameTexts.clear();
+		initialPos = sf::Vector2f(100, 100);
+	}
+
 	std::filesystem::path p1{ ".\\ASSETS\\GAMEDATA" };
 
 	for (auto& p : std::filesystem::directory_iterator(p1))
@@ -38,7 +47,7 @@ void ChooseGame::findFiles()
 
 	std::cout << "# of files in " << p1 << ": " << fileCount << '\n';
 
-	
+	setupSprites();
 }
 
 void ChooseGame::setupSprites()
@@ -70,6 +79,7 @@ void ChooseGame::setupSprites()
 	}
 	
 	levelRectsCreated = true;
+	setupNames();
 }
 
 void ChooseGame::setupNames()

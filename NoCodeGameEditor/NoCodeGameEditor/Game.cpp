@@ -115,6 +115,7 @@ void Game::processKeys(sf::Event t_event)
 		if (myState == GameState::gameOptions)
 		{
 			myState = GameState::mainmenu;
+			gameChoice.findFiles();
 		}
 		else if (myState == GameState::createGame)
 		{
@@ -330,6 +331,7 @@ void Game::update(sf::Time t_deltaTime)
 		if (enemySpawnerVectorCreated && wallVectorCreated && myTools.saved)
 		{
 			saveDataToCSV();
+			myTools.saved = false;
 		}
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::LAlt))

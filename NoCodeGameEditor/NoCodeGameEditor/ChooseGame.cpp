@@ -129,6 +129,11 @@ void ChooseGame::checkForMousePos()
 			{
 				std::cout << gameNames.at(i) << std::endl;
 				loader.loadFile(gameNames.at(i));
+				gameChosen = true;
+			}
+			else
+			{
+				gameChosen = false;
 			}
 		}
 	}

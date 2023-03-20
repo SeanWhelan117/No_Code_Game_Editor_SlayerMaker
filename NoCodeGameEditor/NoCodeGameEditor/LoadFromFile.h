@@ -19,9 +19,16 @@ public:
 	void loadFile(std::string t_gameName);
 
 	void update(sf::Time t_deltaTime);
+	void parseVectorsFromFile();
+	void createData();
+	std::vector<sf::Vector3f> wallData;
+	std::vector<sf::Vector3f> spawnerData;
 private:
 
 	bool dataRead = false;
 	std::vector<std::string> gameData;
+	std::string xPos;
+	std::string yPos;
+	std::string textureNum;
 };
 

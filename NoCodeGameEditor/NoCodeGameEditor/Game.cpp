@@ -137,6 +137,10 @@ void Game::processKeys(sf::Event t_event)
 		{
 			myState = GameState::createGame;
 		}
+		else if (myState == GameState::play)
+		{
+			myState = GameState::chooseGame;
+		}
 	}
 
 	if (gameOptions.canType == true)
@@ -229,7 +233,7 @@ void Game::update(sf::Time t_deltaTime)
 		m_window.close();
 	}
 
-	if (myState != GameState::testGame)
+	if (myState != GameState::testGame && myState != GameState::play)
 	{
 		m_window.setView(mainView);
 		if (myState != GameState::createGame)
@@ -411,6 +415,12 @@ void Game::update(sf::Time t_deltaTime)
 	if (myState == GameState::chooseGame)
 	{
 		gameChoice.update(t_deltaTime, m_window);
+
+		if (gameChoice.gameChosen)
+		{
+			myState = GameState::play;
+			
+		}
 	}
 	
 	if (myTools.testingGame == true)
@@ -418,6 +428,27 @@ void Game::update(sf::Time t_deltaTime)
 		myState = GameState::testGame;
 		myTools.testingGame = false;
 		
+	}
+
+	if (myState == GameState::play)
+	{
+		gameChoice.gameChosen = false;
+		
+		myPlayer.update(m_window);
+		myCrosshair.update(m_window);
+		m_window.setMouseCursorVisible(false);
+		myBackground.update(gameOptions.chosenBG);
+		testView.setCenter(myPlayer.getPlayer().getPosition());
+
+		/*if (enemySpawnerVectorCreated == true)
+		{
+			for (int i = 0; i < enemySpawnerVector.size(); i++)
+			{
+				enemySpawnerVector.at(i)->update(myPlayer.getPlayer().getPosition());
+			}
+		}*/
+
+		m_window.setView(testView);
 	}
 
 	removeWallVector();
@@ -494,6 +525,24 @@ void Game::render()
 	{
 		gameChoice.render(m_window);
 	}
+
+	if (myState == GameState::play)
+	{
+		myBackground.render(m_window);
+		myPlayer.render(m_window);
+
+		/*for (int i = 0; i < wallVector.size(); i++)
+		{
+			wallVector.at(i)->render(m_window);
+		}
+
+		for (int i = 0; i < enemySpawnerVector.size(); i++)
+		{
+			enemySpawnerVector.at(i)->render(m_window, "test");
+		}*/
+		myCrosshair.render(m_window);
+	}
+
 	m_window.display();
 }
 
@@ -593,7 +642,7 @@ void Game::saveDataToCSV()
 	std::ofstream myFile;
 	myFile.open(".\\ASSETS\\GAMEDATA\\" + gameOptions.gameName + ".csv");
 	myFile << "WALLS,\n";
-	myFile << "X,Y,Type,\n";
+	myFile << "X,Y,Type,Object,\n";
 	//myfile << "a,b,c,\n";
 	
 	for (int i = 0; i < wallVector.size(); i++)
@@ -603,13 +652,15 @@ void Game::saveDataToCSV()
 		myFile << static_cast<int>(wallVector.at(i)->getWall().getPosition().y);
 		myFile << ",";
 		myFile << wallVector.at(i)->wallTextureNumber;
+		myFile << ",";
+		myFile << "W";
 		myFile << "\n";
 	}
 
 	myFile << "\n";
 	myFile << "\n";
 	myFile << "SPAWNERS,\n";
-	myFile << "X,Y,Type,\n";
+	myFile << "X,Y,Type,Object,\n";
 
 	for (int i = 0; i < enemySpawnerVector.size(); i++)
 	{
@@ -618,6 +669,8 @@ void Game::saveDataToCSV()
 		myFile << static_cast<int>(enemySpawnerVector.at(i)->getSpawner().getPosition().y);
 		myFile << ",";
 		myFile << enemySpawnerVector.at(i)->spawnerTextureNumber;
+		myFile << ",";
+		myFile << "S";
 		myFile << "\n";
 	}
 	

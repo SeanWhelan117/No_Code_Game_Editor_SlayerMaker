@@ -32,6 +32,8 @@ public:
 
 	std::vector<sf::RectangleShape> games;
 	int fileCount = 0;
+
+	bool gameChosen = false;
 private:
 
 	float gameWidth = 0;

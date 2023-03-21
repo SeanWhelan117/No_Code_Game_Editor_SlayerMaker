@@ -95,6 +95,10 @@ void Game::processEvents()
 			//std::cout << newEvent.mouseWheelScroll.delta << std::endl;
 			processMouseWheel(newEvent);
 		}
+		if (sf::Event::MouseButtonReleased == newEvent.type)
+		{
+			processMouseRelease(newEvent);
+		}
 	}
 }
 
@@ -217,6 +221,18 @@ void Game::processMouseWheel(sf::Event t_event)
 				viewPos.y += 15;
 				mainView.setCenter(viewPos);
 			}
+		}
+	}
+}
+
+void Game::processMouseRelease(sf::Event t_event)
+{
+	if (myState == GameState::createGame)
+	{
+		if (sf::Mouse::Left == t_event.mouseButton.button)
+		{
+			myTools.wallsPlaced = true;
+			myTools.enemySpawnersPlaced = true;
 		}
 	}
 }

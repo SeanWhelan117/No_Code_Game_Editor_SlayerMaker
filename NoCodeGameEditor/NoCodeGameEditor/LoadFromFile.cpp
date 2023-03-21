@@ -111,18 +111,18 @@ void LoadFromFile::createData()
 		}
 	}
 
-	std::cout << "Wall Data  Size = " << wallData.size() << std::endl;
+	//std::cout << "Wall Data  Size = " << wallData.size() << std::endl;
 
-	for (int i = 0; i < wallData.size(); i++)
-	{
-		std::cout << wallData.at(i).x << " --- " << wallData.at(i).y << " --- " << wallData.at(i).z << std::endl;
-	}
-	
+	//for (int i = 0; i < wallData.size(); i++)
+	//{
+	//	std::cout << wallData.at(i).x << " --- " << wallData.at(i).y << " --- " << wallData.at(i).z << std::endl;
+	//}
+	//
 
-	std::cout << "Spawner Data  Size = " << spawnerData.size() << std::endl;
+	//std::cout << "Spawner Data  Size = " << spawnerData.size() << std::endl;
 
-	for (int i = 0; i < spawnerData.size(); i++)
-	{
-		std::cout << spawnerData.at(i).x << " --- " << spawnerData.at(i).y << " --- " << spawnerData.at(i).z << std::endl;
-	}
+	//for (int i = 0; i < spawnerData.size(); i++)
+	//{
+	//	std::cout << spawnerData.at(i).x << " --- " << spawnerData.at(i).y << " --- " << spawnerData.at(i).z << std::endl;
+	//}
 }

@@ -140,11 +140,12 @@ void ToolBar::render(sf::RenderWindow& t_window)
 	t_window.draw(toolBarSprite);
 	t_window.draw(brushToolSprite);
 	t_window.draw(rubberToolSprite);
+	t_window.draw(saveButton);
+
 	if (currentMode == "WALLS")
 	{
 		t_window.draw(addWallsButton);
 		t_window.draw(fillToolSprite);
-		t_window.draw(saveButton);
 	}
 	if (currentMode == "ENEMIES")
 	{
@@ -234,16 +235,20 @@ void ToolBar::checkForMousePosAndClick(sf::RenderWindow& t_window, sf::Vector2f 
 	{
 		if (navigationTriangles[i].getGlobalBounds().contains(t_mousePos))
 		{
-			pulseTheTriangles = false;
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 			{
 				changeMode(i);
 			}
 		}
-		else
-		{
-			pulseTheTriangles = true;
-		}
+	}
+
+	if (navigationTriangles[0].getGlobalBounds().contains(t_mousePos) || navigationTriangles[1].getGlobalBounds().contains(t_mousePos))
+	{
+		pulseTheTriangles = false;
+	}
+	else
+	{
+		pulseTheTriangles = true;
 	}
 
 	

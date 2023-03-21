@@ -62,6 +62,15 @@ void GameOptions::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, GameS
 	checkForMousePos(t_gameState);
 
 	gameNameText.setString(gameName);
+
+	if (gameName != "" && showBGChoices)
+	{
+		continueButtonText.setFillColor(sf::Color::Green);
+	}
+	else
+	{
+		continueButtonText.setFillColor(sf::Color::Red);
+	}
 }
 
 void GameOptions::render(sf::RenderWindow& t_window)
@@ -133,7 +142,7 @@ void GameOptions::setupChooseBackgroundRect()
 	chooseBGRect.setSize(sf::Vector2f(550, 75));
 	chooseBGRect.setOrigin(chooseBGRect.getSize().x / 2, chooseBGRect.getSize().y / 2);
 	chooseBGRect.setPosition(chooseBGText.getPosition());
-	chooseBGRect.setFillColor(sf::Color::Red);
+	chooseBGRect.setFillColor(sf::Color(0, 0, 0, 0));
 }
 
 void GameOptions::setupBGChoices()
@@ -229,16 +238,15 @@ void GameOptions::changeGridSize(int t_triangleNum)
 
 void GameOptions::checkForMousePos(GameState& t_gameState)
 {
-
-
 	if (continueButton.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePos)))
 	{
-		continueButtonText.setScale(1.25, 1.25);
-		continueButton.setScale(1.25, 1.25);
-		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+		if (gameName != "" && showBGChoices)
 		{
-			if (gameName != "")
+			continueButtonText.setScale(1.25, 1.25);
+			continueButton.setScale(1.25, 1.25);
+			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 			{
+
 				t_gameState = GameState::createGame;
 			}
 		}
@@ -268,11 +276,16 @@ void GameOptions::checkForMousePos(GameState& t_gameState)
 
 	if (chooseBGRect.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePos)))
 	{
+		chooseBGText.setScale(1.2, 1.2);
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
 			//std::cout << "TESTTSS" << std::endl;
 			showBGChoices = true;
 		}
+	}
+	else
+	{
+		chooseBGText.setScale(1, 1);
 	}
 
 	for (int i = 0; i < MAX_BG_CHOICES; i++)

@@ -133,6 +133,7 @@ void Game::processKeys(sf::Event t_event)
 		else if (myState == GameState::chooseGame)
 		{
 			myState = GameState::mainmenu;
+			clearVectors();
 		}
 		else if (myState == GameState::options)
 		{
@@ -712,16 +713,9 @@ void Game::createLevel()
 
 void Game::clearVectors()
 {
-	if (wallVectorCreated == true)
-	{
 
-		wallVector.clear();
-	}
-
-	if (enemySpawnerVectorCreated == true)
-	{
-		enemySpawnerVector.clear();
-	}
+	wallVector.clear();
+	enemySpawnerVector.clear();
 }
 
 bool Game::isColliding(sf::FloatRect t_obj1, sf::FloatRect t_obj2)

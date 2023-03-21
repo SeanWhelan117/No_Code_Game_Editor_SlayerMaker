@@ -416,6 +416,10 @@ void Game::update(sf::Time t_deltaTime)
 			{
 				wallVector.at(i)->loadFiles();
 			}
+			for (int i = 0; i < enemySpawnerVector.size(); i++)
+			{
+				enemySpawnerVector.at(i)->loadFiles();
+			}
 		}
 	}
 	
@@ -436,13 +440,11 @@ void Game::update(sf::Time t_deltaTime)
 		myBackground.update(gameOptions.chosenBG);
 		testView.setCenter(myPlayer.getPlayer().getPosition());
 
-		/*if (enemySpawnerVectorCreated == true)
+		
+		for (int i = 0; i < enemySpawnerVector.size(); i++)
 		{
-			for (int i = 0; i < enemySpawnerVector.size(); i++)
-			{
-				enemySpawnerVector.at(i)->update(myPlayer.getPlayer().getPosition());
-			}
-		}*/
+			enemySpawnerVector.at(i)->update(myPlayer.getPlayer().getPosition());
+		}
 
 		m_window.setView(testView);
 	}
@@ -532,10 +534,10 @@ void Game::render()
 			wallVector.at(i)->render(m_window);
 		}
 
-		//for (int i = 0; i < enemySpawnerVector.size(); i++)
-		//{
-		//	enemySpawnerVector.at(i)->render(m_window, "test");
-		//}
+		for (int i = 0; i < enemySpawnerVector.size(); i++)
+		{
+			enemySpawnerVector.at(i)->render(m_window, "test");
+		}
 		myCrosshair.render(m_window);
 	}
 
@@ -683,6 +685,12 @@ void Game::createLevel()
 	{
 		sf::Vector2f tempWallPos = { gameChoice.loader.wallData.at(i).x , gameChoice.loader.wallData.at(i).y };
 		wallVector.push_back(new Wall(createWallVector(tempWallPos, gameChoice.loader.wallData.at(i).z)));
+	}
+
+	for (int i = 0; i < gameChoice.loader.spawnerData.size(); i++)
+	{
+		sf::Vector2f tempSpawnerPos = { gameChoice.loader.spawnerData.at(i).x , gameChoice.loader.spawnerData.at(i).y };
+		enemySpawnerVector.push_back(new EnemySpawner(createSpawnerVector(tempSpawnerPos, gameChoice.loader.spawnerData.at(i).z)));
 	}
 }
 

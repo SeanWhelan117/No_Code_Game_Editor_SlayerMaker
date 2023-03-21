@@ -1,5 +1,5 @@
-WALLS,
-X,Y,Type,Object,
+WALLS,,,
+X,Y,Type,Object
 1759,360,2,W
 1789,360,2,W
 1819,360,2,W
@@ -98,10 +98,8 @@ X,Y,Type,Object,
 1129,1230,2,W
 1159,1230,2,W
 1189,1230,2,W
-
-
-SPAWNERS,
-X,Y,Type,Object,
+SPAWNERS,,,
+X,Y,Type,Object
 1249,540,0,S
 1279,540,0,S
 1249,570,0,S

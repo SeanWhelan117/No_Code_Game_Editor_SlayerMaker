@@ -643,7 +643,6 @@ void Game::saveDataToCSV()
 	myFile.open(".\\ASSETS\\GAMEDATA\\" + gameOptions.gameName + ".csv");
 	myFile << "WALLS,\n";
 	myFile << "X,Y,Type,Object,\n";
-	//myfile << "a,b,c,\n";
 	
 	for (int i = 0; i < wallVector.size(); i++)
 	{
@@ -657,8 +656,8 @@ void Game::saveDataToCSV()
 		myFile << "\n";
 	}
 
-	myFile << "\n";
-	myFile << "\n";
+	/*myFile << "\n";
+	myFile << "\n";*/
 	myFile << "SPAWNERS,\n";
 	myFile << "X,Y,Type,Object,\n";
 

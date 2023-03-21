@@ -123,7 +123,8 @@ void Game::processKeys(sf::Event t_event)
 			myTools.enemyOneSpawnsPlaced = 0;
 			myTools.enemyTwoSpawnsPlaced = 0;
 			myTools.enemyThreeSpawnsPlaced = 0;
-
+			clearVectors();
+			
 		}
 		else if (myState == GameState::chooseGame)
 		{
@@ -373,16 +374,6 @@ void Game::update(sf::Time t_deltaTime)
 		gameOptions.update(t_deltaTime, m_window, myState);
 		checkMousePos();
 
-		if (wallVectorCreated == true)
-		{
-			
-			wallVector.clear();
-		}
-
-		if (enemySpawnerVectorCreated == true)
-		{
-			enemySpawnerVector.clear();
-		}
 	}
 
 	//TEST GAME TEST GAME TEST GAME TEST GAME TEST GAME TEST GAME TEST GAME TEST GAME TEST GAME TEST GAME TEST GAME
@@ -420,6 +411,11 @@ void Game::update(sf::Time t_deltaTime)
 		{
 			myState = GameState::play;
 			
+			createLevel();
+			for (int i = 0; i < wallVector.size(); i++)
+			{
+				wallVector.at(i)->loadFiles();
+			}
 		}
 	}
 	
@@ -531,15 +527,15 @@ void Game::render()
 		myBackground.render(m_window);
 		myPlayer.render(m_window);
 
-		/*for (int i = 0; i < wallVector.size(); i++)
+		for (int i = 0; i < wallVector.size(); i++)
 		{
 			wallVector.at(i)->render(m_window);
 		}
 
-		for (int i = 0; i < enemySpawnerVector.size(); i++)
-		{
-			enemySpawnerVector.at(i)->render(m_window, "test");
-		}*/
+		//for (int i = 0; i < enemySpawnerVector.size(); i++)
+		//{
+		//	enemySpawnerVector.at(i)->render(m_window, "test");
+		//}
 		myCrosshair.render(m_window);
 	}
 
@@ -678,4 +674,28 @@ void Game::saveDataToCSV()
 	//myfile << "1,2,3.456\n";
 	//myfile << "semi;colon";
 	myFile.close();
+}
+
+void Game::createLevel()
+{
+	clearVectors();
+	for (int i = 0; i < gameChoice.loader.wallData.size(); i++)
+	{
+		sf::Vector2f tempWallPos = { gameChoice.loader.wallData.at(i).x , gameChoice.loader.wallData.at(i).y };
+		wallVector.push_back(new Wall(createWallVector(tempWallPos, gameChoice.loader.wallData.at(i).z)));
+	}
+}
+
+void Game::clearVectors()
+{
+	if (wallVectorCreated == true)
+	{
+
+		wallVector.clear();
+	}
+
+	if (enemySpawnerVectorCreated == true)
+	{
+		enemySpawnerVector.clear();
+	}
 }

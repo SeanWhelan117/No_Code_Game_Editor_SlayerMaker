@@ -70,6 +70,10 @@ public:
 
 	void saveDataToCSV();
 
+	void createLevel();
+
+	void clearVectors();
+
 	bool changeGridSize = false;
 
 	std::vector<Wall *> wallVector;

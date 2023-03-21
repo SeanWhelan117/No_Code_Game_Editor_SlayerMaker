@@ -411,7 +411,7 @@ void Game::update(sf::Time t_deltaTime)
 				enemySpawnerVector.at(i)->update(myPlayer.getPlayer().getPosition());
 			}
 		}
-
+		collisionDetection();
 		m_window.setView(testView);
 	}
 
@@ -461,7 +461,7 @@ void Game::update(sf::Time t_deltaTime)
 		{
 			enemySpawnerVector.at(i)->update(myPlayer.getPlayer().getPosition());
 		}
-
+		collisionDetection();
 		m_window.setView(testView);
 	}
 
@@ -721,5 +721,35 @@ void Game::clearVectors()
 	if (enemySpawnerVectorCreated == true)
 	{
 		enemySpawnerVector.clear();
+	}
+}
+
+bool Game::isColliding(sf::FloatRect t_obj1, sf::FloatRect t_obj2)
+{
+	return t_obj1.intersects(t_obj2);
+}
+
+void Game::collisionDetection()
+{
+	int count = 0;
+	for (auto& bullet : myPlayer.bulletVector) 
+	{
+		count++;
+		for (auto& spawner : enemySpawnerVector)
+		{
+			for (auto& enemy : spawner->enemyVector) 
+			{
+				if (isColliding(bullet.getBullet().getGlobalBounds(), enemy->getEnemy().getGlobalBounds()))
+				{
+					spawner->enemyVector.erase(std::remove(spawner->enemyVector.begin(), spawner->enemyVector.end(), enemy), spawner->enemyVector.end());
+		
+					//myPlayer.bulletVector.erase(std::remove(myPlayer.bulletVector.begin(), myPlayer.bulletVector.end(), bullet), myPlayer.bulletVector.end());
+					if (count < myPlayer.bulletVector.size())
+					{
+						myPlayer.removeBullet(count);
+					}
+				}
+			}
+		}
 	}
 }

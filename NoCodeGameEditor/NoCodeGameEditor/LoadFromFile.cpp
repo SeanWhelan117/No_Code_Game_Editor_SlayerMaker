@@ -6,6 +6,7 @@ LoadFromFile::LoadFromFile()
 
 void LoadFromFile::loadFile(std::string t_gameName)
 {
+	resetParamsForGame();
 	std::fstream myFile;
 	myFile.open(".\\ASSETS\\GAMEDATA\\" + t_gameName + ".csv");
 
@@ -125,4 +126,16 @@ void LoadFromFile::createData()
 	//{
 	//	std::cout << spawnerData.at(i).x << " --- " << spawnerData.at(i).y << " --- " << spawnerData.at(i).z << std::endl;
 	//}
+}
+
+void LoadFromFile::resetParamsForGame()
+{
+	gameData.clear();
+	xPos = "";
+	yPos = "";
+	textureNum = "";
+	wallData.clear();
+	spawnerData.clear();
+
+
 }

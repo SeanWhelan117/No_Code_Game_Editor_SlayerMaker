@@ -74,6 +74,10 @@ public:
 
 	void clearVectors();
 
+	void collisionDetection();
+
+	bool isColliding(sf::FloatRect t_obj1, sf::FloatRect t_obj2);
+
 	bool changeGridSize = false;
 
 	std::vector<Wall *> wallVector;

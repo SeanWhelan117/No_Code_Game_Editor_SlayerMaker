@@ -21,6 +21,7 @@ public:
 	void update(sf::Time t_deltaTime);
 	void parseVectorsFromFile();
 	void createData();
+	void resetParamsForGame();
 	std::vector<sf::Vector3f> wallData;
 	std::vector<sf::Vector3f> spawnerData;
 private:

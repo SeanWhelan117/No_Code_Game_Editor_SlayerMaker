@@ -321,6 +321,14 @@ void ToolBar::setToolPosForView(sf::RenderWindow& t_window)
 	pos4 = t_window.mapPixelToCoords(static_cast<sf::Vector2i>(pos4));
 	rubberToolSprite.setPosition(pos4);
 
+	sf::Vector2f pos5(125, 125);
+	pos5 = t_window.mapPixelToCoords(static_cast<sf::Vector2i>(pos5));
+	navigationTriangles[0].setPosition(pos5);
+
+	sf::Vector2f pos6(gameWidth - 125, 125);
+	pos6 = t_window.mapPixelToCoords(static_cast<sf::Vector2i>(pos6));
+	navigationTriangles[1].setPosition(pos6);
+
 }
 
 void ToolBar::pulseTriangles()

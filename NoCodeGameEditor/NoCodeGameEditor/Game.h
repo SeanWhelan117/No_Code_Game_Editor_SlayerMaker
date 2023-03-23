@@ -96,6 +96,8 @@ private:
 	void processTextEntered(sf::Event t_event);
 	void processMouseWheel(sf::Event t_event);
 	void processMouseRelease(sf::Event t_event);
+	
+	
 	void update(sf::Time t_deltaTime);
 	void render();	
 
@@ -120,9 +122,13 @@ private:
 
 	double zoomAmount = 1;
 
-	bool scrolling = false;
+	bool zooming = false;
+	
+	bool scrollingX = false;
 
 	sf::Texture bloodSplatterTexture;
+
+	int scrollSpeed = 30;
 };
 
 #endif // !GAME_HPP

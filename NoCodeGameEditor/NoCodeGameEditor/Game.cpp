@@ -198,7 +198,7 @@ void Game::processMouseWheel(sf::Event t_event)
 	
 	if (mainViewActive == true)
 	{
-		if (scrolling == false)
+		if (zooming == true)
 		{
 			if (t_event.mouseWheelScroll.delta == 1)
 			{
@@ -214,17 +214,32 @@ void Game::processMouseWheel(sf::Event t_event)
 			//std::cout << zoomAmount << std::endl;
 			zoomAmount = 1;
 		}
-		else if (scrolling)
+		else if (zooming == false && scrollingX == false)
 		{
 			sf::Vector2f viewPos = mainView.getCenter();
 			if (t_event.mouseWheelScroll.delta == 1)
 			{
-				viewPos.y -= 15;
+				viewPos.y -= scrollSpeed;
 				mainView.setCenter(viewPos);
 			}
 			else if (t_event.mouseWheelScroll.delta == -1)
 			{
-				viewPos.y += 15;
+				viewPos.y += scrollSpeed;
+				mainView.setCenter(viewPos);
+			}
+		}
+		
+		if (scrollingX)
+		{
+			sf::Vector2f viewPos = mainView.getCenter();
+			if (t_event.mouseWheelScroll.delta == 1)
+			{
+				viewPos.x -= scrollSpeed;
+				mainView.setCenter(viewPos);
+			}
+			else if (t_event.mouseWheelScroll.delta == -1)
+			{
+				viewPos.x += scrollSpeed;
 				mainView.setCenter(viewPos);
 			}
 		}
@@ -367,11 +382,19 @@ void Game::update(sf::Time t_deltaTime)
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::LAlt))
 		{
-			scrolling = true;
+			zooming = true;
 		}
 		else
 		{
-			scrolling = false;
+			zooming = false;
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::LControl))
+		{
+			scrollingX = true;
+		}
+		else
+		{
+			scrollingX = false;
 		}
 	}
 
@@ -552,7 +575,7 @@ void Game::render()
 
 		for (int i = 0; i < bloodSplatterVector.size(); i++)
 		{
-			bloodSplatterVector.at(i)->getSplatter().setTexture(bloodSplatterTexture);
+			//bloodSplatterVector.at(i)->getSplatter().setTexture(bloodSplatterTexture);
 			bloodSplatterVector.at(i)->render(m_window);
 		}
 
@@ -727,9 +750,9 @@ void Game::createLevel()
 
 void Game::clearVectors()
 {
-
 	wallVector.clear();
 	enemySpawnerVector.clear();
+	bloodSplatterVector.clear();
 }
 
 bool Game::isColliding(sf::FloatRect t_obj1, sf::FloatRect t_obj2)
@@ -766,6 +789,8 @@ void Game::collisionDetection()
 BloodSplatter Game::spawnBloodSplatter(sf::Vector2f t_splatterPos)
 {
 	BloodSplatter tempBlood{t_splatterPos, bloodSplatterTexture };
+
+	tempBlood.getSplatter().setTexture(bloodSplatterTexture);
 
 	return tempBlood;
 }

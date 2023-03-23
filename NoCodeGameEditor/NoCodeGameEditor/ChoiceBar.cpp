@@ -99,7 +99,7 @@ void ChoiceBar::setupSprites()
 
 void ChoiceBar::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, std::string t_currentMode)
 {
-
+	setToolPosForView(t_window);
 	currentMode = t_currentMode;
 
 	sf::Vector2f mousePos = t_window.mapPixelToCoords(sf::Mouse::getPosition(t_window));
@@ -193,4 +193,27 @@ void ChoiceBar::changeTools(int t_current)
 		enemyChoiceSprite[t_current].setScale(4, 4);
 
 	}
+}
+
+void ChoiceBar::setToolPosForView(sf::RenderWindow& t_window)
+{
+	sf::Vector2f pos(100, gameHeight / 2);
+	pos = t_window.mapPixelToCoords(static_cast<sf::Vector2i>(pos));
+	choiceBarSprite.setPosition(pos);
+
+	int yPos = gameHeight / 2 - choiceBarSprite.getLocalBounds().height / 3;
+	for (int i = 0; i < MAX_CHOICES; i++)
+	{
+
+		sf::Vector2f pos2(100, yPos);
+		pos2 = t_window.mapPixelToCoords(static_cast<sf::Vector2i>(pos2));
+		wallChoiceSprite[i].setPosition(pos2);
+
+		sf::Vector2f pos3(100, yPos);
+		pos3 = t_window.mapPixelToCoords(static_cast<sf::Vector2i>(pos3));
+		enemyChoiceSprite[i].setPosition(pos3);
+
+		yPos += choiceBarSprite.getLocalBounds().height / 3;
+	}
+
 }

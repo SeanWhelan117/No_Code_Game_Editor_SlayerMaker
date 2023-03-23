@@ -27,6 +27,7 @@
 #include "Background.h"
 #include "EnemySpawner.h"
 #include "ChooseGame.h"
+#include "BloodSplatter.h"
 
 class Game
 {
@@ -76,12 +77,15 @@ public:
 
 	void collisionDetection();
 
+	BloodSplatter spawnBloodSplatter(sf::Vector2f t_splatterPos);
+
 	bool isColliding(sf::FloatRect t_obj1, sf::FloatRect t_obj2);
 
 	bool changeGridSize = false;
 
 	std::vector<Wall *> wallVector;
-	std::vector<EnemySpawner*> enemySpawnerVector;
+	std::vector<EnemySpawner *> enemySpawnerVector;
+	std::vector<BloodSplatter *> bloodSplatterVector;
 private:
 
 	sf::Vector2f mousePos; // mouses current position
@@ -117,6 +121,8 @@ private:
 	double zoomAmount = 1;
 
 	bool scrolling = false;
+
+	sf::Texture bloodSplatterTexture;
 };
 
 #endif // !GAME_HPP

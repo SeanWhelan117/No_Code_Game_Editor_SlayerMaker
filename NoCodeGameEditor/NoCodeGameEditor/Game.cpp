@@ -27,6 +27,11 @@ Game::Game() :
 	//else if (__cplusplus == 199711L) std::cout << "C++98";
 	//else std::cout << "pre-standard C++." << __cplusplus;
 	//std::cout << "\n";
+	if (!bloodSplatterTexture.loadFromFile("ASSETS\\IMAGES\\BloodSplatter.png"))
+	{
+		// simple error message if previous call fails
+		std::cout << "problem loading BloodSplatter (BloodSplatter.png)" << std::endl;
+	}
 }
 
 /// <summary>
@@ -544,6 +549,13 @@ void Game::render()
 	if (myState == GameState::play)
 	{
 		myBackground.render(m_window);
+
+		for (int i = 0; i < bloodSplatterVector.size(); i++)
+		{
+			bloodSplatterVector.at(i)->getSplatter().setTexture(bloodSplatterTexture);
+			bloodSplatterVector.at(i)->render(m_window);
+		}
+
 		myPlayer.render(m_window);
 
 		for (int i = 0; i < wallVector.size(); i++)
@@ -556,6 +568,8 @@ void Game::render()
 			enemySpawnerVector.at(i)->render(m_window, "test");
 		}
 		myCrosshair.render(m_window);
+
+		
 	}
 
 	m_window.display();
@@ -736,7 +750,8 @@ void Game::collisionDetection()
 				if (isColliding(bullet.getBullet().getGlobalBounds(), enemy->getEnemy().getGlobalBounds()))
 				{
 					spawner->enemyVector.erase(std::remove(spawner->enemyVector.begin(), spawner->enemyVector.end(), enemy), spawner->enemyVector.end());
-		
+					bloodSplatterVector.push_back(new BloodSplatter(spawnBloodSplatter(enemy->getEnemy().getPosition())));
+
 					//myPlayer.bulletVector.erase(std::remove(myPlayer.bulletVector.begin(), myPlayer.bulletVector.end(), bullet), myPlayer.bulletVector.end());
 					if (count < myPlayer.bulletVector.size())
 					{
@@ -746,4 +761,11 @@ void Game::collisionDetection()
 			}
 		}
 	}
+}
+
+BloodSplatter Game::spawnBloodSplatter(sf::Vector2f t_splatterPos)
+{
+	BloodSplatter tempBlood{t_splatterPos, bloodSplatterTexture };
+
+	return tempBlood;
 }

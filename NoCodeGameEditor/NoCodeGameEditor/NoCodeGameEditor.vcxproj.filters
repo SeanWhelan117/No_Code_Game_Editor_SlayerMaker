@@ -75,6 +75,9 @@
     <ClCompile Include="LoadFromFile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BloodSplatter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -129,6 +132,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="LoadFromFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BloodSplatter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

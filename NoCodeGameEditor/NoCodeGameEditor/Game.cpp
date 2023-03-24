@@ -762,10 +762,8 @@ bool Game::isColliding(sf::FloatRect t_obj1, sf::FloatRect t_obj2)
 
 void Game::collisionDetection()
 {
-	int count = 0;
 	for (auto& bullet : myPlayer.bulletVector) 
 	{
-		count++;
 		for (auto& spawner : enemySpawnerVector)
 		{
 			for (auto& enemy : spawner->enemyVector) 
@@ -775,11 +773,10 @@ void Game::collisionDetection()
 					spawner->enemyVector.erase(std::remove(spawner->enemyVector.begin(), spawner->enemyVector.end(), enemy), spawner->enemyVector.end());
 					bloodSplatterVector.push_back(new BloodSplatter(spawnBloodSplatter(enemy->getEnemy().getPosition())));
 
-					//myPlayer.bulletVector.erase(std::remove(myPlayer.bulletVector.begin(), myPlayer.bulletVector.end(), bullet), myPlayer.bulletVector.end());
-					if (count < myPlayer.bulletVector.size())
-					{
-						myPlayer.removeBullet(count);
-					}
+					myPlayer.bulletVector.erase(std::remove_if(myPlayer.bulletVector.begin(), myPlayer.bulletVector.end(),
+						[&](const Bullet& b) {
+							return &b == &bullet;
+						}), myPlayer.bulletVector.end());
 				}
 			}
 		}

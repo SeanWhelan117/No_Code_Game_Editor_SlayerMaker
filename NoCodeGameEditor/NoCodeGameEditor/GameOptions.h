@@ -49,17 +49,9 @@ private:
 
 	void setUpGameName();
 
+	void setUpGameType();
+
 	void checkForMousePos(GameState& t_gameState);
-
-	void checkForKeyPress();
-
-
-
-	void resetButtons(int t_current); //small function which is called to reset buttons after they are not being hoverd over anymore
-
-	void changeButtons(int current_Button);
-
-	void changeGameState(int stateNum, GameState& t_gameState);
 
 
 	sf::RectangleShape continueButton; // buttons array for menu buttons
@@ -116,5 +108,19 @@ private:
 	sf::Texture bgChoiceTex3;
 
 	sf::RectangleShape choiceSquare;
+
+	sf::Text gameTypeText;
+	sf::String chooseGameTypeString = "Choose Game Type!";
+
+	sf::RectangleShape gameTypeRect;
+
+	bool showGameTypeChoices = false;
+
+	static const int MAX_GAMETYPE_CHOICES = 3;
+	sf::Sprite gameTypeChoiceSprite[MAX_GAMETYPE_CHOICES];
+
+	sf::Texture gtChoiceTex1;
+	sf::Texture gtChoiceTex2;
+	sf::Texture gtChoiceTex3;
 };
 

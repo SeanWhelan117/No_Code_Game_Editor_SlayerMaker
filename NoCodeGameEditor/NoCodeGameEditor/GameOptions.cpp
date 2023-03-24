@@ -19,6 +19,7 @@ GameOptions::GameOptions(float t_gameWidth, float t_gameHeight)
 	setupGridSizeBox();
 	setupTriangles();
 	setUpGameName();
+	setUpGameType();
 }
 
 void GameOptions::loadFiles()
@@ -100,6 +101,9 @@ void GameOptions::render(sf::RenderWindow& t_window)
 			t_window.draw(bgChoiceSprite[i]);
 		}
 	}
+
+	t_window.draw(gameTypeRect);
+	t_window.draw(gameTypeText);
 
 }
 
@@ -300,6 +304,20 @@ void GameOptions::checkForMousePos(GameState& t_gameState)
 		}
 	}
 
+	if (gameTypeRect.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePos)))
+	{
+		gameTypeText.setScale(1.2, 1.2);
+
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+		{
+			showGameTypeChoices = true;
+		}
+	}
+	else
+	{
+		gameTypeText.setScale(1, 1);
+	}
+
 }
 
 int GameOptions::getGridSize()
@@ -340,7 +358,7 @@ void GameOptions::setUpGameName()
 	gameNameRect.setFillColor(sf::Color::White);
 	gameNameRect.setOutlineColor(sf::Color::Black);
 	gameNameRect.setOrigin(gameNameRect.getSize().x / 2, gameNameRect.getSize().y / 2);
-	gameNameRect.setPosition(gameSize.x / 2, gameSize.y / 2);
+	gameNameRect.setPosition(gameSize.x / 2, gameSize.y * 0.4);
 	
 	gameNameText.Bold;
 	gameNameText.setFont(m_font);
@@ -359,4 +377,24 @@ void GameOptions::setUpGameName()
 	//chooseGameNameText.setOrigin(chooseGameNameText.width / 2, gridSizeTextRect.height / 2);
 	chooseGameNameText.setPosition(gameNameRect.getPosition().x - 300, gameNameRect.getPosition().y - 100);
 	chooseGameNameText.setFillColor(sf::Color::Black);
+}
+
+void GameOptions::setUpGameType()
+{
+	gameTypeRect.setSize(sf::Vector2f(550, 75));
+	gameTypeRect.setOutlineThickness(5);
+	gameTypeRect.setFillColor(sf::Color(0, 0, 0, 0));
+	gameTypeRect.setOrigin(gameTypeRect.getSize().x / 2, gameTypeRect.getSize().y / 2);
+	gameTypeRect.setPosition(gameSize.x / 2, gameSize.y / 2);
+
+
+	gameTypeText.Bold;
+	gameTypeText.setFont(m_font);
+	gameTypeText.setString(chooseGameTypeString);
+	gameTypeText.setCharacterSize(40u);
+	sf::FloatRect gameTypeTextRect = gameTypeText.getLocalBounds();
+	gameTypeText.setOrigin(gameTypeTextRect.width / 2, gameTypeTextRect.height / 2);
+	gameTypeText.setPosition(gameTypeRect.getPosition().x, gameTypeRect.getPosition().y);
+	gameTypeText.setFillColor(sf::Color::Black);
+
 }

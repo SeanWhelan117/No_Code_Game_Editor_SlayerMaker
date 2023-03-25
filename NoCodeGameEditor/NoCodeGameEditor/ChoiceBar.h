@@ -53,5 +53,11 @@ private:
 
 	std::string currentMode = "WALLS";
 
+	sf::Sprite coinSprite;
+	sf::Texture coinTexture;
+	
+	sf::Sprite doorSprite;
+	sf::Texture doorTexture;
+
 };
 

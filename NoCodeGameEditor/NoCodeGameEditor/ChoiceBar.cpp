@@ -58,6 +58,21 @@ void ChoiceBar::loadFiles()
 		// simple error message if previous call fails
 		std::cout << "problem loading enemyChoiceTex3 (Enemy3-choice)" << std::endl;
 	}
+
+	//ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS
+	//ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS
+
+	if(!coinTexture.loadFromFile("ASSETS\\IMAGES\\coin.png"))
+	{
+		// simple error message if previous call fails
+		std::cout << "problem loading coinTexture (coin)" << std::endl;
+	}
+
+	if (!doorTexture.loadFromFile("ASSETS\\IMAGES\\door.png"))
+	{
+		// simple error message if previous call fails
+		std::cout << "problem loading doorTexture (door)" << std::endl;
+	}
 }
 
 void ChoiceBar::setupSprites()
@@ -91,9 +106,14 @@ void ChoiceBar::setupSprites()
 		yPos += choiceBarSprite.getLocalBounds().height / 3;
 	}
 
+	coinSprite.setTexture(coinTexture);
+	coinSprite.setOrigin(coinSprite.getLocalBounds().width / 2, coinSprite.getLocalBounds().height / 2);
+	coinSprite.setPosition(choiceBarSprite.getPosition().x, choiceBarSprite.getPosition().y - choiceBarSprite.getLocalBounds().height / 3);
 
 
-
+	doorSprite.setTexture(doorTexture);
+	doorSprite.setOrigin(doorSprite.getLocalBounds().width / 2, doorSprite.getLocalBounds().height / 2);
+	doorSprite.setPosition(choiceBarSprite.getPosition().x, choiceBarSprite.getPosition().y);
 	
 }
 
@@ -120,6 +140,12 @@ void ChoiceBar::render(sf::RenderWindow& t_window)
 		{
 			t_window.draw(enemyChoiceSprite[i]);
 		}
+	}
+
+	if (currentMode == "OBJECTIVES")
+	{
+		t_window.draw(coinSprite);
+		t_window.draw(doorSprite);
 	}
 }
 

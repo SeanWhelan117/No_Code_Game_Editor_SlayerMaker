@@ -379,6 +379,15 @@ void ToolBar::changeMode(int t_triangleClicked)
 	}
 	else if (currentMode == "ENEMIES" && t_triangleClicked == 1)
 	{
+		currentMode = "OBJECTIVES";
+	}
+
+	if (currentMode == "OBJECTIVESS" && t_triangleClicked == 0)
+	{
+		currentMode = "ENEMIES";
+	}
+	else if (currentMode == "OBJECTIVES" && t_triangleClicked == 1)
+	{
 		//do nothing for now...
 	}
 }

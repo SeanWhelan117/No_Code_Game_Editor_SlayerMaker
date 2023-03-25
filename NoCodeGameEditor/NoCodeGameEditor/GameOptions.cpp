@@ -20,6 +20,8 @@ GameOptions::GameOptions(float t_gameWidth, float t_gameHeight)
 	setupTriangles();
 	setUpGameName();
 	setUpGameType();
+	setupGTChoices();
+	setUpChoiceRectangles();
 }
 
 void GameOptions::loadFiles()
@@ -53,6 +55,26 @@ void GameOptions::loadFiles()
 		std::cout << "problem loading bgChoiceTex3 (BGSnow)" << std::endl;
 	}
 
+	if (!gtChoiceTex1.loadFromFile("ASSETS\\IMAGES\\GAMETYPES\\swarmMode.png"))
+	{
+		// simple error message if previous call fails
+		std::cout << "problem loading gtChoiceTex1 (swarmMode)" << std::endl;
+	}
+
+	if (!gtChoiceTex2.loadFromFile("ASSETS\\IMAGES\\GAMETYPES\\ProtectAndServeMode.png"))
+	{
+		// simple error message if previous call fails
+		std::cout << "problem loading gtChoiceTex2 (ProtectAndServeMode)" << std::endl;
+	}
+
+	if (!gtChoiceTex3.loadFromFile("ASSETS\\IMAGES\\GAMETYPES\\CollectAndRunMode.png"))
+	{
+		// simple error message if previous call fails
+		std::cout << "problem loading gtChoiceTex3 (CollectAndRunMode)" << std::endl;
+	}
+
+
+
 }
 
 void GameOptions::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, GameState& t_gameState)
@@ -76,6 +98,10 @@ void GameOptions::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, GameS
 
 void GameOptions::render(sf::RenderWindow& t_window)
 {
+	for (int i = 0; i < 2; i++)
+	{
+		t_window.draw(choiceRectangles[i]);
+	}
 	t_window.draw(continueButtonText);
 	t_window.draw(chooseGridSizeText);
 	
@@ -93,8 +119,9 @@ void GameOptions::render(sf::RenderWindow& t_window)
 	t_window.draw(chooseBGRect);
 	t_window.draw(chooseBGText);
 	t_window.draw(choiceSquare);
+	t_window.draw(choiceSquare2);
 
-	if(showBGChoices == true)
+	if(showBGChoices)
 	{
 		for (int i = 0; i < MAX_BG_CHOICES; i++)
 		{
@@ -104,6 +131,14 @@ void GameOptions::render(sf::RenderWindow& t_window)
 
 	t_window.draw(gameTypeRect);
 	t_window.draw(gameTypeText);
+
+	if (showGameTypeChoices)
+	{
+		for (int i = 0; i < MAX_GAMETYPE_CHOICES; i++)
+		{
+			t_window.draw(gameTypeChoiceSprite[i]);
+		}
+	}
 
 }
 
@@ -318,6 +353,18 @@ void GameOptions::checkForMousePos(GameState& t_gameState)
 		gameTypeText.setScale(1, 1);
 	}
 
+	for (int i = 0; i < MAX_GAMETYPE_CHOICES; i++)
+	{
+		if (gameTypeChoiceSprite[i].getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePos)))
+		{
+			if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && showGameTypeChoices)
+			{
+				choiceSquare2.setPosition(gameTypeChoiceSprite[i].getPosition().x + 110, gameTypeChoiceSprite[i].getPosition().y - 35);
+				chosenGT = i;
+			}
+		}
+	}
+
 }
 
 int GameOptions::getGridSize()
@@ -397,4 +444,39 @@ void GameOptions::setUpGameType()
 	gameTypeText.setPosition(gameTypeRect.getPosition().x, gameTypeRect.getPosition().y);
 	gameTypeText.setFillColor(sf::Color::Black);
 
+}
+
+void GameOptions::setupGTChoices()
+{
+	int yPos = gameSize.y * 0.2;
+
+	gameTypeChoiceSprite[0].setTexture(gtChoiceTex1);
+	gameTypeChoiceSprite[1].setTexture(gtChoiceTex2);
+	gameTypeChoiceSprite[2].setTexture(gtChoiceTex3);
+
+	for (int i = 0; i < MAX_GAMETYPE_CHOICES; i++)
+	{
+		gameTypeChoiceSprite[i].scale(1, 1);
+		gameTypeChoiceSprite[i].setOrigin(gameTypeChoiceSprite[i].getLocalBounds().width / 2, gameTypeChoiceSprite[i].getLocalBounds().height / 2);
+		gameTypeChoiceSprite[i].setPosition(gameSize.x * 0.15, yPos);
+		gameTypeChoiceSprite[i].setScale(0.7, 0.7);
+		yPos += gameSize.y * 0.28;
+	}
+
+	choiceSquare2.setSize(sf::Vector2f(gameTypeChoiceSprite[1].getGlobalBounds().width + 25, gameTypeChoiceSprite[1].getGlobalBounds().height - 50));
+	choiceSquare2.setFillColor(sf::Color::Green);
+	choiceSquare2.setPosition(-3000, -3000);
+	choiceSquare2.setOrigin(choiceSquare.getGlobalBounds().width / 2, choiceSquare.getGlobalBounds().height / 2);
+}
+
+void GameOptions::setUpChoiceRectangles()
+{
+	for (int i = 0; i < 2; i++)
+	{
+		choiceRectangles[i].setFillColor(sf::Color(81, 81, 81, 150));
+		choiceRectangles[i].setSize(sf::Vector2f(1000, gameSize.y));
+
+	}
+	choiceRectangles[0].setPosition(0, 0);
+	choiceRectangles[1].setPosition(gameSize.x - 1000, 0);
 }

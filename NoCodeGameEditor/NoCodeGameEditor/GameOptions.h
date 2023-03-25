@@ -32,6 +32,7 @@ public:
 	std::string gameName = "";
 
 	int chosenBG = 0;
+	int chosenGT = 0;
 
 private:
 
@@ -50,6 +51,10 @@ private:
 	void setUpGameName();
 
 	void setUpGameType();
+
+	void setupGTChoices();
+
+	void setUpChoiceRectangles();
 
 	void checkForMousePos(GameState& t_gameState);
 
@@ -122,5 +127,11 @@ private:
 	sf::Texture gtChoiceTex1;
 	sf::Texture gtChoiceTex2;
 	sf::Texture gtChoiceTex3;
+
+	sf::RectangleShape choiceSquare2;
+
+	sf::RectangleShape choiceRectangles[2];
+
+
 };
 

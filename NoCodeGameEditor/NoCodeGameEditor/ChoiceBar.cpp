@@ -130,19 +130,23 @@ void ChoiceBar::render(sf::RenderWindow& t_window)
 {
 	
 	t_window.draw(choiceBarSprite);
-	for (int i = 0; i < MAX_CHOICES; i++)
+
+
+	if (currentMode == "WALLS")
 	{
-		if (currentMode == "WALLS")
+		for (int i = 0; i < MAX_CHOICES; i++)
 		{
 			t_window.draw(wallChoiceSprite[i]);
 		}
-		else if (currentMode == "ENEMIES")
+	}
+	else if (currentMode == "ENEMIES")
+	{
+		for (int i = 0; i < MAX_CHOICES; i++)
 		{
 			t_window.draw(enemyChoiceSprite[i]);
 		}
 	}
-
-	if (currentMode == "OBJECTIVES")
+	else if (currentMode == "OBJECTIVES")
 	{
 		t_window.draw(coinSprite);
 		t_window.draw(doorSprite);

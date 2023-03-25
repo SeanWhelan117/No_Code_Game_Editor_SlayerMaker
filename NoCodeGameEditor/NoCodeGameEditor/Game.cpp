@@ -254,8 +254,19 @@ void Game::processMouseRelease(sf::Event t_event)
 		{
 			myTools.wallsPlaced = true;
 			myTools.enemySpawnersPlaced = true;
+			for (int i = 0; i < myTools.MAX_NAV_TRIANGLES; i++)
+			{
+				if (myTools.navigationTriangles[i].getGlobalBounds().contains(mousePos))
+				{
+					myTools.navigating = true;
+					myTools.changeMode(i);
+					myTools.navigating = false;
+
+				}
+			}
 		}
 	}
+
 }
 
 /// <summary>

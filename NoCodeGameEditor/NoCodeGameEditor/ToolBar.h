@@ -50,6 +50,11 @@ public:
 	int enemyTwoSpawnsPlaced = 0;
 	int enemyThreeSpawnsPlaced = 0;
 
+	static const int MAX_NAV_TRIANGLES = 2;
+	sf::Sprite navigationTriangles[MAX_NAV_TRIANGLES];
+
+	bool navigating = false;
+
 private:
 
 	sf::Texture toolBarTexture;
@@ -78,8 +83,7 @@ private:
 
 	sf::Vector2f MousePosReal;
 
-	static const int MAX_NAV_TRIANGLES = 2;
-	sf::Sprite navigationTriangles[MAX_NAV_TRIANGLES];
+	
 	sf::Texture navTriangleTexture;
 
 	sf::Vector2f maxScale = sf::Vector2f(1.8, 1.8);

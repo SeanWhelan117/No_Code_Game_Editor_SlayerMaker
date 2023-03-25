@@ -231,16 +231,16 @@ void ToolBar::checkForMousePosAndClick(sf::RenderWindow& t_window, sf::Vector2f 
 		}
 	}
 
-	for (int i = 0; i < MAX_NAV_TRIANGLES; i++)
-	{
-		if (navigationTriangles[i].getGlobalBounds().contains(t_mousePos))
-		{
-			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-			{
-				changeMode(i);
-			}
-		}
-	}
+	//for (int i = 0; i < MAX_NAV_TRIANGLES; i++)
+	//{
+	//	if (navigationTriangles[i].getGlobalBounds().contains(t_mousePos))
+	//	{
+	//		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+	//		{
+	//			changeMode(i);
+	//		}
+	//	}
+	//}
 
 	if (navigationTriangles[0].getGlobalBounds().contains(t_mousePos) || navigationTriangles[1].getGlobalBounds().contains(t_mousePos))
 	{
@@ -364,32 +364,36 @@ void ToolBar::pulseTriangles()
 
 void ToolBar::changeMode(int t_triangleClicked)
 {
-	if (currentMode == "WALLS" && t_triangleClicked == 0)
+	if (navigating)
 	{
-		// do nothing for now...
-	}
-	else if (currentMode == "WALLS" && t_triangleClicked == 1)
-	{
-		currentMode = "ENEMIES";
-	}
+		if (currentMode == "WALLS" && t_triangleClicked == 0)
+		{
+			// do nothing for now...
+		}
+		else if (currentMode == "WALLS" && t_triangleClicked == 1)
+		{
+			currentMode = "ENEMIES";
+		}
 
-	if (currentMode == "ENEMIES" && t_triangleClicked == 0)
-	{
-		currentMode = "WALLS";
-	}
-	else if (currentMode == "ENEMIES" && t_triangleClicked == 1)
-	{
-		currentMode = "OBJECTIVES";
-	}
+		if (currentMode == "ENEMIES" && t_triangleClicked == 0)
+		{
+			currentMode = "WALLS";
+		}
+		else if (currentMode == "ENEMIES" && t_triangleClicked == 1)
+		{
+			currentMode = "OBJECTIVES";
+		}
 
-	if (currentMode == "OBJECTIVESS" && t_triangleClicked == 0)
-	{
-		currentMode = "ENEMIES";
+		if (currentMode == "OBJECTIVES" && t_triangleClicked == 0)
+		{
+			currentMode = "ENEMIES";
+		}
+		else if (currentMode == "OBJECTIVES" && t_triangleClicked == 1)
+		{
+			//do nothing for now...
+		}
 	}
-	else if (currentMode == "OBJECTIVES" && t_triangleClicked == 1)
-	{
-		//do nothing for now...
-	}
+	
 }
 
 

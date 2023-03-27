@@ -53,6 +53,8 @@ private:
 
 	std::string currentMode = "WALLS";
 
+	static const int MAX_OBJECTIVE_CHOICES = 2;
+
 	sf::Sprite coinSprite;
 	sf::Texture coinTexture;
 	

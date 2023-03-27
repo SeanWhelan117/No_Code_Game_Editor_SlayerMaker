@@ -193,6 +193,34 @@ void ChoiceBar::checkForMousePosAndClick(sf::RenderWindow& t_window, sf::Vector2
 				}
 			}
 		}
+
+		if (currentMode == "OBJECTIVES")
+		{
+			
+			if (coinSprite.getGlobalBounds().contains(t_mousePos))
+			{
+				changeTools(5);
+				if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+				{
+					currentChoice = 6;
+					choiceMade = true;
+				}
+			}
+			else if (doorSprite.getGlobalBounds().contains(t_mousePos))
+			{
+				changeTools(10);
+				if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+				{
+					currentChoice = 7;
+					choiceMade = true;
+				}
+			}
+			else
+			{
+				resetTools(15);
+			}
+		}
+		
 	
 }
 
@@ -208,6 +236,11 @@ void ChoiceBar::resetTools(int t_current)
 		enemyChoiceSprite[t_current].setScale(3, 3);
 
 	}
+	else if (currentMode == "OBJECTIVES")
+	{
+		coinSprite.setScale(1, 1);
+		doorSprite.setScale(1, 1);
+	}
 }
 
 void ChoiceBar::changeTools(int t_current)
@@ -222,6 +255,17 @@ void ChoiceBar::changeTools(int t_current)
 	{
 		enemyChoiceSprite[t_current].setScale(4, 4);
 
+	}
+	else if (currentMode == "OBJECTIVES")
+	{
+		if (t_current == 5)
+		{
+			coinSprite.setScale(1.3, 1.3);
+		}
+		else if (t_current == 10)
+		{
+			doorSprite.setScale(1.3, 1.3);
+		}
 	}
 }
 

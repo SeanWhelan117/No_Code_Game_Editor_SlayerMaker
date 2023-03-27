@@ -254,6 +254,7 @@ void Game::processMouseRelease(sf::Event t_event)
 		{
 			myTools.wallsPlaced = true;
 			myTools.enemySpawnersPlaced = true;
+			myTools.objectivesPlaced = true;
 			for (int i = 0; i < myTools.MAX_NAV_TRIANGLES; i++)
 			{
 				if (myTools.navigationTriangles[i].getGlobalBounds().contains(mousePos))
@@ -314,73 +315,16 @@ void Game::update(sf::Time t_deltaTime)
 
 		if (myTools.wallsPlaced == true)
 		{
-
-			for (int i = 0; i < gridSize; i++)
-			{
-				for (int m = 0; m < gridSize; m++)
-				{
-					if (myGrid.theGrid.at(m).at(i).getType() == "wall1")
-					{
-						myGrid.theGrid.at(m).at(i).getType("filled");
-						wallVector.push_back(new Wall(createWallVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 0)));
-						numOfWalls++;
-					}
-					else if (myGrid.theGrid.at(m).at(i).getType() == "wall2")
-					{
-						myGrid.theGrid.at(m).at(i).getType("filled");
-						wallVector.push_back(new Wall(createWallVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 1)));
-						numOfWalls++;
-					}
-					else if (myGrid.theGrid.at(m).at(i).getType() == "wall3")
-					{
-						myGrid.theGrid.at(m).at(i).getType("filled");
-						wallVector.push_back(new Wall(createWallVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 2)));
-						numOfWalls++;
-					}
-				}
-			}
-			for (int i = 0; i < wallVector.size(); i++)
-			{
-				wallVector.at(i)->loadFiles();
-			}
-			myTools.wallsPlaced = false;
-			wallVectorCreated = true;
+			createWallVector();
 		}
 
 		if (myTools.enemySpawnersPlaced == true)
 		{
-
-			for (int i = 0; i < gridSize; i++)
-			{
-				for (int m = 0; m < gridSize; m++)
-				{
-					if (myGrid.theGrid.at(m).at(i).getType() == "enemy1")
-					{
-						myGrid.theGrid.at(m).at(i).getType("filled");
-						enemySpawnerVector.push_back(new EnemySpawner(createSpawnerVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 0)));
-						numOfSpawners++;
-
-					}
-					if (myGrid.theGrid.at(m).at(i).getType() == "enemy2")
-					{
-						myGrid.theGrid.at(m).at(i).getType("filled");
-						enemySpawnerVector.push_back(new EnemySpawner(createSpawnerVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 1)));
-						numOfSpawners++;
-					}
-					if (myGrid.theGrid.at(m).at(i).getType() == "enemy3")
-					{
-						myGrid.theGrid.at(m).at(i).getType("filled");
-						enemySpawnerVector.push_back(new EnemySpawner(createSpawnerVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 2)));
-						numOfSpawners++;
-					}
-				}
-			}
-			for (int i = 0; i < enemySpawnerVector.size(); i++)
-			{
-				enemySpawnerVector.at(i)->loadFiles();
-			}
-			enemySpawnerVectorCreated = true;
-			myTools.enemySpawnersPlaced = false;
+			createSpawnerVector();
+		}
+		if (myTools.objectivesPlaced == true)
+		{
+			createObjectivesVector();
 		}
 		myTools.update(t_deltaTime, m_window, myGrid.theGrid, gridSize, myChoice.choiceMade, myChoice.currentChoice);
 		myChoice.update(t_deltaTime, m_window, myTools.currentMode);
@@ -626,18 +570,115 @@ void Game::checkMousePos()
 	}
 }
 
-Wall Game::createWallVector(sf::Vector2f t_wallPos, int t_wallTextNum)
+Wall Game::createIndividualWall(sf::Vector2f t_wallPos, int t_wallTextNum)
 {
 	Wall tempWall{t_wallTextNum, t_wallPos };
 
 	return tempWall;
 }
 
-EnemySpawner Game::createSpawnerVector(sf::Vector2f t_spawnerPos, int t_spawnerTextNum)
+EnemySpawner Game::createIndividualSpawner(sf::Vector2f t_spawnerPos, int t_spawnerTextNum)
 {
 	EnemySpawner tempSpawner{ t_spawnerTextNum, t_spawnerPos };
 
 	return tempSpawner;
+}
+
+void Game::createWallVector()
+{
+	for (int i = 0; i < gridSize; i++)
+	{
+		for (int m = 0; m < gridSize; m++)
+		{
+			if (myGrid.theGrid.at(m).at(i).getType() == "wall1")
+			{
+				myGrid.theGrid.at(m).at(i).setType("filled");
+				wallVector.push_back(new Wall(createIndividualWall(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 0)));
+				numOfWalls++;
+			}
+			else if (myGrid.theGrid.at(m).at(i).getType() == "wall2")
+			{
+				myGrid.theGrid.at(m).at(i).setType("filled");
+				wallVector.push_back(new Wall(createIndividualWall(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 1)));
+				numOfWalls++;
+			}
+			else if (myGrid.theGrid.at(m).at(i).getType() == "wall3")
+			{
+				myGrid.theGrid.at(m).at(i).setType("filled");
+				wallVector.push_back(new Wall(createIndividualWall(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 2)));
+				numOfWalls++;
+			}
+		}
+	}
+	for (int i = 0; i < wallVector.size(); i++)
+	{
+		wallVector.at(i)->loadFiles();
+	}
+	myTools.wallsPlaced = false;
+	wallVectorCreated = true;
+}
+
+void Game::createSpawnerVector()
+{
+	for (int i = 0; i < gridSize; i++)
+	{
+		for (int m = 0; m < gridSize; m++)
+		{
+			if (myGrid.theGrid.at(m).at(i).getType() == "enemy1")
+			{
+				myGrid.theGrid.at(m).at(i).setType("filled");
+				enemySpawnerVector.push_back(new EnemySpawner(createIndividualSpawner(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 0)));
+				numOfSpawners++;
+
+			}
+			if (myGrid.theGrid.at(m).at(i).getType() == "enemy2")
+			{
+				myGrid.theGrid.at(m).at(i).setType("filled");
+				enemySpawnerVector.push_back(new EnemySpawner(createIndividualSpawner(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 1)));
+				numOfSpawners++;
+			}
+			if (myGrid.theGrid.at(m).at(i).getType() == "enemy3")
+			{
+				myGrid.theGrid.at(m).at(i).setType("filled");
+				enemySpawnerVector.push_back(new EnemySpawner(createIndividualSpawner(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 2)));
+				numOfSpawners++;
+			}
+		}
+	}
+	for (int i = 0; i < enemySpawnerVector.size(); i++)
+	{
+		enemySpawnerVector.at(i)->loadFiles();
+	}
+	enemySpawnerVectorCreated = true;
+	myTools.enemySpawnersPlaced = false;
+}
+
+void Game::createObjectivesVector()
+{
+	for (int i = 0; i < gridSize; i++)
+	{
+		for (int m = 0; m < gridSize; m++)
+		{
+			if (myGrid.theGrid.at(m).at(i).getType() == "objective1")
+			{
+				myGrid.theGrid.at(m).at(i).setType("filled");
+				//coinVector.push_back(new Coin(createIndividualCoin(myGrid.theGrid.at(m).at(i).getCellShape().getPosition())));
+				//numOfCoins++;
+			}
+			if (myGrid.theGrid.at(m).at(i).getType() == "objective2")
+			{
+				myGrid.theGrid.at(m).at(i).setType("filled");
+				//doorVector.push_back(new Door(createIndividualDoor(myGrid.theGrid.at(m).at(i).getCellShape().getPosition())));
+				//numOfDoors++;
+			}
+		}
+	}
+	for (int i = 0; i < enemySpawnerVector.size(); i++)
+	{
+		enemySpawnerVector.at(i)->loadFiles();
+	}
+	enemySpawnerVectorCreated = true;
+	myTools.enemySpawnersPlaced = false;
 }
 
 void Game::removeWallVector()
@@ -749,13 +790,13 @@ void Game::createLevel()
 	for (int i = 0; i < gameChoice.loader.wallData.size(); i++)
 	{
 		sf::Vector2f tempWallPos = { gameChoice.loader.wallData.at(i).x , gameChoice.loader.wallData.at(i).y };
-		wallVector.push_back(new Wall(createWallVector(tempWallPos, gameChoice.loader.wallData.at(i).z)));
+		wallVector.push_back(new Wall(createIndividualWall(tempWallPos, gameChoice.loader.wallData.at(i).z)));
 	}
 
 	for (int i = 0; i < gameChoice.loader.spawnerData.size(); i++)
 	{
 		sf::Vector2f tempSpawnerPos = { gameChoice.loader.spawnerData.at(i).x , gameChoice.loader.spawnerData.at(i).y };
-		enemySpawnerVector.push_back(new EnemySpawner(createSpawnerVector(tempSpawnerPos, gameChoice.loader.spawnerData.at(i).z)));
+		enemySpawnerVector.push_back(new EnemySpawner(createIndividualSpawner(tempSpawnerPos, gameChoice.loader.spawnerData.at(i).z)));
 	}
 }
 

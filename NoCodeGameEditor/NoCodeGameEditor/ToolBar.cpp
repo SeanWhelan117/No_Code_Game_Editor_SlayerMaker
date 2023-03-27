@@ -291,11 +291,11 @@ void ToolBar::setGridCellToMarked(std::vector<std::vector<Cell>>& t_grid, int t_
 				{
 					if (t_toolChosen == "Brush")
 					{
-						t_grid.at(m).at(i).setMarked(t_choiceNum, enemyOneSpawnsPlaced, enemyTwoSpawnsPlaced, enemyThreeSpawnsPlaced);
+						t_grid.at(m).at(i).setMarked(t_choiceNum, enemyOneSpawnsPlaced, enemyTwoSpawnsPlaced, enemyThreeSpawnsPlaced, coinsPlaced, doorsPlaced);
 					}
 					else if (t_toolChosen == "Rubber")
 					{
-						t_grid.at(m).at(i).setUnmarked(enemyOneSpawnsPlaced, enemyTwoSpawnsPlaced, enemyThreeSpawnsPlaced);
+						t_grid.at(m).at(i).setUnmarked(enemyOneSpawnsPlaced, enemyTwoSpawnsPlaced, enemyThreeSpawnsPlaced, coinsPlaced, doorsPlaced);
 					}
 				}
 			}
@@ -364,6 +364,7 @@ void ToolBar::pulseTriangles()
 
 void ToolBar::changeMode(int t_triangleClicked)
 {
+	bool set = false;
 	if (navigating)
 	{
 		if (currentMode == "WALLS" && t_triangleClicked == 0)
@@ -373,20 +374,26 @@ void ToolBar::changeMode(int t_triangleClicked)
 		else if (currentMode == "WALLS" && t_triangleClicked == 1)
 		{
 			currentMode = "ENEMIES";
+			std::cout << "1" << std::endl;
+			set = true;
 		}
 
 		if (currentMode == "ENEMIES" && t_triangleClicked == 0)
 		{
 			currentMode = "WALLS";
+			set = true;
 		}
-		else if (currentMode == "ENEMIES" && t_triangleClicked == 1)
+		else if (currentMode == "ENEMIES" && t_triangleClicked == 1 && set == false)
 		{
 			currentMode = "OBJECTIVES";
+			std::cout << "1" << std::endl;
+			set = true;
 		}
 
 		if (currentMode == "OBJECTIVES" && t_triangleClicked == 0)
 		{
 			currentMode = "ENEMIES";
+			set = true;
 		}
 		else if (currentMode == "OBJECTIVES" && t_triangleClicked == 1)
 		{

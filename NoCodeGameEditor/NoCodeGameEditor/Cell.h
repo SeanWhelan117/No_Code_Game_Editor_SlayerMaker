@@ -17,15 +17,15 @@ public:
 	void setPos(sf::Vector2f t_pos);
 	void setupCells();
 	void setID(int t_id);
-	void setMarked(int t_choiceNum, int& t_spawnsOne, int& t_spawnsTwo, int& t_spawnsThree);
+	void setMarked(int t_choiceNum, int& t_spawnsOne, int& t_spawnsTwo, int& t_spawnsThree, int& t_coinsPlaced, int& t_doorsPlaced);
 
-	void setUnmarked(int& t_spawnsOne, int& t_spawnsTwo, int& t_spawnsThree);
+	void setUnmarked(int& t_spawnsOne, int& t_spawnsTwo, int& t_spawnsThree, int& t_coinsPlaced, int& t_doorsPlaced);
 
 	int getID();
 
 	std::string getType();
 
-	void getType(std::string t_newType);
+	void setType(std::string t_newType);
 
 
 	int xPos;

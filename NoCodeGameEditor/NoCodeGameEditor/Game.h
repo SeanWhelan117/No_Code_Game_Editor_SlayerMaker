@@ -60,9 +60,9 @@ public:
 
 	void checkMousePos();
 
-	Wall createWallVector(sf::Vector2f t_wallPos, int t_wallTextNum);
+	Wall createIndividualWall(sf::Vector2f t_wallPos, int t_wallTextNum);
 
-	EnemySpawner createSpawnerVector(sf::Vector2f t_spawnerPos, int t_spawnerTextNum);
+	EnemySpawner createIndividualSpawner(sf::Vector2f t_spawnerPos, int t_spawnerTextNum);
 
 	void removeWallVector();
 	void removeEnemySpawnerVector();
@@ -129,6 +129,10 @@ private:
 	sf::Texture bloodSplatterTexture;
 
 	int scrollSpeed = 30;
+
+	void createWallVector();
+	void createSpawnerVector();
+	void createObjectivesVector();
 };
 
 #endif // !GAME_HPP

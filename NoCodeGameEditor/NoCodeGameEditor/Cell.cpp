@@ -34,7 +34,7 @@ sf::RectangleShape& Cell::getCellShape()
 	return cellShape;
 }
 
-void Cell::setMarked(int t_choiceNum, int& t_spawnsOne, int& t_spawnsTwo, int& t_spawnsThree)
+void Cell::setMarked(int t_choiceNum, int& t_spawnsOne, int& t_spawnsTwo, int& t_spawnsThree, int& t_coinsPlaced, int& t_doorsPlaced)
 {
 	if (cellShape.getFillColor() == sf::Color::Transparent && type == "empty")
 	{
@@ -82,10 +82,28 @@ void Cell::setMarked(int t_choiceNum, int& t_spawnsOne, int& t_spawnsTwo, int& t
 				t_spawnsThree++;
 			}
 		}
+		else if (t_choiceNum == 6)
+		{
+			if (t_coinsPlaced < 15)
+			{
+				cellShape.setFillColor(sf::Color::Black); // ----OBJECTIVES----
+				type = "objective1";
+				t_coinsPlaced++;
+			}
+		}
+		else if (t_choiceNum == 7)
+		{
+			if (t_doorsPlaced < 2)
+			{
+				cellShape.setFillColor(sf::Color::Black);
+				type = "objective2";
+				t_doorsPlaced++;
+			}
+		}
 	}
 }
 
-void Cell::setUnmarked(int& t_spawnsOne, int& t_spawnsTwo, int& t_spawnsThree)
+void Cell::setUnmarked(int& t_spawnsOne, int& t_spawnsTwo, int& t_spawnsThree, int& t_coinsPlaced, int& t_doorsPlaced)
 {
 	////WALLS
 	//if (type == "wall1" || type == "wall2" || type == "wall3")
@@ -170,7 +188,7 @@ std::string Cell::getType()
 	return type;
 }
 
-void Cell::getType(std::string t_newType)
+void Cell::setType(std::string t_newType)
 {
 	type = t_newType;
 }

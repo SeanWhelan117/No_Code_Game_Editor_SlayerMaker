@@ -34,6 +34,7 @@ public:
 	void changeMode(int t_triangleClicked);
 	bool wallsPlaced = false;
 	bool enemySpawnersPlaced = false;
+	bool objectivesPlaced = false;
 
 	bool saved = false;
 	
@@ -49,6 +50,9 @@ public:
 	int enemyOneSpawnsPlaced = 0;
 	int enemyTwoSpawnsPlaced = 0;
 	int enemyThreeSpawnsPlaced = 0;
+
+	int coinsPlaced = 0;
+	int doorsPlaced = 0;
 
 	static const int MAX_NAV_TRIANGLES = 2;
 	sf::Sprite navigationTriangles[MAX_NAV_TRIANGLES];

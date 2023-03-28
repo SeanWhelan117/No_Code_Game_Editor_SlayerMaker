@@ -76,6 +76,8 @@ void Enemy::moveEnemy(sf::Vector2f t_playerPos)
 	enemySprite.setPosition(currentPos);
 }
 
+
+
 sf::Vector2f Enemy::createRandomStartPos(sf::Vector2f t_spawnerPos)
 {
 	sf::Vector2f spawnPos = t_spawnerPos;
@@ -113,4 +115,14 @@ float Enemy::createRandomSpeed()
 	//std::cout << tempSpeed << std::endl;
 
 	return tempSpeed;
+}
+
+int Enemy::getHealth()
+{
+	return health;
+}
+
+void Enemy::setHealth(int t_damage)
+{
+	health -= t_damage;
 }

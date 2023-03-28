@@ -33,6 +33,9 @@ public:
 	std::shared_ptr<sf::Texture> enemyTexture3;
 
 	bool enemySetup = false;
+
+	int getHealth();
+	void setHealth(int t_damage);
 private:
 	sf::Vector2f createRandomStartPos(sf::Vector2f t_spawnerPos);
 	float createRandomSpeed();
@@ -50,5 +53,7 @@ private:
 
 	float speed = 3.0f;
 	TextureManager& m_textureManager;
+
+	int health = 25;
 };
 

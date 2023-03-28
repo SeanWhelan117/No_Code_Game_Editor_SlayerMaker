@@ -817,9 +817,16 @@ void Game::collisionDetection()
 
 				if (isColliding(bullet.getBullet().getGlobalBounds(), enemy->getEnemy().getGlobalBounds()))
 				{
-					bloodSplatterVector.emplace_back(new BloodSplatter(spawnBloodSplatter(enemy->getEnemy().getPosition())));
-
-					enemyIt = spawner->enemyVector.erase(enemyIt);
+					if (enemy->getHealth() > 0)
+					{
+						enemy->setHealth(5);
+					}
+					else if (enemy->getHealth() <= 0)
+					{
+						bloodSplatterVector.emplace_back(new BloodSplatter(spawnBloodSplatter(enemy->getEnemy().getPosition())));
+						enemyIt = spawner->enemyVector.erase(enemyIt);
+					}
+					
 					bulletIt = myPlayer.bulletVector.erase(bulletIt);
 				}
 				else 

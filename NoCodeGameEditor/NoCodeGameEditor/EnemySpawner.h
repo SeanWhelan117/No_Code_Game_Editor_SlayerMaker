@@ -29,11 +29,11 @@ public:
 
 	Enemy createEnemy();
 
-	sf::Texture spawnerTexture;
-	sf::Texture spawnerTexture2;
-	sf::Texture spawnerTexture3;
+	std::shared_ptr<sf::Texture> spawnerTexture;
+	std::shared_ptr<sf::Texture> spawnerTexture2;
+	std::shared_ptr<sf::Texture> spawnerTexture3;
 
-	std::vector<Enemy*> enemyVector;
+	std::vector<std::unique_ptr<Enemy>> enemyVector;
 
 	int spawnerTextureNumber = 0;
 private:

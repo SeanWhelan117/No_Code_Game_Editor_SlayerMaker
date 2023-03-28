@@ -27,11 +27,7 @@ Game::Game() :
 	//else if (__cplusplus == 199711L) std::cout << "C++98";
 	//else std::cout << "pre-standard C++." << __cplusplus;
 	//std::cout << "\n";
-	if (!bloodSplatterTexture.loadFromFile("ASSETS\\IMAGES\\BloodSplatter.png"))
-	{
-		// simple error message if previous call fails
-		std::cout << "problem loading BloodSplatter (BloodSplatter.png)" << std::endl;
-	}
+
 }
 
 /// <summary>
@@ -418,14 +414,6 @@ void Game::update(sf::Time t_deltaTime)
 			myState = GameState::play;
 			
 			createLevel();
-			for (int i = 0; i < wallVector.size(); i++)
-			{
-				wallVector.at(i)->loadFiles();
-			}
-			for (int i = 0; i < enemySpawnerVector.size(); i++)
-			{
-				enemySpawnerVector.at(i)->loadFiles();
-			}
 		}
 	}
 	
@@ -511,6 +499,10 @@ void Game::render()
 	if (myState == GameState::testGame)
 	{
 		myBackground.render(m_window);
+		for (int i = 0; i < bloodSplatterVector.size(); i++)
+		{
+			bloodSplatterVector.at(i)->render(m_window);
+		}
 		myPlayer.render(m_window);
 
 		for (int i = 0; i < wallVector.size(); i++)
@@ -536,7 +528,6 @@ void Game::render()
 
 		for (int i = 0; i < bloodSplatterVector.size(); i++)
 		{
-			//bloodSplatterVector.at(i)->getSplatter().setTexture(bloodSplatterTexture);
 			bloodSplatterVector.at(i)->render(m_window);
 		}
 
@@ -576,20 +567,6 @@ void Game::checkMousePos()
 	}
 }
 
-Wall Game::createIndividualWall(sf::Vector2f t_wallPos, int t_wallTextNum)
-{
-	Wall tempWall{ t_wallTextNum, t_wallPos, textureManager };
-
-	return tempWall;
-}
-
-EnemySpawner Game::createIndividualSpawner(sf::Vector2f t_spawnerPos, int t_spawnerTextNum)
-{
-	EnemySpawner tempSpawner{ t_spawnerTextNum, t_spawnerPos, textureManager };
-
-	return tempSpawner;
-}
-
 void Game::createWallVector()
 {
 	for (int i = 0; i < gridSize; i++)
@@ -599,29 +576,32 @@ void Game::createWallVector()
 			if (myGrid.theGrid.at(m).at(i).getType() == "wall1" && myGrid.theGrid.at(m).at(i).filled == false)
 			{
 				myGrid.theGrid.at(m).at(i).filled = true;
-				wallVector.push_back(new Wall(createIndividualWall(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 0)));
+				wallVector.emplace_back(new Wall(createIndividualWall(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 0)));
 				numOfWalls++;
 			}
 			else if (myGrid.theGrid.at(m).at(i).getType() == "wall2" && myGrid.theGrid.at(m).at(i).filled == false)
 			{
 				myGrid.theGrid.at(m).at(i).filled = true;
-				wallVector.push_back(new Wall(createIndividualWall(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 1)));
+				wallVector.emplace_back(new Wall(createIndividualWall(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 1)));
 				numOfWalls++;
 			}
 			else if (myGrid.theGrid.at(m).at(i).getType() == "wall3" && myGrid.theGrid.at(m).at(i).filled == false)
 			{
 				myGrid.theGrid.at(m).at(i).filled = true;
-				wallVector.push_back(new Wall(createIndividualWall(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 2)));
+				wallVector.emplace_back(new Wall(createIndividualWall(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 2)));
 				numOfWalls++;
 			}
 		}
 	}
-	for (int i = 0; i < wallVector.size(); i++)
-	{
-		wallVector.at(i)->loadFiles();
-	}
 	myTools.wallsPlaced = false;
 	wallVectorCreated = true;
+}
+
+Wall Game::createIndividualWall(sf::Vector2f t_wallPos, int t_wallTextNum)
+{
+	Wall tempWall{ t_wallTextNum, t_wallPos, textureManager };
+
+	return tempWall;
 }
 
 void Game::createSpawnerVector()
@@ -633,20 +613,20 @@ void Game::createSpawnerVector()
 			if (myGrid.theGrid.at(m).at(i).getType() == "enemy1" && myGrid.theGrid.at(m).at(i).filled == false)
 			{
 				myGrid.theGrid.at(m).at(i).filled = true;
-				enemySpawnerVector.push_back(new EnemySpawner(createIndividualSpawner(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 0)));
+				enemySpawnerVector.emplace_back(new EnemySpawner(createIndividualSpawner(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 0)));
 				numOfSpawners++;
 
 			}
 			if (myGrid.theGrid.at(m).at(i).getType() == "enemy2" && myGrid.theGrid.at(m).at(i).filled == false)
 			{
 				myGrid.theGrid.at(m).at(i).filled = true;
-				enemySpawnerVector.push_back(new EnemySpawner(createIndividualSpawner(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 1)));
+				enemySpawnerVector.emplace_back(new EnemySpawner(createIndividualSpawner(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 1)));
 				numOfSpawners++;
 			}
 			if (myGrid.theGrid.at(m).at(i).getType() == "enemy3" && myGrid.theGrid.at(m).at(i).filled == false)
 			{
 				myGrid.theGrid.at(m).at(i).filled = true;
-				enemySpawnerVector.push_back(new EnemySpawner(createIndividualSpawner(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 2)));
+				enemySpawnerVector.emplace_back(new EnemySpawner(createIndividualSpawner(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 2)));
 				numOfSpawners++;
 			}
 		}
@@ -657,6 +637,13 @@ void Game::createSpawnerVector()
 	}
 	enemySpawnerVectorCreated = true;
 	myTools.enemySpawnersPlaced = false;
+}
+
+EnemySpawner Game::createIndividualSpawner(sf::Vector2f t_spawnerPos, int t_spawnerTextNum)
+{
+	EnemySpawner tempSpawner{ t_spawnerTextNum, t_spawnerPos, textureManager };
+
+	return tempSpawner;
 }
 
 void Game::createObjectivesVector()
@@ -701,10 +688,8 @@ void Game::removeWallVector()
 					{
 						if (myTools.rubberToolSelected)
 						{
-							vector<Wall *>::iterator begin = wallVector.begin();
+							vector<unique_ptr<Wall >>::iterator begin = wallVector.begin();
 							begin += i;
-							wallVector.at(i) = NULL;
-							delete wallVector.at(i);
 							wallVector.erase(begin);
 						}
 					}																											
@@ -728,10 +713,8 @@ void Game::removeEnemySpawnerVector()
 					{
 						if (myTools.rubberToolSelected)
 						{
-							vector<EnemySpawner*>::iterator begin = enemySpawnerVector.begin();
+							vector<std::unique_ptr<EnemySpawner>>::iterator begin = enemySpawnerVector.begin();
 							begin += i;
-							enemySpawnerVector.at(i) = NULL;
-							delete enemySpawnerVector.at(i);
 							enemySpawnerVector.erase(begin);
 						}
 					}
@@ -796,13 +779,13 @@ void Game::createLevel()
 	for (int i = 0; i < gameChoice.loader.wallData.size(); i++)
 	{
 		sf::Vector2f tempWallPos = { gameChoice.loader.wallData.at(i).x , gameChoice.loader.wallData.at(i).y };
-		wallVector.push_back(new Wall(createIndividualWall(tempWallPos, gameChoice.loader.wallData.at(i).z)));
+		wallVector.emplace_back(new Wall(createIndividualWall(tempWallPos, gameChoice.loader.wallData.at(i).z)));
 	}
 
 	for (int i = 0; i < gameChoice.loader.spawnerData.size(); i++)
 	{
 		sf::Vector2f tempSpawnerPos = { gameChoice.loader.spawnerData.at(i).x , gameChoice.loader.spawnerData.at(i).y };
-		enemySpawnerVector.push_back(new EnemySpawner(createIndividualSpawner(tempSpawnerPos, gameChoice.loader.spawnerData.at(i).z)));
+		enemySpawnerVector.emplace_back(new EnemySpawner(createIndividualSpawner(tempSpawnerPos, gameChoice.loader.spawnerData.at(i).z)));
 	}
 }
 
@@ -820,32 +803,43 @@ bool Game::isColliding(sf::FloatRect t_obj1, sf::FloatRect t_obj2)
 
 void Game::collisionDetection()
 {
-	for (auto& bullet : myPlayer.bulletVector) 
+	for (auto spawnerIt = enemySpawnerVector.begin(); spawnerIt != enemySpawnerVector.end(); ++spawnerIt)
 	{
-		for (auto& spawner : enemySpawnerVector)
+		auto& spawner = *spawnerIt;
+
+		for (auto enemyIt = spawner->enemyVector.begin(); enemyIt != spawner->enemyVector.end(); )
 		{
-			for (auto& enemy : spawner->enemyVector) 
+			auto& enemy = *enemyIt;
+
+			for (auto bulletIt = myPlayer.bulletVector.begin(); bulletIt != myPlayer.bulletVector.end(); )
 			{
+				auto& bullet = *bulletIt;
+
 				if (isColliding(bullet.getBullet().getGlobalBounds(), enemy->getEnemy().getGlobalBounds()))
 				{
-					spawner->enemyVector.erase(std::remove(spawner->enemyVector.begin(), spawner->enemyVector.end(), enemy), spawner->enemyVector.end());
-					bloodSplatterVector.push_back(new BloodSplatter(spawnBloodSplatter(enemy->getEnemy().getPosition())));
+					bloodSplatterVector.emplace_back(new BloodSplatter(spawnBloodSplatter(enemy->getEnemy().getPosition())));
 
-					myPlayer.bulletVector.erase(std::remove_if(myPlayer.bulletVector.begin(), myPlayer.bulletVector.end(),
-						[&](const Bullet& b) {
-							return &b == &bullet;
-						}), myPlayer.bulletVector.end());
+					enemyIt = spawner->enemyVector.erase(enemyIt);
+					bulletIt = myPlayer.bulletVector.erase(bulletIt);
 				}
+				else 
+				{
+					++bulletIt;
+				}
+			}
+			if (enemyIt != spawner->enemyVector.end()) 
+			{
+				++enemyIt;
 			}
 		}
 	}
 }
 
+
+
 BloodSplatter Game::spawnBloodSplatter(sf::Vector2f t_splatterPos)
 {
-	BloodSplatter tempBlood{t_splatterPos, bloodSplatterTexture };
-
-	tempBlood.getSplatter().setTexture(bloodSplatterTexture);
+	BloodSplatter tempBlood{t_splatterPos, textureManager};
 
 	return tempBlood;
 }

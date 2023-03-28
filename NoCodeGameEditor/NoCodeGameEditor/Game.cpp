@@ -418,10 +418,6 @@ void Game::update(sf::Time t_deltaTime)
 			myState = GameState::play;
 			
 			createLevel();
-			for (int i = 0; i < wallVector.size(); i++)
-			{
-				wallVector.at(i)->loadFiles();
-			}
 			for (int i = 0; i < enemySpawnerVector.size(); i++)
 			{
 				enemySpawnerVector.at(i)->loadFiles();
@@ -585,9 +581,7 @@ void Game::createWallVector()
 			if (myGrid.theGrid.at(m).at(i).getType() == "wall1" && myGrid.theGrid.at(m).at(i).filled == false)
 			{
 				myGrid.theGrid.at(m).at(i).filled = true;
-				std::shared_ptr<Wall> newWall = std::make_shared<Wall>(createIndividualWall(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 0));
-				wallVector.emplace_back(newWall);
-				//wallVector.emplace_back(new Wall(createIndividualWall(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 0)));
+				wallVector.emplace_back(new Wall(createIndividualWall(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 0)));
 				numOfWalls++;
 			}
 			else if (myGrid.theGrid.at(m).at(i).getType() == "wall2" && myGrid.theGrid.at(m).at(i).filled == false)
@@ -699,7 +693,7 @@ void Game::removeWallVector()
 					{
 						if (myTools.rubberToolSelected)
 						{
-							vector<shared_ptr<Wall >>::iterator begin = wallVector.begin();
+							vector<unique_ptr<Wall >>::iterator begin = wallVector.begin();
 							begin += i;
 							wallVector.erase(begin);
 						}

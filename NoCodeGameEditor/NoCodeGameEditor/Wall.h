@@ -26,7 +26,7 @@ public:
 
 	sf::Sprite& getWall();
 
-	sf::Texture wallTexture;
+	std::shared_ptr<sf::Texture> wallTexture;
 	sf::Texture wallTexture2;
 	sf::Texture wallTexture3;
 	int wallTextureNumber = 0;

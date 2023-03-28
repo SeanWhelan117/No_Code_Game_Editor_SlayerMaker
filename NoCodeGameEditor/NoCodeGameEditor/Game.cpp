@@ -576,20 +576,6 @@ void Game::checkMousePos()
 	}
 }
 
-Wall Game::createIndividualWall(sf::Vector2f t_wallPos, int t_wallTextNum)
-{
-	Wall tempWall{ t_wallTextNum, t_wallPos, textureManager };
-
-	return tempWall;
-}
-
-EnemySpawner Game::createIndividualSpawner(sf::Vector2f t_spawnerPos, int t_spawnerTextNum)
-{
-	EnemySpawner tempSpawner{ t_spawnerTextNum, t_spawnerPos, textureManager };
-
-	return tempSpawner;
-}
-
 void Game::createWallVector()
 {
 	for (int i = 0; i < gridSize; i++)
@@ -599,29 +585,34 @@ void Game::createWallVector()
 			if (myGrid.theGrid.at(m).at(i).getType() == "wall1" && myGrid.theGrid.at(m).at(i).filled == false)
 			{
 				myGrid.theGrid.at(m).at(i).filled = true;
-				wallVector.push_back(new Wall(createIndividualWall(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 0)));
+				std::shared_ptr<Wall> newWall = std::make_shared<Wall>(createIndividualWall(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 0));
+				wallVector.emplace_back(newWall);
+				//wallVector.emplace_back(new Wall(createIndividualWall(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 0)));
 				numOfWalls++;
 			}
 			else if (myGrid.theGrid.at(m).at(i).getType() == "wall2" && myGrid.theGrid.at(m).at(i).filled == false)
 			{
 				myGrid.theGrid.at(m).at(i).filled = true;
-				wallVector.push_back(new Wall(createIndividualWall(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 1)));
+				wallVector.emplace_back(new Wall(createIndividualWall(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 1)));
 				numOfWalls++;
 			}
 			else if (myGrid.theGrid.at(m).at(i).getType() == "wall3" && myGrid.theGrid.at(m).at(i).filled == false)
 			{
 				myGrid.theGrid.at(m).at(i).filled = true;
-				wallVector.push_back(new Wall(createIndividualWall(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 2)));
+				wallVector.emplace_back(new Wall(createIndividualWall(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 2)));
 				numOfWalls++;
 			}
 		}
 	}
-	for (int i = 0; i < wallVector.size(); i++)
-	{
-		wallVector.at(i)->loadFiles();
-	}
 	myTools.wallsPlaced = false;
 	wallVectorCreated = true;
+}
+
+Wall Game::createIndividualWall(sf::Vector2f t_wallPos, int t_wallTextNum)
+{
+	Wall tempWall{ t_wallTextNum, t_wallPos, textureManager };
+
+	return tempWall;
 }
 
 void Game::createSpawnerVector()
@@ -657,6 +648,13 @@ void Game::createSpawnerVector()
 	}
 	enemySpawnerVectorCreated = true;
 	myTools.enemySpawnersPlaced = false;
+}
+
+EnemySpawner Game::createIndividualSpawner(sf::Vector2f t_spawnerPos, int t_spawnerTextNum)
+{
+	EnemySpawner tempSpawner{ t_spawnerTextNum, t_spawnerPos, textureManager };
+
+	return tempSpawner;
 }
 
 void Game::createObjectivesVector()
@@ -701,10 +699,8 @@ void Game::removeWallVector()
 					{
 						if (myTools.rubberToolSelected)
 						{
-							vector<Wall *>::iterator begin = wallVector.begin();
+							vector<shared_ptr<Wall >>::iterator begin = wallVector.begin();
 							begin += i;
-							wallVector.at(i) = NULL;
-							delete wallVector.at(i);
 							wallVector.erase(begin);
 						}
 					}																											
@@ -796,7 +792,7 @@ void Game::createLevel()
 	for (int i = 0; i < gameChoice.loader.wallData.size(); i++)
 	{
 		sf::Vector2f tempWallPos = { gameChoice.loader.wallData.at(i).x , gameChoice.loader.wallData.at(i).y };
-		wallVector.push_back(new Wall(createIndividualWall(tempWallPos, gameChoice.loader.wallData.at(i).z)));
+		wallVector.emplace_back(new Wall(createIndividualWall(tempWallPos, gameChoice.loader.wallData.at(i).z)));
 	}
 
 	for (int i = 0; i < gameChoice.loader.spawnerData.size(); i++)

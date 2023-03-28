@@ -85,7 +85,7 @@ public:
 
 	bool changeGridSize = false;
 
-	std::vector<Wall *> wallVector;
+	std::vector<std::shared_ptr<Wall>> wallVector;
 	std::vector<EnemySpawner *> enemySpawnerVector;
 	std::vector<BloodSplatter *> bloodSplatterVector;
 private:

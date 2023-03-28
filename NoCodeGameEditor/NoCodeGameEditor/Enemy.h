@@ -8,12 +8,13 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "Animator.h"
+#include "TextureManager.h"
 
 class Enemy
 {
 public:
 	Animator myAnim;
-	Enemy(int t_enemyTextNum);
+	Enemy(int t_enemyTextNum, TextureManager& textureManager);
 
 	void loadFiles();
 
@@ -27,9 +28,9 @@ public:
 	void moveEnemy(sf::Vector2f t_playerPos);
 
 
-	sf::Texture enemyTexture;
-	sf::Texture enemyTexture2;
-	sf::Texture enemyTexture3;
+	std::shared_ptr<sf::Texture> enemyTexture;
+	std::shared_ptr<sf::Texture> enemyTexture2;
+	std::shared_ptr<sf::Texture> enemyTexture3;
 
 	bool enemySetup = false;
 private:
@@ -48,5 +49,6 @@ private:
 	int randomSpawn = 0;
 
 	float speed = 3.0f;
+	TextureManager& m_textureManager;
 };
 

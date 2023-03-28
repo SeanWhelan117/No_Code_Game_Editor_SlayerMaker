@@ -10,21 +10,21 @@ EnemySpawner::EnemySpawner(int t_spawnerTextNum, sf::Vector2f t_spawnerPos, Text
 
 void EnemySpawner::loadFiles()
 {
-	spawnerTexture = m_textureManager.getTexture("ASSETS\\IMAGES\\ENEMIES\\ENEMY1\\Enemy1Spawner.png");
-	spawnerTexture2 = m_textureManager.getTexture("ASSETS\\IMAGES\\ENEMIES\\ENEMY2\\Enemy2Spawner.png");
-	spawnerTexture3 = m_textureManager.getTexture("ASSETS\\IMAGES\\ENEMIES\\ENEMY3\\Enemy3Spawner.png");
+	spawnerTexture = std::make_shared<sf::Texture>(m_textureManager.getTexture("ASSETS\\IMAGES\\ENEMIES\\ENEMY1\\Enemy1Spawner.png"));
+	spawnerTexture2 = std::make_shared<sf::Texture>(m_textureManager.getTexture("ASSETS\\IMAGES\\ENEMIES\\ENEMY2\\Enemy2Spawner.png"));
+	spawnerTexture3 = std::make_shared<sf::Texture>(m_textureManager.getTexture("ASSETS\\IMAGES\\ENEMIES\\ENEMY3\\Enemy3Spawner.png"));
 
 	if (spawnerTextureNumber == 0)
 	{
-		spawnerSprite.setTexture(spawnerTexture);
+		spawnerSprite.setTexture(*spawnerTexture);
 	}
 	else if (spawnerTextureNumber == 1)
 	{
-		spawnerSprite.setTexture(spawnerTexture2);
+		spawnerSprite.setTexture(*spawnerTexture2);
 	}
 	else if (spawnerTextureNumber == 2)
 	{
-		spawnerSprite.setTexture(spawnerTexture3);
+		spawnerSprite.setTexture(*spawnerTexture3);
 	}
 }
 
@@ -33,7 +33,6 @@ void EnemySpawner::setupSpawner(sf::Vector2f t_pos)
 	spawnerSprite.setOrigin(spawnerSprite.getGlobalBounds().width / 2, spawnerSprite.getGlobalBounds().height / 2);
 	spawnerSprite.setPosition(t_pos.x + offset, t_pos.y + offset);
 	spawnerSprite.setScale(0.25, 0.25);
-
 }
 
 void EnemySpawner::render(sf::RenderWindow& t_window, std::string t_state)
@@ -61,7 +60,7 @@ void EnemySpawner::update(sf::Vector2f t_playerPos)
 		test = 0;
 		if (totalEnemies < MAX_ENEMIES)
 		{
-			enemyVector.push_back(new Enemy(createEnemy()));
+			enemyVector.emplace_back(new Enemy(createEnemy()));
 			totalEnemies++;
 		}
 		
@@ -88,7 +87,7 @@ sf::Sprite& EnemySpawner::getSpawner()
 
 Enemy EnemySpawner::createEnemy()
 {
-	Enemy tempEnemy{ spawnerTextureNumber };
+	Enemy tempEnemy{ spawnerTextureNumber, m_textureManager};
 
 	return tempEnemy;
 }

@@ -85,9 +85,9 @@ public:
 
 	bool changeGridSize = false;
 
-	std::vector<Wall *> wallVector;
-	std::vector<EnemySpawner *> enemySpawnerVector;
-	std::vector<BloodSplatter *> bloodSplatterVector;
+	std::vector<std::unique_ptr<Wall>> wallVector;
+	std::vector<std::unique_ptr<EnemySpawner>> enemySpawnerVector;
+	std::vector<std::unique_ptr<BloodSplatter>> bloodSplatterVector;
 private:
 
 	sf::Vector2f mousePos; // mouses current position
@@ -127,8 +127,6 @@ private:
 	bool zooming = false;
 	
 	bool scrollingX = false;
-
-	sf::Texture bloodSplatterTexture;
 
 	int scrollSpeed = 30;
 

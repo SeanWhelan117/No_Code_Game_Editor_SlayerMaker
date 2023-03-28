@@ -1,24 +1,20 @@
 #include "BloodSplatter.h"
 
-BloodSplatter::BloodSplatter(sf::Vector2f t_bloodPos, sf::Texture t_bloodTexture)
+BloodSplatter::BloodSplatter(sf::Vector2f t_bloodPos, TextureManager& textureManager) : bloodPos(t_bloodPos), m_textureManager(textureManager)
 {
-	bloodSplatterTexture = t_bloodTexture;
 	loadFiles();
 	setupSplatter(t_bloodPos);
 }
 
 void BloodSplatter::loadFiles()
 {
-	//if (!bloodSplatterTexture.loadFromFile("ASSETS\\IMAGES\\BloodSplatter.png"))
-	//{
-	//	// simple error message if previous call fails
-	//	std::cout << "problem loading BloodSplatter (BloodSplatter.png)" << std::endl;
-	//}
+
+	bloodSplatterTexture = std::make_shared<sf::Texture>(m_textureManager.getTexture("ASSETS\\IMAGES\\BloodSplatter.png"));
+	bloodSplatterSprite.setTexture(*bloodSplatterTexture);
 }
 
 void BloodSplatter::setupSplatter(sf::Vector2f t_pos)
 {
-	bloodSplatterSprite.setTexture(bloodSplatterTexture);
 	bloodSplatterSprite.setScale(0.3, 0.3);
 	bloodSplatterSprite.setOrigin(bloodSplatterSprite.getGlobalBounds().width / 2, bloodSplatterSprite.getGlobalBounds().height / 2);
 	bloodSplatterSprite.setPosition(t_pos.x, t_pos.y);

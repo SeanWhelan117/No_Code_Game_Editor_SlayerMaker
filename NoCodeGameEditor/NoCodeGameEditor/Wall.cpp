@@ -9,27 +9,25 @@ Wall::Wall(int t_wallTextNum, sf::Vector2f t_wallPos, TextureManager& textureMan
 
 void Wall::loadFiles()
 {
-	wallTexture = m_textureManager.getTexture("ASSETS\\IMAGES\\WALLS\\wallGrey.png");
-	wallTexture2 = m_textureManager.getTexture("ASSETS\\IMAGES\\WALLS\\wallBrown.png");
-	wallTexture3 = m_textureManager.getTexture("ASSETS\\IMAGES\\WALLS\\wallRed.png");
+	wallTexture = std::make_shared<sf::Texture>(m_textureManager.getTexture("ASSETS\\IMAGES\\WALLS\\wallGrey.png"));
+	wallTexture2 = std::make_shared<sf::Texture>(m_textureManager.getTexture("ASSETS\\IMAGES\\WALLS\\wallBrown.png"));
+	wallTexture3 = std::make_shared<sf::Texture>(m_textureManager.getTexture("ASSETS\\IMAGES\\WALLS\\wallRed.png"));
 	if (wallTextureNumber == 0)
 	{
-		wallSprite.setTexture(wallTexture);
+		wallSprite.setTexture(*wallTexture);
 	}
 	else if (wallTextureNumber == 1)
 	{
-		wallSprite.setTexture(wallTexture2);
+		wallSprite.setTexture(*wallTexture2);
 	}
 	else if (wallTextureNumber == 2)
 	{
-		wallSprite.setTexture(wallTexture3);
+		wallSprite.setTexture(*wallTexture3);
 	}
 }
 
 void Wall::setupWall(sf::Vector2f t_pos)
 {
-	//loadFiles();
-
 	
 	wallSprite.setOrigin(wallSprite.getGlobalBounds().width / 2, wallSprite.getGlobalBounds().height / 2);
 	wallSprite.setPosition(t_pos.x + offset, t_pos.y + offset);

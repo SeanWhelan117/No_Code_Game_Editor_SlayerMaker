@@ -46,7 +46,7 @@ void EnemySpawner::render(sf::RenderWindow& t_window, std::string t_state)
 		{
 			for (int i = 0; i < enemyVector.size(); i++)
 			{
-				t_window.draw(enemyVector.at(i)->getEnemy());
+				enemyVector.at(i)->render(t_window);
 			}
 		}
 	}

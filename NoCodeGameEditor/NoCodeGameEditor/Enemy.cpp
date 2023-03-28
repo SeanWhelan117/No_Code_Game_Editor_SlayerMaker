@@ -57,10 +57,10 @@ void Enemy::setupEnemy(sf::Vector2f t_pos)
 	speed = createRandomSpeed();
 }
 
-//void Enemy::render(sf::RenderWindow& t_window)
-//{
-//	t_window.draw(enemySprite);
-//}
+void Enemy::render(sf::RenderWindow& t_window)
+{
+	t_window.draw(enemySprite);
+}
 
 void Enemy::update(sf::Vector2f t_playerPos)
 {

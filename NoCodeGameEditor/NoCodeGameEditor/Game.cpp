@@ -499,6 +499,10 @@ void Game::render()
 	if (myState == GameState::testGame)
 	{
 		myBackground.render(m_window);
+		for (int i = 0; i < bloodSplatterVector.size(); i++)
+		{
+			bloodSplatterVector.at(i)->render(m_window);
+		}
 		myPlayer.render(m_window);
 
 		for (int i = 0; i < wallVector.size(); i++)
@@ -524,7 +528,6 @@ void Game::render()
 
 		for (int i = 0; i < bloodSplatterVector.size(); i++)
 		{
-			//bloodSplatterVector.at(i)->getSplatter().setTexture(bloodSplatterTexture);
 			bloodSplatterVector.at(i)->render(m_window);
 		}
 
@@ -800,26 +803,39 @@ bool Game::isColliding(sf::FloatRect t_obj1, sf::FloatRect t_obj2)
 
 void Game::collisionDetection()
 {
-	for (auto& bullet : myPlayer.bulletVector) 
+	for (auto spawnerIt = enemySpawnerVector.begin(); spawnerIt != enemySpawnerVector.end(); ++spawnerIt)
 	{
-		for (auto& spawner : enemySpawnerVector)
+		auto& spawner = *spawnerIt;
+
+		for (auto enemyIt = spawner->enemyVector.begin(); enemyIt != spawner->enemyVector.end(); )
 		{
-			for (auto& enemy : spawner->enemyVector) 
+			auto& enemy = *enemyIt;
+
+			for (auto bulletIt = myPlayer.bulletVector.begin(); bulletIt != myPlayer.bulletVector.end(); )
 			{
+				auto& bullet = *bulletIt;
+
 				if (isColliding(bullet.getBullet().getGlobalBounds(), enemy->getEnemy().getGlobalBounds()))
 				{
-					spawner->enemyVector.erase(std::remove(spawner->enemyVector.begin(), spawner->enemyVector.end(), enemy), spawner->enemyVector.end());
 					bloodSplatterVector.emplace_back(new BloodSplatter(spawnBloodSplatter(enemy->getEnemy().getPosition())));
 
-					myPlayer.bulletVector.erase(std::remove_if(myPlayer.bulletVector.begin(), myPlayer.bulletVector.end(),
-						[&](const Bullet& b) {
-							return &b == &bullet;
-						}), myPlayer.bulletVector.end());
+					enemyIt = spawner->enemyVector.erase(enemyIt);
+					bulletIt = myPlayer.bulletVector.erase(bulletIt);
 				}
+				else 
+				{
+					++bulletIt;
+				}
+			}
+			if (enemyIt != spawner->enemyVector.end()) 
+			{
+				++enemyIt;
 			}
 		}
 	}
 }
+
+
 
 BloodSplatter Game::spawnBloodSplatter(sf::Vector2f t_splatterPos)
 {

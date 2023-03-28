@@ -33,7 +33,7 @@ public:
 	std::shared_ptr<sf::Texture> spawnerTexture2;
 	std::shared_ptr<sf::Texture> spawnerTexture3;
 
-	std::vector<Enemy*> enemyVector;
+	std::vector<std::unique_ptr<Enemy>> enemyVector;
 
 	int spawnerTextureNumber = 0;
 private:

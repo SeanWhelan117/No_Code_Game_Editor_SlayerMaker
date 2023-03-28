@@ -60,7 +60,7 @@ void EnemySpawner::update(sf::Vector2f t_playerPos)
 		test = 0;
 		if (totalEnemies < MAX_ENEMIES)
 		{
-			enemyVector.push_back(new Enemy(createEnemy()));
+			enemyVector.emplace_back(new Enemy(createEnemy()));
 			totalEnemies++;
 		}
 		
@@ -87,7 +87,7 @@ sf::Sprite& EnemySpawner::getSpawner()
 
 Enemy EnemySpawner::createEnemy()
 {
-	Enemy tempEnemy{ spawnerTextureNumber };
+	Enemy tempEnemy{ spawnerTextureNumber, m_textureManager};
 
 	return tempEnemy;
 }

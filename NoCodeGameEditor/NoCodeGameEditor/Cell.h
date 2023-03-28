@@ -7,11 +7,11 @@
 #pragma once
 #include <iostream>
 #include "SFML/Graphics.hpp"
+#include <map>
+
 
 class Cell
 {
-	
-
 public:
 	Cell();
 	void setPos(sf::Vector2f t_pos);

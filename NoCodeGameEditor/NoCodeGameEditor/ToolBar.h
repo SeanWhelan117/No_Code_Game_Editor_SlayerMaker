@@ -8,6 +8,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "Grid.h"
+#include <map>
 
 class ToolBar
 {

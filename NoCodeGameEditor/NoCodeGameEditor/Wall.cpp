@@ -1,32 +1,17 @@
 #include "Wall.h"
 
-Wall::Wall(int t_wallTextNum, sf::Vector2f t_wallPos)
+Wall::Wall(int t_wallTextNum, sf::Vector2f t_wallPos, TextureManager& textureManager) : wallTextureNumber(t_wallTextNum), wallPos(t_wallPos), m_textureManager(textureManager)
 {
-	wallTextureNumber = t_wallTextNum;
+	//wallTextureNumber = t_wallTextNum;
 	loadFiles();
 	setupWall(t_wallPos);
 }
 
 void Wall::loadFiles()
 {
-	if (!wallTexture.loadFromFile("ASSETS\\IMAGES\\WALLS\\wallGrey.png"))
-	{
-		// simple error message if previous call fails
-		std::cout << "problem loading wall (wallGrey)" << std::endl;
-	}
-
-	if (!wallTexture2.loadFromFile("ASSETS\\IMAGES\\WALLS\\wallBrown.png"))
-	{
-		// simple error message if previous call fails
-		std::cout << "problem loading wall (wallBrown)" << std::endl;
-	}
-
-	if (!wallTexture3.loadFromFile("ASSETS\\IMAGES\\WALLS\\wallRed.png"))
-	{
-		// simple error message if previous call fails
-		std::cout << "problem loading wall (wallRed)" << std::endl;
-	}
-	
+	wallTexture = m_textureManager.getTexture("ASSETS\\IMAGES\\WALLS\\wallGrey.png");
+	wallTexture2 = m_textureManager.getTexture("ASSETS\\IMAGES\\WALLS\\wallBrown.png");
+	wallTexture3 = m_textureManager.getTexture("ASSETS\\IMAGES\\WALLS\\wallRed.png");
 	if (wallTextureNumber == 0)
 	{
 		wallSprite.setTexture(wallTexture);
@@ -39,13 +24,13 @@ void Wall::loadFiles()
 	{
 		wallSprite.setTexture(wallTexture3);
 	}
-
 }
 
 void Wall::setupWall(sf::Vector2f t_pos)
 {
 	//loadFiles();
-	//wallSprite.setTexture(wallTexture);
+
+	
 	wallSprite.setOrigin(wallSprite.getGlobalBounds().width / 2, wallSprite.getGlobalBounds().height / 2);
 	wallSprite.setPosition(t_pos.x + offset, t_pos.y + offset);
 }

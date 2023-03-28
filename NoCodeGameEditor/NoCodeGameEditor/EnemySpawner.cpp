@@ -1,6 +1,6 @@
 #include "EnemySpawner.h"
 
-EnemySpawner::EnemySpawner(int t_spawnerTextNum, sf::Vector2f t_spawnerPos)
+EnemySpawner::EnemySpawner(int t_spawnerTextNum, sf::Vector2f t_spawnerPos, TextureManager& textureManager) : spawnerTextureNumber(t_spawnerTextNum), spawnerPos(t_spawnerPos), m_textureManager(textureManager)
 {
 	//std::cout << "EnemySpawner Created" << std::endl;
 	spawnerTextureNumber = t_spawnerTextNum;
@@ -10,25 +10,9 @@ EnemySpawner::EnemySpawner(int t_spawnerTextNum, sf::Vector2f t_spawnerPos)
 
 void EnemySpawner::loadFiles()
 {
-	if (!spawnerTexture.loadFromFile("ASSETS\\IMAGES\\ENEMIES\\ENEMY1\\Enemy1Spawner.png"))
-	{
-		// simple error message if previous call fails
-		std::cout << "problem loading spawnerTexture (Enemy1Spawner)" << std::endl;
-	}
-
-	if (!spawnerTexture2.loadFromFile("ASSETS\\IMAGES\\ENEMIES\\ENEMY2\\Enemy2Spawner.png"))
-	{
-		// simple error message if previous call fails
-		std::cout << "problem loading spawnerTexture2 (Enemy2-choice)" << std::endl;
-	}
-
-	if (!spawnerTexture3.loadFromFile("ASSETS\\IMAGES\\ENEMIES\\ENEMY3\\Enemy3Spawner.png"))
-	{
-		// simple error message if previous call fails
-		std::cout << "problem loading spawnerTexture3 (Enemy3Spawner)" << std::endl;
-	}
-
-
+	spawnerTexture = m_textureManager.getTexture("ASSETS\\IMAGES\\ENEMIES\\ENEMY1\\Enemy1Spawner.png");
+	spawnerTexture2 = m_textureManager.getTexture("ASSETS\\IMAGES\\ENEMIES\\ENEMY2\\Enemy2Spawner.png");
+	spawnerTexture3 = m_textureManager.getTexture("ASSETS\\IMAGES\\ENEMIES\\ENEMY3\\Enemy3Spawner.png");
 
 	if (spawnerTextureNumber == 0)
 	{

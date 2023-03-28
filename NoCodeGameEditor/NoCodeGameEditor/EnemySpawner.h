@@ -8,12 +8,14 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "Enemy.h"
+#include "TextureManager.h"
+
 
 class EnemySpawner
 {
 
 public:
-	EnemySpawner(int t_spawnerTextNum, sf::Vector2f t_spawnerPos);
+	EnemySpawner(int t_spawnerTextNum, sf::Vector2f t_spawnerPos, TextureManager& textureManager);
 
 	void loadFiles();
 
@@ -46,6 +48,10 @@ private:
 	int totalEnemies = 0;
 	static const int MAX_ENEMIES = 10;
 	int timesCalled = 0;
+
+	sf::Vector2f spawnerPos;
+
+	TextureManager m_textureManager;
 
 };
 

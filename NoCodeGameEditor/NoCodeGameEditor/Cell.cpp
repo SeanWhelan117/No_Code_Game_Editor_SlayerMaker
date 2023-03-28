@@ -38,7 +38,7 @@ void Cell::setMarked(int t_choiceNum, std::map<std::string, int>& t_itemsPlaced)
 {
 	//	itemsPlaced = { {"Spawner1", 0}, {"Spawner2", 0}, {"Spawner3", 0}, {"Coins", 0}, {"Doors", 0}};
 
-	if (cellShape.getFillColor() == sf::Color::Transparent && type == "empty")
+	if (cellShape.getFillColor() == sf::Color::Transparent && type == "empty" && filled == false)
 	{
 		if (t_choiceNum == 0)
 		{

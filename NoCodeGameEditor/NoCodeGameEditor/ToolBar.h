@@ -8,6 +8,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "Grid.h"
+#include <map>
 
 class ToolBar
 {
@@ -58,6 +59,8 @@ public:
 	sf::Sprite navigationTriangles[MAX_NAV_TRIANGLES];
 
 	bool navigating = false;
+
+	std::map<std::string, int> itemsPlaced;
 
 private:
 

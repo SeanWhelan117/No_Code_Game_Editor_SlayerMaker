@@ -27,11 +27,7 @@ Game::Game() :
 	//else if (__cplusplus == 199711L) std::cout << "C++98";
 	//else std::cout << "pre-standard C++." << __cplusplus;
 	//std::cout << "\n";
-	if (!bloodSplatterTexture.loadFromFile("ASSETS\\IMAGES\\BloodSplatter.png"))
-	{
-		// simple error message if previous call fails
-		std::cout << "problem loading BloodSplatter (BloodSplatter.png)" << std::endl;
-	}
+
 }
 
 /// <summary>
@@ -418,10 +414,6 @@ void Game::update(sf::Time t_deltaTime)
 			myState = GameState::play;
 			
 			createLevel();
-			for (int i = 0; i < enemySpawnerVector.size(); i++)
-			{
-				enemySpawnerVector.at(i)->loadFiles();
-			}
 		}
 	}
 	
@@ -618,20 +610,20 @@ void Game::createSpawnerVector()
 			if (myGrid.theGrid.at(m).at(i).getType() == "enemy1" && myGrid.theGrid.at(m).at(i).filled == false)
 			{
 				myGrid.theGrid.at(m).at(i).filled = true;
-				enemySpawnerVector.push_back(new EnemySpawner(createIndividualSpawner(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 0)));
+				enemySpawnerVector.emplace_back(new EnemySpawner(createIndividualSpawner(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 0)));
 				numOfSpawners++;
 
 			}
 			if (myGrid.theGrid.at(m).at(i).getType() == "enemy2" && myGrid.theGrid.at(m).at(i).filled == false)
 			{
 				myGrid.theGrid.at(m).at(i).filled = true;
-				enemySpawnerVector.push_back(new EnemySpawner(createIndividualSpawner(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 1)));
+				enemySpawnerVector.emplace_back(new EnemySpawner(createIndividualSpawner(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 1)));
 				numOfSpawners++;
 			}
 			if (myGrid.theGrid.at(m).at(i).getType() == "enemy3" && myGrid.theGrid.at(m).at(i).filled == false)
 			{
 				myGrid.theGrid.at(m).at(i).filled = true;
-				enemySpawnerVector.push_back(new EnemySpawner(createIndividualSpawner(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 2)));
+				enemySpawnerVector.emplace_back(new EnemySpawner(createIndividualSpawner(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 2)));
 				numOfSpawners++;
 			}
 		}
@@ -718,10 +710,8 @@ void Game::removeEnemySpawnerVector()
 					{
 						if (myTools.rubberToolSelected)
 						{
-							vector<EnemySpawner*>::iterator begin = enemySpawnerVector.begin();
+							vector<std::unique_ptr<EnemySpawner>>::iterator begin = enemySpawnerVector.begin();
 							begin += i;
-							enemySpawnerVector.at(i) = NULL;
-							delete enemySpawnerVector.at(i);
 							enemySpawnerVector.erase(begin);
 						}
 					}
@@ -792,7 +782,7 @@ void Game::createLevel()
 	for (int i = 0; i < gameChoice.loader.spawnerData.size(); i++)
 	{
 		sf::Vector2f tempSpawnerPos = { gameChoice.loader.spawnerData.at(i).x , gameChoice.loader.spawnerData.at(i).y };
-		enemySpawnerVector.push_back(new EnemySpawner(createIndividualSpawner(tempSpawnerPos, gameChoice.loader.spawnerData.at(i).z)));
+		enemySpawnerVector.emplace_back(new EnemySpawner(createIndividualSpawner(tempSpawnerPos, gameChoice.loader.spawnerData.at(i).z)));
 	}
 }
 
@@ -819,7 +809,7 @@ void Game::collisionDetection()
 				if (isColliding(bullet.getBullet().getGlobalBounds(), enemy->getEnemy().getGlobalBounds()))
 				{
 					spawner->enemyVector.erase(std::remove(spawner->enemyVector.begin(), spawner->enemyVector.end(), enemy), spawner->enemyVector.end());
-					bloodSplatterVector.push_back(new BloodSplatter(spawnBloodSplatter(enemy->getEnemy().getPosition())));
+					bloodSplatterVector.emplace_back(new BloodSplatter(spawnBloodSplatter(enemy->getEnemy().getPosition())));
 
 					myPlayer.bulletVector.erase(std::remove_if(myPlayer.bulletVector.begin(), myPlayer.bulletVector.end(),
 						[&](const Bullet& b) {
@@ -833,9 +823,7 @@ void Game::collisionDetection()
 
 BloodSplatter Game::spawnBloodSplatter(sf::Vector2f t_splatterPos)
 {
-	BloodSplatter tempBlood{t_splatterPos, bloodSplatterTexture };
-
-	tempBlood.getSplatter().setTexture(bloodSplatterTexture);
+	BloodSplatter tempBlood{t_splatterPos, textureManager};
 
 	return tempBlood;
 }

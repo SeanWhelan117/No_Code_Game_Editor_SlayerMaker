@@ -1,9 +1,9 @@
 #include "TextureManager.h"
 
-sf::Texture& TextureManager::getTexture(const std::string& t_filename)
+sf::Texture& TextureManager::getTexture(const std::string& t_fileName)
 {
     {
-        auto it = textureMap.find(t_filename);
+        auto it = textureMap.find(t_fileName);
 
         if (it != textureMap.end())
         {
@@ -12,14 +12,13 @@ sf::Texture& TextureManager::getTexture(const std::string& t_filename)
         else
         {
             sf::Texture texture;
-            if (!texture.loadFromFile(t_filename))
+            if (!texture.loadFromFile(t_fileName))
             {
-                // handle error here
+                std::cout << "Error loading texture " << t_fileName << std::endl;
             }
-            textureMap[t_filename] = texture;
+            textureMap[t_fileName] = texture;
 
-            // Return the newly loaded texture
-            return textureMap[t_filename];
+            return textureMap[t_fileName];
         }
     }
 }

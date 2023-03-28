@@ -13,7 +13,7 @@ class TextureManager
 public:
     TextureManager() {}
 
-    sf::Texture& getTexture(const std::string& t_filename);
+    sf::Texture& getTexture(const std::string& t_fileName);
     
 
 private:

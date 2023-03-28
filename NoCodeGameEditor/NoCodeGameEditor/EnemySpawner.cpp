@@ -1,6 +1,6 @@
 #include "EnemySpawner.h"
 
-EnemySpawner::EnemySpawner(int t_spawnerTextNum, sf::Vector2f t_spawnerPos)
+EnemySpawner::EnemySpawner(int t_spawnerTextNum, sf::Vector2f t_spawnerPos, TextureManager& textureManager) : spawnerTextureNumber(t_spawnerTextNum), spawnerPos(t_spawnerPos), m_textureManager(textureManager)
 {
 	//std::cout << "EnemySpawner Created" << std::endl;
 	spawnerTextureNumber = t_spawnerTextNum;

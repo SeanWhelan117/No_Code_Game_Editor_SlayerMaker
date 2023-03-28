@@ -28,6 +28,7 @@
 #include "EnemySpawner.h"
 #include "ChooseGame.h"
 #include "BloodSplatter.h"
+#include "TextureManager.h"
 
 class Game
 {
@@ -48,6 +49,7 @@ public:
 	Crosshair myCrosshair;
 	Background myBackground{gameWidth, gameHeight};
 	ChooseGame gameChoice{ gameWidth, gameHeight };
+	TextureManager textureManager;
 
 	sf::View mainView;
 	sf::View testView;

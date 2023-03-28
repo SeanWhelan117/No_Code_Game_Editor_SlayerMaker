@@ -9,11 +9,13 @@
 #include <SFML/Graphics.hpp>
 #include "Grid.h"
 #include "ToolBar.h"
+#include "TextureManager.h"
+
 
 class Wall
 {
 public:
-	Wall(int t_wallTextNum, sf::Vector2f t_wallPos);
+	Wall(int t_wallTextNum, sf::Vector2f t_wallPos, TextureManager& textureManager);
 
 	void loadFiles();
 
@@ -33,6 +35,7 @@ private:
 	sf::Sprite wallSprite;
 
 	int offset = 15;
-
+	TextureManager& m_textureManager;
+	sf::Vector2f wallPos;
 };
 

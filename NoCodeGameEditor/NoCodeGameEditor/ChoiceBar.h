@@ -24,6 +24,7 @@ public:
 
 	int currentChoice = 0;
 	bool choiceMade = false;
+	std::string currentMode = "WALLS";
 private:
 	void checkForMousePosAndClick(sf::RenderWindow& t_window, sf::Vector2f t_mousePos);
 
@@ -51,7 +52,6 @@ private:
 	sf::Texture enemyChoiceTex2;
 	sf::Texture enemyChoiceTex3;
 
-	std::string currentMode = "WALLS";
 
 	static const int MAX_OBJECTIVE_CHOICES = 2;
 

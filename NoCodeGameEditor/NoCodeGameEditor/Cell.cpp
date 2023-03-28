@@ -34,8 +34,10 @@ sf::RectangleShape& Cell::getCellShape()
 	return cellShape;
 }
 
-void Cell::setMarked(int t_choiceNum, int& t_spawnsOne, int& t_spawnsTwo, int& t_spawnsThree, int& t_coinsPlaced, int& t_doorsPlaced)
+void Cell::setMarked(int t_choiceNum, std::map<std::string, int>& t_itemsPlaced)
 {
+	//	itemsPlaced = { {"Spawner1", 0}, {"Spawner2", 0}, {"Spawner3", 0}, {"Coins", 0}, {"Doors", 0}};
+
 	if (cellShape.getFillColor() == sf::Color::Transparent && type == "empty")
 	{
 		if (t_choiceNum == 0)
@@ -57,124 +59,85 @@ void Cell::setMarked(int t_choiceNum, int& t_spawnsOne, int& t_spawnsTwo, int& t
 		}
 		else if (t_choiceNum == 3)
 		{
-			if (t_spawnsOne < 3)
+			if (t_itemsPlaced["Spawner1"] < 3)
 			{
 				cellShape.setFillColor(sf::Color::Magenta); // ----ENEMIES----
 				type = "enemy1";
-				t_spawnsOne++;
+				t_itemsPlaced["Spawner1"]++;
 			}
 		}
 		else if (t_choiceNum == 4)
 		{
-			if (t_spawnsTwo < 3)
+			if (t_itemsPlaced["Spawner2"] < 3)
 			{
 				cellShape.setFillColor(sf::Color::Cyan);
 				type = "enemy2";
-				t_spawnsTwo++;
+				t_itemsPlaced["Spawner2"]++;
 			}
 		}
 		else if (t_choiceNum == 5)
 		{
-			if (t_spawnsThree < 3)
+			if (t_itemsPlaced["Spawner3"] < 3)
 			{
 				cellShape.setFillColor(sf::Color::Yellow);
 				type = "enemy3";
-				t_spawnsThree++;
+				t_itemsPlaced["Spawner3"]++;
 			}
 		}
 		else if (t_choiceNum == 6)
 		{
-			if (t_coinsPlaced < 15)
+			if (t_itemsPlaced["Coins"] < 15)
 			{
 				cellShape.setFillColor(sf::Color::Black); // ----OBJECTIVES----
 				type = "objective1";
-				t_coinsPlaced++;
+				t_itemsPlaced["Coins"]++;
 			}
 		}
 		else if (t_choiceNum == 7)
 		{
-			if (t_doorsPlaced < 2)
+			if (t_itemsPlaced["Doors"] < 2)
 			{
 				cellShape.setFillColor(sf::Color::Black);
 				type = "objective2";
-				t_doorsPlaced++;
+				t_itemsPlaced["Doors"]++;
 			}
 		}
 	}
 }
 
-void Cell::setUnmarked(int& t_spawnsOne, int& t_spawnsTwo, int& t_spawnsThree, int& t_coinsPlaced, int& t_doorsPlaced)
+void Cell::setUnmarked(std::map<std::string, int>& t_itemsPlaced)
 {
-	////WALLS
-	//if (type == "wall1" || type == "wall2" || type == "wall3")
-	//{
-	//	cellShape.setFillColor(sf::Color::Transparent);
-	//	type = "empty";
-	//}
+
+	//	itemsPlaced = { {"Spawner1", 0}, {"Spawner2", 0}, {"Spawner3", 0}, {"Coins", 0}, {"Doors", 0}};
 
 
-	////ENEMIES
-	//if (type == "enemy1")
-	//{
-	//	t_spawnsOne--;
-	//	cellShape.setFillColor(sf::Color::Transparent);
-	//	type = "empty";
-	//}
-	//else if (type == "enemy2")
-	//{
-	//	t_spawnsTwo--;
-	//	cellShape.setFillColor(sf::Color::Transparent);
-	//	type = "empty";
-	//}
-	//else if (type == "enemy3")
-	//{
-	//	t_spawnsThree--;
-	//	cellShape.setFillColor(sf::Color::Transparent);
-	//	type = "empty";
-	//}		
-
-
-	if (type == "filled")
+	//ENEMIES
+	if (filled)
 	{
-		if (cellShape.getFillColor() == sf::Color::Magenta)
+		if (type == "enemy1")
 		{
-			t_spawnsOne--;
+			t_itemsPlaced["Spawner1"]-=1;
 		}
-		else if (cellShape.getFillColor() == sf::Color::Cyan)
+		else if (type == "enemy2")
 		{
-			t_spawnsTwo--;
+			t_itemsPlaced["Spawner2"]-=1;
 		}
-		else if (cellShape.getFillColor() == sf::Color::Yellow)
+		else if (type == "enemy3")
 		{
-			t_spawnsThree--;
+			t_itemsPlaced["Spawner3"]-=1;
 		}
-
+		else if (type == "objective1")
+		{
+			t_itemsPlaced["Coins"]-=1;
+		}
+		else if (type == "objective2")
+		{
+			t_itemsPlaced["Doors"]-=1;
+		}
 		cellShape.setFillColor(sf::Color::Transparent);
+		filled = false;
 		type = "empty";
 	}
-	else if(type == "wall1" || type == "wall2" || type == "wall3")
-	{
-		cellShape.setFillColor(sf::Color::Transparent);
-		type = "empty";
-	}
-	else if (type == "enemy1")
-	{
-		t_spawnsOne--;
-		cellShape.setFillColor(sf::Color::Transparent);
-		type = "empty";
-	}
-	else if (type == "enemy2")
-	{
-		t_spawnsTwo--;
-		cellShape.setFillColor(sf::Color::Transparent);
-		type = "empty";
-	}
-	else if (type == "enemy3")
-	{
-		t_spawnsThree--;
-		cellShape.setFillColor(sf::Color::Transparent);
-		type = "empty";
-	}	
 }
 
 int Cell::getID()

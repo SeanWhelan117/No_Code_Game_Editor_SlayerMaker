@@ -59,6 +59,8 @@ public:
 
 	bool navigating = false;
 
+	std::map<std::string, int> itemsPlaced;
+
 private:
 
 	sf::Texture toolBarTexture;

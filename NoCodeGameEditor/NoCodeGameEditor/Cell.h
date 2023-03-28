@@ -17,9 +17,9 @@ public:
 	void setPos(sf::Vector2f t_pos);
 	void setupCells();
 	void setID(int t_id);
-	void setMarked(int t_choiceNum, int& t_spawnsOne, int& t_spawnsTwo, int& t_spawnsThree, int& t_coinsPlaced, int& t_doorsPlaced);
+	void setMarked(int t_choiceNum, std::map<std::string, int>& t_itemsPlaced);
 
-	void setUnmarked(int& t_spawnsOne, int& t_spawnsTwo, int& t_spawnsThree, int& t_coinsPlaced, int& t_doorsPlaced);
+	void setUnmarked(std::map<std::string, int>& t_itemsPlaced);
 
 	int getID();
 
@@ -33,6 +33,7 @@ public:
 	sf::RectangleShape& getCellShape();
 
 	std::string type = "empty";
+	bool filled = false;
 
 private:
 	sf::RectangleShape cellShape;

@@ -592,19 +592,19 @@ void Game::createWallVector()
 		{
 			if (myGrid.theGrid.at(m).at(i).getType() == "wall1")
 			{
-				myGrid.theGrid.at(m).at(i).setType("filled");
+				myGrid.theGrid.at(m).at(i).filled = true;
 				wallVector.push_back(new Wall(createIndividualWall(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 0)));
 				numOfWalls++;
 			}
 			else if (myGrid.theGrid.at(m).at(i).getType() == "wall2")
 			{
-				myGrid.theGrid.at(m).at(i).setType("filled");
+				myGrid.theGrid.at(m).at(i).filled = true;
 				wallVector.push_back(new Wall(createIndividualWall(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 1)));
 				numOfWalls++;
 			}
 			else if (myGrid.theGrid.at(m).at(i).getType() == "wall3")
 			{
-				myGrid.theGrid.at(m).at(i).setType("filled");
+				myGrid.theGrid.at(m).at(i).filled = true;
 				wallVector.push_back(new Wall(createIndividualWall(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 2)));
 				numOfWalls++;
 			}
@@ -626,20 +626,20 @@ void Game::createSpawnerVector()
 		{
 			if (myGrid.theGrid.at(m).at(i).getType() == "enemy1")
 			{
-				myGrid.theGrid.at(m).at(i).setType("filled");
+				myGrid.theGrid.at(m).at(i).filled = true;
 				enemySpawnerVector.push_back(new EnemySpawner(createIndividualSpawner(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 0)));
 				numOfSpawners++;
 
 			}
 			if (myGrid.theGrid.at(m).at(i).getType() == "enemy2")
 			{
-				myGrid.theGrid.at(m).at(i).setType("filled");
+				myGrid.theGrid.at(m).at(i).filled = true;
 				enemySpawnerVector.push_back(new EnemySpawner(createIndividualSpawner(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 1)));
 				numOfSpawners++;
 			}
 			if (myGrid.theGrid.at(m).at(i).getType() == "enemy3")
 			{
-				myGrid.theGrid.at(m).at(i).setType("filled");
+				myGrid.theGrid.at(m).at(i).filled = true;
 				enemySpawnerVector.push_back(new EnemySpawner(createIndividualSpawner(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 2)));
 				numOfSpawners++;
 			}
@@ -661,13 +661,13 @@ void Game::createObjectivesVector()
 		{
 			if (myGrid.theGrid.at(m).at(i).getType() == "objective1")
 			{
-				myGrid.theGrid.at(m).at(i).setType("filled");
+				myGrid.theGrid.at(m).at(i).filled = true;
 				//coinVector.push_back(new Coin(createIndividualCoin(myGrid.theGrid.at(m).at(i).getCellShape().getPosition())));
 				//numOfCoins++;
 			}
 			if (myGrid.theGrid.at(m).at(i).getType() == "objective2")
 			{
-				myGrid.theGrid.at(m).at(i).setType("filled");
+				myGrid.theGrid.at(m).at(i).filled = true;
 				//doorVector.push_back(new Door(createIndividualDoor(myGrid.theGrid.at(m).at(i).getCellShape().getPosition())));
 				//numOfDoors++;
 			}

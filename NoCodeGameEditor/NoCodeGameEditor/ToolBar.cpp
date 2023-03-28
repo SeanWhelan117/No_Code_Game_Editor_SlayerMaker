@@ -29,6 +29,10 @@ ToolBar::ToolBar(float t_gameWidth, float t_gameHeight)
 	addEnemySpawnersButton.setSize(sf::Vector2f(150, 100));
 	addEnemySpawnersButton.setOrigin(75, 50);
 	addEnemySpawnersButton.setPosition(gameWidth / 2 + 350, 100);
+
+	itemsPlaced = { {"Spawner1", 0}, {"Spawner2", 0}, {"Spawner3", 0}, {"Coins", 0}, {"Doors", 0}};
+	//itemsPlaced["Spawner1"] +=400;
+
 }
 
 
@@ -291,11 +295,11 @@ void ToolBar::setGridCellToMarked(std::vector<std::vector<Cell>>& t_grid, int t_
 				{
 					if (t_toolChosen == "Brush")
 					{
-						t_grid.at(m).at(i).setMarked(t_choiceNum, enemyOneSpawnsPlaced, enemyTwoSpawnsPlaced, enemyThreeSpawnsPlaced, coinsPlaced, doorsPlaced);
+						t_grid.at(m).at(i).setMarked(t_choiceNum, itemsPlaced);
 					}
 					else if (t_toolChosen == "Rubber")
 					{
-						t_grid.at(m).at(i).setUnmarked(enemyOneSpawnsPlaced, enemyTwoSpawnsPlaced, enemyThreeSpawnsPlaced, coinsPlaced, doorsPlaced);
+						t_grid.at(m).at(i).setUnmarked(itemsPlaced);
 					}
 				}
 			}

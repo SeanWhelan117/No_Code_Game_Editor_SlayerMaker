@@ -673,12 +673,12 @@ void Game::createObjectivesVector()
 			}
 		}
 	}
-	for (int i = 0; i < enemySpawnerVector.size(); i++)
+	/*for (int i = 0; i < enemySpawnerVector.size(); i++)
 	{
 		enemySpawnerVector.at(i)->loadFiles();
 	}
 	enemySpawnerVectorCreated = true;
-	myTools.enemySpawnersPlaced = false;
+	myTools.enemySpawnersPlaced = false;*/
 }
 
 void Game::removeWallVector()

@@ -72,9 +72,6 @@ void GameOptions::loadFiles()
 		// simple error message if previous call fails
 		std::cout << "problem loading gtChoiceTex3 (CollectAndRunMode)" << std::endl;
 	}
-
-
-
 }
 
 void GameOptions::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, GameState& t_gameState)

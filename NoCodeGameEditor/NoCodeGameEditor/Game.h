@@ -29,6 +29,7 @@
 #include "ChooseGame.h"
 #include "BloodSplatter.h"
 #include "TextureManager.h"
+#include "Objectives.h"
 
 class Game
 {
@@ -66,6 +67,9 @@ public:
 
 	EnemySpawner createIndividualSpawner(sf::Vector2f t_spawnerPos, int t_spawnerTextNum);
 
+	Objectives createIndividualObjective(sf::Vector2f t_objectivePos, int t_objectiveType);
+
+
 	void removeWallVector();
 	void removeEnemySpawnerVector();
 
@@ -88,6 +92,7 @@ public:
 	std::vector<std::unique_ptr<Wall>> wallVector;
 	std::vector<std::unique_ptr<EnemySpawner>> enemySpawnerVector;
 	std::vector<std::unique_ptr<BloodSplatter>> bloodSplatterVector;
+	std::vector<std::unique_ptr<Objectives>> objectivesVector;
 private:
 
 	sf::Vector2f mousePos; // mouses current position
@@ -111,12 +116,16 @@ private:
 	int gridSize = 30;
 
 	int numOfWalls = 0;
-
 	int numOfSpawners = 0;
+	int numOfCoins = 0;
+	int numOfDoors = 0;
+	int numOfMonuments = 0;
 
 	bool wallVectorCreated = false;
 
 	bool enemySpawnerVectorCreated = false;
+
+	bool objectiveVectorCreated = false;
 
 	bool mainViewActive = true;
 

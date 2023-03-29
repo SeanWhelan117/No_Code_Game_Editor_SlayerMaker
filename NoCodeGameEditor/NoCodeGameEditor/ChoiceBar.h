@@ -61,5 +61,8 @@ private:
 	sf::Sprite doorSprite;
 	sf::Texture doorTexture;
 
+	sf::Sprite monumentSprite;
+	sf::Texture monumentTexture;
+
 };
 

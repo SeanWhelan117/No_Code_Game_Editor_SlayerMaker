@@ -30,7 +30,7 @@ ToolBar::ToolBar(float t_gameWidth, float t_gameHeight)
 	addEnemySpawnersButton.setOrigin(75, 50);
 	addEnemySpawnersButton.setPosition(gameWidth / 2 + 350, 100);
 
-	itemsPlaced = { {"Spawner1", 0}, {"Spawner2", 0}, {"Spawner3", 0}, {"Coins", 0}, {"Doors", 0}};
+	itemsPlaced = { {"Spawner1", 0}, {"Spawner2", 0}, {"Spawner3", 0}, {"Coins", 0}, {"Doors", 0}, {"Monuments", 0} };
 	//itemsPlaced["Spawner1"] +=400;
 
 }

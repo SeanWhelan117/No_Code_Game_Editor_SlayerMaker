@@ -26,7 +26,9 @@
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="ChoiceBar.cpp" />
     <ClCompile Include="ChooseGame.cpp" />
+    <ClCompile Include="Coin.cpp" />
     <ClCompile Include="Crosshair.cpp" />
+    <ClCompile Include="Door.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemySpawner.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -35,6 +37,8 @@
     <ClCompile Include="LoadFromFile.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
+    <ClCompile Include="Monument.cpp" />
+    <ClCompile Include="Objectives.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="ToolBar.cpp" />
@@ -48,7 +52,9 @@
     <ClInclude Include="Cell.h" />
     <ClInclude Include="ChoiceBar.h" />
     <ClInclude Include="ChooseGame.h" />
+    <ClInclude Include="Coin.h" />
     <ClInclude Include="Crosshair.h" />
+    <ClInclude Include="Door.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemySpawner.h" />
     <ClInclude Include="Game.h" />
@@ -57,6 +63,8 @@
     <ClInclude Include="Grid.h" />
     <ClInclude Include="LoadFromFile.h" />
     <ClInclude Include="MainMenu.h" />
+    <ClInclude Include="Monument.h" />
+    <ClInclude Include="Objectives.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="ToolBar.h" />

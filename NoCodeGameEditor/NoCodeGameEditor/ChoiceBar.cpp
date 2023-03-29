@@ -73,6 +73,12 @@ void ChoiceBar::loadFiles()
 		// simple error message if previous call fails
 		std::cout << "problem loading doorTexture (door)" << std::endl;
 	}
+
+	if (!monumentTexture.loadFromFile("ASSETS\\IMAGES\\monument.png"))
+	{
+		// simple error message if previous call fails
+		std::cout << "problem loading monumentTexture (monument)" << std::endl;
+	}
 }
 
 void ChoiceBar::setupSprites()
@@ -114,6 +120,10 @@ void ChoiceBar::setupSprites()
 	doorSprite.setTexture(doorTexture);
 	doorSprite.setOrigin(doorSprite.getLocalBounds().width / 2, doorSprite.getLocalBounds().height / 2);
 	doorSprite.setPosition(choiceBarSprite.getPosition().x, choiceBarSprite.getPosition().y);
+
+	monumentSprite.setTexture(monumentTexture);
+	monumentSprite.setOrigin(monumentSprite.getLocalBounds().width / 2, monumentSprite.getLocalBounds().height / 2);
+	monumentSprite.setPosition(choiceBarSprite.getPosition().x, choiceBarSprite.getPosition().y + choiceBarSprite.getLocalBounds().height / 3);
 	
 }
 
@@ -150,6 +160,7 @@ void ChoiceBar::render(sf::RenderWindow& t_window)
 	{
 		t_window.draw(coinSprite);
 		t_window.draw(doorSprite);
+		t_window.draw(monumentSprite);
 	}
 }
 
@@ -215,6 +226,15 @@ void ChoiceBar::checkForMousePosAndClick(sf::RenderWindow& t_window, sf::Vector2
 					choiceMade = true;
 				}
 			}
+			else if (monumentSprite.getGlobalBounds().contains(t_mousePos))
+			{
+				changeTools(15);
+				if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+				{
+					currentChoice = 8;
+					choiceMade = true;
+				}
+			}
 			else
 			{
 				resetTools(15);
@@ -240,6 +260,7 @@ void ChoiceBar::resetTools(int t_current)
 	{
 		coinSprite.setScale(1, 1);
 		doorSprite.setScale(1, 1);
+		monumentSprite.setScale(1, 1);
 	}
 }
 
@@ -265,6 +286,10 @@ void ChoiceBar::changeTools(int t_current)
 		else if (t_current == 10)
 		{
 			doorSprite.setScale(1.3, 1.3);
+		}
+		else if (t_current == 15)
+		{
+			monumentSprite.setScale(1.3, 1.3);
 		}
 	}
 }

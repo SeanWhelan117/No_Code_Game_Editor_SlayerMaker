@@ -244,6 +244,7 @@ void Game::processMouseWheel(sf::Event t_event)
 
 void Game::processMouseRelease(sf::Event t_event)
 {
+	std::cout << myChoice.currentMode << std::endl;
 	if (myState == GameState::createGame)
 	{
 		if (sf::Mouse::Left == t_event.mouseButton.button)
@@ -256,7 +257,12 @@ void Game::processMouseRelease(sf::Event t_event)
 			{
 				myTools.enemySpawnersPlaced = true;
 			}
-			//myTools.objectivesPlaced = true;
+			else if (myChoice.currentMode == "OBJECTIVES")
+			{
+				myTools.objectivesPlaced = true;
+			}
+
+
 			for (int i = 0; i < myTools.MAX_NAV_TRIANGLES; i++)
 			{
 				if (myTools.navigationTriangles[i].getGlobalBounds().contains(mousePos))
@@ -475,7 +481,17 @@ void Game::render()
 					enemySpawnerVector.at(i)->render(m_window, "create");
 				}
 			}
-			
+
+			if (objectiveVectorCreated == true)
+			{
+				for (int i = 0; i < objectivesVector.size(); i++)
+				{
+					for (int y = 0; y < objectivesVector.at(i)->coinVector.size(); y++)
+					{
+						objectivesVector.at(i)->coinVector.at(y)->render(m_window);
+					}
+				}
+			}
 			myTools.render(m_window);
 			myChoice.render(m_window);
 		}
@@ -541,6 +557,14 @@ void Game::render()
 		for (int i = 0; i < enemySpawnerVector.size(); i++)
 		{
 			enemySpawnerVector.at(i)->render(m_window, "test");
+		}
+
+		for (int i = 0; i < objectivesVector.size(); i++)
+		{
+			for (int y = 0; y < objectivesVector.at(i)->coinVector.size(); y++)
+			{
+				objectivesVector.at(i)->coinVector.at(y)->render(m_window);
+			}
 		}
 		myCrosshair.render(m_window);
 
@@ -631,10 +655,6 @@ void Game::createSpawnerVector()
 			}
 		}
 	}
-	for (int i = 0; i < enemySpawnerVector.size(); i++)
-	{
-		enemySpawnerVector.at(i)->loadFiles();
-	}
 	enemySpawnerVectorCreated = true;
 	myTools.enemySpawnersPlaced = false;
 }
@@ -655,23 +675,33 @@ void Game::createObjectivesVector()
 			if (myGrid.theGrid.at(m).at(i).getType() == "objective1")
 			{
 				myGrid.theGrid.at(m).at(i).filled = true;
-				//coinVector.push_back(new Coin(createIndividualCoin(myGrid.theGrid.at(m).at(i).getCellShape().getPosition())));
-				//numOfCoins++;
+				objectivesVector.emplace_back(new Objectives(createIndividualObjective(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 0)));
+				numOfCoins++;
 			}
 			if (myGrid.theGrid.at(m).at(i).getType() == "objective2")
 			{
 				myGrid.theGrid.at(m).at(i).filled = true;
-				//doorVector.push_back(new Door(createIndividualDoor(myGrid.theGrid.at(m).at(i).getCellShape().getPosition())));
-				//numOfDoors++;
+				objectivesVector.emplace_back(new Objectives(createIndividualObjective(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 1)));
+				numOfDoors++;
+			}
+			if (myGrid.theGrid.at(m).at(i).getType() == "objective3")
+			{
+				myGrid.theGrid.at(m).at(i).filled = true;
+				objectivesVector.emplace_back(new Objectives(createIndividualObjective(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 2)));
+				numOfMonuments++;
 			}
 		}
 	}
-	/*for (int i = 0; i < enemySpawnerVector.size(); i++)
-	{
-		enemySpawnerVector.at(i)->loadFiles();
-	}
-	enemySpawnerVectorCreated = true;
-	myTools.enemySpawnersPlaced = false;*/
+
+	objectiveVectorCreated = true;
+	myTools.objectivesPlaced = false;
+}
+
+Objectives Game::createIndividualObjective(sf::Vector2f t_objectivePos, int t_objectiveType)
+{
+	Objectives tempObjective{ t_objectiveType, t_objectivePos, textureManager };
+
+	return tempObjective;
 }
 
 void Game::removeWallVector()

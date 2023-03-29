@@ -102,6 +102,15 @@ void Cell::setMarked(int t_choiceNum, std::map<std::string, int>& t_itemsPlaced)
 				t_itemsPlaced["Doors"]++;
 			}
 		}
+		else if (t_choiceNum == 8)
+		{
+			if (t_itemsPlaced["Monuments"] < 1)
+			{
+				cellShape.setFillColor(sf::Color::Black);
+				type = "objective3";
+				t_itemsPlaced["Monuments"]++;
+			}
+		}
 	}
 }
 
@@ -133,6 +142,10 @@ void Cell::setUnmarked(std::map<std::string, int>& t_itemsPlaced)
 		else if (type == "objective2")
 		{
 			t_itemsPlaced["Doors"]-=1;
+		}
+		else if (type == "objective3")
+		{
+			t_itemsPlaced["Monuments"] -= -1;
 		}
 		cellShape.setFillColor(sf::Color::Transparent);
 		filled = false;

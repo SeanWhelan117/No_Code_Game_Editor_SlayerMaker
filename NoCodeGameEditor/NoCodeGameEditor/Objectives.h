@@ -9,7 +9,8 @@
 #include <SFML/Graphics.hpp>
 #include "TextureManager.h"
 #include "Coin.h"
-
+#include "Door.h"
+#include "Monument.h"
 
 class Objectives
 {
@@ -26,8 +27,8 @@ public:
 	void render(sf::RenderWindow& t_window);*/
 
 	std::vector<std::unique_ptr<Coin>> coinVector;
-	//std::vector<std::unique_ptr<EnemySpawner>> doorVector;
-	//std::vector<std::unique_ptr<BloodSplatter>> monumentVector;
+	std::vector<std::unique_ptr<Door>> doorVector;
+	std::vector<std::unique_ptr<Monument>> monumentVector;
 
 private:
 

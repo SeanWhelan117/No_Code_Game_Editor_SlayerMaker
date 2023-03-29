@@ -10,11 +10,13 @@ Objectives::Objectives(int t_objectiveType, sf::Vector2f t_objectivePos, Texture
 	}
 	else if (t_objectiveType == 1)
 	{
-		
+		Door tempDoor(t_objectivePos, textureManager);
+		doorVector.emplace_back(new Door(tempDoor));
 	}
 	else if (t_objectiveType == 2)
 	{
-
+		Monument tempMonument(t_objectivePos, textureManager);
+		monumentVector.emplace_back(new Monument(tempMonument));
 	}
 
 }

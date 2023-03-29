@@ -27,5 +27,6 @@ public:
 private:
 	TextureManager& m_textureManager;
 	sf::Vector2f doorPos;
+	sf::Sprite doorSprite;
 };
 

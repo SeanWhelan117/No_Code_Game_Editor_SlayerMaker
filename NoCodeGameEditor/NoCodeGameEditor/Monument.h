@@ -17,7 +17,7 @@ public:
 
 	void loadFiles();
 
-	void setupDoor();
+	void setupMonument();
 
 	void render(sf::RenderWindow& t_window);
 
@@ -28,5 +28,6 @@ public:
 private:
 	TextureManager& m_textureManager;
 	sf::Vector2f monumentPos;
+	sf::Sprite monumentSprite;
 };
 

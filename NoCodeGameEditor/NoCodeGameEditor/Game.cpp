@@ -244,7 +244,6 @@ void Game::processMouseWheel(sf::Event t_event)
 
 void Game::processMouseRelease(sf::Event t_event)
 {
-	std::cout << myChoice.currentMode << std::endl;
 	if (myState == GameState::createGame)
 	{
 		if (sf::Mouse::Left == t_event.mouseButton.button)
@@ -482,14 +481,22 @@ void Game::render()
 				}
 			}
 
-			if (objectiveVectorCreated == true)
+
+			for (int i = 0; i < objectivesVector.size(); i++)
 			{
-				for (int i = 0; i < objectivesVector.size(); i++)
+				for (int y = 0; y < objectivesVector.at(i)->coinVector.size(); y++)
 				{
-					for (int y = 0; y < objectivesVector.at(i)->coinVector.size(); y++)
-					{
-						objectivesVector.at(i)->coinVector.at(y)->render(m_window);
-					}
+					objectivesVector.at(i)->coinVector.at(y)->render(m_window);
+				}
+
+				for (int y = 0; y < objectivesVector.at(i)->doorVector.size(); y++)
+				{
+					objectivesVector.at(i)->doorVector.at(y)->render(m_window);
+				}
+
+				for (int y = 0; y < objectivesVector.at(i)->monumentVector.size(); y++)
+				{
+					objectivesVector.at(i)->monumentVector.at(y)->render(m_window);
 				}
 			}
 			myTools.render(m_window);
@@ -565,7 +572,19 @@ void Game::render()
 			{
 				objectivesVector.at(i)->coinVector.at(y)->render(m_window);
 			}
+
+			for (int y = 0; y < objectivesVector.at(i)->doorVector.size(); y++)
+			{
+				objectivesVector.at(i)->doorVector.at(y)->render(m_window);
+			}
+
+			for (int y = 0; y < objectivesVector.at(i)->monumentVector.size(); y++)
+			{
+				objectivesVector.at(i)->monumentVector.at(y)->render(m_window);
+			}
 		}
+
+
 		myCrosshair.render(m_window);
 
 		

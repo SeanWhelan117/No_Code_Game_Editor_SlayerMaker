@@ -28,6 +28,8 @@ public:
 private:
 	void checkForMousePosAndClick(sf::RenderWindow& t_window, sf::Vector2f t_mousePos);
 
+	void processMouseClick(sf::FloatRect t_object, sf::Vector2f t_mousePos, int t_numLoops);
+
 	void resetTools(int t_current); //small function which is called to reset buttons after they are not being hoverd over anymore
 
 	void changeTools(int t_current);

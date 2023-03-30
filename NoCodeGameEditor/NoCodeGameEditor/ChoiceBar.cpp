@@ -185,37 +185,12 @@ void ChoiceBar::checkForMousePosAndClick(sf::RenderWindow& t_window, sf::Vector2
 		{
 			if (currentMode == "WALLS")
 			{
-				if (wallChoiceSprite[i].getGlobalBounds().contains(t_mousePos))
-				{
-					changeTools(i);
-
-					if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-					{
-						currentChoice = i;
-						choiceMade = true;
-					}
-				}
-				else
-				{
-					resetTools(i);
-				}
+				processMouseClick(wallChoiceSprite[i].getGlobalBounds(), t_mousePos, i);
+				
 			}
 			else if (currentMode == "ENEMIES")
 			{
-				if (enemyChoiceSprite[i].getGlobalBounds().contains(t_mousePos))
-				{
-					changeTools(i);
-
-					if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-					{
-						currentChoice = i + 3;
-						choiceMade = true;
-					}
-				}
-				else
-				{
-					resetTools(i);
-				}
+				processMouseClick(enemyChoiceSprite[i].getGlobalBounds(), t_mousePos, i);
 			}
 		}
 
@@ -225,51 +200,41 @@ void ChoiceBar::checkForMousePosAndClick(sf::RenderWindow& t_window, sf::Vector2
 			{
 				if (chosenGT == 1)
 				{
-					if (monumentSprite.getGlobalBounds().contains(t_mousePos))
-					{
-						changeTools(15);
-						if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-						{
-							currentChoice = 8;
-							choiceMade = true;
-						}
-					}
-					else
-					{
-						resetTools(15);
-					}
+					processMouseClick(monumentSprite.getGlobalBounds(), t_mousePos, 8);
 				}
 				else if (chosenGT == 2)
 				{
-					if (coinSprite.getGlobalBounds().contains(t_mousePos))
-					{
-						changeTools(5);
-						if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-						{
-							currentChoice = 6;
-							choiceMade = true;
-						}
-					}
-					else if (doorSprite.getGlobalBounds().contains(t_mousePos))
-					{
-						changeTools(10);
-						if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-						{
-							currentChoice = 7;
-							choiceMade = true;
-						}
-					}
-					else
-					{
-						resetTools(15);
-					}
+					processMouseClick(coinSprite.getGlobalBounds(), t_mousePos, 6);
+					processMouseClick(doorSprite.getGlobalBounds(), t_mousePos, 7);
 				}
 			}
-			
-			
 		}
-		
-	
+}
+
+void ChoiceBar::processMouseClick(sf::FloatRect t_object, sf::Vector2f t_mousePos, int t_numLoops)
+{
+	if (t_object.contains(t_mousePos))
+	{
+		changeTools(t_numLoops);
+
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+		{
+			if (currentMode == "ENEMIES")
+			{
+				currentChoice = t_numLoops + 3;
+
+			}
+			else
+			{
+				currentChoice = t_numLoops;
+			}
+			choiceMade = true;
+		}
+	}
+	else
+	{
+		resetTools(t_numLoops);
+	}
 }
 
 void ChoiceBar::resetTools(int t_current)
@@ -286,9 +251,18 @@ void ChoiceBar::resetTools(int t_current)
 	}
 	else if (currentMode == "OBJECTIVES")
 	{
-		coinSprite.setScale(1, 1);
-		doorSprite.setScale(1, 1);
-		monumentSprite.setScale(1, 1);
+		if (t_current == 6)
+		{
+			coinSprite.setScale(1, 1);
+		}
+		else if (t_current == 7)
+		{
+			doorSprite.setScale(1, 1);
+		}
+		else if (t_current == 8)
+		{
+			monumentSprite.setScale(1, 1);
+		}
 	}
 }
 
@@ -307,15 +281,15 @@ void ChoiceBar::changeTools(int t_current)
 	}
 	else if (currentMode == "OBJECTIVES")
 	{
-		if (t_current == 5)
+		if (t_current == 6)
 		{
 			coinSprite.setScale(1.3, 1.3);
 		}
-		else if (t_current == 10)
+		else if (t_current == 7)
 		{
 			doorSprite.setScale(1.3, 1.3);
 		}
-		else if (t_current == 15)
+		else if (t_current == 8)
 		{
 			monumentSprite.setScale(1.3, 1.3);
 		}

@@ -442,7 +442,7 @@ void Game::update(sf::Time t_deltaTime)
 		
 		for (int i = 0; i < enemySpawnerVector.size(); i++)
 		{
-			enemySpawnerVector.at(i)->update(myPlayer.getPlayer().getPosition());
+			enemySpawnerVector.at(i)->update(myPlayer.getPlayer().getPosition(), wallVector);
 		}
 		collisionDetection();
 		m_window.setView(testView);

@@ -9,6 +9,7 @@
 #include <SFML/Graphics.hpp>
 #include "Enemy.h"
 #include "TextureManager.h"
+#include "Wall.h"
 
 
 class EnemySpawner
@@ -23,7 +24,7 @@ public:
 
 	void render(sf::RenderWindow& t_window, std::string t_state);
 
-	void update(sf::Vector2f t_playerPos);
+	void update(sf::Vector2f t_playerPos, std::vector<std::unique_ptr<Wall>>& t_walls);
 
 	sf::Sprite& getSpawner();
 

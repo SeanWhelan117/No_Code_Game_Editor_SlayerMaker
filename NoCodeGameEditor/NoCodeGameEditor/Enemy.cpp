@@ -40,7 +40,7 @@ void Enemy::render(sf::RenderWindow& t_window)
 	t_window.draw(enemySprite);
 }
 
-void Enemy::update(sf::Vector2f t_playerPos)
+void Enemy::update(sf::Vector2f t_playerPos, std::vector<std::unique_ptr<Wall>>& t_walls)
 {
 	moveEnemy(t_playerPos);
 }

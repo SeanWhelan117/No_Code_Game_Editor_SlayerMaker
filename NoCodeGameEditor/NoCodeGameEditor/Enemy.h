@@ -9,6 +9,7 @@
 #include <SFML/Graphics.hpp>
 #include "Animator.h"
 #include "TextureManager.h"
+#include "Wall.h"
 
 class Enemy
 {
@@ -22,7 +23,7 @@ public:
 
 	void render(sf::RenderWindow& t_window);
 
-	void update(sf::Vector2f t_playerPos);
+	void update(sf::Vector2f t_playerPos, std::vector<std::unique_ptr<Wall>>& t_walls);
 	sf::Sprite& getEnemy();
 
 	void moveEnemy(sf::Vector2f t_playerPos);

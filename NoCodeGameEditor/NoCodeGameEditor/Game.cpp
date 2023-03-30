@@ -399,7 +399,7 @@ void Game::update(sf::Time t_deltaTime)
 		{
 			for (int i = 0; i < enemySpawnerVector.size(); i++)
 			{
-				enemySpawnerVector.at(i)->update(myPlayer.getPlayer().getPosition());
+				enemySpawnerVector.at(i)->update(myPlayer.getPlayer().getPosition(), wallVector, t_deltaTime);
 			}
 		}
 		collisionDetection();
@@ -442,7 +442,7 @@ void Game::update(sf::Time t_deltaTime)
 		
 		for (int i = 0; i < enemySpawnerVector.size(); i++)
 		{
-			enemySpawnerVector.at(i)->update(myPlayer.getPlayer().getPosition(), wallVector);
+			enemySpawnerVector.at(i)->update(myPlayer.getPlayer().getPosition(), wallVector, t_deltaTime);
 		}
 		collisionDetection();
 		m_window.setView(testView);

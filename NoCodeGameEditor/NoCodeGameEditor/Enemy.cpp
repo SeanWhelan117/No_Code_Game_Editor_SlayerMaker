@@ -40,9 +40,10 @@ void Enemy::render(sf::RenderWindow& t_window)
 	t_window.draw(enemySprite);
 }
 
-void Enemy::update(sf::Vector2f t_playerPos, std::vector<std::unique_ptr<Wall>>& t_walls)
+void Enemy::update(sf::Vector2f t_playerPos, std::vector<std::unique_ptr<Wall>>& t_walls, sf::Time t_deltaTime)
 {
-	moveEnemy(t_playerPos);
+	//moveEnemy(t_playerPos);
+	seeking(t_playerPos, t_deltaTime);
 }
 
 sf::Sprite& Enemy::getEnemy()
@@ -74,6 +75,27 @@ void Enemy::moveEnemy(sf::Vector2f t_playerPos)
 	}
 	
 	enemySprite.setPosition(currentPos);
+}
+
+void Enemy::seeking(sf::Vector2f t_playerPos, sf::Time t_deltaTime)
+{
+	sf::Vector2f playerPosition = t_playerPos;
+	sf::Vector2f seekerPosition = enemySprite.getPosition();
+
+
+	float angleX = seekerPosition.x - playerPosition.x;
+	float angleY = seekerPosition.y - playerPosition.y;
+
+	float rotation = (-atan2(angleX, angleY)) * 180 / PI;
+	enemySprite.setRotation(rotation);
+
+
+	velocity = playerPosition - seekerPosition;
+	float squareRootVelocity = sqrtf(velocity.x * velocity.x + velocity.y * velocity.y);
+	velocity = sf::Vector2f{ velocity.x / squareRootVelocity , velocity.y / squareRootVelocity };
+	velocity = velocity * speed;
+
+	enemySprite.move(velocity);
 }
 
 

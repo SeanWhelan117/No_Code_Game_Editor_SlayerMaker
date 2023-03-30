@@ -23,10 +23,12 @@ public:
 
 	void render(sf::RenderWindow& t_window);
 
-	void update(sf::Vector2f t_playerPos, std::vector<std::unique_ptr<Wall>>& t_walls);
+	void update(sf::Vector2f t_playerPos, std::vector<std::unique_ptr<Wall>>& t_walls, sf::Time t_deltaTime);
 	sf::Sprite& getEnemy();
 
 	void moveEnemy(sf::Vector2f t_playerPos);
+
+	void seeking(sf::Vector2f t_playerPos, sf::Time t_deltaTime);
 
 
 	std::shared_ptr<sf::Texture> enemyTexture;
@@ -56,5 +58,11 @@ private:
 	TextureManager& m_textureManager;
 
 	int health = 25;
+
+	sf::Vector2f velocity;
+
+	//float angle = 0;
+	const float PI = 3.141592654f;
+	//float speed = 6.0f;
 };
 

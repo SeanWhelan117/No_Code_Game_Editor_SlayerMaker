@@ -51,7 +51,7 @@ void EnemySpawner::render(sf::RenderWindow& t_window, std::string t_state)
 	}
 }
 
-void EnemySpawner::update(sf::Vector2f t_playerPos, std::vector<std::unique_ptr<Wall>>& t_walls)
+void EnemySpawner::update(sf::Vector2f t_playerPos, std::vector<std::unique_ptr<Wall>>& t_walls, sf::Time t_deltaTime)
 {
 	test++;
 
@@ -75,7 +75,7 @@ void EnemySpawner::update(sf::Vector2f t_playerPos, std::vector<std::unique_ptr<
 				timesCalled++;
 				enemyVector.at(i)->setupEnemy(getSpawner().getPosition());
 			}
-			enemyVector.at(i)->update(t_playerPos, t_walls);
+			enemyVector.at(i)->update(t_playerPos, t_walls, t_deltaTime);
 		}
 	}
 }

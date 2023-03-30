@@ -311,6 +311,24 @@ void ChoiceBar::setToolPosForView(sf::RenderWindow& t_window)
 		sf::Vector2f pos3(100, yPos);
 		pos3 = t_window.mapPixelToCoords(static_cast<sf::Vector2i>(pos3));
 		enemyChoiceSprite[i].setPosition(pos3);
+		if (i == 0)
+		{
+			sf::Vector2f pos4(100, yPos);
+			pos4 = t_window.mapPixelToCoords(static_cast<sf::Vector2i>(pos4));
+			coinSprite.setPosition(pos4);
+		}
+		else if (i == 1)
+		{
+			sf::Vector2f pos5(100, yPos);
+			pos5 = t_window.mapPixelToCoords(static_cast<sf::Vector2i>(pos5));
+			doorSprite.setPosition(pos5);
+		}
+		else if (i == 2)
+		{
+			sf::Vector2f pos6(100, yPos);
+			pos6 = t_window.mapPixelToCoords(static_cast<sf::Vector2i>(pos6));
+			monumentSprite.setPosition(pos6);
+		}
 
 		yPos += choiceBarSprite.getLocalBounds().height / 3;
 	}

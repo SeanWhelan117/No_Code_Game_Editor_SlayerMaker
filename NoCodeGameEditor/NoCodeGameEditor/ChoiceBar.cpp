@@ -127,8 +127,13 @@ void ChoiceBar::setupSprites()
 	
 }
 
-void ChoiceBar::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, std::string t_currentMode)
+void ChoiceBar::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, std::string t_currentMode, int t_chosenGameType)
 {
+	if (chosenGT != t_chosenGameType)
+	{
+		chosenGT = t_chosenGameType;
+	}
+
 	setToolPosForView(t_window);
 	currentMode = t_currentMode;
 
@@ -158,9 +163,18 @@ void ChoiceBar::render(sf::RenderWindow& t_window)
 	}
 	else if (currentMode == "OBJECTIVES")
 	{
-		t_window.draw(coinSprite);
-		t_window.draw(doorSprite);
-		t_window.draw(monumentSprite);
+		if (chosenGT != 0)
+		{
+			if (chosenGT == 1)
+			{
+				t_window.draw(monumentSprite);
+			}
+			else if (chosenGT == 2)
+			{
+				t_window.draw(coinSprite);
+				t_window.draw(doorSprite);
+			}
+		}
 	}
 }
 
@@ -207,38 +221,52 @@ void ChoiceBar::checkForMousePosAndClick(sf::RenderWindow& t_window, sf::Vector2
 
 		if (currentMode == "OBJECTIVES")
 		{
+			if (chosenGT != 0)
+			{
+				if (chosenGT == 1)
+				{
+					if (monumentSprite.getGlobalBounds().contains(t_mousePos))
+					{
+						changeTools(15);
+						if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+						{
+							currentChoice = 8;
+							choiceMade = true;
+						}
+					}
+					else
+					{
+						resetTools(15);
+					}
+				}
+				else if (chosenGT == 2)
+				{
+					if (coinSprite.getGlobalBounds().contains(t_mousePos))
+					{
+						changeTools(5);
+						if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+						{
+							currentChoice = 6;
+							choiceMade = true;
+						}
+					}
+					else if (doorSprite.getGlobalBounds().contains(t_mousePos))
+					{
+						changeTools(10);
+						if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+						{
+							currentChoice = 7;
+							choiceMade = true;
+						}
+					}
+					else
+					{
+						resetTools(15);
+					}
+				}
+			}
 			
-			if (coinSprite.getGlobalBounds().contains(t_mousePos))
-			{
-				changeTools(5);
-				if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-				{
-					currentChoice = 6;
-					choiceMade = true;
-				}
-			}
-			else if (doorSprite.getGlobalBounds().contains(t_mousePos))
-			{
-				changeTools(10);
-				if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-				{
-					currentChoice = 7;
-					choiceMade = true;
-				}
-			}
-			else if (monumentSprite.getGlobalBounds().contains(t_mousePos))
-			{
-				changeTools(15);
-				if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-				{
-					currentChoice = 8;
-					choiceMade = true;
-				}
-			}
-			else
-			{
-				resetTools(15);
-			}
+			
 		}
 		
 	

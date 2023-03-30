@@ -334,7 +334,7 @@ void Game::update(sf::Time t_deltaTime)
 			createObjectivesVector();
 		}
 		myTools.update(t_deltaTime, m_window, myGrid.theGrid, gridSize, myChoice.choiceMade, myChoice.currentChoice);
-		myChoice.update(t_deltaTime, m_window, myTools.currentMode);
+		myChoice.update(t_deltaTime, m_window, myTools.currentMode, gameOptions.chosenGT);
 
 		if (enemySpawnerVectorCreated && wallVectorCreated && myTools.saved)
 		{

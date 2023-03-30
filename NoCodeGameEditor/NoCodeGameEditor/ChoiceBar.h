@@ -18,7 +18,7 @@ public:
 
 	void setupSprites();
 
-	void update(sf::Time t_deltaTime, sf::RenderWindow& t_window, std::string t_currentMode);
+	void update(sf::Time t_deltaTime, sf::RenderWindow& t_window, std::string t_currentMode, int t_chosenGameType);
 
 	void render(sf::RenderWindow& t_window);
 
@@ -63,6 +63,8 @@ private:
 
 	sf::Sprite monumentSprite;
 	sf::Texture monumentTexture;
+
+	int chosenGT = 0;
 
 };
 

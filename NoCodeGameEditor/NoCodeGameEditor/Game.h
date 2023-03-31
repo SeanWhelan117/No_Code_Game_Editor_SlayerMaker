@@ -142,6 +142,8 @@ private:
 	void createWallVector();
 	void createSpawnerVector();
 	void createObjectivesVector();
+
+	void checkWallHealth();
 };
 
 #endif // !GAME_HPP

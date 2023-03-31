@@ -448,6 +448,8 @@ void Game::update(sf::Time t_deltaTime)
 		m_window.setView(testView);
 	}
 
+	checkWallHealth();
+
 	removeWallVector();
 	removeEnemySpawnerVector();
 }
@@ -898,4 +900,17 @@ BloodSplatter Game::spawnBloodSplatter(sf::Vector2f t_splatterPos)
 	BloodSplatter tempBlood{t_splatterPos, textureManager};
 
 	return tempBlood;
+}
+
+void Game::checkWallHealth()
+{
+	for (int i = 0; i < wallVector.size(); i++)
+	{
+		if (wallVector.at(i).get()->getWallHealth() <= 0)
+		{
+			vector<unique_ptr<Wall >>::iterator begin = wallVector.begin();
+			begin += i;
+			wallVector.erase(begin);
+		}
+	}
 }

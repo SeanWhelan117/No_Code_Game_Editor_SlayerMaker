@@ -3,6 +3,7 @@
 Enemy::Enemy(int t_EnemyTextNum, TextureManager& textureManager) : enemyTextureNumber(t_EnemyTextNum), m_textureManager(textureManager)
 {
 	loadFiles();
+	setupVisionCone();
 	//std::cout << "Enemy Created" << std::endl;
 }
 
@@ -38,43 +39,37 @@ void Enemy::setupEnemy(sf::Vector2f t_pos)
 void Enemy::render(sf::RenderWindow& t_window)
 {
 	t_window.draw(enemySprite);
+	t_window.draw(visionCone);
 }
 
 void Enemy::update(sf::Vector2f t_playerPos, std::vector<std::unique_ptr<Wall>>& t_walls, sf::Time t_deltaTime)
 {
 	//moveEnemy(t_playerPos);
-	seeking(t_playerPos, t_deltaTime);
+	if (seekingPlayer == true)
+	{
+		seeking(t_playerPos, t_deltaTime);
+	}
+	checkWallCollision(t_walls);
+
+	visionCone.setRotation(enemySprite.getRotation() - 90);
+	visionCone.setPosition(enemySprite.getPosition());
+
+	if (attacking == true)
+	{
+		std::cout << attackFatigue << std::endl;
+		attackFatigue++;
+
+		if (attackFatigue >= 100)
+		{
+			attackFatigue = 0;
+			hit = true;
+		}
+	}
 }
 
 sf::Sprite& Enemy::getEnemy()
 {
 	return enemySprite;
-}
-
-void Enemy::moveEnemy(sf::Vector2f t_playerPos)
-{
-
-	sf::Vector2f currentPos = enemySprite.getPosition();
-
-	if (currentPos.x < t_playerPos.x)
-	{
-		currentPos.x += speed;
-	}
-	else if (currentPos.x > t_playerPos.x)
-	{
-		currentPos.x -= speed;
-	}
-
-	if (currentPos.y < t_playerPos.y)
-	{
-		currentPos.y += speed;
-	}
-	else if (currentPos.y > t_playerPos.y)
-	{
-		currentPos.y -= speed;
-	}
-	
-	enemySprite.setPosition(currentPos);
 }
 
 void Enemy::seeking(sf::Vector2f t_playerPos, sf::Time t_deltaTime)
@@ -97,7 +92,6 @@ void Enemy::seeking(sf::Vector2f t_playerPos, sf::Time t_deltaTime)
 
 	enemySprite.move(velocity);
 }
-
 
 
 sf::Vector2f Enemy::createRandomStartPos(sf::Vector2f t_spawnerPos)
@@ -147,4 +141,42 @@ int Enemy::getHealth()
 void Enemy::setHealth(int t_damage)
 {
 	health -= t_damage;
+}
+
+void Enemy::setupVisionCone()
+{
+	visionCone.setPointCount(3);
+	visionCone.setPoint(0, sf::Vector2f(0, 0));
+	visionCone.setPoint(1, sf::Vector2f(coneLength, -coneLength * std::tan(coneAngle / 2 * PI / 180)));
+	visionCone.setPoint(2, sf::Vector2f(coneLength, coneLength * std::tan(coneAngle / 2 * PI / 180)));
+
+	visionCone.setFillColor(sf::Color::Blue);
+}
+
+void Enemy::checkWallCollision(std::vector<std::unique_ptr<Wall>>& t_walls)
+{
+	for (int i = 0; i < t_walls.size(); i++)
+	{
+		if (visionCone.getGlobalBounds().contains(t_walls.at(i).get()->getWall().getPosition()))
+		{
+			seekingPlayer = false;
+			attackWall(t_walls, i);
+		}
+		else
+		{
+			seekingPlayer = true;
+			attacking = false;
+		}
+	}
+}
+
+void Enemy::attackWall(std::vector<std::unique_ptr<Wall>>& t_walls, int t_wallToAttack)
+{
+	attacking = true;
+
+	if (hit == true)
+	{
+		t_walls.at(t_wallToAttack).get()->damageWall(5);
+		hit = false;
+	}
 }

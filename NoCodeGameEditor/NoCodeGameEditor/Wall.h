@@ -23,7 +23,9 @@ public:
 
 	void render(sf::RenderWindow& t_window);
 
+	void damageWall(int t_damageTaken);
 
+	int getWallHealth();
 	sf::Sprite& getWall();
 
 	std::shared_ptr<sf::Texture> wallTexture;
@@ -37,5 +39,8 @@ private:
 	int offset = 15;
 	TextureManager& m_textureManager;
 	sf::Vector2f wallPos;
+
+	int wallHealth = 20;
+
 };
 

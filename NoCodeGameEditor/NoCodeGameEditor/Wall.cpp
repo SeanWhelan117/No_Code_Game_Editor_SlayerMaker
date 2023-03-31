@@ -38,6 +38,17 @@ void Wall::render(sf::RenderWindow& t_window)
 	t_window.draw(wallSprite);
 }
 
+void Wall::damageWall(int t_damageTaken)
+{
+	wallHealth -= t_damageTaken;
+
+}
+
+int Wall::getWallHealth()
+{
+	return wallHealth;
+}
+
 sf::Sprite& Wall::getWall()
 {
 	return wallSprite;

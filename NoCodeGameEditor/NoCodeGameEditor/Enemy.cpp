@@ -49,16 +49,13 @@ void Enemy::update(sf::Vector2f t_playerPos, std::vector<std::unique_ptr<Wall>>&
 	{
 		seeking(t_playerPos, t_deltaTime);
 	}
-	checkWallCollision(t_walls);
 
 	visionCone.setRotation(enemySprite.getRotation() - 90);
 	visionCone.setPosition(enemySprite.getPosition());
 
-	if (attacking == true)
+	if (attacking)
 	{
-		std::cout << attackFatigue << std::endl;
 		attackFatigue++;
-
 		if (attackFatigue >= 100)
 		{
 			attackFatigue = 0;
@@ -153,30 +150,11 @@ void Enemy::setupVisionCone()
 	visionCone.setFillColor(sf::Color::Blue);
 }
 
-void Enemy::checkWallCollision(std::vector<std::unique_ptr<Wall>>& t_walls)
+sf::ConvexShape Enemy::getVisionCone()
 {
-	for (int i = 0; i < t_walls.size(); i++)
-	{
-		if (visionCone.getGlobalBounds().contains(t_walls.at(i).get()->getWall().getPosition()))
-		{
-			seekingPlayer = false;
-			attackWall(t_walls, i);
-		}
-		else
-		{
-			seekingPlayer = true;
-			attacking = false;
-		}
-	}
+	return visionCone;
 }
 
-void Enemy::attackWall(std::vector<std::unique_ptr<Wall>>& t_walls, int t_wallToAttack)
-{
-	attacking = true;
 
-	if (hit == true)
-	{
-		t_walls.at(t_wallToAttack).get()->damageWall(5);
-		hit = false;
-	}
-}
+
+

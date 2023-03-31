@@ -448,8 +448,6 @@ void Game::update(sf::Time t_deltaTime)
 		m_window.setView(testView);
 	}
 
-	checkWallHealth();
-
 	removeWallVector();
 	removeEnemySpawnerVector();
 }
@@ -891,6 +889,36 @@ void Game::collisionDetection()
 			}
 		}
 	}
+
+	for (int i = 0; i < enemySpawnerVector.size(); i++)
+	{
+		for (int s = 0; s < enemySpawnerVector.at(i).get()->enemyVector.size(); s++)
+		{
+			for (int p = 0; p < wallVector.size(); p++)
+			{
+				if (enemySpawnerVector.at(i).get()->enemyVector.at(s).get()->getVisionCone().getGlobalBounds().contains(wallVector.at(p).get()->getWall().getPosition()))
+				{
+					enemySpawnerVector.at(i).get()->enemyVector.at(s).get()->seekingPlayer = false;
+					enemySpawnerVector.at(i).get()->enemyVector.at(s).get()->attacking = true;
+					
+						if (enemySpawnerVector.at(i).get()->enemyVector.at(s).get()->hit == true)
+						{
+							wallVector.at(i)->damageWall(5);
+							enemySpawnerVector.at(i).get()->enemyVector.at(s).get()->hit = false;
+							if (wallVector.at(i).get()->getWallHealth() <= 0)
+							{
+								vector<unique_ptr<Wall >>::iterator begin = wallVector.begin();
+								begin += i;
+								wallVector.erase(begin);
+								enemySpawnerVector.at(i).get()->enemyVector.at(s).get()->seekingPlayer = true;
+								enemySpawnerVector.at(i).get()->enemyVector.at(s).get()->attacking = false;
+							}
+						}
+				}
+			}
+			
+		}
+	}
 }
 
 
@@ -904,13 +932,5 @@ BloodSplatter Game::spawnBloodSplatter(sf::Vector2f t_splatterPos)
 
 void Game::checkWallHealth()
 {
-	for (int i = 0; i < wallVector.size(); i++)
-	{
-		if (wallVector.at(i).get()->getWallHealth() <= 0)
-		{
-			vector<unique_ptr<Wall >>::iterator begin = wallVector.begin();
-			begin += i;
-			wallVector.erase(begin);
-		}
-	}
+	
 }

@@ -39,12 +39,14 @@ public:
 	int getHealth();
 	void setHealth(int t_damage);
 	void setupVisionCone();
+	sf::ConvexShape getVisionCone();
+	bool seekingPlayer = true;
+
+	bool hit = false;
+	bool attacking = false;
+
+
 private:
-
-	void checkWallCollision(std::vector<std::unique_ptr<Wall>>& t_walls);
-
-	void attackWall(std::vector<std::unique_ptr<Wall>>& t_walls, int t_wallToAttack);
-
 
 	sf::Vector2f createRandomStartPos(sf::Vector2f t_spawnerPos);
 	float createRandomSpeed();
@@ -76,13 +78,11 @@ private:
 	float coneLength = 30;
 	sf::ConvexShape visionCone;
 
-	bool seekingPlayer = true;
+	
 
-	bool attacking = false;
 
 	int attackFatigue = 0;
 
-	bool hit = false;
 
 };
 

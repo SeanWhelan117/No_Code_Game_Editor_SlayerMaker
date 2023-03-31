@@ -62,6 +62,10 @@ void Enemy::update(sf::Vector2f t_playerPos, std::vector<std::unique_ptr<Wall>>&
 			hit = true;
 		}
 	}
+	else
+	{
+		attackFatigue = 0; // Reset attackFatigue when not attacking
+	}
 }
 
 sf::Sprite& Enemy::getEnemy()

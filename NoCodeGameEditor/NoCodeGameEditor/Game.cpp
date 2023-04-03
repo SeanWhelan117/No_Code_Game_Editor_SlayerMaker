@@ -399,7 +399,7 @@ void Game::update(sf::Time t_deltaTime)
 		{
 			for (int i = 0; i < enemySpawnerVector.size(); i++)
 			{
-				enemySpawnerVector.at(i)->update(myPlayer.getPlayer().getPosition(), wallVector, t_deltaTime);
+				enemySpawnerVector.at(i)->update(myPlayer.getPlayer().getPosition(), wallVector, t_deltaTime, gameOptions.chosenGT);
 			}
 		}
 		collisionDetection();
@@ -442,7 +442,7 @@ void Game::update(sf::Time t_deltaTime)
 		
 		for (int i = 0; i < enemySpawnerVector.size(); i++)
 		{
-			enemySpawnerVector.at(i)->update(myPlayer.getPlayer().getPosition(), wallVector, t_deltaTime);
+			enemySpawnerVector.at(i)->update(myPlayer.getPlayer().getPosition(), wallVector, t_deltaTime, gameOptions.chosenGT);
 		}
 		collisionDetection();
 		m_window.setView(testView);
@@ -920,7 +920,7 @@ void Game::collisionDetection()
 	//	}
 	//}
 
-	for (int i = 0; i < enemySpawnerVector.size(); i++)
+	/*for (int i = 0; i < enemySpawnerVector.size(); i++)
 	{
 		for (int s = 0; s < enemySpawnerVector.at(i).get()->enemyVector.size(); s++)
 		{
@@ -945,7 +945,7 @@ void Game::collisionDetection()
 				}
 			}
 		}
-	}
+	}*/
 
 }
 

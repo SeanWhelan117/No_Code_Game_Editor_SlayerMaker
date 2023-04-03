@@ -51,19 +51,29 @@ void EnemySpawner::render(sf::RenderWindow& t_window, std::string t_state)
 	}
 }
 
-void EnemySpawner::update(sf::Vector2f t_playerPos, std::vector<std::unique_ptr<Wall>>& t_walls, sf::Time t_deltaTime)
+void EnemySpawner::update(sf::Vector2f t_playerPos, std::vector<std::unique_ptr<Wall>>& t_walls, sf::Time t_deltaTime, int t_gtChosen)
 {
 	test++;
 
 	if (test >= 100 )
 	{
 		test = 0;
-		if (totalEnemies < MAX_ENEMIES)
+		if (t_gtChosen != 0)
 		{
-			enemyVector.emplace_back(new Enemy(createEnemy()));
-			totalEnemies++;
+			if (totalEnemies < MAX_ENEMIES)
+			{
+				enemyVector.emplace_back(new Enemy(createEnemy()));
+				totalEnemies++;
+			}
 		}
-		
+		else
+		{
+			if (totalEnemies < INFINITE_ENEMIES)
+			{
+				enemyVector.emplace_back(new Enemy(createEnemy()));
+				totalEnemies++;
+			}
+		}
 	}
 
 	if (enemyVector.size() > 0)

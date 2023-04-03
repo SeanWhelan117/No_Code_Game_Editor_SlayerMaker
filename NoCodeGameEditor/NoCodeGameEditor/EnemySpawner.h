@@ -24,7 +24,7 @@ public:
 
 	void render(sf::RenderWindow& t_window, std::string t_state);
 
-	void update(sf::Vector2f t_playerPos, std::vector<std::unique_ptr<Wall>>& t_walls, sf::Time t_deltaTime);
+	void update(sf::Vector2f t_playerPos, std::vector<std::unique_ptr<Wall>>& t_walls, sf::Time t_deltaTime, int t_gtChosen);
 
 	sf::Sprite& getSpawner();
 
@@ -47,7 +47,8 @@ private:
 	int test = 0;
 
 	int totalEnemies = 0;
-	static const int MAX_ENEMIES = 10;
+	static const int MAX_ENEMIES = 25;
+	static const int INFINITE_ENEMIES = 1000;
 	int timesCalled = 0;
 
 	sf::Vector2f spawnerPos;

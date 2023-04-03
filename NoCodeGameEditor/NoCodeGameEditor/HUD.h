@@ -8,11 +8,13 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "Clock.h"
+#include "HealthBar.h"
 class HUD
 {
 
 public:
 	Clock myClock;
+	HealthBar myHealthBar;
 	HUD(float t_gameWidth, float t_gameHeight);
 
 	void loadFiles();

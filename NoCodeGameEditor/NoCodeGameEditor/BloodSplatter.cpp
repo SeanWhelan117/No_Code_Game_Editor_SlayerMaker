@@ -25,6 +25,7 @@ void BloodSplatter::setupSplatter(sf::Vector2f t_pos)
 
 void BloodSplatter::render(sf::RenderWindow& t_window)
 {
+	bloodSplatterSprite.setColor(sf::Color(bloodSplatterSprite.getColor().r, bloodSplatterSprite.getColor().g, bloodSplatterSprite.getColor().b, bloodSplatterSprite.getColor().a -0.000001));
 	t_window.draw(bloodSplatterSprite);
 }
 

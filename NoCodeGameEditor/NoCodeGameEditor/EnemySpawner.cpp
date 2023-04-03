@@ -39,14 +39,12 @@ void EnemySpawner::render(sf::RenderWindow& t_window, std::string t_state)
 {
 	t_window.draw(spawnerSprite);
 
-	if (t_state == "test")
+	
+	if (enemyVector.size() > 0)
 	{
-		if (enemyVector.size() > 0)
+		for (int i = 0; i < enemyVector.size(); i++)
 		{
-			for (int i = 0; i < enemyVector.size(); i++)
-			{
-				enemyVector.at(i)->render(t_window);
-			}
+			enemyVector.at(i)->render(t_window);
 		}
 	}
 }
@@ -80,11 +78,6 @@ void EnemySpawner::update(sf::Vector2f t_playerPos, std::vector<std::unique_ptr<
 	{
 		for (int i = 0; i < enemyVector.size(); i++)
 		{
-			if (enemyVector.at(i)->enemySetup == false)
-			{
-				timesCalled++;
-				enemyVector.at(i)->setupEnemy(getSpawner().getPosition());
-			}
 			enemyVector.at(i)->update(t_playerPos, t_walls, t_deltaTime);
 		}
 	}
@@ -97,7 +90,7 @@ sf::Sprite& EnemySpawner::getSpawner()
 
 Enemy EnemySpawner::createEnemy()
 {
-	Enemy tempEnemy{ spawnerTextureNumber, m_textureManager};
+	Enemy tempEnemy{ spawnerTextureNumber, spawnerSprite.getPosition(), m_textureManager};
 
 	return tempEnemy;
 }

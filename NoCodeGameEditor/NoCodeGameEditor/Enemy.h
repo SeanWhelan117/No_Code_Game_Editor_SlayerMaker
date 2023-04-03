@@ -15,7 +15,7 @@ class Enemy
 {
 public:
 	Animator myAnim;
-	Enemy(int t_enemyTextNum, TextureManager& textureManager);
+	Enemy(int t_enemyTextNum, sf::Vector2f t_spawnerPos, TextureManager& textureManager);
 
 	void loadFiles();
 
@@ -27,7 +27,7 @@ public:
 	sf::Sprite& getEnemy();
 
 
-	void seeking(sf::Vector2f t_playerPos, sf::Time t_deltaTime);
+	void seeking(sf::Vector2f t_playerPos);
 
 
 	std::shared_ptr<sf::Texture> enemyTexture;
@@ -40,12 +40,12 @@ public:
 	void setHealth(int t_damage);
 	void setupVisionCone();
 	sf::ConvexShape getVisionCone();
+	void checkCollisions(std::vector<std::unique_ptr<Wall>>& t_walls);
+	void hasWallbeenDestroyed(std::vector<std::unique_ptr<Wall>>& t_walls);
 	bool seekingPlayer = true;
-
-	bool hit = false;
 	bool attacking = false;
 
-
+	void attack(Wall* t_wall);
 private:
 
 	sf::Vector2f createRandomStartPos(sf::Vector2f t_spawnerPos);
@@ -78,11 +78,11 @@ private:
 	float coneLength = 30;
 	sf::ConvexShape visionCone;
 
-	
 
+	float attackRate = 1.0f;
+	int damage = 5;
+	sf::Clock attackTimer;
 
-	int attackFatigue = 0;
-
-
+	sf::Vector2f spawnerPosition;
 };
 

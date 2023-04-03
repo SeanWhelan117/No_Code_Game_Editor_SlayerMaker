@@ -54,6 +54,24 @@ void LoadFromFile::parseVectorsFromFile()
 		gameData.erase(it);
 
 	}
+
+	it = gameData.begin();
+
+
+	it = std::find(gameData.begin(), gameData.end(), "OBJECTIVES,");
+	if (it != gameData.end())
+	{
+		gameData.erase(it);
+	}
+
+	it = gameData.begin();
+
+	it = std::find(gameData.begin(), gameData.end(), "X,Y,Type,Object,");
+	if (it != gameData.end())
+	{
+		gameData.erase(it);
+
+	}
 }
 
 void LoadFromFile::createData()
@@ -108,6 +126,18 @@ void LoadFromFile::createData()
 				{
 					spawnerData.push_back(tempVector);
 				}
+				else if (currentData.find("C") != std::string::npos)
+				{
+					coinData.push_back(tempVector);
+				}
+				else if (currentData.find("D") != std::string::npos)
+				{
+					doorData.push_back(tempVector);
+				}
+				else if (currentData.find("M") != std::string::npos)
+				{
+					monumentData.push_back(tempVector);
+				}
 			}
 		}
 	}
@@ -136,6 +166,7 @@ void LoadFromFile::resetParamsForGame()
 	textureNum = "";
 	wallData.clear();
 	spawnerData.clear();
-
-
+	coinData.clear();
+	doorData.clear();
+	monumentData.clear();
 }

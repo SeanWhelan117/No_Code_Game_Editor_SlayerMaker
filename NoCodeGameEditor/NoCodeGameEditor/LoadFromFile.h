@@ -24,6 +24,11 @@ public:
 	void resetParamsForGame();
 	std::vector<sf::Vector3f> wallData;
 	std::vector<sf::Vector3f> spawnerData;
+	std::vector<sf::Vector3f> coinData;
+	std::vector<sf::Vector3f> doorData;
+	std::vector<sf::Vector3f> monumentData;
+
+
 private:
 
 	bool dataRead = false;

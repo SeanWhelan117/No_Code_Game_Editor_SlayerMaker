@@ -146,6 +146,8 @@ private:
 	void createObjectivesVector();
 
 	void checkWallHealth();
+
+	void renderObjectives();
 };
 
 #endif // !GAME_HPP

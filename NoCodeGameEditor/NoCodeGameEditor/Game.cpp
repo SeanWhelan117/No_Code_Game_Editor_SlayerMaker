@@ -404,6 +404,8 @@ void Game::update(sf::Time t_deltaTime)
 		}
 		collisionDetection();
 		m_window.setView(testView);
+
+		
 	}
 
 	//CHOOSE GAME CHOOSE GAME CHOOSE GAME CHOOSE GAME CHOOSE GAME CHOOSE GAME CHOOSE GAME CHOOSE GAME CHOOSE GAME CHOOSE GAME
@@ -484,24 +486,8 @@ void Game::render()
 				}
 			}
 
-
-			for (int i = 0; i < objectivesVector.size(); i++)
-			{
-				for (int y = 0; y < objectivesVector.at(i)->coinVector.size(); y++)
-				{
-					objectivesVector.at(i)->coinVector.at(y)->render(m_window);
-				}
-
-				for (int y = 0; y < objectivesVector.at(i)->doorVector.size(); y++)
-				{
-					objectivesVector.at(i)->doorVector.at(y)->render(m_window);
-				}
-
-				for (int y = 0; y < objectivesVector.at(i)->monumentVector.size(); y++)
-				{
-					objectivesVector.at(i)->monumentVector.at(y)->render(m_window);
-				}
-			}
+			renderObjectives();
+			
 			myTools.render(m_window);
 			myChoice.render(m_window);
 		}
@@ -540,6 +526,9 @@ void Game::render()
 		{
 			enemySpawnerVector.at(i)->render(m_window, "test");
 		}
+
+		renderObjectives();
+
 		myCrosshair.render(m_window);
 	}
 
@@ -569,29 +558,12 @@ void Game::render()
 			enemySpawnerVector.at(i)->render(m_window, "test");
 		}
 
-		for (int i = 0; i < objectivesVector.size(); i++)
-		{
-			for (int y = 0; y < objectivesVector.at(i)->coinVector.size(); y++)
-			{
-				objectivesVector.at(i)->coinVector.at(y)->render(m_window);
-			}
+		renderObjectives();
 
-			for (int y = 0; y < objectivesVector.at(i)->doorVector.size(); y++)
-			{
-				objectivesVector.at(i)->doorVector.at(y)->render(m_window);
-			}
-
-			for (int y = 0; y < objectivesVector.at(i)->monumentVector.size(); y++)
-			{
-				objectivesVector.at(i)->monumentVector.at(y)->render(m_window);
-			}
-		}
 
 		myCrosshair.render(m_window);
 
 		playerHUD.render(m_window);
-
-		
 	}
 
 	m_window.display();
@@ -818,7 +790,47 @@ void Game::saveDataToCSV()
 		myFile << "S";
 		myFile << "\n";
 	}
-	
+
+	myFile << "OBJECTIVES,\n";
+	myFile << "X,Y,Type,Object,\n";
+	for (int i = 0; i < objectivesVector.size(); i++)
+	{
+		for (int y = 0; y < objectivesVector.at(i)->coinVector.size(); y++)
+		{
+			myFile << static_cast<int>(objectivesVector.at(i)->coinVector.at(y)->getCoin().getPosition().x);
+			myFile << ",";
+			myFile << static_cast<int>(objectivesVector.at(i)->coinVector.at(y)->getCoin().getPosition().y);
+			myFile << ",";
+			myFile << "0";
+			myFile << ",";
+			myFile << "C";
+			myFile << "\n";
+		}
+
+		for (int y = 0; y < objectivesVector.at(i)->doorVector.size(); y++)
+		{
+			myFile << static_cast<int>(objectivesVector.at(i)->doorVector.at(y)->getDoor().getPosition().x);
+			myFile << ",";
+			myFile << static_cast<int>(objectivesVector.at(i)->doorVector.at(y)->getDoor().getPosition().y);
+			myFile << ",";
+			myFile << "1";
+			myFile << ",";
+			myFile << "D";
+			myFile << "\n";
+		}
+
+		for (int y = 0; y < objectivesVector.at(i)->monumentVector.size(); y++)
+		{
+			myFile << static_cast<int>(objectivesVector.at(i)->monumentVector.at(y)->getMonument().getPosition().x);
+			myFile << ",";
+			myFile << static_cast<int>(objectivesVector.at(i)->monumentVector.at(y)->getMonument().getPosition().y);
+			myFile << ",";
+			myFile << "2";
+			myFile << ",";
+			myFile << "M";
+			myFile << "\n";
+		}
+	}
 	
 	//myfile << "c,s,v,\n";
 	//myfile << "1,2,3.456\n";
@@ -840,6 +852,24 @@ void Game::createLevel()
 		sf::Vector2f tempSpawnerPos = { gameChoice.loader.spawnerData.at(i).x , gameChoice.loader.spawnerData.at(i).y };
 		enemySpawnerVector.emplace_back(new EnemySpawner(createIndividualSpawner(tempSpawnerPos, gameChoice.loader.spawnerData.at(i).z)));
 	}
+
+	for (int i = 0; i < gameChoice.loader.coinData.size(); i++)
+	{
+		sf::Vector2f tempCoinPos = { gameChoice.loader.coinData.at(i).x , gameChoice.loader.coinData.at(i).y };
+		objectivesVector.emplace_back(new Objectives(createIndividualObjective(tempCoinPos, gameChoice.loader.coinData.at(i).z)));
+	}
+
+	for (int i = 0; i < gameChoice.loader.doorData.size(); i++)
+	{
+		sf::Vector2f tempDoorPos = { gameChoice.loader.doorData.at(i).x , gameChoice.loader.doorData.at(i).y };
+		objectivesVector.emplace_back(new Objectives(createIndividualObjective(tempDoorPos, gameChoice.loader.doorData.at(i).z)));
+	}
+
+	for (int i = 0; i < gameChoice.loader.monumentData.size(); i++)
+	{
+		sf::Vector2f tempMonumentPos = { gameChoice.loader.monumentData.at(i).x , gameChoice.loader.monumentData.at(i).y };
+		objectivesVector.emplace_back(new Objectives(createIndividualObjective(tempMonumentPos, gameChoice.loader.monumentData.at(i).z)));
+	}
 }
 
 void Game::clearVectors()
@@ -847,6 +877,7 @@ void Game::clearVectors()
 	wallVector.clear();
 	enemySpawnerVector.clear();
 	bloodSplatterVector.clear();
+	objectivesVector.clear();
 }
 
 bool Game::isColliding(sf::FloatRect t_obj1, sf::FloatRect t_obj2)
@@ -925,6 +956,27 @@ void Game::checkWallHealth()
 			vector<unique_ptr<Wall >>::iterator begin = wallVector.begin();
 			begin += i;
 			wallVector.erase(begin);
+		}
+	}
+}
+
+void Game::renderObjectives()
+{
+	for (int i = 0; i < objectivesVector.size(); i++)
+	{
+		for (int y = 0; y < objectivesVector.at(i)->coinVector.size(); y++)
+		{
+			objectivesVector.at(i)->coinVector.at(y)->render(m_window);
+		}
+
+		for (int y = 0; y < objectivesVector.at(i)->doorVector.size(); y++)
+		{
+			objectivesVector.at(i)->doorVector.at(y)->render(m_window);
+		}
+
+		for (int y = 0; y < objectivesVector.at(i)->monumentVector.size(); y++)
+		{
+			objectivesVector.at(i)->monumentVector.at(y)->render(m_window);
 		}
 	}
 }

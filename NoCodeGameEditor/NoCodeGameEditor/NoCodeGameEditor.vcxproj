@@ -26,6 +26,7 @@
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="ChoiceBar.cpp" />
     <ClCompile Include="ChooseGame.cpp" />
+    <ClCompile Include="Clock.cpp" />
     <ClCompile Include="Coin.cpp" />
     <ClCompile Include="Crosshair.cpp" />
     <ClCompile Include="Door.cpp" />
@@ -52,6 +53,7 @@
     <ClInclude Include="Cell.h" />
     <ClInclude Include="ChoiceBar.h" />
     <ClInclude Include="ChooseGame.h" />
+    <ClInclude Include="Clock.h" />
     <ClInclude Include="Coin.h" />
     <ClInclude Include="Crosshair.h" />
     <ClInclude Include="Door.h" />

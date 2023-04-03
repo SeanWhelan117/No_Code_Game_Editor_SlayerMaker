@@ -444,6 +444,8 @@ void Game::update(sf::Time t_deltaTime)
 		{
 			enemySpawnerVector.at(i)->update(myPlayer.getPlayer().getPosition(), wallVector, t_deltaTime, gameOptions.chosenGT);
 		}
+
+		myClock.update(t_deltaTime);
 		collisionDetection();
 		m_window.setView(testView);
 	}
@@ -583,6 +585,8 @@ void Game::render()
 				objectivesVector.at(i)->monumentVector.at(y)->render(m_window);
 			}
 		}
+
+		myClock.render(m_window);
 
 
 		myCrosshair.render(m_window);

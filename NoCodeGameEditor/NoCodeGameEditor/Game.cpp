@@ -455,6 +455,7 @@ void Game::update(sf::Time t_deltaTime)
 
 	removeWallVector();
 	removeEnemySpawnerVector();
+	std::cout << "Coins Collected :" << coinsCollected << std::endl;
 }
 
 /// <summary>
@@ -932,6 +933,19 @@ void Game::collisionDetection()
 			if (isColliding(enemySpawnerVector.at(i).get()->enemyVector.at(p).get()->getEnemy().getGlobalBounds(), myPlayer.getPlayer().getGlobalBounds()))
 			{
 				playerHUD.myHealthBar.minusHealth(2);
+			}
+		}
+	}
+
+	for (int i = 0; i < objectivesVector.size(); i++)
+	{
+		for (int p = 0; p < objectivesVector.at(i).get()->coinVector.size(); p++)
+		{
+			if (isColliding(objectivesVector.at(i).get()->coinVector.at(p).get()->getCoin().getGlobalBounds(), myPlayer.getPlayer().getGlobalBounds()))
+			{
+				vector<std::unique_ptr<Objectives>>::iterator begin = objectivesVector.begin();
+				begin += i;
+				objectivesVector.erase(begin);
 			}
 		}
 	}

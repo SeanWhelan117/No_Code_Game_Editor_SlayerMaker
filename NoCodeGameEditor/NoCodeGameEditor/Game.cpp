@@ -447,6 +447,7 @@ void Game::update(sf::Time t_deltaTime)
 
 		collisionDetection();
 		checkWallHealth();
+
 		m_window.setView(testView);
 	}
 
@@ -889,6 +890,17 @@ void Game::collisionDetection()
 			if (enemyIt != spawner->enemyVector.end()) 
 			{
 				++enemyIt;
+			}
+		}
+	}
+
+	for (int i = 0; i < enemySpawnerVector.size(); i++)
+	{
+		for (int p = 0; p < enemySpawnerVector.at(i).get()->enemyVector.size(); p++)
+		{
+			if (isColliding(enemySpawnerVector.at(i).get()->enemyVector.at(p).get()->getEnemy().getGlobalBounds(), myPlayer.getPlayer().getGlobalBounds()))
+			{
+				playerHUD.myHealthBar.minusHealth(2);
 			}
 		}
 	}

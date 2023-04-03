@@ -22,6 +22,9 @@ public:
 
 
 
+	void minusHealth(int t_health);
+
+	void plusHealth(int t_health);
 
 	sf::Sprite healthBarSprite;
 	sf::RectangleShape healthRect;
@@ -29,9 +32,7 @@ private:
 	void setupHealthBarSprite();
 	void setupHealthRect();
 
-	void minusHealth(int t_health);
-
-	void plusHealth(int t_health);
+	
 
 	sf::Texture healthBarTexture;
 	int fullHealthBar = 0;

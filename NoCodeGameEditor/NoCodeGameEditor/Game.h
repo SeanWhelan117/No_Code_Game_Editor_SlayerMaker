@@ -30,7 +30,7 @@
 #include "BloodSplatter.h"
 #include "TextureManager.h"
 #include "Objectives.h"
-#include "Clock.h"
+#include "HUD.h"
 
 class Game
 {
@@ -52,7 +52,7 @@ public:
 	Background myBackground{gameWidth, gameHeight};
 	ChooseGame gameChoice{ gameWidth, gameHeight };
 	TextureManager textureManager;
-	Clock myClock;
+	HUD playerHUD{ gameWidth, gameHeight };
 
 	sf::View mainView;
 	sf::View testView;

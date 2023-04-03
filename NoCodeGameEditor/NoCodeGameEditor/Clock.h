@@ -23,6 +23,7 @@ public:
 
 
 
+	sf::Text clockText;
 private:
 
 	void startClock();
@@ -32,7 +33,6 @@ private:
 	void addToClock();
 
 
-	sf::Text clockText;
 	sf::String clockString;
 	sf::Font clockFont;
 

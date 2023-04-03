@@ -25,7 +25,6 @@ void Clock::update(sf::Time t_deltaTime)
 void Clock::render(sf::RenderWindow& t_window)
 {
 	t_window.draw(clockText);
-
 }
 
 void Clock::startClock()
@@ -36,7 +35,7 @@ void Clock::startClock()
 void Clock::setupClockDisplay()
 {
 	clockText.setFont(clockFont);
-	clockText.setCharacterSize(100u);
+	clockText.setCharacterSize(50u);
 	clockText.setFillColor(sf::Color::Black);
 	clockString = std::to_string(minuteTens) + std::to_string(minuteSingles) + colon + std::to_string(secondTens) + std::to_string(secondSingles);
 	clockText.setString(clockString);

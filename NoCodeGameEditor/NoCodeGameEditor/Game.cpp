@@ -438,14 +438,13 @@ void Game::update(sf::Time t_deltaTime)
 		m_window.setMouseCursorVisible(false);
 		myBackground.update(gameOptions.chosenBG);
 		testView.setCenter(myPlayer.getPlayer().getPosition());
-
+		playerHUD.update(t_deltaTime, m_window, myPlayer.getPlayer().getPosition());
 		
 		for (int i = 0; i < enemySpawnerVector.size(); i++)
 		{
 			enemySpawnerVector.at(i)->update(myPlayer.getPlayer().getPosition(), wallVector, t_deltaTime, gameOptions.chosenGT);
 		}
 
-		myClock.update(t_deltaTime);
 		collisionDetection();
 		m_window.setView(testView);
 	}
@@ -586,10 +585,9 @@ void Game::render()
 			}
 		}
 
-		myClock.render(m_window);
-
-
 		myCrosshair.render(m_window);
+
+		playerHUD.render(m_window);
 
 		
 	}

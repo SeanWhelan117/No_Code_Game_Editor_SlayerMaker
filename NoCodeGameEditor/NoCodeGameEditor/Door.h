@@ -20,13 +20,18 @@ public:
 
 	void render(sf::RenderWindow& t_window);
 
+	void doorOpened();
 
 	sf::Sprite& getDoor();
 
 	std::shared_ptr<sf::Texture> doorTexture;
+
+	bool doorAccesible = false;
 private:
 	TextureManager& m_textureManager;
 	sf::Vector2f doorPos;
 	sf::Sprite doorSprite;
+
+	sf::Uint8 doorAlpha;
 };
 

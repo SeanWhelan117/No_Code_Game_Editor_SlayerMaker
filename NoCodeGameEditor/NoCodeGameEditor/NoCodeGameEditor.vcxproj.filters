@@ -19,6 +19,9 @@
     <Filter Include="Resource Files\IMAGES">
       <UniqueIdentifier>{1d793ccc-0d22-4eea-8d0e-c5b5a5270a40}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\GAMEDATA">
+      <UniqueIdentifier>{604748c1-78e9-4542-bc6e-5fc0970b7d41}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -195,5 +198,55 @@
     <Font Include="ASSETS\FONTS\ariblk.ttf">
       <Filter>Resource Files\FONTS</Filter>
     </Font>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ASSETS\GAMEDATA\AndrewGame.csv">
+      <Filter>Resource Files\GAMEDATA</Filter>
+    </None>
+    <None Include="ASSETS\GAMEDATA\coinTest.csv">
+      <Filter>Resource Files\GAMEDATA</Filter>
+    </None>
+    <None Include="ASSETS\GAMEDATA\coinTest2.csv">
+      <Filter>Resource Files\GAMEDATA</Filter>
+    </None>
+    <None Include="ASSETS\GAMEDATA\enemyTester.csv">
+      <Filter>Resource Files\GAMEDATA</Filter>
+    </None>
+    <None Include="ASSETS\GAMEDATA\GamerKid.csv">
+      <Filter>Resource Files\GAMEDATA</Filter>
+    </None>
+    <None Include="ASSETS\GAMEDATA\gameroo.csv">
+      <Filter>Resource Files\GAMEDATA</Filter>
+    </None>
+    <None Include="ASSETS\GAMEDATA\NEWTEST1.csv">
+      <Filter>Resource Files\GAMEDATA</Filter>
+    </None>
+    <None Include="ASSETS\GAMEDATA\NEWTEST2.csv">
+      <Filter>Resource Files\GAMEDATA</Filter>
+    </None>
+    <None Include="ASSETS\GAMEDATA\ObjectiveTes.csv">
+      <Filter>Resource Files\GAMEDATA</Filter>
+    </None>
+    <None Include="ASSETS\GAMEDATA\PatricksGame.csv">
+      <Filter>Resource Files\GAMEDATA</Filter>
+    </None>
+    <None Include="ASSETS\GAMEDATA\rewriteTest.csv">
+      <Filter>Resource Files\GAMEDATA</Filter>
+    </None>
+    <None Include="ASSETS\GAMEDATA\s.csv">
+      <Filter>Resource Files\GAMEDATA</Filter>
+    </None>
+    <None Include="ASSETS\GAMEDATA\TESterooni.csv">
+      <Filter>Resource Files\GAMEDATA</Filter>
+    </None>
+    <None Include="ASSETS\GAMEDATA\TEsterooni2.csv">
+      <Filter>Resource Files\GAMEDATA</Filter>
+    </None>
+    <None Include="ASSETS\GAMEDATA\TEsttereroo.csv">
+      <Filter>Resource Files\GAMEDATA</Filter>
+    </None>
+    <None Include="ASSETS\GAMEDATA\wallTest.csv">
+      <Filter>Resource Files\GAMEDATA</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -5,9 +5,19 @@ Objectives::Objectives(TextureManager& textureManager) : m_textureManager(textur
 
 }
 
-void Objectives::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, sf::FloatRect t_playerRect)
+void Objectives::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, sf::FloatRect t_playerRect, int t_coinsCollected, int t_maxCoins)
 {
+
+	//std::cout << "t_coinsCollected = " << t_coinsCollected << " t_maxCoins = " << t_maxCoins << std::endl;
 	playerCollision(t_playerRect);
+	if (t_coinsCollected >= t_maxCoins && allCoinsCollected == false && t_coinsCollected != 0)
+	{
+		allCoinsCollected = true;
+		for (int i = 0; i < doorVector.size(); i++)
+		{
+			doorVector.at(i).get()->doorOpened();
+		}
+	}
 }
 
 void Objectives::render(sf::RenderWindow& t_window)
@@ -24,6 +34,8 @@ void Objectives::render(sf::RenderWindow& t_window)
 	{
 		monumentVector.at(i).get()->render(t_window);
 	}
+
+
 }
 
 void Objectives::addToVector(sf::Vector2f t_objectivePosition, int t_objectiveType)
@@ -47,6 +59,11 @@ void Objectives::addToVector(sf::Vector2f t_objectivePosition, int t_objectiveTy
 
 }
 
+bool Objectives::isColliding(sf::FloatRect t_obj1, sf::FloatRect t_obj2)
+{
+	return t_obj1.intersects(t_obj2);
+}
+
 void Objectives::playerCollision(sf::FloatRect t_playerRect)
 {
 	for (int i = 0; i < coinVector.size(); i++)
@@ -56,6 +73,17 @@ void Objectives::playerCollision(sf::FloatRect t_playerRect)
 			std::vector<std::unique_ptr<Coin>>::iterator begin = coinVector.begin();
 			begin += i;
 			coinVector.erase(begin);
+		}
+	}
+
+	for (int i = 0; i < doorVector.size(); i++)
+	{
+		if (doorVector.at(i).get()->doorAccesible == true)
+		{
+			if (isColliding(doorVector.at(i).get()->getDoor().getGlobalBounds(), t_playerRect))
+			{
+				std::cout << "GameOver" << std::endl;
+			}
 		}
 	}
 }

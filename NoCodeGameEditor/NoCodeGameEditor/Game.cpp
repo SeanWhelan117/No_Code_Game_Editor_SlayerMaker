@@ -359,7 +359,7 @@ void Game::update(sf::Time t_deltaTime)
 			scrollingX = false;
 		}
 
-		objectives.update(t_deltaTime, m_window, myPlayer.getPlayer().getGlobalBounds());
+		objectives.update(t_deltaTime, m_window, myPlayer.getPlayer().getGlobalBounds(), coinsCollected, maxCoins);
 	}
 
 	//MAINMENU MAINMENU MAINMENU MAINMENU MAINMENU MAINMENU MAINMENU MAINMENU MAINMENU MAINMENU MAINMENU MAINMENU 
@@ -407,7 +407,7 @@ void Game::update(sf::Time t_deltaTime)
 		collisionDetection();
 		m_window.setView(testView);
 
-		objectives.update(t_deltaTime, m_window, myPlayer.getPlayer().getGlobalBounds());
+		objectives.update(t_deltaTime, m_window, myPlayer.getPlayer().getGlobalBounds(), coinsCollected, maxCoins);
 
 		
 	}
@@ -456,7 +456,7 @@ void Game::update(sf::Time t_deltaTime)
 
 		m_window.setView(testView);
 
-		objectives.update(t_deltaTime, m_window, myPlayer.getPlayer().getGlobalBounds());
+		objectives.update(t_deltaTime, m_window, myPlayer.getPlayer().getGlobalBounds(), coinsCollected, maxCoins);
 	}
 
 	removeWallVector();

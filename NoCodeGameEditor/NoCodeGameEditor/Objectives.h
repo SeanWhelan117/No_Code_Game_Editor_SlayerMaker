@@ -22,7 +22,7 @@ public:
 
 	//void setupSprites();
 
-	void update(sf::Time t_deltaTime, sf::RenderWindow& t_window, sf::FloatRect t_playerRect);
+	void update(sf::Time t_deltaTime, sf::RenderWindow& t_window, sf::FloatRect t_playerRect, int t_coinsCollected, int t_maxCoins);
 
 	void render(sf::RenderWindow& t_window);
 
@@ -32,7 +32,8 @@ public:
 
 	void addToVector(sf::Vector2f t_objectivePosition, int t_objectiveType);
 
-	int coinsCollected = 0;
+	bool isColliding(sf::FloatRect t_obj1, sf::FloatRect t_obj2);
+
 private:
 
 	sf::Vector2f objectivePos;
@@ -40,6 +41,8 @@ private:
 
 	void playerCollision(sf::FloatRect t_playerRect);
 
+	bool allCoinsCollected = false;
 
+	
 };
 

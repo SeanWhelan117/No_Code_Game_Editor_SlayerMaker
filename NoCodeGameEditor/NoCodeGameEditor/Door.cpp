@@ -17,12 +17,20 @@ void Door::setupDoor()
 	doorSprite.setOrigin(doorSprite.getLocalBounds().width / 2, doorSprite.getLocalBounds().height / 2);
 	doorSprite.setPosition(sf::Vector2f(doorPos.x + 15, doorPos.y + 15));
 	doorSprite.setScale(0.25, 0.25);
+	doorAlpha = doorSprite.getColor().a;
+	doorSprite.setColor(sf::Color(doorSprite.getColor().r, doorSprite.getColor().g, doorSprite.getColor().b, doorAlpha / 2));
 
 }
 
 void Door::render(sf::RenderWindow& t_window)
 {
 	t_window.draw(doorSprite);
+}
+
+void Door::doorOpened()
+{
+	doorSprite.setColor(sf::Color(doorSprite.getColor().r, doorSprite.getColor().g, doorSprite.getColor().b, doorAlpha * 2));
+	doorAccesible = true;
 }
 
 sf::Sprite& Door::getDoor()

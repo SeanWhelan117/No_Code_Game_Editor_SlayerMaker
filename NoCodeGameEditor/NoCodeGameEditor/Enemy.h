@@ -10,6 +10,7 @@
 #include "Animator.h"
 #include "TextureManager.h"
 #include "Wall.h"
+#include "Monument.h"
 
 class Enemy
 {
@@ -23,11 +24,11 @@ public:
 
 	void render(sf::RenderWindow& t_window);
 
-	void update(sf::Vector2f t_playerPos, std::vector<std::unique_ptr<Wall>>& t_walls, sf::Time t_deltaTime);
+	void update(sf::Vector2f t_seekPos, std::vector<std::unique_ptr<Wall>>& t_walls, sf::Time t_deltaTime, int t_gtChosen, std::vector<std::unique_ptr<Monument>>& t_monuments);
 	sf::Sprite& getEnemy();
 
 
-	void seeking(sf::Vector2f t_playerPos);
+	void seeking(sf::Vector2f t_seekPos);
 
 
 	std::shared_ptr<sf::Texture> enemyTexture;
@@ -40,12 +41,13 @@ public:
 	void setHealth(int t_damage);
 	void setupVisionCone();
 	sf::ConvexShape getVisionCone();
-	void checkCollisions(std::vector<std::unique_ptr<Wall>>& t_walls);
+	void checkCollisions(std::vector<std::unique_ptr<Wall>>& t_walls, sf::Vector2f t_seekPos, int t_gtChosen, std::vector<std::unique_ptr<Monument>>& t_monuments);
 	void hasWallbeenDestroyed(std::vector<std::unique_ptr<Wall>>& t_walls);
 	bool seekingPlayer = true;
 	bool attacking = false;
 
 	void attack(Wall* t_wall);
+	void attackMonument(Monument* t_monument);
 private:
 
 	sf::Vector2f createRandomStartPos(sf::Vector2f t_spawnerPos);
@@ -79,8 +81,9 @@ private:
 	sf::ConvexShape visionCone;
 
 
-	float attackRate = 1.0f;
+	float attackRate = 4.0f;
 	int damage = 5;
+	int damage2 = 1;
 	sf::Clock attackTimer;
 
 	sf::Vector2f spawnerPosition;

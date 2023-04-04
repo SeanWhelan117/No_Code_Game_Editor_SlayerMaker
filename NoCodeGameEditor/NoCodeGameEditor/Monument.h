@@ -21,13 +21,27 @@ public:
 
 	void render(sf::RenderWindow& t_window);
 
-
+	void update();
 	sf::Sprite& getMonument();
+
+	void damageMonument(int t_damage);
 
 	std::shared_ptr<sf::Texture> monumentTexture;
 private:
+
+	void setupHealthBar();
+
+
+	void changeColours();
+
+	//int getMonumentHealth();
+
 	TextureManager& m_textureManager;
 	sf::Vector2f monumentPos;
 	sf::Sprite monumentSprite;
+
+	sf::RectangleShape monumentHealthBar;
+	int maxMonumentHealth = 5000;
+	int currentMonumentHealth = 5000;
 };
 

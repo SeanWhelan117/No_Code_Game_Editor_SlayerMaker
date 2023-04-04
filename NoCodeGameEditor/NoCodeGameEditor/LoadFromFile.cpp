@@ -18,7 +18,6 @@ void LoadFromFile::loadFile(std::string t_gameName)
 		gameData.push_back(temp);
 	}
 	
-	//parseVectorsFromFile();
 
 	myFile.close();
 
@@ -27,68 +26,6 @@ void LoadFromFile::loadFile(std::string t_gameName)
 
 void LoadFromFile::update(sf::Time t_deltaTime)
 {
-
-}
-
-void LoadFromFile::parseVectorsFromFile()
-{
-	std::vector<std::string>::iterator it;
-
-	it = gameData.begin();
-	gameData.erase(it);
-	it = gameData.begin();
-	gameData.erase(it);
-	it = gameData.begin();
-
-	it = std::find(gameData.begin(), gameData.end(), "SPAWNERS,");
-	if (it != gameData.end())
-	{
-		gameData.erase(it);
-	}
-
-	it = gameData.begin();
-
-	it = std::find(gameData.begin(), gameData.end(), "X,Y,Type,Object,");
-	if (it != gameData.end())
-	{
-		gameData.erase(it);
-
-	}
-
-	it = gameData.begin();
-
-
-	it = std::find(gameData.begin(), gameData.end(), "OBJECTIVES,");
-	if (it != gameData.end())
-	{
-		gameData.erase(it);
-	}
-
-	it = gameData.begin();
-
-	it = std::find(gameData.begin(), gameData.end(), "X,Y,Type,Object,");
-	if (it != gameData.end())
-	{
-		gameData.erase(it);
-
-	}
-	it = gameData.begin();
-
-	it = std::find(gameData.begin(), gameData.end(), "GAMEOPTIONS,");
-	if (it != gameData.end())
-	{
-		gameData.erase(it);
-
-	}
-
-	it = gameData.begin();
-
-	it = std::find(gameData.begin(), gameData.end(), "BGChoice,GTChoice,Type,Object");
-	if (it != gameData.end())
-	{
-		gameData.erase(it);
-
-	}
 
 }
 
@@ -158,7 +95,7 @@ void LoadFromFile::createData()
 				}
 				else if (currentData.find("Z") != std::string::npos)
 				{
-					BGGTCHoices = tempVector;
+					BGGTChoices = tempVector;
 				}
 			}
 		}
@@ -191,4 +128,7 @@ void LoadFromFile::resetParamsForGame()
 	coinData.clear();
 	doorData.clear();
 	monumentData.clear();
+	BGGTChoices.x = 0;
+	BGGTChoices.y = 0;
+	BGGTChoices.z = 0;
 }

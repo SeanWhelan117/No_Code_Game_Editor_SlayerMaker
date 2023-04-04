@@ -30,6 +30,10 @@ void HealthBar::update(sf::Time t_deltaTime)
 		plusHealth(5);
 	}
 
+	if (currentHealth <= 0)
+	{
+		std::cout << "GameOver" << std::endl;
+	}
 }
 
 void HealthBar::render(sf::RenderWindow& t_window)

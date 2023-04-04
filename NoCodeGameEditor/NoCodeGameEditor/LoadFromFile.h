@@ -19,7 +19,6 @@ public:
 	void loadFile(std::string t_gameName);
 
 	void update(sf::Time t_deltaTime);
-	void parseVectorsFromFile();
 	void createData();
 	void resetParamsForGame();
 	std::vector<sf::Vector3f> wallData;
@@ -27,7 +26,7 @@ public:
 	std::vector<sf::Vector3f> coinData;
 	std::vector<sf::Vector3f> doorData;
 	std::vector<sf::Vector3f> monumentData;
-	sf::Vector3f BGGTCHoices;
+	sf::Vector3f BGGTChoices;
 
 
 private:

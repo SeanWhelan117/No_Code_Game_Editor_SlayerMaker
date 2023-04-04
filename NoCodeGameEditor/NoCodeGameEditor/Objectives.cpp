@@ -18,6 +18,10 @@ void Objectives::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, sf::Fl
 			doorVector.at(i).get()->doorOpened();
 		}
 	}
+	if (monumentVector.size() != 0)
+	{
+		monumentVector.at(0).get()->update();
+	}
 }
 
 void Objectives::render(sf::RenderWindow& t_window)

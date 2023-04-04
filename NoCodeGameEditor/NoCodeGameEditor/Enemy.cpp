@@ -43,12 +43,12 @@ void Enemy::render(sf::RenderWindow& t_window)
 	t_window.draw(visionCone);
 }
 
-void Enemy::update(sf::Vector2f t_playerPos, std::vector<std::unique_ptr<Wall>>& t_walls, sf::Time t_deltaTime)
+void Enemy::update(sf::Vector2f t_seekPos, std::vector<std::unique_ptr<Wall>>& t_walls, sf::Time t_deltaTime, int t_gtChosen, std::vector<std::unique_ptr<Monument>>& t_monuments)
 {
 	//moveEnemy(t_playerPos);
 	if (seekingPlayer == true)
 	{
-		seeking(t_playerPos);
+		seeking(t_seekPos);
 	}
 	else
 	{
@@ -56,7 +56,7 @@ void Enemy::update(sf::Vector2f t_playerPos, std::vector<std::unique_ptr<Wall>>&
 	}
 
 
-	checkCollisions(t_walls);
+	checkCollisions(t_walls, t_seekPos, t_gtChosen, t_monuments);
 
 	visionCone.setRotation(enemySprite.getRotation() - 90);
 	visionCone.setPosition(enemySprite.getPosition());
@@ -67,20 +67,20 @@ sf::Sprite& Enemy::getEnemy()
 	return enemySprite;
 }
 
-void Enemy::seeking(sf::Vector2f t_playerPos)
+void Enemy::seeking(sf::Vector2f t_seekPos)
 {
-	sf::Vector2f playerPosition = t_playerPos;
+	sf::Vector2f seekPosition = t_seekPos;
 	sf::Vector2f seekerPosition = enemySprite.getPosition();
 
 
-	float angleX = seekerPosition.x - playerPosition.x;
-	float angleY = seekerPosition.y - playerPosition.y;
+	float angleX = seekerPosition.x - seekPosition.x;
+	float angleY = seekerPosition.y - seekPosition.y;
 
 	float rotation = (-atan2(angleX, angleY)) * 180 / PI;
 	enemySprite.setRotation(rotation);
 
 
-	velocity = playerPosition - seekerPosition;
+	velocity = seekPosition - seekerPosition;
 	float squareRootVelocity = sqrtf(velocity.x * velocity.x + velocity.y * velocity.y);
 	velocity = sf::Vector2f{ velocity.x / squareRootVelocity , velocity.y / squareRootVelocity };
 	velocity = velocity * speed;
@@ -97,6 +97,15 @@ void Enemy::attack(Wall* t_wall)
 		t_wall->damageWall(damage);
 	}
 
+}
+
+void Enemy::attackMonument(Monument* t_monument)
+{
+	if (attackTimer.getElapsedTime().asSeconds() >= attackRate)
+	{
+		attackTimer.restart();
+		t_monument->damageMonument(damage2);
+	}
 }
 
 sf::Vector2f Enemy::createRandomStartPos(sf::Vector2f t_spawnerPos)
@@ -163,7 +172,7 @@ sf::ConvexShape Enemy::getVisionCone()
 	return visionCone;
 }
 
-void Enemy::checkCollisions(std::vector<std::unique_ptr<Wall>>& t_walls)
+void Enemy::checkCollisions(std::vector<std::unique_ptr<Wall>>& t_walls, sf::Vector2f t_seekPos, int t_gtChosen, std::vector<std::unique_ptr<Monument>>& t_monuments)
 {
 	for (int i = 0; i < t_walls.size(); i++)
 	{
@@ -173,6 +182,16 @@ void Enemy::checkCollisions(std::vector<std::unique_ptr<Wall>>& t_walls)
 			attack(t_walls.at(i).get());
 		}
 	}
+
+	for (int i = 0; i < t_monuments.size(); i++)
+	{
+		if (visionCone.getGlobalBounds().intersects(t_monuments.at(i).get()->getMonument().getGlobalBounds()))
+		{
+			seekingPlayer = false;
+			attackMonument(t_monuments.at(i).get());
+		}
+	}
+	
 }
 
 void Enemy::hasWallbeenDestroyed(std::vector<std::unique_ptr<Wall>>& t_walls)

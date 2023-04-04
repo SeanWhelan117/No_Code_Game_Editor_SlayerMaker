@@ -406,13 +406,13 @@ void Game::update(sf::Time t_deltaTime)
 			{
 				if (gameOptions.chosenGT == 0)
 				{
-					enemySpawnerVector.at(i)->update(myPlayer.getPlayer().getPosition(), wallVector, t_deltaTime, gameOptions.chosenGT);
+					enemySpawnerVector.at(i)->update(myPlayer.getPlayer().getPosition(), wallVector, t_deltaTime, gameOptions.chosenGT, objectives.monumentVector);
 				}
 				else if (gameOptions.chosenGT == 1)
 				{
 					if (objectives.monumentVector.size() > 0)
 					{
-						enemySpawnerVector.at(i)->update(objectives.monumentVector.at(0).get()->getMonument().getPosition(), wallVector, t_deltaTime, gameOptions.chosenGT);
+						enemySpawnerVector.at(i)->update(objectives.monumentVector.at(0).get()->getMonument().getPosition(), wallVector, t_deltaTime, gameOptions.chosenGT, objectives.monumentVector);
 					}
 				}
 			}
@@ -463,13 +463,13 @@ void Game::update(sf::Time t_deltaTime)
 		{
 			if (gameOptions.chosenGT == 0)
 			{
-				enemySpawnerVector.at(i)->update(myPlayer.getPlayer().getPosition(), wallVector, t_deltaTime, gameOptions.chosenGT);
+				enemySpawnerVector.at(i)->update(myPlayer.getPlayer().getPosition(), wallVector, t_deltaTime, gameOptions.chosenGT, objectives.monumentVector);
 			}
 			else if (gameOptions.chosenGT == 1)
 			{
 				if (objectives.monumentVector.size() > 0)
 				{
-					enemySpawnerVector.at(i)->update(objectives.monumentVector.at(0).get()->getMonument().getPosition(), wallVector, t_deltaTime, gameOptions.chosenGT);
+					enemySpawnerVector.at(i)->update(objectives.monumentVector.at(0).get()->getMonument().getPosition(), wallVector, t_deltaTime, gameOptions.chosenGT, objectives.monumentVector);
 				}
 			}
 		}
@@ -906,8 +906,8 @@ void Game::createLevel()
 
 	}
 
-	gameOptions.chosenBG = gameChoice.loader.BGGTCHoices.x;
-	gameOptions.chosenGT = gameChoice.loader.BGGTCHoices.y;
+	gameOptions.chosenBG = gameChoice.loader.BGGTChoices.x;
+	gameOptions.chosenGT = gameChoice.loader.BGGTChoices.y;
 
 	maxCoins = gameChoice.loader.coinData.size();
 }

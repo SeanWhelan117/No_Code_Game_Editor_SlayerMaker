@@ -90,24 +90,6 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </Font>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="ASSETS\GAMEDATA\AndrewGame.csv" />
-    <None Include="ASSETS\GAMEDATA\coinTest.csv" />
-    <None Include="ASSETS\GAMEDATA\coinTest2.csv" />
-    <None Include="ASSETS\GAMEDATA\enemyTester.csv" />
-    <None Include="ASSETS\GAMEDATA\GamerKid.csv" />
-    <None Include="ASSETS\GAMEDATA\gameroo.csv" />
-    <None Include="ASSETS\GAMEDATA\NEWTEST1.csv" />
-    <None Include="ASSETS\GAMEDATA\NEWTEST2.csv" />
-    <None Include="ASSETS\GAMEDATA\ObjectiveTes.csv" />
-    <None Include="ASSETS\GAMEDATA\PatricksGame.csv" />
-    <None Include="ASSETS\GAMEDATA\rewriteTest.csv" />
-    <None Include="ASSETS\GAMEDATA\s.csv" />
-    <None Include="ASSETS\GAMEDATA\TESterooni.csv" />
-    <None Include="ASSETS\GAMEDATA\TEsterooni2.csv" />
-    <None Include="ASSETS\GAMEDATA\TEsttereroo.csv" />
-    <None Include="ASSETS\GAMEDATA\wallTest.csv" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{127a8772-cf0a-43f7-82cd-bbc7f4458406}</ProjectGuid>

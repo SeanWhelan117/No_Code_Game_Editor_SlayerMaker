@@ -461,6 +461,9 @@ void Game::update(sf::Time t_deltaTime)
 
 	removeWallVector();
 	removeEnemySpawnerVector();
+
+	coinsCollected = gameChoice.loader.coinData.size() - objectives.coinVector.size();
+	std::cout << "coinsCollected: " << coinsCollected << std::endl;
 }
 
 /// <summary>
@@ -674,19 +677,19 @@ void Game::createObjectives()
 	{
 		for (int m = 0; m < gridSize; m++)
 		{
-			if (myGrid.theGrid.at(m).at(i).getType() == "objective1")
+			if (myGrid.theGrid.at(m).at(i).getType() == "objective1" && myGrid.theGrid.at(m).at(i).filled == false)
 			{
 				myGrid.theGrid.at(m).at(i).filled = true;
 				objectives.addToVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 0);
 				numOfCoins++;
 			}
-			if (myGrid.theGrid.at(m).at(i).getType() == "objective2")
+			else if (myGrid.theGrid.at(m).at(i).getType() == "objective2" && myGrid.theGrid.at(m).at(i).filled == false)
 			{
 				myGrid.theGrid.at(m).at(i).filled = true;
 				objectives.addToVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 1);	
 				numOfDoors++;
 			}
-			if (myGrid.theGrid.at(m).at(i).getType() == "objective3")
+			else if (myGrid.theGrid.at(m).at(i).getType() == "objective3" && myGrid.theGrid.at(m).at(i).filled == false)
 			{
 				myGrid.theGrid.at(m).at(i).filled = true;
 				objectives.addToVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 2);
@@ -867,6 +870,7 @@ void Game::createLevel()
 		objectives.addToVector(tempMonumentPos, 2);
 
 	}
+
 }
 
 void Game::clearVectors()

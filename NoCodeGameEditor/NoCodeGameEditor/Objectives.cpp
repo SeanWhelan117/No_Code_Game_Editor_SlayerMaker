@@ -53,7 +53,6 @@ void Objectives::playerCollision(sf::FloatRect t_playerRect)
 	{
 		if (coinVector.at(i).get()->getCoin().getGlobalBounds().intersects(t_playerRect))
 		{
-			coinsCollected++;	
 			std::vector<std::unique_ptr<Coin>>::iterator begin = coinVector.begin();
 			begin += i;
 			coinVector.erase(begin);

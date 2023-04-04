@@ -16,25 +16,30 @@ class Objectives
 {
 
 public:
-	Objectives(int t_objectiveType, sf::Vector2f t_objectivePos, TextureManager& textureManager);
+	Objectives(TextureManager& textureManager);
 
-	/*void loadFiles();
+	//void loadFiles();
 
-	void setupSprites();
+	//void setupSprites();
 
-	void update(sf::Time t_deltaTime, sf::RenderWindow& t_window);
+	void update(sf::Time t_deltaTime, sf::RenderWindow& t_window, sf::FloatRect t_playerRect);
 
-	void render(sf::RenderWindow& t_window);*/
+	void render(sf::RenderWindow& t_window);
 
 	std::vector<std::unique_ptr<Coin>> coinVector;
 	std::vector<std::unique_ptr<Door>> doorVector;
 	std::vector<std::unique_ptr<Monument>> monumentVector;
 
+	void addToVector(sf::Vector2f t_objectivePosition, int t_objectiveType);
+
+	int coinsCollected = 0;
 private:
 
-	int objectiveType;
 	sf::Vector2f objectivePos;
 	TextureManager& m_textureManager;
+
+	void playerCollision(sf::FloatRect t_playerRect);
+
 
 };
 

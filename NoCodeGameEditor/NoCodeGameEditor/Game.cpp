@@ -462,8 +462,7 @@ void Game::update(sf::Time t_deltaTime)
 	removeWallVector();
 	removeEnemySpawnerVector();
 
-	coinsCollected = gameChoice.loader.coinData.size() - objectives.coinVector.size();
-	std::cout << "coinsCollected: " << coinsCollected << std::endl;
+	coinsCollected = maxCoins - objectives.coinVector.size();
 }
 
 /// <summary>
@@ -871,6 +870,7 @@ void Game::createLevel()
 
 	}
 
+	maxCoins = gameChoice.loader.coinData.size();
 }
 
 void Game::clearVectors()

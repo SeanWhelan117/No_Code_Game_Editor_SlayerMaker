@@ -139,6 +139,7 @@ private:
 	int scrollSpeed = 30;
 
 	int coinsCollected = 0;
+	int maxCoins = 0;
 
 	void createWallVector();
 	void createSpawnerVector();

@@ -455,7 +455,6 @@ void Game::update(sf::Time t_deltaTime)
 
 	removeWallVector();
 	removeEnemySpawnerVector();
-	std::cout << "Coins Collected :" << coinsCollected << std::endl;
 }
 
 /// <summary>
@@ -949,7 +948,6 @@ void Game::collisionDetection()
 			}
 		}
 	}
-
 }
 
 

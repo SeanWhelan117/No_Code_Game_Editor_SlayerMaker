@@ -359,6 +359,9 @@ void Game::update(sf::Time t_deltaTime)
 			scrollingX = false;
 		}
 
+		removeWallVector();
+		removeEnemySpawnerVector();
+
 		objectives.update(t_deltaTime, m_window, myPlayer.getPlayer().getGlobalBounds(), coinsCollected, maxCoins);
 	}
 
@@ -401,15 +404,24 @@ void Game::update(sf::Time t_deltaTime)
 		{
 			for (int i = 0; i < enemySpawnerVector.size(); i++)
 			{
-				enemySpawnerVector.at(i)->update(myPlayer.getPlayer().getPosition(), wallVector, t_deltaTime, gameOptions.chosenGT);
+				if (gameOptions.chosenGT == 0)
+				{
+					enemySpawnerVector.at(i)->update(myPlayer.getPlayer().getPosition(), wallVector, t_deltaTime, gameOptions.chosenGT);
+				}
+				else if (gameOptions.chosenGT == 1)
+				{
+					if (objectives.monumentVector.size() > 0)
+					{
+						enemySpawnerVector.at(i)->update(objectives.monumentVector.at(0).get()->getMonument().getPosition(), wallVector, t_deltaTime, gameOptions.chosenGT);
+					}
+				}
 			}
 		}
+		checkWallHealth();
 		collisionDetection();
 		m_window.setView(testView);
 
 		objectives.update(t_deltaTime, m_window, myPlayer.getPlayer().getGlobalBounds(), coinsCollected, maxCoins);
-
-		
 	}
 
 	//CHOOSE GAME CHOOSE GAME CHOOSE GAME CHOOSE GAME CHOOSE GAME CHOOSE GAME CHOOSE GAME CHOOSE GAME CHOOSE GAME CHOOSE GAME
@@ -446,9 +458,20 @@ void Game::update(sf::Time t_deltaTime)
 		testView.setCenter(myPlayer.getPlayer().getPosition());
 		playerHUD.update(t_deltaTime, m_window, myPlayer.getPlayer().getPosition());
 		
+		
 		for (int i = 0; i < enemySpawnerVector.size(); i++)
 		{
-			enemySpawnerVector.at(i)->update(myPlayer.getPlayer().getPosition(), wallVector, t_deltaTime, gameOptions.chosenGT);
+			if (gameOptions.chosenGT == 0)
+			{
+				enemySpawnerVector.at(i)->update(myPlayer.getPlayer().getPosition(), wallVector, t_deltaTime, gameOptions.chosenGT);
+			}
+			else if (gameOptions.chosenGT == 1)
+			{
+				if (objectives.monumentVector.size() > 0)
+				{
+					enemySpawnerVector.at(i)->update(objectives.monumentVector.at(0).get()->getMonument().getPosition(), wallVector, t_deltaTime, gameOptions.chosenGT);
+				}
+			}
 		}
 
 		collisionDetection();
@@ -459,8 +482,7 @@ void Game::update(sf::Time t_deltaTime)
 		objectives.update(t_deltaTime, m_window, myPlayer.getPlayer().getGlobalBounds(), coinsCollected, maxCoins);
 	}
 
-	removeWallVector();
-	removeEnemySpawnerVector();
+	
 
 	coinsCollected = maxCoins - objectives.coinVector.size();
 }
@@ -761,9 +783,10 @@ void Game::saveDataToCSV()
 {
 	std::ofstream myFile;
 	myFile.open(".\\ASSETS\\GAMEDATA\\" + gameOptions.gameName + ".csv");
-	myFile << "WALLS,\n";
-	myFile << "X,Y,Type,Object,\n";
 	
+	//myFile << "WALLS,\n";
+	//myFile << "X,Y,Type,Object,\n";
+	//
 	for (int i = 0; i < wallVector.size(); i++)
 	{
 		myFile << static_cast<int>(wallVector.at(i)->getWall().getPosition().x);
@@ -776,10 +799,9 @@ void Game::saveDataToCSV()
 		myFile << "\n";
 	}
 
-	/*myFile << "\n";
-	myFile << "\n";*/
-	myFile << "SPAWNERS,\n";
-	myFile << "X,Y,Type,Object,\n";
+
+	//myFile << "SPAWNERS,\n";
+	//myFile << "X,Y,Type,Object,\n";
 
 	for (int i = 0; i < enemySpawnerVector.size(); i++)
 	{
@@ -793,8 +815,8 @@ void Game::saveDataToCSV()
 		myFile << "\n";
 	}
 
-	myFile << "OBJECTIVES,\n";
-	myFile << "X,Y,Type,Object,\n";
+	//myFile << "OBJECTIVES,\n";
+	//myFile << "X,Y,Type,Object,\n";
 
 	for (int i = 0; i < objectives.coinVector.size(); i++)
 	{
@@ -831,6 +853,20 @@ void Game::saveDataToCSV()
 		myFile << "M";
 		myFile << "\n";
 	}
+
+	//myFile << "GAMEOPTIONS,\n";
+	//myFile << "BGChoice,GTChoice,Type,Object\n";
+
+	myFile << gameOptions.chosenBG;
+	myFile << ",";
+	myFile << gameOptions.chosenGT;
+	myFile << ",";
+	myFile << "0";
+	myFile << ",";
+	myFile << "Z";
+	myFile << "\n";
+
+
 	myFile.close();
 }
 
@@ -869,6 +905,9 @@ void Game::createLevel()
 		objectives.addToVector(tempMonumentPos, 2);
 
 	}
+
+	gameOptions.chosenBG = gameChoice.loader.BGGTCHoices.x;
+	gameOptions.chosenGT = gameChoice.loader.BGGTCHoices.y;
 
 	maxCoins = gameChoice.loader.coinData.size();
 }

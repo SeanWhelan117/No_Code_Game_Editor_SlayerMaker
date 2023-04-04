@@ -24,7 +24,7 @@ public:
 
 	void render(sf::RenderWindow& t_window, std::string t_state);
 
-	void update(sf::Vector2f t_playerPos, std::vector<std::unique_ptr<Wall>>& t_walls, sf::Time t_deltaTime, int t_gtChosen);
+	void update(sf::Vector2f t_seekPos, std::vector<std::unique_ptr<Wall>>& t_walls, sf::Time t_deltaTime, int t_gtChosen);
 
 	sf::Sprite& getSpawner();
 

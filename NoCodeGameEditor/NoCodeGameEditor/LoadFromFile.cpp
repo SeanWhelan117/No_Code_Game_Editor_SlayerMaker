@@ -18,7 +18,7 @@ void LoadFromFile::loadFile(std::string t_gameName)
 		gameData.push_back(temp);
 	}
 	
-	parseVectorsFromFile();
+	//parseVectorsFromFile();
 
 	myFile.close();
 
@@ -72,6 +72,24 @@ void LoadFromFile::parseVectorsFromFile()
 		gameData.erase(it);
 
 	}
+	it = gameData.begin();
+
+	it = std::find(gameData.begin(), gameData.end(), "GAMEOPTIONS,");
+	if (it != gameData.end())
+	{
+		gameData.erase(it);
+
+	}
+
+	it = gameData.begin();
+
+	it = std::find(gameData.begin(), gameData.end(), "BGChoice,GTChoice,Type,Object");
+	if (it != gameData.end())
+	{
+		gameData.erase(it);
+
+	}
+
 }
 
 void LoadFromFile::createData()
@@ -137,6 +155,10 @@ void LoadFromFile::createData()
 				else if (currentData.find("M") != std::string::npos)
 				{
 					monumentData.push_back(tempVector);
+				}
+				else if (currentData.find("Z") != std::string::npos)
+				{
+					BGGTCHoices = tempVector;
 				}
 			}
 		}

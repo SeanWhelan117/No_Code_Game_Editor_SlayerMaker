@@ -27,6 +27,7 @@ public:
 	std::vector<sf::Vector3f> coinData;
 	std::vector<sf::Vector3f> doorData;
 	std::vector<sf::Vector3f> monumentData;
+	sf::Vector3f BGGTCHoices;
 
 
 private:

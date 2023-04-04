@@ -53,6 +53,7 @@ public:
 	ChooseGame gameChoice{ gameWidth, gameHeight };
 	TextureManager textureManager;
 	HUD playerHUD{ gameWidth, gameHeight };
+	Objectives objectives{textureManager};
 
 	sf::View mainView;
 	sf::View testView;
@@ -68,9 +69,6 @@ public:
 	Wall createIndividualWall(sf::Vector2f t_wallPos, int t_wallTextNum);
 
 	EnemySpawner createIndividualSpawner(sf::Vector2f t_spawnerPos, int t_spawnerTextNum);
-
-	Objectives createIndividualObjective(sf::Vector2f t_objectivePos, int t_objectiveType);
-
 
 	void removeWallVector();
 	void removeEnemySpawnerVector();
@@ -94,7 +92,6 @@ public:
 	std::vector<std::unique_ptr<Wall>> wallVector;
 	std::vector<std::unique_ptr<EnemySpawner>> enemySpawnerVector;
 	std::vector<std::unique_ptr<BloodSplatter>> bloodSplatterVector;
-	std::vector<std::unique_ptr<Objectives>> objectivesVector;
 private:
 
 	sf::Vector2f mousePos; // mouses current position
@@ -145,11 +142,10 @@ private:
 
 	void createWallVector();
 	void createSpawnerVector();
-	void createObjectivesVector();
+	void createObjectives();
 
 	void checkWallHealth();
 
-	void renderObjectives();
 };
 
 #endif // !GAME_HPP

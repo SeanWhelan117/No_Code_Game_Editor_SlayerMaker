@@ -29,16 +29,19 @@ void Monument::render(sf::RenderWindow& t_window)
 
 void Monument::update()
 {
-	float healthRatio = currentMonumentHealth / maxMonumentHealth;
-	monumentHealthBar.setSize(sf::Vector2f(100 * healthRatio, 10));
-	monumentHealthBar.setOrigin((1 - healthRatio) * 100 / 2, 0);
-
+	monumentHealthBar.setSize(sf::Vector2f(currentMonumentHealth / 5, 10));
+	monumentHealthBar.setOrigin(monumentHealthBar.getLocalBounds().width / 2, monumentHealthBar.getLocalBounds().height / 2);
 	changeColours();
 
 	if (currentMonumentHealth <= 0)
 	{
 		std::cout << "GameOver" << std::endl;
 		gameOver = true;
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))
+	{
+		currentMonumentHealth -= 5;
 	}
 }
 
@@ -52,7 +55,8 @@ void Monument::setupHealthBar()
 	monumentHealthBar.setFillColor(sf::Color::Green);
 	monumentHealthBar.setOutlineThickness(1);
 	monumentHealthBar.setOutlineColor(sf::Color::Black);
-	monumentHealthBar.setPosition(monumentSprite.getPosition().x - 40, monumentSprite.getPosition().y - 40);
+	monumentHealthBar.setOrigin(monumentHealthBar.getLocalBounds().width / 2, monumentHealthBar.getLocalBounds().height / 2);
+	monumentHealthBar.setPosition(monumentSprite.getPosition().x, monumentSprite.getPosition().y - 40);
 }
 
 void Monument::damageMonument(int t_damage)

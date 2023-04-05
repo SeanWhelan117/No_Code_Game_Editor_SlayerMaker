@@ -483,7 +483,7 @@ void Game::update(sf::Time t_deltaTime)
 
 		objectives.update(t_deltaTime, m_window, myPlayer.getPlayer().getGlobalBounds(), coinsCollected, maxCoins);
 
-		if (objectives.gameOver == true || playerHUD.myHealthBar.gameOver == true || objectives.gameOver == true)
+		if (objectives.gameOver == true || playerHUD.myHealthBar.gameOver == true || objectives.monumentVector.at(0).get()->gameOver == true)
 		{
 			objectives.gameOver = false;
 			playerHUD.myHealthBar.gameOver = false;
@@ -498,10 +498,12 @@ void Game::update(sf::Time t_deltaTime)
 
 		if (gameOver.buttonPressed == 0)
 		{
+			gameOver.buttonPressed = -10;
 			myState = GameState::mainmenu;
 		}
 		else if (gameOver.buttonPressed == 1)
 		{
+			gameOver.buttonPressed = -10;
 			gameChoice.gameChosen = true;
 			myState = GameState::play;
 			createLevel();

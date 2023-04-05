@@ -43,7 +43,7 @@ private:
 	sf::Sprite monumentSprite;
 
 	sf::RectangleShape monumentHealthBar;
-	int maxMonumentHealth = 5000;
-	int currentMonumentHealth = 5000;
+	int maxMonumentHealth = 500;
+	int currentMonumentHealth = 500;
 };
 

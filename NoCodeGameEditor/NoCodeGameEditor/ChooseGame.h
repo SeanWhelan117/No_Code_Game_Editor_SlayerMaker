@@ -9,10 +9,13 @@
 #include <filesystem>
 #include <fstream>
 #include "LoadFromFile.h"
+#define WIN32_LEAN_AND_MEAN
+#include <windows.h>
 
 class ChooseGame
 {
 public:
+
 	ChooseGame(float t_gameWidth, float t_gameHeight);
 	LoadFromFile loader;
 
@@ -38,6 +41,8 @@ public:
 private:
 	void setupBuildButtons();
 
+	void buildGame(int t_game);
+
 	float gameWidth = 0;
 	float gameHeight = 0;
 	sf::Vector2f initialPos = { 100, 100 };
@@ -51,5 +56,6 @@ private:
 	sf::Vector2f mousePos;
 
 	std::vector <sf::RectangleShape> buildButtons;
+	bool gameBuilt = false;
 };
 

@@ -432,11 +432,16 @@ void Game::update(sf::Time t_deltaTime)
 	{
 		gameChoice.update(t_deltaTime, m_window);
 
-		if (gameChoice.gameChosen)
+		if (gameChoice.gameChosen && !gameChoice.gameBuilt)
 		{
 			myState = GameState::play;
 			
 			createLevel();
+		}
+		else if (gameChoice.gameChosen && gameChoice.gameBuilt)
+		{
+			createLevel();
+			myBuilder.buildGame(gameChoice.chosenGame);
 		}
 	}
 

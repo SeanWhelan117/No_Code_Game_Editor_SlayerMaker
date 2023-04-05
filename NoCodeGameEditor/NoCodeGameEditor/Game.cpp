@@ -983,7 +983,7 @@ void Game::collisionDetection()
 			{
 				auto& bullet = *bulletIt;
 
-				if (isColliding(bullet.getBullet().getGlobalBounds(), enemy->getEnemy().getGlobalBounds()))
+				if (isColliding(bullet.get()->getBullet().getGlobalBounds(), enemy->getEnemy().getGlobalBounds()))
 				{
 					if (enemy->getHealth() > 0)
 					{

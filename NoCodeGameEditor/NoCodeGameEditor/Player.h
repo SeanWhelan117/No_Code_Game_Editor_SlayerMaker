@@ -27,7 +27,7 @@ public:
 
 	void rotatePlayerView();
 
-	std::vector<Bullet> bulletVector;
+	std::vector<std::unique_ptr<Bullet >> bulletVector;
 
 	void removeBullet(int t_bulletNum);
 private:

@@ -14,5 +14,6 @@ enum class GameState
 	chooseGame,
 	play,
 	options,
+	gameOver,
 	exitGame,
 };

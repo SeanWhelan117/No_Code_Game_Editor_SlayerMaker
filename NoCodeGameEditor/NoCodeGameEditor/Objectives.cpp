@@ -87,6 +87,7 @@ void Objectives::playerCollision(sf::FloatRect t_playerRect)
 			if (isColliding(doorVector.at(i).get()->getDoor().getGlobalBounds(), t_playerRect))
 			{
 				std::cout << "GameOver" << std::endl;
+				gameOver = true;
 			}
 		}
 	}

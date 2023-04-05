@@ -28,6 +28,8 @@ public:
 
 	sf::Sprite healthBarSprite;
 	sf::RectangleShape healthRect;
+
+	bool gameOver = false;
 private:
 	void setupHealthBarSprite();
 	void setupHealthRect();

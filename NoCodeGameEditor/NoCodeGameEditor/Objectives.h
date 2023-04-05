@@ -34,6 +34,7 @@ public:
 
 	bool isColliding(sf::FloatRect t_obj1, sf::FloatRect t_obj2);
 
+	bool gameOver = false;
 private:
 
 	sf::Vector2f objectivePos;

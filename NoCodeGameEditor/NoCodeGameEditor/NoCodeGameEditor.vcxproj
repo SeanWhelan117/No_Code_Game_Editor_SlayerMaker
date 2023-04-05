@@ -34,6 +34,7 @@
     <ClCompile Include="EnemySpawner.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameOptions.cpp" />
+    <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="HealthBar.cpp" />
     <ClCompile Include="HUD.cpp" />
@@ -63,6 +64,7 @@
     <ClInclude Include="EnemySpawner.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameOptions.h" />
+    <ClInclude Include="GameOver.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="Grid.h" />
     <ClInclude Include="HealthBar.h" />

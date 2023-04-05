@@ -22,11 +22,11 @@ public:
 	
 
 
+	void startClock();
 
 	sf::Text clockText;
 private:
 
-	void startClock();
 
 	void setupClockDisplay();
 

@@ -38,6 +38,7 @@ void Monument::update()
 	if (currentMonumentHealth <= 0)
 	{
 		std::cout << "GameOver" << std::endl;
+		gameOver = true;
 	}
 }
 

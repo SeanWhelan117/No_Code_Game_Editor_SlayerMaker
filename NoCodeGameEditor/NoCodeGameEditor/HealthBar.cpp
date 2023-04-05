@@ -33,6 +33,7 @@ void HealthBar::update(sf::Time t_deltaTime)
 	if (currentHealth <= 0)
 	{
 		std::cout << "GameOver" << std::endl;
+		gameOver = true;
 	}
 }
 

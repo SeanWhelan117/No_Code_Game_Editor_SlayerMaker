@@ -439,13 +439,10 @@ void Game::update(sf::Time t_deltaTime)
 			createLevel();
 		}
 	}
-	
-	if (myTools.testingGame == true)
-	{
-		myState = GameState::testGame;
-		myTools.testingGame = false;
-		
-	}
+
+	//PLAY GAME PLAY GAME PLAY GAME PLAY GAME PLAY GAME PLAY GAME PLAY GAME PLAY GAME PLAY GAME PLAY GAME PLAY GAME PLAY GAME
+	//PLAY GAME PLAY GAME PLAY GAME PLAY GAME PLAY GAME PLAY GAME PLAY GAME PLAY GAME PLAY GAME PLAY GAME PLAY GAME PLAY GAME
+	//PLAY GAME PLAY GAME PLAY GAME PLAY GAME PLAY GAME PLAY GAME PLAY GAME PLAY GAME PLAY GAME PLAY GAME PLAY GAME PLAY GAME
 
 	if (myState == GameState::play)
 	{
@@ -480,10 +477,39 @@ void Game::update(sf::Time t_deltaTime)
 		m_window.setView(testView);
 
 		objectives.update(t_deltaTime, m_window, myPlayer.getPlayer().getGlobalBounds(), coinsCollected, maxCoins);
+
+		if (objectives.gameOver == true || playerHUD.myHealthBar.gameOver == true || objectives.gameOver == true)
+		{
+			objectives.gameOver = false;
+			playerHUD.myHealthBar.gameOver = false;
+			objectives.gameOver = false;
+			myState = GameState::gameOver;
+		}
 	}
 
-	
+	if (myState == GameState::gameOver)
+	{
+		gameOver.update(t_deltaTime);
 
+		if (gameOver.buttonPressed == 0)
+		{
+			myState = GameState::mainmenu;
+		}
+		else if (gameOver.buttonPressed == 1)
+		{
+			gameChoice.gameChosen = true;
+			myState = GameState::play;
+			createLevel();
+		}
+	}
+
+	if (myTools.testingGame == true)
+	{
+		myState = GameState::testGame;
+		myTools.testingGame = false;
+
+	}
+	
 	coinsCollected = maxCoins - objectives.coinVector.size();
 }
 
@@ -595,6 +621,11 @@ void Game::render()
 		myCrosshair.render(m_window);
 
 		playerHUD.render(m_window);
+	}
+
+	if (myState == GameState::gameOver)
+	{
+		gameOver.render(m_window);
 	}
 
 	m_window.display();
@@ -873,6 +904,11 @@ void Game::saveDataToCSV()
 void Game::createLevel()
 {
 	clearVectors();
+	playerHUD.myHealthBar.plusHealth(1000);
+	playerHUD.myClock.startClock();
+	coinsCollected = 0;
+	myPlayer.getPlayer().setPosition(sf::Vector2f(gameWidth / 2, gameHeight / 2));
+
 	for (int i = 0; i < gameChoice.loader.wallData.size(); i++)
 	{
 		sf::Vector2f tempWallPos = { gameChoice.loader.wallData.at(i).x , gameChoice.loader.wallData.at(i).y };

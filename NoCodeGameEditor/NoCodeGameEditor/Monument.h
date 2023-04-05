@@ -27,6 +27,8 @@ public:
 	void damageMonument(int t_damage);
 
 	std::shared_ptr<sf::Texture> monumentTexture;
+
+	bool gameOver = false;
 private:
 
 	void setupHealthBar();

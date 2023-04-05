@@ -31,6 +31,7 @@
 #include "TextureManager.h"
 #include "Objectives.h"
 #include "HUD.h"
+#include "GameOver.h"
 
 class Game
 {
@@ -54,6 +55,7 @@ public:
 	TextureManager textureManager;
 	HUD playerHUD{ gameWidth, gameHeight };
 	Objectives objectives{textureManager};
+	GameOver gameOver{ gameWidth, gameHeight };
 
 	sf::View mainView;
 	sf::View testView;

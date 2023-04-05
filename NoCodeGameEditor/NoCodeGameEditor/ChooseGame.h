@@ -30,11 +30,13 @@ public:
 
 	void checkForMousePos();
 
+
 	std::vector<sf::RectangleShape> games;
 	int fileCount = 0;
 
 	bool gameChosen = false;
 private:
+	void setupBuildButtons();
 
 	float gameWidth = 0;
 	float gameHeight = 0;
@@ -47,5 +49,7 @@ private:
 	sf::Font font;
 
 	sf::Vector2f mousePos;
+
+	std::vector <sf::RectangleShape> buildButtons;
 };
 

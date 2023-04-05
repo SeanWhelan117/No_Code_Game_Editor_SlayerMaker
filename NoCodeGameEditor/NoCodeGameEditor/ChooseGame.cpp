@@ -6,8 +6,7 @@ ChooseGame::ChooseGame(float t_gameWidth, float t_gameHeight)
 	gameHeight = t_gameHeight;
 	loadFont();
 	findFiles();
-	//setupSprites();
-	//setupNames();
+	setupBuildButtons();
 }
 
 void ChooseGame::loadFont()
@@ -58,6 +57,7 @@ void ChooseGame::setupSprites()
 		sf::RectangleShape testRect;
 		testRect.setFillColor(sf::Color::Yellow);
 		testRect.setSize(sf::Vector2f( 300, 100));
+		testRect.setOrigin(testRect.getLocalBounds().width / 2, testRect.getLocalBounds().height / 2);
 		testRect.setPosition(initialPos);
 		count++;
 		if (count > 4)
@@ -92,6 +92,7 @@ void ChooseGame::setupNames()
 		tempText.setFillColor(sf::Color::Black);
 		tempText.setCharacterSize(30u);
 		tempText.setString(gameNames.at(i));
+		tempText.setOrigin(tempText.getLocalBounds().width / 2, tempText.getLocalBounds().height / 2);
 		tempText.setPosition(games.at(i).getPosition());
 		nameTexts.push_back(tempText);
 	}
@@ -114,6 +115,7 @@ void ChooseGame::render(sf::RenderWindow& t_window)
 		{
 			t_window.draw(games.at(i));
 			t_window.draw(nameTexts.at(i));
+			t_window.draw(buildButtons.at(i));
 		}
 	}
 	
@@ -136,5 +138,31 @@ void ChooseGame::checkForMousePos()
 				gameChosen = false;
 			}
 		}
+
+		if (buildButtons.at(i).getGlobalBounds().contains(mousePos))
+		{
+			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+			{
+				buildGame(i);
+			}
+		}
 	}
+}
+
+void ChooseGame::setupBuildButtons()
+{
+	for (int i = 0; i < games.size(); i++)
+	{
+		sf::RectangleShape tempRect;
+		tempRect.setFillColor(sf::Color::Green);
+		tempRect.setPosition(games.at(i).getPosition().x, games.at(i).getPosition().y + 90);
+		tempRect.setSize(sf::Vector2f(100, 75));
+		tempRect.setOrigin(tempRect.getLocalBounds().width / 2, tempRect.getLocalBounds().height / 2);
+		buildButtons.push_back(tempRect);
+	}
+}
+
+void ChooseGame::buildGame(int t_game)
+{
+
 }

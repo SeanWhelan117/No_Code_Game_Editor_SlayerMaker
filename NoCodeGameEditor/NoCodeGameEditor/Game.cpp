@@ -126,9 +126,6 @@ void Game::processKeys(sf::Event t_event)
 		else if (myState == GameState::createGame)
 		{
 			myState = GameState::gameOptions;
-			myTools.enemyOneSpawnsPlaced = 0;
-			myTools.enemyTwoSpawnsPlaced = 0;
-			myTools.enemyThreeSpawnsPlaced = 0;
 			clearVectors();
 			
 		}
@@ -414,7 +411,7 @@ void Game::update(sf::Time t_deltaTime)
 		{
 			for (int i = 0; i < enemySpawnerVector.size(); i++)
 			{
-				if (gameOptions.chosenGT == 0)
+				if (gameOptions.chosenGT == 0 || gameOptions.chosenGT == 2)
 				{
 					enemySpawnerVector.at(i)->update(myPlayer.getPlayer().getPosition(), wallVector, t_deltaTime, gameOptions.chosenGT, objectives.monumentVector);
 				}
@@ -473,7 +470,7 @@ void Game::update(sf::Time t_deltaTime)
 		
 		for (int i = 0; i < enemySpawnerVector.size(); i++)
 		{
-			if (gameOptions.chosenGT == 0)
+			if (gameOptions.chosenGT == 0 || gameOptions.chosenGT == 2)
 			{
 				enemySpawnerVector.at(i)->update(myPlayer.getPlayer().getPosition(), wallVector, t_deltaTime, gameOptions.chosenGT, objectives.monumentVector);
 			}
@@ -493,12 +490,23 @@ void Game::update(sf::Time t_deltaTime)
 
 		objectives.update(t_deltaTime, m_window, myPlayer.getPlayer().getGlobalBounds(), coinsCollected, maxCoins);
 
-		if (objectives.gameOver == true || playerHUD.myHealthBar.gameOver == true || objectives.monumentVector.at(0).get()->gameOver == true)
+		if (objectives.gameOver == true || playerHUD.myHealthBar.gameOver == true )
 		{
 			objectives.gameOver = false;
 			playerHUD.myHealthBar.gameOver = false;
 			objectives.gameOver = false;
 			myState = GameState::gameOver;
+		}
+
+		if (objectives.monumentVector.size() > 0)
+		{
+			if (objectives.monumentVector.at(0).get()->gameOver == true)
+			{
+				objectives.gameOver = false;
+				playerHUD.myHealthBar.gameOver = false;
+				objectives.gameOver = false;
+				myState = GameState::gameOver;
+			}
 		}
 	}
 
@@ -924,6 +932,7 @@ void Game::viewsCreation()
 
 void Game::saveDataToCSV()
 {
+	//letters used: W,S,C,D,M,H,E,G,Z
 	std::ofstream myFile;
 	myFile.open(".\\ASSETS\\GAMEDATA\\" + gameOptions.gameName + ".csv");
 	
@@ -997,6 +1006,32 @@ void Game::saveDataToCSV()
 		myFile << "\n";
 	}
 
+	//myFile << "ITEMS,\n";
+	//myFile << "X,Y,Type,Object,\n";
+	for (int i = 0; i < items.medkitVector.size(); i++)
+	{
+		myFile << static_cast<int>(items.medkitVector.at(i).get()->getMedkit().getPosition().x);
+		myFile << ",";
+		myFile << static_cast<int>(items.medkitVector.at(i).get()->getMedkit().getPosition().y);
+		myFile << ",";
+		myFile << "0";
+		myFile << ",";
+		myFile << "H";
+		myFile << "\n";
+	}
+
+	for (int i = 0; i < items.explosiveVector.size(); i++)
+	{
+		myFile << static_cast<int>(items.explosiveVector.at(i).get()->getExplosive().getPosition().x);
+		myFile << ",";
+		myFile << static_cast<int>(items.explosiveVector.at(i).get()->getExplosive().getPosition().y);
+		myFile << ",";
+		myFile << "0";
+		myFile << ",";
+		myFile << "E";
+		myFile << "\n";
+	}
+
 	//myFile << "GAMEOPTIONS,\n";
 	//myFile << "BGChoice,GTChoice,Type,Object\n";
 
@@ -1035,7 +1070,6 @@ void Game::createLevel()
 
 	for (int i = 0; i < gameChoice.loader.coinData.size(); i++)
 	{
-
 		sf::Vector2f tempCoinPos = { gameChoice.loader.coinData.at(i).x , gameChoice.loader.coinData.at(i).y };
 		objectives.addToVector(tempCoinPos, 0);
 	}
@@ -1044,14 +1078,24 @@ void Game::createLevel()
 	{
 		sf::Vector2f tempDoorPos = { gameChoice.loader.doorData.at(i).x , gameChoice.loader.doorData.at(i).y };
 		objectives.addToVector(tempDoorPos, 1);
-
 	}
 
 	for (int i = 0; i < gameChoice.loader.monumentData.size(); i++)
 	{
 		sf::Vector2f tempMonumentPos = { gameChoice.loader.monumentData.at(i).x , gameChoice.loader.monumentData.at(i).y };
 		objectives.addToVector(tempMonumentPos, 2);
+	}
 
+	for (int i = 0; i < gameChoice.loader.medkitData.size(); i++)
+	{
+		sf::Vector2f tempMedkitPos = { gameChoice.loader.medkitData.at(i).x , gameChoice.loader.medkitData.at(i).y };
+		items.addToVector(tempMedkitPos, 0);
+	}
+
+	for (int i = 0; i < gameChoice.loader.explosiveData.size(); i++)
+	{
+		sf::Vector2f tempExplosivePos = { gameChoice.loader.explosiveData.at(i).x , gameChoice.loader.explosiveData.at(i).y };
+		items.addToVector(tempExplosivePos, 1);
 	}
 
 	gameOptions.chosenBG = gameChoice.loader.BGGTChoices.x;
@@ -1069,6 +1113,16 @@ void Game::clearVectors()
 	objectives.coinVector.clear();
 	objectives.doorVector.clear();
 	objectives.monumentVector.clear();
+
+	items.medkitVector.clear();
+	items.explosiveVector.clear();
+
+	map<string, int>::iterator it;
+
+	for (it = myTools.itemsPlaced.begin(); it != myTools.itemsPlaced.end(); it++)
+	{
+		it->second = 0;
+	}
 }
 
 bool Game::isColliding(sf::FloatRect t_obj1, sf::FloatRect t_obj2)

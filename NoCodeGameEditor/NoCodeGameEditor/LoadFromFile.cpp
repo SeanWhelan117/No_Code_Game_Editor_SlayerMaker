@@ -31,13 +31,9 @@ void LoadFromFile::update(sf::Time t_deltaTime)
 
 void LoadFromFile::createData()
 {
+	//letters used: W,S,C,D,M,H,E,G,Z
+
 	//Each String = x, y , textureNum, ObjectType
-
-
-	/*for (int i = 0; i < gameData.size(); i++)
-	{
-		std::cout << gameData.at(i) << std::endl;
-	}*/
 
 	for (int i = 0; i < gameData.size(); i++)
 	{
@@ -92,6 +88,14 @@ void LoadFromFile::createData()
 				else if (currentData.find("M") != std::string::npos)
 				{
 					monumentData.push_back(tempVector);
+				}
+				else if (currentData.find("H") != std::string::npos)
+				{
+					medkitData.push_back(tempVector);
+				}
+				else if (currentData.find("E") != std::string::npos)
+				{
+					explosiveData.push_back(tempVector);
 				}
 				else if (currentData.find("Z") != std::string::npos)
 				{

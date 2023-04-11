@@ -26,6 +26,8 @@ public:
 	std::vector<sf::Vector3f> coinData;
 	std::vector<sf::Vector3f> doorData;
 	std::vector<sf::Vector3f> monumentData;
+	std::vector<sf::Vector3f> medkitData;
+	std::vector<sf::Vector3f> explosiveData;
 	sf::Vector3f BGGTChoices;
 
 

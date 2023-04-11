@@ -48,7 +48,7 @@ private:
 	int test = 0;
 
 	int totalEnemies = 0;
-	static const int MAX_ENEMIES = 25;
+	static const int MAX_ENEMIES = 50;
 	static const int INFINITE_ENEMIES = 1000;
 	int timesCalled = 0;
 

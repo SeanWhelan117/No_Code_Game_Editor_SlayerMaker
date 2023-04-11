@@ -465,7 +465,7 @@ void Game::update(sf::Time t_deltaTime)
 		m_window.setMouseCursorVisible(false);
 		myBackground.update(gameOptions.chosenBG);
 		testView.setCenter(myPlayer.getPlayer().getPosition());
-		playerHUD.update(t_deltaTime, m_window, myPlayer.getPlayer().getPosition(), items.addHealth);
+		playerHUD.update(t_deltaTime, m_window, myPlayer.getPlayer().getPosition(), items.addHealth, items.explosivesCollected);
 		
 		
 		for (int i = 0; i < enemySpawnerVector.size(); i++)

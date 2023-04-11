@@ -61,11 +61,12 @@ void Items::playerCollision(sf::FloatRect t_playerRect)
 
 	for (int i = 0; i < explosiveVector.size(); i++)
 	{
-		/*if (isColliding(explosiveVector.at(i).get()->getExplosive().getGlobalBounds(), t_playerRect))
+		if (isColliding(explosiveVector.at(i).get()->getExplosive().getGlobalBounds(), t_playerRect))
 		{
-			std::vector<std::unique_ptr<Coin>>::iterator begin = explosiveVector.begin();
+			std::vector<std::unique_ptr<Explosive>>::iterator begin = explosiveVector.begin();
 			begin += i;
-			coinVector.erase(begin);
-		}*/
+			explosiveVector.erase(begin);
+			explosivesCollected++;
+		}
 	}
 }

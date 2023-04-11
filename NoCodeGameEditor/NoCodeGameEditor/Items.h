@@ -31,7 +31,7 @@ public:
 	void playerCollision(sf::FloatRect t_playerRect);
 
 	bool addHealth = false;
-
+	int explosivesCollected = 0;
 private:
 	TextureManager& m_textureManager;
 

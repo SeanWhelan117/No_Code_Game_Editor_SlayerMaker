@@ -9,17 +9,19 @@
 #include <SFML/Graphics.hpp>
 #include "Clock.h"
 #include "HealthBar.h"
+#include "ExplosiveUI.h"
 class HUD
 {
 
 public:
 	Clock myClock;
 	HealthBar myHealthBar;
+	ExplosiveUI myExplosiveUI;
 	HUD(float t_gameWidth, float t_gameHeight);
 
 	void loadFiles();
 
-	void update(sf::Time t_deltaTime, sf::RenderWindow& t_window, sf::Vector2f t_playerPos, bool& t_addHealth);
+	void update(sf::Time t_deltaTime, sf::RenderWindow& t_window, sf::Vector2f t_playerPos, bool& t_addHealth, int t_explosivesCollected);
 
 	void render(sf::RenderWindow& t_window);
 

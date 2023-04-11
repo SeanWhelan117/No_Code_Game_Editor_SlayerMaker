@@ -34,6 +34,7 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemySpawner.cpp" />
     <ClCompile Include="Explosive.cpp" />
+    <ClCompile Include="ExplosiveUI.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameOptions.cpp" />
     <ClCompile Include="GameOver.cpp" />
@@ -68,6 +69,7 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemySpawner.h" />
     <ClInclude Include="Explosive.h" />
+    <ClInclude Include="ExplosiveUI.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameOptions.h" />
     <ClInclude Include="GameOver.h" />

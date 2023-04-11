@@ -12,10 +12,11 @@ void HUD::loadFiles()
 
 }
 
-void HUD::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, sf::Vector2f t_playerPos, bool& t_addHealth)
+void HUD::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, sf::Vector2f t_playerPos, bool& t_addHealth, int  t_explosivesCollected)
 {
 	myClock.update(t_deltaTime);
 	myHealthBar.update(t_deltaTime);
+	myExplosiveUI.update(t_deltaTime, t_explosivesCollected);
 	setUIElementsLocations(t_window, t_playerPos);
 
 	if (t_addHealth == true)
@@ -29,6 +30,7 @@ void HUD::render(sf::RenderWindow& t_window)
 {
 	myClock.render(t_window);
 	myHealthBar.render(t_window);
+	myExplosiveUI.render(t_window);
 }
 
 void HUD::setUIElementsLocations(sf::RenderWindow& t_window, sf::Vector2f t_playerPos)
@@ -42,5 +44,8 @@ void HUD::setUIElementsLocations(sf::RenderWindow& t_window, sf::Vector2f t_play
 
 	sf::Vector2f pos3(t_playerPos.x + 20, t_playerPos.y - 210);
 	myHealthBar.healthRect.setPosition(pos3);
+
+	sf::Vector2f pos4(t_playerPos.x - 350, t_playerPos.y - 180);
+	myExplosiveUI.explosiveUISprite.setPosition(pos4);
 
 }

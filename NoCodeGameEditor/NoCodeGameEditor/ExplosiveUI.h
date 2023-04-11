@@ -23,7 +23,7 @@ public:
 	sf::Sprite explosiveUISprite;
 private:
 
-	static const int MAX_TEXTURES = 5;
+	static const int MAX_TEXTURES = 6;
 	sf::Texture explosiveUITextures[MAX_TEXTURES];
 
 	int currentNum = 0;

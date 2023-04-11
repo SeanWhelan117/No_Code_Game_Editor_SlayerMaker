@@ -34,6 +34,11 @@ void ExplosiveUI::loadFiles()
 		// simple error message if previous call fails
 		std::cout << "problem loading explosiveUITextures (4)" << std::endl;
 	}
+	if (!explosiveUITextures[5].loadFromFile("ASSETS\\IMAGES\\dynamiteUI5.png"))
+	{
+		// simple error message if previous call fails
+		std::cout << "problem loading explosiveUITextures (5)" << std::endl;
+	}
 	
 }
 
@@ -50,10 +55,8 @@ void ExplosiveUI::update(sf::Time t_deltaTime, int t_explosivesCollected)
 	if (t_explosivesCollected != currentNum)
 	{
 		currentNum = t_explosivesCollected;
-		if (currentNum < 5)
-		{
-			explosiveUISprite.setTexture(explosiveUITextures[currentNum]);
-		}
+
+		explosiveUISprite.setTexture(explosiveUITextures[currentNum]);
 	}
 }
 

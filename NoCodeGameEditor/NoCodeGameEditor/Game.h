@@ -14,6 +14,7 @@
 #include <vector>
 #include <fstream>
 
+#include "TextureManager.h"
 #include "Grid.h"
 #include "Cell.h"
 #include "Wall.h"
@@ -28,11 +29,11 @@
 #include "EnemySpawner.h"
 #include "ChooseGame.h"
 #include "BloodSplatter.h"
-#include "TextureManager.h"
 #include "Objectives.h"
 #include "HUD.h"
 #include "GameOver.h"
 #include "Builder.h"
+#include "Items.h"
 
 class Game
 {
@@ -42,22 +43,23 @@ public:
 	Game();
 	~Game();
 
+	TextureManager textureManager;
 	MainMenu myMenu{ gameWidth, gameHeight };
 	GameOptions gameOptions{ gameWidth, gameHeight };
 	Grid myGrid{ gameWidth, gameHeight };
-	//Wall myWalls;
 	GameState myState{ GameState::mainmenu };
 	ToolBar myTools{ gameWidth, gameHeight };
 	Player myPlayer{ gameWidth, gameHeight };
-	ChoiceBar myChoice{ gameWidth, gameHeight };
 	Crosshair myCrosshair;
 	Background myBackground{gameWidth, gameHeight};
 	ChooseGame gameChoice{ gameWidth, gameHeight };
-	TextureManager textureManager;
 	HUD playerHUD{ gameWidth, gameHeight };
-	Objectives objectives{textureManager};
+	ChoiceBar myChoice{ gameWidth, gameHeight, textureManager };
+	Objectives objectives{ textureManager };
 	GameOver gameOver{ gameWidth, gameHeight };
 	Builder myBuilder;
+	Items items{ textureManager };
+
 
 	sf::View mainView;
 	sf::View testView;
@@ -125,12 +127,17 @@ private:
 	int numOfCoins = 0;
 	int numOfDoors = 0;
 	int numOfMonuments = 0;
+	int numOfMedkits = 0;
+	int numOfExplosives = 0;
+	int numOfGuns = 0;
 
 	bool wallVectorCreated = false;
 
 	bool enemySpawnerVectorCreated = false;
 
 	bool objectiveVectorCreated = false;
+
+	bool itemVectorCreated = false;
 
 	bool mainViewActive = true;
 
@@ -150,6 +157,7 @@ private:
 	void createWallVector();
 	void createSpawnerVector();
 	void createObjectives();
+	void createItems();
 
 	void checkWallHealth();
 

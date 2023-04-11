@@ -30,8 +30,7 @@ ToolBar::ToolBar(float t_gameWidth, float t_gameHeight)
 	addEnemySpawnersButton.setOrigin(75, 50);
 	addEnemySpawnersButton.setPosition(gameWidth / 2 + 350, 100);
 
-	itemsPlaced = { {"Spawner1", 0}, {"Spawner2", 0}, {"Spawner3", 0}, {"Coins", 0}, {"Doors", 0}, {"Monuments", 0} };
-	//itemsPlaced["Spawner1"] +=400;
+	itemsPlaced = { {"Spawner1", 0}, {"Spawner2", 0}, {"Spawner3", 0}, {"Coins", 0}, {"Doors", 0}, {"Monuments", 0}, {"Medkits", 0}, {"Explosives", 0}, {"Guns", 0}};
 
 }
 
@@ -399,9 +398,20 @@ void ToolBar::changeMode(int t_triangleClicked)
 			currentMode = "ENEMIES";
 			set = true;
 		}
-		else if (currentMode == "OBJECTIVES" && t_triangleClicked == 1)
+		else if (currentMode == "OBJECTIVES" && t_triangleClicked == 1 && set == false)
 		{
-			//do nothing for now...
+			currentMode = "ITEMS";
+			set = true;
+		}
+
+		if (currentMode == "ITEMS" && t_triangleClicked == 0)
+		{
+			currentMode = "OBJECTIVES";
+			set = true;
+		}
+		else if (currentMode == "ITEMS" && t_triangleClicked == 1 && set == false)
+		{
+			//Powerups soon
 		}
 	}
 	

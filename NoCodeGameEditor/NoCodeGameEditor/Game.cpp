@@ -18,6 +18,7 @@ Game::Game() :
 	m_window{ sf::VideoMode{  gameWidth, gameHeight, 32U }, "SlayerMaker" },
 	m_exitGame{false} //when true game will exit
 {
+	m_window.setActive(true);
 	viewsCreation();
 	//if (__cplusplus == 202101L) std::cout << "C++23";
 	//else if (__cplusplus == 202002L) std::cout << "C++20";
@@ -260,6 +261,10 @@ void Game::processMouseRelease(sf::Event t_event)
 			{
 				myTools.objectivesPlaced = true;
 			}
+			else if (myChoice.currentMode == "ITEMS")
+			{
+				myTools.itemsPlacedBool = true;
+			}
 
 
 			for (int i = 0; i < myTools.MAX_NAV_TRIANGLES; i++)
@@ -332,6 +337,10 @@ void Game::update(sf::Time t_deltaTime)
 		if (myTools.objectivesPlaced == true)
 		{
 			createObjectives();
+		}
+		if (myTools.itemsPlacedBool == true)
+		{
+			createItems();
 		}
 		myTools.update(t_deltaTime, m_window, myGrid.theGrid, gridSize, myChoice.choiceMade, myChoice.currentChoice);
 		myChoice.update(t_deltaTime, m_window, myTools.currentMode, gameOptions.chosenGT);
@@ -551,6 +560,7 @@ void Game::render()
 			}
 
 			objectives.render(m_window);
+			items.render(m_window);
 			myTools.render(m_window);
 			myChoice.render(m_window);
 		}
@@ -591,6 +601,7 @@ void Game::render()
 		}
 
 		objectives.render(m_window);
+		items.render(m_window);
 
 
 		myCrosshair.render(m_window);
@@ -623,8 +634,7 @@ void Game::render()
 		}
 
 		objectives.render(m_window);
-
-
+		items.render(m_window);
 
 		myCrosshair.render(m_window);
 
@@ -760,6 +770,37 @@ void Game::createObjectives()
 
 	objectiveVectorCreated = true;
 	myTools.objectivesPlaced = false;
+}
+
+void Game::createItems()
+{
+	for (int i = 0; i < gridSize; i++)
+	{
+		for (int m = 0; m < gridSize; m++)
+		{
+			if (myGrid.theGrid.at(m).at(i).getType() == "item1" && myGrid.theGrid.at(m).at(i).filled == false)
+			{
+				myGrid.theGrid.at(m).at(i).filled = true;
+				items.addToVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 0);
+				numOfMedkits++;
+			}
+			else if (myGrid.theGrid.at(m).at(i).getType() == "item2" && myGrid.theGrid.at(m).at(i).filled == false)
+			{
+				myGrid.theGrid.at(m).at(i).filled = true;
+				items.addToVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 1);
+				numOfExplosives++;
+			}
+			else if (myGrid.theGrid.at(m).at(i).getType() == "item3" && myGrid.theGrid.at(m).at(i).filled == false)
+			{
+				myGrid.theGrid.at(m).at(i).filled = true;
+				items.addToVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 2);
+				numOfGuns++;
+			}
+		}
+	}
+
+	itemVectorCreated = true;
+	myTools.itemsPlacedBool = false;
 }
 
 void Game::removeWallVector()

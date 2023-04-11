@@ -5,6 +5,7 @@
 /// </summary>
 
 #pragma once
+#include "TextureManager.h"
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
@@ -12,7 +13,7 @@ class ChoiceBar
 {
 
 public:
-	ChoiceBar(float t_gameWidth, float t_gameHeight);
+	ChoiceBar(float t_gameWidth, float t_gameHeight, TextureManager& textureManager);
 
 	void loadFiles();
 
@@ -25,7 +26,27 @@ public:
 	int currentChoice = 0;
 	bool choiceMade = false;
 	std::string currentMode = "WALLS";
+
+	std::shared_ptr<sf::Texture> choiceBarTexture;
+
+	std::shared_ptr<sf::Texture> wallChoiceTex1;
+	std::shared_ptr<sf::Texture> wallChoiceTex2;
+	std::shared_ptr<sf::Texture> wallChoiceTex3;
+
+	std::shared_ptr<sf::Texture> enemyChoiceTex1;
+	std::shared_ptr<sf::Texture> enemyChoiceTex2;
+	std::shared_ptr<sf::Texture> enemyChoiceTex3;
+
+	std::shared_ptr<sf::Texture> coinTexture;
+	std::shared_ptr<sf::Texture> doorTexture;
+	std::shared_ptr<sf::Texture> monumentTexture;
+
+	std::shared_ptr<sf::Texture> medkitTexture;
+	std::shared_ptr<sf::Texture> explosiveTexture;
+	std::shared_ptr<sf::Texture> gunTexture;
+
 private:
+	TextureManager& m_textureManager;
 	void checkForMousePosAndClick(sf::RenderWindow& t_window, sf::Vector2f t_mousePos);
 
 	void processMouseClick(sf::FloatRect t_object, sf::Vector2f t_mousePos, int t_numLoops);
@@ -40,33 +61,30 @@ private:
 	float gameHeight = 0;
 
 	sf::Sprite choiceBarSprite;
-	sf::Texture choiceBarTexture;
 
 	static const int MAX_CHOICES = 3;
 	sf::Sprite wallChoiceSprite[MAX_CHOICES];
 	sf::Sprite enemyChoiceSprite[MAX_CHOICES];
 
-	sf::Texture wallChoiceTex1;
-	sf::Texture wallChoiceTex2;
-	sf::Texture wallChoiceTex3;
 
-	sf::Texture enemyChoiceTex1;
-	sf::Texture enemyChoiceTex2;
-	sf::Texture enemyChoiceTex3;
 
 
 	static const int MAX_OBJECTIVE_CHOICES = 2;
 
 	sf::Sprite coinSprite;
-	sf::Texture coinTexture;
 	
 	sf::Sprite doorSprite;
-	sf::Texture doorTexture;
 
 	sf::Sprite monumentSprite;
-	sf::Texture monumentTexture;
+
+	sf::Sprite medkitSprite;
+
+	sf::Sprite gunSprite;
+
+	sf::Sprite explosiveSprite;
 
 	int chosenGT = 0;
+
 
 };
 

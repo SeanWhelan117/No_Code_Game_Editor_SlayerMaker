@@ -33,15 +33,18 @@
     <ClCompile Include="Door.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemySpawner.cpp" />
+    <ClCompile Include="Explosive.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameOptions.cpp" />
     <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="HealthBar.cpp" />
     <ClCompile Include="HUD.cpp" />
+    <ClCompile Include="Items.cpp" />
     <ClCompile Include="LoadFromFile.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
+    <ClCompile Include="Medkit.cpp" />
     <ClCompile Include="Monument.cpp" />
     <ClCompile Include="Objectives.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -64,6 +67,7 @@
     <ClInclude Include="Door.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemySpawner.h" />
+    <ClInclude Include="Explosive.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameOptions.h" />
     <ClInclude Include="GameOver.h" />
@@ -71,8 +75,10 @@
     <ClInclude Include="Grid.h" />
     <ClInclude Include="HealthBar.h" />
     <ClInclude Include="HUD.h" />
+    <ClInclude Include="Items.h" />
     <ClInclude Include="LoadFromFile.h" />
     <ClInclude Include="MainMenu.h" />
+    <ClInclude Include="Medkit.h" />
     <ClInclude Include="Monument.h" />
     <ClInclude Include="Objectives.h" />
     <ClInclude Include="Player.h" />

@@ -12,11 +12,17 @@ void HUD::loadFiles()
 
 }
 
-void HUD::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, sf::Vector2f t_playerPos)
+void HUD::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, sf::Vector2f t_playerPos, bool& t_addHealth)
 {
 	myClock.update(t_deltaTime);
 	myHealthBar.update(t_deltaTime);
 	setUIElementsLocations(t_window, t_playerPos);
+
+	if (t_addHealth == true)
+	{
+		t_addHealth = false;
+		myHealthBar.plusHealth(50);
+	}
 }
 
 void HUD::render(sf::RenderWindow& t_window)

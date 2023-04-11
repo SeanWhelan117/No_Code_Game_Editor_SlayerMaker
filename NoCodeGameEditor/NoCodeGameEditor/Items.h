@@ -30,6 +30,8 @@ public:
 
 	void playerCollision(sf::FloatRect t_playerRect);
 
+	bool addHealth = false;
+
 private:
 	TextureManager& m_textureManager;
 

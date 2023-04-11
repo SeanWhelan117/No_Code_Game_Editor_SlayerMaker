@@ -465,7 +465,7 @@ void Game::update(sf::Time t_deltaTime)
 		m_window.setMouseCursorVisible(false);
 		myBackground.update(gameOptions.chosenBG);
 		testView.setCenter(myPlayer.getPlayer().getPosition());
-		playerHUD.update(t_deltaTime, m_window, myPlayer.getPlayer().getPosition());
+		playerHUD.update(t_deltaTime, m_window, myPlayer.getPlayer().getPosition(), items.addHealth);
 		
 		
 		for (int i = 0; i < enemySpawnerVector.size(); i++)
@@ -489,6 +489,7 @@ void Game::update(sf::Time t_deltaTime)
 		m_window.setView(testView);
 
 		objectives.update(t_deltaTime, m_window, myPlayer.getPlayer().getGlobalBounds(), coinsCollected, maxCoins);
+		items.update(t_deltaTime, m_window, myPlayer.getPlayer().getGlobalBounds());
 
 		if (objectives.gameOver == true || playerHUD.myHealthBar.gameOver == true )
 		{

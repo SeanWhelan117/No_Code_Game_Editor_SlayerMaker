@@ -19,7 +19,7 @@ public:
 
 	void loadFiles();
 
-	void update(sf::Time t_deltaTime, sf::RenderWindow& t_window, sf::Vector2f t_playerPos);
+	void update(sf::Time t_deltaTime, sf::RenderWindow& t_window, sf::Vector2f t_playerPos, bool& t_addHealth);
 
 	void render(sf::RenderWindow& t_window);
 

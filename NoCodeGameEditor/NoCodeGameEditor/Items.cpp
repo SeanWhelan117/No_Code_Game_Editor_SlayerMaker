@@ -7,7 +7,7 @@ Items::Items(TextureManager& textureManager) : m_textureManager(textureManager)
 
 void Items::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, sf::FloatRect t_playerRect)
 {
-
+	playerCollision(t_playerRect);
 }
 
 void Items::render(sf::RenderWindow& t_window)
@@ -46,26 +46,26 @@ bool Items::isColliding(sf::FloatRect t_obj1, sf::FloatRect t_obj2)
 
 void Items::playerCollision(sf::FloatRect t_playerRect)
 {
-	/*
-	for (int i = 0; i < coinVector.size(); i++)
+	
+	for (int i = 0; i < medkitVector.size(); i++)
 	{
-		if (coinVector.at(i).get()->getCoin().getGlobalBounds().intersects(t_playerRect))
+		
+		if (isColliding(medkitVector.at(i).get()->getMedkit().getGlobalBounds(), t_playerRect))
 		{
-			std::vector<std::unique_ptr<Coin>>::iterator begin = coinVector.begin();
+			std::vector<std::unique_ptr<Medkit>>::iterator begin = medkitVector.begin();
 			begin += i;
-			coinVector.erase(begin);
+			medkitVector.erase(begin);
+			addHealth = true;
 		}
 	}
 
-	for (int i = 0; i < doorVector.size(); i++)
+	for (int i = 0; i < explosiveVector.size(); i++)
 	{
-		if (doorVector.at(i).get()->doorAccesible == true)
+		/*if (isColliding(explosiveVector.at(i).get()->getExplosive().getGlobalBounds(), t_playerRect))
 		{
-			if (isColliding(doorVector.at(i).get()->getDoor().getGlobalBounds(), t_playerRect))
-			{
-				std::cout << "GameOver" << std::endl;
-				gameOver = true;
-			}
-		}
-	}*/
+			std::vector<std::unique_ptr<Coin>>::iterator begin = explosiveVector.begin();
+			begin += i;
+			coinVector.erase(begin);
+		}*/
+	}
 }

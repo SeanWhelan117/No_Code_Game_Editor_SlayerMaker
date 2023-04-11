@@ -361,6 +361,7 @@ void Game::update(sf::Time t_deltaTime)
 
 		removeWallVector();
 		removeEnemySpawnerVector();
+		removeObjectiveVector();
 
 		objectives.update(t_deltaTime, m_window, myPlayer.getPlayer().getGlobalBounds(), coinsCollected, maxCoins);
 	}
@@ -803,6 +804,69 @@ void Game::removeEnemySpawnerVector()
 							vector<std::unique_ptr<EnemySpawner>>::iterator begin = enemySpawnerVector.begin();
 							begin += i;
 							enemySpawnerVector.erase(begin);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+void Game::removeObjectiveVector()
+{
+	if (objectiveVectorCreated == true)
+	{
+		if (!objectives.coinVector.empty())
+		{
+			for (int i = 0; i < objectives.coinVector.size(); i++)
+			{
+				if (objectives.coinVector.at(i)->getCoin().getGlobalBounds().contains(mousePos))
+				{
+					if (sf::Mouse::isButtonPressed(sf::Mouse::Left()))
+					{
+						if (myTools.rubberToolSelected)
+						{
+							vector<std::unique_ptr<Coin>>::iterator begin = objectives.coinVector.begin();
+							begin += i;
+							objectives.coinVector.erase(begin);
+						}
+					}
+				}
+			}
+		}
+
+		if (!objectives.doorVector.empty())
+		{
+			for (int i = 0; i < objectives.doorVector.size(); i++)
+			{
+				if (objectives.doorVector.at(i)->getDoor().getGlobalBounds().contains(mousePos))
+				{
+					if (sf::Mouse::isButtonPressed(sf::Mouse::Left()))
+					{
+						if (myTools.rubberToolSelected)
+						{
+							vector<std::unique_ptr<Door>>::iterator begin = objectives.doorVector.begin();
+							begin += i;
+							objectives.doorVector.erase(begin);
+						}
+					}
+				}
+			}
+		}
+
+		if (!objectives.monumentVector.empty())
+		{
+			for (int i = 0; i < objectives.monumentVector.size(); i++)
+			{
+				if (objectives.monumentVector.at(i)->getMonument().getGlobalBounds().contains(mousePos))
+				{
+					if (sf::Mouse::isButtonPressed(sf::Mouse::Left()))
+					{
+						if (myTools.rubberToolSelected)
+						{
+							vector<std::unique_ptr<Monument>>::iterator begin = objectives.monumentVector.begin();
+							begin += i;
+							objectives.monumentVector.erase(begin);
 						}
 					}
 				}

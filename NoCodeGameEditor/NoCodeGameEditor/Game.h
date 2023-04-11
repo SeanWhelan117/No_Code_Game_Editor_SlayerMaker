@@ -77,6 +77,8 @@ public:
 	void removeWallVector();
 	void removeEnemySpawnerVector();
 
+	void removeObjectiveVector();
+
 	void viewsCreation();
 
 	void saveDataToCSV();

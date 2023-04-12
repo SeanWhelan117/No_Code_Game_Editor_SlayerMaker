@@ -277,6 +277,10 @@ void Game::processMouseRelease(sf::Event t_event)
 			{
 				myTools.itemsPlacedBool = true;
 			}
+			else if (myChoice.currentMode == "POWERUPS")
+			{
+				myTools.powerupsPlaced = true;
+			}
 
 
 			for (int i = 0; i < myTools.MAX_NAV_TRIANGLES; i++)
@@ -353,6 +357,10 @@ void Game::update(sf::Time t_deltaTime)
 		if (myTools.itemsPlacedBool == true)
 		{
 			createItems();
+		}
+		if (myTools.powerupsPlaced == true)
+		{
+			createPowerups();
 		}
 		myTools.update(t_deltaTime, m_window, myGrid.theGrid, gridSize, myChoice.choiceMade, myChoice.currentChoice);
 		myChoice.update(t_deltaTime, m_window, myTools.currentMode, gameOptions.chosenGT);
@@ -825,6 +833,37 @@ void Game::createItems()
 
 	itemVectorCreated = true;
 	myTools.itemsPlacedBool = false;
+}
+
+void Game::createPowerups()
+{
+	for (int i = 0; i < gridSize; i++)
+	{
+		for (int m = 0; m < gridSize; m++)
+		{
+			if (myGrid.theGrid.at(m).at(i).getType() == "powerup1" && myGrid.theGrid.at(m).at(i).filled == false)
+			{
+				myGrid.theGrid.at(m).at(i).filled = true;
+				powerups.addToVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 0);
+				numOfMedkits++;
+			}
+			else if (myGrid.theGrid.at(m).at(i).getType() == "powerup2" && myGrid.theGrid.at(m).at(i).filled == false)
+			{
+				myGrid.theGrid.at(m).at(i).filled = true;
+				powerups.addToVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 1);
+				numOfExplosives++;
+			}
+			else if (myGrid.theGrid.at(m).at(i).getType() == "powerup3" && myGrid.theGrid.at(m).at(i).filled == false)
+			{
+				myGrid.theGrid.at(m).at(i).filled = true;
+				powerups.addToVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 2);
+				numOfGuns++;
+			}
+		}
+	}
+
+	powerupVectorCreated = true;
+	myTools.powerupsPlaced = false;
 }
 
 void Game::removeWallVector()

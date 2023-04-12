@@ -131,7 +131,34 @@ void Cell::setMarked(int t_choiceNum, std::map<std::string, int>& t_itemsPlaced)
 		}
 		else if (t_choiceNum == 11)
 		{
-
+			
+		}
+		else if (t_choiceNum == 12)
+		{
+			if (t_itemsPlaced["Nukes"] < 3)
+			{
+				cellShape.setFillColor(sf::Color::Black);
+				type = "powerup1";
+				t_itemsPlaced["Nukes"]++;
+			}
+		}
+		else if (t_choiceNum == 13)
+		{
+			if (t_itemsPlaced["Invincibility"] < 3)
+			{
+				cellShape.setFillColor(sf::Color::Black);
+				type = "powerup2";
+				t_itemsPlaced["Invincibility"]++;
+			}
+		}
+		else if (t_choiceNum == 14)
+		{
+			if (t_itemsPlaced["Invisibility"] < 3)
+			{
+				cellShape.setFillColor(sf::Color::Black);
+				type = "powerup3";
+				t_itemsPlaced["Invisibility"]++;
+			}
 		}
 	}
 }
@@ -180,6 +207,18 @@ void Cell::setUnmarked(std::map<std::string, int>& t_itemsPlaced)
 		else if (type == "item3")
 		{
 			
+		}
+		else if (type == "powerup1")
+		{
+			t_itemsPlaced["Nukes"] -= 1;
+		}
+		else if (type == "powerup2")
+		{
+			t_itemsPlaced["Invincibility"] -= 1;
+		}
+		else if (type == "powerup3")
+		{
+			t_itemsPlaced["Invisibility"] -= 1;
 		}
 		cellShape.setFillColor(sf::Color::Transparent);
 		filled = false;

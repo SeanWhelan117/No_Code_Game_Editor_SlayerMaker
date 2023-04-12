@@ -37,6 +37,7 @@ public:
 	bool enemySpawnersPlaced = false;
 	bool objectivesPlaced = false;
 	bool itemsPlacedBool = false;
+	bool powerupsPlaced = false;
 
 	bool saved = false;
 	

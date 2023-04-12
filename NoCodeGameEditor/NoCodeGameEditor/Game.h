@@ -34,6 +34,7 @@
 #include "GameOver.h"
 #include "Builder.h"
 #include "Items.h"
+#include "Powerups.h"
 
 class Game
 {
@@ -59,6 +60,7 @@ public:
 	GameOver gameOver{ gameWidth, gameHeight };
 	Builder myBuilder;
 	Items items{ textureManager };
+	Powerups powerups{ textureManager };
 
 
 	sf::View mainView;
@@ -139,6 +141,8 @@ private:
 
 	bool itemVectorCreated = false;
 
+	bool powerupVectorCreated = false;
+
 	bool mainViewActive = true;
 
 	bool testViewActive = false;
@@ -158,6 +162,8 @@ private:
 	void createSpawnerVector();
 	void createObjectives();
 	void createItems();
+
+	void createPowerups();
 
 	void checkWallHealth();
 

@@ -16,8 +16,6 @@ class Items
 {
 public: 
 	Items(TextureManager& textureManager);
-	
-	ParticleSystem particles{ 1000 };
 
 	void update(sf::Time t_deltaTime, sf::RenderWindow& t_window, sf::FloatRect t_playerRect);
 
@@ -37,16 +35,13 @@ public:
 
 	void removeExplosive(int t_remove);
 
+	void spawnExplosion(sf::Vector2f t_explosionPosition);
+
 	bool addHealth = false;
 	int explosivesCollected = 0;
 private:
 	TextureManager& m_textureManager;
 
-	sf::Vector2f explosionSpawnLocation;
-	int spawnExplosion = false;
-
-	int explosionTimer = 0;
-
-
+	std::vector<ParticleSystem> particleSystemsVector;
 };
 

@@ -1,55 +1,55 @@
 #include "ParticleSystem.h"
 
-ParticleSystem::ParticleSystem(unsigned int count) :m_particles(count), m_vertices(sf::Points, count), m_lifetime(sf::seconds(3.f)), m_emitter(0.f, 0.f)
+Particle::Particle(float t_x, float t_y, float t_velocityX, float t_velocityY, sf::Time t_lifetime) : particle(1.0f), velocity(t_velocityX, t_velocityY), lifetime(t_lifetime), currentAge(sf::Time::Zero)
+{
+    particle.setPosition(t_x, t_y);
+    particle.setFillColor(sf::Color::Red);
+}
+
+void Particle::update(sf::Time t_deltaTime)
+{
+    particle.move(velocity * t_deltaTime.asSeconds());
+    currentAge += t_deltaTime;
+}
+
+void Particle::draw(sf::RenderWindow& t_window) const
+{
+    t_window.draw(particle);
+}
+
+bool Particle::isAlive() const
+{
+    return currentAge < lifetime;
+}
+
+ParticleSystem::ParticleSystem()
 {
 }
 
-void ParticleSystem::setEmitter(sf::Vector2f position)
+void ParticleSystem::addExplosion(float t_xPos, float t_yPos, int t_numParticles)
 {
-    m_emitter = position;
-}
-
-void ParticleSystem::update(sf::Time elapsed)
-{
-    for (std::size_t i = 0; i < m_particles.size(); ++i)
-    {
-        // update the particle lifetime
-        Particle& p = m_particles[i];
-        p.lifetime -= elapsed;
-
-        // if the particle is dead, respawn it
-        if (p.lifetime <= sf::Time::Zero)
-            resetParticle(i);
-
-        // update the position of the corresponding vertex
-        m_vertices[i].position += p.velocity * elapsed.asSeconds();
-
-        // update the alpha (transparency) of the particle according to its lifetime
-        float ratio = p.lifetime.asSeconds() / m_lifetime.asSeconds();
-        m_vertices[i].color.a = static_cast<sf::Uint8>(ratio * 255);
+    for (int i = 0; i < t_numParticles; i++) {
+        float speed = 50.0f + static_cast<float>(std::rand()) / static_cast<float>(RAND_MAX) * 50.0f;
+        float angle = static_cast<float>(std::rand()) / static_cast<float>(RAND_MAX) * 2.0f * 3.1415926f;
+        float velocityX = speed * std::cos(angle);
+        float velocityY = speed * std::sin(angle);
+        particlesVector.emplace_back(t_xPos, t_yPos, velocityX, velocityY, sf::seconds(0.8f));
     }
 }
 
-void ParticleSystem::draw(sf::RenderTarget& target, sf::RenderStates states) const
+void ParticleSystem::update(sf::Time dt)
 {
-    // apply the transform
-    states.transform *= getTransform();
-
-    // our particles don't use a texture
-    states.texture = NULL;
-
-    // draw the vertex array
-    target.draw(m_vertices, states);
+    for (auto& particle : particlesVector) 
+    {
+        particle.update(dt);
+    }
+    particlesVector.erase(std::remove_if(particlesVector.begin(), particlesVector.end(), [](const Particle& p) { return !p.isAlive(); }), particlesVector.end());
 }
 
-void ParticleSystem::resetParticle(std::size_t index)
+void ParticleSystem::draw(sf::RenderWindow& window) const
 {
-    // give a random velocity and lifetime to the particle
-    float angle = (std::rand() % 360) * 3.14f / 180.f;
-    float speed = (std::rand() % 50) + 50.f;
-    m_particles[index].velocity = sf::Vector2f(std::cos(angle) * speed, std::sin(angle) * speed);
-    m_particles[index].lifetime = sf::milliseconds((std::rand() % 2000) + 1000);
-    // reset the position of the corresponding vertex
-    m_vertices[index].position = m_emitter;
-    m_vertices[index].color = sf::Color::Red;
+    for (const auto& particle : particlesVector) 
+    {
+        particle.draw(window);
+    }
 }

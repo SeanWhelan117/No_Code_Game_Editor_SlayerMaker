@@ -15,22 +15,14 @@ void Items::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, sf::FloatRe
 
 		if (explosiveVector.at(i).get()->exploded == true)
 		{
-			spawnExplosion = true;
-			explosionSpawnLocation = explosiveVector.at(i).get()->getExplosive().getPosition();
+			spawnExplosion(explosiveVector.at(i).get()->getExplosive().getPosition());
 			removeExplosive(i);
 		}
 	}
 
-	if (spawnExplosion == true && explosionTimer < 35)
+	for (int i = 0; i < particleSystemsVector.size(); i++)
 	{
-		explosionTimer++;
-		particles.setEmitter(explosionSpawnLocation);
-		particles.update(t_deltaTime);
-	}
-	else if (explosionTimer > 35)
-	{
-		spawnExplosion = false;
-		explosionTimer = 0;
+		particleSystemsVector.at(i).update(t_deltaTime);
 	}
 }
 
@@ -46,7 +38,10 @@ void Items::render(sf::RenderWindow& t_window)
 		explosiveVector.at(i).get()->render(t_window);
 	}
 
-	t_window.draw(particles);
+	for (int i = 0; i < particleSystemsVector.size(); i++)
+	{
+		particleSystemsVector.at(i).draw(t_window);
+	}
 
 }
 
@@ -107,4 +102,11 @@ void Items::removeExplosive(int t_remove)
 	std::vector<std::unique_ptr<Explosive>>::iterator begin = explosiveVector.begin();
 	begin += t_remove;
 	explosiveVector.erase(begin);
+}
+
+void Items::spawnExplosion(sf::Vector2f t_explosionPosition)
+{
+	ParticleSystem tempParticleSystem;
+	tempParticleSystem.addExplosion(t_explosionPosition.x, t_explosionPosition.y, 250);
+	particleSystemsVector.push_back(tempParticleSystem);
 }

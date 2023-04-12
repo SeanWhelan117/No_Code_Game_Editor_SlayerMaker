@@ -411,7 +411,16 @@ void ToolBar::changeMode(int t_triangleClicked)
 		}
 		else if (currentMode == "ITEMS" && t_triangleClicked == 1 && set == false)
 		{
-			//Powerups soon
+			currentMode = "POWERUPS";
+		}
+
+		if (currentMode == "POWERUPS" && t_triangleClicked == 0)
+		{
+			currentMode = "ITEMS";
+		}
+		else if (currentMode == "POWERUPS" && t_triangleClicked == 1 && set == false)
+		{
+			//future stuff, nothing now
 		}
 	}
 	

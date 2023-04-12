@@ -1,6 +1,6 @@
 #include "ChoiceBar.h"
 
-ChoiceBar::ChoiceBar(float t_gameWidth, float t_gameHeight, TextureManager& textureManager) : gameWidth(t_gameWidth), gameHeight(t_gameHeight), m_textureManager(textureManager)
+ChoiceBar::ChoiceBar(float t_gameWidth, float t_gameHeight) : gameWidth(t_gameWidth), gameHeight(t_gameHeight)
 {
 	loadFiles();
 	setupSprites();
@@ -8,55 +8,139 @@ ChoiceBar::ChoiceBar(float t_gameWidth, float t_gameHeight, TextureManager& text
 
 void ChoiceBar::loadFiles()
 {
+	if (!choiceBarTexture.loadFromFile("ASSETS\\IMAGES\\choicebar.png"))
+	{
+		// simple error message if previous call fails
+		std::cout << "problem loading toolbar (choicebar.png)" << std::endl;
+	}
 
-	choiceBarTexture = std::make_shared<sf::Texture>(m_textureManager.getTexture("ASSETS\\IMAGES\\choicebar.png"));
-	choiceBarSprite.setTexture(*choiceBarTexture);
+	//WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS
+	//WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS--WALLS
 
-	wallChoiceTex1 = std::make_shared<sf::Texture>(m_textureManager.getTexture("ASSETS\\IMAGES\\WALLS\\wallGrey.png"));
-	wallChoiceTex2 = std::make_shared<sf::Texture>(m_textureManager.getTexture("ASSETS\\IMAGES\\WALLS\\wallBrown.png"));
-	wallChoiceTex3 = std::make_shared<sf::Texture>(m_textureManager.getTexture("ASSETS\\IMAGES\\WALLS\\wallRed.png"));
+	if (!wallChoiceTex1.loadFromFile("ASSETS\\IMAGES\\WALLS\\wallGrey.png"))
+	{
+		// simple error message if previous call fails
+		std::cout << "problem loading wall (wallGrey)" << std::endl;
+	}
 
-	wallChoiceSprite[0].setTexture(*wallChoiceTex1);
-	wallChoiceSprite[1].setTexture(*wallChoiceTex2);
-	wallChoiceSprite[2].setTexture(*wallChoiceTex3);
+	if (!wallChoiceTex2.loadFromFile("ASSETS\\IMAGES\\WALLS\\wallBrown.png"))
+	{
+		// simple error message if previous call fails
+		std::cout << "problem loading wall (wallBrown)" << std::endl;
+	}
 
-	enemyChoiceTex1 = std::make_shared<sf::Texture>(m_textureManager.getTexture("ASSETS\\IMAGES\\ENEMIES\\ENEMY1\\Enemy1-choice.png"));
-	enemyChoiceTex2 = std::make_shared<sf::Texture>(m_textureManager.getTexture("ASSETS\\IMAGES\\ENEMIES\\ENEMY2\\Enemy2-choice.png"));
-	enemyChoiceTex3 = std::make_shared<sf::Texture>(m_textureManager.getTexture("ASSETS\\IMAGES\\ENEMIES\\ENEMY3\\Enemy3-choice.png"));
+	if (!wallChoiceTex3.loadFromFile("ASSETS\\IMAGES\\WALLS\\wallRed.png"))
+	{
+		// simple error message if previous call fails
+		std::cout << "problem loading wall (wallRed)" << std::endl;
+	}
 
-	enemyChoiceSprite[0].setTexture(*enemyChoiceTex1);
-	enemyChoiceSprite[1].setTexture(*enemyChoiceTex2);
-	enemyChoiceSprite[2].setTexture(*enemyChoiceTex3);
+	//ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES
+	//ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES--ENEMIES
+	if (!enemyChoiceTex1.loadFromFile("ASSETS\\IMAGES\\ENEMIES\\ENEMY1\\Enemy1-choice.png"))
+	{
+		// simple error message if previous call fails
+		std::cout << "problem loading enemyChoiceTex1 (Enemy1-choice)" << std::endl;
+	}
 
-	coinTexture = std::make_shared<sf::Texture>(m_textureManager.getTexture("ASSETS\\IMAGES\\coin.png"));
-	coinSprite.setTexture(*coinTexture);
+	if (!enemyChoiceTex2.loadFromFile("ASSETS\\IMAGES\\ENEMIES\\ENEMY2\\Enemy2-choice.png"))
+	{
+		// simple error message if previous call fails
+		std::cout << "problem loading enemyChoiceTex2 (Enemy2-choice)" << std::endl;
+	}
 
-	doorTexture = std::make_shared<sf::Texture>(m_textureManager.getTexture("ASSETS\\IMAGES\\door.png"));
-	doorSprite.setTexture(*doorTexture);
+	if (!enemyChoiceTex3.loadFromFile("ASSETS\\IMAGES\\ENEMIES\\ENEMY3\\Enemy3-choice.png"))
+	{
+		// simple error message if previous call fails
+		std::cout << "problem loading enemyChoiceTex3 (Enemy3-choice)" << std::endl;
+	}
 
-	monumentTexture = std::make_shared<sf::Texture>(m_textureManager.getTexture("ASSETS\\IMAGES\\monument.png"));
-	monumentSprite.setTexture(*monumentTexture);
+	//OBJECTIVES--OBJECTIVES--OBJECTIVES--OBJECTIVES--OBJECTIVES--OBJECTIVES--OBJECTIVES--OBJECTIVES--OBJECTIVES--OBJECTIVES--OBJECTIVES--OBJECTIVES
+	//OBJECTIVES--OBJECTIVES--OBJECTIVES--OBJECTIVES--OBJECTIVES--OBJECTIVES--OBJECTIVES--OBJECTIVES--OBJECTIVES--OBJECTIVES--OBJECTIVES--OBJECTIVES
 
+	if (!coinTexture.loadFromFile("ASSETS\\IMAGES\\coin.png"))
+	{
+		// simple error message if previous call fails
+		std::cout << "problem loading coinTexture (coin)" << std::endl;
+	}
 
-	medkitTexture = std::make_shared<sf::Texture>(m_textureManager.getTexture("ASSETS\\IMAGES\\medkit.png"));
-	medkitSprite.setTexture(*medkitTexture);
+	if (!doorTexture.loadFromFile("ASSETS\\IMAGES\\door.png"))
+	{
+		// simple error message if previous call fails
+		std::cout << "problem loading doorTexture (door)" << std::endl;
+	}
 
-	explosiveTexture = std::make_shared<sf::Texture>(m_textureManager.getTexture("ASSETS\\IMAGES\\dynamite.png"));
-	explosiveSprite.setTexture(*explosiveTexture);
+	if (!monumentTexture.loadFromFile("ASSETS\\IMAGES\\monument.png"))
+	{
+		// simple error message if previous call fails
+		std::cout << "problem loading monumentTexture (monument)" << std::endl;
+	}
 
+	//ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS
+	//ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS--ITEMS
 
+	if (!medkitTexture.loadFromFile("ASSETS\\IMAGES\\medkit.png"))
+	{
+		// simple error message if previous call fails
+		std::cout << "problem loading medkitTexture (medkit)" << std::endl;
+	}
+
+	if (!explosiveTexture.loadFromFile("ASSETS\\IMAGES\\dynamite.png"))
+	{
+		// simple error message if previous call fails
+		std::cout << "problem loading explosiveTexture (dynamite)" << std::endl;
+	}
+
+	
+	//POWERUPS--POWERUPS--POWERUPS--POWERUPS--POWERUPS--POWERUPS--POWERUPS--POWERUPS--POWERUPS--POWERUPS--POWERUPS--POWERUPS--POWERUPS--POWERUPS--POWERUPS
+	//POWERUPS--POWERUPS--POWERUPS--POWERUPS--POWERUPS--POWERUPS--POWERUPS--POWERUPS--POWERUPS--POWERUPS--POWERUPS--POWERUPS--POWERUPS--POWERUPS--POWERUPS
+
+	if (!nukeTexture.loadFromFile("ASSETS\\IMAGES\\nuke.png"))
+	{
+		// simple error message if previous call fails
+		std::cout << "problem loading nukeTexture (nuke)" << std::endl;
+	}
+
+	if (!invincibilityTexture.loadFromFile("ASSETS\\IMAGES\\invincibility.png"))
+	{
+		// simple error message if previous call fails
+		std::cout << "problem loading invincibilityTexture (invincibility)" << std::endl;
+	}
+
+	if (!invisibilityTexture.loadFromFile("ASSETS\\IMAGES\\invisibility.png"))
+	{
+		// simple error message if previous call fails
+		std::cout << "problem loading invisibility (invisibility)" << std::endl;
+	}
 }
 
 void ChoiceBar::setupSprites()
 {
+	choiceBarSprite.setTexture(choiceBarTexture);
+	wallChoiceSprite[0].setTexture(wallChoiceTex1);
+	wallChoiceSprite[1].setTexture(wallChoiceTex2);
+	wallChoiceSprite[2].setTexture(wallChoiceTex3);
+
+	enemyChoiceSprite[0].setTexture(enemyChoiceTex1);
+	enemyChoiceSprite[1].setTexture(enemyChoiceTex2);
+	enemyChoiceSprite[2].setTexture(enemyChoiceTex3);
+
+	coinSprite.setTexture(coinTexture);
+	doorSprite.setTexture(doorTexture);
+	monumentSprite.setTexture(monumentTexture);
+
+	medkitSprite.setTexture(medkitTexture);
+	explosiveSprite.setTexture(explosiveTexture);
+	//gunSprite.setTexture(gunTexture);
+
+	nukeSprite.setTexture(nukeTexture);
+	invincibilitySprite.setTexture(invincibilityTexture);
+	invisibilitySprite.setTexture(invisibilityTexture);
+
 	choiceBarSprite.setScale(1, 1);
 	choiceBarSprite.setOrigin(choiceBarSprite.getLocalBounds().width / 2, choiceBarSprite.getLocalBounds().height / 2);
 	choiceBarSprite.setPosition(100, gameHeight / 2);
 	std::cout << choiceBarSprite.getPosition().y << std::endl;
-
-	
-
-	
 
 	int yPos = choiceBarSprite.getPosition().y - choiceBarSprite.getLocalBounds().height / 3;
 	for (int i = 0; i < MAX_CHOICES; i++)
@@ -88,6 +172,15 @@ void ChoiceBar::setupSprites()
 	
 	explosiveSprite.setOrigin(explosiveSprite.getLocalBounds().width / 2, explosiveSprite.getLocalBounds().height / 2);
 	explosiveSprite.setPosition(choiceBarSprite.getPosition().x, choiceBarSprite.getPosition().y);
+
+	nukeSprite.setOrigin(nukeSprite.getLocalBounds().width / 2, nukeSprite.getLocalBounds().height / 2);
+	nukeSprite.setPosition(choiceBarSprite.getPosition().x, choiceBarSprite.getPosition().y - choiceBarSprite.getLocalBounds().height / 3);
+
+	invincibilitySprite.setOrigin(invincibilitySprite.getLocalBounds().width / 2, invincibilitySprite.getLocalBounds().height / 2);
+	invincibilitySprite.setPosition(choiceBarSprite.getPosition().x, choiceBarSprite.getPosition().y);
+
+	invisibilitySprite.setOrigin(invisibilitySprite.getLocalBounds().width / 2, invisibilitySprite.getLocalBounds().height / 2);
+	invisibilitySprite.setPosition(choiceBarSprite.getPosition().x, choiceBarSprite.getPosition().y + choiceBarSprite.getLocalBounds().height / 3);
 }
 
 void ChoiceBar::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, std::string t_currentMode, int t_chosenGameType)
@@ -144,6 +237,12 @@ void ChoiceBar::render(sf::RenderWindow& t_window)
 		t_window.draw(medkitSprite);
 		t_window.draw(explosiveSprite);
 	}
+	else if (currentMode == "POWERUPS")
+	{
+		t_window.draw(nukeSprite);
+		t_window.draw(invincibilitySprite);
+		t_window.draw(invisibilitySprite);
+	}
 }
 
 void ChoiceBar::checkForMousePosAndClick(sf::RenderWindow& t_window, sf::Vector2f t_mousePos)
@@ -182,6 +281,14 @@ void ChoiceBar::checkForMousePosAndClick(sf::RenderWindow& t_window, sf::Vector2
 		{
 			processMouseClick(medkitSprite.getGlobalBounds(), t_mousePos, 9);
 			processMouseClick(explosiveSprite.getGlobalBounds(), t_mousePos, 10);
+			//11
+		}
+
+		if (currentMode == "POWERUPS")
+		{
+			processMouseClick(nukeSprite.getGlobalBounds(), t_mousePos, 12);
+			processMouseClick(invincibilitySprite.getGlobalBounds(), t_mousePos, 13);
+			processMouseClick(invisibilitySprite.getGlobalBounds(), t_mousePos, 14);
 		}
 }
 
@@ -196,7 +303,6 @@ void ChoiceBar::processMouseClick(sf::FloatRect t_object, sf::Vector2f t_mousePo
 			if (currentMode == "ENEMIES")
 			{
 				currentChoice = t_numLoops + 3;
-
 			}
 			else
 			{
@@ -253,6 +359,21 @@ void ChoiceBar::resetTools(int t_current)
 			break;
 		}
 	}
+	else if (currentMode == "POWERUPS")
+	{
+		switch (t_current)
+		{
+		case 12:
+			nukeSprite.setScale(1, 1);
+			break;
+		case 13:
+			invincibilitySprite.setScale(1, 1);
+			break;
+		case 14:
+			invisibilitySprite.setScale(1, 1);
+			break;
+		}
+	}
 }
 
 void ChoiceBar::changeTools(int t_current)
@@ -297,6 +418,21 @@ void ChoiceBar::changeTools(int t_current)
 			break;
 		}
 	}
+	else if (currentMode == "POWERUPS")
+	{
+		switch (t_current)
+		{
+		case 12:
+			nukeSprite.setScale(1.3, 1.3);
+			break;
+		case 13:
+			invincibilitySprite.setScale(1.3, 1.3);
+			break;
+		case 14:
+			invisibilitySprite.setScale(1.3, 1.3);
+			break;
+		}
+	}
 }
 
 void ChoiceBar::setToolPosForView(sf::RenderWindow& t_window)
@@ -321,18 +457,24 @@ void ChoiceBar::setToolPosForView(sf::RenderWindow& t_window)
 			sf::Vector2f pos4(100, yPos);
 			pos4 = t_window.mapPixelToCoords(static_cast<sf::Vector2i>(pos4));
 			coinSprite.setPosition(pos4);
+			medkitSprite.setPosition(pos4);
+			nukeSprite.setPosition(pos4);
 		}
 		else if (i == 1)
 		{
 			sf::Vector2f pos5(100, yPos);
 			pos5 = t_window.mapPixelToCoords(static_cast<sf::Vector2i>(pos5));
 			doorSprite.setPosition(pos5);
+			explosiveSprite.setPosition(pos5);
+			invincibilitySprite.setPosition(pos5);
 		}
 		else if (i == 2)
 		{
 			sf::Vector2f pos6(100, yPos);
 			pos6 = t_window.mapPixelToCoords(static_cast<sf::Vector2i>(pos6));
 			monumentSprite.setPosition(pos6);
+			gunSprite.setPosition(pos6);
+			invisibilitySprite.setPosition(pos6);
 		}
 
 		yPos += choiceBarSprite.getLocalBounds().height / 3;

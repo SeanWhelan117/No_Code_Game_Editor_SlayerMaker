@@ -54,7 +54,7 @@ public:
 	Background myBackground{gameWidth, gameHeight};
 	ChooseGame gameChoice{ gameWidth, gameHeight };
 	HUD playerHUD{ gameWidth, gameHeight };
-	ChoiceBar myChoice{ gameWidth, gameHeight, textureManager };
+	ChoiceBar myChoice{ gameWidth, gameHeight};
 	Objectives objectives{ textureManager };
 	GameOver gameOver{ gameWidth, gameHeight };
 	Builder myBuilder;

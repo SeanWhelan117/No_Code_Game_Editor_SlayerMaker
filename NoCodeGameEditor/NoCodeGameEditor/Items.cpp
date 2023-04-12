@@ -15,9 +15,22 @@ void Items::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, sf::FloatRe
 
 		if (explosiveVector.at(i).get()->exploded == true)
 		{
+			spawnExplosion = true;
+			explosionSpawnLocation = explosiveVector.at(i).get()->getExplosive().getPosition();
 			removeExplosive(i);
 		}
+	}
 
+	if (spawnExplosion == true && explosionTimer < 35)
+	{
+		explosionTimer++;
+		particles.setEmitter(explosionSpawnLocation);
+		particles.update(t_deltaTime);
+	}
+	else if (explosionTimer > 35)
+	{
+		spawnExplosion = false;
+		explosionTimer = 0;
 	}
 }
 
@@ -32,6 +45,9 @@ void Items::render(sf::RenderWindow& t_window)
 	{
 		explosiveVector.at(i).get()->render(t_window);
 	}
+
+	t_window.draw(particles);
+
 }
 
 void Items::addToVector(sf::Vector2f t_itemPosition, int t_itemType)
@@ -60,7 +76,6 @@ void Items::playerCollision(sf::FloatRect t_playerRect)
 	
 	for (int i = 0; i < medkitVector.size(); i++)
 	{
-		
 		if (isColliding(medkitVector.at(i).get()->getMedkit().getGlobalBounds(), t_playerRect))
 		{
 			std::vector<std::unique_ptr<Medkit>>::iterator begin = medkitVector.begin();

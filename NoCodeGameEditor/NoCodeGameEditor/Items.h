@@ -10,11 +10,14 @@
 #include "TextureManager.h"
 #include "Medkit.h"
 #include "Explosive.h"
+#include "ParticleSystem.h"
 
 class Items
 {
 public: 
 	Items(TextureManager& textureManager);
+	
+	ParticleSystem particles{ 1000 };
 
 	void update(sf::Time t_deltaTime, sf::RenderWindow& t_window, sf::FloatRect t_playerRect);
 
@@ -32,10 +35,18 @@ public:
 
 	void dropBomb(sf::Vector2f t_playerPos);
 
+	void removeExplosive(int t_remove);
+
 	bool addHealth = false;
 	int explosivesCollected = 0;
 private:
 	TextureManager& m_textureManager;
+
+	sf::Vector2f explosionSpawnLocation;
+	int spawnExplosion = false;
+
+	int explosionTimer = 0;
+
 
 };
 

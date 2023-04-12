@@ -48,6 +48,7 @@
     <ClCompile Include="Medkit.cpp" />
     <ClCompile Include="Monument.cpp" />
     <ClCompile Include="Objectives.cpp" />
+    <ClCompile Include="ParticleSystem.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="ToolBar.cpp" />
@@ -83,6 +84,7 @@
     <ClInclude Include="Medkit.h" />
     <ClInclude Include="Monument.h" />
     <ClInclude Include="Objectives.h" />
+    <ClInclude Include="ParticleSystem.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="ToolBar.h" />

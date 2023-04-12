@@ -57,7 +57,7 @@ void Explosive::flashDynamite()
 			red = false;
 		}
 	}
-	if (flashCount > 10)
+	if (flashCount > 6)
 	{
 		exploded = true;
 	}

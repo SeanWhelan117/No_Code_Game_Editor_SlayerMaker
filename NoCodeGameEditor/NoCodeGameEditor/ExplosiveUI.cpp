@@ -48,6 +48,7 @@ void ExplosiveUI::setupExplosiveUISprite()
 	explosiveUISprite.setTexture(explosiveUITextures[0]);
 	explosiveUISprite.setOrigin(explosiveUISprite.getLocalBounds().width / 2, explosiveUISprite.getLocalBounds().height / 2);
 	explosiveUISprite.setScale(0.2, 0.2);
+	explosiveUISprite.setColor(sf::Color(explosiveUISprite.getColor().r, explosiveUISprite.getColor().g, explosiveUISprite.getColor().b, explosiveUISprite.getColor().a / 2));
 }
 
 void ExplosiveUI::update(sf::Time t_deltaTime, int t_explosivesCollected)
@@ -55,6 +56,7 @@ void ExplosiveUI::update(sf::Time t_deltaTime, int t_explosivesCollected)
 	if (t_explosivesCollected != currentNum)
 	{
 		currentNum = t_explosivesCollected;
+		explosiveUISprite.setColor(sf::Color(explosiveUISprite.getColor().r, explosiveUISprite.getColor().g, explosiveUISprite.getColor().b, explosiveUISprite.getColor().a * 2));
 
 		explosiveUISprite.setTexture(explosiveUITextures[currentNum]);
 	}
@@ -63,4 +65,20 @@ void ExplosiveUI::update(sf::Time t_deltaTime, int t_explosivesCollected)
 void ExplosiveUI::render(sf::RenderWindow& t_window)
 {
 	t_window.draw(explosiveUISprite);
+}
+
+void ExplosiveUI::minusExplosives()
+{
+	if (currentNum != 0)
+	{
+		currentNum -= 1;
+
+		explosiveUISprite.setTexture(explosiveUITextures[currentNum]);
+		if (currentNum == 0)
+		{
+			explosiveUISprite.setColor(sf::Color(explosiveUISprite.getColor().r, explosiveUISprite.getColor().g, explosiveUISprite.getColor().b, explosiveUISprite.getColor().a / 2));
+		}
+
+	}
+	
 }

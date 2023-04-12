@@ -30,6 +30,8 @@ public:
 
 	void playerCollision(sf::FloatRect t_playerRect);
 
+	void dropBomb(sf::Vector2f t_playerPos);
+
 	bool addHealth = false;
 	int explosivesCollected = 0;
 private:

@@ -161,6 +161,21 @@ void Game::processKeys(sf::Event t_event)
 	}
 
 	
+	if (sf::Keyboard::Space == t_event.key.code)
+	{
+		if (myState == GameState::play)
+		{
+			//drop bomb
+			playerHUD.myExplosiveUI.minusExplosives();
+			if (items.explosivesCollected != 0)
+			{
+				items.explosivesCollected -= 1;
+				items.dropBomb(myPlayer.getPlayer().getPosition());
+			}
+		}
+	}
+
+	
 }
 
 void Game::processMouseClicks(sf::Event t_event)

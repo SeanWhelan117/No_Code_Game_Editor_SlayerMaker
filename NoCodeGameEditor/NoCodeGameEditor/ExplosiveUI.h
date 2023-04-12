@@ -21,6 +21,8 @@ public:
 
 	void render(sf::RenderWindow& t_window);
 	sf::Sprite explosiveUISprite;
+
+	void minusExplosives();
 private:
 
 	static const int MAX_TEXTURES = 6;

@@ -8,6 +8,17 @@ Items::Items(TextureManager& textureManager) : m_textureManager(textureManager)
 void Items::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, sf::FloatRect t_playerRect)
 {
 	playerCollision(t_playerRect);
+
+	for (int i = 0; i < explosiveVector.size(); i++)
+	{
+		explosiveVector.at(i).get()->update(t_deltaTime);
+
+		if (explosiveVector.at(i).get()->exploded == true)
+		{
+			removeExplosive(i);
+		}
+
+	}
 }
 
 void Items::render(sf::RenderWindow& t_window)
@@ -33,7 +44,7 @@ void Items::addToVector(sf::Vector2f t_itemPosition, int t_itemType)
 	}
 	else if (t_itemType == 1)
 	{
-		Explosive tempExplosive(t_itemPosition, m_textureManager);
+		Explosive tempExplosive(t_itemPosition, m_textureManager, false);
 		explosiveVector.emplace_back(new Explosive(tempExplosive));
 	}
 	
@@ -61,12 +72,24 @@ void Items::playerCollision(sf::FloatRect t_playerRect)
 
 	for (int i = 0; i < explosiveVector.size(); i++)
 	{
-		if (isColliding(explosiveVector.at(i).get()->getExplosive().getGlobalBounds(), t_playerRect))
+		if (isColliding(explosiveVector.at(i).get()->getExplosive().getGlobalBounds(), t_playerRect) && explosiveVector.at(i).get()->primed == false)
 		{
-			std::vector<std::unique_ptr<Explosive>>::iterator begin = explosiveVector.begin();
-			begin += i;
-			explosiveVector.erase(begin);
+			removeExplosive(i);
 			explosivesCollected++;
 		}
 	}
+}
+
+void Items::dropBomb(sf::Vector2f t_playerPos)
+{
+	Explosive tempExplosive(t_playerPos, m_textureManager, true);
+	explosiveVector.emplace_back(new Explosive(tempExplosive));
+	std::cout << "exlposiveAdded" << std::endl;
+}
+
+void Items::removeExplosive(int t_remove)
+{
+	std::vector<std::unique_ptr<Explosive>>::iterator begin = explosiveVector.begin();
+	begin += t_remove;
+	explosiveVector.erase(begin);
 }

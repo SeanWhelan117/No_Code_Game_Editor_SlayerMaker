@@ -28,12 +28,20 @@ public:
 
 	void addToVector(sf::Vector2f t_powerupPosition, int t_powerupType);
 
-	bool isColliding(sf::FloatRect t_obj1, sf::FloatRect t_obj2);
-
-	void playerCollision(sf::FloatRect t_playerRect);
 
 	bool nukeEnemies = false;
 private:
+
+	bool isColliding(sf::FloatRect t_obj1, sf::FloatRect t_obj2);
+
+	void playerCollision(sf::FloatRect t_playerRect);
+	void setupNukeFlash();
 	TextureManager& m_textureManager;
+
+	sf::RectangleShape nukeFlash;
+
+	bool flashActive = false;
+
+	sf::Vector2f tempNukeLocation;
 };
 

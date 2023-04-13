@@ -2,11 +2,36 @@
 
 Powerups::Powerups(TextureManager& textureManager) : m_textureManager(textureManager)
 {
+	setupNukeFlash();
 }
 
 void Powerups::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, sf::FloatRect t_playerRect)
 {
 	playerCollision(t_playerRect);
+
+	if (nukeEnemies == true)
+	{
+		flashActive = true;
+	}
+
+	if (flashActive == true)
+	{
+		nukeFlash.setPosition(tempNukeLocation);
+		if (nukeFlash.getScale().x <= 500)
+		{
+			/*int x = nukeFlash.getSize().x;
+			x += 5;
+			int y = nukeFlash.getSize().y;
+			y += 5;
+			nukeFlash.setSize(sf::Vector2f(x, y));*/
+			std::cout << nukeFlash.getScale().x << std::endl;
+			nukeFlash.setScale(nukeFlash.getScale().x + 10, nukeFlash.getScale().y + 10);
+		}
+		else
+		{
+			setupNukeFlash();
+		}
+	}
 }
 
 void Powerups::render(sf::RenderWindow& t_window)
@@ -25,6 +50,8 @@ void Powerups::render(sf::RenderWindow& t_window)
 	{
 		invisVector.at(i).get()->render(t_window);
 	}
+
+	t_window.draw(nukeFlash);
 
 }
 
@@ -59,6 +86,7 @@ void Powerups::playerCollision(sf::FloatRect t_playerRect)
 	{
 		if (isColliding(nukeVector.at(i).get()->getNuke().getGlobalBounds(), t_playerRect))
 		{
+			tempNukeLocation = nukeVector.at(i).get()->getNuke().getPosition();
 			std::vector<std::unique_ptr<PUPNuke>>::iterator begin = nukeVector.begin();
 			begin += i;
 			nukeVector.erase(begin);
@@ -85,4 +113,14 @@ void Powerups::playerCollision(sf::FloatRect t_playerRect)
 			invisVector.erase(begin);
 		}
 	}
+}
+
+void Powerups::setupNukeFlash()
+{
+	flashActive = false;
+	nukeFlash.setPosition(-10000, -10000);
+	nukeFlash.setSize(sf::Vector2f(10, 10));
+	nukeFlash.setScale(1,1);
+	nukeFlash.setOrigin(nukeFlash.getLocalBounds().width / 2, nukeFlash.getLocalBounds().height / 2);
+	nukeFlash.setFillColor(sf::Color(255, 255, 255, 220));
 }

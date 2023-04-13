@@ -6,7 +6,7 @@ DatabaseManager::DatabaseManager(const std::string& t_script_path) : script_path
     Py_Initialize();
 
     // Import the Python script as a module
-    pModule_ = PyImport_ImportModule("anvil_script");
+    pModule_ = PyImport_ImportModule("updownGames");
 
     if (pModule_ == NULL)
     {

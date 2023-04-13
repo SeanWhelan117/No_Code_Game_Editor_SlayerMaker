@@ -30,6 +30,8 @@ public:
 
 
 	bool nukeEnemies = false;
+	bool invincibilityActive = false;
+	bool invisibilityActive = false;
 private:
 
 	bool isColliding(sf::FloatRect t_obj1, sf::FloatRect t_obj2);
@@ -43,5 +45,7 @@ private:
 	bool flashActive = false;
 
 	sf::Vector2f tempNukeLocation;
+	sf::Clock invinceTimer;
+	sf::Clock invisTimer;
 };
 

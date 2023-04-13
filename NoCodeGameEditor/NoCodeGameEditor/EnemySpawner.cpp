@@ -49,7 +49,7 @@ void EnemySpawner::render(sf::RenderWindow& t_window, std::string t_state)
 	}
 }
 
-void EnemySpawner::update(sf::Vector2f t_seekPos, std::vector<std::unique_ptr<Wall>>& t_walls, sf::Time t_deltaTime, int t_gtChosen, std::vector<std::unique_ptr<Monument>>& t_monuments, bool& t_nukeEnemies)
+void EnemySpawner::update(sf::Vector2f t_seekPos, std::vector<std::unique_ptr<Wall>>& t_walls, sf::Time t_deltaTime, int t_gtChosen, std::vector<std::unique_ptr<Monument>>& t_monuments, bool& t_nukeEnemies, bool t_invisibilityActive)
 {
 	test++;
 
@@ -85,6 +85,14 @@ void EnemySpawner::update(sf::Vector2f t_seekPos, std::vector<std::unique_ptr<Wa
 	if (t_nukeEnemies == true)
 	{
 		enemyVector.clear();
+	}
+
+	if (t_invisibilityActive)
+	{
+		for (int i = 0; i < enemyVector.size(); i++)
+		{
+			enemyVector.at(i).get()->seekingPlayer = false;
+		}
 	}
 }
 

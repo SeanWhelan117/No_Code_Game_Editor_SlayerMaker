@@ -19,7 +19,7 @@ public:
 
 	void setupPlayer();
 
-	void update(sf::RenderWindow& t_window);
+	void update(sf::RenderWindow& t_window, bool t_invincibilityActive, bool t_invisibilityActive);
 
 	void render(sf::RenderWindow& t_window);
 
@@ -47,6 +47,8 @@ private:
 	sf::Vector2f mousePos;
 
 	const double PI = 3.141592654;
+
+	sf::Clock colourChangeTimer;
 
 };
 

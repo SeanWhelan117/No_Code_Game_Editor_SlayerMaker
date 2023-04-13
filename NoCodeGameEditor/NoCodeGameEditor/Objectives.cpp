@@ -5,7 +5,7 @@ Objectives::Objectives(TextureManager& textureManager) : m_textureManager(textur
 
 }
 
-void Objectives::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, sf::FloatRect t_playerRect, int t_coinsCollected, int t_maxCoins)
+void Objectives::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, sf::FloatRect t_playerRect, int t_coinsCollected, int t_maxCoins, bool t_invisibilityActive)
 {
 
 	//std::cout << "t_coinsCollected = " << t_coinsCollected << " t_maxCoins = " << t_maxCoins << std::endl;
@@ -20,7 +20,7 @@ void Objectives::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, sf::Fl
 	}
 	if (monumentVector.size() != 0)
 	{
-		monumentVector.at(0).get()->update();
+		monumentVector.at(0).get()->update(t_invisibilityActive);
 	}
 }
 

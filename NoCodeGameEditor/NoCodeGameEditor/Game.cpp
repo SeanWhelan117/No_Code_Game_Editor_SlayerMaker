@@ -392,7 +392,7 @@ void Game::update(sf::Time t_deltaTime)
 		removeEnemySpawnerVector();
 		removeObjectiveVector();
 
-		objectives.update(t_deltaTime, m_window, myPlayer.getPlayer().getGlobalBounds(), coinsCollected, maxCoins);
+		objectives.update(t_deltaTime, m_window, myPlayer.getPlayer().getGlobalBounds(), coinsCollected, maxCoins, powerups.invisibilityActive);
 	}
 
 	//MAINMENU MAINMENU MAINMENU MAINMENU MAINMENU MAINMENU MAINMENU MAINMENU MAINMENU MAINMENU MAINMENU MAINMENU 
@@ -424,7 +424,7 @@ void Game::update(sf::Time t_deltaTime)
 
 	if (myState == GameState::testGame)
 	{
-		myPlayer.update(m_window);
+		myPlayer.update(m_window, powerups.invincibilityActive, powerups.invisibilityActive);
 		myCrosshair.update(m_window);
 		m_window.setMouseCursorVisible(false);
 		myBackground.update(gameOptions.chosenBG);
@@ -436,13 +436,13 @@ void Game::update(sf::Time t_deltaTime)
 			{
 				if (gameOptions.chosenGT == 0 || gameOptions.chosenGT == 2)
 				{
-					enemySpawnerVector.at(i)->update(myPlayer.getPlayer().getPosition(), wallVector, t_deltaTime, gameOptions.chosenGT, objectives.monumentVector, powerups.nukeEnemies);
+					enemySpawnerVector.at(i)->update(myPlayer.getPlayer().getPosition(), wallVector, t_deltaTime, gameOptions.chosenGT, objectives.monumentVector, powerups.nukeEnemies, powerups.invisibilityActive);
 				}
 				else if (gameOptions.chosenGT == 1)
 				{
 					if (objectives.monumentVector.size() > 0)
 					{
-						enemySpawnerVector.at(i)->update(objectives.monumentVector.at(0).get()->getMonument().getPosition(), wallVector, t_deltaTime, gameOptions.chosenGT, objectives.monumentVector, powerups.nukeEnemies);
+						enemySpawnerVector.at(i)->update(objectives.monumentVector.at(0).get()->getMonument().getPosition(), wallVector, t_deltaTime, gameOptions.chosenGT, objectives.monumentVector, powerups.nukeEnemies, powerups.invisibilityActive);
 					}
 				}
 			}
@@ -451,7 +451,7 @@ void Game::update(sf::Time t_deltaTime)
 		collisionDetection();
 		m_window.setView(testView);
 
-		objectives.update(t_deltaTime, m_window, myPlayer.getPlayer().getGlobalBounds(), coinsCollected, maxCoins);
+		objectives.update(t_deltaTime, m_window, myPlayer.getPlayer().getGlobalBounds(), coinsCollected, maxCoins, powerups.invisibilityActive);
 	}
 
 	//CHOOSE GAME CHOOSE GAME CHOOSE GAME CHOOSE GAME CHOOSE GAME CHOOSE GAME CHOOSE GAME CHOOSE GAME CHOOSE GAME CHOOSE GAME
@@ -483,25 +483,25 @@ void Game::update(sf::Time t_deltaTime)
 	{
 		gameChoice.gameChosen = false;
 		
-		myPlayer.update(m_window);
+		myPlayer.update(m_window, powerups.invincibilityActive, powerups.invisibilityActive);
 		myCrosshair.update(m_window);
 		m_window.setMouseCursorVisible(false);
 		myBackground.update(gameOptions.chosenBG);
 		testView.setCenter(myPlayer.getPlayer().getPosition());
-		playerHUD.update(t_deltaTime, m_window, myPlayer.getPlayer().getPosition(), items.addHealth, items.explosivesCollected);
+		playerHUD.update(t_deltaTime, m_window, myPlayer.getPlayer().getPosition(), items.addHealth, items.explosivesCollected, powerups.invincibilityActive);
 		
 		
 		for (int i = 0; i < enemySpawnerVector.size(); i++)
 		{
 			if (gameOptions.chosenGT == 0 || gameOptions.chosenGT == 2)
 			{
-				enemySpawnerVector.at(i)->update(myPlayer.getPlayer().getPosition(), wallVector, t_deltaTime, gameOptions.chosenGT, objectives.monumentVector, powerups.nukeEnemies);
+				enemySpawnerVector.at(i)->update(myPlayer.getPlayer().getPosition(), wallVector, t_deltaTime, gameOptions.chosenGT, objectives.monumentVector, powerups.nukeEnemies, powerups.invisibilityActive);
 			}
 			else if (gameOptions.chosenGT == 1)
 			{
 				if (objectives.monumentVector.size() > 0)
 				{
-					enemySpawnerVector.at(i)->update(objectives.monumentVector.at(0).get()->getMonument().getPosition(), wallVector, t_deltaTime, gameOptions.chosenGT, objectives.monumentVector, powerups.nukeEnemies);
+					enemySpawnerVector.at(i)->update(objectives.monumentVector.at(0).get()->getMonument().getPosition(), wallVector, t_deltaTime, gameOptions.chosenGT, objectives.monumentVector, powerups.nukeEnemies, powerups.invisibilityActive);
 				}
 			}
 		}
@@ -511,7 +511,7 @@ void Game::update(sf::Time t_deltaTime)
 
 		m_window.setView(testView);
 
-		objectives.update(t_deltaTime, m_window, myPlayer.getPlayer().getGlobalBounds(), coinsCollected, maxCoins);
+		objectives.update(t_deltaTime, m_window, myPlayer.getPlayer().getGlobalBounds(), coinsCollected, maxCoins, powerups.invisibilityActive);
 		items.update(t_deltaTime, m_window, myPlayer.getPlayer().getGlobalBounds());
 		powerups.update(t_deltaTime, m_window, myPlayer.getPlayer().getGlobalBounds());
 
@@ -1295,7 +1295,10 @@ void Game::collisionDetection()
 		{
 			if (isColliding(enemySpawnerVector.at(i).get()->enemyVector.at(p).get()->getEnemy().getGlobalBounds(), myPlayer.getPlayer().getGlobalBounds()))
 			{
-				playerHUD.myHealthBar.minusHealth(2);
+				if (!powerups.invincibilityActive)
+				{
+					playerHUD.myHealthBar.minusHealth(2);
+				}
 			}
 		}
 	}

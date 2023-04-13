@@ -12,10 +12,10 @@ void HUD::loadFiles()
 
 }
 
-void HUD::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, sf::Vector2f t_playerPos, bool& t_addHealth, int  t_explosivesCollected)
+void HUD::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, sf::Vector2f t_playerPos, bool& t_addHealth, int  t_explosivesCollected, bool t_invincibilityActive)
 {
 	myClock.update(t_deltaTime);
-	myHealthBar.update(t_deltaTime);
+	myHealthBar.update(t_deltaTime, t_invincibilityActive);
 	myExplosiveUI.update(t_deltaTime, t_explosivesCollected);
 	setUIElementsLocations(t_window, t_playerPos);
 

@@ -21,7 +21,7 @@ public:
 
 	void render(sf::RenderWindow& t_window);
 
-	void update();
+	void update(bool t_invisibilityActive);
 	sf::Sprite& getMonument();
 
 	void damageMonument(int t_damage);

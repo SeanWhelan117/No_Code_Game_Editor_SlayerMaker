@@ -16,8 +16,7 @@ public:
 
 	void loadFiles();
 
-	void update(sf::Time t_deltaTime);
-
+	void update(sf::Time t_deltaTime, bool t_invincibilityActive);
 	void render(sf::RenderWindow& t_window);
 
 
@@ -39,6 +38,8 @@ private:
 	sf::Texture healthBarTexture;
 	int fullHealthBar = 0;
 	int currentHealth = 0;
+
+	sf::Clock colourChangeTimer;
 
 
 };

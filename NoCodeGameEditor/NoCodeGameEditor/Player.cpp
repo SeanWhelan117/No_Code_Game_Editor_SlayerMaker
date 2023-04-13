@@ -17,13 +17,15 @@ void Player::loadFiles()
 void Player::setupPlayer()
 {
 	player.setFillColor(sf::Color::Green);
+	player.setOutlineThickness(2);
+	player.setOutlineColor(sf::Color::Green);
 	player.setSize(sf::Vector2f(30, 30));
 	player.setOrigin(player.getSize().x / 2, player.getSize().y / 2);
 	player.setPosition(gameSize.x / 2, gameSize.y / 2);
 
 }
 
-void Player::update(sf::RenderWindow& t_window)
+void Player::update(sf::RenderWindow& t_window, bool t_invincibilityActive, bool t_invisibilityActive)
 {
 	mousePos = t_window.mapPixelToCoords(sf::Mouse::getPosition(t_window));
 
@@ -49,6 +51,32 @@ void Player::update(sf::RenderWindow& t_window)
 				removeBullet(i);
 			}
 		}
+	}
+
+	if (t_invincibilityActive)
+	{
+		if (colourChangeTimer.getElapsedTime().asMilliseconds() >= 500.0f)
+		{
+			colourChangeTimer.restart();
+
+			sf::Color colour(std::rand() % 256, std::rand() % 256, std::rand() % 256);
+			player.setFillColor(colour);
+		}
+	}
+	else
+	{
+		player.setFillColor(sf::Color::Green);
+	}
+
+	if (t_invisibilityActive)
+	{
+		player.setFillColor(sf::Color(player.getFillColor().r, player.getFillColor().g, player.getFillColor().b, 25));
+		player.setOutlineColor(sf::Color(0,0,0,50));
+	}
+	else
+	{
+		player.setFillColor(sf::Color::Green);
+		player.setOutlineColor(sf::Color::Green);
 	}
 
 	//std::cout << bulletVector.size() << std::endl;

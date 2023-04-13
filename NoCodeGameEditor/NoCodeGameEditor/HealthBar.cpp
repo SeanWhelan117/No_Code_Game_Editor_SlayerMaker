@@ -17,7 +17,7 @@ void HealthBar::loadFiles()
 
 }
 
-void HealthBar::update(sf::Time t_deltaTime)
+void HealthBar::update(sf::Time t_deltaTime, bool t_invincibilityActive)
 {
 	healthRect.setSize(sf::Vector2f(currentHealth, 36));
 
@@ -34,6 +34,21 @@ void HealthBar::update(sf::Time t_deltaTime)
 	{
 		std::cout << "GameOver" << std::endl;
 		gameOver = true;
+	}
+
+	if (t_invincibilityActive == true)
+	{
+		if (colourChangeTimer.getElapsedTime().asMilliseconds() >= 500.0f)
+		{
+			colourChangeTimer.restart();
+
+			sf::Color colour(std::rand() % 256, std::rand() % 256, std::rand() % 256);
+			healthRect.setFillColor(colour);
+		}
+	}
+	else
+	{
+		healthRect.setFillColor(sf::Color::Red);
 	}
 }
 

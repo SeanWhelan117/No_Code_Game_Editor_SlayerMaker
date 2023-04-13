@@ -22,7 +22,7 @@ void Powerups::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, sf::Floa
 		{
 			nukeFlash.setPosition(tempNukeLocation);
 			nukeFlash.setScale(nukeFlash.getScale().x + 10, nukeFlash.getScale().y + 10);
-			if (nukeFlash.getFillColor().a < 250)
+			if (nukeFlash.getFillColor().a < 253)
 			{
 				nukeFlash.setFillColor(sf::Color(255, 255, 255, nukeFlash.getFillColor().a + 3));
 			}
@@ -32,6 +32,30 @@ void Powerups::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, sf::Floa
 			setupNukeFlash();
 		}
 	}
+
+	if (invincibilityActive)
+	{
+		if (invinceTimer.getElapsedTime().asSeconds() >= 8)
+		{
+			invincibilityActive = false;
+			invinceTimer.restart();
+		}
+	}
+
+	if (invisibilityActive)
+	{
+		if (invisTimer.getElapsedTime().asSeconds() >= 8)
+		{
+			invisibilityActive = false;
+			invisTimer.restart();
+		}
+	}
+
+	/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::M))
+	{
+		invisibilityActive = true;
+		invisTimer.restart();
+	}*/
 }
 
 void Powerups::render(sf::RenderWindow& t_window)
@@ -101,6 +125,8 @@ void Powerups::playerCollision(sf::FloatRect t_playerRect)
 			std::vector<std::unique_ptr<PUPInvincibility>>::iterator begin = invinceVector.begin();
 			begin += i;
 			invinceVector.erase(begin);
+			invincibilityActive = true;
+			invinceTimer.restart();
 		}
 	}
 
@@ -111,6 +137,8 @@ void Powerups::playerCollision(sf::FloatRect t_playerRect)
 			std::vector<std::unique_ptr<PUPInvisibility>>::iterator begin = invisVector.begin();
 			begin += i;
 			invisVector.erase(begin);
+			invisibilityActive = true;
+			invisTimer.restart();
 		}
 	}
 }

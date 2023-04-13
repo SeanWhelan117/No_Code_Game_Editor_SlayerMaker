@@ -21,7 +21,7 @@ public:
 
 	void loadFiles();
 
-	void update(sf::Time t_deltaTime, sf::RenderWindow& t_window, sf::Vector2f t_playerPos, bool& t_addHealth, int t_explosivesCollected);
+	void update(sf::Time t_deltaTime, sf::RenderWindow& t_window, sf::Vector2f t_playerPos, bool& t_addHealth, int t_explosivesCollected, bool t_invincibilityActive);
 
 	void render(sf::RenderWindow& t_window);
 

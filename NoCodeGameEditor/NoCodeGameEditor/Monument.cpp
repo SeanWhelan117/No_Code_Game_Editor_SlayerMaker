@@ -27,7 +27,7 @@ void Monument::render(sf::RenderWindow& t_window)
 	t_window.draw(monumentHealthBar);
 }
 
-void Monument::update()
+void Monument::update(bool t_invisibilityActive)
 {
 	monumentHealthBar.setSize(sf::Vector2f(currentMonumentHealth / 5, 10));
 	monumentHealthBar.setOrigin(monumentHealthBar.getLocalBounds().width / 2, monumentHealthBar.getLocalBounds().height / 2);
@@ -42,6 +42,15 @@ void Monument::update()
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))
 	{
 		currentMonumentHealth -= 5;
+	}
+
+	if (t_invisibilityActive)
+	{
+		monumentSprite.setColor(sf::Color(monumentSprite.getColor().r, monumentSprite.getColor().g, monumentSprite.getColor().b, 25));
+	}
+	else
+	{
+		monumentSprite.setColor(sf::Color(monumentSprite.getColor().r, monumentSprite.getColor().g, monumentSprite.getColor().b, 255));
 	}
 }
 

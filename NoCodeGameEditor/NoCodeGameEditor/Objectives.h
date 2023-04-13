@@ -22,7 +22,7 @@ public:
 
 	//void setupSprites();
 
-	void update(sf::Time t_deltaTime, sf::RenderWindow& t_window, sf::FloatRect t_playerRect, int t_coinsCollected, int t_maxCoins);
+	void update(sf::Time t_deltaTime, sf::RenderWindow& t_window, sf::FloatRect t_playerRect, int t_coinsCollected, int t_maxCoins, bool t_invisibilityActive);
 
 	void render(sf::RenderWindow& t_window);
 

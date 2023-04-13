@@ -30,6 +30,8 @@ public:
 
 	void seeking(sf::Vector2f t_seekPos);
 
+	void Wandering();
+
 
 	std::shared_ptr<sf::Texture> enemyTexture;
 	std::shared_ptr<sf::Texture> enemyTexture2;
@@ -48,6 +50,8 @@ public:
 
 	void attack(Wall* t_wall);
 	void attackMonument(Monument* t_monument);
+
+	bool wandering = false;
 private:
 
 	sf::Vector2f createRandomStartPos(sf::Vector2f t_spawnerPos);
@@ -85,7 +89,9 @@ private:
 	int damage = 5;
 	int damage2 = 1;
 	sf::Clock attackTimer;
+	sf::Clock wanderTimer;
 
 	sf::Vector2f spawnerPosition;
+	sf::Vector2f direction{ 50, 50 };
 };
 

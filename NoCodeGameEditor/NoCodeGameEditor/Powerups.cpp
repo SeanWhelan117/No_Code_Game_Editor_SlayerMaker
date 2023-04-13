@@ -51,11 +51,11 @@ void Powerups::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, sf::Floa
 		}
 	}
 
-	/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::M))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::M))
 	{
 		invisibilityActive = true;
 		invisTimer.restart();
-	}*/
+	}
 }
 
 void Powerups::render(sf::RenderWindow& t_window)

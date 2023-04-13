@@ -55,6 +55,15 @@ void Enemy::update(sf::Vector2f t_seekPos, std::vector<std::unique_ptr<Wall>>& t
 		hasWallbeenDestroyed(t_walls);
 	}
 
+	if (wandering == true)
+	{
+		Wandering();
+	}
+	else
+	{
+		hasWallbeenDestroyed(t_walls);
+	}
+
 
 	checkCollisions(t_walls, t_seekPos, t_gtChosen, t_monuments);
 
@@ -86,6 +95,22 @@ void Enemy::seeking(sf::Vector2f t_seekPos)
 	velocity = velocity * speed;
 
 	enemySprite.move(velocity);
+}
+
+void Enemy::Wandering()
+{
+	if (wanderTimer.getElapsedTime().asSeconds() > 2)
+	{
+		direction = sf::Vector2f((rand() % 200) - 100, (rand() % 200) - 100);
+		wanderTimer.restart();
+	}
+	
+
+	float length = std::sqrt(direction.x * direction.x + direction.y * direction.y);
+	if (length != 0)
+		direction /= length;
+
+	enemySprite.move(direction * (speed / 2));
 }
 
 
@@ -179,6 +204,8 @@ void Enemy::checkCollisions(std::vector<std::unique_ptr<Wall>>& t_walls, sf::Vec
 		if (visionCone.getGlobalBounds().intersects(t_walls.at(i).get()->getWall().getGlobalBounds()))
 		{
 			seekingPlayer = false;
+			wandering = false;
+			attacking = true;
 			attack(t_walls.at(i).get());
 		}
 	}
@@ -200,6 +227,7 @@ void Enemy::hasWallbeenDestroyed(std::vector<std::unique_ptr<Wall>>& t_walls)
 	{
 		if (!visionCone.getGlobalBounds().intersects(t_walls.at(i).get()->getWall().getGlobalBounds()))
 		{
+			attacking = false;
 			seekingPlayer = true;
 		}
 	}

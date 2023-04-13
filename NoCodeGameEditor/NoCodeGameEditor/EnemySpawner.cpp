@@ -92,6 +92,17 @@ void EnemySpawner::update(sf::Vector2f t_seekPos, std::vector<std::unique_ptr<Wa
 		for (int i = 0; i < enemyVector.size(); i++)
 		{
 			enemyVector.at(i).get()->seekingPlayer = false;
+			if (enemyVector.at(i).get()->attacking == false)
+			{
+				enemyVector.at(i).get()->wandering = true;
+			}
+		}
+	}
+	else
+	{
+		for (int i = 0; i < enemyVector.size(); i++)
+		{
+			enemyVector.at(i).get()->wandering = false;
 		}
 	}
 }

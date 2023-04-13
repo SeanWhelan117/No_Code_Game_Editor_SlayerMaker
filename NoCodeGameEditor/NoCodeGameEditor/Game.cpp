@@ -593,6 +593,7 @@ void Game::render()
 
 			objectives.render(m_window);
 			items.render(m_window);
+			powerups.render(m_window);
 			myTools.render(m_window);
 			myChoice.render(m_window);
 		}
@@ -634,6 +635,8 @@ void Game::render()
 
 		objectives.render(m_window);
 		items.render(m_window);
+		powerups.render(m_window);
+
 
 
 		myCrosshair.render(m_window);
@@ -667,6 +670,8 @@ void Game::render()
 
 		objectives.render(m_window);
 		items.render(m_window);
+		powerups.render(m_window);
+
 
 		myCrosshair.render(m_window);
 
@@ -845,19 +850,19 @@ void Game::createPowerups()
 			{
 				myGrid.theGrid.at(m).at(i).filled = true;
 				powerups.addToVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 0);
-				numOfMedkits++;
+				numOfNukes++;
 			}
 			else if (myGrid.theGrid.at(m).at(i).getType() == "powerup2" && myGrid.theGrid.at(m).at(i).filled == false)
 			{
 				myGrid.theGrid.at(m).at(i).filled = true;
 				powerups.addToVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 1);
-				numOfExplosives++;
+				numOfInvinces++;
 			}
 			else if (myGrid.theGrid.at(m).at(i).getType() == "powerup3" && myGrid.theGrid.at(m).at(i).filled == false)
 			{
 				myGrid.theGrid.at(m).at(i).filled = true;
 				powerups.addToVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(), 2);
-				numOfGuns++;
+				numOfInvises++;
 			}
 		}
 	}

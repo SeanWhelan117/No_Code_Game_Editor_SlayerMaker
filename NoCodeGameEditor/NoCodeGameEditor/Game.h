@@ -132,6 +132,9 @@ private:
 	int numOfMedkits = 0;
 	int numOfExplosives = 0;
 	int numOfGuns = 0;
+	int numOfNukes = 0;
+	int numOfInvinces = 0;
+	int numOfInvises = 0;
 
 	bool wallVectorCreated = false;
 

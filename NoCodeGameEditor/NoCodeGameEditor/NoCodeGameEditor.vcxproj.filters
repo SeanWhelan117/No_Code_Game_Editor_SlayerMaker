@@ -126,6 +126,15 @@
     <ClCompile Include="Powerups.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PUPNuke.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PUPInvincibility.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PUPInvisibility.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -234,6 +243,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Powerups.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PUPNuke.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PUPInvincibility.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PUPInvisibility.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

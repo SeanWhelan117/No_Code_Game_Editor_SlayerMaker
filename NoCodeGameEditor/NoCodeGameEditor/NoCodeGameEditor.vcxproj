@@ -51,6 +51,9 @@
     <ClCompile Include="ParticleSystem.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Powerups.cpp" />
+    <ClCompile Include="PUPInvincibility.cpp" />
+    <ClCompile Include="PUPInvisibility.cpp" />
+    <ClCompile Include="PUPNuke.cpp" />
     <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="ToolBar.cpp" />
     <ClCompile Include="Wall.cpp" />
@@ -89,6 +92,9 @@
     <ClInclude Include="ParticleSystem.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Powerups.h" />
+    <ClInclude Include="PUPInvincibility.h" />
+    <ClInclude Include="PUPInvisibility.h" />
+    <ClInclude Include="PUPNuke.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="ToolBar.h" />
     <ClInclude Include="Wall.h" />

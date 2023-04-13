@@ -135,6 +135,9 @@
     <ClCompile Include="PUPInvisibility.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DatabaseManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -254,6 +257,9 @@
     <ClInclude Include="PUPInvisibility.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DatabaseManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="ASSETS\IMAGES\SFML-LOGO.png">
@@ -264,5 +270,8 @@
     <Font Include="ASSETS\FONTS\ariblk.ttf">
       <Filter>Resource Files\FONTS</Filter>
     </Font>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

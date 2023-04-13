@@ -38,14 +38,15 @@ public:
 
 	bool gameChosen = false;
 	bool gameBuilt = false;
+	bool gameUploaded = false;
 
 	std::string chosenGame;
 private:
-	void setupBuildButtons();
+	void setupButtons();
 
 	float gameWidth = 0;
 	float gameHeight = 0;
-	sf::Vector2f initialPos = { 100, 100 };
+	sf::Vector2f initialPos = { 250, 100 };
 
 	bool levelRectsCreated = false;
 	std::vector <std::string> gameNames;
@@ -56,5 +57,7 @@ private:
 	sf::Vector2f mousePos;
 
 	std::vector <sf::RectangleShape> buildButtons;
+	std::vector <sf::RectangleShape> deleteButtons;
+	std::vector <sf::RectangleShape> uploadButtons;
 };
 

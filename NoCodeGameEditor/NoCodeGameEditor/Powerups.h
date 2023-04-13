@@ -38,7 +38,7 @@ private:
 	void setupNukeFlash();
 	TextureManager& m_textureManager;
 
-	sf::RectangleShape nukeFlash;
+	sf::CircleShape nukeFlash;
 
 	bool flashActive = false;
 

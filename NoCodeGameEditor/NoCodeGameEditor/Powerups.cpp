@@ -16,16 +16,16 @@ void Powerups::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, sf::Floa
 
 	if (flashActive == true)
 	{
+		//std::cout << "NukeLocation " << tempNukeLocation.x << " --- " << tempNukeLocation.y << std::endl;
 		nukeFlash.setPosition(tempNukeLocation);
-		if (nukeFlash.getScale().x <= 500)
+		if (nukeFlash.getScale().x <= 600)
 		{
-			/*int x = nukeFlash.getSize().x;
-			x += 5;
-			int y = nukeFlash.getSize().y;
-			y += 5;
-			nukeFlash.setSize(sf::Vector2f(x, y));*/
-			std::cout << nukeFlash.getScale().x << std::endl;
+			nukeFlash.setPosition(tempNukeLocation);
 			nukeFlash.setScale(nukeFlash.getScale().x + 10, nukeFlash.getScale().y + 10);
+			if (nukeFlash.getFillColor().a < 250)
+			{
+				nukeFlash.setFillColor(sf::Color(255, 255, 255, nukeFlash.getFillColor().a + 3));
+			}
 		}
 		else
 		{
@@ -119,8 +119,8 @@ void Powerups::setupNukeFlash()
 {
 	flashActive = false;
 	nukeFlash.setPosition(-10000, -10000);
-	nukeFlash.setSize(sf::Vector2f(10, 10));
+	nukeFlash.setRadius(10);
 	nukeFlash.setScale(1,1);
-	nukeFlash.setOrigin(nukeFlash.getLocalBounds().width / 2, nukeFlash.getLocalBounds().height / 2);
-	nukeFlash.setFillColor(sf::Color(255, 255, 255, 220));
+	nukeFlash.setOrigin(nukeFlash.getRadius() / 2, nukeFlash.getRadius() / 2);
+	nukeFlash.setFillColor(sf::Color(255, 255, 255, 30));
 }

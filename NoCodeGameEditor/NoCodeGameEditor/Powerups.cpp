@@ -6,6 +6,7 @@ Powerups::Powerups(TextureManager& textureManager) : m_textureManager(textureMan
 
 void Powerups::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, sf::FloatRect t_playerRect)
 {
+	playerCollision(t_playerRect);
 }
 
 void Powerups::render(sf::RenderWindow& t_window)
@@ -53,4 +54,35 @@ bool Powerups::isColliding(sf::FloatRect t_obj1, sf::FloatRect t_obj2)
 
 void Powerups::playerCollision(sf::FloatRect t_playerRect)
 {
+
+	for (int i = 0; i < nukeVector.size(); i++)
+	{
+		if (isColliding(nukeVector.at(i).get()->getNuke().getGlobalBounds(), t_playerRect))
+		{
+			std::vector<std::unique_ptr<PUPNuke>>::iterator begin = nukeVector.begin();
+			begin += i;
+			nukeVector.erase(begin);
+			nukeEnemies = true;
+		}
+	}
+
+	for (int i = 0; i < invinceVector.size(); i++)
+	{
+		if (isColliding(invinceVector.at(i).get()->getInvincibility().getGlobalBounds(), t_playerRect))
+		{
+			std::vector<std::unique_ptr<PUPInvincibility>>::iterator begin = invinceVector.begin();
+			begin += i;
+			invinceVector.erase(begin);
+		}
+	}
+
+	for (int i = 0; i < invisVector.size(); i++)
+	{
+		if (isColliding(invisVector.at(i).get()->getInvisibility().getGlobalBounds(), t_playerRect))
+		{
+			std::vector<std::unique_ptr<PUPInvisibility>>::iterator begin = invisVector.begin();
+			begin += i;
+			invisVector.erase(begin);
+		}
+	}
 }

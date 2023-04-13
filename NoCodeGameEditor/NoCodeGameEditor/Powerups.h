@@ -32,7 +32,7 @@ public:
 
 	void playerCollision(sf::FloatRect t_playerRect);
 
-
+	bool nukeEnemies = false;
 private:
 	TextureManager& m_textureManager;
 };

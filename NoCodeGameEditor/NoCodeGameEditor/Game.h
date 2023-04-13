@@ -170,6 +170,8 @@ private:
 
 	void checkWallHealth();
 
+	void checkEnemiesEmptied();
+
 };
 
 #endif // !GAME_HPP

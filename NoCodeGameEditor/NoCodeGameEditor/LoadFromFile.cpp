@@ -97,6 +97,18 @@ void LoadFromFile::createData()
 				{
 					explosiveData.push_back(tempVector);
 				}
+				else if (currentData.find("N") != std::string::npos)
+				{
+					nukeData.push_back(tempVector);
+				}
+				else if (currentData.find("I") != std::string::npos)
+				{
+					invinceData.push_back(tempVector);
+				}
+				else if (currentData.find("V") != std::string::npos)
+				{
+					invisData.push_back(tempVector);
+				}
 				else if (currentData.find("Z") != std::string::npos)
 				{
 					BGGTChoices = tempVector;

@@ -436,13 +436,13 @@ void Game::update(sf::Time t_deltaTime)
 			{
 				if (gameOptions.chosenGT == 0 || gameOptions.chosenGT == 2)
 				{
-					enemySpawnerVector.at(i)->update(myPlayer.getPlayer().getPosition(), wallVector, t_deltaTime, gameOptions.chosenGT, objectives.monumentVector);
+					enemySpawnerVector.at(i)->update(myPlayer.getPlayer().getPosition(), wallVector, t_deltaTime, gameOptions.chosenGT, objectives.monumentVector, powerups.nukeEnemies);
 				}
 				else if (gameOptions.chosenGT == 1)
 				{
 					if (objectives.monumentVector.size() > 0)
 					{
-						enemySpawnerVector.at(i)->update(objectives.monumentVector.at(0).get()->getMonument().getPosition(), wallVector, t_deltaTime, gameOptions.chosenGT, objectives.monumentVector);
+						enemySpawnerVector.at(i)->update(objectives.monumentVector.at(0).get()->getMonument().getPosition(), wallVector, t_deltaTime, gameOptions.chosenGT, objectives.monumentVector, powerups.nukeEnemies);
 					}
 				}
 			}
@@ -495,13 +495,13 @@ void Game::update(sf::Time t_deltaTime)
 		{
 			if (gameOptions.chosenGT == 0 || gameOptions.chosenGT == 2)
 			{
-				enemySpawnerVector.at(i)->update(myPlayer.getPlayer().getPosition(), wallVector, t_deltaTime, gameOptions.chosenGT, objectives.monumentVector);
+				enemySpawnerVector.at(i)->update(myPlayer.getPlayer().getPosition(), wallVector, t_deltaTime, gameOptions.chosenGT, objectives.monumentVector, powerups.nukeEnemies);
 			}
 			else if (gameOptions.chosenGT == 1)
 			{
 				if (objectives.monumentVector.size() > 0)
 				{
-					enemySpawnerVector.at(i)->update(objectives.monumentVector.at(0).get()->getMonument().getPosition(), wallVector, t_deltaTime, gameOptions.chosenGT, objectives.monumentVector);
+					enemySpawnerVector.at(i)->update(objectives.monumentVector.at(0).get()->getMonument().getPosition(), wallVector, t_deltaTime, gameOptions.chosenGT, objectives.monumentVector, powerups.nukeEnemies);
 				}
 			}
 		}
@@ -513,6 +513,7 @@ void Game::update(sf::Time t_deltaTime)
 
 		objectives.update(t_deltaTime, m_window, myPlayer.getPlayer().getGlobalBounds(), coinsCollected, maxCoins);
 		items.update(t_deltaTime, m_window, myPlayer.getPlayer().getGlobalBounds());
+		powerups.update(t_deltaTime, m_window, myPlayer.getPlayer().getGlobalBounds());
 
 		if (objectives.gameOver == true || playerHUD.myHealthBar.gameOver == true )
 		{
@@ -532,6 +533,8 @@ void Game::update(sf::Time t_deltaTime)
 				myState = GameState::gameOver;
 			}
 		}
+
+		checkEnemiesEmptied();
 	}
 
 	if (myState == GameState::gameOver)
@@ -636,8 +639,6 @@ void Game::render()
 		objectives.render(m_window);
 		items.render(m_window);
 		powerups.render(m_window);
-
-
 
 		myCrosshair.render(m_window);
 	}
@@ -992,7 +993,7 @@ void Game::viewsCreation()
 
 void Game::saveDataToCSV()
 {
-	//letters used: W,S,C,D,M,H,E,G,Z
+	//letters used: W,S,C,D,M,H,E,G,Z,N,I,V
 	std::ofstream myFile;
 	myFile.open(".\\ASSETS\\GAMEDATA\\" + gameOptions.gameName + ".csv");
 	
@@ -1092,6 +1093,46 @@ void Game::saveDataToCSV()
 		myFile << "\n";
 	}
 
+
+	//myFile << "POWERUPS,\n";
+	//myFile << "X,Y,Type,Object,\n";
+
+	for (int i = 0; i < powerups.nukeVector.size(); i++)
+	{
+		myFile << static_cast<int>(powerups.nukeVector.at(i).get()->getNuke().getPosition().x);
+		myFile << ",";
+		myFile << static_cast<int>(powerups.nukeVector.at(i).get()->getNuke().getPosition().y);
+		myFile << ",";
+		myFile << "0";
+		myFile << ",";
+		myFile << "N";
+		myFile << "\n";
+	}
+
+	for (int i = 0; i < powerups.invinceVector.size(); i++)
+	{
+		myFile << static_cast<int>(powerups.invinceVector.at(i).get()->getInvincibility().getPosition().x);
+		myFile << ",";
+		myFile << static_cast<int>(powerups.invinceVector.at(i).get()->getInvincibility().getPosition().y);
+		myFile << ",";
+		myFile << "0";
+		myFile << ",";
+		myFile << "I";
+		myFile << "\n";
+	}
+
+	for (int i = 0; i < powerups.invisVector.size(); i++)
+	{
+		myFile << static_cast<int>(powerups.invisVector.at(i).get()->getInvisibility().getPosition().x);
+		myFile << ",";
+		myFile << static_cast<int>(powerups.invisVector.at(i).get()->getInvisibility().getPosition().y);
+		myFile << ",";
+		myFile << "0";
+		myFile << ",";
+		myFile << "V";
+		myFile << "\n";
+	}
+
 	//myFile << "GAMEOPTIONS,\n";
 	//myFile << "BGChoice,GTChoice,Type,Object\n";
 
@@ -1156,6 +1197,24 @@ void Game::createLevel()
 	{
 		sf::Vector2f tempExplosivePos = { gameChoice.loader.explosiveData.at(i).x , gameChoice.loader.explosiveData.at(i).y };
 		items.addToVector(tempExplosivePos, 1);
+	}
+
+	for (int i = 0; i < gameChoice.loader.nukeData.size(); i++)
+	{
+		sf::Vector2f tempNukePos = { gameChoice.loader.nukeData.at(i).x , gameChoice.loader.nukeData.at(i).y };
+		powerups.addToVector(tempNukePos, 0);
+	}
+
+	for (int i = 0; i < gameChoice.loader.invinceData.size(); i++)
+	{
+		sf::Vector2f tempInvincePos = { gameChoice.loader.invinceData.at(i).x , gameChoice.loader.invinceData.at(i).y };
+		powerups.addToVector(tempInvincePos, 1);
+	}
+
+	for (int i = 0; i < gameChoice.loader.invisData.size(); i++)
+	{
+		sf::Vector2f tempInvisPos = { gameChoice.loader.invisData.at(i).x , gameChoice.loader.invisData.at(i).y };
+		powerups.addToVector(tempInvisPos, 2);
 	}
 
 	gameOptions.chosenBG = gameChoice.loader.BGGTChoices.x;
@@ -1262,4 +1321,26 @@ void Game::checkWallHealth()
 			wallVector.erase(begin);
 		}
 	}
+}
+
+void Game::checkEnemiesEmptied()
+{
+	if (powerups.nukeEnemies == true)
+	{
+		int count = 0;
+		for (int i = 0; i < enemySpawnerVector.size(); i++)
+		{
+			if (enemySpawnerVector.at(i).get()->enemyVector.size() == 0)
+			{
+				count++;
+			}
+		}
+		//std::cout << "count is: " << count << " spawnerVecSize is: " << enemySpawnerVector.size() << std::endl;
+		if (count == enemySpawnerVector.size())
+		{
+			powerups.nukeEnemies = false;
+		}
+
+	}
+
 }

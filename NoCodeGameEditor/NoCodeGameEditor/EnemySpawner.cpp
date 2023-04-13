@@ -49,7 +49,7 @@ void EnemySpawner::render(sf::RenderWindow& t_window, std::string t_state)
 	}
 }
 
-void EnemySpawner::update(sf::Vector2f t_seekPos, std::vector<std::unique_ptr<Wall>>& t_walls, sf::Time t_deltaTime, int t_gtChosen, std::vector<std::unique_ptr<Monument>>& t_monuments)
+void EnemySpawner::update(sf::Vector2f t_seekPos, std::vector<std::unique_ptr<Wall>>& t_walls, sf::Time t_deltaTime, int t_gtChosen, std::vector<std::unique_ptr<Monument>>& t_monuments, bool& t_nukeEnemies)
 {
 	test++;
 
@@ -80,6 +80,11 @@ void EnemySpawner::update(sf::Vector2f t_seekPos, std::vector<std::unique_ptr<Wa
 		{
 			enemyVector.at(i)->update(t_seekPos, t_walls, t_deltaTime, t_gtChosen, t_monuments);
 		}
+	}
+
+	if (t_nukeEnemies == true)
+	{
+		enemyVector.clear();
 	}
 }
 

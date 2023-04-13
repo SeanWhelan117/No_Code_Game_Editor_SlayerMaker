@@ -28,6 +28,10 @@ public:
 	std::vector<sf::Vector3f> monumentData;
 	std::vector<sf::Vector3f> medkitData;
 	std::vector<sf::Vector3f> explosiveData;
+	std::vector<sf::Vector3f> nukeData;
+	std::vector<sf::Vector3f> invinceData;
+	std::vector<sf::Vector3f> invisData;
+
 	sf::Vector3f BGGTChoices;
 
 

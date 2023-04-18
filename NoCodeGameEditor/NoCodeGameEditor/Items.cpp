@@ -24,6 +24,13 @@ void Items::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, sf::FloatRe
 	{
 		particleSystemsVector.at(i).update(t_deltaTime);
 	}
+
+	for (int i = 0; i < collisionCircleVector.size(); i++)
+	{
+		float scale = collisionCircleVector.at(i).getScale().x;
+		collisionCircleVector.at(i).setScale(scale+= 0.3, scale+= 0.3);
+	}
+
 }
 
 void Items::render(sf::RenderWindow& t_window)
@@ -42,6 +49,12 @@ void Items::render(sf::RenderWindow& t_window)
 	{
 		particleSystemsVector.at(i).draw(t_window);
 	}
+
+
+	//for (int i = 0; i < collisionCircleVector.size(); i++)
+	//{
+	//	t_window.draw(collisionCircleVector.at(i));
+	//}
 
 }
 
@@ -109,4 +122,13 @@ void Items::spawnExplosion(sf::Vector2f t_explosionPosition)
 	ParticleSystem tempParticleSystem;
 	tempParticleSystem.addExplosion(t_explosionPosition.x, t_explosionPosition.y, 250);
 	particleSystemsVector.push_back(tempParticleSystem);
+
+	sf::CircleShape tempCircle;
+	tempCircle.setOutlineThickness(1);
+	tempCircle.setOutlineColor(sf::Color::White);
+	tempCircle.setFillColor(sf::Color(0, 0, 0, 0));
+	tempCircle.setRadius(10);
+	tempCircle.setPosition(t_explosionPosition.x, t_explosionPosition.y);
+	tempCircle.setOrigin(tempCircle.getLocalBounds().width / 2, tempCircle.getGlobalBounds().height / 2);
+	collisionCircleVector.push_back(tempCircle);
 }

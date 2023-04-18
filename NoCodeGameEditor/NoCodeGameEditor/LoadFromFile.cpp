@@ -144,6 +144,11 @@ void LoadFromFile::resetParamsForGame()
 	coinData.clear();
 	doorData.clear();
 	monumentData.clear();
+	explosiveData.clear();
+	medkitData.clear();
+	nukeData.clear();
+	invinceData.clear();
+	invisData.clear();
 	BGGTChoices.x = 0;
 	BGGTChoices.y = 0;
 	BGGTChoices.z = 0;

@@ -61,19 +61,19 @@ void Player::update(sf::RenderWindow& t_window, bool t_invincibilityActive, bool
 
 			sf::Color colour(std::rand() % 256, std::rand() % 256, std::rand() % 256);
 			player.setFillColor(colour);
+			player.setOutlineColor(colour);
+
 		}
 	}
-	else
-	{
-		player.setFillColor(sf::Color::Green);
-	}
+	
 
 	if (t_invisibilityActive)
 	{
 		player.setFillColor(sf::Color(player.getFillColor().r, player.getFillColor().g, player.getFillColor().b, 25));
 		player.setOutlineColor(sf::Color(0,0,0,50));
 	}
-	else
+	
+	if(!t_invisibilityActive && !t_invincibilityActive)
 	{
 		player.setFillColor(sf::Color::Green);
 		player.setOutlineColor(sf::Color::Green);

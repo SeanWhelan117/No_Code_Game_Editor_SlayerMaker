@@ -25,6 +25,8 @@ public:
 	std::vector<std::unique_ptr<Explosive>> explosiveVector;
 	//std::vector<std::unique_ptr<Gun>> gunVector;
 
+	std::vector<sf::CircleShape> collisionCircleVector;
+
 	void addToVector(sf::Vector2f t_itemPosition, int t_itemType);
 
 	bool isColliding(sf::FloatRect t_obj1, sf::FloatRect t_obj2);

@@ -1235,6 +1235,9 @@ void Game::clearVectors()
 
 	items.medkitVector.clear();
 	items.explosiveVector.clear();
+	powerups.nukeVector.clear();
+	powerups.invinceVector.clear();
+	powerups.invisVector.clear();
 
 	map<string, int>::iterator it;
 

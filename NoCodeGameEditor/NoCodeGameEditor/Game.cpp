@@ -1276,6 +1276,7 @@ void Game::collisionDetection()
 					{
 						bloodSplatterVector.emplace_back(new BloodSplatter(spawnBloodSplatter(enemy->getEnemy().getPosition())));
 						enemyIt = spawner->enemyVector.erase(enemyIt);
+						break;
 					}
 					
 					bulletIt = myPlayer.bulletVector.erase(bulletIt);

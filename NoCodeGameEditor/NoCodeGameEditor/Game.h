@@ -39,8 +39,8 @@
 class Game
 {
 public:
-	unsigned gameWidth = sf::VideoMode::getDesktopMode().width * 0.8;
-	unsigned gameHeight = sf::VideoMode::getDesktopMode().height * 0.8;
+	unsigned gameWidth = sf::VideoMode::getDesktopMode().width * 1;
+	unsigned gameHeight = sf::VideoMode::getDesktopMode().height * 1;
 	Game();
 	~Game();
 

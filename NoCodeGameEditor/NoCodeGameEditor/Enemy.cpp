@@ -1,6 +1,6 @@
 #include "Enemy.h"
 
-Enemy::Enemy(int t_EnemyTextNum, sf::Vector2f t_spawnerPos, TextureManager& textureManager) : enemyTextureNumber(t_EnemyTextNum), spawnerPosition(t_spawnerPos), m_textureManager(textureManager)
+Enemy::Enemy(int t_EnemyTextNum, sf::Vector2f t_spawnerPos, TextureManager& t_textureManager, Animator& t_animator) : enemyTextureNumber(t_EnemyTextNum), spawnerPosition(t_spawnerPos), m_textureManager(t_textureManager), m_animator(t_animator)
 {
 	loadFiles();
 	setupEnemy(t_spawnerPos);

@@ -15,6 +15,7 @@
 #include <fstream>
 
 #include "TextureManager.h"
+#include "Animator.h"
 #include "Grid.h"
 #include "Cell.h"
 #include "Wall.h"
@@ -45,6 +46,7 @@ public:
 	~Game();
 
 	TextureManager textureManager;
+	Animator animator;
 	MainMenu myMenu{ gameWidth, gameHeight };
 	GameOptions gameOptions{ gameWidth, gameHeight };
 	Grid myGrid{ gameWidth, gameHeight };

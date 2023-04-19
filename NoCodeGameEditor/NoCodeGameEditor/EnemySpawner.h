@@ -11,13 +11,14 @@
 #include "TextureManager.h"
 #include "Wall.h"
 #include "Monument.h"
+#include "Animator.h"
 
 
 class EnemySpawner
 {
 
 public:
-	EnemySpawner(int t_spawnerTextNum, sf::Vector2f t_spawnerPos, TextureManager& textureManager);
+	EnemySpawner(int t_spawnerTextNum, sf::Vector2f t_spawnerPos, TextureManager& t_textureManager, Animator& t_animator);
 
 	void loadFiles();
 
@@ -55,6 +56,7 @@ private:
 	sf::Vector2f spawnerPos;
 
 	TextureManager m_textureManager;
+	Animator m_animator;
 
 };
 

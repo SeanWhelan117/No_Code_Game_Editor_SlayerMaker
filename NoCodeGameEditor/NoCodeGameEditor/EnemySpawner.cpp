@@ -1,6 +1,6 @@
 #include "EnemySpawner.h"
 
-EnemySpawner::EnemySpawner(int t_spawnerTextNum, sf::Vector2f t_spawnerPos, TextureManager& textureManager) : spawnerTextureNumber(t_spawnerTextNum), spawnerPos(t_spawnerPos), m_textureManager(textureManager)
+EnemySpawner::EnemySpawner(int t_spawnerTextNum, sf::Vector2f t_spawnerPos, TextureManager& t_textureManager, Animator& t_animator) : spawnerTextureNumber(t_spawnerTextNum), spawnerPos(t_spawnerPos), m_textureManager(t_textureManager), m_animator(t_animator)
 {
 	//std::cout << "EnemySpawner Created" << std::endl;
 	spawnerTextureNumber = t_spawnerTextNum;
@@ -114,7 +114,7 @@ sf::Sprite& EnemySpawner::getSpawner()
 
 Enemy EnemySpawner::createEnemy()
 {
-	Enemy tempEnemy{ spawnerTextureNumber, spawnerSprite.getPosition(), m_textureManager};
+	Enemy tempEnemy{ spawnerTextureNumber, spawnerSprite.getPosition(), m_textureManager, m_animator};
 
 	return tempEnemy;
 }

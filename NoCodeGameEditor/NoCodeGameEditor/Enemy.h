@@ -15,8 +15,7 @@
 class Enemy
 {
 public:
-	Animator myAnim;
-	Enemy(int t_enemyTextNum, sf::Vector2f t_spawnerPos, TextureManager& textureManager);
+	Enemy(int t_enemyTextNum, sf::Vector2f t_spawnerPos, TextureManager& t_textureManager, Animator& t_animator);
 
 	void loadFiles();
 
@@ -70,6 +69,7 @@ private:
 
 	float speed = 3.0f;
 	TextureManager& m_textureManager;
+	Animator& m_animator;
 
 	int health = 25;
 

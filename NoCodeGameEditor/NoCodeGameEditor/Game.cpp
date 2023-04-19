@@ -774,7 +774,7 @@ void Game::createSpawnerVector()
 
 EnemySpawner Game::createIndividualSpawner(sf::Vector2f t_spawnerPos, int t_spawnerTextNum)
 {
-	EnemySpawner tempSpawner{ t_spawnerTextNum, t_spawnerPos, textureManager };
+	EnemySpawner tempSpawner{ t_spawnerTextNum, t_spawnerPos, textureManager, animator };
 
 	return tempSpawner;
 }

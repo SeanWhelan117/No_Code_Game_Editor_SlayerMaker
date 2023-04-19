@@ -10,9 +10,9 @@ Enemy::Enemy(int t_EnemyTextNum, sf::Vector2f t_spawnerPos, TextureManager& text
 
 void Enemy::loadFiles()
 {
-	enemyTexture = std::make_shared<sf::Texture>(m_textureManager.getTexture("ASSETS\\IMAGES\\ENEMIES\\ENEMY1\\Enemy1-choice.png"));
-	enemyTexture2 = std::make_shared<sf::Texture>(m_textureManager.getTexture("ASSETS\\IMAGES\\ENEMIES\\ENEMY2\\Enemy2-choice.png"));
-	enemyTexture3 = std::make_shared<sf::Texture>(m_textureManager.getTexture("ASSETS\\IMAGES\\ENEMIES\\ENEMY3\\Enemy3-choice.png"));
+	enemyTexture = std::make_shared<sf::Texture>(m_textureManager.getTexture("ASSETS\\IMAGES\\ENEMIES\\ENEMY1\\Enemy1Idle.png"));
+	enemyTexture2 = std::make_shared<sf::Texture>(m_textureManager.getTexture("ASSETS\\IMAGES\\ENEMIES\\ENEMY2\\Enemy2Idle.png"));
+	enemyTexture3 = std::make_shared<sf::Texture>(m_textureManager.getTexture("ASSETS\\IMAGES\\ENEMIES\\ENEMY3\\Enemy3Idle.png"));
 
 	if (enemyTextureNumber == 0)
 	{
@@ -33,6 +33,7 @@ void Enemy::setupEnemy(sf::Vector2f t_pos)
 {
 	enemySprite.setOrigin(enemySprite.getGlobalBounds().width / 2, enemySprite.getGlobalBounds().height / 2);
 	enemySprite.setPosition(createRandomStartPos(t_pos));
+	enemySprite.setScale(0.5, 0.5);
 	speed = createRandomSpeed();
 	enemySetup = true;
 }

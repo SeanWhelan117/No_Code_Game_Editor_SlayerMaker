@@ -15,6 +15,7 @@
 #include <fstream>
 
 #include "TextureManager.h"
+#include "NetworkManager.h"
 #include "Grid.h"
 #include "Cell.h"
 #include "Wall.h"
@@ -45,6 +46,7 @@ public:
 	~Game();
 
 	TextureManager textureManager;
+	NetworkManager networkManager;
 	MainMenu myMenu{ gameWidth, gameHeight };
 	GameOptions gameOptions{ gameWidth, gameHeight };
 	Grid myGrid{ gameWidth, gameHeight };
@@ -53,7 +55,7 @@ public:
 	Player myPlayer{ gameWidth, gameHeight };
 	Crosshair myCrosshair;
 	Background myBackground{gameWidth, gameHeight};
-	ChooseGame gameChoice{ gameWidth, gameHeight };
+	ChooseGame gameChoice{ gameWidth, gameHeight, networkManager };
 	HUD playerHUD{ gameWidth, gameHeight };
 	ChoiceBar myChoice{ gameWidth, gameHeight};
 	Objectives objectives{ textureManager };

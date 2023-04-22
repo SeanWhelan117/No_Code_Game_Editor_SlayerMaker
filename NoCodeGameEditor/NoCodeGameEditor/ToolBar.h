@@ -33,6 +33,7 @@ public:
 	void setToolPosForView(sf::RenderWindow& t_window);
 	void pulseTriangles();
 	void changeMode(int t_triangleClicked);
+	void createSelectionSquare();
 	bool wallsPlaced = false;
 	bool enemySpawnersPlaced = false;
 	bool objectivesPlaced = false;
@@ -45,6 +46,7 @@ public:
 
 	bool brushToolSelected = false;
 	bool rubberToolSelected = false;
+	bool fillToolSelected = false;
 
 	sf::Sprite toolBarSprite;
 
@@ -63,6 +65,9 @@ public:
 	bool navigating = false;
 
 	std::map<std::string, int> itemsPlaced;
+	sf::Vector2f selectionSquareStartPos;
+	sf::RectangleShape selectionSquare;
+	bool selecting = false;
 
 private:
 
@@ -101,7 +106,6 @@ private:
 	bool scalingUp = true;
 	bool scalingDown = false;
 	bool pulseTheTriangles = true;
-
 
 
 };

@@ -8,6 +8,7 @@ ToolBar::ToolBar(float t_gameWidth, float t_gameHeight)
 	gameHeight = t_gameHeight;
 
 	setupSprites();
+	createSelectionSquare();
 
 	addWallsButton.setFillColor(sf::Color::Green);
 	addWallsButton.setSize(sf::Vector2f(150, 100));
@@ -134,6 +135,27 @@ void ToolBar::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, std::vect
 	{
 		pulseTriangles();
 	}
+	if (currentMode == "WALLS")
+	{
+		if (selecting)
+		{
+
+			sf::Vector2f size(MousePosReal - selectionSquareStartPos);
+
+			selectionSquare.setPosition(selectionSquareStartPos);
+			selectionSquare.setSize(size);
+		}
+		else
+		{
+			selectionSquare.setPosition(-1000, -1000);
+			selectionSquare.setSize(sf::Vector2f(1, 1));
+		}
+	}
+
+	if (!fillToolSelected)
+	{
+		selecting = false;
+	}
 
 }
 
@@ -149,6 +171,7 @@ void ToolBar::render(sf::RenderWindow& t_window)
 	{
 		t_window.draw(addWallsButton);
 		t_window.draw(fillToolSprite);
+		t_window.draw(selectionSquare);
 	}
 	if (currentMode == "ENEMIES")
 	{
@@ -177,6 +200,7 @@ void ToolBar::checkForMousePosAndClick(sf::RenderWindow& t_window, sf::Vector2f 
 			//brush is selected
 			rubberToolSelected = true;
 			brushToolSelected = false;
+			fillToolSelected = false;
 		}
 	}
 	else
@@ -193,11 +217,29 @@ void ToolBar::checkForMousePosAndClick(sf::RenderWindow& t_window, sf::Vector2f 
 			//brush is selected
 			brushToolSelected = true;
 			rubberToolSelected = false;
+			fillToolSelected = false;
 		}
 	}
 	else
 	{
 		resetTools(2);
+	}
+
+	if (fillToolSprite.getGlobalBounds().contains(t_mousePos))
+	{
+		changeTools(3);
+
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+		{
+			//brush is selected
+			fillToolSelected = true;
+			brushToolSelected = false;
+			rubberToolSelected = false;
+		}
+	}
+	else
+	{
+		resetTools(3);
 	}
 
 	
@@ -267,6 +309,10 @@ void ToolBar::changeTools(int t_currentTool)
 	{
 		brushToolSprite.setScale(0.5, 0.5);
 	}
+	else if (t_currentTool == 3)
+	{
+		fillToolSprite.setScale(0.65, 0.65);
+	}
 }
 
 void ToolBar::resetTools(int t_current)
@@ -278,6 +324,10 @@ void ToolBar::resetTools(int t_current)
 	else if (t_current == 2)
 	{
 		brushToolSprite.setScale(0.3, 0.3);
+	}
+	else if (t_current == 3)
+	{
+		fillToolSprite.setScale(0.5, 0.5);
 	}
 }
 
@@ -424,6 +474,14 @@ void ToolBar::changeMode(int t_triangleClicked)
 		}
 	}
 	
+}
+
+void ToolBar::createSelectionSquare()
+{
+	selectionSquare.setPosition(-1000, -1000);
+	selectionSquare.setFillColor(sf::Color(200, 125, 85, 128));
+	selectionSquare.setOutlineThickness(2);
+	selectionSquare.setOutlineColor(sf::Color::Black);
 }
 
 

@@ -185,6 +185,15 @@ void Game::processMouseClicks(sf::Event t_event)
 		changeGridSize = true;
 	}
 
+	if (myTools.fillToolSelected)
+	{
+		if (sf::Mouse::Left == t_event.mouseButton.button)
+		{
+			myTools.selectionSquareStartPos = mousePos;
+			myTools.selecting = true;
+		}
+	}
+
 
 }
 
@@ -292,6 +301,11 @@ void Game::processMouseRelease(sf::Event t_event)
 					myTools.navigating = false;
 
 				}
+			}
+
+			if (myTools.fillToolSelected)
+			{
+				myTools.selecting = false;
 			}
 		}
 	}

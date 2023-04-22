@@ -130,6 +130,10 @@ void ToolBar::update(sf::Time t_deltaTime, sf::RenderWindow& t_window, std::vect
 	{
 		setGridCellToMarked(t_grid, t_gridParams, MousePosReal, "Rubber", t_choiceNum);
 	}
+	else if (fillToolSelected == true && t_choice == true)
+	{
+		setGridCellToMarked(t_grid, t_gridParams, MousePosReal, "Fill", t_choiceNum);
+	}
 
 	if (pulseTheTriangles == true)
 	{
@@ -333,7 +337,7 @@ void ToolBar::resetTools(int t_current)
 
 void ToolBar::setGridCellToMarked(std::vector<std::vector<Cell>>& t_grid, int t_gridParams, sf::Vector2f t_mousePos, std::string t_toolChosen, int t_choiceNum)
 {
-
+	int tempCount = 0;
 	for (int i = 0; i < t_gridParams; i++)
 	{
 		for (int m = 0; m < t_gridParams; m++)
@@ -352,7 +356,25 @@ void ToolBar::setGridCellToMarked(std::vector<std::vector<Cell>>& t_grid, int t_
 					}
 				}
 			}
+			if (t_toolChosen == "Fill")
+			{
+				if (selecting == false)
+				{
+					if (t_grid.at(m).at(i).getCellShape().getGlobalBounds().intersects(selectionSquare.getGlobalBounds()))
+					{
+						t_grid.at(m).at(i).setMarked(t_choiceNum, itemsPlaced);
+						t_grid.at(m).at(i).getCellShape().setFillColor(sf::Color::Transparent);
+						tempCount++;
+					}
+				}
+
+			}
 		}
+	}
+	if (tempCount > 0)
+	{
+		tempCount = 0;
+		wallsPlaced = true;
 	}
 }
 
@@ -479,7 +501,7 @@ void ToolBar::changeMode(int t_triangleClicked)
 void ToolBar::createSelectionSquare()
 {
 	selectionSquare.setPosition(-1000, -1000);
-	selectionSquare.setFillColor(sf::Color(200, 125, 85, 128));
+	selectionSquare.setFillColor(sf::Color(0, 255, 0, 128));
 	selectionSquare.setOutlineThickness(2);
 	selectionSquare.setOutlineColor(sf::Color::Black);
 }

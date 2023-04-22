@@ -270,6 +270,11 @@ void Game::processMouseRelease(sf::Event t_event)
 	{
 		if (sf::Mouse::Left == t_event.mouseButton.button)
 		{
+			if (myTools.fillToolSelected)
+			{
+				myTools.selecting = false;
+			}
+
 			if (myChoice.currentMode == "WALLS")
 			{
 				myTools.wallsPlaced = true;
@@ -303,10 +308,7 @@ void Game::processMouseRelease(sf::Event t_event)
 				}
 			}
 
-			if (myTools.fillToolSelected)
-			{
-				myTools.selecting = false;
-			}
+			
 		}
 	}
 

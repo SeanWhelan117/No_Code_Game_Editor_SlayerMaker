@@ -1,11 +1,14 @@
 #include "NetworkManager.h"
 
+NetworkManager::NetworkManager()
+{
+}
+
 void NetworkManager::writeGameDataToDB(std::string t_filename)
 {
     // Open database connection
     sqlite3* db;
     int rc = sqlite3_open("GameData.db", &db);
-
     if (rc != SQLITE_OK) {
         std::cerr << "Error opening database: " << sqlite3_errmsg(db) << std::endl;
         sqlite3_close(db);
@@ -16,10 +19,10 @@ void NetworkManager::writeGameDataToDB(std::string t_filename)
     std::string create_table_sql = "CREATE TABLE IF NOT EXISTS " + t_filename + " (";
     std::ifstream infile(t_filename + ".csv");
     std::string line;
-    getline(infile, line);
-    boost::tokenizer<boost::escaped_list_separator<char>> tokenizer(line);
-    for (auto& token : tokenizer) {
-        create_table_sql += token + " TEXT,";
+    std::getline(infile, line);
+    auto headers = split_string(line, ',');
+    for (auto& header : headers) {
+        create_table_sql += header + " TEXT,";
     }
     create_table_sql.pop_back();
     create_table_sql += ")";
@@ -34,10 +37,10 @@ void NetworkManager::writeGameDataToDB(std::string t_filename)
 
     // Insert data
     while (getline(infile, line)) {
-        boost::tokenizer<boost::escaped_list_separator<char>> tokenizer(line);
+        auto values = split_string(line, ',');
         std::string insert_sql = "INSERT INTO " + t_filename + " VALUES (";
-        for (auto& token : tokenizer) {
-            insert_sql += "'" + token + "',";
+        for (auto& value : values) {
+            insert_sql += "'" + value + "',";
         }
         insert_sql.pop_back();
         insert_sql += ")";
@@ -52,4 +55,15 @@ void NetworkManager::writeGameDataToDB(std::string t_filename)
 
     // Close database connection
     sqlite3_close(db);
+}
+
+std::vector<std::string> NetworkManager::split_string(const std::string& t_string, char t_delimininator)
+{
+    std::vector<std::string> tokens;
+    std::stringstream ss(t_string);
+    std::string token;
+    while (getline(ss, token, t_delimininator)) {
+        tokens.push_back(token);
+    }
+    return tokens;
 }

@@ -12,7 +12,7 @@ public:
 	NetworkManager();
 
 	void writeGameDataToDB(std::string t_filename);
-	std::vector<std::string> split_string(const std::string& t_string, char t_delimininator);
+	std::vector<std::string> split_string(const std::string& str, char delimiter);
 private:
 };
 

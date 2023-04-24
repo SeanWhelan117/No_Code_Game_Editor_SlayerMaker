@@ -11,6 +11,7 @@
 #include "LoadFromFile.h"
 #include "NetworkManager.h"
 
+
 class ChooseGame
 {
 public:
@@ -65,5 +66,7 @@ private:
 	std::vector <sf::RectangleShape> buildButtons;
 	std::vector <sf::RectangleShape> uploadButtons;
 	std::vector <sf::RectangleShape> deleteButtons;
+
+	bool savedToDB = false;
 };
 

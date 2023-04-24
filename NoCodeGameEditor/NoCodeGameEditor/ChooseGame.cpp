@@ -103,6 +103,11 @@ void ChooseGame::update(sf::Time t_deltaTime, sf::RenderWindow& t_window)
 	checkForMousePos();
 
 	loader.update(t_deltaTime);
+
+	if (savedToDB == true && sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+	{
+		savedToDB = false;
+	}
 }
 
 void ChooseGame::render(sf::RenderWindow& t_window)
@@ -169,9 +174,10 @@ void ChooseGame::checkForMousePos()
 		{
 			changeButtons(uploadButtons.at(i));
 
-			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+			if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && savedToDB == false)
 			{
-				
+				savedToDB = true;
+				m_networkManager.writeGameDataToDB(gameNames.at(i));
 			}
 		}
 		else

@@ -17,14 +17,14 @@ void NetworkManager::writeGameDataToDB(std::string t_filename)
 
     // Create table
     std::string create_table_sql = "CREATE TABLE IF NOT EXISTS " + t_filename + " (";
-    std::ifstream infile(t_filename + ".csv");
+    std::ifstream infile(".\\ASSETS\\GAMEDATA\\" + t_filename + ".csv");
     std::string line;
     std::getline(infile, line);
-    auto headers = split_string(line, ',');
+    auto headers = split_string(line, '\t');
     for (auto& header : headers) {
         create_table_sql += header + " TEXT,";
     }
-    create_table_sql.pop_back();
+    create_table_sql.pop_back(); // Remove the trailing comma
     create_table_sql += ")";
     char* error_msg;
     rc = sqlite3_exec(db, create_table_sql.c_str(), nullptr, nullptr, &error_msg);
@@ -34,10 +34,11 @@ void NetworkManager::writeGameDataToDB(std::string t_filename)
         sqlite3_close(db);
         return;
     }
+    std::cout << "Table created" << std::endl;
 
     // Insert data
-    while (getline(infile, line)) {
-        auto values = split_string(line, ',');
+    while (std::getline(infile, line)) {
+        auto values = split_string(line, '\t');
         std::string insert_sql = "INSERT INTO " + t_filename + " VALUES (";
         for (auto& value : values) {
             insert_sql += "'" + value + "',";
@@ -52,17 +53,20 @@ void NetworkManager::writeGameDataToDB(std::string t_filename)
             return;
         }
     }
+    std::cout << "Data added to table" << std::endl;
 
     // Close database connection
     sqlite3_close(db);
 }
 
-std::vector<std::string> NetworkManager::split_string(const std::string& t_string, char t_delimininator)
+std::vector<std::string> NetworkManager::split_string(const std::string& str, char delimiter)
 {
     std::vector<std::string> tokens;
-    std::stringstream ss(t_string);
+    std::istringstream iss(str);
     std::string token;
-    while (getline(ss, token, t_delimininator)) {
+
+    while (std::getline(iss, token, delimiter))
+    {
         tokens.push_back(token);
     }
     return tokens;

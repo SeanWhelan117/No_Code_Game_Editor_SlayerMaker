@@ -15,7 +15,7 @@ Bullet::Bullet(sf::RenderWindow& t_window, sf::Vector2f t_playerPos)
 void Bullet::setupSprites()
 {
 	bullet.setFillColor(sf::Color::Black);
-	bullet.setSize(sf::Vector2f(10, 10));
+	bullet.setSize(sf::Vector2f(6, 2));
 	bullet.setPosition(playerPosition);
 }
 

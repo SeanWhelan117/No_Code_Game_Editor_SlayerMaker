@@ -8,12 +8,12 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "Bullet.h"
+#include "Animator.h"
 
 class Player
 {
 public:
-
-	Player(float t_gameWidth, float t_gameHeight);
+	Player(float t_gameWidth, float t_gameHeight, Animator& t_animator);
 
 	void loadFiles();
 
@@ -23,7 +23,7 @@ public:
 
 	void render(sf::RenderWindow& t_window);
 
-	sf::RectangleShape getPlayer();
+	sf::Sprite getPlayer();
 
 	void rotatePlayerView();
 
@@ -31,10 +31,10 @@ public:
 
 	void removeBullet(int t_bulletNum);
 private:
+	Animator m_animator;
 	void playerMovement();
 	void move(float t_x, float t_y);
 	void shoot(sf::RenderWindow& t_window);
-	sf::RectangleShape player;
 
 	sf::Vector2f gameSize;
 
@@ -49,6 +49,12 @@ private:
 	const double PI = 3.141592654;
 
 	sf::Clock colourChangeTimer;
+
+	sf::Sprite playerSprite;
+
+	sf::Texture playerIdleTexture;
+	sf::Texture playerWalkingTexture;
+	sf::Color ogColor;
 
 };
 

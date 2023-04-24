@@ -1,28 +1,33 @@
 #include "Player.h"
-
-Player::Player(float t_gameWidth, float t_gameHeight)
+Player::Player(float t_gameWidth, float t_gameHeight, Animator& t_animator):  m_animator(t_animator)
 {
 	gameSize.x = t_gameWidth;
 	gameSize.y = t_gameHeight;
-
 	loadFiles();
 	setupPlayer();
-
 }
 
 void Player::loadFiles()
 {
+	if (!playerIdleTexture.loadFromFile("ASSETS\\IMAGES\\PLAYER\\PlayerIdle.png"))
+	{
+		// simple error message if previous call fails
+		std::cout << "problem loading playerIdleTexture (PlayerIdle)" << std::endl;
+	}
+
+	if (!playerWalkingTexture.loadFromFile("ASSETS\\IMAGES\\PLAYER\\PlayerWalking.png"))
+	{
+		// simple error message if previous call fails
+		std::cout << "problem loading playerWalkingTexture (PlayerWalking)" << std::endl;
+	}
 }
 
 void Player::setupPlayer()
 {
-	player.setFillColor(sf::Color::Green);
-	player.setOutlineThickness(2);
-	player.setOutlineColor(sf::Color::Green);
-	player.setSize(sf::Vector2f(30, 30));
-	player.setOrigin(player.getSize().x / 2, player.getSize().y / 2);
-	player.setPosition(gameSize.x / 2, gameSize.y / 2);
-
+	playerSprite.setTexture(playerIdleTexture);
+	playerSprite.setOrigin(playerSprite.getGlobalBounds().width / 2, playerSprite.getGlobalBounds().height / 2);
+	playerSprite.setPosition(gameSize.x / 2, gameSize.y / 2);
+	ogColor = playerSprite.getColor();
 }
 
 void Player::update(sf::RenderWindow& t_window, bool t_invincibilityActive, bool t_invisibilityActive)
@@ -60,8 +65,7 @@ void Player::update(sf::RenderWindow& t_window, bool t_invincibilityActive, bool
 			colourChangeTimer.restart();
 
 			sf::Color colour(std::rand() % 256, std::rand() % 256, std::rand() % 256);
-			player.setFillColor(colour);
-			player.setOutlineColor(colour);
+			playerSprite.setColor(colour);
 
 		}
 	}
@@ -69,14 +73,12 @@ void Player::update(sf::RenderWindow& t_window, bool t_invincibilityActive, bool
 
 	if (t_invisibilityActive)
 	{
-		player.setFillColor(sf::Color(player.getFillColor().r, player.getFillColor().g, player.getFillColor().b, 25));
-		player.setOutlineColor(sf::Color(0,0,0,50));
+		playerSprite.setColor(sf::Color(playerSprite.getColor().r, playerSprite.getColor().g, playerSprite.getColor().b, 25));
 	}
 	
 	if(!t_invisibilityActive && !t_invincibilityActive)
 	{
-		player.setFillColor(sf::Color::Green);
-		player.setOutlineColor(sf::Color::Green);
+		playerSprite.setColor(ogColor);
 	}
 
 	//std::cout << bulletVector.size() << std::endl;
@@ -85,7 +87,7 @@ void Player::update(sf::RenderWindow& t_window, bool t_invincibilityActive, bool
 
 void Player::render(sf::RenderWindow& t_window)
 {
-	t_window.draw(player);
+	t_window.draw(playerSprite);
 
 	for (int i = 0; i < bulletVector.size(); i++)
 	{
@@ -95,7 +97,7 @@ void Player::render(sf::RenderWindow& t_window)
 
 void Player::playerMovement()
 {
-	sf::Vector2f currentPos = player.getPosition();
+	sf::Vector2f currentPos = playerSprite.getPosition();
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
@@ -126,12 +128,12 @@ void Player::playerMovement()
 	//move(speedX, speedY);
 
 	//player.setPosition(position);
-	player.setPosition(currentPos);
+	playerSprite.setPosition(currentPos);
 }
 
 void Player::move(float t_x, float t_y) 
 {
-	position = player.getPosition();
+	position = playerSprite.getPosition();
 	position.x += t_x;
 	//updateAABB();
 	//checkCollisions(); // collect info of all tiles player intersects with
@@ -142,24 +144,24 @@ void Player::move(float t_x, float t_y)
 	//resolveYCollisions();
 }
 
-sf::RectangleShape Player::getPlayer()
+sf::Sprite Player::getPlayer()
 {
-	return player;
+	return playerSprite;
 }
 
 void Player::rotatePlayerView()
 {
-	sf::Vector2f playerPos = player.getPosition();
+	sf::Vector2f playerPos = playerSprite.getPosition();
 
 	float dx = playerPos.x - mousePos.x;
 	float dy = playerPos.y - mousePos.y;
 	double mouseAngle = static_cast<double>(-atan2(dx, dy)) * 180.0f / PI; //finding the angle that the mouse is at vs the players location
-	player.setRotation(mouseAngle + 180.0f);
+	playerSprite.setRotation(mouseAngle);
 }
 
 void Player::shoot(sf::RenderWindow& t_window)
 {
-	Bullet tempBullet{t_window, player.getPosition()};
+	Bullet tempBullet{t_window, playerSprite.getPosition()};
 
 	bulletVector.emplace_back(new Bullet(tempBullet));
 

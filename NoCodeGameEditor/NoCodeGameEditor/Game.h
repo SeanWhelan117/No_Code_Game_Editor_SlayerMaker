@@ -16,6 +16,8 @@
 
 #include "TextureManager.h"
 #include "NetworkManager.h"
+#include "Animator.h"
+
 #include "Grid.h"
 #include "Cell.h"
 #include "Wall.h"
@@ -47,12 +49,13 @@ public:
 
 	TextureManager textureManager;
 	NetworkManager networkManager;
+	Animator animator;
 	MainMenu myMenu{ gameWidth, gameHeight };
 	GameOptions gameOptions{ gameWidth, gameHeight };
 	Grid myGrid{ gameWidth, gameHeight };
 	GameState myState{ GameState::mainmenu };
 	ToolBar myTools{ gameWidth, gameHeight };
-	Player myPlayer{ gameWidth, gameHeight };
+	Player myPlayer{ gameWidth, gameHeight, animator };
 	Crosshair myCrosshair;
 	Background myBackground{gameWidth, gameHeight};
 	ChooseGame gameChoice{ gameWidth, gameHeight, networkManager };

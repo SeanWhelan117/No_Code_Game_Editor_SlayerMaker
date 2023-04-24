@@ -6,16 +6,26 @@
 
 #include "Cell.h"
 
+/// <summary>
+/// Cell Constructor, calls setupCells
+/// </summary>
 Cell::Cell()
 {
 	setupCells();
 }
 
+/// <summary>
+///  sets the position of the cell to the position from parameter
+/// </summary>
+/// <param name="t_pos"></param>
 void Cell::setPos(sf::Vector2f t_pos)
 {
 	cellShape.setPosition(t_pos);
 }
 
+/// <summary>
+/// gives the cells a color, outline and size
+/// </summary>
 void Cell::setupCells()
 {
 	cellShape.setFillColor(sf::Color::Transparent);
@@ -24,16 +34,33 @@ void Cell::setupCells()
 	cellShape.setSize(sf::Vector2f{ 30,30 });
 }
 
+/// <summary>
+/// sets the ID of the cells
+/// </summary>
+/// <param name="t_id"></param>
 void Cell::setID(int t_id)
 {
 	cellID = t_id;
 }
 
+/// <summary>
+/// reurns a reference to the cells rectangle shape
+/// </summary>
+/// <returns></returns>
 sf::RectangleShape& Cell::getCellShape()
 {
 	return cellShape;
 }
 
+/// <summary>
+/// sets the cell to marked. sets the colour based on what is put in.
+/// sets the type to what gameobject needs to be added to that cell
+/// adds to the number of that gameobject that has been placed
+/// takes the choice number for game object and a map of how many of each item has been placed already
+/// as parameters
+/// </summary>
+/// <param name="t_choiceNum"></param>
+/// <param name="t_itemsPlaced"></param>
 void Cell::setMarked(int t_choiceNum, std::map<std::string, int>& t_itemsPlaced)
 {
 	//	itemsPlaced = { {"Spawner1", 0}, {"Spawner2", 0}, {"Spawner3", 0}, {"Coins", 0}, {"Doors", 0}};
@@ -163,6 +190,12 @@ void Cell::setMarked(int t_choiceNum, std::map<std::string, int>& t_itemsPlaced)
 	}
 }
 
+/// <summary>
+/// checks that the cell has been filled already, in which case, checks which type it is and removes one from the items
+/// placed map 
+/// sets the cell shape back up for being filled by a different game object again
+/// </summary>
+/// <param name="t_itemsPlaced"></param>
 void Cell::setUnmarked(std::map<std::string, int>& t_itemsPlaced)
 {
 
@@ -226,17 +259,29 @@ void Cell::setUnmarked(std::map<std::string, int>& t_itemsPlaced)
 	}
 }
 
+/// <summary>
+/// returns ID
+/// </summary>
+/// <returns></returns>
 int Cell::getID()
 {
 
 	return cellID;
 }
 
+/// <summary>
+/// returns type
+/// </summary>
+/// <returns></returns>
 std::string Cell::getType()
 {
 	return type;
 }
 
+/// <summary>
+/// sets the type
+/// </summary>
+/// <param name="t_newType"></param>
 void Cell::setType(std::string t_newType)
 {
 	type = t_newType;

@@ -54,6 +54,7 @@ private:
 
 	sf::Texture playerIdleTexture;
 	sf::Texture playerWalkingTexture;
+	sf::IntRect textureRect;
 	sf::Color ogColor;
 
 };

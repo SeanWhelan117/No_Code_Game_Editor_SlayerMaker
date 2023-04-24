@@ -80,9 +80,10 @@ void Player::update(sf::RenderWindow& t_window, bool t_invincibilityActive, bool
 	{
 		playerSprite.setColor(ogColor);
 	}
+	//sf::Texture t_texture, int t_numOfFrames, int t_frameWidth, int t_frameHeight, int t_cols, int t_rows, int t_time
 
-	//std::cout << bulletVector.size() << std::endl;
-	
+	textureRect = m_animator.animate(playerWalkingTexture, 5, 36, 53, 5, 1, 12);
+	//playerSprite.setTextureRect(textureRect);
 }
 
 void Player::render(sf::RenderWindow& t_window)

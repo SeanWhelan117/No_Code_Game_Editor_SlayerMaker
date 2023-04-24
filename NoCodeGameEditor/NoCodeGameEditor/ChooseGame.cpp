@@ -1,12 +1,10 @@
 #include "ChooseGame.h"
 
-ChooseGame::ChooseGame(float t_gameWidth, float t_gameHeight)
+ChooseGame::ChooseGame(float t_gameWidth, float t_gameHeight, NetworkManager& t_networkManager) : gameWidth(t_gameWidth), gameHeight(t_gameHeight), m_networkManager(t_networkManager)
 {
-	gameWidth = t_gameWidth;
-	gameHeight = t_gameHeight;
 	loadFont();
 	findFiles();
-	setupBuildButtons();
+	setupButtons();
 }
 
 void ChooseGame::loadFont()
@@ -25,7 +23,7 @@ void ChooseGame::findFiles()
 		fileCount = 0;
 		games.clear();
 		nameTexts.clear();
-		initialPos = sf::Vector2f(100, 100);
+		initialPos = sf::Vector2f(200, 100);
 	}
 
 	std::filesystem::path p1{ ".\\ASSETS\\GAMEDATA" };
@@ -63,8 +61,8 @@ void ChooseGame::setupSprites()
 		if (count > 4)
 		{
 			count = 0;
-			initialPos.x = 100;
-			initialPos.y += 150;
+			initialPos.x = 200;
+			initialPos.y += 250;
 		}
 		else
 		{
@@ -105,6 +103,11 @@ void ChooseGame::update(sf::Time t_deltaTime, sf::RenderWindow& t_window)
 	checkForMousePos();
 
 	loader.update(t_deltaTime);
+
+	if (savedToDB == true && sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+	{
+		savedToDB = false;
+	}
 }
 
 void ChooseGame::render(sf::RenderWindow& t_window)
@@ -116,17 +119,24 @@ void ChooseGame::render(sf::RenderWindow& t_window)
 			t_window.draw(games.at(i));
 			t_window.draw(nameTexts.at(i));
 			t_window.draw(buildButtons.at(i));
+			t_window.draw(uploadButtons.at(i));
+			t_window.draw(deleteButtons.at(i));
 		}
 	}
 	
+}
+bool ChooseGame::containsMouse(sf::FloatRect t_rectShape)
+{
+	return t_rectShape.contains(mousePos);
 }
 
 void ChooseGame::checkForMousePos()
 {
 	for (int i = 0; i < games.size(); i++)
 	{
-		if (games.at(i).getGlobalBounds().contains(mousePos))
+		if (containsMouse(games.at(i).getGlobalBounds()))
 		{
+			changeButtons(games.at(i));
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 			{
 				std::cout << gameNames.at(i) << std::endl;
@@ -138,34 +148,98 @@ void ChooseGame::checkForMousePos()
 				gameChosen = false;
 			}
 		}
-
-		if (buildButtons.at(i).getGlobalBounds().contains(mousePos))
+		else
 		{
+			resetButtons(games.at(i));
+		}
+
+		if (containsMouse(buildButtons.at(i).getGlobalBounds()))
+		{
+			changeButtons(buildButtons.at(i));
+
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && gameBuilt == false)
 			{
-				gameBuilt = true;
+				/*gameBuilt = true;
 				chosenGame = gameNames.at(i);
 				loader.loadFile(gameNames.at(i));
-				gameChosen = true;
+				gameChosen = true;*/
 			}
 		}
+		else
+		{
+			resetButtons(buildButtons.at(i));
+		}
+
+		if (containsMouse(uploadButtons.at(i).getGlobalBounds()))
+		{
+			changeButtons(uploadButtons.at(i));
+
+			if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && savedToDB == false)
+			{
+				savedToDB = true;
+				m_networkManager.writeGameDataToDB(gameNames.at(i));
+			}
+		}
+		else
+		{
+			resetButtons(uploadButtons.at(i));
+		}
+		
+		
+		if (containsMouse(deleteButtons.at(i).getGlobalBounds()))
+		{
+			changeButtons(deleteButtons.at(i));
+
+			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+			{
+
+			}
+		}
+		else
+		{
+			resetButtons(deleteButtons.at(i));
+		}
 	}
-	if (mousePos.x > 300)
-	{
-		gameBuilt = false;
-	}
+	
 }
 
-void ChooseGame::setupBuildButtons()
+void ChooseGame::resetButtons(sf::RectangleShape& t_rect)
 {
+	t_rect.setScale(1, 1);
+}
+
+void ChooseGame::changeButtons(sf::RectangleShape& t_rect)
+{
+	t_rect.setScale(1.2, 1.2);
+}
+
+void ChooseGame::setupButtons()
+{
+	float offset = games.at(0).getLocalBounds().width / 3;
+	sf::Vector2f buttonSize = sf::Vector2f(games.at(0).getLocalBounds().width / 3, 75);
+
 	for (int i = 0; i < games.size(); i++)
 	{
 		sf::RectangleShape tempRect;
 		tempRect.setFillColor(sf::Color::Green);
-		tempRect.setPosition(games.at(i).getPosition().x, games.at(i).getPosition().y + 90);
-		tempRect.setSize(sf::Vector2f(100, 75));
+		tempRect.setSize(buttonSize);
 		tempRect.setOrigin(tempRect.getLocalBounds().width / 2, tempRect.getLocalBounds().height / 2);
+		tempRect.setPosition(games.at(i).getPosition().x - offset, games.at(i).getPosition().y + games.at(i).getLocalBounds().height / 2 + tempRect.getLocalBounds().height / 2);
 		buildButtons.push_back(tempRect);
+
+		sf::RectangleShape tempRect2;
+		tempRect2.setFillColor(sf::Color::Blue);
+		tempRect2.setSize(buttonSize);
+		tempRect2.setOrigin(tempRect2.getLocalBounds().width / 2, tempRect2.getLocalBounds().height / 2);
+		tempRect2.setPosition(games.at(i).getPosition().x, games.at(i).getPosition().y + games.at(i).getLocalBounds().height / 2 + tempRect2.getLocalBounds().height / 2);
+		uploadButtons.push_back(tempRect2);
+
+		sf::RectangleShape tempRect3;
+		tempRect3.setFillColor(sf::Color::Red);
+		tempRect3.setSize(buttonSize);
+		tempRect3.setOrigin(tempRect3.getLocalBounds().width / 2, tempRect3.getLocalBounds().height / 2);
+		tempRect3.setPosition(games.at(i).getPosition().x + offset, games.at(i).getPosition().y + games.at(i).getLocalBounds().height / 2 + tempRect3.getLocalBounds().height / 2);
+		deleteButtons.push_back(tempRect3);
 	}
 }
 

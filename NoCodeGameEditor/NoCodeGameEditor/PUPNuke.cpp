@@ -22,7 +22,6 @@ void PUPNuke::setupNuke()
 void PUPNuke::render(sf::RenderWindow& t_window)
 {
 	t_window.draw(nukeSprite);
-
 }
 
 sf::Sprite& PUPNuke::getNuke()

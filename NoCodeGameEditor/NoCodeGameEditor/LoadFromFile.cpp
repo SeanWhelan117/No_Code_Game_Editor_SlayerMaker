@@ -20,6 +20,12 @@ void LoadFromFile::loadFile(std::string t_gameName)
 	
 
 	myFile.close();
+	//myFile << "XPOS,YPOS,TYPE,OBJECT,\n";
+	if (gameData.at(0) == "XPOS,YPOS,TYPE,OBJECT")
+	{
+		//std::cout << "Wahey" << std::endl;
+	}
+	gameData.erase(gameData.begin());
 
 	createData();
 }

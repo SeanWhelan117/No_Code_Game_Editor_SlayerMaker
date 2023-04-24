@@ -9,13 +9,14 @@
 #include <filesystem>
 #include <fstream>
 #include "LoadFromFile.h"
+#include "NetworkManager.h"
 
 
 class ChooseGame
 {
 public:
 
-	ChooseGame(float t_gameWidth, float t_gameHeight);
+	ChooseGame(float t_gameWidth, float t_gameHeight, NetworkManager& t_networkManager);
 	LoadFromFile loader;
 
 	void loadFont();
@@ -30,8 +31,13 @@ public:
 
 	void render(sf::RenderWindow& t_window);
 
+	bool containsMouse(sf::FloatRect t_rectShape);
+
 	void checkForMousePos();
 
+	void resetButtons(sf::RectangleShape& t_rect); //small function which is called to reset buttons after they are not being hoverd over anymore
+
+	void changeButtons(sf::RectangleShape& t_rect);
 
 	std::vector<sf::RectangleShape> games;
 	int fileCount = 0;
@@ -41,11 +47,13 @@ public:
 
 	std::string chosenGame;
 private:
-	void setupBuildButtons();
+	NetworkManager& m_networkManager;
+
+	void setupButtons();
 
 	float gameWidth = 0;
 	float gameHeight = 0;
-	sf::Vector2f initialPos = { 100, 100 };
+	sf::Vector2f initialPos = { 200, 100 };
 
 	bool levelRectsCreated = false;
 	std::vector <std::string> gameNames;
@@ -56,5 +64,9 @@ private:
 	sf::Vector2f mousePos;
 
 	std::vector <sf::RectangleShape> buildButtons;
+	std::vector <sf::RectangleShape> uploadButtons;
+	std::vector <sf::RectangleShape> deleteButtons;
+
+	bool savedToDB = false;
 };
 

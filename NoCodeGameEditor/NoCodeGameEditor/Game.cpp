@@ -997,9 +997,7 @@ void Game::saveDataToCSV()
 	std::ofstream myFile;
 	myFile.open(".\\ASSETS\\GAMEDATA\\" + gameOptions.gameName + ".csv");
 	
-	//myFile << "WALLS,\n";
-	//myFile << "X,Y,Type,Object,\n";
-	//
+	myFile << "XPOS,YPOS,TYPE,OBJECT,\n";
 	for (int i = 0; i < wallVector.size(); i++)
 	{
 		myFile << static_cast<int>(wallVector.at(i)->getWall().getPosition().x);

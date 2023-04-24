@@ -11,6 +11,7 @@
 #include <string>
 #include <sstream>
 
+
 class LoadFromFile
 {
 public:

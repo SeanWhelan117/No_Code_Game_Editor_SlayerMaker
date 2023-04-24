@@ -6,7 +6,9 @@ NetworkManager::NetworkManager()
 
 void NetworkManager::writeGameDataToDB(std::string t_filename)
 {
-    // Open database connection
+    // Open DB
+    // Open DB
+    // Open DB
     sqlite3* db;
     int rc = sqlite3_open("GameData.db", &db);
     if (rc != SQLITE_OK) {
@@ -16,6 +18,9 @@ void NetworkManager::writeGameDataToDB(std::string t_filename)
     }
 
     // Create table
+    // Create table
+    // Create table
+
     std::string create_table_sql = "CREATE TABLE IF NOT EXISTS " + t_filename + " (";
     std::ifstream infile(".\\ASSETS\\GAMEDATA\\" + t_filename + ".csv");
     std::string line;
@@ -24,7 +29,7 @@ void NetworkManager::writeGameDataToDB(std::string t_filename)
     for (auto& header : headers) {
         create_table_sql += header + " TEXT,";
     }
-    create_table_sql.pop_back(); // Remove the trailing comma
+    create_table_sql.pop_back();
     create_table_sql += ")";
     char* error_msg;
     rc = sqlite3_exec(db, create_table_sql.c_str(), nullptr, nullptr, &error_msg);
@@ -36,17 +41,21 @@ void NetworkManager::writeGameDataToDB(std::string t_filename)
     }
     std::cout << "Table created" << std::endl;
 
-    // Insert data
-    while (std::getline(infile, line)) {
-        auto values = split_string(line, '\t');
-        std::string insert_sql = "INSERT INTO " + t_filename + " VALUES (";
-        for (auto& value : values) {
-            insert_sql += "'" + value + "',";
+    // Insert gameData
+    // Insert gameData
+    // Insert gameData
+    while (std::getline(infile, line)) 
+    {
+        auto values = split_string(line, ',');
+        for (int i = 0; i < values.size(); i++)
+        {
+            std::cout << values.at(i) << std::endl;
         }
-        insert_sql.pop_back();
-        insert_sql += ")";
+       
+        std::string insert_sql = "INSERT INTO " + t_filename + " (XPOS, YPOS, TYPE, OBJECT) VALUES ('" + values[0] + "', '" + values[1] + "', '" + values[2] + "', '" + values[3] + "')";
         rc = sqlite3_exec(db, insert_sql.c_str(), nullptr, nullptr, &error_msg);
-        if (rc != SQLITE_OK) {
+        if (rc != SQLITE_OK)
+        {
             std::cerr << "Error inserting data: " << error_msg << std::endl;
             sqlite3_free(error_msg);
             sqlite3_close(db);
@@ -55,7 +64,7 @@ void NetworkManager::writeGameDataToDB(std::string t_filename)
     }
     std::cout << "Data added to table" << std::endl;
 
-    // Close database connection
+    // Close DB
     sqlite3_close(db);
 }
 

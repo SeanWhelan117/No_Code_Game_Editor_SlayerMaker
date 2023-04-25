@@ -19,7 +19,7 @@ public:
 	ChooseGame(float t_gameWidth, float t_gameHeight, NetworkManager& t_networkManager);
 	LoadFromFile loader;
 
-	void loadFont();
+	void loadFontAndSprites();
 
 	void findFiles();
 
@@ -46,19 +46,23 @@ public:
 	bool gameBuilt = false;
 
 	std::string chosenGame;
+	bool buttonClicked = false;
 private:
 	NetworkManager& m_networkManager;
 
 	void setupButtons();
 
+	void deleteFile(std::string t_filename);
+
 	float gameWidth = 0;
 	float gameHeight = 0;
-	sf::Vector2f initialPos = { 200, 100 };
+	sf::Vector2f initialPos = { 200, 300 };
 
 	bool levelRectsCreated = false;
 	std::vector <std::string> gameNames;
 
 	std::vector<sf::Text> nameTexts;
+	sf::Text titleText;
 	sf::Font font;
 
 	sf::Vector2f mousePos;
@@ -66,7 +70,16 @@ private:
 	std::vector <sf::RectangleShape> buildButtons;
 	std::vector <sf::RectangleShape> uploadButtons;
 	std::vector <sf::RectangleShape> deleteButtons;
+	std::vector <sf::RectangleShape> bgRects;
 
-	bool savedToDB = false;
+	sf::Texture buildTexture;
+	sf::Texture uploadTexture;
+	sf::Texture deleteTexture;
+
+	std::vector <sf::Sprite> buildSprites;
+	std::vector <sf::Sprite> uploadSprites;
+	std::vector <sf::Sprite> deleteSprites;
+
+
 };
 

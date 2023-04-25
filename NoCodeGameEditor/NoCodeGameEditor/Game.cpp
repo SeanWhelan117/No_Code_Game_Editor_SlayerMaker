@@ -201,7 +201,7 @@ void Game::processTextEntered(sf::Event t_event)
 {
 	if (gameOptions.canType == true)
 	{
-		if (t_event.text.unicode != 8)
+		if (t_event.text.unicode != 8 && t_event.text.unicode != 32 && t_event.text.unicode != 39)
 		{
 			if (gameOptions.gameName.size() < 12)
 			{
@@ -309,6 +309,21 @@ void Game::processMouseRelease(sf::Event t_event)
 			}
 
 			
+		}
+	}
+
+	if (myState == GameState::mainmenu)
+	{
+		if (sf::Mouse::Left == t_event.mouseButton.button)
+		{
+			myMenu.buttonClicked = true;
+		}
+	}
+	if (myState == GameState::chooseGame)
+	{
+		if (sf::Mouse::Left == t_event.mouseButton.button)
+		{
+			gameChoice.buttonClicked = true;
 		}
 	}
 

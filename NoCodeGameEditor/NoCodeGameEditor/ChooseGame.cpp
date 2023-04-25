@@ -2,16 +2,34 @@
 
 ChooseGame::ChooseGame(float t_gameWidth, float t_gameHeight, NetworkManager& t_networkManager) : gameWidth(t_gameWidth), gameHeight(t_gameHeight), m_networkManager(t_networkManager)
 {
-	loadFont();
+	loadFontAndSprites();
 	findFiles();
 	setupButtons();
 }
 
-void ChooseGame::loadFont()
+void ChooseGame::loadFontAndSprites()
 {
 	if (!font.loadFromFile("./ASSETS/FONTS/NewYork.ttf"))
 	{
 		std::cout << "Error loading font..." << std::endl;
+	}
+
+	if (!buildTexture.loadFromFile("ASSETS\\IMAGES\\buttonBuild.png"))
+	{
+		// simple error message if previous call fails
+		std::cout << "problem loading buildTexture (buttonBuild)" << std::endl;
+	}
+
+	if (!uploadTexture.loadFromFile("ASSETS\\IMAGES\\buttonUpDown.png"))
+	{
+		// simple error message if previous call fails
+		std::cout << "problem loading uploadTexture (buttonUpDown)" << std::endl;
+	}
+
+	if (!deleteTexture.loadFromFile("ASSETS\\IMAGES\\buttonDelete.png"))
+	{
+		// simple error message if previous call fails
+		std::cout << "problem loading deleteTexture (buttonDelete)" << std::endl;
 	}
 }
 
@@ -23,7 +41,7 @@ void ChooseGame::findFiles()
 		fileCount = 0;
 		games.clear();
 		nameTexts.clear();
-		initialPos = sf::Vector2f(200, 100);
+		initialPos = sf::Vector2f(200, 300);
 	}
 
 	std::filesystem::path p1{ ".\\ASSETS\\GAMEDATA" };
@@ -58,11 +76,11 @@ void ChooseGame::setupSprites()
 		testRect.setOrigin(testRect.getLocalBounds().width / 2, testRect.getLocalBounds().height / 2);
 		testRect.setPosition(initialPos);
 		count++;
-		if (count > 4)
+		if (count > 7)
 		{
 			count = 0;
 			initialPos.x = 200;
-			initialPos.y += 250;
+			initialPos.y += 350;
 		}
 		else
 		{
@@ -82,7 +100,13 @@ void ChooseGame::setupSprites()
 
 void ChooseGame::setupNames()
 {
+	titleText.setFont(font);
+	titleText.setFillColor(sf::Color::Black);
+	titleText.setCharacterSize(85u);
+	titleText.setString("Choose a Game to Play");
+	//titleText.setOrigin(titleText.getLocalBounds().width / 2, titleText.getLocalBounds().height / 2);
 
+	titleText.setPosition(50,50);
 	for (int i = 0; i < fileCount; i++)
 	{
 		sf::Text tempText;
@@ -104,23 +128,26 @@ void ChooseGame::update(sf::Time t_deltaTime, sf::RenderWindow& t_window)
 
 	loader.update(t_deltaTime);
 
-	if (savedToDB == true && sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-	{
-		savedToDB = false;
-	}
 }
 
 void ChooseGame::render(sf::RenderWindow& t_window)
 {
+	t_window.clear(sf::Color(81, 81, 81, 150));
+	t_window.draw(titleText);
 	if (levelRectsCreated)
 	{
 		for (int i = 0; i < games.size(); i++)
 		{
+			t_window.draw(bgRects.at(i));
 			t_window.draw(games.at(i));
 			t_window.draw(nameTexts.at(i));
 			t_window.draw(buildButtons.at(i));
 			t_window.draw(uploadButtons.at(i));
 			t_window.draw(deleteButtons.at(i));
+			t_window.draw(buildSprites.at(i));
+			t_window.draw(uploadSprites.at(i));
+			t_window.draw(deleteSprites.at(i));
+
 		}
 	}
 	
@@ -137,11 +164,12 @@ void ChooseGame::checkForMousePos()
 		if (containsMouse(games.at(i).getGlobalBounds()))
 		{
 			changeButtons(games.at(i));
-			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+			if (buttonClicked)
 			{
 				std::cout << gameNames.at(i) << std::endl;
 				loader.loadFile(gameNames.at(i));
 				gameChosen = true;
+				buttonClicked = false;
 			}
 			else
 			{
@@ -157,12 +185,13 @@ void ChooseGame::checkForMousePos()
 		{
 			changeButtons(buildButtons.at(i));
 
-			if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && gameBuilt == false)
+			if (buttonClicked && gameBuilt == false)
 			{
 				/*gameBuilt = true;
 				chosenGame = gameNames.at(i);
 				loader.loadFile(gameNames.at(i));
 				gameChosen = true;*/
+				buttonClicked = false;
 			}
 		}
 		else
@@ -174,9 +203,9 @@ void ChooseGame::checkForMousePos()
 		{
 			changeButtons(uploadButtons.at(i));
 
-			if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && savedToDB == false)
+			if (buttonClicked)
 			{
-				savedToDB = true;
+				buttonClicked = false;
 				m_networkManager.writeGameDataToDB(gameNames.at(i));
 			}
 		}
@@ -190,9 +219,10 @@ void ChooseGame::checkForMousePos()
 		{
 			changeButtons(deleteButtons.at(i));
 
-			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+			if (buttonClicked)
 			{
-
+				deleteFile(gameNames.at(i));
+				buttonClicked = false;
 			}
 		}
 		else
@@ -200,7 +230,7 @@ void ChooseGame::checkForMousePos()
 			resetButtons(deleteButtons.at(i));
 		}
 	}
-	
+	buttonClicked = false;
 }
 
 void ChooseGame::resetButtons(sf::RectangleShape& t_rect)
@@ -240,6 +270,59 @@ void ChooseGame::setupButtons()
 		tempRect3.setOrigin(tempRect3.getLocalBounds().width / 2, tempRect3.getLocalBounds().height / 2);
 		tempRect3.setPosition(games.at(i).getPosition().x + offset, games.at(i).getPosition().y + games.at(i).getLocalBounds().height / 2 + tempRect3.getLocalBounds().height / 2);
 		deleteButtons.push_back(tempRect3);
+
+
+		sf::RectangleShape tempRect4;
+		tempRect4.setFillColor(sf::Color(120, 120, 120, 175));
+		tempRect4.setSize(sf::Vector2f(350, 250));
+		tempRect4.setOrigin(tempRect4.getLocalBounds().width / 2, tempRect4.getLocalBounds().height / 2);
+		tempRect4.setPosition(games.at(i).getPosition().x , games.at(i).getPosition().y + games.at(i).getGlobalBounds().height / 2);
+		bgRects.push_back(tempRect4);
+	}
+
+	for (int i = 0; i < games.size(); i++)
+	{
+		sf::Sprite tempSprite;
+		tempSprite.setTexture(buildTexture);
+		tempSprite.setOrigin(tempSprite.getGlobalBounds().width / 2, tempSprite.getGlobalBounds().height / 2);
+		tempSprite.setPosition(buildButtons.at(i).getPosition());
+		buildSprites.push_back(tempSprite);
+
+		sf::Sprite tempSprite2;
+		tempSprite2.setTexture(uploadTexture);
+		tempSprite2.setOrigin(tempSprite2.getGlobalBounds().width / 2, tempSprite2.getGlobalBounds().height / 2);
+		tempSprite2.setPosition(uploadButtons.at(i).getPosition());
+		uploadSprites.push_back(tempSprite2);
+
+		sf::Sprite tempSprite3;
+		tempSprite3.setTexture(deleteTexture);
+		tempSprite3.setOrigin(tempSprite3.getGlobalBounds().width / 2, tempSprite3.getGlobalBounds().height / 2);
+		tempSprite3.setPosition(deleteButtons.at(i).getPosition());
+		deleteSprites.push_back(tempSprite3);
+	}
+
+}
+
+void ChooseGame::deleteFile(std::string t_filename)
+{
+
+	std::filesystem::path directoryPath(".\\ASSETS\\GAMEDATA\\");
+	std::filesystem::path filePath = directoryPath / (t_filename + ".csv");
+
+	//std::filesystem::path filePath(".\\NoCodeGameEditor\\ASSETS\\GAMEDATA\\" + t_filename + ".csv");
+
+	// Check if the file exists
+	if (std::filesystem::exists(filePath))
+	{
+		// Delete the file
+		std::filesystem::remove(filePath);
+		std::cout << "File " << t_filename << " deleted successfully." << std::endl;
+		findFiles();
+		
+	}
+	else
+	{
+		std::cout << "File " << t_filename << " does not exist." << std::endl;
 	}
 }
 

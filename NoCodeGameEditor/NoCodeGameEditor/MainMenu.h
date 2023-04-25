@@ -19,7 +19,7 @@ public:
 	void update(GameState& t_gameState, sf::RenderWindow& t_window);
 	void render(sf::RenderWindow& t_window);
 
-
+	bool buttonClicked = false;
 private:
 
 	void setupButtonText(int t_yPos); // setups font colour all that stuff for the button text

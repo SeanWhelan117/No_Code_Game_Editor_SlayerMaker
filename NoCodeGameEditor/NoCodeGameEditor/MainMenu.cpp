@@ -110,9 +110,10 @@ void MainMenu::mouseButtonCollision(sf::Vector2i t_mousePos, GameState& t_gameSt
 		if (boundingBox.contains(static_cast<sf::Vector2f>(t_mousePos)))
 		{
 			changeButtons(i);
-			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+			if (buttonClicked)
 			{
 				changeGameState(i, t_gameState);
+				buttonClicked = false;
 			}
 		}
 		else
@@ -121,6 +122,8 @@ void MainMenu::mouseButtonCollision(sf::Vector2i t_mousePos, GameState& t_gameSt
 		}
 
 	}
+	buttonClicked = false;
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

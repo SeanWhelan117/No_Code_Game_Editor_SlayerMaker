@@ -80,3 +80,101 @@ std::vector<std::string> NetworkManager::split_string(const std::string& str, ch
     }
     return tokens;
 }
+
+void NetworkManager::exportDBToCSV()
+{
+    // Open DB
+    // Open DB
+    // Open DB
+
+    sqlite3* db;
+    int rc = sqlite3_open("GameData.db", &db);
+    if (rc != SQLITE_OK) 
+    {
+        std::cerr << "Error opening database: " << sqlite3_errmsg(db) << std::endl;
+        sqlite3_close(db);
+        return;
+    }
+
+    // Table List
+    // Table List
+    // Table List
+
+    std::vector<std::string> tables;
+    sqlite3_stmt* stmt;
+    rc = sqlite3_prepare_v2(db, "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name;", -1, &stmt, nullptr);
+    if (rc != SQLITE_OK) 
+    {
+        std::cerr << "Error preparing statement: " << sqlite3_errmsg(db) << std::endl;
+        sqlite3_close(db);
+        return;
+    }
+    while (sqlite3_step(stmt) == SQLITE_ROW) 
+    {
+        tables.push_back(std::string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0))));
+    }
+    sqlite3_finalize(stmt);
+
+    // Export to CSV
+    // Export to CSV
+    // Export to CSV
+
+    for (const auto& table : tables) 
+    {
+        std::ofstream outfile(".\\ASSETS\\GAMEDATA\\" + table + ".csv");
+
+        if (!outfile.is_open()) 
+        {
+            std::cerr << "Error opening file: " << table << ".csv" << std::endl;
+            sqlite3_close(db);
+            return;
+        }
+
+        // Column headers
+        std::string header_sql = "PRAGMA table_info(" + table + ");";
+        rc = sqlite3_prepare_v2(db, header_sql.c_str(), -1, &stmt, nullptr);
+        if (rc != SQLITE_OK) 
+        {
+            std::cerr << "Error preparing statement: " << sqlite3_errmsg(db) << std::endl;
+            sqlite3_close(db);
+            return;
+        }
+
+        std::string headers;
+        while (sqlite3_step(stmt) == SQLITE_ROW) 
+        {
+            headers += std::string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1))) + ",";
+        }
+        headers.pop_back();
+        outfile << headers << std::endl;
+        sqlite3_finalize(stmt);
+
+        // Data rows
+        std::string select_sql = "SELECT * FROM " + table + ";";
+        rc = sqlite3_prepare_v2(db, select_sql.c_str(), -1, &stmt, nullptr);
+        if (rc != SQLITE_OK) 
+        {
+            std::cerr << "Error preparing statement: " << sqlite3_errmsg(db) << std::endl;
+            sqlite3_close(db);
+            return;
+        }
+        while (sqlite3_step(stmt) == SQLITE_ROW) 
+        {
+            for (int i = 0; i < sqlite3_column_count(stmt); i++) 
+            {
+                outfile << std::string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, i))) << ",";
+            }
+            outfile.seekp(-1, std::ios_base::cur);
+            outfile << std::endl;
+        }
+        sqlite3_finalize(stmt);
+
+        std::cout << "Data exported from table " << table << std::endl;
+    }
+
+    // Close DB
+    // Close DB
+    // Close DB
+
+    sqlite3_close(db);
+}

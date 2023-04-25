@@ -13,6 +13,7 @@ public:
 
 	void writeGameDataToDB(std::string t_filename);
 	std::vector<std::string> split_string(const std::string& str, char delimiter);
+	void exportDBToCSV();
 private:
 };
 

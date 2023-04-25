@@ -80,6 +80,9 @@ private:
 	std::vector <sf::Sprite> uploadSprites;
 	std::vector <sf::Sprite> deleteSprites;
 
+	sf::RectangleShape downloadButton;
+	float offset;
+	sf::Vector2f buttonSize;
 
 };
 

@@ -4,7 +4,6 @@ ChooseGame::ChooseGame(float t_gameWidth, float t_gameHeight, NetworkManager& t_
 {
 	loadFontAndSprites();
 	findFiles();
-	setupButtons();
 }
 
 void ChooseGame::loadFontAndSprites()
@@ -41,6 +40,13 @@ void ChooseGame::findFiles()
 		fileCount = 0;
 		games.clear();
 		nameTexts.clear();
+		buildButtons.clear();
+		uploadButtons.clear();
+		deleteButtons.clear();
+		buildSprites.clear();
+		uploadSprites.clear();
+		deleteSprites.clear();
+		bgRects.clear();
 		initialPos = sf::Vector2f(200, 300);
 	}
 
@@ -63,6 +69,7 @@ void ChooseGame::findFiles()
 	std::cout << "# of files in " << p1 << ": " << fileCount << '\n';
 
 	setupSprites();
+	setupButtons();
 }
 
 void ChooseGame::setupSprites()
@@ -134,6 +141,7 @@ void ChooseGame::render(sf::RenderWindow& t_window)
 {
 	t_window.clear(sf::Color(81, 81, 81, 150));
 	t_window.draw(titleText);
+	t_window.draw(downloadButton);
 	if (levelRectsCreated)
 	{
 		for (int i = 0; i < games.size(); i++)
@@ -230,6 +238,21 @@ void ChooseGame::checkForMousePos()
 			resetButtons(deleteButtons.at(i));
 		}
 	}
+
+	if (containsMouse(downloadButton.getGlobalBounds()))
+	{
+		changeButtons(downloadButton);
+		if (buttonClicked)
+		{
+			m_networkManager.exportDBToCSV();
+			buttonClicked = false;
+			findFiles();
+		}
+	}
+	else
+	{
+		resetButtons(downloadButton);
+	}
 	buttonClicked = false;
 }
 
@@ -245,8 +268,12 @@ void ChooseGame::changeButtons(sf::RectangleShape& t_rect)
 
 void ChooseGame::setupButtons()
 {
-	float offset = games.at(0).getLocalBounds().width / 3;
-	sf::Vector2f buttonSize = sf::Vector2f(games.at(0).getLocalBounds().width / 3, 75);
+	if (games.size() > 0)
+	{
+		offset = games.at(0).getLocalBounds().width / 3;
+		buttonSize = sf::Vector2f(games.at(0).getLocalBounds().width / 3, 75);
+	}
+	
 
 	for (int i = 0; i < games.size(); i++)
 	{
@@ -301,6 +328,12 @@ void ChooseGame::setupButtons()
 		deleteSprites.push_back(tempSprite3);
 	}
 
+	
+	downloadButton.setFillColor(sf::Color::Blue);
+	downloadButton.setSize(sf::Vector2f(300,100));
+	downloadButton.setScale(1, 1);
+	downloadButton.setOrigin(downloadButton.getLocalBounds().width / 2, downloadButton.getLocalBounds().height / 2);
+	downloadButton.setPosition(gameWidth - 200, 100);
 }
 
 void ChooseGame::deleteFile(std::string t_filename)

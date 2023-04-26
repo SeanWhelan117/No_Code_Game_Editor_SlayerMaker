@@ -55,6 +55,7 @@
     <ClCompile Include="PUPInvincibility.cpp" />
     <ClCompile Include="PUPInvisibility.cpp" />
     <ClCompile Include="PUPNuke.cpp" />
+    <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="ToolBar.cpp" />
     <ClCompile Include="Wall.cpp" />
@@ -97,6 +98,7 @@
     <ClInclude Include="PUPInvincibility.h" />
     <ClInclude Include="PUPInvisibility.h" />
     <ClInclude Include="PUPNuke.h" />
+    <ClInclude Include="SoundManager.h" />
     <ClInclude Include="sqlite3\sqlite3.h" />
     <ClInclude Include="sqlite3\sqlite3ext.h" />
     <ClInclude Include="TextureManager.h" />

@@ -8,6 +8,7 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 #include <SFML/Audio.hpp>
+
 class SoundManager
 {
 public:
@@ -18,6 +19,8 @@ public:
     }
 
     void loadSound(const std::string& t_soundName, const std::string& t_soundFile);
+
+    void playSound(const std::string& t_soundName);
 
 
 private:

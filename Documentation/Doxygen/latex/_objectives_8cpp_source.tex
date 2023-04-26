@@ -1,0 +1,100 @@
+\doxysection{Objectives.\+cpp}
+\label{_objectives_8cpp_source}\index{NoCodeGameEditor/Objectives.cpp@{NoCodeGameEditor/Objectives.cpp}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}Objectives.h"{}}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ Objectives::Objectives(TextureManager\&\ textureManager)\ :\ m\_textureManager(textureManager)}
+\DoxyCodeLine{00004\ \{}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keywordtype}{void}\ Objectives::update(sf::Time\ t\_deltaTime,\ sf::RenderWindow\&\ t\_window,\ sf::FloatRect\ t\_playerRect,\ \textcolor{keywordtype}{int}\ t\_coinsCollected,\ \textcolor{keywordtype}{int}\ t\_maxCoins,\ \textcolor{keywordtype}{bool}\ t\_invisibilityActive)}
+\DoxyCodeLine{00009\ \{}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ "{}t\_coinsCollected\ =\ "{}\ <<\ t\_coinsCollected\ <<\ "{}\ t\_maxCoins\ =\ "{}\ <<\ t\_maxCoins\ <<\ std::endl;}}
+\DoxyCodeLine{00012\ \ \ \ \ playerCollision(t\_playerRect);}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordflow}{if}\ (t\_coinsCollected\ >=\ t\_maxCoins\ \&\&\ allCoinsCollected\ ==\ \textcolor{keyword}{false}\ \&\&\ t\_coinsCollected\ !=\ 0)}
+\DoxyCodeLine{00014\ \ \ \ \ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ allCoinsCollected\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ doorVector.size();\ i++)}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ doorVector.at(i).get()-\/>doorOpened();}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00020\ \ \ \ \ \}}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordflow}{if}\ (monumentVector.size()\ !=\ 0)}
+\DoxyCodeLine{00022\ \ \ \ \ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ monumentVector.at(0).get()-\/>update(t\_invisibilityActive);}
+\DoxyCodeLine{00024\ \ \ \ \ \}}
+\DoxyCodeLine{00025\ \}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keywordtype}{void}\ Objectives::render(sf::RenderWindow\&\ t\_window)}
+\DoxyCodeLine{00028\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ coinVector.size();\ i++)}
+\DoxyCodeLine{00030\ \ \ \ \ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ coinVector.at(i).get()-\/>render(t\_window);}
+\DoxyCodeLine{00032\ \ \ \ \ \}}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ doorVector.size();\ i++)}
+\DoxyCodeLine{00034\ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ doorVector.at(i).get()-\/>render(t\_window);}
+\DoxyCodeLine{00036\ \ \ \ \ \}}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ monumentVector.size();\ i++)}
+\DoxyCodeLine{00038\ \ \ \ \ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ monumentVector.at(i).get()-\/>render(t\_window);}
+\DoxyCodeLine{00040\ \ \ \ \ \}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{keywordtype}{void}\ Objectives::addToVector(sf::Vector2f\ t\_objectivePosition,\ \textcolor{keywordtype}{int}\ t\_objectiveType)}
+\DoxyCodeLine{00046\ \{}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordflow}{if}\ (t\_objectiveType\ ==\ 0)}
+\DoxyCodeLine{00049\ \ \ \ \ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ Coin\ tempCoin(t\_objectivePosition,\ m\_textureManager);}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ coinVector.emplace\_back(\textcolor{keyword}{new}\ Coin(tempCoin));}
+\DoxyCodeLine{00052\ \ \ \ \ \}}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (t\_objectiveType\ ==\ 1)}
+\DoxyCodeLine{00054\ \ \ \ \ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ Door\ tempDoor(t\_objectivePosition,\ m\_textureManager);}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ doorVector.emplace\_back(\textcolor{keyword}{new}\ Door(tempDoor));}
+\DoxyCodeLine{00057\ \ \ \ \ \}}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (t\_objectiveType\ ==\ 2)}
+\DoxyCodeLine{00059\ \ \ \ \ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ Monument\ tempMonument(t\_objectivePosition,\ m\_textureManager);}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ monumentVector.emplace\_back(\textcolor{keyword}{new}\ Monument(tempMonument));}
+\DoxyCodeLine{00062\ \ \ \ \ \}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \}}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \textcolor{keywordtype}{bool}\ Objectives::isColliding(sf::FloatRect\ t\_obj1,\ sf::FloatRect\ t\_obj2)}
+\DoxyCodeLine{00067\ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordflow}{return}\ t\_obj1.intersects(t\_obj2);}
+\DoxyCodeLine{00069\ \}}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \textcolor{keywordtype}{void}\ Objectives::playerCollision(sf::FloatRect\ t\_playerRect)}
+\DoxyCodeLine{00072\ \{}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ coinVector.size();\ i++)}
+\DoxyCodeLine{00074\ \ \ \ \ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (coinVector.at(i).get()-\/>getCoin().getGlobalBounds().intersects(t\_playerRect))}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::unique\_ptr<Coin>>::iterator\ begin\ =\ coinVector.begin();}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ begin\ +=\ i;}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ coinVector.erase(begin);}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00081\ \ \ \ \ \}}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ doorVector.size();\ i++)}
+\DoxyCodeLine{00084\ \ \ \ \ \{}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (doorVector.at(i).get()-\/>doorAccesible\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isColliding(doorVector.at(i).get()-\/>getDoor().getGlobalBounds(),\ t\_playerRect))}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}GameOver"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gameOver\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00093\ \ \ \ \ \}}
+\DoxyCodeLine{00094\ \}}
+
+\end{DoxyCode}

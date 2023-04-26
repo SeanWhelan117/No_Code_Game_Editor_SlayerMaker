@@ -1,0 +1,4 @@
+<map id="Wall" name="Wall">
+<area shape="rect" id="node1" title=" " alt="" coords="5,160,149,428"/>
+<area shape="rect" id="node2" href="$class_texture_manager.html" title=" " alt="" coords="10,5,145,97"/>
+</map>

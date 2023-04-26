@@ -1,0 +1,4 @@
+<map id="Background::loadFiles" name="Background::loadFiles">
+<area shape="rect" id="node1" title="loads the background PNGs and assigns them to textures" alt="" coords="221,5,372,31"/>
+<area shape="rect" id="node2" href="$class_background.html#a3b9960eaa2afa2f962ece406e595c4dd" title="Background Constructor. calls loadFiles Takes in gameWidth and Height as parameters." alt="" coords="5,5,173,31"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="ChoiceBar::checkForMousePosAndClick" name="ChoiceBar::checkForMousePosAndClick">
+<area shape="rect" id="node1" title="calls process mouseclick for whichever mode the user is currently in. Passes the sprites they could h..." alt="" coords="5,23,188,63"/>
+<area shape="rect" id="node2" href="$class_choice_bar.html#a9708542491784dfe961959b5d9a82099" title="If the object contains the mouse, increase scale, else decrease scale If the mouse left is pressed se..." alt="" coords="236,31,440,56"/>
+<area shape="rect" id="node3" href="$class_choice_bar.html#a31c3707eb359f5105f89eafd221a4bbe" title="increases ui elements scale" alt="" coords="488,5,651,31"/>
+<area shape="rect" id="node4" href="$class_choice_bar.html#ac8ff67db6d79012b4bdc6464b5b55bc3" title="resets the ui elements to original scale" alt="" coords="494,55,645,80"/>
+</map>

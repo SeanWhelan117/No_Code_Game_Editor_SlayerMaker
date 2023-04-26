@@ -1,0 +1,717 @@
+\doxysection{Player Class Reference}
+\label{class_player}\index{Player@{Player}}
+
+
+{\ttfamily \#include $<$Player.\+h$>$}
+
+
+
+Collaboration diagram for Player\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{class_player__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Player} (float t\+\_\+game\+Width, float t\+\_\+game\+Height, \textbf{ Animator} \&t\+\_\+animator)
+\item 
+void \textbf{ load\+Files} ()
+\item 
+void \textbf{ setup\+Player} ()
+\item 
+void \textbf{ update} (sf\+::\+Render\+Window \&t\+\_\+window, bool t\+\_\+invincibility\+Active, bool t\+\_\+invisibility\+Active, std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \textbf{ Wall} $>$ $>$ \&t\+\_\+walls)
+\item 
+void \textbf{ render} (sf\+::\+Render\+Window \&t\+\_\+window)
+\item 
+sf\+::\+Sprite \textbf{ get\+Player} ()
+\item 
+void \textbf{ rotate\+Player\+View} ()
+\item 
+void \textbf{ remove\+Bullet} (int t\+\_\+bullet\+Num)
+\item 
+void \textbf{ handle\+Collisions} (std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \textbf{ Wall} $>$ $>$ \&walls)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \textbf{ Bullet} $>$ $>$ \textbf{ bullet\+Vector}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ player\+Movement} ()
+\item 
+void \textbf{ move} (float t\+\_\+x, float t\+\_\+y)
+\item 
+void \textbf{ shoot} (sf\+::\+Render\+Window \&t\+\_\+window)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Animator} \textbf{ m\+\_\+animator}
+\item 
+sf\+::\+Vector2f \textbf{ game\+Size}
+\item 
+int \textbf{ speed} = 5
+\item 
+int \textbf{ speedX} = 0
+\item 
+int \textbf{ speedY} = 0
+\item 
+sf\+::\+Vector2f \textbf{ position} = sf\+::\+Vector2f(0, 0)
+\item 
+sf\+::\+Vector2f \textbf{ mouse\+Pos}
+\item 
+const double \textbf{ PI} = 3.\+141592654
+\item 
+sf\+::\+Clock \textbf{ colour\+Change\+Timer}
+\item 
+sf\+::\+Sprite \textbf{ player\+Sprite}
+\item 
+sf\+::\+Texture \textbf{ player\+Idle\+Texture}
+\item 
+sf\+::\+Texture \textbf{ player\+Walking\+Texture}
+\item 
+sf\+::\+Int\+Rect \textbf{ texture\+Rect}
+\item 
+sf\+::\+Color \textbf{ og\+Color}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Sean Whelan 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022/23 @license Attribution-\/\+Non\+Commercial 4.\+0 International 
+\end{DoxyDate}
+
+
+Definition at line \textbf{ 15} of file \textbf{ Player.\+h}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\label{class_player_a2067108ee970bb6c4d6a39960c971f41}} 
+\index{Player@{Player}!Player@{Player}}
+\index{Player@{Player}!Player@{Player}}
+\doxysubsubsection{Player()}
+{\footnotesize\ttfamily Player\+::\+Player (\begin{DoxyParamCaption}\item[{float}]{t\+\_\+game\+Width,  }\item[{float}]{t\+\_\+game\+Height,  }\item[{\textbf{ Animator} \&}]{t\+\_\+animator }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 2} of file \textbf{ Player.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00002\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \ m\_animator(t\_animator) }
+\DoxyCodeLine{00003\ \{}
+\DoxyCodeLine{00004\ \ \ \ \ gameSize.x\ =\ t\_gameWidth;}
+\DoxyCodeLine{00005\ \ \ \ \ gameSize.y\ =\ t\_gameHeight;}
+\DoxyCodeLine{00006\ \ \ \ \ loadFiles();}
+\DoxyCodeLine{00007\ \ \ \ \ setupPlayer();}
+\DoxyCodeLine{00008\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=296pt]{class_player_a2067108ee970bb6c4d6a39960c971f41_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{class_player_a616b6524096fbcf47573a5a5823ca6ab}} 
+\index{Player@{Player}!getPlayer@{getPlayer}}
+\index{getPlayer@{getPlayer}!Player@{Player}}
+\doxysubsubsection{getPlayer()}
+{\footnotesize\ttfamily sf\+::\+Sprite Player\+::get\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 145} of file \textbf{ Player.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00146\ \{}
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{keywordflow}{return}\ playerSprite;}
+\DoxyCodeLine{00148\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_player_a616b6524096fbcf47573a5a5823ca6ab_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_player_a2baba1d2deb4d3250682e309fed9fe0a}} 
+\index{Player@{Player}!handleCollisions@{handleCollisions}}
+\index{handleCollisions@{handleCollisions}!Player@{Player}}
+\doxysubsubsection{handleCollisions()}
+{\footnotesize\ttfamily void Player\+::handle\+Collisions (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \textbf{ Wall} $>$ $>$ \&}]{walls }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 179} of file \textbf{ Player.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00180\ \{}
+\DoxyCodeLine{00181\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ wall\ :\ t\_walls)}
+\DoxyCodeLine{00182\ \ \ \ \ \{}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (playerSprite.getGlobalBounds().intersects(wall-\/>getWall().getGlobalBounds()))}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Determine\ the\ direction\ of\ the\ collision}}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ playerLeft\ =\ playerSprite.getPosition().x;}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ playerRight\ =\ playerSprite.getPosition().x\ +\ playerSprite.getGlobalBounds().width;\ \textcolor{comment}{//\ *******************\ need\ to\ account\ for\ origin\ *****************}}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ playerTop\ =\ playerSprite.getPosition().y;}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ playerBottom\ =\ playerSprite.getPosition().y\ +\ playerSprite.getGlobalBounds().height;}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ wallLeft\ =\ wall-\/>getWall().getPosition().x;}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ wallRight\ =\ wall-\/>getWall().getPosition().x\ +\ wall-\/>getWall().getGlobalBounds().width;}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ wallTop\ =\ wall-\/>getWall().getPosition().y;}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ wallBottom\ =\ wall-\/>getWall().getPosition().y\ +\ wall-\/>getWall().getGlobalBounds().height;}
+\DoxyCodeLine{00194\ }
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ xOverlap\ =\ std::min(playerRight,\ wallRight)\ -\/\ std::max(playerLeft,\ wallLeft);}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ yOverlap\ =\ std::min(playerBottom,\ wallBottom)\ -\/\ std::max(playerTop,\ wallTop);}
+\DoxyCodeLine{00197\ }
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::abs(xOverlap)\ <\ std::abs(yOverlap))}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ horizontal\ -\/-\/\ x}}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (playerLeft\ <\ wallLeft)}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ playerSprite.setPosition(wallLeft\ -\/\ playerSprite.getGlobalBounds().width,\ playerSprite.getPosition().y);}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ playerSprite.setPosition(wallRight,\ playerSprite.getPosition().y);}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//vertical\ -\/-\/\ y}}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (playerTop\ <\ wallTop)}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ playerSprite.setPosition(playerSprite.getPosition().x,\ wallTop\ -\/\ playerSprite.getGlobalBounds().height);}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ playerSprite.setPosition(playerSprite.getPosition().x,\ wallBottom);}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00223\ \ \ \ \ \}}
+\DoxyCodeLine{00224\ \}}
+
+\end{DoxyCode}
+\mbox{\label{class_player_a7bfb29d97b31f61810cadfcc9e60cdad}} 
+\index{Player@{Player}!loadFiles@{loadFiles}}
+\index{loadFiles@{loadFiles}!Player@{Player}}
+\doxysubsubsection{loadFiles()}
+{\footnotesize\ttfamily void Player\+::load\+Files (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 10} of file \textbf{ Player.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordflow}{if}\ (!playerIdleTexture.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)PLAYER\(\backslash\)\(\backslash\)PlayerIdle.png"{}}))}
+\DoxyCodeLine{00013\ \ \ \ \ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ playerIdleTexture\ (PlayerIdle)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00016\ \ \ \ \ \}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordflow}{if}\ (!playerWalkingTexture.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)PLAYER\(\backslash\)\(\backslash\)PlayerWalking.png"{}}))}
+\DoxyCodeLine{00019\ \ \ \ \ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ playerWalkingTexture\ (PlayerWalking)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00022\ \ \ \ \ \}}
+\DoxyCodeLine{00023\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=283pt]{class_player_a7bfb29d97b31f61810cadfcc9e60cdad_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_player_ad909f7adbac65b244ebc117706661003}} 
+\index{Player@{Player}!move@{move}}
+\index{move@{move}!Player@{Player}}
+\doxysubsubsection{move()}
+{\footnotesize\ttfamily void Player\+::move (\begin{DoxyParamCaption}\item[{float}]{t\+\_\+x,  }\item[{float}]{t\+\_\+y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 132} of file \textbf{ Player.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00133\ \{}
+\DoxyCodeLine{00134\ \ \ \ \ position\ =\ playerSprite.getPosition();}
+\DoxyCodeLine{00135\ \ \ \ \ position.x\ +=\ t\_x;}
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{comment}{//updateAABB();}}
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{comment}{//checkCollisions();\ //\ collect\ info\ of\ all\ tiles\ player\ intersects\ with}}
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{comment}{//resolveXCollisions();}}
+\DoxyCodeLine{00139\ \ \ \ \ position.y\ +=\ t\_y;}
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{comment}{//updateAABB();}}
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{comment}{//checkCollisions();}}
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{comment}{//resolveYCollisions();}}
+\DoxyCodeLine{00143\ \}}
+
+\end{DoxyCode}
+\mbox{\label{class_player_ae9b3c488f1c06a7652086e5372e2c12d}} 
+\index{Player@{Player}!playerMovement@{playerMovement}}
+\index{playerMovement@{playerMovement}!Player@{Player}}
+\doxysubsubsection{playerMovement()}
+{\footnotesize\ttfamily void Player\+::player\+Movement (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 99} of file \textbf{ Player.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00100\ \{}
+\DoxyCodeLine{00101\ \ \ \ \ sf::Vector2f\ currentPos\ =\ playerSprite.getPosition();}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Keyboard::isKeyPressed(sf::Keyboard::W))}
+\DoxyCodeLine{00104\ \ \ \ \ \{}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \textcolor{comment}{//speedY\ -\/=\ speed;}}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ currentPos.y\ -\/=\ speed;}
+\DoxyCodeLine{00107\ \ \ \ \ \}}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Keyboard::isKeyPressed(sf::Keyboard::S))}
+\DoxyCodeLine{00110\ \ \ \ \ \{}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \textcolor{comment}{//speedY\ +=\ speed;}}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ currentPos.y\ +=\ speed;}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \ \ \ \ \}}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Keyboard::isKeyPressed(sf::Keyboard::A))}
+\DoxyCodeLine{00117\ \ \ \ \ \{}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \textcolor{comment}{//speedX\ -\/=\ speed;}}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ currentPos.x\ -\/=\ speed;}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \ \ \ \ \}}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Keyboard::isKeyPressed(sf::Keyboard::D))}
+\DoxyCodeLine{00124\ \ \ \ \ \{}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \textcolor{comment}{//speedX\ +=\ speed;}}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ currentPos.x\ +=\ speed;}
+\DoxyCodeLine{00127\ \ \ \ \ \}}
+\DoxyCodeLine{00128\ \ \ \ \ }
+\DoxyCodeLine{00129\ \ \ \ \ playerSprite.setPosition(currentPos);}
+\DoxyCodeLine{00130\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_player_ae9b3c488f1c06a7652086e5372e2c12d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_player_a26dccc7793be835f90ed3d64004d2ffe}} 
+\index{Player@{Player}!removeBullet@{removeBullet}}
+\index{removeBullet@{removeBullet}!Player@{Player}}
+\doxysubsubsection{removeBullet()}
+{\footnotesize\ttfamily void Player\+::remove\+Bullet (\begin{DoxyParamCaption}\item[{int}]{t\+\_\+bullet\+Num }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 168} of file \textbf{ Player.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00169\ \{}
+\DoxyCodeLine{00170\ \ \ \ \ std::vector<std::unique\_ptr<Bullet>>::iterator\ begin\ =\ bulletVector.begin();}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ t\_bulletNum\ ;\ i++)}
+\DoxyCodeLine{00173\ \ \ \ \ \{}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ begin++;}
+\DoxyCodeLine{00175\ \ \ \ \ \}}
+\DoxyCodeLine{00176\ \ \ \ \ bulletVector.erase(begin);}
+\DoxyCodeLine{00177\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_player_a26dccc7793be835f90ed3d64004d2ffe_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_player_ae6d0399dff39e9411c4c2b9f62b21c2b}} 
+\index{Player@{Player}!render@{render}}
+\index{render@{render}!Player@{Player}}
+\doxysubsubsection{render()}
+{\footnotesize\ttfamily void Player\+::render (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{t\+\_\+window }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 89} of file \textbf{ Player.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00090\ \{}
+\DoxyCodeLine{00091\ \ \ \ \ t\_window.draw(playerSprite);}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ bulletVector.size();\ i++)}
+\DoxyCodeLine{00094\ \ \ \ \ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ t\_window.draw(bulletVector.at(i).get()-\/>getBullet());}
+\DoxyCodeLine{00096\ \ \ \ \ \}}
+\DoxyCodeLine{00097\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_player_ae6d0399dff39e9411c4c2b9f62b21c2b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_player_a4a40dccda1d0f6082ad02335a2fbb56a}} 
+\index{Player@{Player}!rotatePlayerView@{rotatePlayerView}}
+\index{rotatePlayerView@{rotatePlayerView}!Player@{Player}}
+\doxysubsubsection{rotatePlayerView()}
+{\footnotesize\ttfamily void Player\+::rotate\+Player\+View (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 150} of file \textbf{ Player.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00151\ \{}
+\DoxyCodeLine{00152\ \ \ \ \ sf::Vector2f\ playerPos\ =\ playerSprite.getPosition();}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{keywordtype}{float}\ dx\ =\ playerPos.x\ -\/\ mousePos.x;}
+\DoxyCodeLine{00155\ \ \ \ \ \textcolor{keywordtype}{float}\ dy\ =\ playerPos.y\ -\/\ mousePos.y;}
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{keywordtype}{double}\ mouseAngle\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(-\/atan2(dx,\ dy))\ *\ 180.0f\ /\ PI;\ \textcolor{comment}{//finding\ the\ angle\ that\ the\ mouse\ is\ at\ vs\ the\ players\ location}}
+\DoxyCodeLine{00157\ \ \ \ \ playerSprite.setRotation(mouseAngle);}
+\DoxyCodeLine{00158\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_player_a4a40dccda1d0f6082ad02335a2fbb56a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_player_a02aad8d7d95e86347cf59cd6d7f581e9}} 
+\index{Player@{Player}!setupPlayer@{setupPlayer}}
+\index{setupPlayer@{setupPlayer}!Player@{Player}}
+\doxysubsubsection{setupPlayer()}
+{\footnotesize\ttfamily void Player\+::setup\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 25} of file \textbf{ Player.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00026\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ playerSprite.setTexture(playerIdleTexture);}
+\DoxyCodeLine{00028\ \ \ \ \ playerSprite.setOrigin(playerSprite.getGlobalBounds().width\ /\ 2,\ playerSprite.getGlobalBounds().height\ /\ 2);}
+\DoxyCodeLine{00029\ \ \ \ \ playerSprite.setPosition(gameSize.x\ /\ 2,\ gameSize.y\ /\ 2);}
+\DoxyCodeLine{00030\ \ \ \ \ ogColor\ =\ playerSprite.getColor();}
+\DoxyCodeLine{00031\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=296pt]{class_player_a02aad8d7d95e86347cf59cd6d7f581e9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_player_abb1b50f95302e0e9186df7133a7d4ddb}} 
+\index{Player@{Player}!shoot@{shoot}}
+\index{shoot@{shoot}!Player@{Player}}
+\doxysubsubsection{shoot()}
+{\footnotesize\ttfamily void Player\+::shoot (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{t\+\_\+window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 160} of file \textbf{ Player.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00161\ \{}
+\DoxyCodeLine{00162\ \ \ \ \ Bullet\ tempBullet\{t\_window,\ playerSprite.getPosition()\};}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ \ \ \ \ bulletVector.emplace\_back(\textcolor{keyword}{new}\ Bullet(tempBullet));}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00166\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_player_abb1b50f95302e0e9186df7133a7d4ddb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_player_aad7203a4546d3006fc61ac23371804ea}} 
+\index{Player@{Player}!update@{update}}
+\index{update@{update}!Player@{Player}}
+\doxysubsubsection{update()}
+{\footnotesize\ttfamily void Player\+::update (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{t\+\_\+window,  }\item[{bool}]{t\+\_\+invincibility\+Active,  }\item[{bool}]{t\+\_\+invisibility\+Active,  }\item[{std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \textbf{ Wall} $>$ $>$ \&}]{t\+\_\+walls }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 33} of file \textbf{ Player.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00034\ \{}
+\DoxyCodeLine{00035\ \ \ \ \ mousePos\ =\ t\_window.mapPixelToCoords(sf::Mouse::getPosition(t\_window));}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ playerMovement();}
+\DoxyCodeLine{00038\ \ \ \ \ rotatePlayerView();}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{comment}{//handleCollisions(t\_walls);}}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Mouse::isButtonPressed(sf::Mouse::Left))}
+\DoxyCodeLine{00041\ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ shoot(t\_window);}
+\DoxyCodeLine{00043\ \ \ \ \ \}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordflow}{if}\ (bulletVector.size()\ >\ 0)}
+\DoxyCodeLine{00046\ \ \ \ \ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ bulletVector.size();\ i++)}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ bulletVector.at(i).get()-\/>update();}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (bulletVector.at(i).get()-\/>getBullet().getPosition().x\ >\ gameSize.x\ ||}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bulletVector.at(i).get()-\/>getBullet().getPosition().x\ <\ 0\ ||}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bulletVector.at(i).get()-\/>getBullet().getPosition().y\ >\ gameSize.y\ ||}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bulletVector.at(i).get()-\/>getBullet().getPosition().y\ <\ 0)}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ removeBullet(i);}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00059\ \ \ \ \ \}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordflow}{if}\ (t\_invincibilityActive)}
+\DoxyCodeLine{00062\ \ \ \ \ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (colourChangeTimer.getElapsedTime().asMilliseconds()\ >=\ 500.0f)}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ colourChangeTimer.restart();}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Color\ colour(std::rand()\ \%\ 256,\ std::rand()\ \%\ 256,\ std::rand()\ \%\ 256);}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ playerSprite.setColor(colour);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00071\ \ \ \ \ \}}
+\DoxyCodeLine{00072\ \ \ \ \ }
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordflow}{if}\ (t\_invisibilityActive)}
+\DoxyCodeLine{00075\ \ \ \ \ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ playerSprite.setColor(sf::Color(playerSprite.getColor().r,\ playerSprite.getColor().g,\ playerSprite.getColor().b,\ 25));}
+\DoxyCodeLine{00077\ \ \ \ \ \}}
+\DoxyCodeLine{00078\ \ \ \ \ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordflow}{if}(!t\_invisibilityActive\ \&\&\ !t\_invincibilityActive)}
+\DoxyCodeLine{00080\ \ \ \ \ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ playerSprite.setColor(ogColor);}
+\DoxyCodeLine{00082\ \ \ \ \ \}}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{comment}{//sf::Texture\ t\_texture,\ int\ t\_numOfFrames,\ int\ t\_frameWidth,\ int\ t\_frameHeight,\ int\ t\_cols,\ int\ t\_rows,\ int\ t\_time}}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ textureRect\ =\ m\_animator.animate(playerWalkingTexture,\ 5,\ 36,\ 53,\ 5,\ 1,\ 12);}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{comment}{//playerSprite.setTextureRect(textureRect);}}
+\DoxyCodeLine{00087\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=320pt]{class_player_aad7203a4546d3006fc61ac23371804ea_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_player_aad7203a4546d3006fc61ac23371804ea_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\label{class_player_abedc93f3d4774d5ed802f109809b9beb}} 
+\index{Player@{Player}!bulletVector@{bulletVector}}
+\index{bulletVector@{bulletVector}!Player@{Player}}
+\doxysubsubsection{bulletVector}
+{\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$\textbf{ Bullet} $>$ $>$ Player\+::bullet\+Vector}
+
+
+
+Definition at line \textbf{ 32} of file \textbf{ Player.\+h}.
+
+\mbox{\label{class_player_ad149e88f9b64504ce848246da7a4e44d}} 
+\index{Player@{Player}!colourChangeTimer@{colourChangeTimer}}
+\index{colourChangeTimer@{colourChangeTimer}!Player@{Player}}
+\doxysubsubsection{colourChangeTimer}
+{\footnotesize\ttfamily sf\+::\+Clock Player\+::colour\+Change\+Timer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 54} of file \textbf{ Player.\+h}.
+
+\mbox{\label{class_player_a6345534f621b1159c45f404996fa2d16}} 
+\index{Player@{Player}!gameSize@{gameSize}}
+\index{gameSize@{gameSize}!Player@{Player}}
+\doxysubsubsection{gameSize}
+{\footnotesize\ttfamily sf\+::\+Vector2f Player\+::game\+Size\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 42} of file \textbf{ Player.\+h}.
+
+\mbox{\label{class_player_ac3b5fd509730545491acb3fbd9585048}} 
+\index{Player@{Player}!m\_animator@{m\_animator}}
+\index{m\_animator@{m\_animator}!Player@{Player}}
+\doxysubsubsection{m\_animator}
+{\footnotesize\ttfamily \textbf{ Animator} Player\+::m\+\_\+animator\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 37} of file \textbf{ Player.\+h}.
+
+\mbox{\label{class_player_a17ed9b4d4493ea6007d0a05d1ca539c0}} 
+\index{Player@{Player}!mousePos@{mousePos}}
+\index{mousePos@{mousePos}!Player@{Player}}
+\doxysubsubsection{mousePos}
+{\footnotesize\ttfamily sf\+::\+Vector2f Player\+::mouse\+Pos\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 50} of file \textbf{ Player.\+h}.
+
+\mbox{\label{class_player_aafddc89b54435d223e9938e103b5413f}} 
+\index{Player@{Player}!ogColor@{ogColor}}
+\index{ogColor@{ogColor}!Player@{Player}}
+\doxysubsubsection{ogColor}
+{\footnotesize\ttfamily sf\+::\+Color Player\+::og\+Color\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 61} of file \textbf{ Player.\+h}.
+
+\mbox{\label{class_player_acbbf25fcd928ee3d63cb9eb200476747}} 
+\index{Player@{Player}!PI@{PI}}
+\index{PI@{PI}!Player@{Player}}
+\doxysubsubsection{PI}
+{\footnotesize\ttfamily const double Player\+::\+PI = 3.\+141592654\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 52} of file \textbf{ Player.\+h}.
+
+\mbox{\label{class_player_a656bf6c4399e95d9fc9854192738ccc4}} 
+\index{Player@{Player}!playerIdleTexture@{playerIdleTexture}}
+\index{playerIdleTexture@{playerIdleTexture}!Player@{Player}}
+\doxysubsubsection{playerIdleTexture}
+{\footnotesize\ttfamily sf\+::\+Texture Player\+::player\+Idle\+Texture\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 58} of file \textbf{ Player.\+h}.
+
+\mbox{\label{class_player_a2f90fc176a0b8f54f6c82315b444bb8c}} 
+\index{Player@{Player}!playerSprite@{playerSprite}}
+\index{playerSprite@{playerSprite}!Player@{Player}}
+\doxysubsubsection{playerSprite}
+{\footnotesize\ttfamily sf\+::\+Sprite Player\+::player\+Sprite\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 56} of file \textbf{ Player.\+h}.
+
+\mbox{\label{class_player_a9eb9368261959b400325b1d85901e249}} 
+\index{Player@{Player}!playerWalkingTexture@{playerWalkingTexture}}
+\index{playerWalkingTexture@{playerWalkingTexture}!Player@{Player}}
+\doxysubsubsection{playerWalkingTexture}
+{\footnotesize\ttfamily sf\+::\+Texture Player\+::player\+Walking\+Texture\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 59} of file \textbf{ Player.\+h}.
+
+\mbox{\label{class_player_a1ee2015e626c8172db50820decf6b81e}} 
+\index{Player@{Player}!position@{position}}
+\index{position@{position}!Player@{Player}}
+\doxysubsubsection{position}
+{\footnotesize\ttfamily sf\+::\+Vector2f Player\+::position = sf\+::\+Vector2f(0, 0)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 48} of file \textbf{ Player.\+h}.
+
+\mbox{\label{class_player_a0349855298626faed9f05f86965ff689}} 
+\index{Player@{Player}!speed@{speed}}
+\index{speed@{speed}!Player@{Player}}
+\doxysubsubsection{speed}
+{\footnotesize\ttfamily int Player\+::speed = 5\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 44} of file \textbf{ Player.\+h}.
+
+\mbox{\label{class_player_a6bea31263e3e6116e32e264855425409}} 
+\index{Player@{Player}!speedX@{speedX}}
+\index{speedX@{speedX}!Player@{Player}}
+\doxysubsubsection{speedX}
+{\footnotesize\ttfamily int Player\+::speedX = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 45} of file \textbf{ Player.\+h}.
+
+\mbox{\label{class_player_a83e2513280b6dcfb70646454c2baf26a}} 
+\index{Player@{Player}!speedY@{speedY}}
+\index{speedY@{speedY}!Player@{Player}}
+\doxysubsubsection{speedY}
+{\footnotesize\ttfamily int Player\+::speedY = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 46} of file \textbf{ Player.\+h}.
+
+\mbox{\label{class_player_a812e20753e5824cebc7875730f3bf9a7}} 
+\index{Player@{Player}!textureRect@{textureRect}}
+\index{textureRect@{textureRect}!Player@{Player}}
+\doxysubsubsection{textureRect}
+{\footnotesize\ttfamily sf\+::\+Int\+Rect Player\+::texture\+Rect\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 60} of file \textbf{ Player.\+h}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+No\+Code\+Game\+Editor/\textbf{ Player.\+h}\item 
+No\+Code\+Game\+Editor/\textbf{ Player.\+cpp}\end{DoxyCompactItemize}

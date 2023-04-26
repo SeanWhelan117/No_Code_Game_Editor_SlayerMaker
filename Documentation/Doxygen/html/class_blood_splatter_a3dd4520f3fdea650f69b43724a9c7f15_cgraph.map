@@ -1,0 +1,6 @@
+<map id="BloodSplatter::BloodSplatter" name="BloodSplatter::BloodSplatter">
+<area shape="rect" id="node1" title="Blood Splatter constructor. Calls loadFiles and setupSplatter takes the blood position and the textur..." alt="" coords="5,31,192,56"/>
+<area shape="rect" id="node2" href="$class_blood_splatter.html#adddea3d83fca2fadfb8dcb7f7c31a640" title="loads the texture of the bloodSplatter using the textureManager. This means the texture is only loade..." alt="" coords="253,5,413,31"/>
+<area shape="rect" id="node4" href="$class_blood_splatter.html#a38aba2d9e64da6986430b7f7a07ed240" title="Sets up the blood splatter sets scale origin, position etc sets a random rotation of the splatter to ..." alt="" coords="240,55,425,80"/>
+<area shape="rect" id="node3" href="$class_texture_manager.html#a6c7ddda59194e9b951835477daf37fca" title=" " alt="" coords="473,5,657,31"/>
+</map>

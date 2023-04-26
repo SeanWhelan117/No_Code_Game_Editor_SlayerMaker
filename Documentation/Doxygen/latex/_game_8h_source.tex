@@ -1,0 +1,178 @@
+\doxysection{Game.\+h}
+\label{_game_8h_source}\index{NoCodeGameEditor/Game.h@{NoCodeGameEditor/Game.h}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ GAME\_HPP}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ GAME\_HPP}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}TextureManager.h"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}NetworkManager.h"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}Animator.h"{}}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}Grid.h"{}}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}Cell.h"{}}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}Wall.h"{}}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ "{}GameState.h"{}}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ "{}MainMenu.h"{}}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ "{}GameOptions.h"{}}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ "{}ToolBar.h"{}}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ "{}Player.h"{}}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#include\ "{}ChoiceBar.h"{}}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#include\ "{}Crosshair.h"{}}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#include\ "{}Background.h"{}}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ "{}EnemySpawner.h"{}}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ "{}ChooseGame.h"{}}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#include\ "{}BloodSplatter.h"{}}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#include\ "{}Objectives.h"{}}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#include\ "{}HUD.h"{}}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#include\ "{}GameOver.h"{}}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#include\ "{}Builder.h"{}}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#include\ "{}Items.h"{}}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#include\ "{}Powerups.h"{}}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{keyword}{class\ }Game}
+\DoxyCodeLine{00043\ \{}
+\DoxyCodeLine{00044\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ gameWidth\ =\ sf::VideoMode::getDesktopMode().width\ *\ 1;}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ gameHeight\ =\ sf::VideoMode::getDesktopMode().height\ *\ 1;}
+\DoxyCodeLine{00047\ \ \ \ \ Game();}
+\DoxyCodeLine{00048\ \ \ \ \ \string~Game();}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ TextureManager\ textureManager;}
+\DoxyCodeLine{00051\ \ \ \ \ NetworkManager\ networkManager;}
+\DoxyCodeLine{00052\ \ \ \ \ Animator\ animator;}
+\DoxyCodeLine{00053\ \ \ \ \ MainMenu\ myMenu\{\ gameWidth,\ gameHeight\ \};}
+\DoxyCodeLine{00054\ \ \ \ \ GameOptions\ gameOptions\{\ gameWidth,\ gameHeight\ \};}
+\DoxyCodeLine{00055\ \ \ \ \ Grid\ myGrid\{\ gameWidth,\ gameHeight\ \};}
+\DoxyCodeLine{00056\ \ \ \ \ GameState\ myState\{\ GameState::mainmenu\ \};}
+\DoxyCodeLine{00057\ \ \ \ \ ToolBar\ myTools\{\ gameWidth,\ gameHeight\ \};}
+\DoxyCodeLine{00058\ \ \ \ \ Player\ myPlayer\{\ gameWidth,\ gameHeight,\ animator\ \};}
+\DoxyCodeLine{00059\ \ \ \ \ Crosshair\ myCrosshair;}
+\DoxyCodeLine{00060\ \ \ \ \ Background\ myBackground\{gameWidth,\ gameHeight\};}
+\DoxyCodeLine{00061\ \ \ \ \ ChooseGame\ gameChoice\{\ gameWidth,\ gameHeight,\ networkManager\ \};}
+\DoxyCodeLine{00062\ \ \ \ \ HUD\ playerHUD\{\ gameWidth,\ gameHeight\ \};}
+\DoxyCodeLine{00063\ \ \ \ \ ChoiceBar\ myChoice\{\ gameWidth,\ gameHeight\};}
+\DoxyCodeLine{00064\ \ \ \ \ Objectives\ objectives\{\ textureManager\ \};}
+\DoxyCodeLine{00065\ \ \ \ \ GameOver\ gameOver\{\ gameWidth,\ gameHeight\ \};}
+\DoxyCodeLine{00066\ \ \ \ \ Builder\ myBuilder;}
+\DoxyCodeLine{00067\ \ \ \ \ Items\ items\{\ textureManager\ \};}
+\DoxyCodeLine{00068\ \ \ \ \ Powerups\ powerups\{\ textureManager\ \};}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ sf::View\ mainView;}
+\DoxyCodeLine{00072\ \ \ \ \ sf::View\ testView;}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{void}\ run();}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{void}\ checkMousePos();}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ Wall\ createIndividualWall(sf::Vector2f\ t\_wallPos,\ \textcolor{keywordtype}{int}\ t\_wallTextNum);}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ EnemySpawner\ createIndividualSpawner(sf::Vector2f\ t\_spawnerPos,\ \textcolor{keywordtype}{int}\ t\_spawnerTextNum);}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{void}\ removeWallVector();}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{void}\ removeEnemySpawnerVector();}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{void}\ removeObjectiveVector();}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{void}\ removeItemVector();}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{void}\ removePowerupVector();}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{void}\ viewsCreation();}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{void}\ saveDataToCSV();}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{void}\ createLevel();}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{void}\ clearVectors();}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keywordtype}{void}\ collisionDetection();}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \ \ \ \ BloodSplatter\ spawnBloodSplatter(sf::Vector2f\ t\_splatterPos);}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordtype}{bool}\ isColliding(sf::FloatRect\ t\_obj1,\ sf::FloatRect\ t\_obj2);}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keywordtype}{bool}\ changeGridSize\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \ \ \ \ std::vector<std::unique\_ptr<Wall>>\ wallVector;}
+\DoxyCodeLine{00109\ \ \ \ \ std::vector<std::unique\_ptr<EnemySpawner>>\ enemySpawnerVector;}
+\DoxyCodeLine{00110\ \ \ \ \ std::vector<std::unique\_ptr<BloodSplatter>>\ bloodSplatterVector;}
+\DoxyCodeLine{00111\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \ \ sf::Vector2f\ mousePos;\ \textcolor{comment}{//\ mouses\ current\ position}}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordtype}{void}\ processEvents();}
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keywordtype}{void}\ processKeys(sf::Event\ t\_event);}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordtype}{void}\ processMouseClicks(sf::Event\ t\_event);}
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keywordtype}{void}\ processTextEntered(sf::Event\ t\_event);}
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordtype}{void}\ processMouseWheel(sf::Event\ t\_event);}
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keywordtype}{void}\ processMouseRelease(sf::Event\ t\_event);}
+\DoxyCodeLine{00121\ \ \ \ \ }
+\DoxyCodeLine{00122\ \ \ \ \ }
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keywordtype}{void}\ update(sf::Time\ t\_deltaTime);}
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keywordtype}{void}\ render();\ \ \ \ }
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \ \ \ \ sf::RenderWindow\ m\_window;\ \textcolor{comment}{//\ main\ SFML\ window}}
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_exitGame;\ \textcolor{comment}{//\ control\ exiting\ game}}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keywordtype}{bool}\ gridCreated\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keywordtype}{int}\ gridSize\ =\ 30;}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keywordtype}{int}\ numOfWalls\ =\ 0;}
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{keywordtype}{int}\ numOfSpawners\ =\ 0;}
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{keywordtype}{int}\ numOfCoins\ =\ 0;}
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keywordtype}{int}\ numOfDoors\ =\ 0;}
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keywordtype}{int}\ numOfMonuments\ =\ 0;}
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{keywordtype}{int}\ numOfMedkits\ =\ 0;}
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keywordtype}{int}\ numOfExplosives\ =\ 0;}
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keywordtype}{int}\ numOfGuns\ =\ 0;}
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{keywordtype}{int}\ numOfNukes\ =\ 0;}
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keywordtype}{int}\ numOfInvinces\ =\ 0;}
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{keywordtype}{int}\ numOfInvises\ =\ 0;}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{keywordtype}{bool}\ wallVectorCreated\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{keywordtype}{bool}\ enemySpawnerVectorCreated\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{keywordtype}{bool}\ objectiveVectorCreated\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00151\ \ \ \ \ \textcolor{keywordtype}{bool}\ itemVectorCreated\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{keywordtype}{bool}\ powerupVectorCreated\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00155\ \ \ \ \ \textcolor{keywordtype}{bool}\ mainViewActive\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{keywordtype}{bool}\ testViewActive\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00159\ \ \ \ \ \textcolor{keywordtype}{double}\ zoomAmount\ =\ 1;}
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{keywordtype}{bool}\ zooming\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00162\ \ \ \ \ }
+\DoxyCodeLine{00163\ \ \ \ \ \textcolor{keywordtype}{bool}\ scrollingX\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00165\ \ \ \ \ \textcolor{keywordtype}{int}\ scrollSpeed\ =\ 30;}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00167\ \ \ \ \ \textcolor{keywordtype}{int}\ coinsCollected\ =\ 0;}
+\DoxyCodeLine{00168\ \ \ \ \ \textcolor{keywordtype}{int}\ maxCoins\ =\ 0;}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00170\ \ \ \ \ \textcolor{keywordtype}{void}\ createWallVector();}
+\DoxyCodeLine{00171\ \ \ \ \ \textcolor{keywordtype}{void}\ createSpawnerVector();}
+\DoxyCodeLine{00172\ \ \ \ \ \textcolor{keywordtype}{void}\ createObjectives();}
+\DoxyCodeLine{00173\ \ \ \ \ \textcolor{keywordtype}{void}\ createItems();}
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00175\ \ \ \ \ \textcolor{keywordtype}{void}\ createPowerups();}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00177\ \ \ \ \ \textcolor{keywordtype}{void}\ checkWallHealth();}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00179\ \ \ \ \ \textcolor{keywordtype}{void}\ checkEnemiesEmptied();}
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00181\ \};}
+\DoxyCodeLine{00182\ }
+\DoxyCodeLine{00183\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ !GAME\_HPP}}
+\DoxyCodeLine{00184\ }
+
+\end{DoxyCode}

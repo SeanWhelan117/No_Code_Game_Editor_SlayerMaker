@@ -1,0 +1,82 @@
+\doxysection{Background.\+cpp}
+\label{_background_8cpp_source}\index{NoCodeGameEditor/Background.cpp@{NoCodeGameEditor/Background.cpp}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}Background.h"{}}}
+\DoxyCodeLine{00009\ Background::Background(\textcolor{keywordtype}{float}\ t\_gameWidth,\ \textcolor{keywordtype}{float}\ t\_gameHeight)}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ loadFiles();}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \ \ \ \ gameWidth\ =\ t\_gameWidth;}
+\DoxyCodeLine{00014\ \ \ \ \ gameHeight\ =\ t\_gameHeight;}
+\DoxyCodeLine{00015\ \}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00020\ \textcolor{keywordtype}{void}\ Background::loadFiles()}
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordflow}{if}\ (!bgTex1.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)BACKGROUNDS\(\backslash\)\(\backslash\)BGGrass.png"{}}))}
+\DoxyCodeLine{00023\ \ \ \ \ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ bgChoiceTex1\ (BGGrass)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00026\ \ \ \ \ \}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordflow}{if}\ (!bgTex2.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)BACKGROUNDS\(\backslash\)\(\backslash\)BGSand.png"{}}))}
+\DoxyCodeLine{00029\ \ \ \ \ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ bgChoiceTex2\ (BGSand)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00032\ \ \ \ \ \}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordflow}{if}\ (!bgTex3.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)BACKGROUNDS\(\backslash\)\(\backslash\)BGSnow.png"{}}))}
+\DoxyCodeLine{00035\ \ \ \ \ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ bgChoiceTex3\ (BGSnow)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00038\ \ \ \ \ \}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00047\ \textcolor{keywordtype}{void}\ Background::update(\textcolor{keywordtype}{int}\ t\_choice)}
+\DoxyCodeLine{00048\ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordflow}{if}\ (t\_choice\ !=\ choice)}
+\DoxyCodeLine{00050\ \ \ \ \ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ choice\ =\ t\_choice;}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ setupBackground(choice);}
+\DoxyCodeLine{00053\ \ \ \ \ \}}
+\DoxyCodeLine{00054\ \}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00061\ \textcolor{keywordtype}{void}\ Background::render(sf::RenderWindow\&\ t\_window)}
+\DoxyCodeLine{00062\ \{}
+\DoxyCodeLine{00063\ \ \ \ \ t\_window.draw(bgSprite);}
+\DoxyCodeLine{00064\ \}}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00072\ \textcolor{keywordtype}{void}\ Background::setupBackground(\textcolor{keywordtype}{int}\ t\_choice)}
+\DoxyCodeLine{00073\ \{}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordflow}{if}\ (t\_choice\ ==\ 0)}
+\DoxyCodeLine{00076\ \ \ \ \ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ bgSprite.setTexture(bgTex1);}
+\DoxyCodeLine{00078\ \ \ \ \ \}}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (t\_choice\ ==\ 1)}
+\DoxyCodeLine{00080\ \ \ \ \ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ bgSprite.setTexture(bgTex2);}
+\DoxyCodeLine{00082\ \ \ \ \ \}}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (t\_choice\ ==\ 2)}
+\DoxyCodeLine{00084\ \ \ \ \ \{}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ bgSprite.setTexture(bgTex3);}
+\DoxyCodeLine{00086\ \ \ \ \ \}}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00088\ \ \ \ \ \{}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}BG\ Error"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00090\ \ \ \ \ \}}
+\DoxyCodeLine{00091\ \ \ \ \ }
+\DoxyCodeLine{00092\ \ \ \ \ bgSprite.setScale(1,\ 1);}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ sf::Vector2f\ currentSize\ =\ sf::Vector2f(bgSprite.getGlobalBounds().width,\ bgSprite.getGlobalBounds().height);}
+\DoxyCodeLine{00095\ \ \ \ \ sf::Vector2f\ gameSize\ =\ sf::Vector2f(gameWidth,\ gameHeight);}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{float}\ scaleX\ =\ gameSize.x\ /\ currentSize.x;}
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{float}\ scaleY\ =\ gameSize.y\ /\ currentSize.y;}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ bgSprite.setScale(scaleX,\ scaleY);}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \}}
+
+\end{DoxyCode}

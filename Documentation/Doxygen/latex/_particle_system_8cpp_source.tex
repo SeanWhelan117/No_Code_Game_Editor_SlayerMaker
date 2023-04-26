@@ -1,0 +1,61 @@
+\doxysection{Particle\+System.\+cpp}
+\label{_particle_system_8cpp_source}\index{NoCodeGameEditor/ParticleSystem.cpp@{NoCodeGameEditor/ParticleSystem.cpp}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}ParticleSystem.h"{}}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ Particle::Particle(\textcolor{keywordtype}{float}\ t\_x,\ \textcolor{keywordtype}{float}\ t\_y,\ \textcolor{keywordtype}{float}\ t\_velocityX,\ \textcolor{keywordtype}{float}\ t\_velocityY,\ sf::Time\ t\_lifetime)\ :\ particle(1.0f),\ velocity(t\_velocityX,\ t\_velocityY),\ lifetime(t\_lifetime),\ currentAge(sf::Time::Zero)}
+\DoxyCodeLine{00004\ \{}
+\DoxyCodeLine{00005\ \ \ \ \ particle.setPosition(t\_x,\ t\_y);}
+\DoxyCodeLine{00006\ \ \ \ \ particle.setFillColor(sf::Color::Red);}
+\DoxyCodeLine{00007\ \}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keywordtype}{void}\ Particle::update(sf::Time\ t\_deltaTime)}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ particle.move(velocity\ *\ t\_deltaTime.asSeconds());}
+\DoxyCodeLine{00012\ \ \ \ \ currentAge\ +=\ t\_deltaTime;}
+\DoxyCodeLine{00013\ \}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keywordtype}{void}\ Particle::draw(sf::RenderWindow\&\ t\_window)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00016\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{00017\ \ \ \ \ t\_window.draw(particle);}
+\DoxyCodeLine{00018\ \}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keywordtype}{bool}\ Particle::isAlive()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00021\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordflow}{return}\ currentAge\ <\ lifetime;}
+\DoxyCodeLine{00023\ \}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ ParticleSystem::ParticleSystem()}
+\DoxyCodeLine{00026\ \{}
+\DoxyCodeLine{00027\ \}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keywordtype}{void}\ ParticleSystem::addExplosion(\textcolor{keywordtype}{float}\ t\_xPos,\ \textcolor{keywordtype}{float}\ t\_yPos,\ \textcolor{keywordtype}{int}\ t\_numParticles)}
+\DoxyCodeLine{00030\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ t\_numParticles;\ i++)\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ speed\ =\ 50.0f\ +\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(std::rand())\ /\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(RAND\_MAX)\ *\ 50.0f;}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ angle\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(std::rand())\ /\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(RAND\_MAX)\ *\ 2.0f\ *\ 3.1415926f;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ velocityX\ =\ speed\ *\ std::cos(angle);}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ velocityY\ =\ speed\ *\ std::sin(angle);}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ particlesVector.emplace\_back(t\_xPos,\ t\_yPos,\ velocityX,\ velocityY,\ sf::seconds(0.8f));}
+\DoxyCodeLine{00037\ \ \ \ \ \}}
+\DoxyCodeLine{00038\ \}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{keywordtype}{void}\ ParticleSystem::update(sf::Time\ dt)}
+\DoxyCodeLine{00041\ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ particle\ :\ particlesVector)\ }
+\DoxyCodeLine{00043\ \ \ \ \ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ particle.update(dt);}
+\DoxyCodeLine{00045\ \ \ \ \ \}}
+\DoxyCodeLine{00046\ \ \ \ \ particlesVector.erase(std::remove\_if(particlesVector.begin(),\ particlesVector.end(),\ [](\textcolor{keyword}{const}\ Particle\&\ p)\ \{\ return\ !p.isAlive();\ \}),\ particlesVector.end());}
+\DoxyCodeLine{00047\ \}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{keywordtype}{void}\ ParticleSystem::draw(sf::RenderWindow\&\ window)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00050\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ particle\ :\ particlesVector)\ }
+\DoxyCodeLine{00052\ \ \ \ \ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ particle.draw(window);}
+\DoxyCodeLine{00054\ \ \ \ \ \}}
+\DoxyCodeLine{00055\ \}}
+
+\end{DoxyCode}

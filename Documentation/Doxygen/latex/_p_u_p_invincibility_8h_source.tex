@@ -1,0 +1,33 @@
+\doxysection{PUPInvincibility.\+h}
+\label{_p_u_p_invincibility_8h_source}\index{NoCodeGameEditor/PUPInvincibility.h@{NoCodeGameEditor/PUPInvincibility.h}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}TextureManager.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }PUPInvincibility}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00013\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ \ \ \ \ PUPInvincibility(sf::Vector2f\ t\_InvincibilityPos,\ TextureManager\&\ textureManager);}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{void}\ loadFiles();}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{void}\ setupInvincibility();}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ render(sf::RenderWindow\&\ t\_window);}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ sf::Sprite\&\ getInvincibility();}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ std::shared\_ptr<sf::Texture>\ invincibilityTexture;}
+\DoxyCodeLine{00026\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00027\ \ \ \ \ TextureManager\&\ m\_textureManager;}
+\DoxyCodeLine{00028\ \ \ \ \ sf::Vector2f\ invincibilityPos;}
+\DoxyCodeLine{00029\ \ \ \ \ sf::Sprite\ invincibilitySprite;}
+\DoxyCodeLine{00030\ \};}
+\DoxyCodeLine{00031\ }
+
+\end{DoxyCode}

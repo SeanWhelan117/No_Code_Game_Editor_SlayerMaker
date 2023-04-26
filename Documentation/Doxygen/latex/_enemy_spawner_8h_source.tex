@@ -1,0 +1,62 @@
+\doxysection{Enemy\+Spawner.\+h}
+\label{_enemy_spawner_8h_source}\index{NoCodeGameEditor/EnemySpawner.h@{NoCodeGameEditor/EnemySpawner.h}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}Enemy.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}TextureManager.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}Wall.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}Monument.h"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }EnemySpawner}
+\DoxyCodeLine{00017\ \{}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ \ \ \ \ EnemySpawner(\textcolor{keywordtype}{int}\ t\_spawnerTextNum,\ sf::Vector2f\ t\_spawnerPos,\ TextureManager\&\ textureManager);}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ loadFiles();}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ setupSpawner(sf::Vector2f\ t\_pos);}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ render(sf::RenderWindow\&\ t\_window,\ std::string\ t\_state);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ update(sf::Vector2f\ t\_seekPos,\ std::vector<std::unique\_ptr<Wall>>\&\ t\_walls,\ sf::Time\ t\_deltaTime,\ \textcolor{keywordtype}{int}\ t\_gtChosen,\ std::vector<std::unique\_ptr<Monument>>\&\ t\_monuments,\ \textcolor{keywordtype}{bool}\&\ t\_nukeEnemies,\ \textcolor{keywordtype}{bool}\ t\_invisibilityActive);}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ sf::Sprite\&\ getSpawner();}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ Enemy\ createEnemy();}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ std::shared\_ptr<sf::Texture>\ spawnerTexture;}
+\DoxyCodeLine{00035\ \ \ \ \ std::shared\_ptr<sf::Texture>\ spawnerTexture2;}
+\DoxyCodeLine{00036\ \ \ \ \ std::shared\_ptr<sf::Texture>\ spawnerTexture3;}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ std::vector<std::unique\_ptr<Enemy>>\ enemyVector;}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{int}\ spawnerTextureNumber\ =\ 0;}
+\DoxyCodeLine{00041\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ sf::Sprite\ spawnerSprite;}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{int}\ offset\ =\ 15;}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{int}\ test\ =\ 0;}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{int}\ totalEnemies\ =\ 0;}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ MAX\_ENEMIES\ =\ 50;}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ INFINITE\_ENEMIES\ =\ 1000;}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{int}\ timesCalled\ =\ 0;}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ sf::Vector2f\ spawnerPos;}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ TextureManager\ m\_textureManager;}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \};}
+\DoxyCodeLine{00060\ }
+
+\end{DoxyCode}

@@ -1,0 +1,8 @@
+<map id="Player::update" name="Player::update">
+<area shape="rect" id="node1" title=" " alt="" coords="5,104,112,129"/>
+<area shape="rect" id="node2" href="$class_animator.html#a35a9aae1b8eadbe389c13d1cdb6f842d" title="animate function which is called to animate a sprite sheet. Pass the already loaded texture,..." alt="" coords="179,5,307,31"/>
+<area shape="rect" id="node3" href="$class_player.html#ae9b3c488f1c06a7652086e5372e2c12d" title=" " alt="" coords="162,55,323,80"/>
+<area shape="rect" id="node4" href="$class_player.html#a26dccc7793be835f90ed3d64004d2ffe" title=" " alt="" coords="172,104,313,129"/>
+<area shape="rect" id="node5" href="$class_player.html#a4a40dccda1d0f6082ad02335a2fbb56a" title=" " alt="" coords="160,153,325,179"/>
+<area shape="rect" id="node6" href="$class_player.html#abb1b50f95302e0e9186df7133a7d4ddb" title=" " alt="" coords="193,203,292,228"/>
+</map>

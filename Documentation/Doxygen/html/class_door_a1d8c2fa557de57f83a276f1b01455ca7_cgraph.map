@@ -1,0 +1,6 @@
+<map id="Door::Door" name="Door::Door">
+<area shape="rect" id="node1" title=" " alt="" coords="5,31,89,56"/>
+<area shape="rect" id="node2" href="$class_door.html#aac5c5fcccfe87e03a4a8e67b4599c8dd" title=" " alt="" coords="141,5,250,31"/>
+<area shape="rect" id="node4" href="$class_door.html#abf92869a850ae94b2f04add5e3a93c1e" title=" " alt="" coords="137,55,253,80"/>
+<area shape="rect" id="node3" href="$class_texture_manager.html#a6c7ddda59194e9b951835477daf37fca" title=" " alt="" coords="301,5,485,31"/>
+</map>

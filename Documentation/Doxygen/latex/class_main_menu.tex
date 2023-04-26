@@ -1,0 +1,575 @@
+\doxysection{Main\+Menu Class Reference}
+\label{class_main_menu}\index{MainMenu@{MainMenu}}
+
+
+{\ttfamily \#include $<$Main\+Menu.\+h$>$}
+
+
+
+Collaboration diagram for Main\+Menu\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=203pt]{class_main_menu__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Main\+Menu} (float t\+\_\+game\+Width, float t\+\_\+game\+Height)
+\begin{DoxyCompactList}\small\item\em Constructor function for the main menu. \end{DoxyCompactList}\item 
+void \textbf{ load\+Assets} ()
+\item 
+void \textbf{ update} (\textbf{ Game\+State} \&t\+\_\+game\+State, sf\+::\+Render\+Window \&t\+\_\+window)
+\item 
+void \textbf{ render} (sf\+::\+Render\+Window \&t\+\_\+window)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \textbf{ button\+Clicked} = false
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ setup\+Button\+Text} (int t\+\_\+y\+Pos)
+\item 
+void \textbf{ mouse\+Button\+Collision} (sf\+::\+Vector2i t\+\_\+mouse\+Pos, \textbf{ Game\+State} \&t\+\_\+game\+State)
+\item 
+void \textbf{ reset\+Buttons} (int t\+\_\+current)
+\item 
+void \textbf{ change\+Buttons} (int current\+\_\+\+Button)
+\item 
+void \textbf{ change\+Game\+State} (int state\+Num, \textbf{ Game\+State} \&t\+\_\+game\+State)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Rectangle\+Shape \textbf{ buttons} [\textbf{ MAX\+\_\+\+BUTTONS}]
+\item 
+sf\+::\+Font \textbf{ m\+\_\+font}
+\item 
+sf\+::\+Font \textbf{ m\+\_\+font2}
+\item 
+sf\+::\+Text \textbf{ button\+Texts} [\textbf{ MAX\+\_\+\+BUTTONS}]
+\item 
+sf\+::\+Text \textbf{ title}
+\item 
+sf\+::\+Vector2i \textbf{ mouse\+Pos}
+\item 
+float \textbf{ spriteX} = 0
+\item 
+float \textbf{ spriteY} = 0
+\item 
+std\+::string \textbf{ button\+Text} [\textbf{ MAX\+\_\+\+BUTTONS}] = \{ \char`\"{}Create\char`\"{},\char`\"{}Play\char`\"{},\char`\"{}Options\char`\"{},\char`\"{}Exit\char`\"{} \}
+\item 
+std\+::string \textbf{ title\+Text} = \char`\"{}Slayer Maker\char`\"{}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const int \textbf{ MAX\+\_\+\+BUTTONS} = 4
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Sean Whelan 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022/23 @license Attribution-\/\+Non\+Commercial 4.\+0 International 
+\end{DoxyDate}
+
+
+Definition at line \textbf{ 12} of file \textbf{ Main\+Menu.\+h}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\label{class_main_menu_a79fbb0ad56857b98e25b20de406698f8}} 
+\index{MainMenu@{MainMenu}!MainMenu@{MainMenu}}
+\index{MainMenu@{MainMenu}!MainMenu@{MainMenu}}
+\doxysubsubsection{MainMenu()}
+{\footnotesize\ttfamily Main\+Menu\+::\+Main\+Menu (\begin{DoxyParamCaption}\item[{float}]{t\+\_\+game\+Width,  }\item[{float}]{t\+\_\+game\+Height }\end{DoxyParamCaption})}
+
+
+
+Constructor function for the main menu. 
+
+\begin{DoxyAuthor}{Author}
+Sean Whelan 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022 @license Attribution-\/\+Non\+Commercial 4.\+0 International 
+\end{DoxyDate}
+
+
+Definition at line \textbf{ 11} of file \textbf{ Main\+Menu.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ std::cout\ <<\ t\_gameWidth\ <<\ t\_gameHeight\ <<\ std::endl;}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{int}\ buttonPosX\ =\ 100;}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{int}\ buttonPosY\ =\ t\_gameHeight\ *\ 0.4;\ \textcolor{comment}{//691}}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{int}\ startPosY\ =\ buttonPosY;}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ MAX\_BUTTONS;\ i++)}
+\DoxyCodeLine{00019\ \ \ \ \ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ buttons[i].setFillColor(sf::Color(0,0,0,0));}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ buttons[i].setSize(sf::Vector2f(525,\ 125));}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ buttonPosY\ =\ buttonPosY\ +\ 200;}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ buttons[i].setPosition(sf::Vector2f(buttonPosX,\ buttonPosY));}
+\DoxyCodeLine{00024\ \ \ \ \ \}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ loadAssets();}
+\DoxyCodeLine{00027\ \ \ \ \ setupButtonText(startPosY);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ }
+\DoxyCodeLine{00030\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_main_menu_a79fbb0ad56857b98e25b20de406698f8_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{class_main_menu_afefc6c12c5085653a5a72c303e534306}} 
+\index{MainMenu@{MainMenu}!changeButtons@{changeButtons}}
+\index{changeButtons@{changeButtons}!MainMenu@{MainMenu}}
+\doxysubsubsection{changeButtons()}
+{\footnotesize\ttfamily void Main\+Menu\+::change\+Buttons (\begin{DoxyParamCaption}\item[{int}]{current\+\_\+\+Button }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 137} of file \textbf{ Main\+Menu.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00138\ \{}
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{comment}{//buttons[current\_Button].setFillColor(sf::Color::Yellow);}}
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{comment}{//buttons[current\_Button].setScale(1.25,\ 1.25);}}
+\DoxyCodeLine{00141\ \ \ \ \ buttonTexts[current\_Button].setScale(1.5,\ 1.5);}
+\DoxyCodeLine{00142\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_main_menu_afefc6c12c5085653a5a72c303e534306_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_main_menu_a20335d0cdaa432dcbf8f271389a930f5}} 
+\index{MainMenu@{MainMenu}!changeGameState@{changeGameState}}
+\index{changeGameState@{changeGameState}!MainMenu@{MainMenu}}
+\doxysubsubsection{changeGameState()}
+{\footnotesize\ttfamily void Main\+Menu\+::change\+Game\+State (\begin{DoxyParamCaption}\item[{int}]{state\+Num,  }\item[{\textbf{ Game\+State} \&}]{t\+\_\+game\+State }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 144} of file \textbf{ Main\+Menu.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00145\ \{}
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keywordflow}{if}\ (stateNum\ ==\ 0)}
+\DoxyCodeLine{00147\ \ \ \ \ \{}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ t\_gameState\ =\ GameState::gameOptions;}
+\DoxyCodeLine{00149\ \ \ \ \ \}}
+\DoxyCodeLine{00150\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (stateNum\ ==\ 1)}
+\DoxyCodeLine{00151\ \ \ \ \ \{}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ t\_gameState\ =\ GameState::chooseGame;}
+\DoxyCodeLine{00153\ \ \ \ \ \}}
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (stateNum\ ==\ 2)}
+\DoxyCodeLine{00155\ \ \ \ \ \{}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ t\_gameState\ =\ GameState::options;}
+\DoxyCodeLine{00157\ \ \ \ \ \}}
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (stateNum\ ==\ 3)}
+\DoxyCodeLine{00159\ \ \ \ \ \{}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ t\_gameState\ =\ GameState::exitGame;}
+\DoxyCodeLine{00161\ \ \ \ \ \}}
+\DoxyCodeLine{00162\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_main_menu_a20335d0cdaa432dcbf8f271389a930f5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_main_menu_ab9700bb8dc014353be15d300b8c7d2f3}} 
+\index{MainMenu@{MainMenu}!loadAssets@{loadAssets}}
+\index{loadAssets@{loadAssets}!MainMenu@{MainMenu}}
+\doxysubsubsection{loadAssets()}
+{\footnotesize\ttfamily void Main\+Menu\+::load\+Assets (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 33} of file \textbf{ Main\+Menu.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00034\ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordflow}{if}\ (!m\_font.loadFromFile(\textcolor{stringliteral}{"{}./ASSETS/FONTS/NewYork.ttf"{}}))}
+\DoxyCodeLine{00036\ \ \ \ \ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Error\ loading\ font..."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00038\ \ \ \ \ \}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordflow}{if}\ (!m\_font2.loadFromFile(\textcolor{stringliteral}{"{}./ASSETS/FONTS/Another-\/Danger.ttf"{}}))}
+\DoxyCodeLine{00041\ \ \ \ \ \{\ \ \ \ \ \ \ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Error\ loading\ font..."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00043\ \ \ \ \ \}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{class_main_menu_ab9700bb8dc014353be15d300b8c7d2f3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_main_menu_a38f0e311d590f7d5ec8143b4c73e121b}} 
+\index{MainMenu@{MainMenu}!mouseButtonCollision@{mouseButtonCollision}}
+\index{mouseButtonCollision@{mouseButtonCollision}!MainMenu@{MainMenu}}
+\doxysubsubsection{mouseButtonCollision()}
+{\footnotesize\ttfamily void Main\+Menu\+::mouse\+Button\+Collision (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2i}]{t\+\_\+mouse\+Pos,  }\item[{\textbf{ Game\+State} \&}]{t\+\_\+game\+State }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 104} of file \textbf{ Main\+Menu.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00105\ \{}
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ MAX\_BUTTONS;\ i++)}
+\DoxyCodeLine{00107\ \ \ \ \ \{}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ sf::FloatRect\ boundingBox\ =\ buttons[i].getGlobalBounds();}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (boundingBox.contains(\textcolor{keyword}{static\_cast<}sf::Vector2f\textcolor{keyword}{>}(t\_mousePos)))}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ changeButtons(i);}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (buttonClicked)}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ changeGameState(i,\ t\_gameState);}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buttonClicked\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ resetButtons(i);}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ \}}
+\DoxyCodeLine{00125\ \ \ \ \ buttonClicked\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_main_menu_a38f0e311d590f7d5ec8143b4c73e121b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_main_menu_a38f0e311d590f7d5ec8143b4c73e121b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_main_menu_a7509ed3fb6349699982f23d6ea002e31}} 
+\index{MainMenu@{MainMenu}!render@{render}}
+\index{render@{render}!MainMenu@{MainMenu}}
+\doxysubsubsection{render()}
+{\footnotesize\ttfamily void Main\+Menu\+::render (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{t\+\_\+window }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 58} of file \textbf{ Main\+Menu.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00059\ \{}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{comment}{//drawing\ buttons}}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ MAX\_BUTTONS;\ i++)}
+\DoxyCodeLine{00063\ \ \ \ \ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ t\_window.draw(buttons[i]);}
+\DoxyCodeLine{00065\ \ \ \ \ \}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{comment}{//drawing\ butttons\ text}}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ MAX\_BUTTONS;\ i++)}
+\DoxyCodeLine{00069\ \ \ \ \ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ t\_window.draw(buttonTexts[i]);}
+\DoxyCodeLine{00071\ \ \ \ \ \}}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ t\_window.draw(title);}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_main_menu_a7509ed3fb6349699982f23d6ea002e31_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_main_menu_a5d430d15fdef5cd2f00b31c79fe19afa}} 
+\index{MainMenu@{MainMenu}!resetButtons@{resetButtons}}
+\index{resetButtons@{resetButtons}!MainMenu@{MainMenu}}
+\doxysubsubsection{resetButtons()}
+{\footnotesize\ttfamily void Main\+Menu\+::reset\+Buttons (\begin{DoxyParamCaption}\item[{int}]{t\+\_\+current }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 130} of file \textbf{ Main\+Menu.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00131\ \{}
+\DoxyCodeLine{00132\ \ \ \ \ buttons[t\_current].setFillColor(sf::Color(0,\ 0,\ 0,\ 0));}
+\DoxyCodeLine{00133\ \ \ \ \ buttons[t\_current].setScale(1,\ 1);}
+\DoxyCodeLine{00134\ \ \ \ \ buttonTexts[t\_current].setScale(1,\ 1);}
+\DoxyCodeLine{00135\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_main_menu_a5d430d15fdef5cd2f00b31c79fe19afa_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_main_menu_a4036b5d8861301c88c3caca386547400}} 
+\index{MainMenu@{MainMenu}!setupButtonText@{setupButtonText}}
+\index{setupButtonText@{setupButtonText}!MainMenu@{MainMenu}}
+\doxysubsubsection{setupButtonText()}
+{\footnotesize\ttfamily void Main\+Menu\+::setup\+Button\+Text (\begin{DoxyParamCaption}\item[{int}]{t\+\_\+y\+Pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 78} of file \textbf{ Main\+Menu.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00079\ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ MAX\_BUTTONS;\ i++)}
+\DoxyCodeLine{00081\ \ \ \ \ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ sf::FloatRect\ textRect\ =\ buttonTexts[i].getLocalBounds();}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ buttonTexts[i].Bold;}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ buttonTexts[i].setFont(m\_font);}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ buttonTexts[i].setCharacterSize(64u);}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ buttonTexts[i].setOrigin(textRect.width\ /\ 2,\ textRect.height\ /\ 2);}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ buttonTexts[i].setPosition(buttons[i].getPosition().x,\ buttons[i].getPosition().y);}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ buttonTexts[i].setFillColor(sf::Color::Red);}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ buttonTexts[i].setString(buttonText[i]);}
+\DoxyCodeLine{00090\ \ \ \ \ \}}
+\DoxyCodeLine{00091\ \ \ \ \ sf::FloatRect\ titleTextRect\ =\ title.getLocalBounds();}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ title.Bold;}
+\DoxyCodeLine{00094\ \ \ \ \ title.setFont(m\_font2);}
+\DoxyCodeLine{00095\ \ \ \ \ title.setCharacterSize(200u);}
+\DoxyCodeLine{00096\ \ \ \ \ title.setOrigin(titleTextRect.width\ /\ 2,\ titleTextRect.height\ /\ 2);}
+\DoxyCodeLine{00097\ \ \ \ \ title.setPosition(40,20);}
+\DoxyCodeLine{00098\ \ \ \ \ title.setFillColor(sf::Color::Black);}
+\DoxyCodeLine{00099\ \ \ \ \ title.setString(titleText);}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_main_menu_a4036b5d8861301c88c3caca386547400_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_main_menu_ab39fbac1a75de979d8fec96f08e34585}} 
+\index{MainMenu@{MainMenu}!update@{update}}
+\index{update@{update}!MainMenu@{MainMenu}}
+\doxysubsubsection{update()}
+{\footnotesize\ttfamily void Main\+Menu\+::update (\begin{DoxyParamCaption}\item[{\textbf{ Game\+State} \&}]{t\+\_\+game\+State,  }\item[{sf\+::\+Render\+Window \&}]{t\+\_\+window }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 48} of file \textbf{ Main\+Menu.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00049\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ mousePos\ =\ sf::Mouse::getPosition(t\_window);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ "{}Mouse\ Position\ x\ =\ "{}\ <<\ mousePos.x\ <<\ "{}\ Mouse\ Position\ y\ =\ "{}\ <<\ mousePos.y\ <<\ std::endl;}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ mouseButtonCollision(mousePos,\ t\_gameState);}
+\DoxyCodeLine{00055\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_main_menu_ab39fbac1a75de979d8fec96f08e34585_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_main_menu_ab39fbac1a75de979d8fec96f08e34585_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\label{class_main_menu_a6bfb3d4fbe1f6b4f99c4d60dc6424d3b}} 
+\index{MainMenu@{MainMenu}!buttonClicked@{buttonClicked}}
+\index{buttonClicked@{buttonClicked}!MainMenu@{MainMenu}}
+\doxysubsubsection{buttonClicked}
+{\footnotesize\ttfamily bool Main\+Menu\+::button\+Clicked = false}
+
+
+
+Definition at line \textbf{ 22} of file \textbf{ Main\+Menu.\+h}.
+
+\mbox{\label{class_main_menu_aed96dde736b95fac9e48ff3d1e53731a}} 
+\index{MainMenu@{MainMenu}!buttons@{buttons}}
+\index{buttons@{buttons}!MainMenu@{MainMenu}}
+\doxysubsubsection{buttons}
+{\footnotesize\ttfamily sf\+::\+Rectangle\+Shape Main\+Menu\+::buttons[\textbf{ MAX\+\_\+\+BUTTONS}]\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 40} of file \textbf{ Main\+Menu.\+h}.
+
+\mbox{\label{class_main_menu_a8283e192643088488378cee7e613d441}} 
+\index{MainMenu@{MainMenu}!buttonText@{buttonText}}
+\index{buttonText@{buttonText}!MainMenu@{MainMenu}}
+\doxysubsubsection{buttonText}
+{\footnotesize\ttfamily std\+::string Main\+Menu\+::button\+Text[\textbf{ MAX\+\_\+\+BUTTONS}] = \{ \char`\"{}Create\char`\"{},\char`\"{}Play\char`\"{},\char`\"{}Options\char`\"{},\char`\"{}Exit\char`\"{} \}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 60} of file \textbf{ Main\+Menu.\+h}.
+
+\mbox{\label{class_main_menu_a0f95dcbbf5c44d08beb709548b15f9d4}} 
+\index{MainMenu@{MainMenu}!buttonTexts@{buttonTexts}}
+\index{buttonTexts@{buttonTexts}!MainMenu@{MainMenu}}
+\doxysubsubsection{buttonTexts}
+{\footnotesize\ttfamily sf\+::\+Text Main\+Menu\+::button\+Texts[\textbf{ MAX\+\_\+\+BUTTONS}]\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 49} of file \textbf{ Main\+Menu.\+h}.
+
+\mbox{\label{class_main_menu_a4004e88b914219c4f05229453a468713}} 
+\index{MainMenu@{MainMenu}!m\_font@{m\_font}}
+\index{m\_font@{m\_font}!MainMenu@{MainMenu}}
+\doxysubsubsection{m\_font}
+{\footnotesize\ttfamily sf\+::\+Font Main\+Menu\+::m\+\_\+font\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 42} of file \textbf{ Main\+Menu.\+h}.
+
+\mbox{\label{class_main_menu_a38a96b979966816ea23c0d49f89925a0}} 
+\index{MainMenu@{MainMenu}!m\_font2@{m\_font2}}
+\index{m\_font2@{m\_font2}!MainMenu@{MainMenu}}
+\doxysubsubsection{m\_font2}
+{\footnotesize\ttfamily sf\+::\+Font Main\+Menu\+::m\+\_\+font2\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 43} of file \textbf{ Main\+Menu.\+h}.
+
+\mbox{\label{class_main_menu_a6a4366a24aeb8c10c554bc0b5eba19ab}} 
+\index{MainMenu@{MainMenu}!MAX\_BUTTONS@{MAX\_BUTTONS}}
+\index{MAX\_BUTTONS@{MAX\_BUTTONS}!MainMenu@{MainMenu}}
+\doxysubsubsection{MAX\_BUTTONS}
+{\footnotesize\ttfamily const int Main\+Menu\+::\+MAX\+\_\+\+BUTTONS = 4\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 39} of file \textbf{ Main\+Menu.\+h}.
+
+\mbox{\label{class_main_menu_a38c570779e360f3b89847ece6c402db9}} 
+\index{MainMenu@{MainMenu}!mousePos@{mousePos}}
+\index{mousePos@{mousePos}!MainMenu@{MainMenu}}
+\doxysubsubsection{mousePos}
+{\footnotesize\ttfamily sf\+::\+Vector2i Main\+Menu\+::mouse\+Pos\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 52} of file \textbf{ Main\+Menu.\+h}.
+
+\mbox{\label{class_main_menu_ac71d87bdea0cd7978396fcb8d243519c}} 
+\index{MainMenu@{MainMenu}!spriteX@{spriteX}}
+\index{spriteX@{spriteX}!MainMenu@{MainMenu}}
+\doxysubsubsection{spriteX}
+{\footnotesize\ttfamily float Main\+Menu\+::spriteX = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 57} of file \textbf{ Main\+Menu.\+h}.
+
+\mbox{\label{class_main_menu_aa3033fa09f79c80817b64cf1b07f3f31}} 
+\index{MainMenu@{MainMenu}!spriteY@{spriteY}}
+\index{spriteY@{spriteY}!MainMenu@{MainMenu}}
+\doxysubsubsection{spriteY}
+{\footnotesize\ttfamily float Main\+Menu\+::spriteY = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 58} of file \textbf{ Main\+Menu.\+h}.
+
+\mbox{\label{class_main_menu_a5dd0bbd3492b7d5cc55e78597cbff4c3}} 
+\index{MainMenu@{MainMenu}!title@{title}}
+\index{title@{title}!MainMenu@{MainMenu}}
+\doxysubsubsection{title}
+{\footnotesize\ttfamily sf\+::\+Text Main\+Menu\+::title\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 50} of file \textbf{ Main\+Menu.\+h}.
+
+\mbox{\label{class_main_menu_a94796a303c87fe568a215196a42052f8}} 
+\index{MainMenu@{MainMenu}!titleText@{titleText}}
+\index{titleText@{titleText}!MainMenu@{MainMenu}}
+\doxysubsubsection{titleText}
+{\footnotesize\ttfamily std\+::string Main\+Menu\+::title\+Text = \char`\"{}Slayer Maker\char`\"{}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 61} of file \textbf{ Main\+Menu.\+h}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+No\+Code\+Game\+Editor/\textbf{ Main\+Menu.\+h}\item 
+No\+Code\+Game\+Editor/\textbf{ Main\+Menu.\+cpp}\end{DoxyCompactItemize}

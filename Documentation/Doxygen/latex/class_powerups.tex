@@ -1,0 +1,524 @@
+\doxysection{Powerups Class Reference}
+\label{class_powerups}\index{Powerups@{Powerups}}
+
+
+{\ttfamily \#include $<$Powerups.\+h$>$}
+
+
+
+Collaboration diagram for Powerups\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{class_powerups__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Powerups} (\textbf{ Texture\+Manager} \&texture\+Manager)
+\item 
+void \textbf{ update} (sf\+::\+Time t\+\_\+delta\+Time, sf\+::\+Render\+Window \&t\+\_\+window, sf\+::\+Float\+Rect t\+\_\+player\+Rect)
+\item 
+void \textbf{ render} (sf\+::\+Render\+Window \&t\+\_\+window)
+\item 
+void \textbf{ add\+To\+Vector} (sf\+::\+Vector2f t\+\_\+powerup\+Position, int t\+\_\+powerup\+Type)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \textbf{ PUPNuke} $>$ $>$ \textbf{ nuke\+Vector}
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \textbf{ PUPInvincibility} $>$ $>$ \textbf{ invince\+Vector}
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \textbf{ PUPInvisibility} $>$ $>$ \textbf{ invis\+Vector}
+\item 
+bool \textbf{ nuke\+Enemies} = false
+\item 
+bool \textbf{ invincibility\+Active} = false
+\item 
+bool \textbf{ invisibility\+Active} = false
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \textbf{ is\+Colliding} (sf\+::\+Float\+Rect t\+\_\+obj1, sf\+::\+Float\+Rect t\+\_\+obj2)
+\item 
+void \textbf{ player\+Collision} (sf\+::\+Float\+Rect t\+\_\+player\+Rect)
+\item 
+void \textbf{ setup\+Nuke\+Flash} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Texture\+Manager} \& \textbf{ m\+\_\+texture\+Manager}
+\item 
+sf\+::\+Circle\+Shape \textbf{ nuke\+Flash}
+\item 
+bool \textbf{ flash\+Active} = false
+\item 
+sf\+::\+Vector2f \textbf{ temp\+Nuke\+Location}
+\item 
+sf\+::\+Clock \textbf{ invince\+Timer}
+\item 
+sf\+::\+Clock \textbf{ invis\+Timer}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Sean Whelan 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022/23 @license Attribution-\/\+Non\+Commercial 4.\+0 International 
+\end{DoxyDate}
+
+
+Definition at line \textbf{ 16} of file \textbf{ Powerups.\+h}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\label{class_powerups_a28b224caced0ddb7f9e78a060bac02d8}} 
+\index{Powerups@{Powerups}!Powerups@{Powerups}}
+\index{Powerups@{Powerups}!Powerups@{Powerups}}
+\doxysubsubsection{Powerups()}
+{\footnotesize\ttfamily Powerups\+::\+Powerups (\begin{DoxyParamCaption}\item[{\textbf{ Texture\+Manager} \&}]{texture\+Manager }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 3} of file \textbf{ Powerups.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00003\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ m\_textureManager(textureManager) }
+\DoxyCodeLine{00004\ \{}
+\DoxyCodeLine{00005\ \ \ \ \ setupNukeFlash();}
+\DoxyCodeLine{00006\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_powerups_a28b224caced0ddb7f9e78a060bac02d8_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{class_powerups_a3042545500725dfaf0539c7b1a8f5b31}} 
+\index{Powerups@{Powerups}!addToVector@{addToVector}}
+\index{addToVector@{addToVector}!Powerups@{Powerups}}
+\doxysubsubsection{addToVector()}
+{\footnotesize\ttfamily void Powerups\+::add\+To\+Vector (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{t\+\_\+powerup\+Position,  }\item[{int}]{t\+\_\+powerup\+Type }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 82} of file \textbf{ Powerups.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00083\ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordflow}{if}\ (t\_powerupType\ ==\ 0)}
+\DoxyCodeLine{00085\ \ \ \ \ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ PUPNuke\ tempNuke(t\_powerupPosition,\ m\_textureManager);}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ nukeVector.emplace\_back(\textcolor{keyword}{new}\ PUPNuke(tempNuke));}
+\DoxyCodeLine{00088\ \ \ \ \ \}}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (t\_powerupType\ ==\ 1)}
+\DoxyCodeLine{00090\ \ \ \ \ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ PUPInvincibility\ tempInvince(t\_powerupPosition,\ m\_textureManager);}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ invinceVector.emplace\_back(\textcolor{keyword}{new}\ PUPInvincibility(tempInvince));}
+\DoxyCodeLine{00093\ \ \ \ \ \}}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (t\_powerupType\ ==\ 2)}
+\DoxyCodeLine{00095\ \ \ \ \ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ PUPInvisibility\ tempInvis(t\_powerupPosition,\ m\_textureManager);}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ invisVector.emplace\_back(\textcolor{keyword}{new}\ PUPInvisibility(tempInvis));}
+\DoxyCodeLine{00098\ \ \ \ \ \}}
+\DoxyCodeLine{00099\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_powerups_a3042545500725dfaf0539c7b1a8f5b31_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_powerups_aeb4d3ee1631f2e3f954404312b2bac70}} 
+\index{Powerups@{Powerups}!isColliding@{isColliding}}
+\index{isColliding@{isColliding}!Powerups@{Powerups}}
+\doxysubsubsection{isColliding()}
+{\footnotesize\ttfamily bool Powerups\+::is\+Colliding (\begin{DoxyParamCaption}\item[{sf\+::\+Float\+Rect}]{t\+\_\+obj1,  }\item[{sf\+::\+Float\+Rect}]{t\+\_\+obj2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 101} of file \textbf{ Powerups.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00102\ \{}
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordflow}{return}\ t\_obj1.intersects(t\_obj2);}
+\DoxyCodeLine{00104\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_powerups_aeb4d3ee1631f2e3f954404312b2bac70_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_powerups_afcc4ad0c5775a8e6f00f8309e293979a}} 
+\index{Powerups@{Powerups}!playerCollision@{playerCollision}}
+\index{playerCollision@{playerCollision}!Powerups@{Powerups}}
+\doxysubsubsection{playerCollision()}
+{\footnotesize\ttfamily void Powerups\+::player\+Collision (\begin{DoxyParamCaption}\item[{sf\+::\+Float\+Rect}]{t\+\_\+player\+Rect }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 106} of file \textbf{ Powerups.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00107\ \{}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ nukeVector.size();\ i++)}
+\DoxyCodeLine{00110\ \ \ \ \ \{}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isColliding(nukeVector.at(i).get()-\/>getNuke().getGlobalBounds(),\ t\_playerRect))}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ tempNukeLocation\ =\ nukeVector.at(i).get()-\/>getNuke().getPosition();}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::unique\_ptr<PUPNuke>>::iterator\ begin\ =\ nukeVector.begin();}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ begin\ +=\ i;}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ nukeVector.erase(begin);}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ nukeEnemies\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00119\ \ \ \ \ \}}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ invinceVector.size();\ i++)}
+\DoxyCodeLine{00122\ \ \ \ \ \{}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isColliding(invinceVector.at(i).get()-\/>getInvincibility().getGlobalBounds(),\ t\_playerRect))}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::unique\_ptr<PUPInvincibility>>::iterator\ begin\ =\ invinceVector.begin();}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ begin\ +=\ i;}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ invinceVector.erase(begin);}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ invincibilityActive\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ invinceTimer.restart();}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00131\ \ \ \ \ \}}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ invisVector.size();\ i++)}
+\DoxyCodeLine{00134\ \ \ \ \ \{}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isColliding(invisVector.at(i).get()-\/>getInvisibility().getGlobalBounds(),\ t\_playerRect))}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::unique\_ptr<PUPInvisibility>>::iterator\ begin\ =\ invisVector.begin();}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ begin\ +=\ i;}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ invisVector.erase(begin);}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ invisibilityActive\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ invisTimer.restart();}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00143\ \ \ \ \ \}}
+\DoxyCodeLine{00144\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_powerups_afcc4ad0c5775a8e6f00f8309e293979a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_powerups_afcc4ad0c5775a8e6f00f8309e293979a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_powerups_a127918e5d4219f4101a4a156be2a3e39}} 
+\index{Powerups@{Powerups}!render@{render}}
+\index{render@{render}!Powerups@{Powerups}}
+\doxysubsubsection{render()}
+{\footnotesize\ttfamily void Powerups\+::render (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{t\+\_\+window }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 61} of file \textbf{ Powerups.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00062\ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ nukeVector.size();\ i++)}
+\DoxyCodeLine{00064\ \ \ \ \ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ nukeVector.at(i).get()-\/>render(t\_window);}
+\DoxyCodeLine{00066\ \ \ \ \ \}}
+\DoxyCodeLine{00067\ \ \ \ \ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ invinceVector.size();\ i++)}
+\DoxyCodeLine{00069\ \ \ \ \ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ invinceVector.at(i).get()-\/>render(t\_window);}
+\DoxyCodeLine{00071\ \ \ \ \ \}}
+\DoxyCodeLine{00072\ \ \ \ \ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ invisVector.size();\ i++)}
+\DoxyCodeLine{00074\ \ \ \ \ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ invisVector.at(i).get()-\/>render(t\_window);}
+\DoxyCodeLine{00076\ \ \ \ \ \}}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ t\_window.draw(nukeFlash);}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_powerups_a127918e5d4219f4101a4a156be2a3e39_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_powerups_a3080894bc51fcbff76d3340180181dd8}} 
+\index{Powerups@{Powerups}!setupNukeFlash@{setupNukeFlash}}
+\index{setupNukeFlash@{setupNukeFlash}!Powerups@{Powerups}}
+\doxysubsubsection{setupNukeFlash()}
+{\footnotesize\ttfamily void Powerups\+::setup\+Nuke\+Flash (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 146} of file \textbf{ Powerups.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00147\ \{}
+\DoxyCodeLine{00148\ \ \ \ \ flashActive\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00149\ \ \ \ \ nukeFlash.setPosition(-\/10000,\ -\/10000);}
+\DoxyCodeLine{00150\ \ \ \ \ nukeFlash.setRadius(10);}
+\DoxyCodeLine{00151\ \ \ \ \ nukeFlash.setScale(1,1);}
+\DoxyCodeLine{00152\ \ \ \ \ nukeFlash.setOrigin(nukeFlash.getRadius()\ /\ 2,\ nukeFlash.getRadius()\ /\ 2);}
+\DoxyCodeLine{00153\ \ \ \ \ nukeFlash.setFillColor(sf::Color(255,\ 255,\ 255,\ 30));}
+\DoxyCodeLine{00154\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_powerups_a3080894bc51fcbff76d3340180181dd8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_powerups_a66c70b40f93200df26716f19315f31f8}} 
+\index{Powerups@{Powerups}!update@{update}}
+\index{update@{update}!Powerups@{Powerups}}
+\doxysubsubsection{update()}
+{\footnotesize\ttfamily void Powerups\+::update (\begin{DoxyParamCaption}\item[{sf\+::\+Time}]{t\+\_\+delta\+Time,  }\item[{sf\+::\+Render\+Window \&}]{t\+\_\+window,  }\item[{sf\+::\+Float\+Rect}]{t\+\_\+player\+Rect }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 8} of file \textbf{ Powerups.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00009\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ playerCollision(t\_playerRect);}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordflow}{if}\ (nukeEnemies\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{00013\ \ \ \ \ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ flashActive\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00015\ \ \ \ \ \}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordflow}{if}\ (flashActive\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{00018\ \ \ \ \ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ "{}NukeLocation\ "{}\ <<\ tempNukeLocation.x\ <<\ "{}\ -\/-\/-\/\ "{}\ <<\ tempNukeLocation.y\ <<\ std::endl;}}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ nukeFlash.setPosition(tempNukeLocation);}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nukeFlash.getScale().x\ <=\ 600)}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ nukeFlash.setPosition(tempNukeLocation);}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ nukeFlash.setScale(nukeFlash.getScale().x\ +\ 10,\ nukeFlash.getScale().y\ +\ 10);}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nukeFlash.getFillColor().a\ <\ 253)}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nukeFlash.setFillColor(sf::Color(255,\ 255,\ 255,\ nukeFlash.getFillColor().a\ +\ 3));}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ setupNukeFlash();}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00034\ \ \ \ \ \}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordflow}{if}\ (invincibilityActive)}
+\DoxyCodeLine{00037\ \ \ \ \ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (invinceTimer.getElapsedTime().asSeconds()\ >=\ 8)}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ invincibilityActive\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ invinceTimer.restart();}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00043\ \ \ \ \ \}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordflow}{if}\ (invisibilityActive)}
+\DoxyCodeLine{00046\ \ \ \ \ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (invisTimer.getElapsedTime().asSeconds()\ >=\ 8)}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ invisibilityActive\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ invisTimer.restart();}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00052\ \ \ \ \ \}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Keyboard::isKeyPressed(sf::Keyboard::M))}
+\DoxyCodeLine{00055\ \ \ \ \ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ invisibilityActive\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ invisTimer.restart();}
+\DoxyCodeLine{00058\ \ \ \ \ \}}
+\DoxyCodeLine{00059\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_powerups_a66c70b40f93200df26716f19315f31f8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_powerups_a66c70b40f93200df26716f19315f31f8_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\label{class_powerups_ae419291f502dd096b4b8c9deee1c398e}} 
+\index{Powerups@{Powerups}!flashActive@{flashActive}}
+\index{flashActive@{flashActive}!Powerups@{Powerups}}
+\doxysubsubsection{flashActive}
+{\footnotesize\ttfamily bool Powerups\+::flash\+Active = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 45} of file \textbf{ Powerups.\+h}.
+
+\mbox{\label{class_powerups_adc04a18c30b9c542fc2ad1bc2556a945}} 
+\index{Powerups@{Powerups}!invinceTimer@{invinceTimer}}
+\index{invinceTimer@{invinceTimer}!Powerups@{Powerups}}
+\doxysubsubsection{invinceTimer}
+{\footnotesize\ttfamily sf\+::\+Clock Powerups\+::invince\+Timer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 48} of file \textbf{ Powerups.\+h}.
+
+\mbox{\label{class_powerups_a7c24c3b05a2e656add8e94684ef274d1}} 
+\index{Powerups@{Powerups}!invinceVector@{invinceVector}}
+\index{invinceVector@{invinceVector}!Powerups@{Powerups}}
+\doxysubsubsection{invinceVector}
+{\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$\textbf{ PUPInvincibility}$>$ $>$ Powerups\+::invince\+Vector}
+
+
+
+Definition at line \textbf{ 26} of file \textbf{ Powerups.\+h}.
+
+\mbox{\label{class_powerups_a510a7f509c67f912f53ebc0740ab451f}} 
+\index{Powerups@{Powerups}!invincibilityActive@{invincibilityActive}}
+\index{invincibilityActive@{invincibilityActive}!Powerups@{Powerups}}
+\doxysubsubsection{invincibilityActive}
+{\footnotesize\ttfamily bool Powerups\+::invincibility\+Active = false}
+
+
+
+Definition at line \textbf{ 33} of file \textbf{ Powerups.\+h}.
+
+\mbox{\label{class_powerups_a8ba88ff0493e16e8a4544e66a4f36f83}} 
+\index{Powerups@{Powerups}!invisibilityActive@{invisibilityActive}}
+\index{invisibilityActive@{invisibilityActive}!Powerups@{Powerups}}
+\doxysubsubsection{invisibilityActive}
+{\footnotesize\ttfamily bool Powerups\+::invisibility\+Active = false}
+
+
+
+Definition at line \textbf{ 34} of file \textbf{ Powerups.\+h}.
+
+\mbox{\label{class_powerups_ab6745c6a7c0552c7fa538c87b9923af7}} 
+\index{Powerups@{Powerups}!invisTimer@{invisTimer}}
+\index{invisTimer@{invisTimer}!Powerups@{Powerups}}
+\doxysubsubsection{invisTimer}
+{\footnotesize\ttfamily sf\+::\+Clock Powerups\+::invis\+Timer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 49} of file \textbf{ Powerups.\+h}.
+
+\mbox{\label{class_powerups_abf223d8df2816b922ced07112409e4fb}} 
+\index{Powerups@{Powerups}!invisVector@{invisVector}}
+\index{invisVector@{invisVector}!Powerups@{Powerups}}
+\doxysubsubsection{invisVector}
+{\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$\textbf{ PUPInvisibility}$>$ $>$ Powerups\+::invis\+Vector}
+
+
+
+Definition at line \textbf{ 27} of file \textbf{ Powerups.\+h}.
+
+\mbox{\label{class_powerups_a5565c2a054fe632508687e36d385dcc2}} 
+\index{Powerups@{Powerups}!m\_textureManager@{m\_textureManager}}
+\index{m\_textureManager@{m\_textureManager}!Powerups@{Powerups}}
+\doxysubsubsection{m\_textureManager}
+{\footnotesize\ttfamily \textbf{ Texture\+Manager}\& Powerups\+::m\+\_\+texture\+Manager\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 41} of file \textbf{ Powerups.\+h}.
+
+\mbox{\label{class_powerups_a58a5e5e77ae94915889bf6c120edb67d}} 
+\index{Powerups@{Powerups}!nukeEnemies@{nukeEnemies}}
+\index{nukeEnemies@{nukeEnemies}!Powerups@{Powerups}}
+\doxysubsubsection{nukeEnemies}
+{\footnotesize\ttfamily bool Powerups\+::nuke\+Enemies = false}
+
+
+
+Definition at line \textbf{ 32} of file \textbf{ Powerups.\+h}.
+
+\mbox{\label{class_powerups_a905c5d6977d9de783a28d7f3e6289ed1}} 
+\index{Powerups@{Powerups}!nukeFlash@{nukeFlash}}
+\index{nukeFlash@{nukeFlash}!Powerups@{Powerups}}
+\doxysubsubsection{nukeFlash}
+{\footnotesize\ttfamily sf\+::\+Circle\+Shape Powerups\+::nuke\+Flash\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 43} of file \textbf{ Powerups.\+h}.
+
+\mbox{\label{class_powerups_afb7f85c254135fc256bdbaadceb07573}} 
+\index{Powerups@{Powerups}!nukeVector@{nukeVector}}
+\index{nukeVector@{nukeVector}!Powerups@{Powerups}}
+\doxysubsubsection{nukeVector}
+{\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$\textbf{ PUPNuke}$>$ $>$ Powerups\+::nuke\+Vector}
+
+
+
+Definition at line \textbf{ 25} of file \textbf{ Powerups.\+h}.
+
+\mbox{\label{class_powerups_a20743ae5eae72d5b040cff94d7160e73}} 
+\index{Powerups@{Powerups}!tempNukeLocation@{tempNukeLocation}}
+\index{tempNukeLocation@{tempNukeLocation}!Powerups@{Powerups}}
+\doxysubsubsection{tempNukeLocation}
+{\footnotesize\ttfamily sf\+::\+Vector2f Powerups\+::temp\+Nuke\+Location\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 47} of file \textbf{ Powerups.\+h}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+No\+Code\+Game\+Editor/\textbf{ Powerups.\+h}\item 
+No\+Code\+Game\+Editor/\textbf{ Powerups.\+cpp}\end{DoxyCompactItemize}

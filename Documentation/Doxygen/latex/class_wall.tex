@@ -1,0 +1,354 @@
+\doxysection{Wall Class Reference}
+\label{class_wall}\index{Wall@{Wall}}
+
+
+{\ttfamily \#include $<$Wall.\+h$>$}
+
+
+
+Collaboration diagram for Wall\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{class_wall__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Wall} (int t\+\_\+wall\+Text\+Num, sf\+::\+Vector2f t\+\_\+wall\+Pos, \textbf{ Texture\+Manager} \&texture\+Manager)
+\item 
+void \textbf{ load\+Files} ()
+\item 
+void \textbf{ setup\+Wall} (sf\+::\+Vector2f t\+\_\+pos)
+\item 
+void \textbf{ render} (sf\+::\+Render\+Window \&t\+\_\+window)
+\item 
+void \textbf{ damage\+Wall} (int t\+\_\+damage\+Taken)
+\item 
+int \textbf{ get\+Wall\+Health} ()
+\item 
+sf\+::\+Sprite \& \textbf{ get\+Wall} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ sf\+::\+Texture $>$ \textbf{ wall\+Texture}
+\item 
+std\+::shared\+\_\+ptr$<$ sf\+::\+Texture $>$ \textbf{ wall\+Texture2}
+\item 
+std\+::shared\+\_\+ptr$<$ sf\+::\+Texture $>$ \textbf{ wall\+Texture3}
+\item 
+int \textbf{ wall\+Texture\+Number} = 0
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Sprite \textbf{ wall\+Sprite}
+\item 
+int \textbf{ offset} = 15
+\item 
+\textbf{ Texture\+Manager} \& \textbf{ m\+\_\+texture\+Manager}
+\item 
+sf\+::\+Vector2f \textbf{ wall\+Pos}
+\item 
+int \textbf{ wall\+Health} = 20
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Sean Whelan 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022/23 @license Attribution-\/\+Non\+Commercial 4.\+0 International 
+\end{DoxyDate}
+
+
+Definition at line \textbf{ 15} of file \textbf{ Wall.\+h}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\label{class_wall_a2dc4c86a5c411bc3ebb25d525544823f}} 
+\index{Wall@{Wall}!Wall@{Wall}}
+\index{Wall@{Wall}!Wall@{Wall}}
+\doxysubsubsection{Wall()}
+{\footnotesize\ttfamily Wall\+::\+Wall (\begin{DoxyParamCaption}\item[{int}]{t\+\_\+wall\+Text\+Num,  }\item[{sf\+::\+Vector2f}]{t\+\_\+wall\+Pos,  }\item[{\textbf{ Texture\+Manager} \&}]{texture\+Manager }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 3} of file \textbf{ Wall.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00003\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ wallTextureNumber(t\_wallTextNum),\ wallPos(t\_wallPos),\ m\_textureManager(textureManager) }
+\DoxyCodeLine{00004\ \{}
+\DoxyCodeLine{00005\ \ \ \ \ \textcolor{comment}{//wallTextureNumber\ =\ t\_wallTextNum;}}
+\DoxyCodeLine{00006\ \ \ \ \ loadFiles();}
+\DoxyCodeLine{00007\ \ \ \ \ setupWall(t\_wallPos);}
+\DoxyCodeLine{00008\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_wall_a2dc4c86a5c411bc3ebb25d525544823f_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{class_wall_aaeb1cf484acd1c59818097e3c514f4c3}} 
+\index{Wall@{Wall}!damageWall@{damageWall}}
+\index{damageWall@{damageWall}!Wall@{Wall}}
+\doxysubsubsection{damageWall()}
+{\footnotesize\ttfamily void Wall\+::damage\+Wall (\begin{DoxyParamCaption}\item[{int}]{t\+\_\+damage\+Taken }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 41} of file \textbf{ Wall.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00042\ \{}
+\DoxyCodeLine{00043\ \ \ \ \ wallHealth\ -\/=\ t\_damageTaken;}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_wall_aaeb1cf484acd1c59818097e3c514f4c3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_wall_a699647a1ddee5db9e263e09cfd6fdbd8}} 
+\index{Wall@{Wall}!getWall@{getWall}}
+\index{getWall@{getWall}!Wall@{Wall}}
+\doxysubsubsection{getWall()}
+{\footnotesize\ttfamily sf\+::\+Sprite \& Wall\+::get\+Wall (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 52} of file \textbf{ Wall.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00053\ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordflow}{return}\ wallSprite;}
+\DoxyCodeLine{00055\ \}}
+
+\end{DoxyCode}
+\mbox{\label{class_wall_a4d45576ffcee45298e1102373f880137}} 
+\index{Wall@{Wall}!getWallHealth@{getWallHealth}}
+\index{getWallHealth@{getWallHealth}!Wall@{Wall}}
+\doxysubsubsection{getWallHealth()}
+{\footnotesize\ttfamily int Wall\+::get\+Wall\+Health (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 47} of file \textbf{ Wall.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00048\ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordflow}{return}\ wallHealth;}
+\DoxyCodeLine{00050\ \}}
+
+\end{DoxyCode}
+\mbox{\label{class_wall_a573e57bc93869b5156315b6d040feb0d}} 
+\index{Wall@{Wall}!loadFiles@{loadFiles}}
+\index{loadFiles@{loadFiles}!Wall@{Wall}}
+\doxysubsubsection{loadFiles()}
+{\footnotesize\ttfamily void Wall\+::load\+Files (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 10} of file \textbf{ Wall.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ wallTexture\ =\ std::make\_shared<sf::Texture>(m\_textureManager.getTexture(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)WALLS\(\backslash\)\(\backslash\)wallGrey.png"{}}));}
+\DoxyCodeLine{00013\ \ \ \ \ wallTexture2\ =\ std::make\_shared<sf::Texture>(m\_textureManager.getTexture(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)WALLS\(\backslash\)\(\backslash\)wallBrown.png"{}}));}
+\DoxyCodeLine{00014\ \ \ \ \ wallTexture3\ =\ std::make\_shared<sf::Texture>(m\_textureManager.getTexture(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)WALLS\(\backslash\)\(\backslash\)wallRed.png"{}}));}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordflow}{if}\ (wallTextureNumber\ ==\ 0)}
+\DoxyCodeLine{00016\ \ \ \ \ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ wallSprite.setTexture(*wallTexture);}
+\DoxyCodeLine{00018\ \ \ \ \ \}}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (wallTextureNumber\ ==\ 1)}
+\DoxyCodeLine{00020\ \ \ \ \ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ wallSprite.setTexture(*wallTexture2);}
+\DoxyCodeLine{00022\ \ \ \ \ \}}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (wallTextureNumber\ ==\ 2)}
+\DoxyCodeLine{00024\ \ \ \ \ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ wallSprite.setTexture(*wallTexture3);}
+\DoxyCodeLine{00026\ \ \ \ \ \}}
+\DoxyCodeLine{00027\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=335pt]{class_wall_a573e57bc93869b5156315b6d040feb0d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=259pt]{class_wall_a573e57bc93869b5156315b6d040feb0d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_wall_a302cf9b2e197109c6f692d114082faf4}} 
+\index{Wall@{Wall}!render@{render}}
+\index{render@{render}!Wall@{Wall}}
+\doxysubsubsection{render()}
+{\footnotesize\ttfamily void Wall\+::render (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{t\+\_\+window }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 36} of file \textbf{ Wall.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00037\ \{}
+\DoxyCodeLine{00038\ \ \ \ \ t\_window.draw(wallSprite);}
+\DoxyCodeLine{00039\ \}}
+
+\end{DoxyCode}
+\mbox{\label{class_wall_aec52e52b86f5f3244bc47acb1d1e9288}} 
+\index{Wall@{Wall}!setupWall@{setupWall}}
+\index{setupWall@{setupWall}!Wall@{Wall}}
+\doxysubsubsection{setupWall()}
+{\footnotesize\ttfamily void Wall\+::setup\+Wall (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{t\+\_\+pos }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 29} of file \textbf{ Wall.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00030\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ }
+\DoxyCodeLine{00032\ \ \ \ \ wallSprite.setOrigin(wallSprite.getGlobalBounds().width\ /\ 2,\ wallSprite.getGlobalBounds().height\ /\ 2);}
+\DoxyCodeLine{00033\ \ \ \ \ wallSprite.setPosition(t\_pos.x\ +\ offset,\ t\_pos.y\ +\ offset);}
+\DoxyCodeLine{00034\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=264pt]{class_wall_aec52e52b86f5f3244bc47acb1d1e9288_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\label{class_wall_ae5fd2b01f284660a3ed6bd99befc7e2d}} 
+\index{Wall@{Wall}!m\_textureManager@{m\_textureManager}}
+\index{m\_textureManager@{m\_textureManager}!Wall@{Wall}}
+\doxysubsubsection{m\_textureManager}
+{\footnotesize\ttfamily \textbf{ Texture\+Manager}\& Wall\+::m\+\_\+texture\+Manager\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 40} of file \textbf{ Wall.\+h}.
+
+\mbox{\label{class_wall_a33ffb9a843e06a8169c37b9d18dd4a18}} 
+\index{Wall@{Wall}!offset@{offset}}
+\index{offset@{offset}!Wall@{Wall}}
+\doxysubsubsection{offset}
+{\footnotesize\ttfamily int Wall\+::offset = 15\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 39} of file \textbf{ Wall.\+h}.
+
+\mbox{\label{class_wall_a53dc112f81dcc567339f83d94e754e78}} 
+\index{Wall@{Wall}!wallHealth@{wallHealth}}
+\index{wallHealth@{wallHealth}!Wall@{Wall}}
+\doxysubsubsection{wallHealth}
+{\footnotesize\ttfamily int Wall\+::wall\+Health = 20\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 43} of file \textbf{ Wall.\+h}.
+
+\mbox{\label{class_wall_ad1636074dfe2ce273ec4f9067bce5598}} 
+\index{Wall@{Wall}!wallPos@{wallPos}}
+\index{wallPos@{wallPos}!Wall@{Wall}}
+\doxysubsubsection{wallPos}
+{\footnotesize\ttfamily sf\+::\+Vector2f Wall\+::wall\+Pos\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 41} of file \textbf{ Wall.\+h}.
+
+\mbox{\label{class_wall_a9f92be4395d443577fb33adc1c3cc093}} 
+\index{Wall@{Wall}!wallSprite@{wallSprite}}
+\index{wallSprite@{wallSprite}!Wall@{Wall}}
+\doxysubsubsection{wallSprite}
+{\footnotesize\ttfamily sf\+::\+Sprite Wall\+::wall\+Sprite\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 37} of file \textbf{ Wall.\+h}.
+
+\mbox{\label{class_wall_a421bfa97f7e35c1319aa9817088edd47}} 
+\index{Wall@{Wall}!wallTexture@{wallTexture}}
+\index{wallTexture@{wallTexture}!Wall@{Wall}}
+\doxysubsubsection{wallTexture}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$sf\+::\+Texture$>$ Wall\+::wall\+Texture}
+
+
+
+Definition at line \textbf{ 31} of file \textbf{ Wall.\+h}.
+
+\mbox{\label{class_wall_a2526595c2b00decc3ad57a1fc3b55679}} 
+\index{Wall@{Wall}!wallTexture2@{wallTexture2}}
+\index{wallTexture2@{wallTexture2}!Wall@{Wall}}
+\doxysubsubsection{wallTexture2}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$sf\+::\+Texture$>$ Wall\+::wall\+Texture2}
+
+
+
+Definition at line \textbf{ 32} of file \textbf{ Wall.\+h}.
+
+\mbox{\label{class_wall_a8a4d9e8e90ba1fbff6b6841e02375e26}} 
+\index{Wall@{Wall}!wallTexture3@{wallTexture3}}
+\index{wallTexture3@{wallTexture3}!Wall@{Wall}}
+\doxysubsubsection{wallTexture3}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$sf\+::\+Texture$>$ Wall\+::wall\+Texture3}
+
+
+
+Definition at line \textbf{ 33} of file \textbf{ Wall.\+h}.
+
+\mbox{\label{class_wall_a428196901236436e7bfe6b088b50a03a}} 
+\index{Wall@{Wall}!wallTextureNumber@{wallTextureNumber}}
+\index{wallTextureNumber@{wallTextureNumber}!Wall@{Wall}}
+\doxysubsubsection{wallTextureNumber}
+{\footnotesize\ttfamily int Wall\+::wall\+Texture\+Number = 0}
+
+
+
+Definition at line \textbf{ 34} of file \textbf{ Wall.\+h}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+No\+Code\+Game\+Editor/\textbf{ Wall.\+h}\item 
+No\+Code\+Game\+Editor/\textbf{ Wall.\+cpp}\end{DoxyCompactItemize}

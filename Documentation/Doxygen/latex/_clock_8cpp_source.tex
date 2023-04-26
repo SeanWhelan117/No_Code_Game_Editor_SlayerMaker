@@ -1,0 +1,87 @@
+\doxysection{Clock.\+cpp}
+\label{_clock_8cpp_source}\index{NoCodeGameEditor/Clock.cpp@{NoCodeGameEditor/Clock.cpp}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}Clock.h"{}}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ Clock::Clock()}
+\DoxyCodeLine{00004\ \{}
+\DoxyCodeLine{00005\ \ \ \ \ loadFiles();}
+\DoxyCodeLine{00006\ \ \ \ \ startClock();}
+\DoxyCodeLine{00007\ \ \ \ \ setupClockDisplay();}
+\DoxyCodeLine{00008\ \}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keywordtype}{void}\ Clock::loadFiles()}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordflow}{if}\ (!clockFont.loadFromFile(\textcolor{stringliteral}{"{}./ASSETS/FONTS/casio-\/fx-\/702p.ttf"{}}))}
+\DoxyCodeLine{00013\ \ \ \ \ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Error\ loading\ font..."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00015\ \ \ \ \ \}}
+\DoxyCodeLine{00016\ \}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keywordtype}{void}\ Clock::update(sf::Time\ t\_deltaTime)}
+\DoxyCodeLine{00019\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ addToClock();}
+\DoxyCodeLine{00021\ \ \ \ \ clockString\ =\ std::to\_string(minuteTens)\ +\ std::to\_string(minuteSingles)\ +\ colon\ +\ std::to\_string(secondTens)\ +\ std::to\_string(secondSingles);}
+\DoxyCodeLine{00022\ \ \ \ \ clockText.setString(clockString);}
+\DoxyCodeLine{00023\ \}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keywordtype}{void}\ Clock::render(sf::RenderWindow\&\ t\_window)}
+\DoxyCodeLine{00026\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ t\_window.draw(clockText);}
+\DoxyCodeLine{00028\ \}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keywordtype}{void}\ Clock::startClock()}
+\DoxyCodeLine{00031\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ myClock.restart();}
+\DoxyCodeLine{00033\ \}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{keywordtype}{void}\ Clock::setupClockDisplay()}
+\DoxyCodeLine{00036\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ clockText.setFont(clockFont);}
+\DoxyCodeLine{00038\ \ \ \ \ clockText.setCharacterSize(50u);}
+\DoxyCodeLine{00039\ \ \ \ \ clockText.setFillColor(sf::Color::Black);}
+\DoxyCodeLine{00040\ \ \ \ \ clockString\ =\ std::to\_string(minuteTens)\ +\ std::to\_string(minuteSingles)\ +\ colon\ +\ std::to\_string(secondTens)\ +\ std::to\_string(secondSingles);}
+\DoxyCodeLine{00041\ \ \ \ \ clockText.setString(clockString);}
+\DoxyCodeLine{00042\ \ \ \ \ clockText.setPosition(sf::Vector2f(100,\ 100));}
+\DoxyCodeLine{00043\ \}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{keywordtype}{void}\ Clock::addToClock()}
+\DoxyCodeLine{00046\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ secondSingles\ =\ myClock.getElapsedTime().asSeconds();}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordflow}{if}\ (secondSingles\ ==\ 9)}
+\DoxyCodeLine{00050\ \ \ \ \ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ myClock.restart();}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ secondSingles\ =\ 0;}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ secondTens\ +=\ 1;}
+\DoxyCodeLine{00054\ \ \ \ \ \}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordflow}{if}\ (secondTens\ ==\ 6)}
+\DoxyCodeLine{00057\ \ \ \ \ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ myClock.restart();}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ secondSingles\ =\ 0;}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ secondTens\ =\ 0;}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ minuteSingles\ +=\ 1;}
+\DoxyCodeLine{00062\ \ \ \ \ \}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordflow}{if}\ (minuteSingles\ >\ 9)}
+\DoxyCodeLine{00065\ \ \ \ \ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ myClock.restart();}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ secondSingles\ =\ 0;}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ secondTens\ =\ 0;}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ minuteSingles\ =\ 0;}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ minuteTens\ +=\ 1;}
+\DoxyCodeLine{00071\ \ \ \ \ \}}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordflow}{if}\ (minuteTens\ >\ 5)}
+\DoxyCodeLine{00074\ \ \ \ \ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ myClock.restart();}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ secondSingles\ =\ 0;}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ secondTens\ =\ 0;}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ minuteSingles\ =\ 0;}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ minuteTens\ =\ 0;}
+\DoxyCodeLine{00080\ \ \ \ \ \}}
+\DoxyCodeLine{00081\ \}}
+
+\end{DoxyCode}

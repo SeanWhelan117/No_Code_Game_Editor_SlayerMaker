@@ -1,0 +1,245 @@
+\doxysection{Cell.\+cpp}
+\label{_cell_8cpp_source}\index{NoCodeGameEditor/Cell.cpp@{NoCodeGameEditor/Cell.cpp}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}Cell.h"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00012\ Cell::Cell()}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ setupCells();}
+\DoxyCodeLine{00015\ \}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00021\ \textcolor{keywordtype}{void}\ Cell::setPos(sf::Vector2f\ t\_pos)}
+\DoxyCodeLine{00022\ \{}
+\DoxyCodeLine{00023\ \ \ \ \ cellShape.setPosition(t\_pos);}
+\DoxyCodeLine{00024\ \}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00029\ \textcolor{keywordtype}{void}\ Cell::setupCells()}
+\DoxyCodeLine{00030\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ cellShape.setFillColor(sf::Color::Transparent);}
+\DoxyCodeLine{00032\ \ \ \ \ cellShape.setOutlineColor(sf::Color::Cyan);}
+\DoxyCodeLine{00033\ \ \ \ \ cellShape.setOutlineThickness(2u);}
+\DoxyCodeLine{00034\ \ \ \ \ cellShape.setSize(sf::Vector2f\{\ 30,30\ \});}
+\DoxyCodeLine{00035\ \}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00041\ \textcolor{keywordtype}{void}\ Cell::setID(\textcolor{keywordtype}{int}\ t\_id)}
+\DoxyCodeLine{00042\ \{}
+\DoxyCodeLine{00043\ \ \ \ \ cellID\ =\ t\_id;}
+\DoxyCodeLine{00044\ \}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00050\ sf::RectangleShape\&\ Cell::getCellShape()}
+\DoxyCodeLine{00051\ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordflow}{return}\ cellShape;}
+\DoxyCodeLine{00053\ \}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00064\ \textcolor{keywordtype}{void}\ Cell::setMarked(\textcolor{keywordtype}{int}\ t\_choiceNum,\ std::map<std::string,\ int>\&\ t\_itemsPlaced)}
+\DoxyCodeLine{00065\ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{comment}{//\ \ itemsPlaced\ =\ \{\ \{"{}Spawner1"{},\ 0\},\ \{"{}Spawner2"{},\ 0\},\ \{"{}Spawner3"{},\ 0\},\ \{"{}Coins"{},\ 0\},\ \{"{}Doors"{},\ 0\}\};}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordflow}{if}\ (cellShape.getFillColor()\ ==\ sf::Color::Transparent\ \&\&\ type\ ==\ \textcolor{stringliteral}{"{}empty"{}}\ \&\&\ filled\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00069\ \ \ \ \ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (t\_choiceNum\ ==\ 0)}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ cellShape.setFillColor(sf::Color::Red);\ \textcolor{comment}{//\ -\/-\/-\/-\/WALLS-\/-\/-\/-\/}}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ type\ =\ \textcolor{stringliteral}{"{}wall1"{}};}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (t\_choiceNum\ ==\ 1)}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ cellShape.setFillColor(sf::Color::Green);}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ type\ =\ \textcolor{stringliteral}{"{}wall2"{}};}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (t\_choiceNum\ ==\ 2)}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ cellShape.setFillColor(sf::Color::Blue);}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ type\ =\ \textcolor{stringliteral}{"{}wall3"{}};}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (t\_choiceNum\ ==\ 3)}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (t\_itemsPlaced[\textcolor{stringliteral}{"{}Spawner1"{}}]\ <\ 3)}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cellShape.setFillColor(sf::Color::Magenta);\ \textcolor{comment}{//\ -\/-\/-\/-\/ENEMIES-\/-\/-\/-\/}}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ type\ =\ \textcolor{stringliteral}{"{}enemy1"{}};}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ t\_itemsPlaced[\textcolor{stringliteral}{"{}Spawner1"{}}]++;}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (t\_choiceNum\ ==\ 4)}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (t\_itemsPlaced[\textcolor{stringliteral}{"{}Spawner2"{}}]\ <\ 3)}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cellShape.setFillColor(sf::Color::Cyan);}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ type\ =\ \textcolor{stringliteral}{"{}enemy2"{}};}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ t\_itemsPlaced[\textcolor{stringliteral}{"{}Spawner2"{}}]++;}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (t\_choiceNum\ ==\ 5)}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (t\_itemsPlaced[\textcolor{stringliteral}{"{}Spawner3"{}}]\ <\ 3)}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cellShape.setFillColor(sf::Color::Yellow);}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ type\ =\ \textcolor{stringliteral}{"{}enemy3"{}};}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ t\_itemsPlaced[\textcolor{stringliteral}{"{}Spawner3"{}}]++;}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (t\_choiceNum\ ==\ 6)}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (t\_itemsPlaced[\textcolor{stringliteral}{"{}Coins"{}}]\ <\ 15)}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cellShape.setFillColor(sf::Color::Black);\ \textcolor{comment}{//\ -\/-\/-\/-\/OBJECTIVES-\/-\/-\/-\/}}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ type\ =\ \textcolor{stringliteral}{"{}objective1"{}};}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ t\_itemsPlaced[\textcolor{stringliteral}{"{}Coins"{}}]++;}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (t\_choiceNum\ ==\ 7)}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (t\_itemsPlaced[\textcolor{stringliteral}{"{}Doors"{}}]\ <\ 2)}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cellShape.setFillColor(sf::Color::Black);}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ type\ =\ \textcolor{stringliteral}{"{}objective2"{}};}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ t\_itemsPlaced[\textcolor{stringliteral}{"{}Doors"{}}]++;}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (t\_choiceNum\ ==\ 8)}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (t\_itemsPlaced[\textcolor{stringliteral}{"{}Monuments"{}}]\ <\ 1)}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cellShape.setFillColor(sf::Color::Black);}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ type\ =\ \textcolor{stringliteral}{"{}objective3"{}};}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ t\_itemsPlaced[\textcolor{stringliteral}{"{}Monuments"{}}]++;}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (t\_choiceNum\ ==\ 9)}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (t\_itemsPlaced[\textcolor{stringliteral}{"{}Medkits"{}}]\ <\ 10)}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cellShape.setFillColor(sf::Color::Black);}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ type\ =\ \textcolor{stringliteral}{"{}item1"{}};}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ t\_itemsPlaced[\textcolor{stringliteral}{"{}Medkits"{}}]++;}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (t\_choiceNum\ ==\ 10)}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (t\_itemsPlaced[\textcolor{stringliteral}{"{}Explosives"{}}]\ <\ 5)}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cellShape.setFillColor(sf::Color::Black);}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ type\ =\ \textcolor{stringliteral}{"{}item2"{}};}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ t\_itemsPlaced[\textcolor{stringliteral}{"{}Explosives"{}}]++;}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (t\_choiceNum\ ==\ 11)}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (t\_choiceNum\ ==\ 12)}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (t\_itemsPlaced[\textcolor{stringliteral}{"{}Nukes"{}}]\ <\ 3)}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cellShape.setFillColor(sf::Color::Black);}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ type\ =\ \textcolor{stringliteral}{"{}powerup1"{}};}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ t\_itemsPlaced[\textcolor{stringliteral}{"{}Nukes"{}}]++;}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (t\_choiceNum\ ==\ 13)}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (t\_itemsPlaced[\textcolor{stringliteral}{"{}Invincibility"{}}]\ <\ 3)}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cellShape.setFillColor(sf::Color::Black);}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ type\ =\ \textcolor{stringliteral}{"{}powerup2"{}};}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ t\_itemsPlaced[\textcolor{stringliteral}{"{}Invincibility"{}}]++;}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (t\_choiceNum\ ==\ 14)}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (t\_itemsPlaced[\textcolor{stringliteral}{"{}Invisibility"{}}]\ <\ 3)}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cellShape.setFillColor(sf::Color::Black);}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ type\ =\ \textcolor{stringliteral}{"{}powerup3"{}};}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ t\_itemsPlaced[\textcolor{stringliteral}{"{}Invisibility"{}}]++;}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00190\ \ \ \ \ \}}
+\DoxyCodeLine{00191\ \}}
+\DoxyCodeLine{00192\ }
+\DoxyCodeLine{00199\ \textcolor{keywordtype}{void}\ Cell::setUnmarked(std::map<std::string,\ int>\&\ t\_itemsPlaced)}
+\DoxyCodeLine{00200\ \{}
+\DoxyCodeLine{00201\ }
+\DoxyCodeLine{00202\ \ \ \ \ \textcolor{comment}{//\ \ itemsPlaced\ =\ \{\ \{"{}Spawner1"{},\ 0\},\ \{"{}Spawner2"{},\ 0\},\ \{"{}Spawner3"{},\ 0\},\ \{"{}Coins"{},\ 0\},\ \{"{}Doors"{},\ 0\}\};}}
+\DoxyCodeLine{00203\ }
+\DoxyCodeLine{00204\ }
+\DoxyCodeLine{00205\ \ \ \ \ \textcolor{comment}{//ENEMIES}}
+\DoxyCodeLine{00206\ \ \ \ \ \textcolor{keywordflow}{if}\ (filled)}
+\DoxyCodeLine{00207\ \ \ \ \ \{}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (type\ ==\ \textcolor{stringliteral}{"{}enemy1"{}})}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ t\_itemsPlaced[\textcolor{stringliteral}{"{}Spawner1"{}}]-\/=1;}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (type\ ==\ \textcolor{stringliteral}{"{}enemy2"{}})}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ t\_itemsPlaced[\textcolor{stringliteral}{"{}Spawner2"{}}]-\/=1;}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (type\ ==\ \textcolor{stringliteral}{"{}enemy3"{}})}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ t\_itemsPlaced[\textcolor{stringliteral}{"{}Spawner3"{}}]-\/=1;}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (type\ ==\ \textcolor{stringliteral}{"{}objective1"{}})}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ t\_itemsPlaced[\textcolor{stringliteral}{"{}Coins"{}}]-\/=1;}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (type\ ==\ \textcolor{stringliteral}{"{}objective2"{}})}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ t\_itemsPlaced[\textcolor{stringliteral}{"{}Doors"{}}]-\/=1;}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (type\ ==\ \textcolor{stringliteral}{"{}objective3"{}})}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \ \ \ t\_itemsPlaced[\textcolor{stringliteral}{"{}Monuments"{}}]\ -\/=\ -\/1;}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (type\ ==\ \textcolor{stringliteral}{"{}item1"{}})}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \ \ \ \ t\_itemsPlaced[\textcolor{stringliteral}{"{}Medkits"{}}]\ -\/=\ 1;}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (type\ ==\ \textcolor{stringliteral}{"{}item2"{}})}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \ \ \ \ t\_itemsPlaced[\textcolor{stringliteral}{"{}Explosives"{}}]\ -\/=\ 1;}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (type\ ==\ \textcolor{stringliteral}{"{}item3"{}})}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (type\ ==\ \textcolor{stringliteral}{"{}powerup1"{}})}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \ \ \ \ t\_itemsPlaced[\textcolor{stringliteral}{"{}Nukes"{}}]\ -\/=\ 1;}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (type\ ==\ \textcolor{stringliteral}{"{}powerup2"{}})}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \ \ \ \ t\_itemsPlaced[\textcolor{stringliteral}{"{}Invincibility"{}}]\ -\/=\ 1;}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (type\ ==\ \textcolor{stringliteral}{"{}powerup3"{}})}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \ \ \ \ t\_itemsPlaced[\textcolor{stringliteral}{"{}Invisibility"{}}]\ -\/=\ 1;}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ cellShape.setFillColor(sf::Color::Transparent);}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ filled\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ type\ =\ \textcolor{stringliteral}{"{}empty"{}};}
+\DoxyCodeLine{00259\ \ \ \ \ \}}
+\DoxyCodeLine{00260\ \}}
+\DoxyCodeLine{00261\ }
+\DoxyCodeLine{00266\ \textcolor{keywordtype}{int}\ Cell::getID()}
+\DoxyCodeLine{00267\ \{}
+\DoxyCodeLine{00268\ }
+\DoxyCodeLine{00269\ \ \ \ \ \textcolor{keywordflow}{return}\ cellID;}
+\DoxyCodeLine{00270\ \}}
+\DoxyCodeLine{00271\ }
+\DoxyCodeLine{00276\ std::string\ Cell::getType()}
+\DoxyCodeLine{00277\ \{}
+\DoxyCodeLine{00278\ \ \ \ \ \textcolor{keywordflow}{return}\ type;}
+\DoxyCodeLine{00279\ \}}
+\DoxyCodeLine{00280\ }
+\DoxyCodeLine{00285\ \textcolor{keywordtype}{void}\ Cell::setType(std::string\ t\_newType)}
+\DoxyCodeLine{00286\ \{}
+\DoxyCodeLine{00287\ \ \ \ \ type\ =\ t\_newType;}
+\DoxyCodeLine{00288\ \}}
+
+\end{DoxyCode}

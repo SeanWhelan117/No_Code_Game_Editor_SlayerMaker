@@ -1,0 +1,311 @@
+\doxysection{Bullet Class Reference}
+\label{class_bullet}\index{Bullet@{Bullet}}
+
+
+{\ttfamily \#include $<$Bullet.\+h$>$}
+
+
+
+Collaboration diagram for Bullet\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=208pt]{class_bullet__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Bullet} (sf\+::\+Render\+Window \&t\+\_\+window, sf\+::\+Vector2f t\+\_\+player\+Pos)
+\begin{DoxyCompactList}\small\item\em \doxyref{Bullet}{p.}{class_bullet} constructor, takes the sf window and the player position as parameters Sets up a mouse position at the time of the bullets instantiation sets up a player position at the time of the bullets instantiation calls setup\+Sprites and create\+Movement\+Vector. \end{DoxyCompactList}\item 
+void \textbf{ setup\+Sprites} ()
+\begin{DoxyCompactList}\small\item\em sets the simple fill color, size and initial position of the the bullet \end{DoxyCompactList}\item 
+void \textbf{ update} ()
+\begin{DoxyCompactList}\small\item\em moves the bullet based on the velocity it should have every update \end{DoxyCompactList}\item 
+void \textbf{ render} (sf\+::\+Render\+Window \&t\+\_\+window)
+\begin{DoxyCompactList}\small\item\em draws the bullet every update \end{DoxyCompactList}\item 
+sf\+::\+Rectangle\+Shape \textbf{ get\+Bullet} ()
+\begin{DoxyCompactList}\small\item\em simple getter to return the bullets rectangle shape \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ create\+Movement\+Vector} ()
+\begin{DoxyCompactList}\small\item\em uses a formula to create the movement vector which each bullet needs Creates a random offset for x and y for the heading of the bullet adds the random offset to the end position Movement vector is end position minus player position this is then normalised using the square root of the x times x plus y times y then the movement vector is divided by this number to create the velocity to be added each frame \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Vector2f \textbf{ mouse\+Pos}
+\item 
+sf\+::\+Rectangle\+Shape \textbf{ bullet}
+\item 
+sf\+::\+Vector2f \textbf{ player\+Position}
+\item 
+sf\+::\+Vector2f \textbf{ movement\+Vector}
+\item 
+sf\+::\+Vector2f \textbf{ velocity}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Sean Whelan 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022/23 @license Attribution-\/\+Non\+Commercial 4.\+0 International 
+\end{DoxyDate}
+
+
+Definition at line \textbf{ 11} of file \textbf{ Bullet.\+h}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\label{class_bullet_a22f3646a1e8f0eeca15d03d334c34f3a}} 
+\index{Bullet@{Bullet}!Bullet@{Bullet}}
+\index{Bullet@{Bullet}!Bullet@{Bullet}}
+\doxysubsubsection{Bullet()}
+{\footnotesize\ttfamily Bullet\+::\+Bullet (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{t\+\_\+window,  }\item[{sf\+::\+Vector2f}]{t\+\_\+player\+Pos }\end{DoxyParamCaption})}
+
+
+
+\doxyref{Bullet}{p.}{class_bullet} constructor, takes the sf window and the player position as parameters Sets up a mouse position at the time of the bullets instantiation sets up a player position at the time of the bullets instantiation calls setup\+Sprites and create\+Movement\+Vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t\+\_\+window} & \\
+\hline
+{\em t\+\_\+player\+Pos} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \textbf{ 11} of file \textbf{ Bullet.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ mousePos\ =\ t\_window.mapPixelToCoords(sf::Mouse::getPosition(t\_window));}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \ \ \ \ playerPosition\ =\ t\_playerPos;}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ playerPosition.x\ <<\ "{}-\/-\/-\/-\/-\/-\/-\/-\/"{}\ <<\ playerPosition.y\ <<\ std::endl;}}
+\DoxyCodeLine{00018\ \ \ \ \ setupSprites();}
+\DoxyCodeLine{00019\ \ \ \ \ createMovementVector();}
+\DoxyCodeLine{00020\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=335pt]{class_bullet_a22f3646a1e8f0eeca15d03d334c34f3a_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{class_bullet_a73c5ec69c09fb71d6e11d34a323318e7}} 
+\index{Bullet@{Bullet}!createMovementVector@{createMovementVector}}
+\index{createMovementVector@{createMovementVector}!Bullet@{Bullet}}
+\doxysubsubsection{createMovementVector()}
+{\footnotesize\ttfamily void Bullet\+::create\+Movement\+Vector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+uses a formula to create the movement vector which each bullet needs Creates a random offset for x and y for the heading of the bullet adds the random offset to the end position Movement vector is end position minus player position this is then normalised using the square root of the x times x plus y times y then the movement vector is divided by this number to create the velocity to be added each frame 
+
+
+
+Definition at line \textbf{ 66} of file \textbf{ Bullet.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00067\ \{}
+\DoxyCodeLine{00068\ \ \ \ \ sf::Vector2f\ endPosition;}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{int}\ randXOffset\ =\ rand()\ \%\ 25\ -\/\ 15;}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{int}\ randYOffset\ =\ rand()\ \%\ 25\ -\/\ 15;}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ endPosition.x\ =\ mousePos.x\ +\ randXOffset;}
+\DoxyCodeLine{00074\ \ \ \ \ endPosition.y\ =\ mousePos.y\ +\ randYOffset;}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ movementVector.x\ =\ endPosition.x\ -\/\ playerPosition.x;}
+\DoxyCodeLine{00077\ \ \ \ \ movementVector.y\ =\ endPosition.y\ -\/\ playerPosition.y;}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{float}\ temp\ =\ sqrt(movementVector.x\ *\ movementVector.x\ +\ movementVector.y\ *\ movementVector.y);}
+\DoxyCodeLine{00080\ \ \ \ \ velocity.x\ =\ (movementVector.x\ /\ temp);}
+\DoxyCodeLine{00081\ \ \ \ \ velocity.y\ =\ (movementVector.y\ /\ temp);}
+\DoxyCodeLine{00082\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=335pt]{class_bullet_a73c5ec69c09fb71d6e11d34a323318e7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_bullet_a2e0e77963b49c336344205412bb0e6fc}} 
+\index{Bullet@{Bullet}!getBullet@{getBullet}}
+\index{getBullet@{getBullet}!Bullet@{Bullet}}
+\doxysubsubsection{getBullet()}
+{\footnotesize\ttfamily sf\+::\+Rectangle\+Shape Bullet\+::get\+Bullet (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+simple getter to return the bullets rectangle shape 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line \textbf{ 53} of file \textbf{ Bullet.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00054\ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordflow}{return}\ bullet;}
+\DoxyCodeLine{00056\ \}}
+
+\end{DoxyCode}
+\mbox{\label{class_bullet_af292060621cb677a2d735f71c4b2d022}} 
+\index{Bullet@{Bullet}!render@{render}}
+\index{render@{render}!Bullet@{Bullet}}
+\doxysubsubsection{render()}
+{\footnotesize\ttfamily void Bullet\+::render (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{t\+\_\+window }\end{DoxyParamCaption})}
+
+
+
+draws the bullet every update 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t\+\_\+window} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \textbf{ 44} of file \textbf{ Bullet.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00045\ \{}
+\DoxyCodeLine{00046\ \ \ \ \ t\_window.draw(bullet);}
+\DoxyCodeLine{00047\ \}}
+
+\end{DoxyCode}
+\mbox{\label{class_bullet_aecceedc8e9d0758ef5c642a10f8ba771}} 
+\index{Bullet@{Bullet}!setupSprites@{setupSprites}}
+\index{setupSprites@{setupSprites}!Bullet@{Bullet}}
+\doxysubsubsection{setupSprites()}
+{\footnotesize\ttfamily void Bullet\+::setup\+Sprites (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+sets the simple fill color, size and initial position of the the bullet 
+
+
+
+Definition at line \textbf{ 25} of file \textbf{ Bullet.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00026\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ bullet.setFillColor(sf::Color::Black);}
+\DoxyCodeLine{00028\ \ \ \ \ bullet.setSize(sf::Vector2f(6,\ 2));}
+\DoxyCodeLine{00029\ \ \ \ \ bullet.setPosition(playerPosition);}
+\DoxyCodeLine{00030\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=290pt]{class_bullet_aecceedc8e9d0758ef5c642a10f8ba771_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_bullet_a32f4a0611fe2dd245fee955d14ca1f68}} 
+\index{Bullet@{Bullet}!update@{update}}
+\index{update@{update}!Bullet@{Bullet}}
+\doxysubsubsection{update()}
+{\footnotesize\ttfamily void Bullet\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+moves the bullet based on the velocity it should have every update 
+
+
+
+Definition at line \textbf{ 35} of file \textbf{ Bullet.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00036\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ bullet.move(velocity.x\ *\ 15,\ velocity.y\ *\ 15);}
+\DoxyCodeLine{00038\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\label{class_bullet_abf236b59e2bdee7068d2872d12e1cab4}} 
+\index{Bullet@{Bullet}!bullet@{bullet}}
+\index{bullet@{bullet}!Bullet@{Bullet}}
+\doxysubsubsection{bullet}
+{\footnotesize\ttfamily sf\+::\+Rectangle\+Shape Bullet\+::bullet\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 58} of file \textbf{ Bullet.\+h}.
+
+\mbox{\label{class_bullet_ae59de364e226f4b938924d403d1b4d5d}} 
+\index{Bullet@{Bullet}!mousePos@{mousePos}}
+\index{mousePos@{mousePos}!Bullet@{Bullet}}
+\doxysubsubsection{mousePos}
+{\footnotesize\ttfamily sf\+::\+Vector2f Bullet\+::mouse\+Pos\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 57} of file \textbf{ Bullet.\+h}.
+
+\mbox{\label{class_bullet_a9399162db3dbb921c1ac652e727797fe}} 
+\index{Bullet@{Bullet}!movementVector@{movementVector}}
+\index{movementVector@{movementVector}!Bullet@{Bullet}}
+\doxysubsubsection{movementVector}
+{\footnotesize\ttfamily sf\+::\+Vector2f Bullet\+::movement\+Vector\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 61} of file \textbf{ Bullet.\+h}.
+
+\mbox{\label{class_bullet_a3516297efa27fc2dde8d8e1b5b02a87e}} 
+\index{Bullet@{Bullet}!playerPosition@{playerPosition}}
+\index{playerPosition@{playerPosition}!Bullet@{Bullet}}
+\doxysubsubsection{playerPosition}
+{\footnotesize\ttfamily sf\+::\+Vector2f Bullet\+::player\+Position\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 60} of file \textbf{ Bullet.\+h}.
+
+\mbox{\label{class_bullet_af9b63d7d217fb030d3454112c15c9b3f}} 
+\index{Bullet@{Bullet}!velocity@{velocity}}
+\index{velocity@{velocity}!Bullet@{Bullet}}
+\doxysubsubsection{velocity}
+{\footnotesize\ttfamily sf\+::\+Vector2f Bullet\+::velocity\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 63} of file \textbf{ Bullet.\+h}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+No\+Code\+Game\+Editor/\textbf{ Bullet.\+h}\item 
+No\+Code\+Game\+Editor/\textbf{ Bullet.\+cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,158 @@
+\doxysection{Particle\+System Class Reference}
+\label{class_particle_system}\index{ParticleSystem@{ParticleSystem}}
+
+
+{\ttfamily \#include $<$Particle\+System.\+h$>$}
+
+
+
+Collaboration diagram for Particle\+System\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=178pt]{class_particle_system__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Particle\+System} ()
+\item 
+void \textbf{ add\+Explosion} (float t\+\_\+x, float t\+\_\+y, int t\+\_\+num\+Particles)
+\item 
+void \textbf{ update} (sf\+::\+Time dt)
+\item 
+void \textbf{ draw} (sf\+::\+Render\+Window \&t\+\_\+window) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \textbf{ Particle} $>$ \textbf{ particles\+Vector}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Sean Whelan 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022/23 @license Attribution-\/\+Non\+Commercial 4.\+0 International 
+\end{DoxyDate}
+
+
+Definition at line \textbf{ 13} of file \textbf{ Particle\+System.\+h}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\label{class_particle_system_a9028ec8023c61773dd4a668c3ad8cc26}} 
+\index{ParticleSystem@{ParticleSystem}!ParticleSystem@{ParticleSystem}}
+\index{ParticleSystem@{ParticleSystem}!ParticleSystem@{ParticleSystem}}
+\doxysubsubsection{ParticleSystem()}
+{\footnotesize\ttfamily Particle\+System\+::\+Particle\+System (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 25} of file \textbf{ Particle\+System.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00026\ \{}
+\DoxyCodeLine{00027\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{class_particle_system_a518fe10645a9ecb5c9971f091c6b58ba}} 
+\index{ParticleSystem@{ParticleSystem}!addExplosion@{addExplosion}}
+\index{addExplosion@{addExplosion}!ParticleSystem@{ParticleSystem}}
+\doxysubsubsection{addExplosion()}
+{\footnotesize\ttfamily void Particle\+System\+::add\+Explosion (\begin{DoxyParamCaption}\item[{float}]{t\+\_\+x,  }\item[{float}]{t\+\_\+y,  }\item[{int}]{t\+\_\+num\+Particles }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 29} of file \textbf{ Particle\+System.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00030\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ t\_numParticles;\ i++)\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ speed\ =\ 50.0f\ +\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(std::rand())\ /\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(RAND\_MAX)\ *\ 50.0f;}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ angle\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(std::rand())\ /\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(RAND\_MAX)\ *\ 2.0f\ *\ 3.1415926f;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ velocityX\ =\ speed\ *\ std::cos(angle);}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ velocityY\ =\ speed\ *\ std::sin(angle);}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ particlesVector.emplace\_back(t\_xPos,\ t\_yPos,\ velocityX,\ velocityY,\ sf::seconds(0.8f));}
+\DoxyCodeLine{00037\ \ \ \ \ \}}
+\DoxyCodeLine{00038\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_particle_system_a518fe10645a9ecb5c9971f091c6b58ba_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_particle_system_abcca1d9d815c1c878e47fa16f61cbbd7}} 
+\index{ParticleSystem@{ParticleSystem}!draw@{draw}}
+\index{draw@{draw}!ParticleSystem@{ParticleSystem}}
+\doxysubsubsection{draw()}
+{\footnotesize\ttfamily void Particle\+System\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{t\+\_\+window }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \textbf{ 49} of file \textbf{ Particle\+System.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00050\ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ particle\ :\ particlesVector)\ }
+\DoxyCodeLine{00052\ \ \ \ \ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ particle.draw(window);}
+\DoxyCodeLine{00054\ \ \ \ \ \}}
+\DoxyCodeLine{00055\ \}}
+
+\end{DoxyCode}
+\mbox{\label{class_particle_system_ae592627c86ae25266ca06730b035c333}} 
+\index{ParticleSystem@{ParticleSystem}!update@{update}}
+\index{update@{update}!ParticleSystem@{ParticleSystem}}
+\doxysubsubsection{update()}
+{\footnotesize\ttfamily void Particle\+System\+::update (\begin{DoxyParamCaption}\item[{sf\+::\+Time}]{dt }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 40} of file \textbf{ Particle\+System.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00041\ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ particle\ :\ particlesVector)\ }
+\DoxyCodeLine{00043\ \ \ \ \ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ particle.update(dt);}
+\DoxyCodeLine{00045\ \ \ \ \ \}}
+\DoxyCodeLine{00046\ \ \ \ \ particlesVector.erase(std::remove\_if(particlesVector.begin(),\ particlesVector.end(),\ [](\textcolor{keyword}{const}\ Particle\&\ p)\ \{\ return\ !p.isAlive();\ \}),\ particlesVector.end());}
+\DoxyCodeLine{00047\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\label{class_particle_system_a3a1b0fa85e79dddf8542f9355e7ef5de}} 
+\index{ParticleSystem@{ParticleSystem}!particlesVector@{particlesVector}}
+\index{particlesVector@{particlesVector}!ParticleSystem@{ParticleSystem}}
+\doxysubsubsection{particlesVector}
+{\footnotesize\ttfamily std\+::vector$<$\textbf{ Particle}$>$ Particle\+System\+::particles\+Vector\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 23} of file \textbf{ Particle\+System.\+h}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+No\+Code\+Game\+Editor/\textbf{ Particle\+System.\+h}\item 
+No\+Code\+Game\+Editor/\textbf{ Particle\+System.\+cpp}\end{DoxyCompactItemize}

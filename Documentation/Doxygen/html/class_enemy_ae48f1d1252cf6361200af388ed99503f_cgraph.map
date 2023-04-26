@@ -1,0 +1,7 @@
+<map id="Enemy::checkCollisions" name="Enemy::checkCollisions">
+<area shape="rect" id="node1" title=" " alt="" coords="5,31,168,56"/>
+<area shape="rect" id="node2" href="$class_enemy.html#aa19c270577c6f8d15cc98b7ddd1d9694" title=" " alt="" coords="247,5,353,31"/>
+<area shape="rect" id="node4" href="$class_enemy.html#a94bb2e4dd4a3c2ccd310c023d3decd9f" title=" " alt="" coords="216,55,384,80"/>
+<area shape="rect" id="node3" href="$class_wall.html#aaeb1cf484acd1c59818097e3c514f4c3" title=" " alt="" coords="467,5,595,31"/>
+<area shape="rect" id="node5" href="$class_monument.html#aceaf0a956d7520dfb5160afaba11e8c2" title=" " alt="" coords="432,55,631,80"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="ChoiceBar::ChoiceBar" name="ChoiceBar::ChoiceBar">
+<area shape="rect" id="node1" title="Choicebar constructor calls loadFiles and setup sprites takes game width and height as parameters." alt="" coords="5,31,156,56"/>
+<area shape="rect" id="node2" href="$class_choice_bar.html#ac52a4fbba14afc1e88ac1eb4c53db9c1" title="loads all of the textures required for the choice bar This includes the bar itself,..." alt="" coords="214,5,357,31"/>
+<area shape="rect" id="node3" href="$class_choice_bar.html#ace756d44ba230bf666ec6130eafae65f" title="sets up the various sprites so that they are placed inside the choice bar with the correct scales ori..." alt="" coords="204,55,367,80"/>
+</map>

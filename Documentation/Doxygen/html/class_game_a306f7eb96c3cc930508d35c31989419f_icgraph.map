@@ -1,0 +1,9 @@
+<map id="Game::clearVectors" name="Game::clearVectors">
+<area shape="rect" id="node1" title=" " alt="" coords="623,31,761,56"/>
+<area shape="rect" id="node2" href="$class_game.html#a6321fce717c8dad076d084e639d641c9" title=" " alt="" coords="439,5,569,31"/>
+<area shape="rect" id="node6" href="$class_game.html#adf2eb2e773dbad1322db8d6798705ea1" title="deal with key presses from the user" alt="" coords="433,55,575,80"/>
+<area shape="rect" id="node3" href="$class_game.html#a1d2aee62bac8e228344e1f44fab504e0" title="Update the game world." alt="" coords="258,5,362,31"/>
+<area shape="rect" id="node4" href="$class_game.html#a1ab78f5ed0d5ea879157357cf2fb2afa" title="main method for game" alt="" coords="104,31,187,56"/>
+<area shape="rect" id="node5" href="$main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main enrtry point" alt="" coords="5,31,56,56"/>
+<area shape="rect" id="node7" href="$class_game.html#a79f698dda206dd7a9bed28b3f88bdc38" title="handle user and system events/ input get key presses/ mouse moves etc. from OS and user :: Don&#39;t do g..." alt="" coords="235,55,385,80"/>
+</map>

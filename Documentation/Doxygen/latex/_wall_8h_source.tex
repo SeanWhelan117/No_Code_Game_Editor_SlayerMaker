@@ -1,0 +1,48 @@
+\doxysection{Wall.\+h}
+\label{_wall_8h_source}\index{NoCodeGameEditor/Wall.h@{NoCodeGameEditor/Wall.h}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}Grid.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}ToolBar.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}TextureManager.h"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }Wall}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ Wall(\textcolor{keywordtype}{int}\ t\_wallTextNum,\ sf::Vector2f\ t\_wallPos,\ TextureManager\&\ textureManager);}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ loadFiles();}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ setupWall(sf::Vector2f\ t\_pos);}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ render(sf::RenderWindow\&\ t\_window);}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ damageWall(\textcolor{keywordtype}{int}\ t\_damageTaken);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{int}\ getWallHealth();}
+\DoxyCodeLine{00029\ \ \ \ \ sf::Sprite\&\ getWall();}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ std::shared\_ptr<sf::Texture>\ wallTexture;}
+\DoxyCodeLine{00032\ \ \ \ \ std::shared\_ptr<sf::Texture>\ \ wallTexture2;}
+\DoxyCodeLine{00033\ \ \ \ \ std::shared\_ptr<sf::Texture>\ \ wallTexture3;}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{int}\ wallTextureNumber\ =\ 0;}
+\DoxyCodeLine{00035\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ sf::Sprite\ wallSprite;}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{int}\ offset\ =\ 15;}
+\DoxyCodeLine{00040\ \ \ \ \ TextureManager\&\ m\_textureManager;}
+\DoxyCodeLine{00041\ \ \ \ \ sf::Vector2f\ wallPos;}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{int}\ wallHealth\ =\ 20;}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \};}
+\DoxyCodeLine{00046\ }
+
+\end{DoxyCode}

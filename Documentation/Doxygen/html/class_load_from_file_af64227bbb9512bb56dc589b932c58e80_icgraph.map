@@ -1,0 +1,8 @@
+<map id="LoadFromFile::loadFile" name="LoadFromFile::loadFile">
+<area shape="rect" id="node1" title=" " alt="" coords="856,5,1011,31"/>
+<area shape="rect" id="node2" href="$class_choose_game.html#a8f329831a7ddb52396b6922f650b5de4" title=" " alt="" coords="583,5,808,31"/>
+<area shape="rect" id="node3" href="$class_choose_game.html#aa5651bef4f80ed2074f60e62119b38fc" title=" " alt="" coords="387,5,535,31"/>
+<area shape="rect" id="node4" href="$class_game.html#a1d2aee62bac8e228344e1f44fab504e0" title="Update the game world." alt="" coords="235,5,339,31"/>
+<area shape="rect" id="node5" href="$class_game.html#a1ab78f5ed0d5ea879157357cf2fb2afa" title="main method for game" alt="" coords="104,5,187,31"/>
+<area shape="rect" id="node6" href="$main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main enrtry point" alt="" coords="5,5,56,31"/>
+</map>

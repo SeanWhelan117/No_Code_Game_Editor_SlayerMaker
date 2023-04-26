@@ -1,0 +1,44 @@
+\doxysection{Game\+Over.\+h}
+\label{_game_over_8h_source}\index{NoCodeGameEditor/GameOver.h@{NoCodeGameEditor/GameOver.h}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }GameOver}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00012\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00013\ \ \ \ \ GameOver(\textcolor{keywordtype}{float}\ t\_gameWidth,\ \textcolor{keywordtype}{float}\ t\_gameHeight);}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{void}\ loadFiles();}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{void}\ update(sf::Time\ t\_deltaTime);}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{void}\ render(sf::RenderWindow\&\ t\_window);}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{int}\ buttonPressed\ =\ -\/10;}
+\DoxyCodeLine{00023\ \ \ \ \ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ setupButtons();}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ setupButtonText();}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ checkForMousePosAndClick();}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{float}\ gameWidth;\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{float}\ gameHeight;}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ MAX\_BUTTONS\ =\ 2;}
+\DoxyCodeLine{00032\ \ \ \ \ sf::RectangleShape\ buttons[MAX\_BUTTONS];}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ sf::Text\ button1Text;}
+\DoxyCodeLine{00035\ \ \ \ \ sf::Text\ button2Text;}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ sf::Font\ buttonFont;}
+\DoxyCodeLine{00038\ \ \ \ \ sf::Vector2f\ mousePos;}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \};}
+\DoxyCodeLine{00042\ }
+
+\end{DoxyCode}

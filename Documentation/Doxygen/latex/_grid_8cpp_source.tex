@@ -1,0 +1,68 @@
+\doxysection{Grid.\+cpp}
+\label{_grid_8cpp_source}\index{NoCodeGameEditor/Grid.cpp@{NoCodeGameEditor/Grid.cpp}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}Grid.h"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ Grid::Grid(\textcolor{keywordtype}{float}\ t\_gameWidth,\ \textcolor{keywordtype}{float}\ t\_gameHeight)}
+\DoxyCodeLine{00009\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ gameWidth\ =\ t\_gameWidth;}
+\DoxyCodeLine{00011\ \ \ \ \ gameHeight\ =\ t\_gameHeight;}
+\DoxyCodeLine{00012\ \}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keywordtype}{void}\ Grid::setupGrid(\textcolor{keywordtype}{int}\ t\_gridParams)}
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{int}\ maxCells\ =\ t\_gridParams\ *\ t\_gridParams;}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{int}\ maxCols\ =\ t\_gridParams;}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{int}\ maxRows\ =\ t\_gridParams;}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ sf::Vector2f\ pos\{\ gameWidth\ /\ 3,gameHeight\ /\ 5\ \};}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ maxRows;\ i++)}
+\DoxyCodeLine{00022\ \ \ \ \ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ std::vector<Cell>\ tempVec;}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ theGrid.push\_back(tempVec);}
+\DoxyCodeLine{00025\ \ \ \ \ \}}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{int}\ tempCurrent\ =\ 0;}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ maxCells;\ i++)}
+\DoxyCodeLine{00028\ \ \ \ \ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ tempCurrent++;}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ x\ =\ i\ \%\ maxRows;}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ y\ =\ i\ /\ maxCols;}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ Cell\ tempCell;}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ tempCell.xPos\ =\ x;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ tempCell.yPos\ =\ y;}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ tempCell.setupCells();}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ tempCell.setPos(pos);}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ pos.x\ +=\ tempCell.getCellShape().getSize().x;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (tempCurrent\ ==\ maxCols)}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ pos.y\ +=\ tempCell.getCellShape().getSize().y;}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ pos.x\ =\ gameWidth\ /\ 3;}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ tempCurrent\ =\ 0;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ tempCell.setID(x\ +\ (y\ *\ maxRows));}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ theGrid.at(x).push\_back(tempCell);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \}}
+\DoxyCodeLine{00048\ \}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{keywordtype}{void}\ Grid::update(sf::Time\&\ t\_deltaTime)}
+\DoxyCodeLine{00051\ \{}
+\DoxyCodeLine{00052\ \}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{keywordtype}{void}\ Grid::render(sf::RenderWindow\&\ t\_window,\ \textcolor{keywordtype}{int}\ t\_gridParams)}
+\DoxyCodeLine{00055\ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{int}\ maxCols\ =\ t\_gridParams;}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{int}\ maxRows\ =\ t\_gridParams;}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ maxRows;\ i++)}
+\DoxyCodeLine{00060\ \ \ \ \ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ maxCols;\ j++)}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ t\_window.draw(theGrid.at(j).at(i).getCellShape());}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00065\ \ \ \ \ \}}
+\DoxyCodeLine{00066\ \}}
+
+\end{DoxyCode}

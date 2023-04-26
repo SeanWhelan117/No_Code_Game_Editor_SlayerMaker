@@ -1,0 +1,34 @@
+\doxysection{PUPInvisibility.\+h}
+\label{_p_u_p_invisibility_8h_source}\index{NoCodeGameEditor/PUPInvisibility.h@{NoCodeGameEditor/PUPInvisibility.h}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}TextureManager.h"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }PUPInvisibility}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ \ \ \ \ PUPInvisibility(sf::Vector2f\ t\_invisibilityPos,\ TextureManager\&\ textureManager);}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{void}\ loadFiles();}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{void}\ setupInvisibility();}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ render(sf::RenderWindow\&\ t\_window);}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ sf::Sprite\&\ getInvisibility();}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ std::shared\_ptr<sf::Texture>\ invisibilityTexture;}
+\DoxyCodeLine{00027\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00028\ \ \ \ \ TextureManager\&\ m\_textureManager;}
+\DoxyCodeLine{00029\ \ \ \ \ sf::Vector2f\ invisibilityPos;}
+\DoxyCodeLine{00030\ \ \ \ \ sf::Sprite\ invisibilitySprite;}
+\DoxyCodeLine{00031\ \};}
+\DoxyCodeLine{00032\ }
+
+\end{DoxyCode}

@@ -1,0 +1,9 @@
+<map id="NoCodeGameEditor/Objectives.h" name="NoCodeGameEditor/Objectives.h">
+<area shape="rect" id="node1" title=" " alt="" coords="107,5,319,31"/>
+<area shape="rect" id="node2" title=" " alt="" coords="82,225,154,251"/>
+<area shape="rect" id="node3" title=" " alt="" coords="302,225,441,251"/>
+<area shape="rect" id="node4" href="$_texture_manager_8h.html" title=" " alt="" coords="156,152,283,177"/>
+<area shape="rect" id="node5" href="$_coin_8h.html" title=" " alt="" coords="288,79,346,104"/>
+<area shape="rect" id="node6" href="$_door_8h.html" title=" " alt="" coords="150,79,210,104"/>
+<area shape="rect" id="node7" href="$_monument_8h.html" title=" " alt="" coords="23,79,118,104"/>
+</map>

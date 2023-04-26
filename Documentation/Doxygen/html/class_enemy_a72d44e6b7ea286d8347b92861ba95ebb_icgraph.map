@@ -1,0 +1,5 @@
+<map id="Enemy::createRandomStartPos" name="Enemy::createRandomStartPos">
+<area shape="rect" id="node1" title=" " alt="" coords="357,5,564,31"/>
+<area shape="rect" id="node2" href="$class_enemy.html#a456bce97463f25089468e398e15a6ce4" title=" " alt="" coords="165,5,309,31"/>
+<area shape="rect" id="node3" href="$class_enemy.html#a27aaa3e405cdd77850d62fc970a5449f" title=" " alt="" coords="5,5,117,31"/>
+</map>

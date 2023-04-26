@@ -1,0 +1,66 @@
+\doxysection{Player.\+h}
+\label{_player_8h_source}\index{NoCodeGameEditor/Player.h@{NoCodeGameEditor/Player.h}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}Bullet.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}Animator.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}Wall.h"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }Player}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ Player(\textcolor{keywordtype}{float}\ t\_gameWidth,\ \textcolor{keywordtype}{float}\ t\_gameHeight,\ Animator\&\ t\_animator);}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ loadFiles();}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ setupPlayer();}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ update(sf::RenderWindow\&\ t\_window,\ \textcolor{keywordtype}{bool}\ t\_invincibilityActive,\ \textcolor{keywordtype}{bool}\ t\_invisibilityActive,\ std::vector<std::unique\_ptr<Wall>>\&\ t\_walls);}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ render(sf::RenderWindow\&\ t\_window);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ sf::Sprite\ getPlayer();}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ rotatePlayerView();}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ std::vector<std::unique\_ptr<Bullet\ >>\ bulletVector;}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ removeBullet(\textcolor{keywordtype}{int}\ t\_bulletNum);}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ handleCollisions(std::vector<std::unique\_ptr<Wall>>\&\ walls);}
+\DoxyCodeLine{00036\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00037\ \ \ \ \ Animator\ m\_animator;}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ playerMovement();}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ move(\textcolor{keywordtype}{float}\ t\_x,\ \textcolor{keywordtype}{float}\ t\_y);}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ shoot(sf::RenderWindow\&\ t\_window);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ sf::Vector2f\ gameSize;}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{int}\ speed\ =\ 5;}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{int}\ speedX\ =\ 0;}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{int}\ speedY\ =\ 0;}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ sf::Vector2f\ position\ =\ sf::Vector2f(0,\ 0);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ sf::Vector2f\ mousePos;}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ PI\ =\ 3.141592654;}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ sf::Clock\ colourChangeTimer;}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ sf::Sprite\ playerSprite;}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ sf::Texture\ playerIdleTexture;}
+\DoxyCodeLine{00059\ \ \ \ \ sf::Texture\ playerWalkingTexture;}
+\DoxyCodeLine{00060\ \ \ \ \ sf::IntRect\ textureRect;}
+\DoxyCodeLine{00061\ \ \ \ \ sf::Color\ ogColor;}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \};}
+\DoxyCodeLine{00064\ }
+
+\end{DoxyCode}

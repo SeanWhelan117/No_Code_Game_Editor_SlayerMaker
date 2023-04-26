@@ -1,0 +1,4 @@
+<map id="Cell::Cell" name="Cell::Cell">
+<area shape="rect" id="node1" title="Cell Constructor, calls setupCells." alt="" coords="5,5,80,31"/>
+<area shape="rect" id="node2" href="$class_cell.html#a6fd306a47dce2edde37e1e12f0ac047d" title="gives the cells a color, outline and size" alt="" coords="128,5,241,31"/>
+</map>

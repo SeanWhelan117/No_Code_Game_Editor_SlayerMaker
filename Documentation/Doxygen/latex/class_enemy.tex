@@ -1,0 +1,1035 @@
+\doxysection{Enemy Class Reference}
+\label{class_enemy}\index{Enemy@{Enemy}}
+
+
+{\ttfamily \#include $<$Enemy.\+h$>$}
+
+
+
+Collaboration diagram for Enemy\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_enemy__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Enemy} (int t\+\_\+enemy\+Text\+Num, sf\+::\+Vector2f t\+\_\+spawner\+Pos, \textbf{ Texture\+Manager} \&texture\+Manager)
+\item 
+void \textbf{ load\+Files} ()
+\item 
+void \textbf{ setup\+Enemy} (sf\+::\+Vector2f t\+\_\+pos)
+\item 
+void \textbf{ render} (sf\+::\+Render\+Window \&t\+\_\+window)
+\item 
+void \textbf{ update} (sf\+::\+Vector2f t\+\_\+seek\+Pos, std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \textbf{ Wall} $>$ $>$ \&t\+\_\+walls, sf\+::\+Time t\+\_\+delta\+Time, int t\+\_\+gt\+Chosen, std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \textbf{ Monument} $>$ $>$ \&t\+\_\+monuments)
+\item 
+sf\+::\+Sprite \& \textbf{ get\+Enemy} ()
+\item 
+void \textbf{ seeking} (sf\+::\+Vector2f t\+\_\+seek\+Pos)
+\item 
+void \textbf{ Wandering} ()
+\item 
+int \textbf{ get\+Health} ()
+\item 
+void \textbf{ set\+Health} (int t\+\_\+damage)
+\item 
+void \textbf{ setup\+Vision\+Cone} ()
+\item 
+sf\+::\+Convex\+Shape \textbf{ get\+Vision\+Cone} ()
+\item 
+void \textbf{ check\+Collisions} (std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \textbf{ Wall} $>$ $>$ \&t\+\_\+walls, sf\+::\+Vector2f t\+\_\+seek\+Pos, int t\+\_\+gt\+Chosen, std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \textbf{ Monument} $>$ $>$ \&t\+\_\+monuments)
+\item 
+void \textbf{ has\+Wallbeen\+Destroyed} (std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \textbf{ Wall} $>$ $>$ \&t\+\_\+walls)
+\item 
+void \textbf{ attack} (\textbf{ Wall} $\ast$t\+\_\+wall)
+\item 
+void \textbf{ attack\+Monument} (\textbf{ Monument} $\ast$t\+\_\+monument)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Animator} \textbf{ my\+Anim}
+\item 
+std\+::shared\+\_\+ptr$<$ sf\+::\+Texture $>$ \textbf{ enemy\+Texture}
+\item 
+std\+::shared\+\_\+ptr$<$ sf\+::\+Texture $>$ \textbf{ enemy\+Texture2}
+\item 
+std\+::shared\+\_\+ptr$<$ sf\+::\+Texture $>$ \textbf{ enemy\+Texture3}
+\item 
+bool \textbf{ enemy\+Setup} = false
+\item 
+bool \textbf{ seeking\+Player} = true
+\item 
+bool \textbf{ attacking} = false
+\item 
+bool \textbf{ wandering} = false
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Vector2f \textbf{ create\+Random\+Start\+Pos} (sf\+::\+Vector2f t\+\_\+spawner\+Pos)
+\item 
+float \textbf{ create\+Random\+Speed} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Sprite \textbf{ enemy\+Sprite}
+\item 
+int \textbf{ offset} = 15
+\item 
+int \textbf{ enemy\+Texture\+Number} = 0
+\item 
+sf\+::\+Texture \textbf{ current\+Texture}
+\item 
+int \textbf{ times\+Called} = 0
+\item 
+int \textbf{ random\+Spawn} = 0
+\item 
+float \textbf{ speed} = 3.\+0f
+\item 
+\textbf{ Texture\+Manager} \& \textbf{ m\+\_\+texture\+Manager}
+\item 
+int \textbf{ health} = 25
+\item 
+sf\+::\+Vector2f \textbf{ velocity}
+\item 
+const float \textbf{ PI} = 3.\+141592654f
+\item 
+float \textbf{ cone\+Angle} = 45
+\item 
+float \textbf{ cone\+Length} = 30
+\item 
+sf\+::\+Convex\+Shape \textbf{ vision\+Cone}
+\item 
+float \textbf{ attack\+Rate} = 4.\+0f
+\item 
+int \textbf{ damage} = 5
+\item 
+int \textbf{ damage2} = 1
+\item 
+sf\+::\+Clock \textbf{ attack\+Timer}
+\item 
+sf\+::\+Clock \textbf{ wander\+Timer}
+\item 
+sf\+::\+Vector2f \textbf{ spawner\+Position}
+\item 
+sf\+::\+Vector2f \textbf{ direction} \{ 50, 50 \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Sean Whelan 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022/23 @license Attribution-\/\+Non\+Commercial 4.\+0 International 
+\end{DoxyDate}
+
+
+Definition at line \textbf{ 15} of file \textbf{ Enemy.\+h}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\label{class_enemy_a27aaa3e405cdd77850d62fc970a5449f}} 
+\index{Enemy@{Enemy}!Enemy@{Enemy}}
+\index{Enemy@{Enemy}!Enemy@{Enemy}}
+\doxysubsubsection{Enemy()}
+{\footnotesize\ttfamily Enemy\+::\+Enemy (\begin{DoxyParamCaption}\item[{int}]{t\+\_\+enemy\+Text\+Num,  }\item[{sf\+::\+Vector2f}]{t\+\_\+spawner\+Pos,  }\item[{\textbf{ Texture\+Manager} \&}]{texture\+Manager }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 3} of file \textbf{ Enemy.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00003\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ enemyTextureNumber(t\_EnemyTextNum),\ spawnerPosition(t\_spawnerPos),\ m\_textureManager(textureManager) }
+\DoxyCodeLine{00004\ \{}
+\DoxyCodeLine{00005\ \ \ \ \ loadFiles();}
+\DoxyCodeLine{00006\ \ \ \ \ setupEnemy(t\_spawnerPos);}
+\DoxyCodeLine{00007\ \ \ \ \ setupVisionCone();}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ "{}Enemy\ Created"{}\ <<\ std::endl;}}
+\DoxyCodeLine{00009\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_enemy_a27aaa3e405cdd77850d62fc970a5449f_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{class_enemy_aa19c270577c6f8d15cc98b7ddd1d9694}} 
+\index{Enemy@{Enemy}!attack@{attack}}
+\index{attack@{attack}!Enemy@{Enemy}}
+\doxysubsubsection{attack()}
+{\footnotesize\ttfamily void Enemy\+::attack (\begin{DoxyParamCaption}\item[{\textbf{ Wall} $\ast$}]{t\+\_\+wall }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 118} of file \textbf{ Enemy.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00119\ \{}
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keywordflow}{if}\ (attackTimer.getElapsedTime().asSeconds()\ >=\ attackRate)\ }
+\DoxyCodeLine{00121\ \ \ \ \ \{}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ attackTimer.restart();}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ t\_wall-\/>damageWall(damage);}
+\DoxyCodeLine{00124\ \ \ \ \ \}}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=292pt]{class_enemy_aa19c270577c6f8d15cc98b7ddd1d9694_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_enemy_aa19c270577c6f8d15cc98b7ddd1d9694_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_enemy_a94bb2e4dd4a3c2ccd310c023d3decd9f}} 
+\index{Enemy@{Enemy}!attackMonument@{attackMonument}}
+\index{attackMonument@{attackMonument}!Enemy@{Enemy}}
+\doxysubsubsection{attackMonument()}
+{\footnotesize\ttfamily void Enemy\+::attack\+Monument (\begin{DoxyParamCaption}\item[{\textbf{ Monument} $\ast$}]{t\+\_\+monument }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 128} of file \textbf{ Enemy.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00129\ \{}
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keywordflow}{if}\ (attackTimer.getElapsedTime().asSeconds()\ >=\ attackRate)}
+\DoxyCodeLine{00131\ \ \ \ \ \{}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ attackTimer.restart();}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ t\_monument-\/>damageMonument(damage2);}
+\DoxyCodeLine{00134\ \ \ \ \ \}}
+\DoxyCodeLine{00135\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_enemy_a94bb2e4dd4a3c2ccd310c023d3decd9f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_enemy_a94bb2e4dd4a3c2ccd310c023d3decd9f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_enemy_ae48f1d1252cf6361200af388ed99503f}} 
+\index{Enemy@{Enemy}!checkCollisions@{checkCollisions}}
+\index{checkCollisions@{checkCollisions}!Enemy@{Enemy}}
+\doxysubsubsection{checkCollisions()}
+{\footnotesize\ttfamily void Enemy\+::check\+Collisions (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \textbf{ Wall} $>$ $>$ \&}]{t\+\_\+walls,  }\item[{sf\+::\+Vector2f}]{t\+\_\+seek\+Pos,  }\item[{int}]{t\+\_\+gt\+Chosen,  }\item[{std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \textbf{ Monument} $>$ $>$ \&}]{t\+\_\+monuments }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 201} of file \textbf{ Enemy.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00202\ \{}
+\DoxyCodeLine{00203\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ t\_walls.size();\ i++)}
+\DoxyCodeLine{00204\ \ \ \ \ \{}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (visionCone.getGlobalBounds().intersects(t\_walls.at(i).get()-\/>getWall().getGlobalBounds()))}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ seekingPlayer\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ wandering\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ attacking\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ attack(t\_walls.at(i).get());}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00212\ \ \ \ \ \}}
+\DoxyCodeLine{00213\ }
+\DoxyCodeLine{00214\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ t\_monuments.size();\ i++)}
+\DoxyCodeLine{00215\ \ \ \ \ \{}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (visionCone.getGlobalBounds().intersects(t\_monuments.at(i).get()-\/>getMonument().getGlobalBounds()))}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ seekingPlayer\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ attackMonument(t\_monuments.at(i).get());}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00221\ \ \ \ \ \}}
+\DoxyCodeLine{00222\ \ \ \ \ }
+\DoxyCodeLine{00223\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_enemy_ae48f1d1252cf6361200af388ed99503f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=321pt]{class_enemy_ae48f1d1252cf6361200af388ed99503f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_enemy_a5a6968990cbd39418b95285641ba635f}} 
+\index{Enemy@{Enemy}!createRandomSpeed@{createRandomSpeed}}
+\index{createRandomSpeed@{createRandomSpeed}!Enemy@{Enemy}}
+\doxysubsubsection{createRandomSpeed()}
+{\footnotesize\ttfamily float Enemy\+::create\+Random\+Speed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 167} of file \textbf{ Enemy.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00168\ \{}
+\DoxyCodeLine{00169\ \ \ \ \ \textcolor{keywordtype}{float}\ tempSpeed\ =\ 1.5f\ +\ \textcolor{keyword}{static\_cast\ <}\textcolor{keywordtype}{float}\textcolor{keyword}{>}\ (rand())\ /\ (\textcolor{keyword}{static\_cast\ <}\textcolor{keywordtype}{float}\textcolor{keyword}{>}\ (RAND\_MAX\ /\ (4.5f\ -\/\ 1.5f)));}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00171\ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ tempSpeed\ <<\ std::endl;}}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00173\ \ \ \ \ \textcolor{keywordflow}{return}\ tempSpeed;}
+\DoxyCodeLine{00174\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_enemy_a5a6968990cbd39418b95285641ba635f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_enemy_a72d44e6b7ea286d8347b92861ba95ebb}} 
+\index{Enemy@{Enemy}!createRandomStartPos@{createRandomStartPos}}
+\index{createRandomStartPos@{createRandomStartPos}!Enemy@{Enemy}}
+\doxysubsubsection{createRandomStartPos()}
+{\footnotesize\ttfamily sf\+::\+Vector2f Enemy\+::create\+Random\+Start\+Pos (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{t\+\_\+spawner\+Pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 137} of file \textbf{ Enemy.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00138\ \{}
+\DoxyCodeLine{00139\ \ \ \ \ sf::Vector2f\ spawnPos\ =\ t\_spawnerPos;}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \ \ \ \ randomSpawn\ =\ rand()\ \%\ 4\ +\ 1;}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{keywordflow}{if}\ (randomSpawn\ ==\ 1)\ \textcolor{comment}{//\ NORTH}}
+\DoxyCodeLine{00144\ \ \ \ \ \{}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ spawnPos.y\ -\/=\ 60;}
+\DoxyCodeLine{00146\ \ \ \ \ \}}
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (randomSpawn\ ==\ 2)\ \textcolor{comment}{//\ SOUTH}}
+\DoxyCodeLine{00148\ \ \ \ \ \{}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ spawnPos.y\ +=\ 60;}
+\DoxyCodeLine{00150\ \ \ \ \ \}}
+\DoxyCodeLine{00151\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (randomSpawn\ ==\ 3)\ \textcolor{comment}{//\ EAST}}
+\DoxyCodeLine{00152\ \ \ \ \ \{}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ spawnPos.x\ +=\ 60;}
+\DoxyCodeLine{00154\ \ \ \ \ \}}
+\DoxyCodeLine{00155\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (randomSpawn\ ==\ 4)\ \textcolor{comment}{//\ WEST}}
+\DoxyCodeLine{00156\ \ \ \ \ \{}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ spawnPos.x\ -\/=\ 60;}
+\DoxyCodeLine{00158\ \ \ \ \ \}}
+\DoxyCodeLine{00159\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00160\ \ \ \ \ \{}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Error\ with\ random\ pos\ for\ enemy"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00162\ \ \ \ \ \}}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{keywordflow}{return}\ spawnPos;}
+\DoxyCodeLine{00165\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_enemy_a72d44e6b7ea286d8347b92861ba95ebb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_enemy_a2875d09255c5c3769d9aab2dfb1694cd}} 
+\index{Enemy@{Enemy}!getEnemy@{getEnemy}}
+\index{getEnemy@{getEnemy}!Enemy@{Enemy}}
+\doxysubsubsection{getEnemy()}
+{\footnotesize\ttfamily sf\+::\+Sprite \& Enemy\+::get\+Enemy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 75} of file \textbf{ Enemy.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00076\ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordflow}{return}\ enemySprite;}
+\DoxyCodeLine{00078\ \}}
+
+\end{DoxyCode}
+\mbox{\label{class_enemy_a46341636350ca2bc6aac929b2a84f215}} 
+\index{Enemy@{Enemy}!getHealth@{getHealth}}
+\index{getHealth@{getHealth}!Enemy@{Enemy}}
+\doxysubsubsection{getHealth()}
+{\footnotesize\ttfamily int Enemy\+::get\+Health (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 176} of file \textbf{ Enemy.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00177\ \{}
+\DoxyCodeLine{00178\ \ \ \ \ \textcolor{keywordflow}{return}\ health;}
+\DoxyCodeLine{00179\ \}}
+
+\end{DoxyCode}
+\mbox{\label{class_enemy_afb33db082ce28b7a618030006ec5c40e}} 
+\index{Enemy@{Enemy}!getVisionCone@{getVisionCone}}
+\index{getVisionCone@{getVisionCone}!Enemy@{Enemy}}
+\doxysubsubsection{getVisionCone()}
+{\footnotesize\ttfamily sf\+::\+Convex\+Shape Enemy\+::get\+Vision\+Cone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 196} of file \textbf{ Enemy.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00197\ \{}
+\DoxyCodeLine{00198\ \ \ \ \ \textcolor{keywordflow}{return}\ visionCone;}
+\DoxyCodeLine{00199\ \}}
+
+\end{DoxyCode}
+\mbox{\label{class_enemy_a7a27bddd45cba5b3657aa8269fc0f13a}} 
+\index{Enemy@{Enemy}!hasWallbeenDestroyed@{hasWallbeenDestroyed}}
+\index{hasWallbeenDestroyed@{hasWallbeenDestroyed}!Enemy@{Enemy}}
+\doxysubsubsection{hasWallbeenDestroyed()}
+{\footnotesize\ttfamily void Enemy\+::has\+Wallbeen\+Destroyed (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \textbf{ Wall} $>$ $>$ \&}]{t\+\_\+walls }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 225} of file \textbf{ Enemy.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00226\ \{}
+\DoxyCodeLine{00227\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ t\_walls.size();\ i++)}
+\DoxyCodeLine{00228\ \ \ \ \ \{}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!visionCone.getGlobalBounds().intersects(t\_walls.at(i).get()-\/>getWall().getGlobalBounds()))}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \ \ \ \ attacking\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ seekingPlayer\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00234\ \ \ \ \ \}}
+\DoxyCodeLine{00235\ }
+\DoxyCodeLine{00236\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_enemy_a7a27bddd45cba5b3657aa8269fc0f13a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_enemy_ad5b18a5dd94946dce3754307e7ca744b}} 
+\index{Enemy@{Enemy}!loadFiles@{loadFiles}}
+\index{loadFiles@{loadFiles}!Enemy@{Enemy}}
+\doxysubsubsection{loadFiles()}
+{\footnotesize\ttfamily void Enemy\+::load\+Files (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 11} of file \textbf{ Enemy.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ enemyTexture\ =\ std::make\_shared<sf::Texture>(m\_textureManager.getTexture(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)ENEMIES\(\backslash\)\(\backslash\)ENEMY1\(\backslash\)\(\backslash\)Enemy1Idle.png"{}}));}
+\DoxyCodeLine{00014\ \ \ \ \ enemyTexture2\ =\ std::make\_shared<sf::Texture>(m\_textureManager.getTexture(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)ENEMIES\(\backslash\)\(\backslash\)ENEMY2\(\backslash\)\(\backslash\)Enemy2Idle.png"{}}));}
+\DoxyCodeLine{00015\ \ \ \ \ enemyTexture3\ =\ std::make\_shared<sf::Texture>(m\_textureManager.getTexture(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)ENEMIES\(\backslash\)\(\backslash\)ENEMY3\(\backslash\)\(\backslash\)Enemy3Idle.png"{}}));}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordflow}{if}\ (enemyTextureNumber\ ==\ 0)}
+\DoxyCodeLine{00018\ \ \ \ \ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ enemySprite.setTexture(*enemyTexture);}
+\DoxyCodeLine{00020\ \ \ \ \ \}}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (enemyTextureNumber\ ==\ 1)}
+\DoxyCodeLine{00022\ \ \ \ \ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ enemySprite.setTexture(*enemyTexture2);}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \}}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (enemyTextureNumber\ ==\ 2)}
+\DoxyCodeLine{00027\ \ \ \ \ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ enemySprite.setTexture(*enemyTexture3);}
+\DoxyCodeLine{00029\ \ \ \ \ \}}
+\DoxyCodeLine{00030\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=346pt]{class_enemy_ad5b18a5dd94946dce3754307e7ca744b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=292pt]{class_enemy_ad5b18a5dd94946dce3754307e7ca744b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_enemy_a09169617a34e6de54708bf409244d218}} 
+\index{Enemy@{Enemy}!render@{render}}
+\index{render@{render}!Enemy@{Enemy}}
+\doxysubsubsection{render()}
+{\footnotesize\ttfamily void Enemy\+::render (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{t\+\_\+window }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 41} of file \textbf{ Enemy.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00042\ \{}
+\DoxyCodeLine{00043\ \ \ \ \ t\_window.draw(enemySprite);}
+\DoxyCodeLine{00044\ \ \ \ \ t\_window.draw(visionCone);}
+\DoxyCodeLine{00045\ \}}
+
+\end{DoxyCode}
+\mbox{\label{class_enemy_a00e3ea992a44cfc630a7a419cf4d5c93}} 
+\index{Enemy@{Enemy}!seeking@{seeking}}
+\index{seeking@{seeking}!Enemy@{Enemy}}
+\doxysubsubsection{seeking()}
+{\footnotesize\ttfamily void Enemy\+::seeking (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{t\+\_\+seek\+Pos }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 80} of file \textbf{ Enemy.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00081\ \{}
+\DoxyCodeLine{00082\ \ \ \ \ sf::Vector2f\ seekPosition\ =\ t\_seekPos;}
+\DoxyCodeLine{00083\ \ \ \ \ sf::Vector2f\ seekerPosition\ =\ enemySprite.getPosition();}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{float}\ angleX\ =\ seekerPosition.x\ -\/\ seekPosition.x;}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{float}\ angleY\ =\ seekerPosition.y\ -\/\ seekPosition.y;}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{float}\ rotation\ =\ (-\/atan2(angleX,\ angleY))\ *\ 180\ /\ PI;}
+\DoxyCodeLine{00090\ \ \ \ \ enemySprite.setRotation(rotation);}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ velocity\ =\ seekPosition\ -\/\ seekerPosition;}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{float}\ squareRootVelocity\ =\ sqrtf(velocity.x\ *\ velocity.x\ +\ velocity.y\ *\ velocity.y);}
+\DoxyCodeLine{00095\ \ \ \ \ velocity\ =\ sf::Vector2f\{\ velocity.x\ /\ squareRootVelocity\ ,\ velocity.y\ /\ squareRootVelocity\ \};}
+\DoxyCodeLine{00096\ \ \ \ \ velocity\ =\ velocity\ *\ speed;}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ enemySprite.move(velocity);}
+\DoxyCodeLine{00099\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=286pt]{class_enemy_a00e3ea992a44cfc630a7a419cf4d5c93_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_enemy_a6a579b6cbf358f752af2a3b70a8dd6e9}} 
+\index{Enemy@{Enemy}!setHealth@{setHealth}}
+\index{setHealth@{setHealth}!Enemy@{Enemy}}
+\doxysubsubsection{setHealth()}
+{\footnotesize\ttfamily void Enemy\+::set\+Health (\begin{DoxyParamCaption}\item[{int}]{t\+\_\+damage }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 181} of file \textbf{ Enemy.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00182\ \{}
+\DoxyCodeLine{00183\ \ \ \ \ health\ -\/=\ t\_damage;}
+\DoxyCodeLine{00184\ \}}
+
+\end{DoxyCode}
+\mbox{\label{class_enemy_a456bce97463f25089468e398e15a6ce4}} 
+\index{Enemy@{Enemy}!setupEnemy@{setupEnemy}}
+\index{setupEnemy@{setupEnemy}!Enemy@{Enemy}}
+\doxysubsubsection{setupEnemy()}
+{\footnotesize\ttfamily void Enemy\+::setup\+Enemy (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{t\+\_\+pos }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 32} of file \textbf{ Enemy.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00033\ \{}
+\DoxyCodeLine{00034\ \ \ \ \ enemySprite.setOrigin(enemySprite.getGlobalBounds().width\ /\ 2,\ enemySprite.getGlobalBounds().height\ /\ 2);}
+\DoxyCodeLine{00035\ \ \ \ \ enemySprite.setPosition(createRandomStartPos(t\_pos));}
+\DoxyCodeLine{00036\ \ \ \ \ enemySprite.setScale(0.5,\ 0.5);}
+\DoxyCodeLine{00037\ \ \ \ \ speed\ =\ createRandomSpeed();}
+\DoxyCodeLine{00038\ \ \ \ \ enemySetup\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00039\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_enemy_a456bce97463f25089468e398e15a6ce4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=308pt]{class_enemy_a456bce97463f25089468e398e15a6ce4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_enemy_a00cbe804cef8847d4d7451bfc7969cb8}} 
+\index{Enemy@{Enemy}!setupVisionCone@{setupVisionCone}}
+\index{setupVisionCone@{setupVisionCone}!Enemy@{Enemy}}
+\doxysubsubsection{setupVisionCone()}
+{\footnotesize\ttfamily void Enemy\+::setup\+Vision\+Cone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 186} of file \textbf{ Enemy.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00187\ \{}
+\DoxyCodeLine{00188\ \ \ \ \ visionCone.setPointCount(3);}
+\DoxyCodeLine{00189\ \ \ \ \ visionCone.setPoint(0,\ sf::Vector2f(0,\ 0));}
+\DoxyCodeLine{00190\ \ \ \ \ visionCone.setPoint(1,\ sf::Vector2f(coneLength,\ -\/coneLength\ *\ std::tan(coneAngle\ /\ 2\ *\ PI\ /\ 180)));}
+\DoxyCodeLine{00191\ \ \ \ \ visionCone.setPoint(2,\ sf::Vector2f(coneLength,\ coneLength\ *\ std::tan(coneAngle\ /\ 2\ *\ PI\ /\ 180)));}
+\DoxyCodeLine{00192\ }
+\DoxyCodeLine{00193\ \ \ \ \ visionCone.setFillColor(sf::Color(0,0,0,0));}
+\DoxyCodeLine{00194\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=327pt]{class_enemy_a00cbe804cef8847d4d7451bfc7969cb8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_enemy_a7b5c2806bd79485f5b00f61958570429}} 
+\index{Enemy@{Enemy}!update@{update}}
+\index{update@{update}!Enemy@{Enemy}}
+\doxysubsubsection{update()}
+{\footnotesize\ttfamily void Enemy\+::update (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{t\+\_\+seek\+Pos,  }\item[{std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \textbf{ Wall} $>$ $>$ \&}]{t\+\_\+walls,  }\item[{sf\+::\+Time}]{t\+\_\+delta\+Time,  }\item[{int}]{t\+\_\+gt\+Chosen,  }\item[{std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \textbf{ Monument} $>$ $>$ \&}]{t\+\_\+monuments }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 47} of file \textbf{ Enemy.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00048\ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{comment}{//moveEnemy(t\_playerPos);}}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordflow}{if}\ (seekingPlayer\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{00051\ \ \ \ \ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ seeking(t\_seekPos);}
+\DoxyCodeLine{00053\ \ \ \ \ \}}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00055\ \ \ \ \ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ hasWallbeenDestroyed(t\_walls);}
+\DoxyCodeLine{00057\ \ \ \ \ \}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordflow}{if}\ (wandering\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{00060\ \ \ \ \ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ Wandering();}
+\DoxyCodeLine{00062\ \ \ \ \ \}}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00064\ \ \ \ \ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ hasWallbeenDestroyed(t\_walls);}
+\DoxyCodeLine{00066\ \ \ \ \ \}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ checkCollisions(t\_walls,\ t\_seekPos,\ t\_gtChosen,\ t\_monuments);}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ visionCone.setRotation(enemySprite.getRotation()\ -\/\ 90);}
+\DoxyCodeLine{00072\ \ \ \ \ visionCone.setPosition(enemySprite.getPosition());}
+\DoxyCodeLine{00073\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_enemy_a7b5c2806bd79485f5b00f61958570429_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_enemy_abe048942840c8ad47863bda8a0073acb}} 
+\index{Enemy@{Enemy}!Wandering@{Wandering}}
+\index{Wandering@{Wandering}!Enemy@{Enemy}}
+\doxysubsubsection{Wandering()}
+{\footnotesize\ttfamily void Enemy\+::\+Wandering (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 101} of file \textbf{ Enemy.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00102\ \{}
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordflow}{if}\ (wanderTimer.getElapsedTime().asSeconds()\ >\ 2)}
+\DoxyCodeLine{00104\ \ \ \ \ \{}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ direction\ =\ sf::Vector2f((rand()\ \%\ 200)\ -\/\ 100,\ (rand()\ \%\ 200)\ -\/\ 100);}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ wanderTimer.restart();}
+\DoxyCodeLine{00107\ \ \ \ \ \}}
+\DoxyCodeLine{00108\ \ \ \ \ }
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keywordtype}{float}\ length\ =\ std::sqrt(direction.x\ *\ direction.x\ +\ direction.y\ *\ direction.y);}
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordflow}{if}\ (length\ !=\ 0)}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ direction\ /=\ length;}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \ \ \ \ enemySprite.move(direction\ *\ (speed\ /\ 2));}
+\DoxyCodeLine{00115\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=299pt]{class_enemy_abe048942840c8ad47863bda8a0073acb_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\label{class_enemy_a71a6d737ad01c39e1f070042056d8de5}} 
+\index{Enemy@{Enemy}!attacking@{attacking}}
+\index{attacking@{attacking}!Enemy@{Enemy}}
+\doxysubsubsection{attacking}
+{\footnotesize\ttfamily bool Enemy\+::attacking = false}
+
+
+
+Definition at line \textbf{ 49} of file \textbf{ Enemy.\+h}.
+
+\mbox{\label{class_enemy_ac81933db7b471fdb48d6e530de72ede7}} 
+\index{Enemy@{Enemy}!attackRate@{attackRate}}
+\index{attackRate@{attackRate}!Enemy@{Enemy}}
+\doxysubsubsection{attackRate}
+{\footnotesize\ttfamily float Enemy\+::attack\+Rate = 4.\+0f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 88} of file \textbf{ Enemy.\+h}.
+
+\mbox{\label{class_enemy_ae2d9bf4754df2a4bf38e320d601e7acf}} 
+\index{Enemy@{Enemy}!attackTimer@{attackTimer}}
+\index{attackTimer@{attackTimer}!Enemy@{Enemy}}
+\doxysubsubsection{attackTimer}
+{\footnotesize\ttfamily sf\+::\+Clock Enemy\+::attack\+Timer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 91} of file \textbf{ Enemy.\+h}.
+
+\mbox{\label{class_enemy_a20d8d95c50ded33cc2ab5b6d8ffca975}} 
+\index{Enemy@{Enemy}!coneAngle@{coneAngle}}
+\index{coneAngle@{coneAngle}!Enemy@{Enemy}}
+\doxysubsubsection{coneAngle}
+{\footnotesize\ttfamily float Enemy\+::cone\+Angle = 45\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 83} of file \textbf{ Enemy.\+h}.
+
+\mbox{\label{class_enemy_af94ef4d79c9df7de9815772bab6e8b41}} 
+\index{Enemy@{Enemy}!coneLength@{coneLength}}
+\index{coneLength@{coneLength}!Enemy@{Enemy}}
+\doxysubsubsection{coneLength}
+{\footnotesize\ttfamily float Enemy\+::cone\+Length = 30\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 84} of file \textbf{ Enemy.\+h}.
+
+\mbox{\label{class_enemy_a041ec716eb5dca06e0d0c90d11643bde}} 
+\index{Enemy@{Enemy}!currentTexture@{currentTexture}}
+\index{currentTexture@{currentTexture}!Enemy@{Enemy}}
+\doxysubsubsection{currentTexture}
+{\footnotesize\ttfamily sf\+::\+Texture Enemy\+::current\+Texture\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 65} of file \textbf{ Enemy.\+h}.
+
+\mbox{\label{class_enemy_a4969f2e5372ae6840aba5cd0b8059a0a}} 
+\index{Enemy@{Enemy}!damage@{damage}}
+\index{damage@{damage}!Enemy@{Enemy}}
+\doxysubsubsection{damage}
+{\footnotesize\ttfamily int Enemy\+::damage = 5\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 89} of file \textbf{ Enemy.\+h}.
+
+\mbox{\label{class_enemy_afb802bf07be1182baf1001e3bdad0113}} 
+\index{Enemy@{Enemy}!damage2@{damage2}}
+\index{damage2@{damage2}!Enemy@{Enemy}}
+\doxysubsubsection{damage2}
+{\footnotesize\ttfamily int Enemy\+::damage2 = 1\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 90} of file \textbf{ Enemy.\+h}.
+
+\mbox{\label{class_enemy_a785136a1a195306bbeb704b90299822b}} 
+\index{Enemy@{Enemy}!direction@{direction}}
+\index{direction@{direction}!Enemy@{Enemy}}
+\doxysubsubsection{direction}
+{\footnotesize\ttfamily sf\+::\+Vector2f Enemy\+::direction \{ 50, 50 \}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 95} of file \textbf{ Enemy.\+h}.
+
+\mbox{\label{class_enemy_a9e999da25cf677a0f05146604ec95e32}} 
+\index{Enemy@{Enemy}!enemySetup@{enemySetup}}
+\index{enemySetup@{enemySetup}!Enemy@{Enemy}}
+\doxysubsubsection{enemySetup}
+{\footnotesize\ttfamily bool Enemy\+::enemy\+Setup = false}
+
+
+
+Definition at line \textbf{ 40} of file \textbf{ Enemy.\+h}.
+
+\mbox{\label{class_enemy_a4be65a120c7ee26f60ce0514aef18c62}} 
+\index{Enemy@{Enemy}!enemySprite@{enemySprite}}
+\index{enemySprite@{enemySprite}!Enemy@{Enemy}}
+\doxysubsubsection{enemySprite}
+{\footnotesize\ttfamily sf\+::\+Sprite Enemy\+::enemy\+Sprite\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 60} of file \textbf{ Enemy.\+h}.
+
+\mbox{\label{class_enemy_a8c3359a50084ad74b1d0ef88d870f282}} 
+\index{Enemy@{Enemy}!enemyTexture@{enemyTexture}}
+\index{enemyTexture@{enemyTexture}!Enemy@{Enemy}}
+\doxysubsubsection{enemyTexture}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$sf\+::\+Texture$>$ Enemy\+::enemy\+Texture}
+
+
+
+Definition at line \textbf{ 36} of file \textbf{ Enemy.\+h}.
+
+\mbox{\label{class_enemy_a6ba397d18042d2b6a052a515bf397f4d}} 
+\index{Enemy@{Enemy}!enemyTexture2@{enemyTexture2}}
+\index{enemyTexture2@{enemyTexture2}!Enemy@{Enemy}}
+\doxysubsubsection{enemyTexture2}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$sf\+::\+Texture$>$ Enemy\+::enemy\+Texture2}
+
+
+
+Definition at line \textbf{ 37} of file \textbf{ Enemy.\+h}.
+
+\mbox{\label{class_enemy_a51fa06dcb37eef613b90996f22c624aa}} 
+\index{Enemy@{Enemy}!enemyTexture3@{enemyTexture3}}
+\index{enemyTexture3@{enemyTexture3}!Enemy@{Enemy}}
+\doxysubsubsection{enemyTexture3}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$sf\+::\+Texture$>$ Enemy\+::enemy\+Texture3}
+
+
+
+Definition at line \textbf{ 38} of file \textbf{ Enemy.\+h}.
+
+\mbox{\label{class_enemy_a66798ec4d7ec2cb5cc7f258ea52fef97}} 
+\index{Enemy@{Enemy}!enemyTextureNumber@{enemyTextureNumber}}
+\index{enemyTextureNumber@{enemyTextureNumber}!Enemy@{Enemy}}
+\doxysubsubsection{enemyTextureNumber}
+{\footnotesize\ttfamily int Enemy\+::enemy\+Texture\+Number = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 64} of file \textbf{ Enemy.\+h}.
+
+\mbox{\label{class_enemy_aedd5e7bf8ef07ee97be433c853a10d8d}} 
+\index{Enemy@{Enemy}!health@{health}}
+\index{health@{health}!Enemy@{Enemy}}
+\doxysubsubsection{health}
+{\footnotesize\ttfamily int Enemy\+::health = 25\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 74} of file \textbf{ Enemy.\+h}.
+
+\mbox{\label{class_enemy_af1c317e49a26c0330f91845468d94056}} 
+\index{Enemy@{Enemy}!m\_textureManager@{m\_textureManager}}
+\index{m\_textureManager@{m\_textureManager}!Enemy@{Enemy}}
+\doxysubsubsection{m\_textureManager}
+{\footnotesize\ttfamily \textbf{ Texture\+Manager}\& Enemy\+::m\+\_\+texture\+Manager\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 72} of file \textbf{ Enemy.\+h}.
+
+\mbox{\label{class_enemy_a115906cfa92c7dde7af57763234edbc0}} 
+\index{Enemy@{Enemy}!myAnim@{myAnim}}
+\index{myAnim@{myAnim}!Enemy@{Enemy}}
+\doxysubsubsection{myAnim}
+{\footnotesize\ttfamily \textbf{ Animator} Enemy\+::my\+Anim}
+
+
+
+Definition at line \textbf{ 18} of file \textbf{ Enemy.\+h}.
+
+\mbox{\label{class_enemy_a09f20a0b0de24903c1227490097f86ae}} 
+\index{Enemy@{Enemy}!offset@{offset}}
+\index{offset@{offset}!Enemy@{Enemy}}
+\doxysubsubsection{offset}
+{\footnotesize\ttfamily int Enemy\+::offset = 15\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 62} of file \textbf{ Enemy.\+h}.
+
+\mbox{\label{class_enemy_a70850589232ffc3a614bd137cfc02ef3}} 
+\index{Enemy@{Enemy}!PI@{PI}}
+\index{PI@{PI}!Enemy@{Enemy}}
+\doxysubsubsection{PI}
+{\footnotesize\ttfamily const float Enemy\+::\+PI = 3.\+141592654f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 79} of file \textbf{ Enemy.\+h}.
+
+\mbox{\label{class_enemy_afdfc1a169f5dcc6162b15297ccfef752}} 
+\index{Enemy@{Enemy}!randomSpawn@{randomSpawn}}
+\index{randomSpawn@{randomSpawn}!Enemy@{Enemy}}
+\doxysubsubsection{randomSpawn}
+{\footnotesize\ttfamily int Enemy\+::random\+Spawn = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 69} of file \textbf{ Enemy.\+h}.
+
+\mbox{\label{class_enemy_a723056dd28ef4081ad87ed6751fffe22}} 
+\index{Enemy@{Enemy}!seekingPlayer@{seekingPlayer}}
+\index{seekingPlayer@{seekingPlayer}!Enemy@{Enemy}}
+\doxysubsubsection{seekingPlayer}
+{\footnotesize\ttfamily bool Enemy\+::seeking\+Player = true}
+
+
+
+Definition at line \textbf{ 48} of file \textbf{ Enemy.\+h}.
+
+\mbox{\label{class_enemy_aa610f0cb01a402eb16cd8e0287611ec2}} 
+\index{Enemy@{Enemy}!spawnerPosition@{spawnerPosition}}
+\index{spawnerPosition@{spawnerPosition}!Enemy@{Enemy}}
+\doxysubsubsection{spawnerPosition}
+{\footnotesize\ttfamily sf\+::\+Vector2f Enemy\+::spawner\+Position\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 94} of file \textbf{ Enemy.\+h}.
+
+\mbox{\label{class_enemy_a98766d083fc49e746a37d0dc69be09e0}} 
+\index{Enemy@{Enemy}!speed@{speed}}
+\index{speed@{speed}!Enemy@{Enemy}}
+\doxysubsubsection{speed}
+{\footnotesize\ttfamily float Enemy\+::speed = 3.\+0f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 71} of file \textbf{ Enemy.\+h}.
+
+\mbox{\label{class_enemy_a016f3f5d5880f4e1991e9af6450b1754}} 
+\index{Enemy@{Enemy}!timesCalled@{timesCalled}}
+\index{timesCalled@{timesCalled}!Enemy@{Enemy}}
+\doxysubsubsection{timesCalled}
+{\footnotesize\ttfamily int Enemy\+::times\+Called = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 67} of file \textbf{ Enemy.\+h}.
+
+\mbox{\label{class_enemy_aa005096a1c6d150e96708480ba91897d}} 
+\index{Enemy@{Enemy}!velocity@{velocity}}
+\index{velocity@{velocity}!Enemy@{Enemy}}
+\doxysubsubsection{velocity}
+{\footnotesize\ttfamily sf\+::\+Vector2f Enemy\+::velocity\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 76} of file \textbf{ Enemy.\+h}.
+
+\mbox{\label{class_enemy_ada0ccc45508e944f8fa8a087a5079e7d}} 
+\index{Enemy@{Enemy}!visionCone@{visionCone}}
+\index{visionCone@{visionCone}!Enemy@{Enemy}}
+\doxysubsubsection{visionCone}
+{\footnotesize\ttfamily sf\+::\+Convex\+Shape Enemy\+::vision\+Cone\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 85} of file \textbf{ Enemy.\+h}.
+
+\mbox{\label{class_enemy_a692570c55a20f95c3173edab9b25aee2}} 
+\index{Enemy@{Enemy}!wandering@{wandering}}
+\index{wandering@{wandering}!Enemy@{Enemy}}
+\doxysubsubsection{wandering}
+{\footnotesize\ttfamily bool Enemy\+::wandering = false}
+
+
+
+Definition at line \textbf{ 54} of file \textbf{ Enemy.\+h}.
+
+\mbox{\label{class_enemy_a5c3a342ac4fb683fc3184fa202f6be98}} 
+\index{Enemy@{Enemy}!wanderTimer@{wanderTimer}}
+\index{wanderTimer@{wanderTimer}!Enemy@{Enemy}}
+\doxysubsubsection{wanderTimer}
+{\footnotesize\ttfamily sf\+::\+Clock Enemy\+::wander\+Timer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 92} of file \textbf{ Enemy.\+h}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+No\+Code\+Game\+Editor/\textbf{ Enemy.\+h}\item 
+No\+Code\+Game\+Editor/\textbf{ Enemy.\+cpp}\end{DoxyCompactItemize}

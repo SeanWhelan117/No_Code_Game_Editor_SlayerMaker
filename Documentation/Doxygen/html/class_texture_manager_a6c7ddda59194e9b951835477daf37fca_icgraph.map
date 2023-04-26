@@ -1,0 +1,27 @@
+<map id="TextureManager::getTexture" name="TextureManager::getTexture">
+<area shape="rect" id="node1" title=" " alt="" coords="487,277,671,303"/>
+<area shape="rect" id="node2" href="$class_blood_splatter.html#adddea3d83fca2fadfb8dcb7f7c31a640" title="loads the texture of the bloodSplatter using the textureManager. This means the texture is only loade..." alt="" coords="272,5,432,31"/>
+<area shape="rect" id="node4" href="$class_coin.html#a2daf1d9757d89664f186f86e20b3e86b" title=" " alt="" coords="298,55,406,80"/>
+<area shape="rect" id="node6" href="$class_door.html#aac5c5fcccfe87e03a4a8e67b4599c8dd" title=" " alt="" coords="297,104,407,129"/>
+<area shape="rect" id="node8" href="$class_enemy.html#ad5b18a5dd94946dce3754307e7ca744b" title=" " alt="" coords="291,153,413,179"/>
+<area shape="rect" id="node10" href="$class_enemy_spawner.html#a1ca550e65287b009063d350dde18aa34" title=" " alt="" coords="265,203,439,228"/>
+<area shape="rect" id="node12" href="$class_explosive.html#a862c69df3ce9266a27320e5dc847c522" title=" " alt="" coords="283,252,421,277"/>
+<area shape="rect" id="node14" href="$class_medkit.html#a08d649b4aae3d56ea6cef1b638b07d27" title=" " alt="" coords="291,301,413,327"/>
+<area shape="rect" id="node16" href="$class_monument.html#a3536d87261609a5bce2fd7ccb0ed9857" title=" " alt="" coords="281,351,423,376"/>
+<area shape="rect" id="node18" href="$class_p_u_p_invincibility.html#acf35a20868d53c9800769dc6c60f90f7" title=" " alt="" coords="267,400,437,425"/>
+<area shape="rect" id="node20" href="$class_p_u_p_invisibility.html#ac327795cccf0706ce83682a911e0f4ea" title=" " alt="" coords="270,449,434,475"/>
+<area shape="rect" id="node22" href="$class_p_u_p_nuke.html#a04e4db9520e2199ac1cd18c4bbc23321" title=" " alt="" coords="283,499,421,524"/>
+<area shape="rect" id="node24" href="$class_wall.html#a573e57bc93869b5156315b6d040feb0d" title=" " alt="" coords="298,548,406,573"/>
+<area shape="rect" id="node3" href="$class_blood_splatter.html#a3dd4520f3fdea650f69b43724a9c7f15" title="Blood Splatter constructor. Calls loadFiles and setupSplatter takes the blood position and the textur..." alt="" coords="18,5,205,31"/>
+<area shape="rect" id="node5" href="$class_coin.html#af36935a6f9e0716244b2425d32b0af67" title=" " alt="" coords="70,55,153,80"/>
+<area shape="rect" id="node7" href="$class_door.html#a1d8c2fa557de57f83a276f1b01455ca7" title=" " alt="" coords="69,104,153,129"/>
+<area shape="rect" id="node9" href="$class_enemy.html#a27aaa3e405cdd77850d62fc970a5449f" title=" " alt="" coords="55,153,167,179"/>
+<area shape="rect" id="node11" href="$class_enemy_spawner.html#a50343951ada202a477e3f1fb9908dfc1" title=" " alt="" coords="5,203,217,228"/>
+<area shape="rect" id="node13" href="$class_explosive.html#af39969b043bef259b22f020a0ed6f742" title=" " alt="" coords="41,252,181,277"/>
+<area shape="rect" id="node15" href="$class_medkit.html#a18267b1e6f7c156e7dfb1f0205fc202d" title=" " alt="" coords="57,301,165,327"/>
+<area shape="rect" id="node17" href="$class_monument.html#a7f7b3328a3a47cad7c7e884f78cbcc99" title=" " alt="" coords="35,351,187,376"/>
+<area shape="rect" id="node19" href="$class_p_u_p_invincibility.html#a24db2bf547f2a2398af8b2915ac9063d" title=" " alt="" coords="7,400,215,425"/>
+<area shape="rect" id="node21" href="$class_p_u_p_invisibility.html#a51e8521a5442a4c79bfbcaccff57a305" title=" " alt="" coords="14,449,209,475"/>
+<area shape="rect" id="node23" href="$class_p_u_p_nuke.html#a29588df97bc0975803fee8788bac772f" title=" " alt="" coords="39,499,183,524"/>
+<area shape="rect" id="node25" href="$class_wall.html#a2dc4c86a5c411bc3ebb25d525544823f" title=" " alt="" coords="70,548,153,573"/>
+</map>

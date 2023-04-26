@@ -1,0 +1,367 @@
+\doxysection{Choose\+Game.\+cpp}
+\label{_choose_game_8cpp_source}\index{NoCodeGameEditor/ChooseGame.cpp@{NoCodeGameEditor/ChooseGame.cpp}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}ChooseGame.h"{}}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ ChooseGame::ChooseGame(\textcolor{keywordtype}{float}\ t\_gameWidth,\ \textcolor{keywordtype}{float}\ t\_gameHeight,\ NetworkManager\&\ t\_networkManager)\ :\ gameWidth(t\_gameWidth),\ gameHeight(t\_gameHeight),\ m\_networkManager(t\_networkManager)}
+\DoxyCodeLine{00004\ \{}
+\DoxyCodeLine{00005\ \ \ \ \ loadFontAndSprites();}
+\DoxyCodeLine{00006\ \ \ \ \ findFiles();}
+\DoxyCodeLine{00007\ \}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keywordtype}{void}\ ChooseGame::loadFontAndSprites()}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keywordflow}{if}\ (!font.loadFromFile(\textcolor{stringliteral}{"{}./ASSETS/FONTS/NewYork.ttf"{}}))}
+\DoxyCodeLine{00012\ \ \ \ \ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Error\ loading\ font..."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00014\ \ \ \ \ \}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordflow}{if}\ (!buildTexture.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)buttonBuild.png"{}}))}
+\DoxyCodeLine{00017\ \ \ \ \ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ buildTexture\ (buttonBuild)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00020\ \ \ \ \ \}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordflow}{if}\ (!uploadTexture.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)buttonUpDown.png"{}}))}
+\DoxyCodeLine{00023\ \ \ \ \ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ uploadTexture\ (buttonUpDown)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00026\ \ \ \ \ \}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordflow}{if}\ (!deleteTexture.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)buttonDelete.png"{}}))}
+\DoxyCodeLine{00029\ \ \ \ \ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ deleteTexture\ (buttonDelete)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00032\ \ \ \ \ \}}
+\DoxyCodeLine{00033\ \}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{keywordtype}{void}\ ChooseGame::findFiles()}
+\DoxyCodeLine{00036\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordflow}{if}\ (gameNames.size()\ !=\ 0)}
+\DoxyCodeLine{00038\ \ \ \ \ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ gameNames.clear();}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ fileCount\ =\ 0;}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ games.clear();}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ nameTexts.clear();}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ buildButtons.clear();}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ uploadButtons.clear();}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ deleteButtons.clear();}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ buildSprites.clear();}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ uploadSprites.clear();}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ deleteSprites.clear();}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ bgRects.clear();}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ initialPos\ =\ sf::Vector2f(200,\ 300);}
+\DoxyCodeLine{00051\ \ \ \ \ \}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ std::filesystem::path\ p1\{\ \textcolor{stringliteral}{"{}.\(\backslash\)\(\backslash\)ASSETS\(\backslash\)\(\backslash\)GAMEDATA"{}}\ \};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ p\ :\ std::filesystem::directory\_iterator(p1))}
+\DoxyCodeLine{00056\ \ \ \ \ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ p.path()\ <<\ std::endl;}}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ std::string\ tempString\ =\ p.path().string();}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ tempString.erase(0,\ 18);}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 4;\ i++)}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ tempString.pop\_back();}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ gameNames.push\_back(tempString);}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ ++fileCount;}
+\DoxyCodeLine{00067\ \ \ \ \ \}}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\#\ of\ files\ in\ "{}}\ <<\ p1\ <<\ \textcolor{stringliteral}{"{}:\ "{}}\ <<\ fileCount\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ setupSprites();}
+\DoxyCodeLine{00072\ \ \ \ \ setupButtons();}
+\DoxyCodeLine{00073\ \}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \textcolor{keywordtype}{void}\ ChooseGame::setupSprites()}
+\DoxyCodeLine{00076\ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{int}\ count\ =\ 0;}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ fileCount;\ i++)}
+\DoxyCodeLine{00079\ \ \ \ \ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ sf::RectangleShape\ testRect;}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ testRect.setFillColor(sf::Color::Yellow);}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ testRect.setSize(sf::Vector2f(\ 300,\ 100));}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ testRect.setOrigin(testRect.getLocalBounds().width\ /\ 2,\ testRect.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ testRect.setPosition(initialPos);}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ count++;}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (count\ >\ 7)}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ count\ =\ 0;}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ initialPos.x\ =\ 200;}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ initialPos.y\ +=\ 350;}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ initialPos.x\ +=\ 400;}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ games.push\_back(testRect);}
+\DoxyCodeLine{00097\ \ \ \ \ \}}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ gameNames.size();\ i++)}
+\DoxyCodeLine{00100\ \ \ \ \ \{}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ std::cout\ <<\ gameNames.at(i)\ <<\ std::endl;}
+\DoxyCodeLine{00102\ \ \ \ \ \}}
+\DoxyCodeLine{00103\ \ \ \ \ }
+\DoxyCodeLine{00104\ \ \ \ \ levelRectsCreated\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00105\ \ \ \ \ setupNames();}
+\DoxyCodeLine{00106\ \}}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \textcolor{keywordtype}{void}\ ChooseGame::setupNames()}
+\DoxyCodeLine{00109\ \{}
+\DoxyCodeLine{00110\ \ \ \ \ titleText.setFont(font);}
+\DoxyCodeLine{00111\ \ \ \ \ titleText.setFillColor(sf::Color::Black);}
+\DoxyCodeLine{00112\ \ \ \ \ titleText.setCharacterSize(85u);}
+\DoxyCodeLine{00113\ \ \ \ \ titleText.setString(\textcolor{stringliteral}{"{}Choose\ a\ Game\ to\ Play"{}});}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{comment}{//titleText.setOrigin(titleText.getLocalBounds().width\ /\ 2,\ titleText.getLocalBounds().height\ /\ 2);}}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \ \ \ \ titleText.setPosition(50,50);}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ fileCount;\ i++)}
+\DoxyCodeLine{00118\ \ \ \ \ \{}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ sf::Text\ tempText;}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ tempText.setFont(font);}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ tempText.setFillColor(sf::Color::Black);}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ tempText.setCharacterSize(30u);}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ tempText.setString(gameNames.at(i));}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ tempText.setOrigin(tempText.getLocalBounds().width\ /\ 2,\ tempText.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ tempText.setPosition(games.at(i).getPosition());}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ nameTexts.push\_back(tempText);}
+\DoxyCodeLine{00127\ \ \ \ \ \}}
+\DoxyCodeLine{00128\ \}}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \textcolor{keywordtype}{void}\ ChooseGame::update(sf::Time\ t\_deltaTime,\ sf::RenderWindow\&\ t\_window)}
+\DoxyCodeLine{00131\ \{}
+\DoxyCodeLine{00132\ \ \ \ \ mousePos\ =\ t\_window.mapPixelToCoords(sf::Mouse::getPosition(t\_window));}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ \ \ \ \ checkForMousePos();}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \ \ \ \ loader.update(t\_deltaTime);}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00138\ \}}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \textcolor{keywordtype}{void}\ ChooseGame::render(sf::RenderWindow\&\ t\_window)}
+\DoxyCodeLine{00141\ \{}
+\DoxyCodeLine{00142\ \ \ \ \ t\_window.clear(sf::Color(81,\ 81,\ 81,\ 150));}
+\DoxyCodeLine{00143\ \ \ \ \ t\_window.draw(titleText);}
+\DoxyCodeLine{00144\ \ \ \ \ t\_window.draw(downloadButton);}
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{keywordflow}{if}\ (levelRectsCreated)}
+\DoxyCodeLine{00146\ \ \ \ \ \{}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ games.size();\ i++)}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ t\_window.draw(bgRects.at(i));}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ t\_window.draw(games.at(i));}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ t\_window.draw(nameTexts.at(i));}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ t\_window.draw(buildButtons.at(i));}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ t\_window.draw(uploadButtons.at(i));}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ t\_window.draw(deleteButtons.at(i));}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ t\_window.draw(buildSprites.at(i));}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ t\_window.draw(uploadSprites.at(i));}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ t\_window.draw(deleteSprites.at(i));}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00160\ \ \ \ \ \}}
+\DoxyCodeLine{00161\ \ \ \ \ }
+\DoxyCodeLine{00162\ \}}
+\DoxyCodeLine{00163\ \textcolor{keywordtype}{bool}\ ChooseGame::containsMouse(sf::FloatRect\ t\_rectShape)}
+\DoxyCodeLine{00164\ \{}
+\DoxyCodeLine{00165\ \ \ \ \ \textcolor{keywordflow}{return}\ t\_rectShape.contains(mousePos);}
+\DoxyCodeLine{00166\ \}}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00168\ \textcolor{keywordtype}{void}\ ChooseGame::checkForMousePos()}
+\DoxyCodeLine{00169\ \{}
+\DoxyCodeLine{00170\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ games.size();\ i++)}
+\DoxyCodeLine{00171\ \ \ \ \ \{}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (containsMouse(games.at(i).getGlobalBounds()))}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ changeButtons(games.at(i));}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (buttonClicked)}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ gameNames.at(i)\ <<\ std::endl;}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ loader.loadFile(gameNames.at(i));}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gameChosen\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buttonClicked\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gameChosen\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ resetButtons(games.at(i));}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (containsMouse(buildButtons.at(i).getGlobalBounds()))}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ changeButtons(buildButtons.at(i));}
+\DoxyCodeLine{00195\ }
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (buttonClicked\ \&\&\ gameBuilt\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*gameBuilt\ =\ true;}}
+\DoxyCodeLine{00199\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ chosenGame\ =\ gameNames.at(i);}}
+\DoxyCodeLine{00200\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ loader.loadFile(gameNames.at(i));}}
+\DoxyCodeLine{00201\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gameChosen\ =\ true;*/}}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buttonClicked\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ resetButtons(buildButtons.at(i));}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00209\ }
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (containsMouse(uploadButtons.at(i).getGlobalBounds()))}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ changeButtons(uploadButtons.at(i));}
+\DoxyCodeLine{00213\ }
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (buttonClicked)}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buttonClicked\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_networkManager.writeGameDataToDB(gameNames.at(i));}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ resetButtons(uploadButtons.at(i));}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (containsMouse(deleteButtons.at(i).getGlobalBounds()))}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ changeButtons(deleteButtons.at(i));}
+\DoxyCodeLine{00229\ }
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (buttonClicked)}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ deleteFile(gameNames.at(i));}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buttonClicked\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \ \ \ \ resetButtons(deleteButtons.at(i));}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00240\ \ \ \ \ \}}
+\DoxyCodeLine{00241\ }
+\DoxyCodeLine{00242\ \ \ \ \ \textcolor{keywordflow}{if}\ (containsMouse(downloadButton.getGlobalBounds()))}
+\DoxyCodeLine{00243\ \ \ \ \ \{}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ changeButtons(downloadButton);}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (buttonClicked)}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \ \ \ \ m\_networkManager.exportDBToCSV();}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \ \ \ \ buttonClicked\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ \ findFiles();}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00251\ \ \ \ \ \}}
+\DoxyCodeLine{00252\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00253\ \ \ \ \ \{}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ resetButtons(downloadButton);}
+\DoxyCodeLine{00255\ \ \ \ \ \}}
+\DoxyCodeLine{00256\ \ \ \ \ buttonClicked\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00257\ \}}
+\DoxyCodeLine{00258\ }
+\DoxyCodeLine{00259\ \textcolor{keywordtype}{void}\ ChooseGame::resetButtons(sf::RectangleShape\&\ t\_rect)}
+\DoxyCodeLine{00260\ \{}
+\DoxyCodeLine{00261\ \ \ \ \ t\_rect.setScale(1,\ 1);}
+\DoxyCodeLine{00262\ \}}
+\DoxyCodeLine{00263\ }
+\DoxyCodeLine{00264\ \textcolor{keywordtype}{void}\ ChooseGame::changeButtons(sf::RectangleShape\&\ t\_rect)}
+\DoxyCodeLine{00265\ \{}
+\DoxyCodeLine{00266\ \ \ \ \ t\_rect.setScale(1.2,\ 1.2);}
+\DoxyCodeLine{00267\ \}}
+\DoxyCodeLine{00268\ }
+\DoxyCodeLine{00269\ \textcolor{keywordtype}{void}\ ChooseGame::setupButtons()}
+\DoxyCodeLine{00270\ \{}
+\DoxyCodeLine{00271\ \ \ \ \ \textcolor{keywordflow}{if}\ (games.size()\ >\ 0)}
+\DoxyCodeLine{00272\ \ \ \ \ \{}
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ offset\ =\ games.at(0).getLocalBounds().width\ /\ 3;}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ buttonSize\ =\ sf::Vector2f(games.at(0).getLocalBounds().width\ /\ 3,\ 75);}
+\DoxyCodeLine{00275\ \ \ \ \ \}}
+\DoxyCodeLine{00276\ \ \ \ \ }
+\DoxyCodeLine{00277\ }
+\DoxyCodeLine{00278\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ games.size();\ i++)}
+\DoxyCodeLine{00279\ \ \ \ \ \{}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ sf::RectangleShape\ tempRect;}
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ tempRect.setFillColor(sf::Color::Green);}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ tempRect.setSize(buttonSize);}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ tempRect.setOrigin(tempRect.getLocalBounds().width\ /\ 2,\ tempRect.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ tempRect.setPosition(games.at(i).getPosition().x\ -\/\ offset,\ games.at(i).getPosition().y\ +\ games.at(i).getLocalBounds().height\ /\ 2\ +\ tempRect.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ buildButtons.push\_back(tempRect);}
+\DoxyCodeLine{00286\ }
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ sf::RectangleShape\ tempRect2;}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ tempRect2.setFillColor(sf::Color::Blue);}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ tempRect2.setSize(buttonSize);}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ tempRect2.setOrigin(tempRect2.getLocalBounds().width\ /\ 2,\ tempRect2.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ tempRect2.setPosition(games.at(i).getPosition().x,\ games.at(i).getPosition().y\ +\ games.at(i).getLocalBounds().height\ /\ 2\ +\ tempRect2.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ uploadButtons.push\_back(tempRect2);}
+\DoxyCodeLine{00293\ }
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ sf::RectangleShape\ tempRect3;}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ tempRect3.setFillColor(sf::Color::Red);}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ tempRect3.setSize(buttonSize);}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ tempRect3.setOrigin(tempRect3.getLocalBounds().width\ /\ 2,\ tempRect3.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ tempRect3.setPosition(games.at(i).getPosition().x\ +\ offset,\ games.at(i).getPosition().y\ +\ games.at(i).getLocalBounds().height\ /\ 2\ +\ tempRect3.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ deleteButtons.push\_back(tempRect3);}
+\DoxyCodeLine{00300\ }
+\DoxyCodeLine{00301\ }
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ sf::RectangleShape\ tempRect4;}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ tempRect4.setFillColor(sf::Color(120,\ 120,\ 120,\ 175));}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ tempRect4.setSize(sf::Vector2f(350,\ 250));}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ tempRect4.setOrigin(tempRect4.getLocalBounds().width\ /\ 2,\ tempRect4.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ tempRect4.setPosition(games.at(i).getPosition().x\ ,\ games.at(i).getPosition().y\ +\ games.at(i).getGlobalBounds().height\ /\ 2);}
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ bgRects.push\_back(tempRect4);}
+\DoxyCodeLine{00308\ \ \ \ \ \}}
+\DoxyCodeLine{00309\ }
+\DoxyCodeLine{00310\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ games.size();\ i++)}
+\DoxyCodeLine{00311\ \ \ \ \ \{}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ sf::Sprite\ tempSprite;}
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ tempSprite.setTexture(buildTexture);}
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ tempSprite.setOrigin(tempSprite.getGlobalBounds().width\ /\ 2,\ tempSprite.getGlobalBounds().height\ /\ 2);}
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ tempSprite.setPosition(buildButtons.at(i).getPosition());}
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ buildSprites.push\_back(tempSprite);}
+\DoxyCodeLine{00317\ }
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ sf::Sprite\ tempSprite2;}
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ tempSprite2.setTexture(uploadTexture);}
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ tempSprite2.setOrigin(tempSprite2.getGlobalBounds().width\ /\ 2,\ tempSprite2.getGlobalBounds().height\ /\ 2);}
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ tempSprite2.setPosition(uploadButtons.at(i).getPosition());}
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ uploadSprites.push\_back(tempSprite2);}
+\DoxyCodeLine{00323\ }
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ sf::Sprite\ tempSprite3;}
+\DoxyCodeLine{00325\ \ \ \ \ \ \ \ \ tempSprite3.setTexture(deleteTexture);}
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ tempSprite3.setOrigin(tempSprite3.getGlobalBounds().width\ /\ 2,\ tempSprite3.getGlobalBounds().height\ /\ 2);}
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ tempSprite3.setPosition(deleteButtons.at(i).getPosition());}
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ deleteSprites.push\_back(tempSprite3);}
+\DoxyCodeLine{00329\ \ \ \ \ \}}
+\DoxyCodeLine{00330\ }
+\DoxyCodeLine{00331\ \ \ \ \ }
+\DoxyCodeLine{00332\ \ \ \ \ downloadButton.setFillColor(sf::Color::Blue);}
+\DoxyCodeLine{00333\ \ \ \ \ downloadButton.setSize(sf::Vector2f(300,100));}
+\DoxyCodeLine{00334\ \ \ \ \ downloadButton.setScale(1,\ 1);}
+\DoxyCodeLine{00335\ \ \ \ \ downloadButton.setOrigin(downloadButton.getLocalBounds().width\ /\ 2,\ downloadButton.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00336\ \ \ \ \ downloadButton.setPosition(gameWidth\ -\/\ 200,\ 100);}
+\DoxyCodeLine{00337\ \}}
+\DoxyCodeLine{00338\ }
+\DoxyCodeLine{00339\ \textcolor{keywordtype}{void}\ ChooseGame::deleteFile(std::string\ t\_filename)}
+\DoxyCodeLine{00340\ \{}
+\DoxyCodeLine{00341\ }
+\DoxyCodeLine{00342\ \ \ \ \ std::filesystem::path\ directoryPath(\textcolor{stringliteral}{"{}.\(\backslash\)\(\backslash\)ASSETS\(\backslash\)\(\backslash\)GAMEDATA\(\backslash\)\(\backslash\)"{}});}
+\DoxyCodeLine{00343\ \ \ \ \ std::filesystem::path\ filePath\ =\ directoryPath\ /\ (t\_filename\ +\ \textcolor{stringliteral}{"{}.csv"{}});}
+\DoxyCodeLine{00344\ }
+\DoxyCodeLine{00345\ \ \ \ \ \textcolor{comment}{//std::filesystem::path\ filePath("{}.\(\backslash\)\(\backslash\)NoCodeGameEditor\(\backslash\)\(\backslash\)ASSETS\(\backslash\)\(\backslash\)GAMEDATA\(\backslash\)\(\backslash\)"{}\ +\ t\_filename\ +\ "{}.csv"{});}}
+\DoxyCodeLine{00346\ }
+\DoxyCodeLine{00347\ \ \ \ \ \textcolor{comment}{//\ Check\ if\ the\ file\ exists}}
+\DoxyCodeLine{00348\ \ \ \ \ \textcolor{keywordflow}{if}\ (std::filesystem::exists(filePath))}
+\DoxyCodeLine{00349\ \ \ \ \ \{}
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Delete\ the\ file}}
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ std::filesystem::remove(filePath);}
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}File\ "{}}\ <<\ t\_filename\ <<\ \textcolor{stringliteral}{"{}\ deleted\ successfully."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ findFiles();}
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00355\ \ \ \ \ \}}
+\DoxyCodeLine{00356\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00357\ \ \ \ \ \{}
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}File\ "{}}\ <<\ t\_filename\ <<\ \textcolor{stringliteral}{"{}\ does\ not\ exist."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00359\ \ \ \ \ \}}
+\DoxyCodeLine{00360\ \}}
+\DoxyCodeLine{00361\ }
+
+\end{DoxyCode}

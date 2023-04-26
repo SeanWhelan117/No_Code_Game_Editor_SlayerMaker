@@ -1,0 +1,90 @@
+\doxysection{Explosive\+UI.\+cpp}
+\label{_explosive_u_i_8cpp_source}\index{NoCodeGameEditor/ExplosiveUI.cpp@{NoCodeGameEditor/ExplosiveUI.cpp}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}ExplosiveUI.h"{}}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ ExplosiveUI::ExplosiveUI()}
+\DoxyCodeLine{00004\ \{}
+\DoxyCodeLine{00005\ \ \ \ \ loadFiles();}
+\DoxyCodeLine{00006\ \ \ \ \ setupExplosiveUISprite();}
+\DoxyCodeLine{00007\ \}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keywordtype}{void}\ ExplosiveUI::loadFiles()}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ }
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordflow}{if}\ (!explosiveUITextures[0].loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)dynamiteUI0.png"{}}))}
+\DoxyCodeLine{00013\ \ \ \ \ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ explosiveUITextures\ (0)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00016\ \ \ \ \ \}}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordflow}{if}\ (!explosiveUITextures[1].loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)dynamiteUI1.png"{}}))}
+\DoxyCodeLine{00018\ \ \ \ \ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ explosiveUITextures\ (1)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00021\ \ \ \ \ \}}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordflow}{if}\ (!explosiveUITextures[2].loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)dynamiteUI2.png"{}}))}
+\DoxyCodeLine{00023\ \ \ \ \ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ explosiveUITextures\ (2)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00026\ \ \ \ \ \}}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordflow}{if}\ (!explosiveUITextures[3].loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)dynamiteUI3.png"{}}))}
+\DoxyCodeLine{00028\ \ \ \ \ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ explosiveUITextures\ (3)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00031\ \ \ \ \ \}}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordflow}{if}\ (!explosiveUITextures[4].loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)dynamiteUI4.png"{}}))}
+\DoxyCodeLine{00033\ \ \ \ \ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ explosiveUITextures\ (4)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00036\ \ \ \ \ \}}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordflow}{if}\ (!explosiveUITextures[5].loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)dynamiteUI5.png"{}}))}
+\DoxyCodeLine{00038\ \ \ \ \ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ explosiveUITextures\ (5)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00041\ \ \ \ \ \}}
+\DoxyCodeLine{00042\ \ \ \ \ }
+\DoxyCodeLine{00043\ \}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{keywordtype}{void}\ ExplosiveUI::setupExplosiveUISprite()}
+\DoxyCodeLine{00046\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ explosiveUISprite.setPosition(50,\ 50);}
+\DoxyCodeLine{00048\ \ \ \ \ explosiveUISprite.setTexture(explosiveUITextures[0]);}
+\DoxyCodeLine{00049\ \ \ \ \ explosiveUISprite.setOrigin(explosiveUISprite.getLocalBounds().width\ /\ 2,\ explosiveUISprite.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00050\ \ \ \ \ explosiveUISprite.setScale(0.2,\ 0.2);}
+\DoxyCodeLine{00051\ \ \ \ \ explosiveUISprite.setColor(sf::Color(explosiveUISprite.getColor().r,\ explosiveUISprite.getColor().g,\ explosiveUISprite.getColor().b,\ explosiveUISprite.getColor().a\ /\ 2));}
+\DoxyCodeLine{00052\ \}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{keywordtype}{void}\ ExplosiveUI::update(sf::Time\ t\_deltaTime,\ \textcolor{keywordtype}{int}\ t\_explosivesCollected)}
+\DoxyCodeLine{00055\ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordflow}{if}\ (t\_explosivesCollected\ !=\ currentNum)}
+\DoxyCodeLine{00057\ \ \ \ \ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ currentNum\ =\ t\_explosivesCollected;}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ explosiveUISprite.setColor(sf::Color(explosiveUISprite.getColor().r,\ explosiveUISprite.getColor().g,\ explosiveUISprite.getColor().b,\ explosiveUISprite.getColor().a\ *\ 2));}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ explosiveUISprite.setTexture(explosiveUITextures[currentNum]);}
+\DoxyCodeLine{00062\ \ \ \ \ \}}
+\DoxyCodeLine{00063\ \}}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \textcolor{keywordtype}{void}\ ExplosiveUI::render(sf::RenderWindow\&\ t\_window)}
+\DoxyCodeLine{00066\ \{}
+\DoxyCodeLine{00067\ \ \ \ \ t\_window.draw(explosiveUISprite);}
+\DoxyCodeLine{00068\ \}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{keywordtype}{void}\ ExplosiveUI::minusExplosives()}
+\DoxyCodeLine{00071\ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordflow}{if}\ (currentNum\ !=\ 0)}
+\DoxyCodeLine{00073\ \ \ \ \ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ currentNum\ -\/=\ 1;}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ explosiveUISprite.setTexture(explosiveUITextures[currentNum]);}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (currentNum\ ==\ 0)}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ explosiveUISprite.setColor(sf::Color(explosiveUISprite.getColor().r,\ explosiveUISprite.getColor().g,\ explosiveUISprite.getColor().b,\ explosiveUISprite.getColor().a\ /\ 2));}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \}}
+\DoxyCodeLine{00083\ \ \ \ \ }
+\DoxyCodeLine{00084\ \}}
+
+\end{DoxyCode}

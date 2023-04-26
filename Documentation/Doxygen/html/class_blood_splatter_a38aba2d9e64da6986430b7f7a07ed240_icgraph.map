@@ -1,0 +1,4 @@
+<map id="BloodSplatter::setupSplatter" name="BloodSplatter::setupSplatter">
+<area shape="rect" id="node1" title="Sets up the blood splatter sets scale origin, position etc sets a random rotation of the splatter to ..." alt="" coords="240,5,425,31"/>
+<area shape="rect" id="node2" href="$class_blood_splatter.html#a3dd4520f3fdea650f69b43724a9c7f15" title="Blood Splatter constructor. Calls loadFiles and setupSplatter takes the blood position and the textur..." alt="" coords="5,5,192,31"/>
+</map>

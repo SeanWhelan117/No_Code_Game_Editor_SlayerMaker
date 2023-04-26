@@ -1,0 +1,12 @@
+<map id="ChooseGame::findFiles" name="ChooseGame::findFiles">
+<area shape="rect" id="node1" title=" " alt="" coords="1095,56,1252,81"/>
+<area shape="rect" id="node2" href="$class_choose_game.html#a8f329831a7ddb52396b6922f650b5de4" title=" " alt="" coords="585,79,811,104"/>
+<area shape="rect" id="node7" href="$class_choose_game.html#a1d585ffc0d17f2f86abf4118dba5be17" title=" " alt="" coords="859,31,1047,56"/>
+<area shape="rect" id="node8" href="$class_choose_game.html#aa39be4100325d09f2def6bc2ad42ba5e" title=" " alt="" coords="870,80,1035,105"/>
+<area shape="rect" id="node9" href="$class_game.html#adf2eb2e773dbad1322db8d6798705ea1" title="deal with key presses from the user" alt="" coords="882,129,1023,155"/>
+<area shape="rect" id="node3" href="$class_choose_game.html#aa5651bef4f80ed2074f60e62119b38fc" title=" " alt="" coords="388,79,536,104"/>
+<area shape="rect" id="node4" href="$class_game.html#a1d2aee62bac8e228344e1f44fab504e0" title="Update the game world." alt="" coords="235,79,339,104"/>
+<area shape="rect" id="node5" href="$class_game.html#a1ab78f5ed0d5ea879157357cf2fb2afa" title="main method for game" alt="" coords="104,104,187,129"/>
+<area shape="rect" id="node6" href="$main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main enrtry point" alt="" coords="5,104,56,129"/>
+<area shape="rect" id="node10" href="$class_game.html#a79f698dda206dd7a9bed28b3f88bdc38" title="handle user and system events/ input get key presses/ mouse moves etc. from OS and user :: Don&#39;t do g..." alt="" coords="387,129,537,155"/>
+</map>

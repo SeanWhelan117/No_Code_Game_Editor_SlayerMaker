@@ -1,0 +1,90 @@
+\doxysection{Choose\+Game.\+h}
+\label{_choose_game_8h_source}\index{NoCodeGameEditor/ChooseGame.h@{NoCodeGameEditor/ChooseGame.h}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <filesystem>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}LoadFromFile.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}NetworkManager.h"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }ChooseGame}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ ChooseGame(\textcolor{keywordtype}{float}\ t\_gameWidth,\ \textcolor{keywordtype}{float}\ t\_gameHeight,\ NetworkManager\&\ t\_networkManager);}
+\DoxyCodeLine{00020\ \ \ \ \ LoadFromFile\ loader;}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ loadFontAndSprites();}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ findFiles();}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ setupSprites();}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ setupNames();}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ update(sf::Time\ t\_deltaTime,\ sf::RenderWindow\&\ t\_window);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ render(sf::RenderWindow\&\ t\_window);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{bool}\ containsMouse(sf::FloatRect\ t\_rectShape);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ checkForMousePos();}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ resetButtons(sf::RectangleShape\&\ t\_rect);\ \textcolor{comment}{//small\ function\ which\ is\ called\ to\ reset\ buttons\ after\ they\ are\ not\ being\ hoverd\ over\ anymore}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ changeButtons(sf::RectangleShape\&\ t\_rect);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ std::vector<sf::RectangleShape>\ games;}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{int}\ fileCount\ =\ 0;}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{bool}\ gameChosen\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{bool}\ gameBuilt\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ std::string\ chosenGame;}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{bool}\ buttonClicked\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00050\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00051\ \ \ \ \ NetworkManager\&\ m\_networkManager;}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ setupButtons();}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ deleteFile(std::string\ t\_filename);}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{float}\ gameWidth\ =\ 0;}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{float}\ gameHeight\ =\ 0;}
+\DoxyCodeLine{00059\ \ \ \ \ sf::Vector2f\ initialPos\ =\ \{\ 200,\ 300\ \};}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{bool}\ levelRectsCreated\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00062\ \ \ \ \ std::vector\ <std::string>\ gameNames;}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ std::vector<sf::Text>\ nameTexts;}
+\DoxyCodeLine{00065\ \ \ \ \ sf::Text\ titleText;}
+\DoxyCodeLine{00066\ \ \ \ \ sf::Font\ font;}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ sf::Vector2f\ mousePos;}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ std::vector\ <sf::RectangleShape>\ buildButtons;}
+\DoxyCodeLine{00071\ \ \ \ \ std::vector\ <sf::RectangleShape>\ uploadButtons;}
+\DoxyCodeLine{00072\ \ \ \ \ std::vector\ <sf::RectangleShape>\ deleteButtons;}
+\DoxyCodeLine{00073\ \ \ \ \ std::vector\ <sf::RectangleShape>\ bgRects;}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ sf::Texture\ buildTexture;}
+\DoxyCodeLine{00076\ \ \ \ \ sf::Texture\ uploadTexture;}
+\DoxyCodeLine{00077\ \ \ \ \ sf::Texture\ deleteTexture;}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ std::vector\ <sf::Sprite>\ buildSprites;}
+\DoxyCodeLine{00080\ \ \ \ \ std::vector\ <sf::Sprite>\ uploadSprites;}
+\DoxyCodeLine{00081\ \ \ \ \ std::vector\ <sf::Sprite>\ deleteSprites;}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ sf::RectangleShape\ downloadButton;}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{float}\ offset;}
+\DoxyCodeLine{00085\ \ \ \ \ sf::Vector2f\ buttonSize;}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \};}
+\DoxyCodeLine{00088\ }
+
+\end{DoxyCode}

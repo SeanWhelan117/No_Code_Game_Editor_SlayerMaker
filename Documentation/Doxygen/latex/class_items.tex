@@ -1,0 +1,485 @@
+\doxysection{Items Class Reference}
+\label{class_items}\index{Items@{Items}}
+
+
+{\ttfamily \#include $<$Items.\+h$>$}
+
+
+
+Collaboration diagram for Items\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{class_items__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Items} (\textbf{ Texture\+Manager} \&texture\+Manager)
+\item 
+void \textbf{ update} (sf\+::\+Time t\+\_\+delta\+Time, sf\+::\+Render\+Window \&t\+\_\+window, sf\+::\+Float\+Rect t\+\_\+player\+Rect)
+\item 
+void \textbf{ render} (sf\+::\+Render\+Window \&t\+\_\+window)
+\item 
+void \textbf{ add\+To\+Vector} (sf\+::\+Vector2f t\+\_\+item\+Position, int t\+\_\+item\+Type)
+\item 
+bool \textbf{ is\+Colliding} (sf\+::\+Float\+Rect t\+\_\+obj1, sf\+::\+Float\+Rect t\+\_\+obj2)
+\item 
+void \textbf{ player\+Collision} (sf\+::\+Float\+Rect t\+\_\+player\+Rect)
+\item 
+void \textbf{ drop\+Bomb} (sf\+::\+Vector2f t\+\_\+player\+Pos)
+\item 
+void \textbf{ remove\+Explosive} (int t\+\_\+remove)
+\item 
+void \textbf{ spawn\+Explosion} (sf\+::\+Vector2f t\+\_\+explosion\+Position)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \textbf{ Medkit} $>$ $>$ \textbf{ medkit\+Vector}
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \textbf{ Explosive} $>$ $>$ \textbf{ explosive\+Vector}
+\item 
+std\+::vector$<$ sf\+::\+Circle\+Shape $>$ \textbf{ collision\+Circle\+Vector}
+\item 
+bool \textbf{ add\+Health} = false
+\item 
+int \textbf{ explosives\+Collected} = 0
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Texture\+Manager} \& \textbf{ m\+\_\+texture\+Manager}
+\item 
+std\+::vector$<$ \textbf{ Particle\+System} $>$ \textbf{ particle\+Systems\+Vector}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Sean Whelan 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022/23 @license Attribution-\/\+Non\+Commercial 4.\+0 International 
+\end{DoxyDate}
+
+
+Definition at line \textbf{ 15} of file \textbf{ Items.\+h}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\label{class_items_aa51515b8b3c3e6b387d84d1dd00b6a00}} 
+\index{Items@{Items}!Items@{Items}}
+\index{Items@{Items}!Items@{Items}}
+\doxysubsubsection{Items()}
+{\footnotesize\ttfamily Items\+::\+Items (\begin{DoxyParamCaption}\item[{\textbf{ Texture\+Manager} \&}]{texture\+Manager }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 3} of file \textbf{ Items.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00003\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ m\_textureManager(textureManager) }
+\DoxyCodeLine{00004\ \{}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{class_items_a4c8453c8ca81fcc12b5aadb061efcbd0}} 
+\index{Items@{Items}!addToVector@{addToVector}}
+\index{addToVector@{addToVector}!Items@{Items}}
+\doxysubsubsection{addToVector()}
+{\footnotesize\ttfamily void Items\+::add\+To\+Vector (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{t\+\_\+item\+Position,  }\item[{int}]{t\+\_\+item\+Type }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 61} of file \textbf{ Items.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00062\ \{}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordflow}{if}\ (t\_itemType\ ==\ 0)}
+\DoxyCodeLine{00065\ \ \ \ \ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ Medkit\ tempMedkit(t\_itemPosition,\ m\_textureManager);}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ medkitVector.emplace\_back(\textcolor{keyword}{new}\ Medkit(tempMedkit));}
+\DoxyCodeLine{00068\ \ \ \ \ \}}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (t\_itemType\ ==\ 1)}
+\DoxyCodeLine{00070\ \ \ \ \ \{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ Explosive\ tempExplosive(t\_itemPosition,\ m\_textureManager,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ explosiveVector.emplace\_back(\textcolor{keyword}{new}\ Explosive(tempExplosive));}
+\DoxyCodeLine{00073\ \ \ \ \ \}}
+\DoxyCodeLine{00074\ \ \ \ \ }
+\DoxyCodeLine{00075\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_items_a4c8453c8ca81fcc12b5aadb061efcbd0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_items_a6d7ebfcee707f7dd08579ead358e76b4}} 
+\index{Items@{Items}!dropBomb@{dropBomb}}
+\index{dropBomb@{dropBomb}!Items@{Items}}
+\doxysubsubsection{dropBomb()}
+{\footnotesize\ttfamily void Items\+::drop\+Bomb (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{t\+\_\+player\+Pos }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 106} of file \textbf{ Items.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00107\ \{}
+\DoxyCodeLine{00108\ \ \ \ \ Explosive\ tempExplosive(t\_playerPos,\ m\_textureManager,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00109\ \ \ \ \ explosiveVector.emplace\_back(\textcolor{keyword}{new}\ Explosive(tempExplosive));}
+\DoxyCodeLine{00110\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}exlposiveAdded"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00111\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_items_a6d7ebfcee707f7dd08579ead358e76b4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_items_ae937b4158a243f8a52b5a77614023829}} 
+\index{Items@{Items}!isColliding@{isColliding}}
+\index{isColliding@{isColliding}!Items@{Items}}
+\doxysubsubsection{isColliding()}
+{\footnotesize\ttfamily bool Items\+::is\+Colliding (\begin{DoxyParamCaption}\item[{sf\+::\+Float\+Rect}]{t\+\_\+obj1,  }\item[{sf\+::\+Float\+Rect}]{t\+\_\+obj2 }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 77} of file \textbf{ Items.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00078\ \{}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordflow}{return}\ t\_obj1.intersects(t\_obj2);}
+\DoxyCodeLine{00080\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_items_ae937b4158a243f8a52b5a77614023829_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_items_adfe4a2000451ac7251334ce3d7d30376}} 
+\index{Items@{Items}!playerCollision@{playerCollision}}
+\index{playerCollision@{playerCollision}!Items@{Items}}
+\doxysubsubsection{playerCollision()}
+{\footnotesize\ttfamily void Items\+::player\+Collision (\begin{DoxyParamCaption}\item[{sf\+::\+Float\+Rect}]{t\+\_\+player\+Rect }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 82} of file \textbf{ Items.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00083\ \{}
+\DoxyCodeLine{00084\ \ \ \ \ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ medkitVector.size();\ i++)}
+\DoxyCodeLine{00086\ \ \ \ \ \{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isColliding(medkitVector.at(i).get()-\/>getMedkit().getGlobalBounds(),\ t\_playerRect))}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::unique\_ptr<Medkit>>::iterator\ begin\ =\ medkitVector.begin();}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ begin\ +=\ i;}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ medkitVector.erase(begin);}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ addHealth\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00094\ \ \ \ \ \}}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ explosiveVector.size();\ i++)}
+\DoxyCodeLine{00097\ \ \ \ \ \{}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isColliding(explosiveVector.at(i).get()-\/>getExplosive().getGlobalBounds(),\ t\_playerRect)\ \&\&\ explosiveVector.at(i).get()-\/>primed\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ removeExplosive(i);}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ explosivesCollected++;}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00103\ \ \ \ \ \}}
+\DoxyCodeLine{00104\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{class_items_adfe4a2000451ac7251334ce3d7d30376_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_items_adfe4a2000451ac7251334ce3d7d30376_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_items_a80bb1e9fc149d67d9bcb9929fb8f7689}} 
+\index{Items@{Items}!removeExplosive@{removeExplosive}}
+\index{removeExplosive@{removeExplosive}!Items@{Items}}
+\doxysubsubsection{removeExplosive()}
+{\footnotesize\ttfamily void Items\+::remove\+Explosive (\begin{DoxyParamCaption}\item[{int}]{t\+\_\+remove }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 113} of file \textbf{ Items.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00114\ \{}
+\DoxyCodeLine{00115\ \ \ \ \ std::vector<std::unique\_ptr<Explosive>>::iterator\ begin\ =\ explosiveVector.begin();}
+\DoxyCodeLine{00116\ \ \ \ \ begin\ +=\ t\_remove;}
+\DoxyCodeLine{00117\ \ \ \ \ explosiveVector.erase(begin);}
+\DoxyCodeLine{00118\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_items_a80bb1e9fc149d67d9bcb9929fb8f7689_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_items_a435ef2b0c24af01cc157cd7051f60d70}} 
+\index{Items@{Items}!render@{render}}
+\index{render@{render}!Items@{Items}}
+\doxysubsubsection{render()}
+{\footnotesize\ttfamily void Items\+::render (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{t\+\_\+window }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 36} of file \textbf{ Items.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00037\ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ medkitVector.size();\ i++)}
+\DoxyCodeLine{00039\ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ medkitVector.at(i).get()-\/>render(t\_window);}
+\DoxyCodeLine{00041\ \ \ \ \ \}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ explosiveVector.size();\ i++)}
+\DoxyCodeLine{00044\ \ \ \ \ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ explosiveVector.at(i).get()-\/>render(t\_window);}
+\DoxyCodeLine{00046\ \ \ \ \ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ particleSystemsVector.size();\ i++)}
+\DoxyCodeLine{00049\ \ \ \ \ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ particleSystemsVector.at(i).draw(t\_window);}
+\DoxyCodeLine{00051\ \ \ \ \ \}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{comment}{//for\ (int\ i\ =\ 0;\ i\ <\ collisionCircleVector.size();\ i++)}}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{comment}{//\{}}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{comment}{//\ \ t\_window.draw(collisionCircleVector.at(i));}}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{comment}{//\}}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_items_a435ef2b0c24af01cc157cd7051f60d70_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_items_a5b0b50ed14cc6a16844dd6a556d769ff}} 
+\index{Items@{Items}!spawnExplosion@{spawnExplosion}}
+\index{spawnExplosion@{spawnExplosion}!Items@{Items}}
+\doxysubsubsection{spawnExplosion()}
+{\footnotesize\ttfamily void Items\+::spawn\+Explosion (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{t\+\_\+explosion\+Position }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 120} of file \textbf{ Items.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00121\ \{}
+\DoxyCodeLine{00122\ \ \ \ \ ParticleSystem\ tempParticleSystem;}
+\DoxyCodeLine{00123\ \ \ \ \ tempParticleSystem.addExplosion(t\_explosionPosition.x,\ t\_explosionPosition.y,\ 250);}
+\DoxyCodeLine{00124\ \ \ \ \ particleSystemsVector.push\_back(tempParticleSystem);}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \ \ \ \ sf::CircleShape\ tempCircle;}
+\DoxyCodeLine{00127\ \ \ \ \ tempCircle.setOutlineThickness(1);}
+\DoxyCodeLine{00128\ \ \ \ \ tempCircle.setOutlineColor(sf::Color::White);}
+\DoxyCodeLine{00129\ \ \ \ \ tempCircle.setFillColor(sf::Color(0,\ 0,\ 0,\ 0));}
+\DoxyCodeLine{00130\ \ \ \ \ tempCircle.setRadius(10);}
+\DoxyCodeLine{00131\ \ \ \ \ tempCircle.setPosition(t\_explosionPosition.x,\ t\_explosionPosition.y);}
+\DoxyCodeLine{00132\ \ \ \ \ tempCircle.setOrigin(tempCircle.getLocalBounds().width\ /\ 2,\ tempCircle.getGlobalBounds().height\ /\ 2);}
+\DoxyCodeLine{00133\ \ \ \ \ collisionCircleVector.push\_back(tempCircle);}
+\DoxyCodeLine{00134\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_items_a5b0b50ed14cc6a16844dd6a556d769ff_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_items_a5b0b50ed14cc6a16844dd6a556d769ff_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_items_a49da798dbfd8cbdc46e57818cc6da128}} 
+\index{Items@{Items}!update@{update}}
+\index{update@{update}!Items@{Items}}
+\doxysubsubsection{update()}
+{\footnotesize\ttfamily void Items\+::update (\begin{DoxyParamCaption}\item[{sf\+::\+Time}]{t\+\_\+delta\+Time,  }\item[{sf\+::\+Render\+Window \&}]{t\+\_\+window,  }\item[{sf\+::\+Float\+Rect}]{t\+\_\+player\+Rect }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 8} of file \textbf{ Items.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00009\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ playerCollision(t\_playerRect);}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ explosiveVector.size();\ i++)}
+\DoxyCodeLine{00013\ \ \ \ \ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ explosiveVector.at(i).get()-\/>update(t\_deltaTime);}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (explosiveVector.at(i).get()-\/>exploded\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ spawnExplosion(explosiveVector.at(i).get()-\/>getExplosive().getPosition());}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ removeExplosive(i);}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00021\ \ \ \ \ \}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ particleSystemsVector.size();\ i++)}
+\DoxyCodeLine{00024\ \ \ \ \ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ particleSystemsVector.at(i).update(t\_deltaTime);}
+\DoxyCodeLine{00026\ \ \ \ \ \}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ collisionCircleVector.size();\ i++)}
+\DoxyCodeLine{00029\ \ \ \ \ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ scale\ =\ collisionCircleVector.at(i).getScale().x;}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ collisionCircleVector.at(i).setScale(scale+=\ 0.3,\ scale+=\ 0.3);}
+\DoxyCodeLine{00032\ \ \ \ \ \}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_items_a49da798dbfd8cbdc46e57818cc6da128_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_items_a49da798dbfd8cbdc46e57818cc6da128_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\label{class_items_adbd06f771a1f0ff2ed4cca84974bffce}} 
+\index{Items@{Items}!addHealth@{addHealth}}
+\index{addHealth@{addHealth}!Items@{Items}}
+\doxysubsubsection{addHealth}
+{\footnotesize\ttfamily bool Items\+::add\+Health = false}
+
+
+
+Definition at line \textbf{ 42} of file \textbf{ Items.\+h}.
+
+\mbox{\label{class_items_a49d60d8137601b82aacfc982bf6fa3d5}} 
+\index{Items@{Items}!collisionCircleVector@{collisionCircleVector}}
+\index{collisionCircleVector@{collisionCircleVector}!Items@{Items}}
+\doxysubsubsection{collisionCircleVector}
+{\footnotesize\ttfamily std\+::vector$<$sf\+::\+Circle\+Shape$>$ Items\+::collision\+Circle\+Vector}
+
+
+
+Definition at line \textbf{ 28} of file \textbf{ Items.\+h}.
+
+\mbox{\label{class_items_ac862437c84b109f48271cc831e5d0743}} 
+\index{Items@{Items}!explosivesCollected@{explosivesCollected}}
+\index{explosivesCollected@{explosivesCollected}!Items@{Items}}
+\doxysubsubsection{explosivesCollected}
+{\footnotesize\ttfamily int Items\+::explosives\+Collected = 0}
+
+
+
+Definition at line \textbf{ 43} of file \textbf{ Items.\+h}.
+
+\mbox{\label{class_items_aa24162cb0981185c435d73bc6b7d2997}} 
+\index{Items@{Items}!explosiveVector@{explosiveVector}}
+\index{explosiveVector@{explosiveVector}!Items@{Items}}
+\doxysubsubsection{explosiveVector}
+{\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$\textbf{ Explosive}$>$ $>$ Items\+::explosive\+Vector}
+
+
+
+Definition at line \textbf{ 25} of file \textbf{ Items.\+h}.
+
+\mbox{\label{class_items_aed082e3dc322731e46e6e99fcdc7968f}} 
+\index{Items@{Items}!m\_textureManager@{m\_textureManager}}
+\index{m\_textureManager@{m\_textureManager}!Items@{Items}}
+\doxysubsubsection{m\_textureManager}
+{\footnotesize\ttfamily \textbf{ Texture\+Manager}\& Items\+::m\+\_\+texture\+Manager\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 45} of file \textbf{ Items.\+h}.
+
+\mbox{\label{class_items_a520fdcae36aac4b161768f23b07f978b}} 
+\index{Items@{Items}!medkitVector@{medkitVector}}
+\index{medkitVector@{medkitVector}!Items@{Items}}
+\doxysubsubsection{medkitVector}
+{\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$\textbf{ Medkit}$>$ $>$ Items\+::medkit\+Vector}
+
+
+
+Definition at line \textbf{ 24} of file \textbf{ Items.\+h}.
+
+\mbox{\label{class_items_a0fc57b2fb198aba6490e10fa7610f99f}} 
+\index{Items@{Items}!particleSystemsVector@{particleSystemsVector}}
+\index{particleSystemsVector@{particleSystemsVector}!Items@{Items}}
+\doxysubsubsection{particleSystemsVector}
+{\footnotesize\ttfamily std\+::vector$<$\textbf{ Particle\+System}$>$ Items\+::particle\+Systems\+Vector\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 47} of file \textbf{ Items.\+h}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+No\+Code\+Game\+Editor/\textbf{ Items.\+h}\item 
+No\+Code\+Game\+Editor/\textbf{ Items.\+cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,157 @@
+\doxysection{Main\+Menu.\+cpp}
+\label{_main_menu_8cpp_source}\index{NoCodeGameEditor/MainMenu.cpp@{NoCodeGameEditor/MainMenu.cpp}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}MainMenu.h"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00011\ MainMenu::MainMenu(\textcolor{keywordtype}{float}\ t\_gameWidth,\ \textcolor{keywordtype}{float}\ t\_gameHeight)}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ std::cout\ <<\ t\_gameWidth\ <<\ t\_gameHeight\ <<\ std::endl;}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{int}\ buttonPosX\ =\ 100;}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{int}\ buttonPosY\ =\ t\_gameHeight\ *\ 0.4;\ \textcolor{comment}{//691}}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{int}\ startPosY\ =\ buttonPosY;}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ MAX\_BUTTONS;\ i++)}
+\DoxyCodeLine{00019\ \ \ \ \ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ buttons[i].setFillColor(sf::Color(0,0,0,0));}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ buttons[i].setSize(sf::Vector2f(525,\ 125));}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ buttonPosY\ =\ buttonPosY\ +\ 200;}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ buttons[i].setPosition(sf::Vector2f(buttonPosX,\ buttonPosY));}
+\DoxyCodeLine{00024\ \ \ \ \ \}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ loadAssets();}
+\DoxyCodeLine{00027\ \ \ \ \ setupButtonText(startPosY);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ }
+\DoxyCodeLine{00030\ \}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00033\ \textcolor{keywordtype}{void}\ MainMenu::loadAssets()}
+\DoxyCodeLine{00034\ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordflow}{if}\ (!m\_font.loadFromFile(\textcolor{stringliteral}{"{}./ASSETS/FONTS/NewYork.ttf"{}}))}
+\DoxyCodeLine{00036\ \ \ \ \ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Error\ loading\ font..."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00038\ \ \ \ \ \}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordflow}{if}\ (!m\_font2.loadFromFile(\textcolor{stringliteral}{"{}./ASSETS/FONTS/Another-\/Danger.ttf"{}}))}
+\DoxyCodeLine{00041\ \ \ \ \ \{\ \ \ \ \ \ \ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Error\ loading\ font..."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00043\ \ \ \ \ \}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \}}
+\DoxyCodeLine{00048\ \textcolor{keywordtype}{void}\ MainMenu::update(GameState\&\ t\_gameState,\ sf::RenderWindow\&\ t\_window)}
+\DoxyCodeLine{00049\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ mousePos\ =\ sf::Mouse::getPosition(t\_window);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ "{}Mouse\ Position\ x\ =\ "{}\ <<\ mousePos.x\ <<\ "{}\ Mouse\ Position\ y\ =\ "{}\ <<\ mousePos.y\ <<\ std::endl;}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ mouseButtonCollision(mousePos,\ t\_gameState);}
+\DoxyCodeLine{00055\ \}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00058\ \textcolor{keywordtype}{void}\ MainMenu::render(sf::RenderWindow\&\ t\_window)}
+\DoxyCodeLine{00059\ \{}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{comment}{//drawing\ buttons}}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ MAX\_BUTTONS;\ i++)}
+\DoxyCodeLine{00063\ \ \ \ \ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ t\_window.draw(buttons[i]);}
+\DoxyCodeLine{00065\ \ \ \ \ \}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{comment}{//drawing\ butttons\ text}}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ MAX\_BUTTONS;\ i++)}
+\DoxyCodeLine{00069\ \ \ \ \ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ t\_window.draw(buttonTexts[i]);}
+\DoxyCodeLine{00071\ \ \ \ \ \}}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ t\_window.draw(title);}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \}}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00078\ \textcolor{keywordtype}{void}\ MainMenu::setupButtonText(\textcolor{keywordtype}{int}\ t\_yPos)}
+\DoxyCodeLine{00079\ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ MAX\_BUTTONS;\ i++)}
+\DoxyCodeLine{00081\ \ \ \ \ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ sf::FloatRect\ textRect\ =\ buttonTexts[i].getLocalBounds();}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ buttonTexts[i].Bold;}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ buttonTexts[i].setFont(m\_font);}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ buttonTexts[i].setCharacterSize(64u);}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ buttonTexts[i].setOrigin(textRect.width\ /\ 2,\ textRect.height\ /\ 2);}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ buttonTexts[i].setPosition(buttons[i].getPosition().x,\ buttons[i].getPosition().y);}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ buttonTexts[i].setFillColor(sf::Color::Red);}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ buttonTexts[i].setString(buttonText[i]);}
+\DoxyCodeLine{00090\ \ \ \ \ \}}
+\DoxyCodeLine{00091\ \ \ \ \ sf::FloatRect\ titleTextRect\ =\ title.getLocalBounds();}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ title.Bold;}
+\DoxyCodeLine{00094\ \ \ \ \ title.setFont(m\_font2);}
+\DoxyCodeLine{00095\ \ \ \ \ title.setCharacterSize(200u);}
+\DoxyCodeLine{00096\ \ \ \ \ title.setOrigin(titleTextRect.width\ /\ 2,\ titleTextRect.height\ /\ 2);}
+\DoxyCodeLine{00097\ \ \ \ \ title.setPosition(40,20);}
+\DoxyCodeLine{00098\ \ \ \ \ title.setFillColor(sf::Color::Black);}
+\DoxyCodeLine{00099\ \ \ \ \ title.setString(titleText);}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \}}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00104\ \textcolor{keywordtype}{void}\ MainMenu::mouseButtonCollision(sf::Vector2i\ t\_mousePos,\ GameState\&\ t\_gameState)}
+\DoxyCodeLine{00105\ \{}
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ MAX\_BUTTONS;\ i++)}
+\DoxyCodeLine{00107\ \ \ \ \ \{}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ sf::FloatRect\ boundingBox\ =\ buttons[i].getGlobalBounds();}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (boundingBox.contains(\textcolor{keyword}{static\_cast<}sf::Vector2f\textcolor{keyword}{>}(t\_mousePos)))}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ changeButtons(i);}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (buttonClicked)}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ changeGameState(i,\ t\_gameState);}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buttonClicked\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ resetButtons(i);}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ \}}
+\DoxyCodeLine{00125\ \ \ \ \ buttonClicked\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \}}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00130\ \textcolor{keywordtype}{void}\ MainMenu::resetButtons(\textcolor{keywordtype}{int}\ t\_current)}
+\DoxyCodeLine{00131\ \{}
+\DoxyCodeLine{00132\ \ \ \ \ buttons[t\_current].setFillColor(sf::Color(0,\ 0,\ 0,\ 0));}
+\DoxyCodeLine{00133\ \ \ \ \ buttons[t\_current].setScale(1,\ 1);}
+\DoxyCodeLine{00134\ \ \ \ \ buttonTexts[t\_current].setScale(1,\ 1);}
+\DoxyCodeLine{00135\ \}}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00137\ \textcolor{keywordtype}{void}\ MainMenu::changeButtons(\textcolor{keywordtype}{int}\ current\_Button)}
+\DoxyCodeLine{00138\ \{}
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{comment}{//buttons[current\_Button].setFillColor(sf::Color::Yellow);}}
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{comment}{//buttons[current\_Button].setScale(1.25,\ 1.25);}}
+\DoxyCodeLine{00141\ \ \ \ \ buttonTexts[current\_Button].setScale(1.5,\ 1.5);}
+\DoxyCodeLine{00142\ \}}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \textcolor{keywordtype}{void}\ MainMenu::changeGameState(\textcolor{keywordtype}{int}\ stateNum,\ GameState\&\ t\_gameState)}
+\DoxyCodeLine{00145\ \{}
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keywordflow}{if}\ (stateNum\ ==\ 0)}
+\DoxyCodeLine{00147\ \ \ \ \ \{}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ t\_gameState\ =\ GameState::gameOptions;}
+\DoxyCodeLine{00149\ \ \ \ \ \}}
+\DoxyCodeLine{00150\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (stateNum\ ==\ 1)}
+\DoxyCodeLine{00151\ \ \ \ \ \{}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ t\_gameState\ =\ GameState::chooseGame;}
+\DoxyCodeLine{00153\ \ \ \ \ \}}
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (stateNum\ ==\ 2)}
+\DoxyCodeLine{00155\ \ \ \ \ \{}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ t\_gameState\ =\ GameState::options;}
+\DoxyCodeLine{00157\ \ \ \ \ \}}
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (stateNum\ ==\ 3)}
+\DoxyCodeLine{00159\ \ \ \ \ \{}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ t\_gameState\ =\ GameState::exitGame;}
+\DoxyCodeLine{00161\ \ \ \ \ \}}
+\DoxyCodeLine{00162\ \}}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ }
+
+\end{DoxyCode}

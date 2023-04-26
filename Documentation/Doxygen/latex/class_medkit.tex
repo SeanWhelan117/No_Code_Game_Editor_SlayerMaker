@@ -1,0 +1,233 @@
+\doxysection{Medkit Class Reference}
+\label{class_medkit}\index{Medkit@{Medkit}}
+
+
+{\ttfamily \#include $<$Medkit.\+h$>$}
+
+
+
+Collaboration diagram for Medkit\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=219pt]{class_medkit__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Medkit} (sf\+::\+Vector2f t\+\_\+medkit\+Pos, \textbf{ Texture\+Manager} \&texture\+Manager)
+\item 
+void \textbf{ load\+Files} ()
+\item 
+void \textbf{ setup\+Medkit} ()
+\item 
+void \textbf{ render} (sf\+::\+Render\+Window \&t\+\_\+window)
+\item 
+sf\+::\+Sprite \& \textbf{ get\+Medkit} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ sf\+::\+Texture $>$ \textbf{ medkit\+Texture}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Texture\+Manager} \& \textbf{ m\+\_\+texture\+Manager}
+\item 
+sf\+::\+Vector2f \textbf{ medkit\+Pos}
+\item 
+sf\+::\+Sprite \textbf{ medkit\+Sprite}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Sean Whelan 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022/23 @license Attribution-\/\+Non\+Commercial 4.\+0 International 
+\end{DoxyDate}
+
+
+Definition at line \textbf{ 12} of file \textbf{ Medkit.\+h}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\label{class_medkit_a18267b1e6f7c156e7dfb1f0205fc202d}} 
+\index{Medkit@{Medkit}!Medkit@{Medkit}}
+\index{Medkit@{Medkit}!Medkit@{Medkit}}
+\doxysubsubsection{Medkit()}
+{\footnotesize\ttfamily Medkit\+::\+Medkit (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{t\+\_\+medkit\+Pos,  }\item[{\textbf{ Texture\+Manager} \&}]{texture\+Manager }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 3} of file \textbf{ Medkit.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00003\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ medkitPos(t\_medkitPos),\ m\_textureManager(textureManager) }
+\DoxyCodeLine{00004\ \{}
+\DoxyCodeLine{00005\ \ \ \ \ loadFiles();}
+\DoxyCodeLine{00006\ \ \ \ \ setupMedkit();}
+\DoxyCodeLine{00007\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_medkit_a18267b1e6f7c156e7dfb1f0205fc202d_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{class_medkit_abc4c9ae3a6375d5ba82e78fe14a4686a}} 
+\index{Medkit@{Medkit}!getMedkit@{getMedkit}}
+\index{getMedkit@{getMedkit}!Medkit@{Medkit}}
+\doxysubsubsection{getMedkit()}
+{\footnotesize\ttfamily sf\+::\+Sprite \& Medkit\+::get\+Medkit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 27} of file \textbf{ Medkit.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00028\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordflow}{return}\ medkitSprite;}
+\DoxyCodeLine{00030\ \}}
+
+\end{DoxyCode}
+\mbox{\label{class_medkit_a08d649b4aae3d56ea6cef1b638b07d27}} 
+\index{Medkit@{Medkit}!loadFiles@{loadFiles}}
+\index{loadFiles@{loadFiles}!Medkit@{Medkit}}
+\doxysubsubsection{loadFiles()}
+{\footnotesize\ttfamily void Medkit\+::load\+Files (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 9} of file \textbf{ Medkit.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ medkitTexture\ =\ std::make\_shared<sf::Texture>(m\_textureManager.getTexture(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)medkit.png"{}}));}
+\DoxyCodeLine{00012\ \ \ \ \ medkitSprite.setTexture(*medkitTexture);}
+\DoxyCodeLine{00013\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{class_medkit_a08d649b4aae3d56ea6cef1b638b07d27_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=288pt]{class_medkit_a08d649b4aae3d56ea6cef1b638b07d27_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_medkit_afebbe23bee4a767bd7f49de9e2f0f17e}} 
+\index{Medkit@{Medkit}!render@{render}}
+\index{render@{render}!Medkit@{Medkit}}
+\doxysubsubsection{render()}
+{\footnotesize\ttfamily void Medkit\+::render (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{t\+\_\+window }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 22} of file \textbf{ Medkit.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00023\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ t\_window.draw(medkitSprite);}
+\DoxyCodeLine{00025\ \}}
+
+\end{DoxyCode}
+\mbox{\label{class_medkit_ad1480fc2332e03fc435ad593a9ad35ac}} 
+\index{Medkit@{Medkit}!setupMedkit@{setupMedkit}}
+\index{setupMedkit@{setupMedkit}!Medkit@{Medkit}}
+\doxysubsubsection{setupMedkit()}
+{\footnotesize\ttfamily void Medkit\+::setup\+Medkit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 15} of file \textbf{ Medkit.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ medkitSprite.setOrigin(medkitSprite.getLocalBounds().width\ /\ 2,\ medkitSprite.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00018\ \ \ \ \ medkitSprite.setPosition(sf::Vector2f(medkitPos.x\ +\ 15,\ medkitPos.y\ +\ 15));}
+\DoxyCodeLine{00019\ \ \ \ \ medkitSprite.setScale(0.25,\ 0.25);}
+\DoxyCodeLine{00020\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=302pt]{class_medkit_ad1480fc2332e03fc435ad593a9ad35ac_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\label{class_medkit_a6d956aff9501923bf86fe5f5dd4dfb19}} 
+\index{Medkit@{Medkit}!m\_textureManager@{m\_textureManager}}
+\index{m\_textureManager@{m\_textureManager}!Medkit@{Medkit}}
+\doxysubsubsection{m\_textureManager}
+{\footnotesize\ttfamily \textbf{ Texture\+Manager}\& Medkit\+::m\+\_\+texture\+Manager\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 28} of file \textbf{ Medkit.\+h}.
+
+\mbox{\label{class_medkit_af8328782a607122968bbe7891996bd4a}} 
+\index{Medkit@{Medkit}!medkitPos@{medkitPos}}
+\index{medkitPos@{medkitPos}!Medkit@{Medkit}}
+\doxysubsubsection{medkitPos}
+{\footnotesize\ttfamily sf\+::\+Vector2f Medkit\+::medkit\+Pos\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 29} of file \textbf{ Medkit.\+h}.
+
+\mbox{\label{class_medkit_ad11036c03d13160858df2ee5c2906fa3}} 
+\index{Medkit@{Medkit}!medkitSprite@{medkitSprite}}
+\index{medkitSprite@{medkitSprite}!Medkit@{Medkit}}
+\doxysubsubsection{medkitSprite}
+{\footnotesize\ttfamily sf\+::\+Sprite Medkit\+::medkit\+Sprite\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 30} of file \textbf{ Medkit.\+h}.
+
+\mbox{\label{class_medkit_a9e45ae0ee0cc1bcf31400704030c1c43}} 
+\index{Medkit@{Medkit}!medkitTexture@{medkitTexture}}
+\index{medkitTexture@{medkitTexture}!Medkit@{Medkit}}
+\doxysubsubsection{medkitTexture}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$sf\+::\+Texture$>$ Medkit\+::medkit\+Texture}
+
+
+
+Definition at line \textbf{ 26} of file \textbf{ Medkit.\+h}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+No\+Code\+Game\+Editor/\textbf{ Medkit.\+h}\item 
+No\+Code\+Game\+Editor/\textbf{ Medkit.\+cpp}\end{DoxyCompactItemize}

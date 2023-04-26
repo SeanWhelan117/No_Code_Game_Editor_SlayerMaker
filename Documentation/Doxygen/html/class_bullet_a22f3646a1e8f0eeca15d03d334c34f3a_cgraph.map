@@ -1,0 +1,5 @@
+<map id="Bullet::Bullet" name="Bullet::Bullet">
+<area shape="rect" id="node1" title="Bullet constructor, takes the sf window and the player position as parameters Sets up a mouse positio..." alt="" coords="5,31,101,56"/>
+<area shape="rect" id="node2" href="$class_bullet.html#a73c5ec69c09fb71d6e11d34a323318e7" title="uses a formula to create the movement vector which each bullet needs Creates a random offset for x an..." alt="" coords="149,5,345,31"/>
+<area shape="rect" id="node3" href="$class_bullet.html#aecceedc8e9d0758ef5c642a10f8ba771" title="sets the simple fill color, size and initial position of the the bullet" alt="" coords="179,55,315,80"/>
+</map>

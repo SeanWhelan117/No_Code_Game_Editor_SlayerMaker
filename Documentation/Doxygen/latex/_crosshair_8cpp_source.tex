@@ -1,0 +1,44 @@
+\doxysection{Crosshair.\+cpp}
+\label{_crosshair_8cpp_source}\index{NoCodeGameEditor/Crosshair.cpp@{NoCodeGameEditor/Crosshair.cpp}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}Crosshair.h"{}}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ Crosshair::Crosshair()}
+\DoxyCodeLine{00004\ \{}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \ \ \ \ loadFiles();}
+\DoxyCodeLine{00007\ \ \ \ \ setupCrosshair();}
+\DoxyCodeLine{00008\ \}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keywordtype}{void}\ Crosshair::loadFiles()}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordflow}{if}\ (!crosshairTexture.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)crosshair.png"{}}))}
+\DoxyCodeLine{00014\ \ \ \ \ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ crosshair\ (crosshairTexture)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00017\ \ \ \ \ \}}
+\DoxyCodeLine{00018\ \}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keywordtype}{void}\ Crosshair::update(sf::RenderWindow\&\ t\_window)}
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ mousePos\ =\ t\_window.mapPixelToCoords(sf::Mouse::getPosition(t\_window));}
+\DoxyCodeLine{00023\ \ \ \ \ mousePos.x\ -\/=\ 18;}
+\DoxyCodeLine{00024\ \ \ \ \ mousePos.y\ -\/=\ 18;}
+\DoxyCodeLine{00025\ \ \ \ \ crosshair.setPosition(mousePos);}
+\DoxyCodeLine{00026\ \}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{keywordtype}{void}\ Crosshair::render(sf::RenderWindow\&\ t\_window)}
+\DoxyCodeLine{00029\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ t\_window.draw(crosshair);}
+\DoxyCodeLine{00031\ \}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{keywordtype}{void}\ Crosshair::setupCrosshair()}
+\DoxyCodeLine{00034\ \{}
+\DoxyCodeLine{00035\ \ \ \ \ crosshair.setTexture(crosshairTexture);}
+\DoxyCodeLine{00036\ \ \ \ \ crosshair.setScale(0.3,\ 0.3);}
+\DoxyCodeLine{00037\ \ \ \ \ crosshair.setOrigin(crosshair.getGlobalBounds().width\ /\ 2,\ crosshair.getGlobalBounds().height\ /\ 2);}
+\DoxyCodeLine{00038\ \}}
+
+\end{DoxyCode}

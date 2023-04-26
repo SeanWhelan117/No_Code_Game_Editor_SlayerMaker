@@ -1,0 +1,319 @@
+\doxysection{Explosive\+UI Class Reference}
+\label{class_explosive_u_i}\index{ExplosiveUI@{ExplosiveUI}}
+
+
+{\ttfamily \#include $<$Explosive\+UI.\+h$>$}
+
+
+
+Collaboration diagram for Explosive\+UI\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{class_explosive_u_i__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Explosive\+UI} ()
+\item 
+void \textbf{ load\+Files} ()
+\item 
+void \textbf{ setup\+Explosive\+UISprite} ()
+\item 
+void \textbf{ update} (sf\+::\+Time t\+\_\+delta\+Time, int t\+\_\+explosives\+Collected)
+\item 
+void \textbf{ render} (sf\+::\+Render\+Window \&t\+\_\+window)
+\item 
+void \textbf{ minus\+Explosives} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Sprite \textbf{ explosive\+UISprite}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Texture \textbf{ explosive\+UITextures} [\textbf{ MAX\+\_\+\+TEXTURES}]
+\item 
+int \textbf{ current\+Num} = 0
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const int \textbf{ MAX\+\_\+\+TEXTURES} = 6
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Sean Whelan 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022/23 @license Attribution-\/\+Non\+Commercial 4.\+0 International 
+\end{DoxyDate}
+
+
+Definition at line \textbf{ 11} of file \textbf{ Explosive\+UI.\+h}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\label{class_explosive_u_i_ac00660d2d366fbe2f87e3dd47ec72974}} 
+\index{ExplosiveUI@{ExplosiveUI}!ExplosiveUI@{ExplosiveUI}}
+\index{ExplosiveUI@{ExplosiveUI}!ExplosiveUI@{ExplosiveUI}}
+\doxysubsubsection{ExplosiveUI()}
+{\footnotesize\ttfamily Explosive\+UI\+::\+Explosive\+UI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 3} of file \textbf{ Explosive\+UI.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00004\ \{}
+\DoxyCodeLine{00005\ \ \ \ \ loadFiles();}
+\DoxyCodeLine{00006\ \ \ \ \ setupExplosiveUISprite();}
+\DoxyCodeLine{00007\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_explosive_u_i_ac00660d2d366fbe2f87e3dd47ec72974_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{class_explosive_u_i_a3a558f6f5cc41ad547dd56176b6d771d}} 
+\index{ExplosiveUI@{ExplosiveUI}!loadFiles@{loadFiles}}
+\index{loadFiles@{loadFiles}!ExplosiveUI@{ExplosiveUI}}
+\doxysubsubsection{loadFiles()}
+{\footnotesize\ttfamily void Explosive\+UI\+::load\+Files (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 9} of file \textbf{ Explosive\+UI.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ }
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordflow}{if}\ (!explosiveUITextures[0].loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)dynamiteUI0.png"{}}))}
+\DoxyCodeLine{00013\ \ \ \ \ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ explosiveUITextures\ (0)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00016\ \ \ \ \ \}}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordflow}{if}\ (!explosiveUITextures[1].loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)dynamiteUI1.png"{}}))}
+\DoxyCodeLine{00018\ \ \ \ \ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ explosiveUITextures\ (1)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00021\ \ \ \ \ \}}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordflow}{if}\ (!explosiveUITextures[2].loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)dynamiteUI2.png"{}}))}
+\DoxyCodeLine{00023\ \ \ \ \ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ explosiveUITextures\ (2)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00026\ \ \ \ \ \}}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordflow}{if}\ (!explosiveUITextures[3].loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)dynamiteUI3.png"{}}))}
+\DoxyCodeLine{00028\ \ \ \ \ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ explosiveUITextures\ (3)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00031\ \ \ \ \ \}}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordflow}{if}\ (!explosiveUITextures[4].loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)dynamiteUI4.png"{}}))}
+\DoxyCodeLine{00033\ \ \ \ \ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ explosiveUITextures\ (4)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00036\ \ \ \ \ \}}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordflow}{if}\ (!explosiveUITextures[5].loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)dynamiteUI5.png"{}}))}
+\DoxyCodeLine{00038\ \ \ \ \ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ explosiveUITextures\ (5)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00041\ \ \ \ \ \}}
+\DoxyCodeLine{00042\ \ \ \ \ }
+\DoxyCodeLine{00043\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_explosive_u_i_a3a558f6f5cc41ad547dd56176b6d771d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_explosive_u_i_a3617669bed35c849cda8616f11cc799a}} 
+\index{ExplosiveUI@{ExplosiveUI}!minusExplosives@{minusExplosives}}
+\index{minusExplosives@{minusExplosives}!ExplosiveUI@{ExplosiveUI}}
+\doxysubsubsection{minusExplosives()}
+{\footnotesize\ttfamily void Explosive\+UI\+::minus\+Explosives (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 70} of file \textbf{ Explosive\+UI.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00071\ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordflow}{if}\ (currentNum\ !=\ 0)}
+\DoxyCodeLine{00073\ \ \ \ \ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ currentNum\ -\/=\ 1;}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ explosiveUISprite.setTexture(explosiveUITextures[currentNum]);}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (currentNum\ ==\ 0)}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ explosiveUISprite.setColor(sf::Color(explosiveUISprite.getColor().r,\ explosiveUISprite.getColor().g,\ explosiveUISprite.getColor().b,\ explosiveUISprite.getColor().a\ /\ 2));}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \}}
+\DoxyCodeLine{00083\ \ \ \ \ }
+\DoxyCodeLine{00084\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_explosive_u_i_a3617669bed35c849cda8616f11cc799a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_explosive_u_i_adc8756ea6dcc157aadf3c68656a43f88}} 
+\index{ExplosiveUI@{ExplosiveUI}!render@{render}}
+\index{render@{render}!ExplosiveUI@{ExplosiveUI}}
+\doxysubsubsection{render()}
+{\footnotesize\ttfamily void Explosive\+UI\+::render (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{t\+\_\+window }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 65} of file \textbf{ Explosive\+UI.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00066\ \{}
+\DoxyCodeLine{00067\ \ \ \ \ t\_window.draw(explosiveUISprite);}
+\DoxyCodeLine{00068\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_explosive_u_i_adc8756ea6dcc157aadf3c68656a43f88_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_explosive_u_i_aade014733f18aa32be6714467393efe5}} 
+\index{ExplosiveUI@{ExplosiveUI}!setupExplosiveUISprite@{setupExplosiveUISprite}}
+\index{setupExplosiveUISprite@{setupExplosiveUISprite}!ExplosiveUI@{ExplosiveUI}}
+\doxysubsubsection{setupExplosiveUISprite()}
+{\footnotesize\ttfamily void Explosive\+UI\+::setup\+Explosive\+UISprite (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 45} of file \textbf{ Explosive\+UI.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00046\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ explosiveUISprite.setPosition(50,\ 50);}
+\DoxyCodeLine{00048\ \ \ \ \ explosiveUISprite.setTexture(explosiveUITextures[0]);}
+\DoxyCodeLine{00049\ \ \ \ \ explosiveUISprite.setOrigin(explosiveUISprite.getLocalBounds().width\ /\ 2,\ explosiveUISprite.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00050\ \ \ \ \ explosiveUISprite.setScale(0.2,\ 0.2);}
+\DoxyCodeLine{00051\ \ \ \ \ explosiveUISprite.setColor(sf::Color(explosiveUISprite.getColor().r,\ explosiveUISprite.getColor().g,\ explosiveUISprite.getColor().b,\ explosiveUISprite.getColor().a\ /\ 2));}
+\DoxyCodeLine{00052\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_explosive_u_i_aade014733f18aa32be6714467393efe5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_explosive_u_i_aadeaa4625150a3a009870bab6d04f5b2}} 
+\index{ExplosiveUI@{ExplosiveUI}!update@{update}}
+\index{update@{update}!ExplosiveUI@{ExplosiveUI}}
+\doxysubsubsection{update()}
+{\footnotesize\ttfamily void Explosive\+UI\+::update (\begin{DoxyParamCaption}\item[{sf\+::\+Time}]{t\+\_\+delta\+Time,  }\item[{int}]{t\+\_\+explosives\+Collected }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 54} of file \textbf{ Explosive\+UI.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00055\ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordflow}{if}\ (t\_explosivesCollected\ !=\ currentNum)}
+\DoxyCodeLine{00057\ \ \ \ \ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ currentNum\ =\ t\_explosivesCollected;}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ explosiveUISprite.setColor(sf::Color(explosiveUISprite.getColor().r,\ explosiveUISprite.getColor().g,\ explosiveUISprite.getColor().b,\ explosiveUISprite.getColor().a\ *\ 2));}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ explosiveUISprite.setTexture(explosiveUITextures[currentNum]);}
+\DoxyCodeLine{00062\ \ \ \ \ \}}
+\DoxyCodeLine{00063\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_explosive_u_i_aadeaa4625150a3a009870bab6d04f5b2_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\label{class_explosive_u_i_aa57a6f0cebce660324c559ce43d98e0e}} 
+\index{ExplosiveUI@{ExplosiveUI}!currentNum@{currentNum}}
+\index{currentNum@{currentNum}!ExplosiveUI@{ExplosiveUI}}
+\doxysubsubsection{currentNum}
+{\footnotesize\ttfamily int Explosive\+UI\+::current\+Num = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 31} of file \textbf{ Explosive\+UI.\+h}.
+
+\mbox{\label{class_explosive_u_i_a4d6ac98b990debf4bf53918a7657a17b}} 
+\index{ExplosiveUI@{ExplosiveUI}!explosiveUISprite@{explosiveUISprite}}
+\index{explosiveUISprite@{explosiveUISprite}!ExplosiveUI@{ExplosiveUI}}
+\doxysubsubsection{explosiveUISprite}
+{\footnotesize\ttfamily sf\+::\+Sprite Explosive\+UI\+::explosive\+UISprite}
+
+
+
+Definition at line \textbf{ 23} of file \textbf{ Explosive\+UI.\+h}.
+
+\mbox{\label{class_explosive_u_i_a6a9dc4acc19ec5ec87978c85b3470ab8}} 
+\index{ExplosiveUI@{ExplosiveUI}!explosiveUITextures@{explosiveUITextures}}
+\index{explosiveUITextures@{explosiveUITextures}!ExplosiveUI@{ExplosiveUI}}
+\doxysubsubsection{explosiveUITextures}
+{\footnotesize\ttfamily sf\+::\+Texture Explosive\+UI\+::explosive\+UITextures[\textbf{ MAX\+\_\+\+TEXTURES}]\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 29} of file \textbf{ Explosive\+UI.\+h}.
+
+\mbox{\label{class_explosive_u_i_a4f048664d64d37d1d5374a7d17922b13}} 
+\index{ExplosiveUI@{ExplosiveUI}!MAX\_TEXTURES@{MAX\_TEXTURES}}
+\index{MAX\_TEXTURES@{MAX\_TEXTURES}!ExplosiveUI@{ExplosiveUI}}
+\doxysubsubsection{MAX\_TEXTURES}
+{\footnotesize\ttfamily const int Explosive\+UI\+::\+MAX\+\_\+\+TEXTURES = 6\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 28} of file \textbf{ Explosive\+UI.\+h}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+No\+Code\+Game\+Editor/\textbf{ Explosive\+UI.\+h}\item 
+No\+Code\+Game\+Editor/\textbf{ Explosive\+UI.\+cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,57 @@
+\doxysection{HUD.\+cpp}
+\label{_h_u_d_8cpp_source}\index{NoCodeGameEditor/HUD.cpp@{NoCodeGameEditor/HUD.cpp}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}HUD.h"{}}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ HUD::HUD(\textcolor{keywordtype}{float}\ t\_gameWidth,\ \textcolor{keywordtype}{float}\ t\_gameHeight)}
+\DoxyCodeLine{00004\ \{}
+\DoxyCodeLine{00005\ \ \ \ \ gameWidth\ =\ t\_gameWidth;}
+\DoxyCodeLine{00006\ \ \ \ \ gameHeight\ =\ t\_gameHeight;}
+\DoxyCodeLine{00007\ \}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keywordtype}{void}\ HUD::loadFiles()}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keywordtype}{void}\ HUD::update(sf::Time\ t\_deltaTime,\ sf::RenderWindow\&\ t\_window,\ sf::Vector2f\ t\_playerPos,\ \textcolor{keywordtype}{bool}\&\ t\_addHealth,\ \textcolor{keywordtype}{int}\ \ t\_explosivesCollected,\ \textcolor{keywordtype}{bool}\ t\_invincibilityActive)}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ myClock.update(t\_deltaTime);}
+\DoxyCodeLine{00018\ \ \ \ \ myHealthBar.update(t\_deltaTime,\ t\_invincibilityActive);}
+\DoxyCodeLine{00019\ \ \ \ \ myExplosiveUI.update(t\_deltaTime,\ t\_explosivesCollected);}
+\DoxyCodeLine{00020\ \ \ \ \ setUIElementsLocations(t\_window,\ t\_playerPos);}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordflow}{if}\ (t\_addHealth\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{00023\ \ \ \ \ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ t\_addHealth\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ myHealthBar.plusHealth(50);}
+\DoxyCodeLine{00026\ \ \ \ \ \}}
+\DoxyCodeLine{00027\ \}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keywordtype}{void}\ HUD::render(sf::RenderWindow\&\ t\_window)}
+\DoxyCodeLine{00030\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ myClock.render(t\_window);}
+\DoxyCodeLine{00032\ \ \ \ \ myHealthBar.render(t\_window);}
+\DoxyCodeLine{00033\ \ \ \ \ myExplosiveUI.render(t\_window);}
+\DoxyCodeLine{00034\ \}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{keywordtype}{void}\ HUD::setUIElementsLocations(sf::RenderWindow\&\ t\_window,\ sf::Vector2f\ t\_playerPos)}
+\DoxyCodeLine{00037\ \{}
+\DoxyCodeLine{00038\ \ \ \ \ sf::Vector2f\ pos(t\_playerPos.x\ +\ 250,\ t\_playerPos.y\ -\/\ 250);}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{comment}{//pos\ =\ t\_window.mapPixelToCoords(static\_cast<sf::Vector2i>(pos));}}
+\DoxyCodeLine{00040\ \ \ \ \ myClock.clockText.setPosition(pos);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ sf::Vector2f\ pos2(t\_playerPos.x,\ t\_playerPos.y\ -\/\ 180);}
+\DoxyCodeLine{00043\ \ \ \ \ myHealthBar.healthBarSprite.setPosition(pos2);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ sf::Vector2f\ pos3(t\_playerPos.x\ +\ 20,\ t\_playerPos.y\ -\/\ 210);}
+\DoxyCodeLine{00046\ \ \ \ \ myHealthBar.healthRect.setPosition(pos3);}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ sf::Vector2f\ pos4(t\_playerPos.x\ -\/\ 350,\ t\_playerPos.y\ -\/\ 180);}
+\DoxyCodeLine{00049\ \ \ \ \ myExplosiveUI.explosiveUISprite.setPosition(pos4);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \}}
+
+\end{DoxyCode}

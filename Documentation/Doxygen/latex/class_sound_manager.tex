@@ -1,0 +1,170 @@
+\doxysection{Sound\+Manager Class Reference}
+\label{class_sound_manager}\index{SoundManager@{SoundManager}}
+
+
+{\ttfamily \#include $<$Sound\+Manager.\+h$>$}
+
+
+
+Collaboration diagram for Sound\+Manager\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=174pt]{class_sound_manager__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ load\+Sound} (const std\+::string \&t\+\_\+sound\+Name, const std\+::string \&t\+\_\+sound\+File)
+\item 
+void \textbf{ play\+Sound} (const std\+::string \&t\+\_\+sound\+Name)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \textbf{ Sound\+Manager} \& \textbf{ get\+Instance} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Sound\+Manager} ()
+\item 
+\textbf{ Sound\+Manager} (const \textbf{ Sound\+Manager} \&)=delete
+\item 
+\textbf{ Sound\+Manager} \& \textbf{ operator=} (const \textbf{ Sound\+Manager} \&)=delete
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::map$<$ std\+::string, sf\+::\+Sound\+Buffer $>$ \textbf{ m\+\_\+sound\+Buffers}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Sean Whelan 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022/23 @license Attribution-\/\+Non\+Commercial 4.\+0 International 
+\end{DoxyDate}
+
+
+Definition at line \textbf{ 12} of file \textbf{ Sound\+Manager.\+h}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\label{class_sound_manager_abcc1fbf3488be5788a42c9a4fe56df35}} 
+\index{SoundManager@{SoundManager}!SoundManager@{SoundManager}}
+\index{SoundManager@{SoundManager}!SoundManager@{SoundManager}}
+\doxysubsubsection{SoundManager()\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Sound\+Manager\+::\+Sound\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 27} of file \textbf{ Sound\+Manager.\+h}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00027\ \{\}}
+
+\end{DoxyCode}
+\mbox{\label{class_sound_manager_aac4b48cfc4d394c547f5efec7d451165}} 
+\index{SoundManager@{SoundManager}!SoundManager@{SoundManager}}
+\index{SoundManager@{SoundManager}!SoundManager@{SoundManager}}
+\doxysubsubsection{SoundManager()\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Sound\+Manager\+::\+Sound\+Manager (\begin{DoxyParamCaption}\item[{const \textbf{ Sound\+Manager} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [delete]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{class_sound_manager_a45d4742f2cc9a5caf0fab51cd05919ae}} 
+\index{SoundManager@{SoundManager}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!SoundManager@{SoundManager}}
+\doxysubsubsection{getInstance()}
+{\footnotesize\ttfamily static \textbf{ Sound\+Manager} \& Sound\+Manager\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \textbf{ 15} of file \textbf{ Sound\+Manager.\+h}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00016\ \ \ \ \ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ SoundManager\ instance;}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ instance;}
+\DoxyCodeLine{00019\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\mbox{\label{class_sound_manager_a9f2171086c5237436464601bc37ec311}} 
+\index{SoundManager@{SoundManager}!loadSound@{loadSound}}
+\index{loadSound@{loadSound}!SoundManager@{SoundManager}}
+\doxysubsubsection{loadSound()}
+{\footnotesize\ttfamily void Sound\+Manager\+::load\+Sound (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{t\+\_\+sound\+Name,  }\item[{const std\+::string \&}]{t\+\_\+sound\+File }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 3} of file \textbf{ Sound\+Manager.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00004\ \{}
+\DoxyCodeLine{00005\ \ \ \ \ sf::SoundBuffer\ buffer;}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \ \ \ \ \textcolor{keywordflow}{if}\ (buffer.loadFromFile(t\_soundFile))\ }
+\DoxyCodeLine{00008\ \ \ \ \ \{}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ m\_soundBuffers[t\_soundName]\ =\ buffer;}
+\DoxyCodeLine{00010\ \ \ \ \ \}}
+\DoxyCodeLine{00011\ \}}
+
+\end{DoxyCode}
+\mbox{\label{class_sound_manager_a5792dd09a6293846f738e7f9418d9085}} 
+\index{SoundManager@{SoundManager}!operator=@{operator=}}
+\index{operator=@{operator=}!SoundManager@{SoundManager}}
+\doxysubsubsection{operator=()}
+{\footnotesize\ttfamily \textbf{ Sound\+Manager} \& Sound\+Manager\+::operator= (\begin{DoxyParamCaption}\item[{const \textbf{ Sound\+Manager} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [delete]}}
+
+\mbox{\label{class_sound_manager_accbd5efa05bb72a8e55b52918134b8c1}} 
+\index{SoundManager@{SoundManager}!playSound@{playSound}}
+\index{playSound@{playSound}!SoundManager@{SoundManager}}
+\doxysubsubsection{playSound()}
+{\footnotesize\ttfamily void Sound\+Manager\+::play\+Sound (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{t\+\_\+sound\+Name }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 13} of file \textbf{ Sound\+Manager.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00014\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{auto}\ soundBuffer\ =\ m\_soundBuffers.find(t\_soundName);}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordflow}{if}\ (soundBuffer\ !=\ m\_soundBuffers.end())\ }
+\DoxyCodeLine{00018\ \ \ \ \ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ sf::Sound\ sound(soundBuffer-\/>second);}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ sound.play();}
+\DoxyCodeLine{00021\ \ \ \ \ \}}
+\DoxyCodeLine{00022\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\label{class_sound_manager_a6ec73d6bb1f973ea0b2463b0d6ff01c7}} 
+\index{SoundManager@{SoundManager}!m\_soundBuffers@{m\_soundBuffers}}
+\index{m\_soundBuffers@{m\_soundBuffers}!SoundManager@{SoundManager}}
+\doxysubsubsection{m\_soundBuffers}
+{\footnotesize\ttfamily std\+::map$<$std\+::string, sf\+::\+Sound\+Buffer$>$ Sound\+Manager\+::m\+\_\+sound\+Buffers\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 32} of file \textbf{ Sound\+Manager.\+h}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+No\+Code\+Game\+Editor/\textbf{ Sound\+Manager.\+h}\item 
+No\+Code\+Game\+Editor/\textbf{ Sound\+Manager.\+cpp}\end{DoxyCompactItemize}

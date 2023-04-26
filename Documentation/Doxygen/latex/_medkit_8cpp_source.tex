@@ -1,0 +1,36 @@
+\doxysection{Medkit.\+cpp}
+\label{_medkit_8cpp_source}\index{NoCodeGameEditor/Medkit.cpp@{NoCodeGameEditor/Medkit.cpp}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}Medkit.h"{}}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ Medkit::Medkit(sf::Vector2f\ t\_medkitPos,\ TextureManager\&\ textureManager):\ medkitPos(t\_medkitPos),\ m\_textureManager(textureManager)}
+\DoxyCodeLine{00004\ \{}
+\DoxyCodeLine{00005\ \ \ \ \ loadFiles();}
+\DoxyCodeLine{00006\ \ \ \ \ setupMedkit();}
+\DoxyCodeLine{00007\ \}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keywordtype}{void}\ Medkit::loadFiles()}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ medkitTexture\ =\ std::make\_shared<sf::Texture>(m\_textureManager.getTexture(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)medkit.png"{}}));}
+\DoxyCodeLine{00012\ \ \ \ \ medkitSprite.setTexture(*medkitTexture);}
+\DoxyCodeLine{00013\ \}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keywordtype}{void}\ Medkit::setupMedkit()}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ medkitSprite.setOrigin(medkitSprite.getLocalBounds().width\ /\ 2,\ medkitSprite.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00018\ \ \ \ \ medkitSprite.setPosition(sf::Vector2f(medkitPos.x\ +\ 15,\ medkitPos.y\ +\ 15));}
+\DoxyCodeLine{00019\ \ \ \ \ medkitSprite.setScale(0.25,\ 0.25);}
+\DoxyCodeLine{00020\ \}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keywordtype}{void}\ Medkit::render(sf::RenderWindow\&\ t\_window)}
+\DoxyCodeLine{00023\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ t\_window.draw(medkitSprite);}
+\DoxyCodeLine{00025\ \}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ sf::Sprite\&\ Medkit::getMedkit()}
+\DoxyCodeLine{00028\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordflow}{return}\ medkitSprite;}
+\DoxyCodeLine{00030\ \}}
+
+\end{DoxyCode}

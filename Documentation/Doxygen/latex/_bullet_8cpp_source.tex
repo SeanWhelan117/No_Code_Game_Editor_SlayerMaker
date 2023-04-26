@@ -1,0 +1,58 @@
+\doxysection{Bullet.\+cpp}
+\label{_bullet_8cpp_source}\index{NoCodeGameEditor/Bullet.cpp@{NoCodeGameEditor/Bullet.cpp}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}Bullet.h"{}}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00011\ Bullet::Bullet(sf::RenderWindow\&\ t\_window,\ sf::Vector2f\ t\_playerPos)}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ mousePos\ =\ t\_window.mapPixelToCoords(sf::Mouse::getPosition(t\_window));}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \ \ \ \ playerPosition\ =\ t\_playerPos;}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ playerPosition.x\ <<\ "{}-\/-\/-\/-\/-\/-\/-\/-\/"{}\ <<\ playerPosition.y\ <<\ std::endl;}}
+\DoxyCodeLine{00018\ \ \ \ \ setupSprites();}
+\DoxyCodeLine{00019\ \ \ \ \ createMovementVector();}
+\DoxyCodeLine{00020\ \}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00025\ \textcolor{keywordtype}{void}\ Bullet::setupSprites()}
+\DoxyCodeLine{00026\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ bullet.setFillColor(sf::Color::Black);}
+\DoxyCodeLine{00028\ \ \ \ \ bullet.setSize(sf::Vector2f(6,\ 2));}
+\DoxyCodeLine{00029\ \ \ \ \ bullet.setPosition(playerPosition);}
+\DoxyCodeLine{00030\ \}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00035\ \textcolor{keywordtype}{void}\ Bullet::update()}
+\DoxyCodeLine{00036\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ bullet.move(velocity.x\ *\ 15,\ velocity.y\ *\ 15);}
+\DoxyCodeLine{00038\ \}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00044\ \textcolor{keywordtype}{void}\ Bullet::render(sf::RenderWindow\&\ t\_window)}
+\DoxyCodeLine{00045\ \{}
+\DoxyCodeLine{00046\ \ \ \ \ t\_window.draw(bullet);}
+\DoxyCodeLine{00047\ \}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00053\ sf::RectangleShape\ Bullet::getBullet()}
+\DoxyCodeLine{00054\ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordflow}{return}\ bullet;}
+\DoxyCodeLine{00056\ \}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00066\ \textcolor{keywordtype}{void}\ Bullet::createMovementVector()}
+\DoxyCodeLine{00067\ \{}
+\DoxyCodeLine{00068\ \ \ \ \ sf::Vector2f\ endPosition;}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{int}\ randXOffset\ =\ rand()\ \%\ 25\ -\/\ 15;}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{int}\ randYOffset\ =\ rand()\ \%\ 25\ -\/\ 15;}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ endPosition.x\ =\ mousePos.x\ +\ randXOffset;}
+\DoxyCodeLine{00074\ \ \ \ \ endPosition.y\ =\ mousePos.y\ +\ randYOffset;}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ movementVector.x\ =\ endPosition.x\ -\/\ playerPosition.x;}
+\DoxyCodeLine{00077\ \ \ \ \ movementVector.y\ =\ endPosition.y\ -\/\ playerPosition.y;}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{float}\ temp\ =\ sqrt(movementVector.x\ *\ movementVector.x\ +\ movementVector.y\ *\ movementVector.y);}
+\DoxyCodeLine{00080\ \ \ \ \ velocity.x\ =\ (movementVector.x\ /\ temp);}
+\DoxyCodeLine{00081\ \ \ \ \ velocity.y\ =\ (movementVector.y\ /\ temp);}
+\DoxyCodeLine{00082\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,6 @@
+<map id="Wall::Wall" name="Wall::Wall">
+<area shape="rect" id="node1" title=" " alt="" coords="5,31,88,56"/>
+<area shape="rect" id="node2" href="$class_wall.html#a573e57bc93869b5156315b6d040feb0d" title=" " alt="" coords="139,5,247,31"/>
+<area shape="rect" id="node4" href="$class_wall.html#aec52e52b86f5f3244bc47acb1d1e9288" title=" " alt="" coords="136,55,251,80"/>
+<area shape="rect" id="node3" href="$class_texture_manager.html#a6c7ddda59194e9b951835477daf37fca" title=" " alt="" coords="299,5,483,31"/>
+</map>

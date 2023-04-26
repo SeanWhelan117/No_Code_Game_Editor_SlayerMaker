@@ -1,0 +1,52 @@
+<map id="Game::update" name="Game::update">
+<area shape="rect" id="node1" title="Update the game world." alt="" coords="5,839,109,864"/>
+<area shape="rect" id="node2" href="$class_builder.html#adc8135807068eb1c6cd45e767cd1b831" title=" " alt="" coords="191,5,323,31"/>
+<area shape="rect" id="node3" href="$class_game.html#ada23484a7fbb44822afb81fe81a05b51" title=" " alt="" coords="157,55,356,80"/>
+<area shape="rect" id="node4" href="$class_game.html#ab508e5b66f023cd712cc9ee60e7e1925" title=" " alt="" coords="175,104,338,129"/>
+<area shape="rect" id="node6" href="$class_game.html#af7c7139ec502f089e3028f17d7461622" title=" " alt="" coords="175,153,338,179"/>
+<area shape="rect" id="node7" href="$class_game.html#a04598b31d30614a0eda08dd8b3dcecb9" title=" " alt="" coords="173,203,340,228"/>
+<area shape="rect" id="node8" href="$class_player.html#a616b6524096fbcf47573a5a5823ca6ab" title=" " alt="" coords="444,255,567,280"/>
+<area shape="rect" id="node12" href="$class_game.html#a439f1a313ddba94dcfe1f4cd62028849" title=" " alt="" coords="190,304,323,329"/>
+<area shape="rect" id="node14" href="$class_game.html#a6321fce717c8dad076d084e639d641c9" title=" " alt="" coords="191,452,322,477"/>
+<area shape="rect" id="node22" href="$class_game.html#a020b30e9501ee13950d796421dfed615" title=" " alt="" coords="176,353,337,379"/>
+<area shape="rect" id="node23" href="$class_game.html#a9e68110ecd77dfa51149484b08c49203" title=" " alt="" coords="177,403,336,428"/>
+<area shape="rect" id="node24" href="$class_game.html#a4a7c75faa68e0659f4e3d6cfef427062" title=" " alt="" coords="162,501,351,527"/>
+<area shape="rect" id="node25" href="$class_game.html#aafbaa472c6b1fb6acca5faa24dd3e71e" title=" " alt="" coords="174,551,339,576"/>
+<area shape="rect" id="node26" href="$class_game_options.html#a659035c98adf0b3129e7e468cbb7cabd" title=" " alt="" coords="167,649,346,675"/>
+<area shape="rect" id="node27" href="$class_game.html#a80a786532fb65e3381910bc88354afe2" title=" " alt="" coords="158,699,355,739"/>
+<area shape="rect" id="node28" href="$class_game.html#a55ce510073850739d18666cf136c0bdf" title=" " alt="" coords="172,764,341,789"/>
+<area shape="rect" id="node29" href="$class_game.html#a4f13448efd2d30e9a7103e39d8dccaa7" title=" " alt="" coords="158,813,355,839"/>
+<area shape="rect" id="node30" href="$class_game.html#aace866deb3859b2b858774d685b970aa" title=" " alt="" coords="159,863,354,888"/>
+<area shape="rect" id="node31" href="$class_game.html#a9beb165ef2bec0bf7f20f14c929538cc" title=" " alt="" coords="171,912,342,937"/>
+<area shape="rect" id="node32" href="$class_game.html#af9e7bd9cf43787776ed733921538a581" title=" " alt="" coords="177,961,336,987"/>
+<area shape="rect" id="node33" href="$class_grid.html#a00b2ddec59a87cd876468cfa7c442275" title=" " alt="" coords="201,1011,312,1036"/>
+<area shape="rect" id="node37" href="$class_main_menu.html#ab39fbac1a75de979d8fec96f08e34585" title=" " alt="" coords="192,1060,321,1085"/>
+<area shape="rect" id="node38" href="$class_background.html#a4cf81c1362dd968f05c1c62403476914" title="checks if the passed t_choice is not the same as the currentChoice. If its not assign it to choice an..." alt="" coords="187,1109,326,1135"/>
+<area shape="rect" id="node39" href="$class_crosshair.html#a028932fdb3f5d5c3b0d88ff7471c73ac" title=" " alt="" coords="195,1159,319,1184"/>
+<area shape="rect" id="node40" href="$class_player.html#aad7203a4546d3006fc61ac23371804ea" title=" " alt="" coords="203,1208,310,1233"/>
+<area shape="rect" id="node41" href="$class_grid.html#accde9315ea8c33942f3a4cdc544f161c" title=" " alt="" coords="210,1257,303,1283"/>
+<area shape="rect" id="node42" href="$class_game_over.html#a6e52b2841f67e3338cba5f18d07d4287" title=" " alt="" coords="191,1307,322,1332"/>
+<area shape="rect" id="node43" href="$class_choose_game.html#aa5651bef4f80ed2074f60e62119b38fc" title=" " alt="" coords="183,1356,331,1381"/>
+<area shape="rect" id="node44" href="$class_game_options.html#a75205b5be11b65a9238e3fe63a260b9e" title=" " alt="" coords="182,1405,331,1431"/>
+<area shape="rect" id="node45" href="$class_items.html#a49da798dbfd8cbdc46e57818cc6da128" title=" " alt="" coords="206,1455,307,1480"/>
+<area shape="rect" id="node46" href="$class_powerups.html#a66c70b40f93200df26716f19315f31f8" title=" " alt="" coords="193,1504,320,1529"/>
+<area shape="rect" id="node47" href="$class_objectives.html#a36cbc701662c53815e15036f0227a94e" title=" " alt="" coords="192,1553,321,1579"/>
+<area shape="rect" id="node48" href="$class_h_u_d.html#a44c85228d5558e3c7dae17416de6e955" title=" " alt="" coords="209,600,305,625"/>
+<area shape="rect" id="node49" href="$class_choice_bar.html#a3596d1eb12aa3f5b7fe5d1339b2a2f86" title="checks if the chosen game type parameter doesnt equal the currentgameType. If this is the case it is ..." alt="" coords="192,1603,321,1628"/>
+<area shape="rect" id="node50" href="$class_tool_bar.html#aeaf506211bf39907adb738e395991516" title=" " alt="" coords="200,1652,313,1677"/>
+<area shape="rect" id="node5" href="$class_game_options.html#a44098ece1ddc00006f88eb0052ce6fc3" title=" " alt="" coords="404,57,607,83"/>
+<area shape="rect" id="node9" href="$class_game.html#a60286b4fa6c847e149b9adcdc5a897f5" title=" " alt="" coords="443,205,567,231"/>
+<area shape="rect" id="node10" href="$class_health_bar.html#a097f0c72a0cb38d4f5412a82269c76df" title=" " alt="" coords="426,107,585,132"/>
+<area shape="rect" id="node11" href="$class_game.html#a33d7f7a7cd7abc09513da7401aa83145" title=" " alt="" coords="415,156,595,181"/>
+<area shape="rect" id="node13" href="$class_items.html#a4c8453c8ca81fcc12b5aadb061efcbd0" title=" " alt="" coords="438,304,573,329"/>
+<area shape="rect" id="node15" href="$class_objectives.html#a3cc8dfd629d3493887d1a24835992ea2" title=" " alt="" coords="424,353,587,379"/>
+<area shape="rect" id="node16" href="$class_powerups.html#a3042545500725dfaf0539c7b1a8f5b31" title=" " alt="" coords="425,403,585,428"/>
+<area shape="rect" id="node17" href="$class_game.html#a306f7eb96c3cc930508d35c31989419f" title=" " alt="" coords="436,452,575,477"/>
+<area shape="rect" id="node18" href="$class_game.html#af1ef9f2ac8c746501f63058526429ca3" title=" " alt="" coords="404,551,607,576"/>
+<area shape="rect" id="node19" href="$class_game.html#ab8a2f51fb92121baa5f579856ba83600" title=" " alt="" coords="416,600,595,625"/>
+<area shape="rect" id="node20" href="$class_health_bar.html#a736449535fdea9af3b3791ad9ffdf0c2" title=" " alt="" coords="431,649,579,675"/>
+<area shape="rect" id="node21" href="$class_clock.html#a49c49eaeb838598f7b6b608a973c6ea4" title=" " alt="" coords="444,501,567,527"/>
+<area shape="rect" id="node34" href="$class_cell.html#aa8520b4d62a707082f91db742279146c" title="reurns a reference to the cells rectangle shape" alt="" coords="441,1011,570,1036"/>
+<area shape="rect" id="node35" href="$class_cell.html#aca0086bd3aedb08d27bbade33ed19435" title="sets the ID of the cells" alt="" coords="464,1060,547,1085"/>
+<area shape="rect" id="node36" href="$class_cell.html#a82b14a22508f05fcc9a988c20e4538fc" title="sets the position of the cell to the position from parameter" alt="" coords="459,961,552,987"/>
+</map>

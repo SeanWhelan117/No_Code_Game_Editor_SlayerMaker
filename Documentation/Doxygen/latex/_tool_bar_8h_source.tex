@@ -1,0 +1,113 @@
+\doxysection{Tool\+Bar.\+h}
+\label{_tool_bar_8h_source}\index{NoCodeGameEditor/ToolBar.h@{NoCodeGameEditor/ToolBar.h}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}Grid.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }ToolBar}
+\DoxyCodeLine{00014\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00016\ \ \ \ \ ToolBar(\textcolor{keywordtype}{float}\ t\_gameWidth,\ \textcolor{keywordtype}{float}\ t\_gameHeight);}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{void}\ loadFiles();}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ setupSprites();}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ update(sf::Time\ t\_deltaTime,\ sf::RenderWindow\&\ t\_window,\ std::vector<std::vector<Cell>>\&\ t\_grid,\ \textcolor{keywordtype}{int}\ t\_gridParams,\ \textcolor{keywordtype}{bool}\ t\_choice,\ \textcolor{keywordtype}{int}\ t\_choiceNum);}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ render(sf::RenderWindow\&\ t\_window);}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ checkForMousePosAndClick(sf::RenderWindow\&\ t\_window,\ sf::Vector2f\ t\_mousePos);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ resetTools(\textcolor{keywordtype}{int}\ t\_current);\ \textcolor{comment}{//small\ function\ which\ is\ called\ to\ reset\ buttons\ after\ they\ are\ not\ being\ hoverd\ over\ anymore}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ changeTools(\textcolor{keywordtype}{int}\ t\_currentTool);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ setGridCellToMarked(std::vector<std::vector<Cell>>\&\ t\_grid,\ \textcolor{keywordtype}{int}\ t\_gridParams,\ sf::Vector2f\ t\_mousePos,\ std::string\ t\_toolChosen,\ \textcolor{keywordtype}{int}\ t\_choiceNum);}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ setToolPosForView(sf::RenderWindow\&\ t\_window);}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ pulseTriangles();}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ changeMode(\textcolor{keywordtype}{int}\ t\_triangleClicked);}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ createSelectionSquare();}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{bool}\ wallsPlaced\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{bool}\ enemySpawnersPlaced\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{bool}\ objectivesPlaced\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{bool}\ itemsPlacedBool\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{bool}\ powerupsPlaced\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{bool}\ saved\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00044\ \ \ \ \ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{bool}\ testingGame\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{bool}\ brushToolSelected\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{bool}\ rubberToolSelected\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{bool}\ fillToolSelected\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ sf::Sprite\ toolBarSprite;}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ std::string\ currentMode\ =\ \textcolor{stringliteral}{"{}WALLS"{}};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{int}\ enemyOneSpawnsPlaced\ =\ 0;}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{int}\ enemyTwoSpawnsPlaced\ =\ 0;}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{int}\ enemyThreeSpawnsPlaced\ =\ 0;}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{int}\ coinsPlaced\ =\ 0;}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{int}\ doorsPlaced\ =\ 0;}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ MAX\_NAV\_TRIANGLES\ =\ 2;}
+\DoxyCodeLine{00063\ \ \ \ \ sf::Sprite\ navigationTriangles[MAX\_NAV\_TRIANGLES];}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{bool}\ navigating\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ std::map<std::string,\ int>\ itemsPlaced;}
+\DoxyCodeLine{00068\ \ \ \ \ sf::Vector2f\ selectionSquareStartPos;}
+\DoxyCodeLine{00069\ \ \ \ \ sf::RectangleShape\ selectionSquare;}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{bool}\ selecting\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ sf::Texture\ toolBarTexture;}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ sf::Sprite\ brushToolSprite;}
+\DoxyCodeLine{00077\ \ \ \ \ sf::Texture\ brushToolTexture;}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ sf::Sprite\ fillToolSprite;}
+\DoxyCodeLine{00080\ \ \ \ \ sf::Texture\ fillToolTexture;}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ sf::Sprite\ rubberToolSprite;}
+\DoxyCodeLine{00083\ \ \ \ \ sf::Texture\ rubberToolTexture;}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{float}\ gameWidth\ =\ 0;}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{float}\ gameHeight\ =\ 0;}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ sf::RectangleShape\ addWallsButton;}
+\DoxyCodeLine{00092\ \ \ \ \ sf::RectangleShape\ saveButton;}
+\DoxyCodeLine{00093\ \ \ \ \ sf::RectangleShape\ testGameButton;}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ \ \ sf::RectangleShape\ addEnemySpawnersButton;}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ sf::Vector2f\ MousePosReal;}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ }
+\DoxyCodeLine{00101\ \ \ \ \ sf::Texture\ navTriangleTexture;}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \ sf::Vector2f\ maxScale\ =\ sf::Vector2f(1.8,\ 1.8);}
+\DoxyCodeLine{00104\ \ \ \ \ sf::Vector2f\ minScale\ =\ sf::Vector2f(1.2,\ 1.2);}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keywordtype}{bool}\ scalingUp\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordtype}{bool}\ scalingDown\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{bool}\ pulseTheTriangles\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \};}
+
+\end{DoxyCode}

@@ -1,0 +1,230 @@
+\doxysection{Player.\+cpp}
+\label{_player_8cpp_source}\index{NoCodeGameEditor/Player.cpp@{NoCodeGameEditor/Player.cpp}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}Player.h"{}}}
+\DoxyCodeLine{00002\ Player::Player(\textcolor{keywordtype}{float}\ t\_gameWidth,\ \textcolor{keywordtype}{float}\ t\_gameHeight,\ Animator\&\ t\_animator):\ \ m\_animator(t\_animator)}
+\DoxyCodeLine{00003\ \{}
+\DoxyCodeLine{00004\ \ \ \ \ gameSize.x\ =\ t\_gameWidth;}
+\DoxyCodeLine{00005\ \ \ \ \ gameSize.y\ =\ t\_gameHeight;}
+\DoxyCodeLine{00006\ \ \ \ \ loadFiles();}
+\DoxyCodeLine{00007\ \ \ \ \ setupPlayer();}
+\DoxyCodeLine{00008\ \}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keywordtype}{void}\ Player::loadFiles()}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordflow}{if}\ (!playerIdleTexture.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)PLAYER\(\backslash\)\(\backslash\)PlayerIdle.png"{}}))}
+\DoxyCodeLine{00013\ \ \ \ \ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ playerIdleTexture\ (PlayerIdle)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00016\ \ \ \ \ \}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordflow}{if}\ (!playerWalkingTexture.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)PLAYER\(\backslash\)\(\backslash\)PlayerWalking.png"{}}))}
+\DoxyCodeLine{00019\ \ \ \ \ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ playerWalkingTexture\ (PlayerWalking)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00022\ \ \ \ \ \}}
+\DoxyCodeLine{00023\ \}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keywordtype}{void}\ Player::setupPlayer()}
+\DoxyCodeLine{00026\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ playerSprite.setTexture(playerIdleTexture);}
+\DoxyCodeLine{00028\ \ \ \ \ playerSprite.setOrigin(playerSprite.getGlobalBounds().width\ /\ 2,\ playerSprite.getGlobalBounds().height\ /\ 2);}
+\DoxyCodeLine{00029\ \ \ \ \ playerSprite.setPosition(gameSize.x\ /\ 2,\ gameSize.y\ /\ 2);}
+\DoxyCodeLine{00030\ \ \ \ \ ogColor\ =\ playerSprite.getColor();}
+\DoxyCodeLine{00031\ \}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{keywordtype}{void}\ Player::update(sf::RenderWindow\&\ t\_window,\ \textcolor{keywordtype}{bool}\ t\_invincibilityActive,\ \textcolor{keywordtype}{bool}\ t\_invisibilityActive,\ std::vector<std::unique\_ptr<Wall>>\&\ t\_walls)}
+\DoxyCodeLine{00034\ \{}
+\DoxyCodeLine{00035\ \ \ \ \ mousePos\ =\ t\_window.mapPixelToCoords(sf::Mouse::getPosition(t\_window));}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ playerMovement();}
+\DoxyCodeLine{00038\ \ \ \ \ rotatePlayerView();}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{comment}{//handleCollisions(t\_walls);}}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Mouse::isButtonPressed(sf::Mouse::Left))}
+\DoxyCodeLine{00041\ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ shoot(t\_window);}
+\DoxyCodeLine{00043\ \ \ \ \ \}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordflow}{if}\ (bulletVector.size()\ >\ 0)}
+\DoxyCodeLine{00046\ \ \ \ \ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ bulletVector.size();\ i++)}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ bulletVector.at(i).get()-\/>update();}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (bulletVector.at(i).get()-\/>getBullet().getPosition().x\ >\ gameSize.x\ ||}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bulletVector.at(i).get()-\/>getBullet().getPosition().x\ <\ 0\ ||}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bulletVector.at(i).get()-\/>getBullet().getPosition().y\ >\ gameSize.y\ ||}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bulletVector.at(i).get()-\/>getBullet().getPosition().y\ <\ 0)}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ removeBullet(i);}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00059\ \ \ \ \ \}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordflow}{if}\ (t\_invincibilityActive)}
+\DoxyCodeLine{00062\ \ \ \ \ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (colourChangeTimer.getElapsedTime().asMilliseconds()\ >=\ 500.0f)}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ colourChangeTimer.restart();}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Color\ colour(std::rand()\ \%\ 256,\ std::rand()\ \%\ 256,\ std::rand()\ \%\ 256);}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ playerSprite.setColor(colour);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00071\ \ \ \ \ \}}
+\DoxyCodeLine{00072\ \ \ \ \ }
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordflow}{if}\ (t\_invisibilityActive)}
+\DoxyCodeLine{00075\ \ \ \ \ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ playerSprite.setColor(sf::Color(playerSprite.getColor().r,\ playerSprite.getColor().g,\ playerSprite.getColor().b,\ 25));}
+\DoxyCodeLine{00077\ \ \ \ \ \}}
+\DoxyCodeLine{00078\ \ \ \ \ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordflow}{if}(!t\_invisibilityActive\ \&\&\ !t\_invincibilityActive)}
+\DoxyCodeLine{00080\ \ \ \ \ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ playerSprite.setColor(ogColor);}
+\DoxyCodeLine{00082\ \ \ \ \ \}}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{comment}{//sf::Texture\ t\_texture,\ int\ t\_numOfFrames,\ int\ t\_frameWidth,\ int\ t\_frameHeight,\ int\ t\_cols,\ int\ t\_rows,\ int\ t\_time}}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ textureRect\ =\ m\_animator.animate(playerWalkingTexture,\ 5,\ 36,\ 53,\ 5,\ 1,\ 12);}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{comment}{//playerSprite.setTextureRect(textureRect);}}
+\DoxyCodeLine{00087\ \}}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \textcolor{keywordtype}{void}\ Player::render(sf::RenderWindow\&\ t\_window)}
+\DoxyCodeLine{00090\ \{}
+\DoxyCodeLine{00091\ \ \ \ \ t\_window.draw(playerSprite);}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ bulletVector.size();\ i++)}
+\DoxyCodeLine{00094\ \ \ \ \ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ t\_window.draw(bulletVector.at(i).get()-\/>getBullet());}
+\DoxyCodeLine{00096\ \ \ \ \ \}}
+\DoxyCodeLine{00097\ \}}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \textcolor{keywordtype}{void}\ Player::playerMovement()}
+\DoxyCodeLine{00100\ \{}
+\DoxyCodeLine{00101\ \ \ \ \ sf::Vector2f\ currentPos\ =\ playerSprite.getPosition();}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Keyboard::isKeyPressed(sf::Keyboard::W))}
+\DoxyCodeLine{00104\ \ \ \ \ \{}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \textcolor{comment}{//speedY\ -\/=\ speed;}}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ currentPos.y\ -\/=\ speed;}
+\DoxyCodeLine{00107\ \ \ \ \ \}}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Keyboard::isKeyPressed(sf::Keyboard::S))}
+\DoxyCodeLine{00110\ \ \ \ \ \{}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \textcolor{comment}{//speedY\ +=\ speed;}}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ currentPos.y\ +=\ speed;}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \ \ \ \ \}}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Keyboard::isKeyPressed(sf::Keyboard::A))}
+\DoxyCodeLine{00117\ \ \ \ \ \{}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \textcolor{comment}{//speedX\ -\/=\ speed;}}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ currentPos.x\ -\/=\ speed;}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \ \ \ \ \}}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Keyboard::isKeyPressed(sf::Keyboard::D))}
+\DoxyCodeLine{00124\ \ \ \ \ \{}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \textcolor{comment}{//speedX\ +=\ speed;}}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ currentPos.x\ +=\ speed;}
+\DoxyCodeLine{00127\ \ \ \ \ \}}
+\DoxyCodeLine{00128\ \ \ \ \ }
+\DoxyCodeLine{00129\ \ \ \ \ playerSprite.setPosition(currentPos);}
+\DoxyCodeLine{00130\ \}}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \textcolor{keywordtype}{void}\ Player::move(\textcolor{keywordtype}{float}\ t\_x,\ \textcolor{keywordtype}{float}\ t\_y)\ }
+\DoxyCodeLine{00133\ \{}
+\DoxyCodeLine{00134\ \ \ \ \ position\ =\ playerSprite.getPosition();}
+\DoxyCodeLine{00135\ \ \ \ \ position.x\ +=\ t\_x;}
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{comment}{//updateAABB();}}
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{comment}{//checkCollisions();\ //\ collect\ info\ of\ all\ tiles\ player\ intersects\ with}}
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{comment}{//resolveXCollisions();}}
+\DoxyCodeLine{00139\ \ \ \ \ position.y\ +=\ t\_y;}
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{comment}{//updateAABB();}}
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{comment}{//checkCollisions();}}
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{comment}{//resolveYCollisions();}}
+\DoxyCodeLine{00143\ \}}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00145\ sf::Sprite\ Player::getPlayer()}
+\DoxyCodeLine{00146\ \{}
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{keywordflow}{return}\ playerSprite;}
+\DoxyCodeLine{00148\ \}}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00150\ \textcolor{keywordtype}{void}\ Player::rotatePlayerView()}
+\DoxyCodeLine{00151\ \{}
+\DoxyCodeLine{00152\ \ \ \ \ sf::Vector2f\ playerPos\ =\ playerSprite.getPosition();}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{keywordtype}{float}\ dx\ =\ playerPos.x\ -\/\ mousePos.x;}
+\DoxyCodeLine{00155\ \ \ \ \ \textcolor{keywordtype}{float}\ dy\ =\ playerPos.y\ -\/\ mousePos.y;}
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{keywordtype}{double}\ mouseAngle\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(-\/atan2(dx,\ dy))\ *\ 180.0f\ /\ PI;\ \textcolor{comment}{//finding\ the\ angle\ that\ the\ mouse\ is\ at\ vs\ the\ players\ location}}
+\DoxyCodeLine{00157\ \ \ \ \ playerSprite.setRotation(mouseAngle);}
+\DoxyCodeLine{00158\ \}}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00160\ \textcolor{keywordtype}{void}\ Player::shoot(sf::RenderWindow\&\ t\_window)}
+\DoxyCodeLine{00161\ \{}
+\DoxyCodeLine{00162\ \ \ \ \ Bullet\ tempBullet\{t\_window,\ playerSprite.getPosition()\};}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ \ \ \ \ bulletVector.emplace\_back(\textcolor{keyword}{new}\ Bullet(tempBullet));}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00166\ \}}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00168\ \textcolor{keywordtype}{void}\ Player::removeBullet(\textcolor{keywordtype}{int}\ t\_bulletNum)}
+\DoxyCodeLine{00169\ \{}
+\DoxyCodeLine{00170\ \ \ \ \ std::vector<std::unique\_ptr<Bullet>>::iterator\ begin\ =\ bulletVector.begin();}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ t\_bulletNum\ ;\ i++)}
+\DoxyCodeLine{00173\ \ \ \ \ \{}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ begin++;}
+\DoxyCodeLine{00175\ \ \ \ \ \}}
+\DoxyCodeLine{00176\ \ \ \ \ bulletVector.erase(begin);}
+\DoxyCodeLine{00177\ \}}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00179\ \textcolor{keywordtype}{void}\ Player::handleCollisions(std::vector<std::unique\_ptr<Wall>>\&\ t\_walls)}
+\DoxyCodeLine{00180\ \{}
+\DoxyCodeLine{00181\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ wall\ :\ t\_walls)}
+\DoxyCodeLine{00182\ \ \ \ \ \{}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (playerSprite.getGlobalBounds().intersects(wall-\/>getWall().getGlobalBounds()))}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Determine\ the\ direction\ of\ the\ collision}}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ playerLeft\ =\ playerSprite.getPosition().x;}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ playerRight\ =\ playerSprite.getPosition().x\ +\ playerSprite.getGlobalBounds().width;\ \textcolor{comment}{//\ *******************\ need\ to\ account\ for\ origin\ *****************}}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ playerTop\ =\ playerSprite.getPosition().y;}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ playerBottom\ =\ playerSprite.getPosition().y\ +\ playerSprite.getGlobalBounds().height;}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ wallLeft\ =\ wall-\/>getWall().getPosition().x;}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ wallRight\ =\ wall-\/>getWall().getPosition().x\ +\ wall-\/>getWall().getGlobalBounds().width;}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ wallTop\ =\ wall-\/>getWall().getPosition().y;}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ wallBottom\ =\ wall-\/>getWall().getPosition().y\ +\ wall-\/>getWall().getGlobalBounds().height;}
+\DoxyCodeLine{00194\ }
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ xOverlap\ =\ std::min(playerRight,\ wallRight)\ -\/\ std::max(playerLeft,\ wallLeft);}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ yOverlap\ =\ std::min(playerBottom,\ wallBottom)\ -\/\ std::max(playerTop,\ wallTop);}
+\DoxyCodeLine{00197\ }
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::abs(xOverlap)\ <\ std::abs(yOverlap))}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ horizontal\ -\/-\/\ x}}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (playerLeft\ <\ wallLeft)}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ playerSprite.setPosition(wallLeft\ -\/\ playerSprite.getGlobalBounds().width,\ playerSprite.getPosition().y);}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ playerSprite.setPosition(wallRight,\ playerSprite.getPosition().y);}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//vertical\ -\/-\/\ y}}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (playerTop\ <\ wallTop)}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ playerSprite.setPosition(playerSprite.getPosition().x,\ wallTop\ -\/\ playerSprite.getGlobalBounds().height);}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ playerSprite.setPosition(playerSprite.getPosition().x,\ wallBottom);}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00223\ \ \ \ \ \}}
+\DoxyCodeLine{00224\ \}}
+
+\end{DoxyCode}

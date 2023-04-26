@@ -1,0 +1,13 @@
+<map id="NoCodeGameEditor/Animator.h" name="NoCodeGameEditor/Animator.h">
+<area shape="rect" id="node1" title=" " alt="" coords="341,5,545,31"/>
+<area shape="rect" id="node2" href="$_animator_8cpp.html" title=" " alt="" coords="30,79,249,104"/>
+<area shape="rect" id="node3" href="$_enemy_8h.html" title=" " alt="" coords="273,79,467,104"/>
+<area shape="rect" id="node7" href="$_game_8h.html" title=" " alt="" coords="449,225,635,251"/>
+<area shape="rect" id="node10" href="$_player_8h.html" title=" " alt="" coords="554,79,743,104"/>
+<area shape="rect" id="node4" href="$_enemy_8cpp.html" title=" " alt="" coords="5,152,212,177"/>
+<area shape="rect" id="node5" href="$_enemy_spawner_8h.html" title=" " alt="" coords="237,152,479,177"/>
+<area shape="rect" id="node6" href="$_enemy_spawner_8cpp.html" title=" " alt="" coords="167,225,424,251"/>
+<area shape="rect" id="node8" href="$_game_8cpp.html" title=" " alt="" coords="331,299,532,324"/>
+<area shape="rect" id="node9" href="$main_8cpp.html" title=" " alt="" coords="557,299,751,324"/>
+<area shape="rect" id="node11" href="$_player_8cpp.html" title=" " alt="" coords="605,152,807,177"/>
+</map>

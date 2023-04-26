@@ -1,0 +1,4 @@
+<map id="Powerups::playerCollision" name="Powerups::playerCollision">
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,176,31"/>
+<area shape="rect" id="node2" href="$class_powerups.html#aeb4d3ee1631f2e3f954404312b2bac70" title=" " alt="" coords="224,5,371,31"/>
+</map>

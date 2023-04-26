@@ -1,0 +1,35 @@
+\doxysection{main.\+cpp}
+\label{main_8cpp_source}\index{NoCodeGameEditor/main.cpp@{NoCodeGameEditor/main.cpp}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#ifdef\ \_DEBUG\ }}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#pragma\ comment(lib,"{}sfml-\/graphics-\/d.lib"{}})\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#pragma\ comment(lib,"{}sfml-\/audio-\/d.lib"{}})\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#pragma\ comment(lib,"{}sfml-\/system-\/d.lib"{}})\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#pragma\ comment(lib,"{}sfml-\/window-\/d.lib"{}})\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#pragma\ comment(lib,"{}sfml-\/network-\/d.lib"{}})\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ comment(lib,\ "{}sqlite3"{}})}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#else\ }}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#pragma\ comment(lib,"{}sfml-\/graphics.lib"{}})\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#pragma\ comment(lib,"{}sfml-\/audio.lib"{}})\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#pragma\ comment(lib,"{}sfml-\/system.lib"{}})\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#pragma\ comment(lib,"{}sfml-\/window.lib"{}})\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#pragma\ comment(lib,"{}sfml-\/network.lib"{}})\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#pragma\ comment(lib,\ "{}sqlite3"{}})}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#endif\ }}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ "{}Game.h"{}}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00030\ \textcolor{keywordtype}{int}\ main()}
+\DoxyCodeLine{00031\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ srand(time(NULL));}
+\DoxyCodeLine{00033\ \ \ \ \ Game\ game;}
+\DoxyCodeLine{00034\ \ \ \ \ game.run();}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;\ \textcolor{comment}{//\ success}}
+\DoxyCodeLine{00037\ \}}
+
+\end{DoxyCode}

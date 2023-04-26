@@ -1,0 +1,177 @@
+\doxysection{Particle Class Reference}
+\label{class_particle}\index{Particle@{Particle}}
+
+
+{\ttfamily \#include $<$Particle.\+h$>$}
+
+
+
+Collaboration diagram for Particle\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=150pt]{class_particle__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Particle} (float t\+\_\+x, float t\+\_\+y, float t\+\_\+velocityX, float t\+\_\+velocitY, sf\+::\+Time t\+\_\+lifetime)
+\item 
+void \textbf{ update} (sf\+::\+Time t\+\_\+delta\+Time)
+\item 
+void \textbf{ draw} (sf\+::\+Render\+Window \&t\+\_\+window) const
+\item 
+bool \textbf{ is\+Alive} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Circle\+Shape \textbf{ particle}
+\item 
+sf\+::\+Vector2f \textbf{ velocity}
+\item 
+sf\+::\+Time \textbf{ lifetime}
+\item 
+sf\+::\+Time \textbf{ current\+Age}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Sean Whelan 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022/23 @license Attribution-\/\+Non\+Commercial 4.\+0 International 
+\end{DoxyDate}
+
+
+Definition at line \textbf{ 10} of file \textbf{ Particle.\+h}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\label{class_particle_a53d575509f5a8d88fcd64037b673ce61}} 
+\index{Particle@{Particle}!Particle@{Particle}}
+\index{Particle@{Particle}!Particle@{Particle}}
+\doxysubsubsection{Particle()}
+{\footnotesize\ttfamily Particle\+::\+Particle (\begin{DoxyParamCaption}\item[{float}]{t\+\_\+x,  }\item[{float}]{t\+\_\+y,  }\item[{float}]{t\+\_\+velocityX,  }\item[{float}]{t\+\_\+velocitY,  }\item[{sf\+::\+Time}]{t\+\_\+lifetime }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 3} of file \textbf{ Particle\+System.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00003\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ particle(1.0f),\ velocity(t\_velocityX,\ t\_velocityY),\ lifetime(t\_lifetime),\ currentAge(sf::Time::Zero) }
+\DoxyCodeLine{00004\ \{}
+\DoxyCodeLine{00005\ \ \ \ \ particle.setPosition(t\_x,\ t\_y);}
+\DoxyCodeLine{00006\ \ \ \ \ particle.setFillColor(sf::Color::Red);}
+\DoxyCodeLine{00007\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{class_particle_aa20cce98872a531d853caaa17432beaf}} 
+\index{Particle@{Particle}!draw@{draw}}
+\index{draw@{draw}!Particle@{Particle}}
+\doxysubsubsection{draw()}
+{\footnotesize\ttfamily void Particle\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{t\+\_\+window }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \textbf{ 15} of file \textbf{ Particle\+System.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ t\_window.draw(particle);}
+\DoxyCodeLine{00018\ \}}
+
+\end{DoxyCode}
+\mbox{\label{class_particle_adfc6622bc0bb9f3b19346c1590654c36}} 
+\index{Particle@{Particle}!isAlive@{isAlive}}
+\index{isAlive@{isAlive}!Particle@{Particle}}
+\doxysubsubsection{isAlive()}
+{\footnotesize\ttfamily bool Particle\+::is\+Alive (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \textbf{ 20} of file \textbf{ Particle\+System.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordflow}{return}\ currentAge\ <\ lifetime;}
+\DoxyCodeLine{00023\ \}}
+
+\end{DoxyCode}
+\mbox{\label{class_particle_acbe46110b992f5452f2d98c60eca0c6e}} 
+\index{Particle@{Particle}!update@{update}}
+\index{update@{update}!Particle@{Particle}}
+\doxysubsubsection{update()}
+{\footnotesize\ttfamily void Particle\+::update (\begin{DoxyParamCaption}\item[{sf\+::\+Time}]{t\+\_\+delta\+Time }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 9} of file \textbf{ Particle\+System.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ particle.move(velocity\ *\ t\_deltaTime.asSeconds());}
+\DoxyCodeLine{00012\ \ \ \ \ currentAge\ +=\ t\_deltaTime;}
+\DoxyCodeLine{00013\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\label{class_particle_a14d7c42d767e62b60b6dd2bdfe2f06b0}} 
+\index{Particle@{Particle}!currentAge@{currentAge}}
+\index{currentAge@{currentAge}!Particle@{Particle}}
+\doxysubsubsection{currentAge}
+{\footnotesize\ttfamily sf\+::\+Time Particle\+::current\+Age\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 23} of file \textbf{ Particle.\+h}.
+
+\mbox{\label{class_particle_a160dfae711f857869ddf279cc745a350}} 
+\index{Particle@{Particle}!lifetime@{lifetime}}
+\index{lifetime@{lifetime}!Particle@{Particle}}
+\doxysubsubsection{lifetime}
+{\footnotesize\ttfamily sf\+::\+Time Particle\+::lifetime\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 22} of file \textbf{ Particle.\+h}.
+
+\mbox{\label{class_particle_a56e73c664ef47654dc61d97c4b17c2ec}} 
+\index{Particle@{Particle}!particle@{particle}}
+\index{particle@{particle}!Particle@{Particle}}
+\doxysubsubsection{particle}
+{\footnotesize\ttfamily sf\+::\+Circle\+Shape Particle\+::particle\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 20} of file \textbf{ Particle.\+h}.
+
+\mbox{\label{class_particle_a9c231f47f68101c1bb4b7fc6a4f6667b}} 
+\index{Particle@{Particle}!velocity@{velocity}}
+\index{velocity@{velocity}!Particle@{Particle}}
+\doxysubsubsection{velocity}
+{\footnotesize\ttfamily sf\+::\+Vector2f Particle\+::velocity\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 21} of file \textbf{ Particle.\+h}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+No\+Code\+Game\+Editor/\textbf{ Particle.\+h}\item 
+No\+Code\+Game\+Editor/\textbf{ Particle\+System.\+cpp}\end{DoxyCompactItemize}

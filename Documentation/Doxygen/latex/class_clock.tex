@@ -1,0 +1,406 @@
+\doxysection{Clock Class Reference}
+\label{class_clock}\index{Clock@{Clock}}
+
+
+{\ttfamily \#include $<$Clock.\+h$>$}
+
+
+
+Collaboration diagram for Clock\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{class_clock__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Clock} ()
+\item 
+void \textbf{ load\+Files} ()
+\item 
+void \textbf{ update} (sf\+::\+Time t\+\_\+delta\+Time)
+\item 
+void \textbf{ render} (sf\+::\+Render\+Window \&t\+\_\+window)
+\item 
+void \textbf{ start\+Clock} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Text \textbf{ clock\+Text}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ setup\+Clock\+Display} ()
+\item 
+void \textbf{ add\+To\+Clock} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+String \textbf{ clock\+String}
+\item 
+sf\+::\+Font \textbf{ clock\+Font}
+\item 
+sf\+::\+Clock \textbf{ my\+Clock}
+\item 
+int \textbf{ minute\+Tens} = 0
+\item 
+int \textbf{ minute\+Singles} = 0
+\item 
+int \textbf{ second\+Tens} = 0
+\item 
+int \textbf{ second\+Singles} = 0
+\item 
+char \textbf{ colon} = \textquotesingle{}\+:\textquotesingle{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Sean Whelan 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022/23 @license Attribution-\/\+Non\+Commercial 4.\+0 International 
+\end{DoxyDate}
+
+
+Definition at line \textbf{ 10} of file \textbf{ Clock.\+h}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\label{class_clock_adbc370eb6b5f8d01645cf440188160a8}} 
+\index{Clock@{Clock}!Clock@{Clock}}
+\index{Clock@{Clock}!Clock@{Clock}}
+\doxysubsubsection{Clock()}
+{\footnotesize\ttfamily Clock\+::\+Clock (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 3} of file \textbf{ Clock.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00004\ \{}
+\DoxyCodeLine{00005\ \ \ \ \ loadFiles();}
+\DoxyCodeLine{00006\ \ \ \ \ startClock();}
+\DoxyCodeLine{00007\ \ \ \ \ setupClockDisplay();}
+\DoxyCodeLine{00008\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=316pt]{class_clock_adbc370eb6b5f8d01645cf440188160a8_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{class_clock_afba36a4c1a2cb97e9e767856b92602bd}} 
+\index{Clock@{Clock}!addToClock@{addToClock}}
+\index{addToClock@{addToClock}!Clock@{Clock}}
+\doxysubsubsection{addToClock()}
+{\footnotesize\ttfamily void Clock\+::add\+To\+Clock (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 45} of file \textbf{ Clock.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00046\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ secondSingles\ =\ myClock.getElapsedTime().asSeconds();}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordflow}{if}\ (secondSingles\ ==\ 9)}
+\DoxyCodeLine{00050\ \ \ \ \ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ myClock.restart();}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ secondSingles\ =\ 0;}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ secondTens\ +=\ 1;}
+\DoxyCodeLine{00054\ \ \ \ \ \}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordflow}{if}\ (secondTens\ ==\ 6)}
+\DoxyCodeLine{00057\ \ \ \ \ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ myClock.restart();}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ secondSingles\ =\ 0;}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ secondTens\ =\ 0;}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ minuteSingles\ +=\ 1;}
+\DoxyCodeLine{00062\ \ \ \ \ \}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordflow}{if}\ (minuteSingles\ >\ 9)}
+\DoxyCodeLine{00065\ \ \ \ \ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ myClock.restart();}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ secondSingles\ =\ 0;}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ secondTens\ =\ 0;}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ minuteSingles\ =\ 0;}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ minuteTens\ +=\ 1;}
+\DoxyCodeLine{00071\ \ \ \ \ \}}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordflow}{if}\ (minuteTens\ >\ 5)}
+\DoxyCodeLine{00074\ \ \ \ \ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ myClock.restart();}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ secondSingles\ =\ 0;}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ secondTens\ =\ 0;}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ minuteSingles\ =\ 0;}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ minuteTens\ =\ 0;}
+\DoxyCodeLine{00080\ \ \ \ \ \}}
+\DoxyCodeLine{00081\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_clock_afba36a4c1a2cb97e9e767856b92602bd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_clock_af81d3d605bb1749ef072f99bb8c5e2f9}} 
+\index{Clock@{Clock}!loadFiles@{loadFiles}}
+\index{loadFiles@{loadFiles}!Clock@{Clock}}
+\doxysubsubsection{loadFiles()}
+{\footnotesize\ttfamily void Clock\+::load\+Files (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 10} of file \textbf{ Clock.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordflow}{if}\ (!clockFont.loadFromFile(\textcolor{stringliteral}{"{}./ASSETS/FONTS/casio-\/fx-\/702p.ttf"{}}))}
+\DoxyCodeLine{00013\ \ \ \ \ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Error\ loading\ font..."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00015\ \ \ \ \ \}}
+\DoxyCodeLine{00016\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=274pt]{class_clock_af81d3d605bb1749ef072f99bb8c5e2f9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_clock_a8bf4a85ba98d342bb7a7d7c1a1b28b7b}} 
+\index{Clock@{Clock}!render@{render}}
+\index{render@{render}!Clock@{Clock}}
+\doxysubsubsection{render()}
+{\footnotesize\ttfamily void Clock\+::render (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{t\+\_\+window }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 25} of file \textbf{ Clock.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00026\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ t\_window.draw(clockText);}
+\DoxyCodeLine{00028\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_clock_a8bf4a85ba98d342bb7a7d7c1a1b28b7b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_clock_aac750c10ce05e2ecfff2c84c9e24887e}} 
+\index{Clock@{Clock}!setupClockDisplay@{setupClockDisplay}}
+\index{setupClockDisplay@{setupClockDisplay}!Clock@{Clock}}
+\doxysubsubsection{setupClockDisplay()}
+{\footnotesize\ttfamily void Clock\+::setup\+Clock\+Display (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 35} of file \textbf{ Clock.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00036\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ clockText.setFont(clockFont);}
+\DoxyCodeLine{00038\ \ \ \ \ clockText.setCharacterSize(50u);}
+\DoxyCodeLine{00039\ \ \ \ \ clockText.setFillColor(sf::Color::Black);}
+\DoxyCodeLine{00040\ \ \ \ \ clockString\ =\ std::to\_string(minuteTens)\ +\ std::to\_string(minuteSingles)\ +\ colon\ +\ std::to\_string(secondTens)\ +\ std::to\_string(secondSingles);}
+\DoxyCodeLine{00041\ \ \ \ \ clockText.setString(clockString);}
+\DoxyCodeLine{00042\ \ \ \ \ clockText.setPosition(sf::Vector2f(100,\ 100));}
+\DoxyCodeLine{00043\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=316pt]{class_clock_aac750c10ce05e2ecfff2c84c9e24887e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_clock_a49c49eaeb838598f7b6b608a973c6ea4}} 
+\index{Clock@{Clock}!startClock@{startClock}}
+\index{startClock@{startClock}!Clock@{Clock}}
+\doxysubsubsection{startClock()}
+{\footnotesize\ttfamily void Clock\+::start\+Clock (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 30} of file \textbf{ Clock.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00031\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ myClock.restart();}
+\DoxyCodeLine{00033\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_clock_a49c49eaeb838598f7b6b608a973c6ea4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_clock_a6796869c4f2480dfbe90d3e9838e6ae5}} 
+\index{Clock@{Clock}!update@{update}}
+\index{update@{update}!Clock@{Clock}}
+\doxysubsubsection{update()}
+{\footnotesize\ttfamily void Clock\+::update (\begin{DoxyParamCaption}\item[{sf\+::\+Time}]{t\+\_\+delta\+Time }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 18} of file \textbf{ Clock.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00019\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ addToClock();}
+\DoxyCodeLine{00021\ \ \ \ \ clockString\ =\ std::to\_string(minuteTens)\ +\ std::to\_string(minuteSingles)\ +\ colon\ +\ std::to\_string(secondTens)\ +\ std::to\_string(secondSingles);}
+\DoxyCodeLine{00022\ \ \ \ \ clockText.setString(clockString);}
+\DoxyCodeLine{00023\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=291pt]{class_clock_a6796869c4f2480dfbe90d3e9838e6ae5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_clock_a6796869c4f2480dfbe90d3e9838e6ae5_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\label{class_clock_ab8d9e6a05ea2ae62fcc612f300c590a5}} 
+\index{Clock@{Clock}!clockFont@{clockFont}}
+\index{clockFont@{clockFont}!Clock@{Clock}}
+\doxysubsubsection{clockFont}
+{\footnotesize\ttfamily sf\+::\+Font Clock\+::clock\+Font\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 37} of file \textbf{ Clock.\+h}.
+
+\mbox{\label{class_clock_a37101cd70c1c170079eb82828168cb5f}} 
+\index{Clock@{Clock}!clockString@{clockString}}
+\index{clockString@{clockString}!Clock@{Clock}}
+\doxysubsubsection{clockString}
+{\footnotesize\ttfamily sf\+::\+String Clock\+::clock\+String\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 36} of file \textbf{ Clock.\+h}.
+
+\mbox{\label{class_clock_a4fea245d91885e857af217b9566b2ffd}} 
+\index{Clock@{Clock}!clockText@{clockText}}
+\index{clockText@{clockText}!Clock@{Clock}}
+\doxysubsubsection{clockText}
+{\footnotesize\ttfamily sf\+::\+Text Clock\+::clock\+Text}
+
+
+
+Definition at line \textbf{ 27} of file \textbf{ Clock.\+h}.
+
+\mbox{\label{class_clock_a29f669b5ba2fe4257fc4035d05c07396}} 
+\index{Clock@{Clock}!colon@{colon}}
+\index{colon@{colon}!Clock@{Clock}}
+\doxysubsubsection{colon}
+{\footnotesize\ttfamily char Clock\+::colon = \textquotesingle{}\+:\textquotesingle{}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 45} of file \textbf{ Clock.\+h}.
+
+\mbox{\label{class_clock_a42e326148bd471413ceb5da0914a2029}} 
+\index{Clock@{Clock}!minuteSingles@{minuteSingles}}
+\index{minuteSingles@{minuteSingles}!Clock@{Clock}}
+\doxysubsubsection{minuteSingles}
+{\footnotesize\ttfamily int Clock\+::minute\+Singles = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 42} of file \textbf{ Clock.\+h}.
+
+\mbox{\label{class_clock_a9287dc3bcedba814885263440bb1a857}} 
+\index{Clock@{Clock}!minuteTens@{minuteTens}}
+\index{minuteTens@{minuteTens}!Clock@{Clock}}
+\doxysubsubsection{minuteTens}
+{\footnotesize\ttfamily int Clock\+::minute\+Tens = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 41} of file \textbf{ Clock.\+h}.
+
+\mbox{\label{class_clock_a14a192079c587c1a5d7704600d0284b7}} 
+\index{Clock@{Clock}!myClock@{myClock}}
+\index{myClock@{myClock}!Clock@{Clock}}
+\doxysubsubsection{myClock}
+{\footnotesize\ttfamily sf\+::\+Clock Clock\+::my\+Clock\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 39} of file \textbf{ Clock.\+h}.
+
+\mbox{\label{class_clock_a62955713fb13a9070eba5f4649ea2a8b}} 
+\index{Clock@{Clock}!secondSingles@{secondSingles}}
+\index{secondSingles@{secondSingles}!Clock@{Clock}}
+\doxysubsubsection{secondSingles}
+{\footnotesize\ttfamily int Clock\+::second\+Singles = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 44} of file \textbf{ Clock.\+h}.
+
+\mbox{\label{class_clock_a088fc9937813ce3c15c8aa3c8c9bf6b7}} 
+\index{Clock@{Clock}!secondTens@{secondTens}}
+\index{secondTens@{secondTens}!Clock@{Clock}}
+\doxysubsubsection{secondTens}
+{\footnotesize\ttfamily int Clock\+::second\+Tens = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 43} of file \textbf{ Clock.\+h}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+No\+Code\+Game\+Editor/\textbf{ Clock.\+h}\item 
+No\+Code\+Game\+Editor/\textbf{ Clock.\+cpp}\end{DoxyCompactItemize}

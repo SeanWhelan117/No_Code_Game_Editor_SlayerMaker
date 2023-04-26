@@ -1,0 +1,46 @@
+\doxysection{Door.\+cpp}
+\label{_door_8cpp_source}\index{NoCodeGameEditor/Door.cpp@{NoCodeGameEditor/Door.cpp}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}Door.h"{}}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ Door::Door(sf::Vector2f\ t\_doorPos,\ TextureManager\&\ textureManager)\ :\ doorPos(t\_doorPos),\ m\_textureManager(textureManager)}
+\DoxyCodeLine{00004\ \{}
+\DoxyCodeLine{00005\ \ \ \ \ loadFiles();}
+\DoxyCodeLine{00006\ \ \ \ \ setupDoor();}
+\DoxyCodeLine{00007\ \}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keywordtype}{void}\ Door::loadFiles()}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ doorTexture\ =\ std::make\_shared<sf::Texture>(m\_textureManager.getTexture(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)door.png"{}}));}
+\DoxyCodeLine{00012\ \ \ \ \ doorSprite.setTexture(*doorTexture);}
+\DoxyCodeLine{00013\ \}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keywordtype}{void}\ Door::setupDoor()}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ doorSprite.setOrigin(doorSprite.getLocalBounds().width\ /\ 2,\ doorSprite.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00018\ \ \ \ \ doorSprite.setPosition(sf::Vector2f(doorPos.x\ +\ 15,\ doorPos.y\ +\ 15));}
+\DoxyCodeLine{00019\ \ \ \ \ doorSprite.setScale(0.25,\ 0.25);}
+\DoxyCodeLine{00020\ \ \ \ \ doorAlpha\ =\ doorSprite.getColor().a;}
+\DoxyCodeLine{00021\ \ \ \ \ doorSprite.setColor(sf::Color(doorSprite.getColor().r,\ doorSprite.getColor().g,\ doorSprite.getColor().b,\ doorAlpha\ /\ 2));}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keywordtype}{void}\ Door::render(sf::RenderWindow\&\ t\_window)}
+\DoxyCodeLine{00026\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ t\_window.draw(doorSprite);}
+\DoxyCodeLine{00028\ \}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keywordtype}{void}\ Door::doorOpened()}
+\DoxyCodeLine{00031\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ doorSprite.setColor(sf::Color(doorSprite.getColor().r,\ doorSprite.getColor().g,\ doorSprite.getColor().b,\ doorAlpha\ *\ 2));}
+\DoxyCodeLine{00033\ \ \ \ \ doorAccesible\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00034\ \}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ sf::Sprite\&\ Door::getDoor()}
+\DoxyCodeLine{00037\ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordflow}{return}\ doorSprite;}
+\DoxyCodeLine{00039\ \}}
+\DoxyCodeLine{00040\ }
+
+\end{DoxyCode}

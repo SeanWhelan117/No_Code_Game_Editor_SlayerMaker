@@ -1,0 +1,7 @@
+<map id="Grid::setupGrid" name="Grid::setupGrid">
+<area shape="rect" id="node1" title=" " alt="" coords="5,80,116,105"/>
+<area shape="rect" id="node2" href="$class_cell.html#aa8520b4d62a707082f91db742279146c" title="reurns a reference to the cells rectangle shape" alt="" coords="164,5,293,31"/>
+<area shape="rect" id="node3" href="$class_cell.html#aca0086bd3aedb08d27bbade33ed19435" title="sets the ID of the cells" alt="" coords="187,55,270,80"/>
+<area shape="rect" id="node4" href="$class_cell.html#a82b14a22508f05fcc9a988c20e4538fc" title="sets the position of the cell to the position from parameter" alt="" coords="182,104,275,129"/>
+<area shape="rect" id="node5" href="$class_cell.html#a6fd306a47dce2edde37e1e12f0ac047d" title="gives the cells a color, outline and size" alt="" coords="172,153,285,179"/>
+</map>

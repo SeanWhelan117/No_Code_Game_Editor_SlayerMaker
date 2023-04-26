@@ -1,0 +1,66 @@
+\doxysection{Main\+Menu.\+h}
+\label{_main_menu_8h_source}\index{NoCodeGameEditor/MainMenu.h@{NoCodeGameEditor/MainMenu.h}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <SFML\(\backslash\)Graphics.hpp>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}GameState.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }MainMenu}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \ \ MainMenu(\textcolor{keywordtype}{float}\ t\_gameWidth,\ \textcolor{keywordtype}{float}\ t\_gameHeight);}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{void}\ loadAssets();}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{void}\ update(GameState\&\ t\_gameState,\ sf::RenderWindow\&\ t\_window);}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ render(sf::RenderWindow\&\ t\_window);}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{bool}\ buttonClicked\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00023\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ setupButtonText(\textcolor{keywordtype}{int}\ t\_yPos);\ \textcolor{comment}{//\ setups\ font\ colour\ all\ that\ stuff\ for\ the\ button\ text}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ mouseButtonCollision(sf::Vector2i\ t\_mousePos,\ GameState\&\ t\_gameState);\ \textcolor{comment}{//\ checks\ for\ collision\ with\ the\ mouse\ and\ buttons.}}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//if\ the\ mouse\ is\ hovering\ changes\ that\ specific\ button}}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//resets\ changes\ when\ it\ leaves\ that\ button}}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{comment}{//checks\ for\ that\ buttons\ click\ aswell}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ resetButtons(\textcolor{keywordtype}{int}\ t\_current);\ \textcolor{comment}{//small\ function\ which\ is\ called\ to\ reset\ buttons\ after\ they\ are\ not\ being\ hoverd\ over\ anymore}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ changeButtons(\textcolor{keywordtype}{int}\ current\_Button);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ changeGameState(\textcolor{keywordtype}{int}\ stateNum,\ GameState\&\ t\_gameState);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ MAX\_BUTTONS\ =\ 4;}
+\DoxyCodeLine{00040\ \ \ \ \ sf::RectangleShape\ buttons[MAX\_BUTTONS];\ \textcolor{comment}{//\ buttons\ array\ for\ menu\ buttons}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ sf::Font\ m\_font;\ \textcolor{comment}{//newyork.ttf\ font}}
+\DoxyCodeLine{00043\ \ \ \ \ sf::Font\ m\_font2;}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{comment}{//text\ for\ each\ button\ stating\ what\ they\ are}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{comment}{//just\ sf\ text\ array\ for\ the\ buttons}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ sf::Text\ buttonTexts[MAX\_BUTTONS];}
+\DoxyCodeLine{00050\ \ \ \ \ sf::Text\ title;}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ sf::Vector2i\ mousePos;\ \textcolor{comment}{//\ mouses\ current\ position}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{float}\ spriteX\ =\ 0;\ \textcolor{comment}{//the\ x\ and\ y\ size\ of\ every\ specific\ sprite\ in\ the\ spritesheet\ }}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{float}\ spriteY\ =\ 0;}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ std::string\ buttonText[MAX\_BUTTONS]\ =\ \{\ \textcolor{stringliteral}{"{}Create"{}},\textcolor{stringliteral}{"{}Play"{}},\textcolor{stringliteral}{"{}Options"{}},\textcolor{stringliteral}{"{}Exit"{}}\ \};}
+\DoxyCodeLine{00061\ \ \ \ \ std::string\ titleText\ =\ \textcolor{stringliteral}{"{}Slayer\ Maker"{}};}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \};}
+\DoxyCodeLine{00064\ }
+
+\end{DoxyCode}

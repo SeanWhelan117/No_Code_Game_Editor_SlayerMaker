@@ -1,0 +1,233 @@
+\doxysection{PUPInvisibility Class Reference}
+\label{class_p_u_p_invisibility}\index{PUPInvisibility@{PUPInvisibility}}
+
+
+{\ttfamily \#include $<$PUPInvisibility.\+h$>$}
+
+
+
+Collaboration diagram for PUPInvisibility\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=219pt]{class_p_u_p_invisibility__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ PUPInvisibility} (sf\+::\+Vector2f t\+\_\+invisibility\+Pos, \textbf{ Texture\+Manager} \&texture\+Manager)
+\item 
+void \textbf{ load\+Files} ()
+\item 
+void \textbf{ setup\+Invisibility} ()
+\item 
+void \textbf{ render} (sf\+::\+Render\+Window \&t\+\_\+window)
+\item 
+sf\+::\+Sprite \& \textbf{ get\+Invisibility} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ sf\+::\+Texture $>$ \textbf{ invisibility\+Texture}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Texture\+Manager} \& \textbf{ m\+\_\+texture\+Manager}
+\item 
+sf\+::\+Vector2f \textbf{ invisibility\+Pos}
+\item 
+sf\+::\+Sprite \textbf{ invisibility\+Sprite}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Sean Whelan 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022/23 @license Attribution-\/\+Non\+Commercial 4.\+0 International 
+\end{DoxyDate}
+
+
+Definition at line \textbf{ 12} of file \textbf{ PUPInvisibility.\+h}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\label{class_p_u_p_invisibility_a51e8521a5442a4c79bfbcaccff57a305}} 
+\index{PUPInvisibility@{PUPInvisibility}!PUPInvisibility@{PUPInvisibility}}
+\index{PUPInvisibility@{PUPInvisibility}!PUPInvisibility@{PUPInvisibility}}
+\doxysubsubsection{PUPInvisibility()}
+{\footnotesize\ttfamily PUPInvisibility\+::\+PUPInvisibility (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{t\+\_\+invisibility\+Pos,  }\item[{\textbf{ Texture\+Manager} \&}]{texture\+Manager }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 3} of file \textbf{ PUPInvisibility.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00003\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ invisibilityPos(t\_invisibilityPos),\ m\_textureManager(textureManager) }
+\DoxyCodeLine{00004\ \{}
+\DoxyCodeLine{00005\ \ \ \ \ loadFiles();}
+\DoxyCodeLine{00006\ \ \ \ \ setupInvisibility();}
+\DoxyCodeLine{00007\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_p_u_p_invisibility_a51e8521a5442a4c79bfbcaccff57a305_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{class_p_u_p_invisibility_a839cb94a19c74fa38f40c03273102581}} 
+\index{PUPInvisibility@{PUPInvisibility}!getInvisibility@{getInvisibility}}
+\index{getInvisibility@{getInvisibility}!PUPInvisibility@{PUPInvisibility}}
+\doxysubsubsection{getInvisibility()}
+{\footnotesize\ttfamily sf\+::\+Sprite \& PUPInvisibility\+::get\+Invisibility (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 27} of file \textbf{ PUPInvisibility.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00028\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordflow}{return}\ invisibilitySprite;}
+\DoxyCodeLine{00030\ \}}
+
+\end{DoxyCode}
+\mbox{\label{class_p_u_p_invisibility_ac327795cccf0706ce83682a911e0f4ea}} 
+\index{PUPInvisibility@{PUPInvisibility}!loadFiles@{loadFiles}}
+\index{loadFiles@{loadFiles}!PUPInvisibility@{PUPInvisibility}}
+\doxysubsubsection{loadFiles()}
+{\footnotesize\ttfamily void PUPInvisibility\+::load\+Files (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 9} of file \textbf{ PUPInvisibility.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ invisibilityTexture\ =\ std::make\_shared<sf::Texture>(m\_textureManager.getTexture(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)invisibility.png"{}}));}
+\DoxyCodeLine{00012\ \ \ \ \ invisibilitySprite.setTexture(*invisibilityTexture);}
+\DoxyCodeLine{00013\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_p_u_p_invisibility_ac327795cccf0706ce83682a911e0f4ea_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_p_u_p_invisibility_ac327795cccf0706ce83682a911e0f4ea_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_p_u_p_invisibility_aa49d0b965930d9d1a4b0dd5ef4346334}} 
+\index{PUPInvisibility@{PUPInvisibility}!render@{render}}
+\index{render@{render}!PUPInvisibility@{PUPInvisibility}}
+\doxysubsubsection{render()}
+{\footnotesize\ttfamily void PUPInvisibility\+::render (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{t\+\_\+window }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 22} of file \textbf{ PUPInvisibility.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00023\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ t\_window.draw(invisibilitySprite);}
+\DoxyCodeLine{00025\ \}}
+
+\end{DoxyCode}
+\mbox{\label{class_p_u_p_invisibility_af0b78ed1ca9184a6c533f067531f5216}} 
+\index{PUPInvisibility@{PUPInvisibility}!setupInvisibility@{setupInvisibility}}
+\index{setupInvisibility@{setupInvisibility}!PUPInvisibility@{PUPInvisibility}}
+\doxysubsubsection{setupInvisibility()}
+{\footnotesize\ttfamily void PUPInvisibility\+::setup\+Invisibility (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 15} of file \textbf{ PUPInvisibility.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ invisibilitySprite.setOrigin(invisibilitySprite.getLocalBounds().width\ /\ 2,\ invisibilitySprite.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00018\ \ \ \ \ invisibilitySprite.setPosition(sf::Vector2f(invisibilityPos.x\ +\ 15,\ invisibilityPos.y\ +\ 15));}
+\DoxyCodeLine{00019\ \ \ \ \ invisibilitySprite.setScale(0.25,\ 0.25);}
+\DoxyCodeLine{00020\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_p_u_p_invisibility_af0b78ed1ca9184a6c533f067531f5216_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\label{class_p_u_p_invisibility_a29cf49c21fe36ba8c680b02e3877fd84}} 
+\index{PUPInvisibility@{PUPInvisibility}!invisibilityPos@{invisibilityPos}}
+\index{invisibilityPos@{invisibilityPos}!PUPInvisibility@{PUPInvisibility}}
+\doxysubsubsection{invisibilityPos}
+{\footnotesize\ttfamily sf\+::\+Vector2f PUPInvisibility\+::invisibility\+Pos\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 29} of file \textbf{ PUPInvisibility.\+h}.
+
+\mbox{\label{class_p_u_p_invisibility_a2b4d07579d518360cd4eaf6e42fba3b3}} 
+\index{PUPInvisibility@{PUPInvisibility}!invisibilitySprite@{invisibilitySprite}}
+\index{invisibilitySprite@{invisibilitySprite}!PUPInvisibility@{PUPInvisibility}}
+\doxysubsubsection{invisibilitySprite}
+{\footnotesize\ttfamily sf\+::\+Sprite PUPInvisibility\+::invisibility\+Sprite\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 30} of file \textbf{ PUPInvisibility.\+h}.
+
+\mbox{\label{class_p_u_p_invisibility_a011310966dc878f599ddc2b4b35de585}} 
+\index{PUPInvisibility@{PUPInvisibility}!invisibilityTexture@{invisibilityTexture}}
+\index{invisibilityTexture@{invisibilityTexture}!PUPInvisibility@{PUPInvisibility}}
+\doxysubsubsection{invisibilityTexture}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$sf\+::\+Texture$>$ PUPInvisibility\+::invisibility\+Texture}
+
+
+
+Definition at line \textbf{ 26} of file \textbf{ PUPInvisibility.\+h}.
+
+\mbox{\label{class_p_u_p_invisibility_a56c4732ee82dfcb1e621ba42f36c462a}} 
+\index{PUPInvisibility@{PUPInvisibility}!m\_textureManager@{m\_textureManager}}
+\index{m\_textureManager@{m\_textureManager}!PUPInvisibility@{PUPInvisibility}}
+\doxysubsubsection{m\_textureManager}
+{\footnotesize\ttfamily \textbf{ Texture\+Manager}\& PUPInvisibility\+::m\+\_\+texture\+Manager\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 28} of file \textbf{ PUPInvisibility.\+h}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+No\+Code\+Game\+Editor/\textbf{ PUPInvisibility.\+h}\item 
+No\+Code\+Game\+Editor/\textbf{ PUPInvisibility.\+cpp}\end{DoxyCompactItemize}

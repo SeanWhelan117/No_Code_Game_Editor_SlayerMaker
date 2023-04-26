@@ -1,0 +1,4 @@
+<map id="Enemy::seeking" name="Enemy::seeking">
+<area shape="rect" id="node1" title=" " alt="" coords="164,5,280,31"/>
+<area shape="rect" id="node2" href="$class_enemy.html#a7b5c2806bd79485f5b00f61958570429" title=" " alt="" coords="5,5,116,31"/>
+</map>

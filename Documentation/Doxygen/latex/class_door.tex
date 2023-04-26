@@ -1,0 +1,280 @@
+\doxysection{Door Class Reference}
+\label{class_door}\index{Door@{Door}}
+
+
+{\ttfamily \#include $<$Door.\+h$>$}
+
+
+
+Collaboration diagram for Door\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=219pt]{class_door__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Door} (sf\+::\+Vector2f t\+\_\+door\+Pos, \textbf{ Texture\+Manager} \&texture\+Manager)
+\item 
+void \textbf{ load\+Files} ()
+\item 
+void \textbf{ setup\+Door} ()
+\item 
+void \textbf{ render} (sf\+::\+Render\+Window \&t\+\_\+window)
+\item 
+void \textbf{ door\+Opened} ()
+\item 
+sf\+::\+Sprite \& \textbf{ get\+Door} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ sf\+::\+Texture $>$ \textbf{ door\+Texture}
+\item 
+bool \textbf{ door\+Accesible} = false
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Texture\+Manager} \& \textbf{ m\+\_\+texture\+Manager}
+\item 
+sf\+::\+Vector2f \textbf{ door\+Pos}
+\item 
+sf\+::\+Sprite \textbf{ door\+Sprite}
+\item 
+sf\+::\+Uint8 \textbf{ door\+Alpha}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Sean Whelan 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022/23 @license Attribution-\/\+Non\+Commercial 4.\+0 International 
+\end{DoxyDate}
+
+
+Definition at line \textbf{ 12} of file \textbf{ Door.\+h}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\label{class_door_a1d8c2fa557de57f83a276f1b01455ca7}} 
+\index{Door@{Door}!Door@{Door}}
+\index{Door@{Door}!Door@{Door}}
+\doxysubsubsection{Door()}
+{\footnotesize\ttfamily Door\+::\+Door (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{t\+\_\+door\+Pos,  }\item[{\textbf{ Texture\+Manager} \&}]{texture\+Manager }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 3} of file \textbf{ Door.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00003\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ doorPos(t\_doorPos),\ m\_textureManager(textureManager) }
+\DoxyCodeLine{00004\ \{}
+\DoxyCodeLine{00005\ \ \ \ \ loadFiles();}
+\DoxyCodeLine{00006\ \ \ \ \ setupDoor();}
+\DoxyCodeLine{00007\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_door_a1d8c2fa557de57f83a276f1b01455ca7_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{class_door_a371a8e21152780f725d924acd1a4a654}} 
+\index{Door@{Door}!doorOpened@{doorOpened}}
+\index{doorOpened@{doorOpened}!Door@{Door}}
+\doxysubsubsection{doorOpened()}
+{\footnotesize\ttfamily void Door\+::door\+Opened (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 30} of file \textbf{ Door.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00031\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ doorSprite.setColor(sf::Color(doorSprite.getColor().r,\ doorSprite.getColor().g,\ doorSprite.getColor().b,\ doorAlpha\ *\ 2));}
+\DoxyCodeLine{00033\ \ \ \ \ doorAccesible\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00034\ \}}
+
+\end{DoxyCode}
+\mbox{\label{class_door_a51469058ecc1fa96ee79372e337a671b}} 
+\index{Door@{Door}!getDoor@{getDoor}}
+\index{getDoor@{getDoor}!Door@{Door}}
+\doxysubsubsection{getDoor()}
+{\footnotesize\ttfamily sf\+::\+Sprite \& Door\+::get\+Door (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 36} of file \textbf{ Door.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00037\ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordflow}{return}\ doorSprite;}
+\DoxyCodeLine{00039\ \}}
+
+\end{DoxyCode}
+\mbox{\label{class_door_aac5c5fcccfe87e03a4a8e67b4599c8dd}} 
+\index{Door@{Door}!loadFiles@{loadFiles}}
+\index{loadFiles@{loadFiles}!Door@{Door}}
+\doxysubsubsection{loadFiles()}
+{\footnotesize\ttfamily void Door\+::load\+Files (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 9} of file \textbf{ Door.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ doorTexture\ =\ std::make\_shared<sf::Texture>(m\_textureManager.getTexture(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)door.png"{}}));}
+\DoxyCodeLine{00012\ \ \ \ \ doorSprite.setTexture(*doorTexture);}
+\DoxyCodeLine{00013\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=336pt]{class_door_aac5c5fcccfe87e03a4a8e67b4599c8dd_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=261pt]{class_door_aac5c5fcccfe87e03a4a8e67b4599c8dd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_door_abcb14c2ec1778bc2b6f994e5df1f8f33}} 
+\index{Door@{Door}!render@{render}}
+\index{render@{render}!Door@{Door}}
+\doxysubsubsection{render()}
+{\footnotesize\ttfamily void Door\+::render (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{t\+\_\+window }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 25} of file \textbf{ Door.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00026\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ t\_window.draw(doorSprite);}
+\DoxyCodeLine{00028\ \}}
+
+\end{DoxyCode}
+\mbox{\label{class_door_abf92869a850ae94b2f04add5e3a93c1e}} 
+\index{Door@{Door}!setupDoor@{setupDoor}}
+\index{setupDoor@{setupDoor}!Door@{Door}}
+\doxysubsubsection{setupDoor()}
+{\footnotesize\ttfamily void Door\+::setup\+Door (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 15} of file \textbf{ Door.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ doorSprite.setOrigin(doorSprite.getLocalBounds().width\ /\ 2,\ doorSprite.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00018\ \ \ \ \ doorSprite.setPosition(sf::Vector2f(doorPos.x\ +\ 15,\ doorPos.y\ +\ 15));}
+\DoxyCodeLine{00019\ \ \ \ \ doorSprite.setScale(0.25,\ 0.25);}
+\DoxyCodeLine{00020\ \ \ \ \ doorAlpha\ =\ doorSprite.getColor().a;}
+\DoxyCodeLine{00021\ \ \ \ \ doorSprite.setColor(sf::Color(doorSprite.getColor().r,\ doorSprite.getColor().g,\ doorSprite.getColor().b,\ doorAlpha\ /\ 2));}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=266pt]{class_door_abf92869a850ae94b2f04add5e3a93c1e_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\label{class_door_a32693d9dba6bdebb269522a8a6105cd2}} 
+\index{Door@{Door}!doorAccesible@{doorAccesible}}
+\index{doorAccesible@{doorAccesible}!Door@{Door}}
+\doxysubsubsection{doorAccesible}
+{\footnotesize\ttfamily bool Door\+::door\+Accesible = false}
+
+
+
+Definition at line \textbf{ 29} of file \textbf{ Door.\+h}.
+
+\mbox{\label{class_door_a0b87c2db7974d772e80a8e2e9a1eafa7}} 
+\index{Door@{Door}!doorAlpha@{doorAlpha}}
+\index{doorAlpha@{doorAlpha}!Door@{Door}}
+\doxysubsubsection{doorAlpha}
+{\footnotesize\ttfamily sf\+::\+Uint8 Door\+::door\+Alpha\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 35} of file \textbf{ Door.\+h}.
+
+\mbox{\label{class_door_a6d1a1a75d188919590f54097b060d7fe}} 
+\index{Door@{Door}!doorPos@{doorPos}}
+\index{doorPos@{doorPos}!Door@{Door}}
+\doxysubsubsection{doorPos}
+{\footnotesize\ttfamily sf\+::\+Vector2f Door\+::door\+Pos\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 32} of file \textbf{ Door.\+h}.
+
+\mbox{\label{class_door_a90a3eafcd7abce8f4a0435a44cf14611}} 
+\index{Door@{Door}!doorSprite@{doorSprite}}
+\index{doorSprite@{doorSprite}!Door@{Door}}
+\doxysubsubsection{doorSprite}
+{\footnotesize\ttfamily sf\+::\+Sprite Door\+::door\+Sprite\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 33} of file \textbf{ Door.\+h}.
+
+\mbox{\label{class_door_a4fd9e3af10837cfad633706f4589798f}} 
+\index{Door@{Door}!doorTexture@{doorTexture}}
+\index{doorTexture@{doorTexture}!Door@{Door}}
+\doxysubsubsection{doorTexture}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$sf\+::\+Texture$>$ Door\+::door\+Texture}
+
+
+
+Definition at line \textbf{ 27} of file \textbf{ Door.\+h}.
+
+\mbox{\label{class_door_acd5b56ef463f92f40cac3da64f55a3b2}} 
+\index{Door@{Door}!m\_textureManager@{m\_textureManager}}
+\index{m\_textureManager@{m\_textureManager}!Door@{Door}}
+\doxysubsubsection{m\_textureManager}
+{\footnotesize\ttfamily \textbf{ Texture\+Manager}\& Door\+::m\+\_\+texture\+Manager\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 31} of file \textbf{ Door.\+h}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+No\+Code\+Game\+Editor/\textbf{ Door.\+h}\item 
+No\+Code\+Game\+Editor/\textbf{ Door.\+cpp}\end{DoxyCompactItemize}

@@ -184,7 +184,7 @@ void Player::handleCollisions(std::vector<std::unique_ptr<Wall>>& t_walls)
 		{
 			// Determine the direction of the collision
 			float playerLeft = playerSprite.getPosition().x;
-			float playerRight = playerSprite.getPosition().x + playerSprite.getGlobalBounds().width;
+			float playerRight = playerSprite.getPosition().x + playerSprite.getGlobalBounds().width; // ******************* need to account for origin *****************
 			float playerTop = playerSprite.getPosition().y;
 			float playerBottom = playerSprite.getPosition().y + playerSprite.getGlobalBounds().height;
 			float wallLeft = wall->getWall().getPosition().x;

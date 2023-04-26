@@ -1,0 +1,5 @@
+<map id="ChoiceBar::processMouseClick" name="ChoiceBar::processMouseClick">
+<area shape="rect" id="node1" title="If the object contains the mouse, increase scale, else decrease scale If the mouse left is pressed se..." alt="" coords="5,31,209,56"/>
+<area shape="rect" id="node2" href="$class_choice_bar.html#a31c3707eb359f5105f89eafd221a4bbe" title="increases ui elements scale" alt="" coords="257,5,420,31"/>
+<area shape="rect" id="node3" href="$class_choice_bar.html#ac8ff67db6d79012b4bdc6464b5b55bc3" title="resets the ui elements to original scale" alt="" coords="263,55,414,80"/>
+</map>

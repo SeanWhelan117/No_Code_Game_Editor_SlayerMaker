@@ -1,0 +1,51 @@
+\doxysection{Items.\+h}
+\label{_items_8h_source}\index{NoCodeGameEditor/Items.h@{NoCodeGameEditor/Items.h}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}TextureManager.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}Medkit.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}Explosive.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}ParticleSystem.h"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }Items}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:\ }
+\DoxyCodeLine{00018\ \ \ \ \ Items(TextureManager\&\ textureManager);}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ update(sf::Time\ t\_deltaTime,\ sf::RenderWindow\&\ t\_window,\ sf::FloatRect\ t\_playerRect);}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ render(sf::RenderWindow\&\ t\_window);}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ std::vector<std::unique\_ptr<Medkit>>\ medkitVector;}
+\DoxyCodeLine{00025\ \ \ \ \ std::vector<std::unique\_ptr<Explosive>>\ explosiveVector;}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//std::vector<std::unique\_ptr<Gun>>\ gunVector;}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ std::vector<sf::CircleShape>\ collisionCircleVector;}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ addToVector(sf::Vector2f\ t\_itemPosition,\ \textcolor{keywordtype}{int}\ t\_itemType);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{bool}\ isColliding(sf::FloatRect\ t\_obj1,\ sf::FloatRect\ t\_obj2);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ playerCollision(sf::FloatRect\ t\_playerRect);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ dropBomb(sf::Vector2f\ t\_playerPos);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ removeExplosive(\textcolor{keywordtype}{int}\ t\_remove);}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ spawnExplosion(sf::Vector2f\ t\_explosionPosition);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{bool}\ addHealth\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{int}\ explosivesCollected\ =\ 0;}
+\DoxyCodeLine{00044\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00045\ \ \ \ \ TextureManager\&\ m\_textureManager;}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ std::vector<ParticleSystem>\ particleSystemsVector;}
+\DoxyCodeLine{00048\ \};}
+\DoxyCodeLine{00049\ }
+
+\end{DoxyCode}

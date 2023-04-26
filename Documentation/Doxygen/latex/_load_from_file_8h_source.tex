@@ -1,0 +1,49 @@
+\doxysection{Load\+From\+File.\+h}
+\label{_load_from_file_8h_source}\index{NoCodeGameEditor/LoadFromFile.h@{NoCodeGameEditor/LoadFromFile.h}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }LoadFromFile}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ LoadFromFile();}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ loadFile(std::string\ t\_gameName);}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ update(sf::Time\ t\_deltaTime);}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ createData();}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ resetParamsForGame();}
+\DoxyCodeLine{00025\ \ \ \ \ std::vector<sf::Vector3f>\ wallData;}
+\DoxyCodeLine{00026\ \ \ \ \ std::vector<sf::Vector3f>\ spawnerData;}
+\DoxyCodeLine{00027\ \ \ \ \ std::vector<sf::Vector3f>\ coinData;}
+\DoxyCodeLine{00028\ \ \ \ \ std::vector<sf::Vector3f>\ doorData;}
+\DoxyCodeLine{00029\ \ \ \ \ std::vector<sf::Vector3f>\ monumentData;}
+\DoxyCodeLine{00030\ \ \ \ \ std::vector<sf::Vector3f>\ medkitData;}
+\DoxyCodeLine{00031\ \ \ \ \ std::vector<sf::Vector3f>\ explosiveData;}
+\DoxyCodeLine{00032\ \ \ \ \ std::vector<sf::Vector3f>\ nukeData;}
+\DoxyCodeLine{00033\ \ \ \ \ std::vector<sf::Vector3f>\ invinceData;}
+\DoxyCodeLine{00034\ \ \ \ \ std::vector<sf::Vector3f>\ invisData;}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ sf::Vector3f\ BGGTChoices;}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{bool}\ dataRead\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00042\ \ \ \ \ std::vector<std::string>\ gameData;}
+\DoxyCodeLine{00043\ \ \ \ \ std::string\ xPos;}
+\DoxyCodeLine{00044\ \ \ \ \ std::string\ yPos;}
+\DoxyCodeLine{00045\ \ \ \ \ std::string\ textureNum;}
+\DoxyCodeLine{00046\ \};}
+\DoxyCodeLine{00047\ }
+
+\end{DoxyCode}

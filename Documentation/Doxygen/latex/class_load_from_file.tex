@@ -1,0 +1,515 @@
+\doxysection{Load\+From\+File Class Reference}
+\label{class_load_from_file}\index{LoadFromFile@{LoadFromFile}}
+
+
+{\ttfamily \#include $<$Load\+From\+File.\+h$>$}
+
+
+
+Collaboration diagram for Load\+From\+File\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=208pt]{class_load_from_file__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Load\+From\+File} ()
+\item 
+void \textbf{ load\+File} (std\+::string t\+\_\+game\+Name)
+\item 
+void \textbf{ update} (sf\+::\+Time t\+\_\+delta\+Time)
+\item 
+void \textbf{ create\+Data} ()
+\item 
+void \textbf{ reset\+Params\+For\+Game} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ sf\+::\+Vector3f $>$ \textbf{ wall\+Data}
+\item 
+std\+::vector$<$ sf\+::\+Vector3f $>$ \textbf{ spawner\+Data}
+\item 
+std\+::vector$<$ sf\+::\+Vector3f $>$ \textbf{ coin\+Data}
+\item 
+std\+::vector$<$ sf\+::\+Vector3f $>$ \textbf{ door\+Data}
+\item 
+std\+::vector$<$ sf\+::\+Vector3f $>$ \textbf{ monument\+Data}
+\item 
+std\+::vector$<$ sf\+::\+Vector3f $>$ \textbf{ medkit\+Data}
+\item 
+std\+::vector$<$ sf\+::\+Vector3f $>$ \textbf{ explosive\+Data}
+\item 
+std\+::vector$<$ sf\+::\+Vector3f $>$ \textbf{ nuke\+Data}
+\item 
+std\+::vector$<$ sf\+::\+Vector3f $>$ \textbf{ invince\+Data}
+\item 
+std\+::vector$<$ sf\+::\+Vector3f $>$ \textbf{ invis\+Data}
+\item 
+sf\+::\+Vector3f \textbf{ BGGTChoices}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \textbf{ data\+Read} = false
+\item 
+std\+::vector$<$ std\+::string $>$ \textbf{ game\+Data}
+\item 
+std\+::string \textbf{ x\+Pos}
+\item 
+std\+::string \textbf{ y\+Pos}
+\item 
+std\+::string \textbf{ texture\+Num}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Sean Whelan 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022/23 @license Attribution-\/\+Non\+Commercial 4.\+0 International 
+\end{DoxyDate}
+
+
+Definition at line \textbf{ 15} of file \textbf{ Load\+From\+File.\+h}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\label{class_load_from_file_a8d1968b1be44d2a1432aaaac1178290d}} 
+\index{LoadFromFile@{LoadFromFile}!LoadFromFile@{LoadFromFile}}
+\index{LoadFromFile@{LoadFromFile}!LoadFromFile@{LoadFromFile}}
+\doxysubsubsection{LoadFromFile()}
+{\footnotesize\ttfamily Load\+From\+File\+::\+Load\+From\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 3} of file \textbf{ Load\+From\+File.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00004\ \{}
+\DoxyCodeLine{00005\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{class_load_from_file_a9a14661b47e73fe8a7e0138619f44864}} 
+\index{LoadFromFile@{LoadFromFile}!createData@{createData}}
+\index{createData@{createData}!LoadFromFile@{LoadFromFile}}
+\doxysubsubsection{createData()}
+{\footnotesize\ttfamily void Load\+From\+File\+::create\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 38} of file \textbf{ Load\+From\+File.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00039\ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{comment}{//letters\ used:\ W,S,C,D,M,H,E,G,Z}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{comment}{//Each\ String\ =\ x,\ y\ ,\ textureNum,\ ObjectType}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ gameData.size();\ i++)}
+\DoxyCodeLine{00045\ \ \ \ \ \{}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ std::stringstream\ ss(gameData.at(i));}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ std::vector<std::string>\ substrings;}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ std::string\ substring;}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ std::string\ currentData\ =\ gameData.at(i);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Use\ getline\ with\ ','\ delimiter\ to\ extract\ substrings\ from\ stringstream}}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (std::getline(ss,\ substring,\ \textcolor{charliteral}{','}))}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ substrings.push\_back(substring);}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (substrings.size()\ >\ 0)}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!substrings.at(0).empty())}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ xPos\ =\ substrings.at(0);}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!substrings.at(1).empty())}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ yPos\ =\ substrings.at(1);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!substrings.at(2).empty())}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ textureNum\ =\ substrings.at(2);}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!xPos.empty()\ \&\&\ !yPos.empty()\ \&\&\ !textureNum.empty())}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sf::Vector3f\ tempVector\ =\ \{\ std::stof(xPos),\ std::stof(yPos),\ std::stof(textureNum)\ \};}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (currentData.find(\textcolor{stringliteral}{"{}W"{}})\ !=\ std::string::npos)}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wallData.push\_back(tempVector);}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentData.find(\textcolor{stringliteral}{"{}S"{}})\ !=\ std::string::npos)}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ spawnerData.push\_back(tempVector);}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentData.find(\textcolor{stringliteral}{"{}C"{}})\ !=\ std::string::npos)}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ coinData.push\_back(tempVector);}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentData.find(\textcolor{stringliteral}{"{}D"{}})\ !=\ std::string::npos)}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ doorData.push\_back(tempVector);}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentData.find(\textcolor{stringliteral}{"{}M"{}})\ !=\ std::string::npos)}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ monumentData.push\_back(tempVector);}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentData.find(\textcolor{stringliteral}{"{}H"{}})\ !=\ std::string::npos)}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ medkitData.push\_back(tempVector);}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentData.find(\textcolor{stringliteral}{"{}E"{}})\ !=\ std::string::npos)}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ explosiveData.push\_back(tempVector);}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentData.find(\textcolor{stringliteral}{"{}N"{}})\ !=\ std::string::npos)}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nukeData.push\_back(tempVector);}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentData.find(\textcolor{stringliteral}{"{}I"{}})\ !=\ std::string::npos)}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ invinceData.push\_back(tempVector);}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentData.find(\textcolor{stringliteral}{"{}V"{}})\ !=\ std::string::npos)}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ invisData.push\_back(tempVector);}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentData.find(\textcolor{stringliteral}{"{}Z"{}})\ !=\ std::string::npos)}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BGGTChoices\ =\ tempVector;}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00124\ \ \ \ \ \}}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ "{}Wall\ Data\ \ Size\ =\ "{}\ <<\ wallData.size()\ <<\ std::endl;}}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{comment}{//for\ (int\ i\ =\ 0;\ i\ <\ wallData.size();\ i++)}}
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{comment}{//\{}}
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{comment}{//\ \ std::cout\ <<\ wallData.at(i).x\ <<\ "{}\ -\/-\/-\/\ "{}\ <<\ wallData.at(i).y\ <<\ "{}\ -\/-\/-\/\ "{}\ <<\ wallData.at(i).z\ <<\ std::endl;}}
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{comment}{//\}}}
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ "{}Spawner\ Data\ \ Size\ =\ "{}\ <<\ spawnerData.size()\ <<\ std::endl;}}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{comment}{//for\ (int\ i\ =\ 0;\ i\ <\ spawnerData.size();\ i++)}}
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{comment}{//\{}}
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{comment}{//\ \ std::cout\ <<\ spawnerData.at(i).x\ <<\ "{}\ -\/-\/-\/\ "{}\ <<\ spawnerData.at(i).y\ <<\ "{}\ -\/-\/-\/\ "{}\ <<\ spawnerData.at(i).z\ <<\ std::endl;}}
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{comment}{//\}}}
+\DoxyCodeLine{00140\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_load_from_file_a9a14661b47e73fe8a7e0138619f44864_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_load_from_file_af64227bbb9512bb56dc589b932c58e80}} 
+\index{LoadFromFile@{LoadFromFile}!loadFile@{loadFile}}
+\index{loadFile@{loadFile}!LoadFromFile@{LoadFromFile}}
+\doxysubsubsection{loadFile()}
+{\footnotesize\ttfamily void Load\+From\+File\+::load\+File (\begin{DoxyParamCaption}\item[{std\+::string}]{t\+\_\+game\+Name }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 7} of file \textbf{ Load\+From\+File.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00008\ \{}
+\DoxyCodeLine{00009\ \ \ \ \ resetParamsForGame();}
+\DoxyCodeLine{00010\ \ \ \ \ std::fstream\ myFile;}
+\DoxyCodeLine{00011\ \ \ \ \ myFile.open(\textcolor{stringliteral}{"{}.\(\backslash\)\(\backslash\)ASSETS\(\backslash\)\(\backslash\)GAMEDATA\(\backslash\)\(\backslash\)"{}}\ +\ t\_gameName\ +\ \textcolor{stringliteral}{"{}.csv"{}});}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordflow}{while}\ (!myFile.eof())}
+\DoxyCodeLine{00014\ \ \ \ \ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ std::string\ temp;}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ temp\ <<\ std::endl;}}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ getline(myFile,\ temp);}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ gameData.push\_back(temp);}
+\DoxyCodeLine{00019\ \ \ \ \ \}}
+\DoxyCodeLine{00020\ \ \ \ \ }
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ myFile.close();}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{comment}{//myFile\ <<\ "{}XPOS,YPOS,TYPE,OBJECT,\(\backslash\)n"{};}}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordflow}{if}\ (gameData.at(0)\ ==\ \textcolor{stringliteral}{"{}XPOS,YPOS,TYPE,OBJECT"{}})}
+\DoxyCodeLine{00025\ \ \ \ \ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ "{}Wahey"{}\ <<\ std::endl;}}
+\DoxyCodeLine{00027\ \ \ \ \ \}}
+\DoxyCodeLine{00028\ \ \ \ \ gameData.erase(gameData.begin());}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ createData();}
+\DoxyCodeLine{00031\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_load_from_file_af64227bbb9512bb56dc589b932c58e80_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_load_from_file_af64227bbb9512bb56dc589b932c58e80_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_load_from_file_abdd449be725791d527f6b30b468ac9b6}} 
+\index{LoadFromFile@{LoadFromFile}!resetParamsForGame@{resetParamsForGame}}
+\index{resetParamsForGame@{resetParamsForGame}!LoadFromFile@{LoadFromFile}}
+\doxysubsubsection{resetParamsForGame()}
+{\footnotesize\ttfamily void Load\+From\+File\+::reset\+Params\+For\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 142} of file \textbf{ Load\+From\+File.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00143\ \{}
+\DoxyCodeLine{00144\ \ \ \ \ gameData.clear();}
+\DoxyCodeLine{00145\ \ \ \ \ xPos\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00146\ \ \ \ \ yPos\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00147\ \ \ \ \ textureNum\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00148\ \ \ \ \ wallData.clear();}
+\DoxyCodeLine{00149\ \ \ \ \ spawnerData.clear();}
+\DoxyCodeLine{00150\ \ \ \ \ coinData.clear();}
+\DoxyCodeLine{00151\ \ \ \ \ doorData.clear();}
+\DoxyCodeLine{00152\ \ \ \ \ monumentData.clear();}
+\DoxyCodeLine{00153\ \ \ \ \ explosiveData.clear();}
+\DoxyCodeLine{00154\ \ \ \ \ medkitData.clear();}
+\DoxyCodeLine{00155\ \ \ \ \ nukeData.clear();}
+\DoxyCodeLine{00156\ \ \ \ \ invinceData.clear();}
+\DoxyCodeLine{00157\ \ \ \ \ invisData.clear();}
+\DoxyCodeLine{00158\ \ \ \ \ BGGTChoices.x\ =\ 0;}
+\DoxyCodeLine{00159\ \ \ \ \ BGGTChoices.y\ =\ 0;}
+\DoxyCodeLine{00160\ \ \ \ \ BGGTChoices.z\ =\ 0;}
+\DoxyCodeLine{00161\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_load_from_file_abdd449be725791d527f6b30b468ac9b6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_load_from_file_a9d2e6ed9bcc9e85025bc8055fb0ed15b}} 
+\index{LoadFromFile@{LoadFromFile}!update@{update}}
+\index{update@{update}!LoadFromFile@{LoadFromFile}}
+\doxysubsubsection{update()}
+{\footnotesize\ttfamily void Load\+From\+File\+::update (\begin{DoxyParamCaption}\item[{sf\+::\+Time}]{t\+\_\+delta\+Time }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 33} of file \textbf{ Load\+From\+File.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00034\ \{}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_load_from_file_a9d2e6ed9bcc9e85025bc8055fb0ed15b_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\label{class_load_from_file_a4ded1e45babf16a0448edc858c1bb36a}} 
+\index{LoadFromFile@{LoadFromFile}!BGGTChoices@{BGGTChoices}}
+\index{BGGTChoices@{BGGTChoices}!LoadFromFile@{LoadFromFile}}
+\doxysubsubsection{BGGTChoices}
+{\footnotesize\ttfamily sf\+::\+Vector3f Load\+From\+File\+::\+BGGTChoices}
+
+
+
+Definition at line \textbf{ 36} of file \textbf{ Load\+From\+File.\+h}.
+
+\mbox{\label{class_load_from_file_ad2d08b622c6df6dd4a6a3b069494e7de}} 
+\index{LoadFromFile@{LoadFromFile}!coinData@{coinData}}
+\index{coinData@{coinData}!LoadFromFile@{LoadFromFile}}
+\doxysubsubsection{coinData}
+{\footnotesize\ttfamily std\+::vector$<$sf\+::\+Vector3f$>$ Load\+From\+File\+::coin\+Data}
+
+
+
+Definition at line \textbf{ 27} of file \textbf{ Load\+From\+File.\+h}.
+
+\mbox{\label{class_load_from_file_a2416cd0f714a0d2006b84eee53e23cf2}} 
+\index{LoadFromFile@{LoadFromFile}!dataRead@{dataRead}}
+\index{dataRead@{dataRead}!LoadFromFile@{LoadFromFile}}
+\doxysubsubsection{dataRead}
+{\footnotesize\ttfamily bool Load\+From\+File\+::data\+Read = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 41} of file \textbf{ Load\+From\+File.\+h}.
+
+\mbox{\label{class_load_from_file_a115202f4c2c55159a0f2ddfc74e3e48f}} 
+\index{LoadFromFile@{LoadFromFile}!doorData@{doorData}}
+\index{doorData@{doorData}!LoadFromFile@{LoadFromFile}}
+\doxysubsubsection{doorData}
+{\footnotesize\ttfamily std\+::vector$<$sf\+::\+Vector3f$>$ Load\+From\+File\+::door\+Data}
+
+
+
+Definition at line \textbf{ 28} of file \textbf{ Load\+From\+File.\+h}.
+
+\mbox{\label{class_load_from_file_a2436d20c8386de897b2e3449876f5ab3}} 
+\index{LoadFromFile@{LoadFromFile}!explosiveData@{explosiveData}}
+\index{explosiveData@{explosiveData}!LoadFromFile@{LoadFromFile}}
+\doxysubsubsection{explosiveData}
+{\footnotesize\ttfamily std\+::vector$<$sf\+::\+Vector3f$>$ Load\+From\+File\+::explosive\+Data}
+
+
+
+Definition at line \textbf{ 31} of file \textbf{ Load\+From\+File.\+h}.
+
+\mbox{\label{class_load_from_file_a915c592f1c61f27efa8e9478480f3cb5}} 
+\index{LoadFromFile@{LoadFromFile}!gameData@{gameData}}
+\index{gameData@{gameData}!LoadFromFile@{LoadFromFile}}
+\doxysubsubsection{gameData}
+{\footnotesize\ttfamily std\+::vector$<$std\+::string$>$ Load\+From\+File\+::game\+Data\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 42} of file \textbf{ Load\+From\+File.\+h}.
+
+\mbox{\label{class_load_from_file_a7ccaea3e39a1416d53e2cc5abe47d2df}} 
+\index{LoadFromFile@{LoadFromFile}!invinceData@{invinceData}}
+\index{invinceData@{invinceData}!LoadFromFile@{LoadFromFile}}
+\doxysubsubsection{invinceData}
+{\footnotesize\ttfamily std\+::vector$<$sf\+::\+Vector3f$>$ Load\+From\+File\+::invince\+Data}
+
+
+
+Definition at line \textbf{ 33} of file \textbf{ Load\+From\+File.\+h}.
+
+\mbox{\label{class_load_from_file_a7cd21ef23b4da33bbc56c17928446d56}} 
+\index{LoadFromFile@{LoadFromFile}!invisData@{invisData}}
+\index{invisData@{invisData}!LoadFromFile@{LoadFromFile}}
+\doxysubsubsection{invisData}
+{\footnotesize\ttfamily std\+::vector$<$sf\+::\+Vector3f$>$ Load\+From\+File\+::invis\+Data}
+
+
+
+Definition at line \textbf{ 34} of file \textbf{ Load\+From\+File.\+h}.
+
+\mbox{\label{class_load_from_file_ab1ba951370e88c12466228db77bb2b28}} 
+\index{LoadFromFile@{LoadFromFile}!medkitData@{medkitData}}
+\index{medkitData@{medkitData}!LoadFromFile@{LoadFromFile}}
+\doxysubsubsection{medkitData}
+{\footnotesize\ttfamily std\+::vector$<$sf\+::\+Vector3f$>$ Load\+From\+File\+::medkit\+Data}
+
+
+
+Definition at line \textbf{ 30} of file \textbf{ Load\+From\+File.\+h}.
+
+\mbox{\label{class_load_from_file_aa7d51f7286a42380575b56802cf8d11e}} 
+\index{LoadFromFile@{LoadFromFile}!monumentData@{monumentData}}
+\index{monumentData@{monumentData}!LoadFromFile@{LoadFromFile}}
+\doxysubsubsection{monumentData}
+{\footnotesize\ttfamily std\+::vector$<$sf\+::\+Vector3f$>$ Load\+From\+File\+::monument\+Data}
+
+
+
+Definition at line \textbf{ 29} of file \textbf{ Load\+From\+File.\+h}.
+
+\mbox{\label{class_load_from_file_af4f337a4fb9e1aa0a8a4d0874ecaa62d}} 
+\index{LoadFromFile@{LoadFromFile}!nukeData@{nukeData}}
+\index{nukeData@{nukeData}!LoadFromFile@{LoadFromFile}}
+\doxysubsubsection{nukeData}
+{\footnotesize\ttfamily std\+::vector$<$sf\+::\+Vector3f$>$ Load\+From\+File\+::nuke\+Data}
+
+
+
+Definition at line \textbf{ 32} of file \textbf{ Load\+From\+File.\+h}.
+
+\mbox{\label{class_load_from_file_a198c43d35feb02d0a4cb9a1540a78e75}} 
+\index{LoadFromFile@{LoadFromFile}!spawnerData@{spawnerData}}
+\index{spawnerData@{spawnerData}!LoadFromFile@{LoadFromFile}}
+\doxysubsubsection{spawnerData}
+{\footnotesize\ttfamily std\+::vector$<$sf\+::\+Vector3f$>$ Load\+From\+File\+::spawner\+Data}
+
+
+
+Definition at line \textbf{ 26} of file \textbf{ Load\+From\+File.\+h}.
+
+\mbox{\label{class_load_from_file_ae87972677f13ca488d8979751727b2d9}} 
+\index{LoadFromFile@{LoadFromFile}!textureNum@{textureNum}}
+\index{textureNum@{textureNum}!LoadFromFile@{LoadFromFile}}
+\doxysubsubsection{textureNum}
+{\footnotesize\ttfamily std\+::string Load\+From\+File\+::texture\+Num\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 45} of file \textbf{ Load\+From\+File.\+h}.
+
+\mbox{\label{class_load_from_file_a1c7fd531471b54ea467671522c89fff6}} 
+\index{LoadFromFile@{LoadFromFile}!wallData@{wallData}}
+\index{wallData@{wallData}!LoadFromFile@{LoadFromFile}}
+\doxysubsubsection{wallData}
+{\footnotesize\ttfamily std\+::vector$<$sf\+::\+Vector3f$>$ Load\+From\+File\+::wall\+Data}
+
+
+
+Definition at line \textbf{ 25} of file \textbf{ Load\+From\+File.\+h}.
+
+\mbox{\label{class_load_from_file_a5aaeecb96091cd932da53bb0261b566f}} 
+\index{LoadFromFile@{LoadFromFile}!xPos@{xPos}}
+\index{xPos@{xPos}!LoadFromFile@{LoadFromFile}}
+\doxysubsubsection{xPos}
+{\footnotesize\ttfamily std\+::string Load\+From\+File\+::x\+Pos\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 43} of file \textbf{ Load\+From\+File.\+h}.
+
+\mbox{\label{class_load_from_file_a94933273e0eb515a0d67ad75ce1b2a93}} 
+\index{LoadFromFile@{LoadFromFile}!yPos@{yPos}}
+\index{yPos@{yPos}!LoadFromFile@{LoadFromFile}}
+\doxysubsubsection{yPos}
+{\footnotesize\ttfamily std\+::string Load\+From\+File\+::y\+Pos\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 44} of file \textbf{ Load\+From\+File.\+h}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+No\+Code\+Game\+Editor/\textbf{ Load\+From\+File.\+h}\item 
+No\+Code\+Game\+Editor/\textbf{ Load\+From\+File.\+cpp}\end{DoxyCompactItemize}

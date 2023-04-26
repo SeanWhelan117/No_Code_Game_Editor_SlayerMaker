@@ -1,0 +1,4 @@
+<map id="EnemySpawner::createEnemy" name="EnemySpawner::createEnemy">
+<area shape="rect" id="node1" title=" " alt="" coords="213,5,412,31"/>
+<area shape="rect" id="node2" href="$class_enemy_spawner.html#a30bf3e00a6b2d5a175956b65f5c15c17" title=" " alt="" coords="5,5,165,31"/>
+</map>

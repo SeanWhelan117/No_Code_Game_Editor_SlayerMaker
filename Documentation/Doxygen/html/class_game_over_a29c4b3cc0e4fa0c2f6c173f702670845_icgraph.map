@@ -1,0 +1,6 @@
+<map id="GameOver::render" name="GameOver::render">
+<area shape="rect" id="node1" title=" " alt="" coords="384,5,511,31"/>
+<area shape="rect" id="node2" href="$class_game.html#a15ddd769261d923827a3cdf41499c843" title="draw the frame and then switch buffers" alt="" coords="235,5,336,31"/>
+<area shape="rect" id="node3" href="$class_game.html#a1ab78f5ed0d5ea879157357cf2fb2afa" title="main method for game" alt="" coords="104,5,187,31"/>
+<area shape="rect" id="node4" href="$main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main enrtry point" alt="" coords="5,5,56,31"/>
+</map>

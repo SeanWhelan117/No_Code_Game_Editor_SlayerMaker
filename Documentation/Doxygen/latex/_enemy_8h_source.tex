@@ -1,0 +1,99 @@
+\doxysection{Enemy.\+h}
+\label{_enemy_8h_source}\index{NoCodeGameEditor/Enemy.h@{NoCodeGameEditor/Enemy.h}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}Animator.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}TextureManager.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}Wall.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}Monument.h"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }Enemy}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ Animator\ myAnim;}
+\DoxyCodeLine{00019\ \ \ \ \ Enemy(\textcolor{keywordtype}{int}\ t\_enemyTextNum,\ sf::Vector2f\ t\_spawnerPos,\ TextureManager\&\ textureManager);}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ loadFiles();}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ setupEnemy(sf::Vector2f\ t\_pos);}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ render(sf::RenderWindow\&\ t\_window);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ update(sf::Vector2f\ t\_seekPos,\ std::vector<std::unique\_ptr<Wall>>\&\ t\_walls,\ sf::Time\ t\_deltaTime,\ \textcolor{keywordtype}{int}\ t\_gtChosen,\ std::vector<std::unique\_ptr<Monument>>\&\ t\_monuments);}
+\DoxyCodeLine{00028\ \ \ \ \ sf::Sprite\&\ getEnemy();}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ seeking(sf::Vector2f\ t\_seekPos);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ Wandering();}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ std::shared\_ptr<sf::Texture>\ enemyTexture;}
+\DoxyCodeLine{00037\ \ \ \ \ std::shared\_ptr<sf::Texture>\ enemyTexture2;}
+\DoxyCodeLine{00038\ \ \ \ \ std::shared\_ptr<sf::Texture>\ enemyTexture3;}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{bool}\ enemySetup\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{int}\ getHealth();}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{void}\ setHealth(\textcolor{keywordtype}{int}\ t\_damage);}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ setupVisionCone();}
+\DoxyCodeLine{00045\ \ \ \ \ sf::ConvexShape\ getVisionCone();}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ checkCollisions(std::vector<std::unique\_ptr<Wall>>\&\ t\_walls,\ sf::Vector2f\ t\_seekPos,\ \textcolor{keywordtype}{int}\ t\_gtChosen,\ std::vector<std::unique\_ptr<Monument>>\&\ t\_monuments);}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ hasWallbeenDestroyed(std::vector<std::unique\_ptr<Wall>>\&\ t\_walls);}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{bool}\ seekingPlayer\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{bool}\ attacking\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ attack(Wall*\ t\_wall);}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ attackMonument(Monument*\ t\_monument);}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{bool}\ wandering\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00055\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ sf::Vector2f\ createRandomStartPos(sf::Vector2f\ t\_spawnerPos);}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{float}\ createRandomSpeed();}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ sf::Sprite\ enemySprite;}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{int}\ offset\ =\ 15;}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{int}\ enemyTextureNumber\ =\ 0;}
+\DoxyCodeLine{00065\ \ \ \ \ sf::Texture\ currentTexture;}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{int}\ timesCalled\ =\ 0;}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{int}\ randomSpawn\ =\ 0;}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{float}\ speed\ =\ 3.0f;}
+\DoxyCodeLine{00072\ \ \ \ \ TextureManager\&\ m\_textureManager;}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{int}\ health\ =\ 25;}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ sf::Vector2f\ velocity;}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{comment}{//float\ angle\ =\ 0;}}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ PI\ =\ 3.141592654f;}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{comment}{//float\ speed\ =\ 6.0f;}}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{float}\ coneAngle\ =\ 45;}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{float}\ coneLength\ =\ 30;}
+\DoxyCodeLine{00085\ \ \ \ \ sf::ConvexShape\ visionCone;}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordtype}{float}\ attackRate\ =\ 4.0f;}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{int}\ damage\ =\ 5;}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{int}\ damage2\ =\ 1;}
+\DoxyCodeLine{00091\ \ \ \ \ sf::Clock\ attackTimer;}
+\DoxyCodeLine{00092\ \ \ \ \ sf::Clock\ wanderTimer;}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ sf::Vector2f\ spawnerPosition;}
+\DoxyCodeLine{00095\ \ \ \ \ sf::Vector2f\ direction\{\ 50,\ 50\ \};}
+\DoxyCodeLine{00096\ \};}
+\DoxyCodeLine{00097\ }
+
+\end{DoxyCode}

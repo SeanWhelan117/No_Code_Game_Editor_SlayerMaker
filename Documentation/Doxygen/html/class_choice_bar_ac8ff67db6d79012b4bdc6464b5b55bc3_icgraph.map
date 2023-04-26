@@ -1,0 +1,9 @@
+<map id="ChoiceBar::resetTools" name="ChoiceBar::resetTools">
+<area shape="rect" id="node1" title="resets the ui elements to original scale" alt="" coords="1047,13,1197,38"/>
+<area shape="rect" id="node2" href="$class_choice_bar.html#a9708542491784dfe961959b5d9a82099" title="If the object contains the mouse, increase scale, else decrease scale If the mouse left is pressed se..." alt="" coords="795,13,999,38"/>
+<area shape="rect" id="node3" href="$class_choice_bar.html#aff5cab4f18f6a8222b358dc67f7b6d26" title="calls process mouseclick for whichever mode the user is currently in. Passes the sprites they could h..." alt="" coords="564,5,747,45"/>
+<area shape="rect" id="node4" href="$class_choice_bar.html#a3596d1eb12aa3f5b7fe5d1339b2a2f86" title="checks if the chosen game type parameter doesnt equal the currentgameType. If this is the case it is ..." alt="" coords="387,13,516,38"/>
+<area shape="rect" id="node5" href="$class_game.html#a1d2aee62bac8e228344e1f44fab504e0" title="Update the game world." alt="" coords="235,13,339,38"/>
+<area shape="rect" id="node6" href="$class_game.html#a1ab78f5ed0d5ea879157357cf2fb2afa" title="main method for game" alt="" coords="104,13,187,38"/>
+<area shape="rect" id="node7" href="$main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main enrtry point" alt="" coords="5,13,56,38"/>
+</map>

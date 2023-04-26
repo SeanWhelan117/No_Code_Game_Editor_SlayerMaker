@@ -1,0 +1,139 @@
+\doxysection{Game\+Options.\+h}
+\label{_game_options_8h_source}\index{NoCodeGameEditor/GameOptions.h@{NoCodeGameEditor/GameOptions.h}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <SFML\(\backslash\)Graphics.hpp>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}GameState.h"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }GameOptions}
+\DoxyCodeLine{00014\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00016\ \ \ \ \ GameOptions(\textcolor{keywordtype}{float}\ t\_gameWidth,\ \textcolor{keywordtype}{float}\ t\_gameHeight);}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{void}\ loadFiles();}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ update(sf::Time\ t\_deltaTime,\ sf::RenderWindow\&\ t\_window,\ GameState\&\ t\_gameState);}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ render(sf::RenderWindow\&\ t\_window);}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ NUM\_OF\_TRIANGLES\ =\ 2;}
+\DoxyCodeLine{00025\ \ \ \ \ sf::Sprite\ triangles[NUM\_OF\_TRIANGLES];}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ changeGridSize(\textcolor{keywordtype}{int}\ t\_triangleNum);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{int}\ getGridSize();}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{bool}\ canType;}
+\DoxyCodeLine{00032\ \ \ \ \ std::string\ gameName\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{int}\ chosenBG\ =\ 0;}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{int}\ chosenGT\ =\ 0;}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ setupText();\ \textcolor{comment}{//\ setups\ font\ colour\ all\ that\ stuff\ for\ the\ button\ text}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ setupChooseBackgroundRect();}
+\DoxyCodeLine{00042\ \ \ \ \ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{void}\ setupBGChoices();}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ setupContinueButton();}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ setupTriangles();}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ setupGridSizeBox();}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ setUpGameName();}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ setUpGameType();}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ setupGTChoices();}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{void}\ setUpChoiceRectangles();}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{void}\ checkForMousePos(GameState\&\ t\_gameState);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ sf::RectangleShape\ continueButton;\ \textcolor{comment}{//\ buttons\ array\ for\ menu\ buttons}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ sf::Font\ m\_font;\ \textcolor{comment}{//newyork.ttf\ font}}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{comment}{//text\ for\ each\ button\ stating\ what\ they\ are}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{comment}{//just\ sf\ text\ array\ for\ the\ buttons}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ sf::Vector2i\ mousePos;\ \textcolor{comment}{//\ mouses\ current\ position}}
+\DoxyCodeLine{00072\ \ \ \ \ sf::Vector2f\ gameSize;}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ sf::Text\ continueButtonText;}
+\DoxyCodeLine{00075\ \ \ \ \ std::string\ buttonText\ =\ \textcolor{stringliteral}{"{}Continue"{}};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ sf::Text\ chooseGridSizeText;}
+\DoxyCodeLine{00079\ \ \ \ \ std::string\ chooseGridSize\ =\ \textcolor{stringliteral}{"{}What\ size\ for\ game\ grid?"{}};}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ sf::Text\ chooseGameNameText;}
+\DoxyCodeLine{00082\ \ \ \ \ std::string\ chooseGameName\ =\ \textcolor{stringliteral}{"{}What\ is\ the\ name\ of\ your\ game?"{}};}
+\DoxyCodeLine{00083\ \ \ \ \ }
+\DoxyCodeLine{00084\ \ \ \ \ sf::Texture\ triangleTexture;}
+\DoxyCodeLine{00085\ \ \ \ \ sf::RectangleShape\ gridSizeBox;}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ sf::FloatRect\ gridSizeTextRect;}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ NUM\_OF\_GRIDSIZES=\ 5;}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ sf::Text\ currentGridSize;}
+\DoxyCodeLine{00092\ \ \ \ \ std::string\ gridSizeNums[NUM\_OF\_GRIDSIZES]\ =\ \{\ \textcolor{stringliteral}{"{}30\ x\ 30"{}},\ \textcolor{stringliteral}{"{}40\ x\ 40"{}},\ \textcolor{stringliteral}{"{}50\ x\ 50"{}},\ \textcolor{stringliteral}{"{}60\ x\ 60"{}},\ \textcolor{stringliteral}{"{}70\ x\ 70"{}}\ \};}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{int}\ currentGridStringNum\ =\ 0;}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{int}\ offset\ =\ 5;}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ sf::Text\ gameNameText;}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ sf::RectangleShape\ gameNameRect;}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \ \ sf::Text\ chooseBGText;}
+\DoxyCodeLine{00102\ \ \ \ \ sf::RectangleShape\ chooseBGRect;}
+\DoxyCodeLine{00103\ \ \ \ \ sf::FloatRect\ chooseBGTextRect;}
+\DoxyCodeLine{00104\ \ \ \ \ std::string\ chooseBGString\ =\ \textcolor{stringliteral}{"{}Choose\ Game\ Background!"{}};}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keywordtype}{bool}\ showBGChoices\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ MAX\_BG\_CHOICES\ =\ 3;}
+\DoxyCodeLine{00109\ \ \ \ \ sf::Sprite\ bgChoiceSprite[MAX\_BG\_CHOICES];}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \ \ sf::Texture\ bgChoiceTex1;}
+\DoxyCodeLine{00112\ \ \ \ \ sf::Texture\ bgChoiceTex2;}
+\DoxyCodeLine{00113\ \ \ \ \ sf::Texture\ bgChoiceTex3;}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \ \ \ \ sf::RectangleShape\ choiceSquare;}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \ \ sf::Text\ gameTypeText;}
+\DoxyCodeLine{00118\ \ \ \ \ sf::String\ chooseGameTypeString\ =\ \textcolor{stringliteral}{"{}Choose\ Game\ Type!"{}};}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \ \ \ \ sf::RectangleShape\ gameTypeRect;}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordtype}{bool}\ showGameTypeChoices\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ MAX\_GAMETYPE\_CHOICES\ =\ 3;}
+\DoxyCodeLine{00125\ \ \ \ \ sf::Sprite\ gameTypeChoiceSprite[MAX\_GAMETYPE\_CHOICES];}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \ \ \ \ sf::Texture\ gtChoiceTex1;}
+\DoxyCodeLine{00128\ \ \ \ \ sf::Texture\ gtChoiceTex2;}
+\DoxyCodeLine{00129\ \ \ \ \ sf::Texture\ gtChoiceTex3;}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \ \ \ \ sf::RectangleShape\ choiceSquare2;}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00133\ \ \ \ \ sf::RectangleShape\ choiceRectangles[2];}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \};}
+\DoxyCodeLine{00137\ }
+
+\end{DoxyCode}

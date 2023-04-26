@@ -1,0 +1,7 @@
+<map id="Monument::Monument" name="Monument::Monument">
+<area shape="rect" id="node1" title=" " alt="" coords="5,55,157,80"/>
+<area shape="rect" id="node2" href="$class_monument.html#a3536d87261609a5bce2fd7ccb0ed9857" title=" " alt="" coords="226,5,369,31"/>
+<area shape="rect" id="node4" href="$class_monument.html#a7d9e68efdb3456eeceec674e939bcf39" title=" " alt="" coords="207,55,387,80"/>
+<area shape="rect" id="node5" href="$class_monument.html#a2009863d1a83fa25f25ef3f480d04c5e" title=" " alt="" coords="205,104,389,129"/>
+<area shape="rect" id="node3" href="$class_texture_manager.html#a6c7ddda59194e9b951835477daf37fca" title=" " alt="" coords="437,5,621,31"/>
+</map>

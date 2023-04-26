@@ -1,0 +1,10 @@
+<map id="HUD::update" name="HUD::update">
+<area shape="rect" id="node1" title=" " alt="" coords="5,89,101,114"/>
+<area shape="rect" id="node2" href="$class_health_bar.html#a736449535fdea9af3b3791ad9ffdf0c2" title=" " alt="" coords="401,14,549,39"/>
+<area shape="rect" id="node3" href="$class_h_u_d.html#aca0b5f884679f073f1fcafb486c6a375" title=" " alt="" coords="149,39,348,65"/>
+<area shape="rect" id="node4" href="$class_clock.html#a6796869c4f2480dfbe90d3e9838e6ae5" title=" " alt="" coords="197,138,300,163"/>
+<area shape="rect" id="node6" href="$class_health_bar.html#a495f05febdba14f6a8846c85d262456f" title=" " alt="" coords="185,89,312,114"/>
+<area shape="rect" id="node8" href="$class_explosive_u_i.html#aadeaa4625150a3a009870bab6d04f5b2" title=" " alt="" coords="181,187,317,213"/>
+<area shape="rect" id="node5" href="$class_clock.html#afba36a4c1a2cb97e9e767856b92602bd" title=" " alt="" coords="410,138,541,163"/>
+<area shape="rect" id="node7" href="$class_health_bar.html#a097f0c72a0cb38d4f5412a82269c76df" title=" " alt="" coords="396,89,555,114"/>
+</map>

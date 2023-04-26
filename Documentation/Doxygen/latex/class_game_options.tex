@@ -1,0 +1,1497 @@
+\doxysection{Game\+Options Class Reference}
+\label{class_game_options}\index{GameOptions@{GameOptions}}
+
+
+{\ttfamily \#include $<$Game\+Options.\+h$>$}
+
+
+
+Collaboration diagram for Game\+Options\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{class_game_options__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Game\+Options} (float t\+\_\+game\+Width, float t\+\_\+game\+Height)
+\item 
+void \textbf{ load\+Files} ()
+\item 
+void \textbf{ update} (sf\+::\+Time t\+\_\+delta\+Time, sf\+::\+Render\+Window \&t\+\_\+window, \textbf{ Game\+State} \&t\+\_\+game\+State)
+\item 
+void \textbf{ render} (sf\+::\+Render\+Window \&t\+\_\+window)
+\item 
+void \textbf{ change\+Grid\+Size} (int t\+\_\+triangle\+Num)
+\item 
+int \textbf{ get\+Grid\+Size} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Sprite \textbf{ triangles} [\textbf{ NUM\+\_\+\+OF\+\_\+\+TRIANGLES}]
+\item 
+bool \textbf{ can\+Type}
+\item 
+std\+::string \textbf{ game\+Name} = \char`\"{}\char`\"{}
+\item 
+int \textbf{ chosen\+BG} = 0
+\item 
+int \textbf{ chosen\+GT} = 0
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const int \textbf{ NUM\+\_\+\+OF\+\_\+\+TRIANGLES} = 2
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ setup\+Text} ()
+\item 
+void \textbf{ setup\+Choose\+Background\+Rect} ()
+\item 
+void \textbf{ setup\+BGChoices} ()
+\item 
+void \textbf{ setup\+Continue\+Button} ()
+\item 
+void \textbf{ setup\+Triangles} ()
+\item 
+void \textbf{ setup\+Grid\+Size\+Box} ()
+\item 
+void \textbf{ set\+Up\+Game\+Name} ()
+\item 
+void \textbf{ set\+Up\+Game\+Type} ()
+\item 
+void \textbf{ setup\+GTChoices} ()
+\item 
+void \textbf{ set\+Up\+Choice\+Rectangles} ()
+\item 
+void \textbf{ check\+For\+Mouse\+Pos} (\textbf{ Game\+State} \&t\+\_\+game\+State)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Rectangle\+Shape \textbf{ continue\+Button}
+\item 
+sf\+::\+Font \textbf{ m\+\_\+font}
+\item 
+sf\+::\+Vector2i \textbf{ mouse\+Pos}
+\item 
+sf\+::\+Vector2f \textbf{ game\+Size}
+\item 
+sf\+::\+Text \textbf{ continue\+Button\+Text}
+\item 
+std\+::string \textbf{ button\+Text} = \char`\"{}Continue\char`\"{}
+\item 
+sf\+::\+Text \textbf{ choose\+Grid\+Size\+Text}
+\item 
+std\+::string \textbf{ choose\+Grid\+Size} = \char`\"{}What size for game grid?\char`\"{}
+\item 
+sf\+::\+Text \textbf{ choose\+Game\+Name\+Text}
+\item 
+std\+::string \textbf{ choose\+Game\+Name} = \char`\"{}What is the name of your game?\char`\"{}
+\item 
+sf\+::\+Texture \textbf{ triangle\+Texture}
+\item 
+sf\+::\+Rectangle\+Shape \textbf{ grid\+Size\+Box}
+\item 
+sf\+::\+Float\+Rect \textbf{ grid\+Size\+Text\+Rect}
+\item 
+sf\+::\+Text \textbf{ current\+Grid\+Size}
+\item 
+std\+::string \textbf{ grid\+Size\+Nums} [\textbf{ NUM\+\_\+\+OF\+\_\+\+GRIDSIZES}] = \{ \char`\"{}30 x 30\char`\"{}, \char`\"{}40 x 40\char`\"{}, \char`\"{}50 x 50\char`\"{}, \char`\"{}60 x 60\char`\"{}, \char`\"{}70 x 70\char`\"{} \}
+\item 
+int \textbf{ current\+Grid\+String\+Num} = 0
+\item 
+int \textbf{ offset} = 5
+\item 
+sf\+::\+Text \textbf{ game\+Name\+Text}
+\item 
+sf\+::\+Rectangle\+Shape \textbf{ game\+Name\+Rect}
+\item 
+sf\+::\+Text \textbf{ choose\+BGText}
+\item 
+sf\+::\+Rectangle\+Shape \textbf{ choose\+BGRect}
+\item 
+sf\+::\+Float\+Rect \textbf{ choose\+BGText\+Rect}
+\item 
+std\+::string \textbf{ choose\+BGString} = \char`\"{}Choose \textbf{ Game} Background!\char`\"{}
+\item 
+bool \textbf{ show\+BGChoices} = false
+\item 
+sf\+::\+Sprite \textbf{ bg\+Choice\+Sprite} [\textbf{ MAX\+\_\+\+BG\+\_\+\+CHOICES}]
+\item 
+sf\+::\+Texture \textbf{ bg\+Choice\+Tex1}
+\item 
+sf\+::\+Texture \textbf{ bg\+Choice\+Tex2}
+\item 
+sf\+::\+Texture \textbf{ bg\+Choice\+Tex3}
+\item 
+sf\+::\+Rectangle\+Shape \textbf{ choice\+Square}
+\item 
+sf\+::\+Text \textbf{ game\+Type\+Text}
+\item 
+sf\+::\+String \textbf{ choose\+Game\+Type\+String} = \char`\"{}Choose \textbf{ Game} Type!\char`\"{}
+\item 
+sf\+::\+Rectangle\+Shape \textbf{ game\+Type\+Rect}
+\item 
+bool \textbf{ show\+Game\+Type\+Choices} = false
+\item 
+sf\+::\+Sprite \textbf{ game\+Type\+Choice\+Sprite} [\textbf{ MAX\+\_\+\+GAMETYPE\+\_\+\+CHOICES}]
+\item 
+sf\+::\+Texture \textbf{ gt\+Choice\+Tex1}
+\item 
+sf\+::\+Texture \textbf{ gt\+Choice\+Tex2}
+\item 
+sf\+::\+Texture \textbf{ gt\+Choice\+Tex3}
+\item 
+sf\+::\+Rectangle\+Shape \textbf{ choice\+Square2}
+\item 
+sf\+::\+Rectangle\+Shape \textbf{ choice\+Rectangles} [2]
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const int \textbf{ NUM\+\_\+\+OF\+\_\+\+GRIDSIZES} = 5
+\item 
+static const int \textbf{ MAX\+\_\+\+BG\+\_\+\+CHOICES} = 3
+\item 
+static const int \textbf{ MAX\+\_\+\+GAMETYPE\+\_\+\+CHOICES} = 3
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Sean Whelan 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022/23 @license Attribution-\/\+Non\+Commercial 4.\+0 International 
+\end{DoxyDate}
+
+
+Definition at line \textbf{ 13} of file \textbf{ Game\+Options.\+h}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\label{class_game_options_aaa7831f12f4a3590cd93f1cd2d192bc7}} 
+\index{GameOptions@{GameOptions}!GameOptions@{GameOptions}}
+\index{GameOptions@{GameOptions}!GameOptions@{GameOptions}}
+\doxysubsubsection{GameOptions()}
+{\footnotesize\ttfamily Game\+Options\+::\+Game\+Options (\begin{DoxyParamCaption}\item[{float}]{t\+\_\+game\+Width,  }\item[{float}]{t\+\_\+game\+Height }\end{DoxyParamCaption})}
+
+\begin{DoxyAuthor}{Author}
+Sean Whelan 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022 @license Attribution-\/\+Non\+Commercial 4.\+0 International 
+\end{DoxyDate}
+
+
+Definition at line \textbf{ 9} of file \textbf{ Game\+Options.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \ \ \ \ gameSize.x\ =\ t\_gameWidth;}
+\DoxyCodeLine{00013\ \ \ \ \ gameSize.y\ =\ t\_gameHeight;}
+\DoxyCodeLine{00014\ \ \ \ \ loadFiles();}
+\DoxyCodeLine{00015\ \ \ \ \ setupContinueButton();}
+\DoxyCodeLine{00016\ \ \ \ \ setupText();}
+\DoxyCodeLine{00017\ \ \ \ \ setupChooseBackgroundRect();}
+\DoxyCodeLine{00018\ \ \ \ \ setupBGChoices();}
+\DoxyCodeLine{00019\ \ \ \ \ setupGridSizeBox();}
+\DoxyCodeLine{00020\ \ \ \ \ setupTriangles();}
+\DoxyCodeLine{00021\ \ \ \ \ setUpGameName();}
+\DoxyCodeLine{00022\ \ \ \ \ setUpGameType();}
+\DoxyCodeLine{00023\ \ \ \ \ setupGTChoices();}
+\DoxyCodeLine{00024\ \ \ \ \ setUpChoiceRectangles();}
+\DoxyCodeLine{00025\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_options_aaa7831f12f4a3590cd93f1cd2d192bc7_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{class_game_options_a44098ece1ddc00006f88eb0052ce6fc3}} 
+\index{GameOptions@{GameOptions}!changeGridSize@{changeGridSize}}
+\index{changeGridSize@{changeGridSize}!GameOptions@{GameOptions}}
+\doxysubsubsection{changeGridSize()}
+{\footnotesize\ttfamily void Game\+Options\+::change\+Grid\+Size (\begin{DoxyParamCaption}\item[{int}]{t\+\_\+triangle\+Num }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 252} of file \textbf{ Game\+Options.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00253\ \{}
+\DoxyCodeLine{00254\ \ \ \ \ \textcolor{keywordtype}{int}\ current\ =\ currentGridStringNum;}
+\DoxyCodeLine{00255\ \ \ \ \ \textcolor{keywordtype}{int}\ triangleClicked\ =\ t\_triangleNum;}
+\DoxyCodeLine{00256\ }
+\DoxyCodeLine{00257\ \ \ \ \ \textcolor{keywordflow}{if}\ (triangleClicked\ ==\ 0)}
+\DoxyCodeLine{00258\ \ \ \ \ \{}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (currentGridStringNum\ !=\ 0)}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \ \ \ \ currentGridSize.setString(gridSizeNums[currentGridStringNum\ -\/\ 1]);}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ \ \ \ currentGridStringNum\ =\ currentGridStringNum\ -\/\ 1;}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00264\ \ \ \ \ \}}
+\DoxyCodeLine{00265\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (triangleClicked\ ==\ 1)}
+\DoxyCodeLine{00266\ \ \ \ \ \{}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (currentGridStringNum\ <\ NUM\_OF\_GRIDSIZES\ -\/\ 1)}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \ \ \ \ currentGridSize.setString(gridSizeNums[currentGridStringNum\ +\ 1]);}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \ \ \ \ currentGridStringNum\ =\ currentGridStringNum\ +\ 1;}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00272\ \ \ \ \ \}}
+\DoxyCodeLine{00273\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_options_a44098ece1ddc00006f88eb0052ce6fc3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_options_ae12cc7c35fe0c28517524c5491adbddb}} 
+\index{GameOptions@{GameOptions}!checkForMousePos@{checkForMousePos}}
+\index{checkForMousePos@{checkForMousePos}!GameOptions@{GameOptions}}
+\doxysubsubsection{checkForMousePos()}
+{\footnotesize\ttfamily void Game\+Options\+::check\+For\+Mouse\+Pos (\begin{DoxyParamCaption}\item[{\textbf{ Game\+State} \&}]{t\+\_\+game\+State }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 275} of file \textbf{ Game\+Options.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00276\ \{}
+\DoxyCodeLine{00277\ \ \ \ \ \textcolor{keywordflow}{if}\ (continueButton.getGlobalBounds().contains(\textcolor{keyword}{static\_cast<}sf::Vector2f\textcolor{keyword}{>}(mousePos)))}
+\DoxyCodeLine{00278\ \ \ \ \ \{}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (gameName\ !=\ \textcolor{stringliteral}{"{}"{}}\ \&\&\ showBGChoices)}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \ \ \ \ continueButtonText.setScale(1.25,\ 1.25);}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ \ \ \ \ continueButton.setScale(1.25,\ 1.25);}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Mouse::isButtonPressed(sf::Mouse::Left))}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00285\ }
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ t\_gameState\ =\ GameState::createGame;}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00289\ \ \ \ \ \}}
+\DoxyCodeLine{00290\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00291\ \ \ \ \ \{}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ continueButtonText.setScale(1,\ 1);}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ continueButton.setScale(1,\ 1);}
+\DoxyCodeLine{00294\ \ \ \ \ \}}
+\DoxyCodeLine{00295\ }
+\DoxyCodeLine{00296\ \ \ \ \ \textcolor{keywordflow}{if}\ (gameNameRect.getGlobalBounds().contains(\textcolor{keyword}{static\_cast<}sf::Vector2f\textcolor{keyword}{>}(mousePos)))}
+\DoxyCodeLine{00297\ \ \ \ \ \{}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Mouse::isButtonPressed(sf::Mouse::Left))}
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \ \ \ \ gameNameRect.setFillColor(sf::Color(128,\ 128,\ 128,\ 64));}
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \ \ \ \ canType\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00303\ \ \ \ \ \}}
+\DoxyCodeLine{00304\ \ \ \ \ \textcolor{keywordflow}{else}\ }
+\DoxyCodeLine{00305\ \ \ \ \ \{}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Mouse::isButtonPressed(sf::Mouse::Left))}
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \ \ \ \ gameNameRect.setFillColor(sf::Color::White);}
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \ \ \ \ canType\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00311\ \ \ \ \ \}}
+\DoxyCodeLine{00312\ }
+\DoxyCodeLine{00313\ \ \ \ \ \textcolor{keywordflow}{if}\ (chooseBGRect.getGlobalBounds().contains(\textcolor{keyword}{static\_cast<}sf::Vector2f\textcolor{keyword}{>}(mousePos)))}
+\DoxyCodeLine{00314\ \ \ \ \ \{}
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ chooseBGText.setScale(1.2,\ 1.2);}
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Mouse::isButtonPressed(sf::Mouse::Left))}
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ "{}TESTTSS"{}\ <<\ std::endl;}}
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \ \ \ \ showBGChoices\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00321\ \ \ \ \ \}}
+\DoxyCodeLine{00322\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00323\ \ \ \ \ \{}
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ chooseBGText.setScale(1,\ 1);}
+\DoxyCodeLine{00325\ \ \ \ \ \}}
+\DoxyCodeLine{00326\ }
+\DoxyCodeLine{00327\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ MAX\_BG\_CHOICES;\ i++)}
+\DoxyCodeLine{00328\ \ \ \ \ \{}
+\DoxyCodeLine{00329\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (bgChoiceSprite[i].getGlobalBounds().contains(\textcolor{keyword}{static\_cast<}sf::Vector2f\textcolor{keyword}{>}(mousePos)))}
+\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Mouse::isButtonPressed(sf::Mouse::Left))}
+\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00333\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ choiceSquare.setPosition(bgChoiceSprite[i].getPosition());}
+\DoxyCodeLine{00334\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ chosenBG\ =\ i;}
+\DoxyCodeLine{00335\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00337\ \ \ \ \ \}}
+\DoxyCodeLine{00338\ }
+\DoxyCodeLine{00339\ \ \ \ \ \textcolor{keywordflow}{if}\ (gameTypeRect.getGlobalBounds().contains(\textcolor{keyword}{static\_cast<}sf::Vector2f\textcolor{keyword}{>}(mousePos)))}
+\DoxyCodeLine{00340\ \ \ \ \ \{}
+\DoxyCodeLine{00341\ \ \ \ \ \ \ \ \ gameTypeText.setScale(1.2,\ 1.2);}
+\DoxyCodeLine{00342\ }
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Mouse::isButtonPressed(sf::Mouse::Left))}
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00345\ \ \ \ \ \ \ \ \ \ \ \ \ showGameTypeChoices\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00346\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00347\ \ \ \ \ \}}
+\DoxyCodeLine{00348\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00349\ \ \ \ \ \{}
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ gameTypeText.setScale(1,\ 1);}
+\DoxyCodeLine{00351\ \ \ \ \ \}}
+\DoxyCodeLine{00352\ }
+\DoxyCodeLine{00353\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ MAX\_GAMETYPE\_CHOICES;\ i++)}
+\DoxyCodeLine{00354\ \ \ \ \ \{}
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (gameTypeChoiceSprite[i].getGlobalBounds().contains(\textcolor{keyword}{static\_cast<}sf::Vector2f\textcolor{keyword}{>}(mousePos)))}
+\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Mouse::isButtonPressed(sf::Mouse::Left)\ \&\&\ showGameTypeChoices)}
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ choiceSquare2.setPosition(gameTypeChoiceSprite[i].getPosition().x\ +\ 110,\ gameTypeChoiceSprite[i].getPosition().y\ -\/\ 35);}
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ chosenGT\ =\ i;}
+\DoxyCodeLine{00361\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00362\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00363\ \ \ \ \ \}}
+\DoxyCodeLine{00364\ }
+\DoxyCodeLine{00365\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_options_ae12cc7c35fe0c28517524c5491adbddb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_options_a659035c98adf0b3129e7e468cbb7cabd}} 
+\index{GameOptions@{GameOptions}!getGridSize@{getGridSize}}
+\index{getGridSize@{getGridSize}!GameOptions@{GameOptions}}
+\doxysubsubsection{getGridSize()}
+{\footnotesize\ttfamily int Game\+Options\+::get\+Grid\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 367} of file \textbf{ Game\+Options.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00368\ \{}
+\DoxyCodeLine{00369\ }
+\DoxyCodeLine{00370\ \ \ \ \ \textcolor{comment}{//\{\ "{}30\ x\ 30"{},\ "{}40\ x\ 40"{},\ "{}50\ x\ 50"{},\ "{}60\ x\ 60"{},\ "{}70\ x\ 70"{}\ \};}}
+\DoxyCodeLine{00371\ \ \ \ \ \textcolor{keywordtype}{int}\ gridNum\ =\ 0;}
+\DoxyCodeLine{00372\ }
+\DoxyCodeLine{00373\ \ \ \ \ \textcolor{keywordflow}{if}\ (currentGridStringNum\ ==\ 0)}
+\DoxyCodeLine{00374\ \ \ \ \ \{}
+\DoxyCodeLine{00375\ \ \ \ \ \ \ \ \ gridNum\ =\ 30;}
+\DoxyCodeLine{00376\ \ \ \ \ \}}
+\DoxyCodeLine{00377\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentGridStringNum\ ==\ 1)}
+\DoxyCodeLine{00378\ \ \ \ \ \{}
+\DoxyCodeLine{00379\ \ \ \ \ \ \ \ \ gridNum\ =\ 40;}
+\DoxyCodeLine{00380\ \ \ \ \ \}}
+\DoxyCodeLine{00381\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentGridStringNum\ ==\ 2)}
+\DoxyCodeLine{00382\ \ \ \ \ \{}
+\DoxyCodeLine{00383\ \ \ \ \ \ \ \ \ gridNum\ =\ 50;}
+\DoxyCodeLine{00384\ \ \ \ \ \}}
+\DoxyCodeLine{00385\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentGridStringNum\ ==\ 3)}
+\DoxyCodeLine{00386\ \ \ \ \ \{}
+\DoxyCodeLine{00387\ \ \ \ \ \ \ \ \ gridNum\ =\ 60;}
+\DoxyCodeLine{00388\ \ \ \ \ \}}
+\DoxyCodeLine{00389\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentGridStringNum\ ==\ 4)}
+\DoxyCodeLine{00390\ \ \ \ \ \{}
+\DoxyCodeLine{00391\ \ \ \ \ \ \ \ \ gridNum\ =\ 70;}
+\DoxyCodeLine{00392\ \ \ \ \ \}}
+\DoxyCodeLine{00393\ }
+\DoxyCodeLine{00394\ }
+\DoxyCodeLine{00395\ \ \ \ \ \textcolor{keywordflow}{return}\ gridNum;}
+\DoxyCodeLine{00396\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_options_a659035c98adf0b3129e7e468cbb7cabd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_options_a8401a9f856296e0973ee66443f453318}} 
+\index{GameOptions@{GameOptions}!loadFiles@{loadFiles}}
+\index{loadFiles@{loadFiles}!GameOptions@{GameOptions}}
+\doxysubsubsection{loadFiles()}
+{\footnotesize\ttfamily void Game\+Options\+::load\+Files (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 27} of file \textbf{ Game\+Options.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00028\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordflow}{if}\ (!m\_font.loadFromFile(\textcolor{stringliteral}{"{}./ASSETS/FONTS/NewYork.ttf"{}}))}
+\DoxyCodeLine{00030\ \ \ \ \ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Error\ loading\ font..."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00032\ \ \ \ \ \}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordflow}{if}\ (!triangleTexture.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)triangle.png"{}}))}
+\DoxyCodeLine{00035\ \ \ \ \ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ triangle\ (triangle)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00038\ \ \ \ \ \}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordflow}{if}\ (!bgChoiceTex1.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)BACKGROUNDS\(\backslash\)\(\backslash\)BGGrass.png"{}}))}
+\DoxyCodeLine{00041\ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ bgChoiceTex1\ (BGGrass)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00044\ \ \ \ \ \}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordflow}{if}\ (!bgChoiceTex2.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)BACKGROUNDS\(\backslash\)\(\backslash\)BGSand.png"{}}))}
+\DoxyCodeLine{00047\ \ \ \ \ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ bgChoiceTex2\ (BGSand)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00050\ \ \ \ \ \}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordflow}{if}\ (!bgChoiceTex3.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)BACKGROUNDS\(\backslash\)\(\backslash\)BGSnow.png"{}}))}
+\DoxyCodeLine{00053\ \ \ \ \ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ bgChoiceTex3\ (BGSnow)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00056\ \ \ \ \ \}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordflow}{if}\ (!gtChoiceTex1.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)GAMETYPES\(\backslash\)\(\backslash\)swarmMode.png"{}}))}
+\DoxyCodeLine{00059\ \ \ \ \ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ gtChoiceTex1\ (swarmMode)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00062\ \ \ \ \ \}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordflow}{if}\ (!gtChoiceTex2.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)GAMETYPES\(\backslash\)\(\backslash\)ProtectAndServeMode.png"{}}))}
+\DoxyCodeLine{00065\ \ \ \ \ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ gtChoiceTex2\ (ProtectAndServeMode)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00068\ \ \ \ \ \}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordflow}{if}\ (!gtChoiceTex3.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)GAMETYPES\(\backslash\)\(\backslash\)CollectAndRunMode.png"{}}))}
+\DoxyCodeLine{00071\ \ \ \ \ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ gtChoiceTex3\ (CollectAndRunMode)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00074\ \ \ \ \ \}}
+\DoxyCodeLine{00075\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_options_a8401a9f856296e0973ee66443f453318_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_options_a356c8630ae2d991bb6ed15fec7734c77}} 
+\index{GameOptions@{GameOptions}!render@{render}}
+\index{render@{render}!GameOptions@{GameOptions}}
+\doxysubsubsection{render()}
+{\footnotesize\ttfamily void Game\+Options\+::render (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{t\+\_\+window }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 96} of file \textbf{ Game\+Options.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00097\ \{}
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 2;\ i++)}
+\DoxyCodeLine{00099\ \ \ \ \ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ t\_window.draw(choiceRectangles[i]);}
+\DoxyCodeLine{00101\ \ \ \ \ \}}
+\DoxyCodeLine{00102\ \ \ \ \ t\_window.draw(continueButtonText);}
+\DoxyCodeLine{00103\ \ \ \ \ t\_window.draw(chooseGridSizeText);}
+\DoxyCodeLine{00104\ \ \ \ \ }
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \ \ t\_window.draw(gridSizeBox);}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ NUM\_OF\_TRIANGLES;\ i++)}
+\DoxyCodeLine{00108\ \ \ \ \ \{}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ t\_window.draw(triangles[i]);}
+\DoxyCodeLine{00110\ \ \ \ \ \}}
+\DoxyCodeLine{00111\ \ \ \ \ t\_window.draw(currentGridSize);}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \ \ t\_window.draw(chooseGameNameText);}
+\DoxyCodeLine{00114\ \ \ \ \ t\_window.draw(gameNameRect);}
+\DoxyCodeLine{00115\ \ \ \ \ t\_window.draw(gameNameText);}
+\DoxyCodeLine{00116\ \ \ \ \ t\_window.draw(chooseBGRect);}
+\DoxyCodeLine{00117\ \ \ \ \ t\_window.draw(chooseBGText);}
+\DoxyCodeLine{00118\ \ \ \ \ t\_window.draw(choiceSquare);}
+\DoxyCodeLine{00119\ \ \ \ \ t\_window.draw(choiceSquare2);}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordflow}{if}(showBGChoices)}
+\DoxyCodeLine{00122\ \ \ \ \ \{}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ MAX\_BG\_CHOICES;\ i++)}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ t\_window.draw(bgChoiceSprite[i]);}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00127\ \ \ \ \ \}}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \ \ \ \ t\_window.draw(gameTypeRect);}
+\DoxyCodeLine{00130\ \ \ \ \ t\_window.draw(gameTypeText);}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keywordflow}{if}\ (showGameTypeChoices)}
+\DoxyCodeLine{00133\ \ \ \ \ \{}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ MAX\_GAMETYPE\_CHOICES;\ i++)}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ t\_window.draw(gameTypeChoiceSprite[i]);}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00138\ \ \ \ \ \}}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_options_a356c8630ae2d991bb6ed15fec7734c77_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_options_ac265db001bdb01ab077a4186e4bfa7fc}} 
+\index{GameOptions@{GameOptions}!setupBGChoices@{setupBGChoices}}
+\index{setupBGChoices@{setupBGChoices}!GameOptions@{GameOptions}}
+\doxysubsubsection{setupBGChoices()}
+{\footnotesize\ttfamily void Game\+Options\+::setup\+BGChoices (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 184} of file \textbf{ Game\+Options.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00185\ \{}
+\DoxyCodeLine{00186\ \ \ \ \ \textcolor{keywordtype}{int}\ yPos\ =\ gameSize.y\ *\ 0.2;}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00188\ \ \ \ \ bgChoiceSprite[0].setTexture(bgChoiceTex1);}
+\DoxyCodeLine{00189\ \ \ \ \ bgChoiceSprite[1].setTexture(bgChoiceTex2);}
+\DoxyCodeLine{00190\ \ \ \ \ bgChoiceSprite[2].setTexture(bgChoiceTex3);}
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00192\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ MAX\_BG\_CHOICES;\ i++)}
+\DoxyCodeLine{00193\ \ \ \ \ \{}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ bgChoiceSprite[i].scale(0.4,\ 0.4);}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ bgChoiceSprite[i].setOrigin(bgChoiceSprite[i].getLocalBounds().width\ /\ 2,\ bgChoiceSprite[i].getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ bgChoiceSprite[i].setPosition(gameSize.x\ *\ 0.85,\ yPos);}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ yPos\ +=\ gameSize.y\ *\ 0.28;}
+\DoxyCodeLine{00198\ \ \ \ \ \}}
+\DoxyCodeLine{00199\ }
+\DoxyCodeLine{00200\ \ \ \ \ choiceSquare.setSize(sf::Vector2f(bgChoiceSprite[1].getGlobalBounds().width\ +\ 15,\ bgChoiceSprite[1].getGlobalBounds().height\ +\ 15));}
+\DoxyCodeLine{00201\ \ \ \ \ choiceSquare.setFillColor(sf::Color::Green);}
+\DoxyCodeLine{00202\ \ \ \ \ choiceSquare.setPosition(-\/300,\ -\/300);}
+\DoxyCodeLine{00203\ \ \ \ \ choiceSquare.setOrigin(choiceSquare.getGlobalBounds().width\ /\ 2,\ choiceSquare.getGlobalBounds().height\ /\ 2);}
+\DoxyCodeLine{00204\ }
+\DoxyCodeLine{00205\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_options_ac265db001bdb01ab077a4186e4bfa7fc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_options_a9546fe6c0fd21235b5bfe1321e5850e5}} 
+\index{GameOptions@{GameOptions}!setUpChoiceRectangles@{setUpChoiceRectangles}}
+\index{setUpChoiceRectangles@{setUpChoiceRectangles}!GameOptions@{GameOptions}}
+\doxysubsubsection{setUpChoiceRectangles()}
+{\footnotesize\ttfamily void Game\+Options\+::set\+Up\+Choice\+Rectangles (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 469} of file \textbf{ Game\+Options.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00470\ \{}
+\DoxyCodeLine{00471\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 2;\ i++)}
+\DoxyCodeLine{00472\ \ \ \ \ \{}
+\DoxyCodeLine{00473\ \ \ \ \ \ \ \ \ choiceRectangles[i].setFillColor(sf::Color(81,\ 81,\ 81,\ 150));}
+\DoxyCodeLine{00474\ \ \ \ \ \ \ \ \ choiceRectangles[i].setSize(sf::Vector2f(1000,\ gameSize.y));}
+\DoxyCodeLine{00475\ }
+\DoxyCodeLine{00476\ \ \ \ \ \}}
+\DoxyCodeLine{00477\ \ \ \ \ choiceRectangles[0].setPosition(0,\ 0);}
+\DoxyCodeLine{00478\ \ \ \ \ choiceRectangles[1].setPosition(gameSize.x\ -\/\ 1000,\ 0);}
+\DoxyCodeLine{00479\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_options_a9546fe6c0fd21235b5bfe1321e5850e5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_options_aef40abd0ea4bace011b9bed6d0b714da}} 
+\index{GameOptions@{GameOptions}!setupChooseBackgroundRect@{setupChooseBackgroundRect}}
+\index{setupChooseBackgroundRect@{setupChooseBackgroundRect}!GameOptions@{GameOptions}}
+\doxysubsubsection{setupChooseBackgroundRect()}
+{\footnotesize\ttfamily void Game\+Options\+::setup\+Choose\+Background\+Rect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 176} of file \textbf{ Game\+Options.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00177\ \{}
+\DoxyCodeLine{00178\ \ \ \ \ chooseBGRect.setSize(sf::Vector2f(550,\ 75));}
+\DoxyCodeLine{00179\ \ \ \ \ chooseBGRect.setOrigin(chooseBGRect.getSize().x\ /\ 2,\ chooseBGRect.getSize().y\ /\ 2);}
+\DoxyCodeLine{00180\ \ \ \ \ chooseBGRect.setPosition(chooseBGText.getPosition());}
+\DoxyCodeLine{00181\ \ \ \ \ chooseBGRect.setFillColor(sf::Color(0,\ 0,\ 0,\ 0));}
+\DoxyCodeLine{00182\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_options_aef40abd0ea4bace011b9bed6d0b714da_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_options_a732f88769e1eec6ed2ea229ca463b109}} 
+\index{GameOptions@{GameOptions}!setupContinueButton@{setupContinueButton}}
+\index{setupContinueButton@{setupContinueButton}!GameOptions@{GameOptions}}
+\doxysubsubsection{setupContinueButton()}
+{\footnotesize\ttfamily void Game\+Options\+::setup\+Continue\+Button (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 207} of file \textbf{ Game\+Options.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00208\ \{}
+\DoxyCodeLine{00209\ \ \ \ \ continueButton.setFillColor(sf::Color(0,\ 0,\ 0,\ 0));}
+\DoxyCodeLine{00210\ \ \ \ \ continueButton.setSize(sf::Vector2f(525,\ 125));}
+\DoxyCodeLine{00211\ \ \ \ \ continueButton.setOrigin(continueButton.getSize().x\ /\ 2,\ continueButton.getSize().y\ /\ 2);}
+\DoxyCodeLine{00212\ \ \ \ \ continueButton.setPosition(sf::Vector2f(gameSize.x\ /\ 2,\ gameSize.y\ *\ 0.8));}
+\DoxyCodeLine{00213\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_options_a732f88769e1eec6ed2ea229ca463b109_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_options_ab654c2246e3de2d396350947ff3ca1f8}} 
+\index{GameOptions@{GameOptions}!setUpGameName@{setUpGameName}}
+\index{setUpGameName@{setUpGameName}!GameOptions@{GameOptions}}
+\doxysubsubsection{setUpGameName()}
+{\footnotesize\ttfamily void Game\+Options\+::set\+Up\+Game\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 398} of file \textbf{ Game\+Options.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00399\ \{}
+\DoxyCodeLine{00400\ \ \ \ \ gameNameRect.setSize(sf::Vector2f(350,\ 65));}
+\DoxyCodeLine{00401\ \ \ \ \ gameNameRect.setOutlineThickness(5);}
+\DoxyCodeLine{00402\ \ \ \ \ gameNameRect.setFillColor(sf::Color::White);}
+\DoxyCodeLine{00403\ \ \ \ \ gameNameRect.setOutlineColor(sf::Color::Black);}
+\DoxyCodeLine{00404\ \ \ \ \ gameNameRect.setOrigin(gameNameRect.getSize().x\ /\ 2,\ gameNameRect.getSize().y\ /\ 2);}
+\DoxyCodeLine{00405\ \ \ \ \ gameNameRect.setPosition(gameSize.x\ /\ 2,\ gameSize.y\ *\ 0.4);}
+\DoxyCodeLine{00406\ \ \ \ \ }
+\DoxyCodeLine{00407\ \ \ \ \ gameNameText.Bold;}
+\DoxyCodeLine{00408\ \ \ \ \ gameNameText.setFont(m\_font);}
+\DoxyCodeLine{00409\ \ \ \ \ gameNameText.setCharacterSize(48u);}
+\DoxyCodeLine{00410\ \ \ \ \ sf::FloatRect\ gameNameTextRect\ =\ currentGridSize.getLocalBounds();}
+\DoxyCodeLine{00411\ \ \ \ \ gameNameText.setOrigin(gameNameTextRect.width\ /\ 2,\ gameNameTextRect.height\ /\ 2);}
+\DoxyCodeLine{00412\ \ \ \ \ gameNameText.setPosition(gameNameRect.getPosition().x\ -\/\ 120,\ gameNameRect.getPosition().y\ -\/\ 10);}
+\DoxyCodeLine{00413\ \ \ \ \ gameNameText.setFillColor(sf::Color::Black);}
+\DoxyCodeLine{00414\ }
+\DoxyCodeLine{00415\ }
+\DoxyCodeLine{00416\ \ \ \ \ chooseGameNameText.Bold;}
+\DoxyCodeLine{00417\ \ \ \ \ chooseGameNameText.setFont(m\_font);}
+\DoxyCodeLine{00418\ \ \ \ \ chooseGameNameText.setString(chooseGameName);}
+\DoxyCodeLine{00419\ \ \ \ \ chooseGameNameText.setCharacterSize(40u);}
+\DoxyCodeLine{00420\ }
+\DoxyCodeLine{00421\ \ \ \ \ \textcolor{comment}{//chooseGameNameText.setOrigin(chooseGameNameText.width\ /\ 2,\ gridSizeTextRect.height\ /\ 2);}}
+\DoxyCodeLine{00422\ \ \ \ \ chooseGameNameText.setPosition(gameNameRect.getPosition().x\ -\/\ 300,\ gameNameRect.getPosition().y\ -\/\ 100);}
+\DoxyCodeLine{00423\ \ \ \ \ chooseGameNameText.setFillColor(sf::Color::Black);}
+\DoxyCodeLine{00424\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_options_ab654c2246e3de2d396350947ff3ca1f8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_options_a79e01f933d0d684b36c44b69906ecef3}} 
+\index{GameOptions@{GameOptions}!setUpGameType@{setUpGameType}}
+\index{setUpGameType@{setUpGameType}!GameOptions@{GameOptions}}
+\doxysubsubsection{setUpGameType()}
+{\footnotesize\ttfamily void Game\+Options\+::set\+Up\+Game\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 426} of file \textbf{ Game\+Options.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00427\ \{}
+\DoxyCodeLine{00428\ \ \ \ \ gameTypeRect.setSize(sf::Vector2f(550,\ 75));}
+\DoxyCodeLine{00429\ \ \ \ \ gameTypeRect.setOutlineThickness(5);}
+\DoxyCodeLine{00430\ \ \ \ \ gameTypeRect.setFillColor(sf::Color(0,\ 0,\ 0,\ 0));}
+\DoxyCodeLine{00431\ \ \ \ \ gameTypeRect.setOrigin(gameTypeRect.getSize().x\ /\ 2,\ gameTypeRect.getSize().y\ /\ 2);}
+\DoxyCodeLine{00432\ \ \ \ \ gameTypeRect.setPosition(gameSize.x\ /\ 2,\ gameSize.y\ /\ 2);}
+\DoxyCodeLine{00433\ }
+\DoxyCodeLine{00434\ }
+\DoxyCodeLine{00435\ \ \ \ \ gameTypeText.Bold;}
+\DoxyCodeLine{00436\ \ \ \ \ gameTypeText.setFont(m\_font);}
+\DoxyCodeLine{00437\ \ \ \ \ gameTypeText.setString(chooseGameTypeString);}
+\DoxyCodeLine{00438\ \ \ \ \ gameTypeText.setCharacterSize(40u);}
+\DoxyCodeLine{00439\ \ \ \ \ sf::FloatRect\ gameTypeTextRect\ =\ gameTypeText.getLocalBounds();}
+\DoxyCodeLine{00440\ \ \ \ \ gameTypeText.setOrigin(gameTypeTextRect.width\ /\ 2,\ gameTypeTextRect.height\ /\ 2);}
+\DoxyCodeLine{00441\ \ \ \ \ gameTypeText.setPosition(gameTypeRect.getPosition().x,\ gameTypeRect.getPosition().y);}
+\DoxyCodeLine{00442\ \ \ \ \ gameTypeText.setFillColor(sf::Color::Black);}
+\DoxyCodeLine{00443\ }
+\DoxyCodeLine{00444\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_options_a79e01f933d0d684b36c44b69906ecef3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_options_a6d547c4528f009d1526c7e12ada8c207}} 
+\index{GameOptions@{GameOptions}!setupGridSizeBox@{setupGridSizeBox}}
+\index{setupGridSizeBox@{setupGridSizeBox}!GameOptions@{GameOptions}}
+\doxysubsubsection{setupGridSizeBox()}
+{\footnotesize\ttfamily void Game\+Options\+::setup\+Grid\+Size\+Box (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 216} of file \textbf{ Game\+Options.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00217\ \{}
+\DoxyCodeLine{00218\ \ \ \ \ gridSizeBox.setSize(sf::Vector2f(180,\ 65));}
+\DoxyCodeLine{00219\ \ \ \ \ gridSizeBox.setOutlineThickness(5);}
+\DoxyCodeLine{00220\ \ \ \ \ gridSizeBox.setFillColor(sf::Color::White);}
+\DoxyCodeLine{00221\ \ \ \ \ gridSizeBox.setOutlineColor(sf::Color::Black);}
+\DoxyCodeLine{00222\ \ \ \ \ gridSizeBox.setOrigin(gridSizeBox.getSize().x\ /\ 2,\ gridSizeBox.getSize().y\ /\ 2);}
+\DoxyCodeLine{00223\ \ \ \ \ gridSizeBox.setPosition(chooseGridSizeText.getPosition().x,\ chooseGridSizeText.getPosition().y\ +\ gridSizeBox.getSize().y\ +\ (offset\ *\ 2));}
+\DoxyCodeLine{00224\ }
+\DoxyCodeLine{00225\ \ \ \ \ currentGridSize.Bold;}
+\DoxyCodeLine{00226\ \ \ \ \ currentGridSize.setFont(m\_font);}
+\DoxyCodeLine{00227\ \ \ \ \ currentGridSize.setString(gridSizeNums[0]);}
+\DoxyCodeLine{00228\ \ \ \ \ currentGridSize.setCharacterSize(32u);}
+\DoxyCodeLine{00229\ \ \ \ \ sf::FloatRect\ numTextRect\ =\ currentGridSize.getLocalBounds();}
+\DoxyCodeLine{00230\ \ \ \ \ currentGridSize.setOrigin(numTextRect.width\ /\ 2,\ numTextRect.height\ /\ 2);}
+\DoxyCodeLine{00231\ \ \ \ \ currentGridSize.setPosition(gameSize.x\ /\ 2,\ gridSizeBox.getPosition().y);}
+\DoxyCodeLine{00232\ \ \ \ \ currentGridSize.setFillColor(sf::Color::Black);}
+\DoxyCodeLine{00233\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_options_a6d547c4528f009d1526c7e12ada8c207_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_options_aaff280d14b882ea21d7b6acfc78bf50d}} 
+\index{GameOptions@{GameOptions}!setupGTChoices@{setupGTChoices}}
+\index{setupGTChoices@{setupGTChoices}!GameOptions@{GameOptions}}
+\doxysubsubsection{setupGTChoices()}
+{\footnotesize\ttfamily void Game\+Options\+::setup\+GTChoices (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 446} of file \textbf{ Game\+Options.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00447\ \{}
+\DoxyCodeLine{00448\ \ \ \ \ \textcolor{keywordtype}{int}\ yPos\ =\ gameSize.y\ *\ 0.2;}
+\DoxyCodeLine{00449\ }
+\DoxyCodeLine{00450\ \ \ \ \ gameTypeChoiceSprite[0].setTexture(gtChoiceTex1);}
+\DoxyCodeLine{00451\ \ \ \ \ gameTypeChoiceSprite[1].setTexture(gtChoiceTex2);}
+\DoxyCodeLine{00452\ \ \ \ \ gameTypeChoiceSprite[2].setTexture(gtChoiceTex3);}
+\DoxyCodeLine{00453\ }
+\DoxyCodeLine{00454\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ MAX\_GAMETYPE\_CHOICES;\ i++)}
+\DoxyCodeLine{00455\ \ \ \ \ \{}
+\DoxyCodeLine{00456\ \ \ \ \ \ \ \ \ gameTypeChoiceSprite[i].scale(1,\ 1);}
+\DoxyCodeLine{00457\ \ \ \ \ \ \ \ \ gameTypeChoiceSprite[i].setOrigin(gameTypeChoiceSprite[i].getLocalBounds().width\ /\ 2,\ gameTypeChoiceSprite[i].getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00458\ \ \ \ \ \ \ \ \ gameTypeChoiceSprite[i].setPosition(gameSize.x\ *\ 0.15,\ yPos);}
+\DoxyCodeLine{00459\ \ \ \ \ \ \ \ \ gameTypeChoiceSprite[i].setScale(0.7,\ 0.7);}
+\DoxyCodeLine{00460\ \ \ \ \ \ \ \ \ yPos\ +=\ gameSize.y\ *\ 0.28;}
+\DoxyCodeLine{00461\ \ \ \ \ \}}
+\DoxyCodeLine{00462\ }
+\DoxyCodeLine{00463\ \ \ \ \ choiceSquare2.setSize(sf::Vector2f(gameTypeChoiceSprite[1].getGlobalBounds().width\ +\ 25,\ gameTypeChoiceSprite[1].getGlobalBounds().height\ -\/\ 50));}
+\DoxyCodeLine{00464\ \ \ \ \ choiceSquare2.setFillColor(sf::Color::Green);}
+\DoxyCodeLine{00465\ \ \ \ \ choiceSquare2.setPosition(-\/3000,\ -\/3000);}
+\DoxyCodeLine{00466\ \ \ \ \ choiceSquare2.setOrigin(choiceSquare.getGlobalBounds().width\ /\ 2,\ choiceSquare.getGlobalBounds().height\ /\ 2);}
+\DoxyCodeLine{00467\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_options_aaff280d14b882ea21d7b6acfc78bf50d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_options_a1e5cde10ce454d6d5442084657331d69}} 
+\index{GameOptions@{GameOptions}!setupText@{setupText}}
+\index{setupText@{setupText}!GameOptions@{GameOptions}}
+\doxysubsubsection{setupText()}
+{\footnotesize\ttfamily void Game\+Options\+::setup\+Text (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 142} of file \textbf{ Game\+Options.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00143\ \{}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00145\ \ \ \ \ continueButtonText.Bold;}
+\DoxyCodeLine{00146\ \ \ \ \ continueButtonText.setFont(m\_font);}
+\DoxyCodeLine{00147\ \ \ \ \ continueButtonText.setString(buttonText);}
+\DoxyCodeLine{00148\ \ \ \ \ continueButtonText.setCharacterSize(64u);}
+\DoxyCodeLine{00149\ \ \ \ \ sf::FloatRect\ continueTextRect\ =\ continueButtonText.getLocalBounds();}
+\DoxyCodeLine{00150\ \ \ \ \ continueButtonText.setOrigin(continueTextRect.width\ /\ 2,\ continueTextRect.height\ /\ 2);}
+\DoxyCodeLine{00151\ \ \ \ \ continueButtonText.setPosition(continueButton.getPosition().x,\ continueButton.getPosition().y);}
+\DoxyCodeLine{00152\ \ \ \ \ continueButtonText.setFillColor(sf::Color::Red);}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00156\ \ \ \ \ chooseGridSizeText.Bold;}
+\DoxyCodeLine{00157\ \ \ \ \ chooseGridSizeText.setFont(m\_font);}
+\DoxyCodeLine{00158\ \ \ \ \ chooseGridSizeText.setString(chooseGridSize);}
+\DoxyCodeLine{00159\ \ \ \ \ chooseGridSizeText.setCharacterSize(40u);}
+\DoxyCodeLine{00160\ \ \ \ \ gridSizeTextRect\ =\ chooseGridSizeText.getLocalBounds();}
+\DoxyCodeLine{00161\ \ \ \ \ chooseGridSizeText.setOrigin(gridSizeTextRect.width\ /\ 2,\ gridSizeTextRect.height\ /\ 2);}
+\DoxyCodeLine{00162\ \ \ \ \ chooseGridSizeText.setPosition(gameSize.x\ /\ 2,\ gameSize.y\ *\ 0.2);}
+\DoxyCodeLine{00163\ \ \ \ \ chooseGridSizeText.setFillColor(sf::Color::Black);}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00166\ \ \ \ \ chooseBGText.Bold;}
+\DoxyCodeLine{00167\ \ \ \ \ chooseBGText.setFont(m\_font);}
+\DoxyCodeLine{00168\ \ \ \ \ chooseBGText.setString(chooseBGString);}
+\DoxyCodeLine{00169\ \ \ \ \ chooseBGText.setCharacterSize(40u);}
+\DoxyCodeLine{00170\ \ \ \ \ chooseBGTextRect\ =\ chooseBGText.getLocalBounds();}
+\DoxyCodeLine{00171\ \ \ \ \ chooseBGText.setOrigin(chooseBGTextRect.width\ /\ 2,\ chooseBGTextRect.height\ /\ 2);}
+\DoxyCodeLine{00172\ \ \ \ \ chooseBGText.setPosition(gameSize.x\ /\ 2,\ gameSize.y\ *\ 0.65);}
+\DoxyCodeLine{00173\ \ \ \ \ chooseBGText.setFillColor(sf::Color::Black);}
+\DoxyCodeLine{00174\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_options_a1e5cde10ce454d6d5442084657331d69_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_options_a7599fb2bf7540e3c931732ecbca5ae86}} 
+\index{GameOptions@{GameOptions}!setupTriangles@{setupTriangles}}
+\index{setupTriangles@{setupTriangles}!GameOptions@{GameOptions}}
+\doxysubsubsection{setupTriangles()}
+{\footnotesize\ttfamily void Game\+Options\+::setup\+Triangles (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 235} of file \textbf{ Game\+Options.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00236\ \{}
+\DoxyCodeLine{00237\ }
+\DoxyCodeLine{00238\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ NUM\_OF\_TRIANGLES;\ i++)}
+\DoxyCodeLine{00239\ \ \ \ \ \{}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ triangles[i].setTexture(triangleTexture);}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ triangles[i].setScale(0.5,\ 0.5);}
+\DoxyCodeLine{00242\ \ \ \ \ \}}
+\DoxyCodeLine{00243\ }
+\DoxyCodeLine{00244\ \ \ \ \ \textcolor{comment}{//triangle0\ ::\ left\ of\ gridSize}}
+\DoxyCodeLine{00245\ \ \ \ \ \textcolor{comment}{//triangle1\ ::\ right\ of\ gridSize}}
+\DoxyCodeLine{00246\ \ \ \ \ triangles[0].setRotation(180);}
+\DoxyCodeLine{00247\ \ \ \ \ triangles[0].setPosition(gridSizeBox.getPosition().x\ -\/\ gridSizeBox.getOrigin().x\ -\/\ (offset\ *\ 3),\ gridSizeBox.getPosition().y\ \ +\ gridSizeBox.getOrigin().y);}
+\DoxyCodeLine{00248\ }
+\DoxyCodeLine{00249\ \ \ \ \ triangles[1].setPosition(gridSizeBox.getPosition().x\ +\ gridSizeBox.getOrigin().x\ +\ (offset\ *\ 3),\ gridSizeBox.getPosition().y\ -\/\ gridSizeBox.getOrigin().y\ -\/\ offset);}
+\DoxyCodeLine{00250\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_options_a7599fb2bf7540e3c931732ecbca5ae86_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_options_a75205b5be11b65a9238e3fe63a260b9e}} 
+\index{GameOptions@{GameOptions}!update@{update}}
+\index{update@{update}!GameOptions@{GameOptions}}
+\doxysubsubsection{update()}
+{\footnotesize\ttfamily void Game\+Options\+::update (\begin{DoxyParamCaption}\item[{sf\+::\+Time}]{t\+\_\+delta\+Time,  }\item[{sf\+::\+Render\+Window \&}]{t\+\_\+window,  }\item[{\textbf{ Game\+State} \&}]{t\+\_\+game\+State }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 77} of file \textbf{ Game\+Options.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00078\ \{}
+\DoxyCodeLine{00079\ \ \ \ \ mousePos\ =\ sf::Mouse::getPosition(t\_window);}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ mousePos.x\ <<\ "{}-\/-\/-\/-\/"{}\ <<\ mousePos.y\ <<\ std::endl;}}
+\DoxyCodeLine{00082\ \ \ \ \ checkForMousePos(t\_gameState);}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ gameNameText.setString(gameName);}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordflow}{if}\ (gameName\ !=\ \textcolor{stringliteral}{"{}"{}}\ \&\&\ showBGChoices)}
+\DoxyCodeLine{00087\ \ \ \ \ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ continueButtonText.setFillColor(sf::Color::Green);}
+\DoxyCodeLine{00089\ \ \ \ \ \}}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00091\ \ \ \ \ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ continueButtonText.setFillColor(sf::Color::Red);}
+\DoxyCodeLine{00093\ \ \ \ \ \}}
+\DoxyCodeLine{00094\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_options_a75205b5be11b65a9238e3fe63a260b9e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_options_a75205b5be11b65a9238e3fe63a260b9e_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\label{class_game_options_a9e9d3ba5b043aeddcab36124ba51ce69}} 
+\index{GameOptions@{GameOptions}!bgChoiceSprite@{bgChoiceSprite}}
+\index{bgChoiceSprite@{bgChoiceSprite}!GameOptions@{GameOptions}}
+\doxysubsubsection{bgChoiceSprite}
+{\footnotesize\ttfamily sf\+::\+Sprite Game\+Options\+::bg\+Choice\+Sprite[\textbf{ MAX\+\_\+\+BG\+\_\+\+CHOICES}]\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 109} of file \textbf{ Game\+Options.\+h}.
+
+\mbox{\label{class_game_options_a90afbd75394ffe1e51b4b604d730ee73}} 
+\index{GameOptions@{GameOptions}!bgChoiceTex1@{bgChoiceTex1}}
+\index{bgChoiceTex1@{bgChoiceTex1}!GameOptions@{GameOptions}}
+\doxysubsubsection{bgChoiceTex1}
+{\footnotesize\ttfamily sf\+::\+Texture Game\+Options\+::bg\+Choice\+Tex1\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 111} of file \textbf{ Game\+Options.\+h}.
+
+\mbox{\label{class_game_options_a929bd3851e9e81b7e500e4673ba3337c}} 
+\index{GameOptions@{GameOptions}!bgChoiceTex2@{bgChoiceTex2}}
+\index{bgChoiceTex2@{bgChoiceTex2}!GameOptions@{GameOptions}}
+\doxysubsubsection{bgChoiceTex2}
+{\footnotesize\ttfamily sf\+::\+Texture Game\+Options\+::bg\+Choice\+Tex2\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 112} of file \textbf{ Game\+Options.\+h}.
+
+\mbox{\label{class_game_options_ac14f12ab85c1ad0439435b7d2c1e2129}} 
+\index{GameOptions@{GameOptions}!bgChoiceTex3@{bgChoiceTex3}}
+\index{bgChoiceTex3@{bgChoiceTex3}!GameOptions@{GameOptions}}
+\doxysubsubsection{bgChoiceTex3}
+{\footnotesize\ttfamily sf\+::\+Texture Game\+Options\+::bg\+Choice\+Tex3\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 113} of file \textbf{ Game\+Options.\+h}.
+
+\mbox{\label{class_game_options_a133f106a46600c780938ba105ebb1a2c}} 
+\index{GameOptions@{GameOptions}!buttonText@{buttonText}}
+\index{buttonText@{buttonText}!GameOptions@{GameOptions}}
+\doxysubsubsection{buttonText}
+{\footnotesize\ttfamily std\+::string Game\+Options\+::button\+Text = \char`\"{}Continue\char`\"{}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 75} of file \textbf{ Game\+Options.\+h}.
+
+\mbox{\label{class_game_options_acf7bfeb1288c15817633af2f1e5c0790}} 
+\index{GameOptions@{GameOptions}!canType@{canType}}
+\index{canType@{canType}!GameOptions@{GameOptions}}
+\doxysubsubsection{canType}
+{\footnotesize\ttfamily bool Game\+Options\+::can\+Type}
+
+
+
+Definition at line \textbf{ 31} of file \textbf{ Game\+Options.\+h}.
+
+\mbox{\label{class_game_options_af42096c8e09e093782c17cf5702bd7ff}} 
+\index{GameOptions@{GameOptions}!choiceRectangles@{choiceRectangles}}
+\index{choiceRectangles@{choiceRectangles}!GameOptions@{GameOptions}}
+\doxysubsubsection{choiceRectangles}
+{\footnotesize\ttfamily sf\+::\+Rectangle\+Shape Game\+Options\+::choice\+Rectangles[2]\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 133} of file \textbf{ Game\+Options.\+h}.
+
+\mbox{\label{class_game_options_a72aa86e350f19434dc0720bb2fefe9a1}} 
+\index{GameOptions@{GameOptions}!choiceSquare@{choiceSquare}}
+\index{choiceSquare@{choiceSquare}!GameOptions@{GameOptions}}
+\doxysubsubsection{choiceSquare}
+{\footnotesize\ttfamily sf\+::\+Rectangle\+Shape Game\+Options\+::choice\+Square\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 115} of file \textbf{ Game\+Options.\+h}.
+
+\mbox{\label{class_game_options_acfaa17e72646bed4fd0071b294364ae5}} 
+\index{GameOptions@{GameOptions}!choiceSquare2@{choiceSquare2}}
+\index{choiceSquare2@{choiceSquare2}!GameOptions@{GameOptions}}
+\doxysubsubsection{choiceSquare2}
+{\footnotesize\ttfamily sf\+::\+Rectangle\+Shape Game\+Options\+::choice\+Square2\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 131} of file \textbf{ Game\+Options.\+h}.
+
+\mbox{\label{class_game_options_a27928b608c72890640c7e960874bd75f}} 
+\index{GameOptions@{GameOptions}!chooseBGRect@{chooseBGRect}}
+\index{chooseBGRect@{chooseBGRect}!GameOptions@{GameOptions}}
+\doxysubsubsection{chooseBGRect}
+{\footnotesize\ttfamily sf\+::\+Rectangle\+Shape Game\+Options\+::choose\+BGRect\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 102} of file \textbf{ Game\+Options.\+h}.
+
+\mbox{\label{class_game_options_acb9ad3a5e3f1b2cb7ceca801d1a86911}} 
+\index{GameOptions@{GameOptions}!chooseBGString@{chooseBGString}}
+\index{chooseBGString@{chooseBGString}!GameOptions@{GameOptions}}
+\doxysubsubsection{chooseBGString}
+{\footnotesize\ttfamily std\+::string Game\+Options\+::choose\+BGString = \char`\"{}Choose \textbf{ Game} Background!\char`\"{}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 104} of file \textbf{ Game\+Options.\+h}.
+
+\mbox{\label{class_game_options_a9e2ae22304f5bb2c4ee1e6c39364e9e2}} 
+\index{GameOptions@{GameOptions}!chooseBGText@{chooseBGText}}
+\index{chooseBGText@{chooseBGText}!GameOptions@{GameOptions}}
+\doxysubsubsection{chooseBGText}
+{\footnotesize\ttfamily sf\+::\+Text Game\+Options\+::choose\+BGText\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 101} of file \textbf{ Game\+Options.\+h}.
+
+\mbox{\label{class_game_options_a771d849b478b80d52862aabfb67dc34f}} 
+\index{GameOptions@{GameOptions}!chooseBGTextRect@{chooseBGTextRect}}
+\index{chooseBGTextRect@{chooseBGTextRect}!GameOptions@{GameOptions}}
+\doxysubsubsection{chooseBGTextRect}
+{\footnotesize\ttfamily sf\+::\+Float\+Rect Game\+Options\+::choose\+BGText\+Rect\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 103} of file \textbf{ Game\+Options.\+h}.
+
+\mbox{\label{class_game_options_af9022aec689875e0867421e4e53d1e34}} 
+\index{GameOptions@{GameOptions}!chooseGameName@{chooseGameName}}
+\index{chooseGameName@{chooseGameName}!GameOptions@{GameOptions}}
+\doxysubsubsection{chooseGameName}
+{\footnotesize\ttfamily std\+::string Game\+Options\+::choose\+Game\+Name = \char`\"{}What is the name of your game?\char`\"{}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 82} of file \textbf{ Game\+Options.\+h}.
+
+\mbox{\label{class_game_options_aabd0c40a14a7c26fbf0b17f9eeacb2aa}} 
+\index{GameOptions@{GameOptions}!chooseGameNameText@{chooseGameNameText}}
+\index{chooseGameNameText@{chooseGameNameText}!GameOptions@{GameOptions}}
+\doxysubsubsection{chooseGameNameText}
+{\footnotesize\ttfamily sf\+::\+Text Game\+Options\+::choose\+Game\+Name\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 81} of file \textbf{ Game\+Options.\+h}.
+
+\mbox{\label{class_game_options_a486964e4e3e10f4350791bf22de210d3}} 
+\index{GameOptions@{GameOptions}!chooseGameTypeString@{chooseGameTypeString}}
+\index{chooseGameTypeString@{chooseGameTypeString}!GameOptions@{GameOptions}}
+\doxysubsubsection{chooseGameTypeString}
+{\footnotesize\ttfamily sf\+::\+String Game\+Options\+::choose\+Game\+Type\+String = \char`\"{}Choose \textbf{ Game} Type!\char`\"{}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 118} of file \textbf{ Game\+Options.\+h}.
+
+\mbox{\label{class_game_options_a201c4b2745870bd9e8e7d85693d91dfc}} 
+\index{GameOptions@{GameOptions}!chooseGridSize@{chooseGridSize}}
+\index{chooseGridSize@{chooseGridSize}!GameOptions@{GameOptions}}
+\doxysubsubsection{chooseGridSize}
+{\footnotesize\ttfamily std\+::string Game\+Options\+::choose\+Grid\+Size = \char`\"{}What size for game grid?\char`\"{}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 79} of file \textbf{ Game\+Options.\+h}.
+
+\mbox{\label{class_game_options_ab8d14fb5299e706eea99b8f55fde2fd9}} 
+\index{GameOptions@{GameOptions}!chooseGridSizeText@{chooseGridSizeText}}
+\index{chooseGridSizeText@{chooseGridSizeText}!GameOptions@{GameOptions}}
+\doxysubsubsection{chooseGridSizeText}
+{\footnotesize\ttfamily sf\+::\+Text Game\+Options\+::choose\+Grid\+Size\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 78} of file \textbf{ Game\+Options.\+h}.
+
+\mbox{\label{class_game_options_a949d358a2f56a2c2f2986cb304806603}} 
+\index{GameOptions@{GameOptions}!chosenBG@{chosenBG}}
+\index{chosenBG@{chosenBG}!GameOptions@{GameOptions}}
+\doxysubsubsection{chosenBG}
+{\footnotesize\ttfamily int Game\+Options\+::chosen\+BG = 0}
+
+
+
+Definition at line \textbf{ 34} of file \textbf{ Game\+Options.\+h}.
+
+\mbox{\label{class_game_options_a5af656efbcb9fb79e54b2cc36c2d27e6}} 
+\index{GameOptions@{GameOptions}!chosenGT@{chosenGT}}
+\index{chosenGT@{chosenGT}!GameOptions@{GameOptions}}
+\doxysubsubsection{chosenGT}
+{\footnotesize\ttfamily int Game\+Options\+::chosen\+GT = 0}
+
+
+
+Definition at line \textbf{ 35} of file \textbf{ Game\+Options.\+h}.
+
+\mbox{\label{class_game_options_aa3b08869a8fee192881c734f1f710f2b}} 
+\index{GameOptions@{GameOptions}!continueButton@{continueButton}}
+\index{continueButton@{continueButton}!GameOptions@{GameOptions}}
+\doxysubsubsection{continueButton}
+{\footnotesize\ttfamily sf\+::\+Rectangle\+Shape Game\+Options\+::continue\+Button\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 62} of file \textbf{ Game\+Options.\+h}.
+
+\mbox{\label{class_game_options_ad3043387b37ab918a13c0035be3d42ad}} 
+\index{GameOptions@{GameOptions}!continueButtonText@{continueButtonText}}
+\index{continueButtonText@{continueButtonText}!GameOptions@{GameOptions}}
+\doxysubsubsection{continueButtonText}
+{\footnotesize\ttfamily sf\+::\+Text Game\+Options\+::continue\+Button\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 74} of file \textbf{ Game\+Options.\+h}.
+
+\mbox{\label{class_game_options_a7ed7a97f90a2eb91b36d03c73aefdee6}} 
+\index{GameOptions@{GameOptions}!currentGridSize@{currentGridSize}}
+\index{currentGridSize@{currentGridSize}!GameOptions@{GameOptions}}
+\doxysubsubsection{currentGridSize}
+{\footnotesize\ttfamily sf\+::\+Text Game\+Options\+::current\+Grid\+Size\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 91} of file \textbf{ Game\+Options.\+h}.
+
+\mbox{\label{class_game_options_aded48c505e76f87291506a5732c01267}} 
+\index{GameOptions@{GameOptions}!currentGridStringNum@{currentGridStringNum}}
+\index{currentGridStringNum@{currentGridStringNum}!GameOptions@{GameOptions}}
+\doxysubsubsection{currentGridStringNum}
+{\footnotesize\ttfamily int Game\+Options\+::current\+Grid\+String\+Num = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 93} of file \textbf{ Game\+Options.\+h}.
+
+\mbox{\label{class_game_options_a2541dfee8103f72b3c5b9aa23e3b5fcf}} 
+\index{GameOptions@{GameOptions}!gameName@{gameName}}
+\index{gameName@{gameName}!GameOptions@{GameOptions}}
+\doxysubsubsection{gameName}
+{\footnotesize\ttfamily std\+::string Game\+Options\+::game\+Name = \char`\"{}\char`\"{}}
+
+
+
+Definition at line \textbf{ 32} of file \textbf{ Game\+Options.\+h}.
+
+\mbox{\label{class_game_options_ab1d5b8610f708c7f051349e7c0e57fcb}} 
+\index{GameOptions@{GameOptions}!gameNameRect@{gameNameRect}}
+\index{gameNameRect@{gameNameRect}!GameOptions@{GameOptions}}
+\doxysubsubsection{gameNameRect}
+{\footnotesize\ttfamily sf\+::\+Rectangle\+Shape Game\+Options\+::game\+Name\+Rect\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 99} of file \textbf{ Game\+Options.\+h}.
+
+\mbox{\label{class_game_options_a2dbfa057589194d5aa3f91e906f20112}} 
+\index{GameOptions@{GameOptions}!gameNameText@{gameNameText}}
+\index{gameNameText@{gameNameText}!GameOptions@{GameOptions}}
+\doxysubsubsection{gameNameText}
+{\footnotesize\ttfamily sf\+::\+Text Game\+Options\+::game\+Name\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 97} of file \textbf{ Game\+Options.\+h}.
+
+\mbox{\label{class_game_options_a363e178fcf3fab09ecc72fd5e70ed0ad}} 
+\index{GameOptions@{GameOptions}!gameSize@{gameSize}}
+\index{gameSize@{gameSize}!GameOptions@{GameOptions}}
+\doxysubsubsection{gameSize}
+{\footnotesize\ttfamily sf\+::\+Vector2f Game\+Options\+::game\+Size\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 72} of file \textbf{ Game\+Options.\+h}.
+
+\mbox{\label{class_game_options_ad8d0c51f807ca7736dc60a238e65eaf4}} 
+\index{GameOptions@{GameOptions}!gameTypeChoiceSprite@{gameTypeChoiceSprite}}
+\index{gameTypeChoiceSprite@{gameTypeChoiceSprite}!GameOptions@{GameOptions}}
+\doxysubsubsection{gameTypeChoiceSprite}
+{\footnotesize\ttfamily sf\+::\+Sprite Game\+Options\+::game\+Type\+Choice\+Sprite[\textbf{ MAX\+\_\+\+GAMETYPE\+\_\+\+CHOICES}]\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 125} of file \textbf{ Game\+Options.\+h}.
+
+\mbox{\label{class_game_options_a76faadd55d7571db37338d7916b8f5ca}} 
+\index{GameOptions@{GameOptions}!gameTypeRect@{gameTypeRect}}
+\index{gameTypeRect@{gameTypeRect}!GameOptions@{GameOptions}}
+\doxysubsubsection{gameTypeRect}
+{\footnotesize\ttfamily sf\+::\+Rectangle\+Shape Game\+Options\+::game\+Type\+Rect\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 120} of file \textbf{ Game\+Options.\+h}.
+
+\mbox{\label{class_game_options_a8b4c56ed76c347c161d727dee5383645}} 
+\index{GameOptions@{GameOptions}!gameTypeText@{gameTypeText}}
+\index{gameTypeText@{gameTypeText}!GameOptions@{GameOptions}}
+\doxysubsubsection{gameTypeText}
+{\footnotesize\ttfamily sf\+::\+Text Game\+Options\+::game\+Type\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 117} of file \textbf{ Game\+Options.\+h}.
+
+\mbox{\label{class_game_options_a05774ca923c6314467a939c1f767235e}} 
+\index{GameOptions@{GameOptions}!gridSizeBox@{gridSizeBox}}
+\index{gridSizeBox@{gridSizeBox}!GameOptions@{GameOptions}}
+\doxysubsubsection{gridSizeBox}
+{\footnotesize\ttfamily sf\+::\+Rectangle\+Shape Game\+Options\+::grid\+Size\+Box\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 85} of file \textbf{ Game\+Options.\+h}.
+
+\mbox{\label{class_game_options_aadfd7fbc93040e9c899b344ec3d127a5}} 
+\index{GameOptions@{GameOptions}!gridSizeNums@{gridSizeNums}}
+\index{gridSizeNums@{gridSizeNums}!GameOptions@{GameOptions}}
+\doxysubsubsection{gridSizeNums}
+{\footnotesize\ttfamily std\+::string Game\+Options\+::grid\+Size\+Nums[\textbf{ NUM\+\_\+\+OF\+\_\+\+GRIDSIZES}] = \{ \char`\"{}30 x 30\char`\"{}, \char`\"{}40 x 40\char`\"{}, \char`\"{}50 x 50\char`\"{}, \char`\"{}60 x 60\char`\"{}, \char`\"{}70 x 70\char`\"{} \}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 92} of file \textbf{ Game\+Options.\+h}.
+
+\mbox{\label{class_game_options_a818bb19b6b08659255c5f601140836dd}} 
+\index{GameOptions@{GameOptions}!gridSizeTextRect@{gridSizeTextRect}}
+\index{gridSizeTextRect@{gridSizeTextRect}!GameOptions@{GameOptions}}
+\doxysubsubsection{gridSizeTextRect}
+{\footnotesize\ttfamily sf\+::\+Float\+Rect Game\+Options\+::grid\+Size\+Text\+Rect\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 87} of file \textbf{ Game\+Options.\+h}.
+
+\mbox{\label{class_game_options_ae93b5d000ec8a0a4e9b92050fd18dd65}} 
+\index{GameOptions@{GameOptions}!gtChoiceTex1@{gtChoiceTex1}}
+\index{gtChoiceTex1@{gtChoiceTex1}!GameOptions@{GameOptions}}
+\doxysubsubsection{gtChoiceTex1}
+{\footnotesize\ttfamily sf\+::\+Texture Game\+Options\+::gt\+Choice\+Tex1\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 127} of file \textbf{ Game\+Options.\+h}.
+
+\mbox{\label{class_game_options_aaf42e3858d7c748bc43f31d55e440e76}} 
+\index{GameOptions@{GameOptions}!gtChoiceTex2@{gtChoiceTex2}}
+\index{gtChoiceTex2@{gtChoiceTex2}!GameOptions@{GameOptions}}
+\doxysubsubsection{gtChoiceTex2}
+{\footnotesize\ttfamily sf\+::\+Texture Game\+Options\+::gt\+Choice\+Tex2\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 128} of file \textbf{ Game\+Options.\+h}.
+
+\mbox{\label{class_game_options_a8bee768abc5e3112f909b41b1ee778ac}} 
+\index{GameOptions@{GameOptions}!gtChoiceTex3@{gtChoiceTex3}}
+\index{gtChoiceTex3@{gtChoiceTex3}!GameOptions@{GameOptions}}
+\doxysubsubsection{gtChoiceTex3}
+{\footnotesize\ttfamily sf\+::\+Texture Game\+Options\+::gt\+Choice\+Tex3\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 129} of file \textbf{ Game\+Options.\+h}.
+
+\mbox{\label{class_game_options_a340ccc109f6e49b8d9e1fb7d5f2273e0}} 
+\index{GameOptions@{GameOptions}!m\_font@{m\_font}}
+\index{m\_font@{m\_font}!GameOptions@{GameOptions}}
+\doxysubsubsection{m\_font}
+{\footnotesize\ttfamily sf\+::\+Font Game\+Options\+::m\+\_\+font\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 64} of file \textbf{ Game\+Options.\+h}.
+
+\mbox{\label{class_game_options_a97b990a0ff1f1768c19a4e6dcbece9b4}} 
+\index{GameOptions@{GameOptions}!MAX\_BG\_CHOICES@{MAX\_BG\_CHOICES}}
+\index{MAX\_BG\_CHOICES@{MAX\_BG\_CHOICES}!GameOptions@{GameOptions}}
+\doxysubsubsection{MAX\_BG\_CHOICES}
+{\footnotesize\ttfamily const int Game\+Options\+::\+MAX\+\_\+\+BG\+\_\+\+CHOICES = 3\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 108} of file \textbf{ Game\+Options.\+h}.
+
+\mbox{\label{class_game_options_a802a68c22bcb6a0ec01972d8b3e7b15f}} 
+\index{GameOptions@{GameOptions}!MAX\_GAMETYPE\_CHOICES@{MAX\_GAMETYPE\_CHOICES}}
+\index{MAX\_GAMETYPE\_CHOICES@{MAX\_GAMETYPE\_CHOICES}!GameOptions@{GameOptions}}
+\doxysubsubsection{MAX\_GAMETYPE\_CHOICES}
+{\footnotesize\ttfamily const int Game\+Options\+::\+MAX\+\_\+\+GAMETYPE\+\_\+\+CHOICES = 3\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 124} of file \textbf{ Game\+Options.\+h}.
+
+\mbox{\label{class_game_options_ac8fdffe179634ab4ab59802068eeeca1}} 
+\index{GameOptions@{GameOptions}!mousePos@{mousePos}}
+\index{mousePos@{mousePos}!GameOptions@{GameOptions}}
+\doxysubsubsection{mousePos}
+{\footnotesize\ttfamily sf\+::\+Vector2i Game\+Options\+::mouse\+Pos\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 71} of file \textbf{ Game\+Options.\+h}.
+
+\mbox{\label{class_game_options_ab91ba7984c5b774862aaf7fef463b4f2}} 
+\index{GameOptions@{GameOptions}!NUM\_OF\_GRIDSIZES@{NUM\_OF\_GRIDSIZES}}
+\index{NUM\_OF\_GRIDSIZES@{NUM\_OF\_GRIDSIZES}!GameOptions@{GameOptions}}
+\doxysubsubsection{NUM\_OF\_GRIDSIZES}
+{\footnotesize\ttfamily const int Game\+Options\+::\+NUM\+\_\+\+OF\+\_\+\+GRIDSIZES = 5\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 89} of file \textbf{ Game\+Options.\+h}.
+
+\mbox{\label{class_game_options_a4c68dac5a256ef85d0eadb7cd187cb59}} 
+\index{GameOptions@{GameOptions}!NUM\_OF\_TRIANGLES@{NUM\_OF\_TRIANGLES}}
+\index{NUM\_OF\_TRIANGLES@{NUM\_OF\_TRIANGLES}!GameOptions@{GameOptions}}
+\doxysubsubsection{NUM\_OF\_TRIANGLES}
+{\footnotesize\ttfamily const int Game\+Options\+::\+NUM\+\_\+\+OF\+\_\+\+TRIANGLES = 2\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \textbf{ 24} of file \textbf{ Game\+Options.\+h}.
+
+\mbox{\label{class_game_options_a47c2d9fd67072662cd3bdc0d73306235}} 
+\index{GameOptions@{GameOptions}!offset@{offset}}
+\index{offset@{offset}!GameOptions@{GameOptions}}
+\doxysubsubsection{offset}
+{\footnotesize\ttfamily int Game\+Options\+::offset = 5\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 94} of file \textbf{ Game\+Options.\+h}.
+
+\mbox{\label{class_game_options_a17779fea08411ed8f0049a2d323aae9d}} 
+\index{GameOptions@{GameOptions}!showBGChoices@{showBGChoices}}
+\index{showBGChoices@{showBGChoices}!GameOptions@{GameOptions}}
+\doxysubsubsection{showBGChoices}
+{\footnotesize\ttfamily bool Game\+Options\+::show\+BGChoices = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 106} of file \textbf{ Game\+Options.\+h}.
+
+\mbox{\label{class_game_options_a6670505f353c9e0843ab078c78c83e4d}} 
+\index{GameOptions@{GameOptions}!showGameTypeChoices@{showGameTypeChoices}}
+\index{showGameTypeChoices@{showGameTypeChoices}!GameOptions@{GameOptions}}
+\doxysubsubsection{showGameTypeChoices}
+{\footnotesize\ttfamily bool Game\+Options\+::show\+Game\+Type\+Choices = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 122} of file \textbf{ Game\+Options.\+h}.
+
+\mbox{\label{class_game_options_ae4544ce734963ce27c86d3b38fe5452e}} 
+\index{GameOptions@{GameOptions}!triangles@{triangles}}
+\index{triangles@{triangles}!GameOptions@{GameOptions}}
+\doxysubsubsection{triangles}
+{\footnotesize\ttfamily sf\+::\+Sprite Game\+Options\+::triangles[\textbf{ NUM\+\_\+\+OF\+\_\+\+TRIANGLES}]}
+
+
+
+Definition at line \textbf{ 25} of file \textbf{ Game\+Options.\+h}.
+
+\mbox{\label{class_game_options_a6ca23791afe0278bb8e4bde863ee8ee6}} 
+\index{GameOptions@{GameOptions}!triangleTexture@{triangleTexture}}
+\index{triangleTexture@{triangleTexture}!GameOptions@{GameOptions}}
+\doxysubsubsection{triangleTexture}
+{\footnotesize\ttfamily sf\+::\+Texture Game\+Options\+::triangle\+Texture\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 84} of file \textbf{ Game\+Options.\+h}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+No\+Code\+Game\+Editor/\textbf{ Game\+Options.\+h}\item 
+No\+Code\+Game\+Editor/\textbf{ Game\+Options.\+cpp}\end{DoxyCompactItemize}

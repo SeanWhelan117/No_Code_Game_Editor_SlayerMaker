@@ -1,0 +1,288 @@
+\doxysection{Grid Class Reference}
+\label{class_grid}\index{Grid@{Grid}}
+
+
+{\ttfamily \#include $<$Grid.\+h$>$}
+
+
+
+Collaboration diagram for Grid\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=169pt]{class_grid__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Grid} (float t\+\_\+game\+Width, float t\+\_\+game\+Height)
+\item 
+void \textbf{ setup\+Grid} (int t\+\_\+grid\+Params)
+\item 
+void \textbf{ update} (sf\+::\+Time \&t\+\_\+delta\+Time)
+\item 
+void \textbf{ render} (sf\+::\+Render\+Window \&t\+\_\+window, int t\+\_\+grid\+Params)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::vector$<$ \textbf{ Cell} $>$ $>$ \textbf{ the\+Grid}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Cell} $\ast$ \textbf{ my\+Cell}
+\item 
+float \textbf{ game\+Width} = 0
+\item 
+float \textbf{ game\+Height} = 0
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const int \textbf{ MAX\+\_\+\+CELLS} = 900
+\item 
+static const int \textbf{ MAX\+\_\+\+ROWS} = 30
+\item 
+static const int \textbf{ MAX\+\_\+\+COLS} = 30
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \textbf{ 16} of file \textbf{ Grid.\+h}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\label{class_grid_a42e0c13c03283fc73d02a2bb1e389d88}} 
+\index{Grid@{Grid}!Grid@{Grid}}
+\index{Grid@{Grid}!Grid@{Grid}}
+\doxysubsubsection{Grid()}
+{\footnotesize\ttfamily Grid\+::\+Grid (\begin{DoxyParamCaption}\item[{float}]{t\+\_\+game\+Width,  }\item[{float}]{t\+\_\+game\+Height }\end{DoxyParamCaption})}
+
+\begin{DoxyAuthor}{Author}
+Sean Whelan 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022 @license Attribution-\/\+Non\+Commercial 4.\+0 International 
+\end{DoxyDate}
+
+
+Definition at line \textbf{ 8} of file \textbf{ Grid.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00009\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ gameWidth\ =\ t\_gameWidth;}
+\DoxyCodeLine{00011\ \ \ \ \ gameHeight\ =\ t\_gameHeight;}
+\DoxyCodeLine{00012\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{class_grid_a604f8ec3b2bf61669c99d37d8e84caff}} 
+\index{Grid@{Grid}!render@{render}}
+\index{render@{render}!Grid@{Grid}}
+\doxysubsubsection{render()}
+{\footnotesize\ttfamily void Grid\+::render (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{t\+\_\+window,  }\item[{int}]{t\+\_\+grid\+Params }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 54} of file \textbf{ Grid.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00055\ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{int}\ maxCols\ =\ t\_gridParams;}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{int}\ maxRows\ =\ t\_gridParams;}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ maxRows;\ i++)}
+\DoxyCodeLine{00060\ \ \ \ \ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ maxCols;\ j++)}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ t\_window.draw(theGrid.at(j).at(i).getCellShape());}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00065\ \ \ \ \ \}}
+\DoxyCodeLine{00066\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_grid_a604f8ec3b2bf61669c99d37d8e84caff_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_grid_a00b2ddec59a87cd876468cfa7c442275}} 
+\index{Grid@{Grid}!setupGrid@{setupGrid}}
+\index{setupGrid@{setupGrid}!Grid@{Grid}}
+\doxysubsubsection{setupGrid()}
+{\footnotesize\ttfamily void Grid\+::setup\+Grid (\begin{DoxyParamCaption}\item[{int}]{t\+\_\+grid\+Params }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 14} of file \textbf{ Grid.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{int}\ maxCells\ =\ t\_gridParams\ *\ t\_gridParams;}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{int}\ maxCols\ =\ t\_gridParams;}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{int}\ maxRows\ =\ t\_gridParams;}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ sf::Vector2f\ pos\{\ gameWidth\ /\ 3,gameHeight\ /\ 5\ \};}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ maxRows;\ i++)}
+\DoxyCodeLine{00022\ \ \ \ \ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ std::vector<Cell>\ tempVec;}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ theGrid.push\_back(tempVec);}
+\DoxyCodeLine{00025\ \ \ \ \ \}}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{int}\ tempCurrent\ =\ 0;}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ maxCells;\ i++)}
+\DoxyCodeLine{00028\ \ \ \ \ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ tempCurrent++;}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ x\ =\ i\ \%\ maxRows;}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ y\ =\ i\ /\ maxCols;}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ Cell\ tempCell;}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ tempCell.xPos\ =\ x;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ tempCell.yPos\ =\ y;}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ tempCell.setupCells();}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ tempCell.setPos(pos);}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ pos.x\ +=\ tempCell.getCellShape().getSize().x;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (tempCurrent\ ==\ maxCols)}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ pos.y\ +=\ tempCell.getCellShape().getSize().y;}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ pos.x\ =\ gameWidth\ /\ 3;}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ tempCurrent\ =\ 0;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ tempCell.setID(x\ +\ (y\ *\ maxRows));}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ theGrid.at(x).push\_back(tempCell);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \}}
+\DoxyCodeLine{00048\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=296pt]{class_grid_a00b2ddec59a87cd876468cfa7c442275_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_grid_a00b2ddec59a87cd876468cfa7c442275_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_grid_accde9315ea8c33942f3a4cdc544f161c}} 
+\index{Grid@{Grid}!update@{update}}
+\index{update@{update}!Grid@{Grid}}
+\doxysubsubsection{update()}
+{\footnotesize\ttfamily void Grid\+::update (\begin{DoxyParamCaption}\item[{sf\+::\+Time \&}]{t\+\_\+delta\+Time }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 50} of file \textbf{ Grid.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00051\ \{}
+\DoxyCodeLine{00052\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_grid_accde9315ea8c33942f3a4cdc544f161c_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\label{class_grid_aa8abac275dae39ca2af1e4c7df0f2815}} 
+\index{Grid@{Grid}!gameHeight@{gameHeight}}
+\index{gameHeight@{gameHeight}!Grid@{Grid}}
+\doxysubsubsection{gameHeight}
+{\footnotesize\ttfamily float Grid\+::game\+Height = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 26} of file \textbf{ Grid.\+h}.
+
+\mbox{\label{class_grid_a0ccb6a736a4b2b2e6b12f32cbc8752f6}} 
+\index{Grid@{Grid}!gameWidth@{gameWidth}}
+\index{gameWidth@{gameWidth}!Grid@{Grid}}
+\doxysubsubsection{gameWidth}
+{\footnotesize\ttfamily float Grid\+::game\+Width = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 25} of file \textbf{ Grid.\+h}.
+
+\mbox{\label{class_grid_ad3992195c8b17954a6ef4e1ea69b91f8}} 
+\index{Grid@{Grid}!MAX\_CELLS@{MAX\_CELLS}}
+\index{MAX\_CELLS@{MAX\_CELLS}!Grid@{Grid}}
+\doxysubsubsection{MAX\_CELLS}
+{\footnotesize\ttfamily const int Grid\+::\+MAX\+\_\+\+CELLS = 900\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 21} of file \textbf{ Grid.\+h}.
+
+\mbox{\label{class_grid_a13941897cc656f26768bc8b061da67db}} 
+\index{Grid@{Grid}!MAX\_COLS@{MAX\_COLS}}
+\index{MAX\_COLS@{MAX\_COLS}!Grid@{Grid}}
+\doxysubsubsection{MAX\_COLS}
+{\footnotesize\ttfamily const int Grid\+::\+MAX\+\_\+\+COLS = 30\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 23} of file \textbf{ Grid.\+h}.
+
+\mbox{\label{class_grid_af7997b63f0b006c9ce318f52cdfe0ca5}} 
+\index{Grid@{Grid}!MAX\_ROWS@{MAX\_ROWS}}
+\index{MAX\_ROWS@{MAX\_ROWS}!Grid@{Grid}}
+\doxysubsubsection{MAX\_ROWS}
+{\footnotesize\ttfamily const int Grid\+::\+MAX\+\_\+\+ROWS = 30\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 22} of file \textbf{ Grid.\+h}.
+
+\mbox{\label{class_grid_a645a68d566244b9ac453fec138442d03}} 
+\index{Grid@{Grid}!myCell@{myCell}}
+\index{myCell@{myCell}!Grid@{Grid}}
+\doxysubsubsection{myCell}
+{\footnotesize\ttfamily \textbf{ Cell}$\ast$ Grid\+::my\+Cell\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 18} of file \textbf{ Grid.\+h}.
+
+\mbox{\label{class_grid_afbfd1face9bb4b1cb8b86ee1853e6018}} 
+\index{Grid@{Grid}!theGrid@{theGrid}}
+\index{theGrid@{theGrid}!Grid@{Grid}}
+\doxysubsubsection{theGrid}
+{\footnotesize\ttfamily std\+::vector$<$std\+::vector$<$\textbf{ Cell}$>$ $>$ Grid\+::the\+Grid}
+
+
+
+Definition at line \textbf{ 29} of file \textbf{ Grid.\+h}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+No\+Code\+Game\+Editor/\textbf{ Grid.\+h}\item 
+No\+Code\+Game\+Editor/\textbf{ Grid.\+cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,423 @@
+\doxysection{Health\+Bar Class Reference}
+\label{class_health_bar}\index{HealthBar@{HealthBar}}
+
+
+{\ttfamily \#include $<$Health\+Bar.\+h$>$}
+
+
+
+Collaboration diagram for Health\+Bar\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=201pt]{class_health_bar__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Health\+Bar} ()
+\item 
+void \textbf{ load\+Files} ()
+\item 
+void \textbf{ update} (sf\+::\+Time t\+\_\+delta\+Time, bool t\+\_\+invincibility\+Active)
+\item 
+void \textbf{ render} (sf\+::\+Render\+Window \&t\+\_\+window)
+\item 
+void \textbf{ minus\+Health} (int t\+\_\+health)
+\item 
+void \textbf{ plus\+Health} (int t\+\_\+health)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Sprite \textbf{ health\+Bar\+Sprite}
+\item 
+sf\+::\+Rectangle\+Shape \textbf{ health\+Rect}
+\item 
+bool \textbf{ game\+Over} = false
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ setup\+Health\+Bar\+Sprite} ()
+\item 
+void \textbf{ setup\+Health\+Rect} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Texture \textbf{ health\+Bar\+Texture}
+\item 
+int \textbf{ full\+Health\+Bar} = 0
+\item 
+int \textbf{ current\+Health} = 0
+\item 
+sf\+::\+Clock \textbf{ colour\+Change\+Timer}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Sean Whelan 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022/23 @license Attribution-\/\+Non\+Commercial 4.\+0 International 
+\end{DoxyDate}
+
+
+Definition at line \textbf{ 12} of file \textbf{ Health\+Bar.\+h}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\label{class_health_bar_a05f694deecdc0399d9c5fb230493df05}} 
+\index{HealthBar@{HealthBar}!HealthBar@{HealthBar}}
+\index{HealthBar@{HealthBar}!HealthBar@{HealthBar}}
+\doxysubsubsection{HealthBar()}
+{\footnotesize\ttfamily Health\+Bar\+::\+Health\+Bar (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 3} of file \textbf{ Health\+Bar.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00004\ \{}
+\DoxyCodeLine{00005\ \ \ \ \ loadFiles();}
+\DoxyCodeLine{00006\ \ \ \ \ setupHealthBarSprite();}
+\DoxyCodeLine{00007\ \ \ \ \ setupHealthRect();}
+\DoxyCodeLine{00008\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_health_bar_a05f694deecdc0399d9c5fb230493df05_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{class_health_bar_a1f7016396a17570cc588468759b4f614}} 
+\index{HealthBar@{HealthBar}!loadFiles@{loadFiles}}
+\index{loadFiles@{loadFiles}!HealthBar@{HealthBar}}
+\doxysubsubsection{loadFiles()}
+{\footnotesize\ttfamily void Health\+Bar\+::load\+Files (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 10} of file \textbf{ Health\+Bar.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordflow}{if}\ (!healthBarTexture.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)healthbar.png"{}}))}
+\DoxyCodeLine{00013\ \ \ \ \ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ healthBarTexture\ (healthbar)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00016\ \ \ \ \ \}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{class_health_bar_a1f7016396a17570cc588468759b4f614_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_health_bar_a097f0c72a0cb38d4f5412a82269c76df}} 
+\index{HealthBar@{HealthBar}!minusHealth@{minusHealth}}
+\index{minusHealth@{minusHealth}!HealthBar@{HealthBar}}
+\doxysubsubsection{minusHealth()}
+{\footnotesize\ttfamily void Health\+Bar\+::minus\+Health (\begin{DoxyParamCaption}\item[{int}]{t\+\_\+health }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 78} of file \textbf{ Health\+Bar.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00079\ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordflow}{if}\ (currentHealth\ -\/\ t\_health\ >\ 0)}
+\DoxyCodeLine{00081\ \ \ \ \ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ currentHealth\ -\/=\ t\_health;}
+\DoxyCodeLine{00083\ \ \ \ \ \}}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00085\ \ \ \ \ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ currentHealth\ =\ 0;}
+\DoxyCodeLine{00087\ \ \ \ \ \}}
+\DoxyCodeLine{00088\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_health_bar_a097f0c72a0cb38d4f5412a82269c76df_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_health_bar_a736449535fdea9af3b3791ad9ffdf0c2}} 
+\index{HealthBar@{HealthBar}!plusHealth@{plusHealth}}
+\index{plusHealth@{plusHealth}!HealthBar@{HealthBar}}
+\doxysubsubsection{plusHealth()}
+{\footnotesize\ttfamily void Health\+Bar\+::plus\+Health (\begin{DoxyParamCaption}\item[{int}]{t\+\_\+health }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 90} of file \textbf{ Health\+Bar.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00091\ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordflow}{if}\ (currentHealth\ +\ t\_health\ <=\ fullHealthBar)}
+\DoxyCodeLine{00093\ \ \ \ \ \{}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ currentHealth\ +=\ t\_health;}
+\DoxyCodeLine{00095\ \ \ \ \ \}}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00097\ \ \ \ \ \{}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ currentHealth\ =\ fullHealthBar;}
+\DoxyCodeLine{00099\ \ \ \ \ \}}
+\DoxyCodeLine{00100\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_health_bar_a736449535fdea9af3b3791ad9ffdf0c2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_health_bar_a3713931bad91930613d46408aaaf93d5}} 
+\index{HealthBar@{HealthBar}!render@{render}}
+\index{render@{render}!HealthBar@{HealthBar}}
+\doxysubsubsection{render()}
+{\footnotesize\ttfamily void Health\+Bar\+::render (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{t\+\_\+window }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 55} of file \textbf{ Health\+Bar.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00056\ \{}
+\DoxyCodeLine{00057\ \ \ \ \ t\_window.draw(healthRect);}
+\DoxyCodeLine{00058\ \ \ \ \ t\_window.draw(healthBarSprite);}
+\DoxyCodeLine{00059\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_health_bar_a3713931bad91930613d46408aaaf93d5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_health_bar_a1700e6f1b0d7505a0b3021bec5aad1e8}} 
+\index{HealthBar@{HealthBar}!setupHealthBarSprite@{setupHealthBarSprite}}
+\index{setupHealthBarSprite@{setupHealthBarSprite}!HealthBar@{HealthBar}}
+\doxysubsubsection{setupHealthBarSprite()}
+{\footnotesize\ttfamily void Health\+Bar\+::setup\+Health\+Bar\+Sprite (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 61} of file \textbf{ Health\+Bar.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00062\ \{}
+\DoxyCodeLine{00063\ \ \ \ \ healthBarSprite.setTexture(healthBarTexture);}
+\DoxyCodeLine{00064\ \ \ \ \ healthBarSprite.setPosition(100,\ 100);}
+\DoxyCodeLine{00065\ \ \ \ \ healthBarSprite.setOrigin(healthBarSprite.getLocalBounds().width\ /\ 2,\ healthBarSprite.getLocalBounds().height);}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_health_bar_a1700e6f1b0d7505a0b3021bec5aad1e8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_health_bar_abce1eb50ce669ce8b3f0c3ffff8702e1}} 
+\index{HealthBar@{HealthBar}!setupHealthRect@{setupHealthRect}}
+\index{setupHealthRect@{setupHealthRect}!HealthBar@{HealthBar}}
+\doxysubsubsection{setupHealthRect()}
+{\footnotesize\ttfamily void Health\+Bar\+::setup\+Health\+Rect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 69} of file \textbf{ Health\+Bar.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00070\ \{}
+\DoxyCodeLine{00071\ \ \ \ \ healthRect.setFillColor(sf::Color::Red);}
+\DoxyCodeLine{00072\ \ \ \ \ fullHealthBar\ =\ healthBarSprite.getGlobalBounds().width\ -\/\ 45;}
+\DoxyCodeLine{00073\ \ \ \ \ currentHealth\ =\ fullHealthBar;}
+\DoxyCodeLine{00074\ \ \ \ \ healthRect.setSize(sf::Vector2f(fullHealthBar,\ 36));}
+\DoxyCodeLine{00075\ \ \ \ \ healthRect.setOrigin(healthRect.getLocalBounds().width\ /\ 2,\ healthRect.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00076\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_health_bar_abce1eb50ce669ce8b3f0c3ffff8702e1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_health_bar_a495f05febdba14f6a8846c85d262456f}} 
+\index{HealthBar@{HealthBar}!update@{update}}
+\index{update@{update}!HealthBar@{HealthBar}}
+\doxysubsubsection{update()}
+{\footnotesize\ttfamily void Health\+Bar\+::update (\begin{DoxyParamCaption}\item[{sf\+::\+Time}]{t\+\_\+delta\+Time,  }\item[{bool}]{t\+\_\+invincibility\+Active }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 20} of file \textbf{ Health\+Bar.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ healthRect.setSize(sf::Vector2f(currentHealth,\ 36));}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Keyboard::isKeyPressed(sf::Keyboard::U))}
+\DoxyCodeLine{00025\ \ \ \ \ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ minusHealth(5);}
+\DoxyCodeLine{00027\ \ \ \ \ \}}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Keyboard::isKeyPressed(sf::Keyboard::P))}
+\DoxyCodeLine{00029\ \ \ \ \ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ plusHealth(5);}
+\DoxyCodeLine{00031\ \ \ \ \ \}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordflow}{if}\ (currentHealth\ <=\ 0)}
+\DoxyCodeLine{00034\ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}GameOver"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ gameOver\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00037\ \ \ \ \ \}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordflow}{if}\ (t\_invincibilityActive\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{00040\ \ \ \ \ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (colourChangeTimer.getElapsedTime().asMilliseconds()\ >=\ 500.0f)}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ colourChangeTimer.restart();}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Color\ colour(std::rand()\ \%\ 256,\ std::rand()\ \%\ 256,\ std::rand()\ \%\ 256);}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ healthRect.setFillColor(colour);}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00048\ \ \ \ \ \}}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00050\ \ \ \ \ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ healthRect.setFillColor(sf::Color::Red);}
+\DoxyCodeLine{00052\ \ \ \ \ \}}
+\DoxyCodeLine{00053\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=330pt]{class_health_bar_a495f05febdba14f6a8846c85d262456f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_health_bar_a495f05febdba14f6a8846c85d262456f_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\label{class_health_bar_a9ff1e826df62460f4aebdd90ad11521b}} 
+\index{HealthBar@{HealthBar}!colourChangeTimer@{colourChangeTimer}}
+\index{colourChangeTimer@{colourChangeTimer}!HealthBar@{HealthBar}}
+\doxysubsubsection{colourChangeTimer}
+{\footnotesize\ttfamily sf\+::\+Clock Health\+Bar\+::colour\+Change\+Timer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 42} of file \textbf{ Health\+Bar.\+h}.
+
+\mbox{\label{class_health_bar_a6865cbb322a616674c9d16e7e15d2a29}} 
+\index{HealthBar@{HealthBar}!currentHealth@{currentHealth}}
+\index{currentHealth@{currentHealth}!HealthBar@{HealthBar}}
+\doxysubsubsection{currentHealth}
+{\footnotesize\ttfamily int Health\+Bar\+::current\+Health = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 40} of file \textbf{ Health\+Bar.\+h}.
+
+\mbox{\label{class_health_bar_a3585b26f215da99d9c29e5c214254b8c}} 
+\index{HealthBar@{HealthBar}!fullHealthBar@{fullHealthBar}}
+\index{fullHealthBar@{fullHealthBar}!HealthBar@{HealthBar}}
+\doxysubsubsection{fullHealthBar}
+{\footnotesize\ttfamily int Health\+Bar\+::full\+Health\+Bar = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 39} of file \textbf{ Health\+Bar.\+h}.
+
+\mbox{\label{class_health_bar_a8b367e45ae203e56a0dd1c6dfb32538e}} 
+\index{HealthBar@{HealthBar}!gameOver@{gameOver}}
+\index{gameOver@{gameOver}!HealthBar@{HealthBar}}
+\doxysubsubsection{gameOver}
+{\footnotesize\ttfamily bool Health\+Bar\+::game\+Over = false}
+
+
+
+Definition at line \textbf{ 31} of file \textbf{ Health\+Bar.\+h}.
+
+\mbox{\label{class_health_bar_ad0d29f6dec6262071e38fa9f403bf3b7}} 
+\index{HealthBar@{HealthBar}!healthBarSprite@{healthBarSprite}}
+\index{healthBarSprite@{healthBarSprite}!HealthBar@{HealthBar}}
+\doxysubsubsection{healthBarSprite}
+{\footnotesize\ttfamily sf\+::\+Sprite Health\+Bar\+::health\+Bar\+Sprite}
+
+
+
+Definition at line \textbf{ 28} of file \textbf{ Health\+Bar.\+h}.
+
+\mbox{\label{class_health_bar_a8146b8da662ae77abd3c6d8ea248dc34}} 
+\index{HealthBar@{HealthBar}!healthBarTexture@{healthBarTexture}}
+\index{healthBarTexture@{healthBarTexture}!HealthBar@{HealthBar}}
+\doxysubsubsection{healthBarTexture}
+{\footnotesize\ttfamily sf\+::\+Texture Health\+Bar\+::health\+Bar\+Texture\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 38} of file \textbf{ Health\+Bar.\+h}.
+
+\mbox{\label{class_health_bar_a5691114d5e8b79a5a73cfe05a6eb26c9}} 
+\index{HealthBar@{HealthBar}!healthRect@{healthRect}}
+\index{healthRect@{healthRect}!HealthBar@{HealthBar}}
+\doxysubsubsection{healthRect}
+{\footnotesize\ttfamily sf\+::\+Rectangle\+Shape Health\+Bar\+::health\+Rect}
+
+
+
+Definition at line \textbf{ 29} of file \textbf{ Health\+Bar.\+h}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+No\+Code\+Game\+Editor/\textbf{ Health\+Bar.\+h}\item 
+No\+Code\+Game\+Editor/\textbf{ Health\+Bar.\+cpp}\end{DoxyCompactItemize}

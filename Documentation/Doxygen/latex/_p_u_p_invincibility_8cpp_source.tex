@@ -1,0 +1,37 @@
+\doxysection{PUPInvincibility.\+cpp}
+\label{_p_u_p_invincibility_8cpp_source}\index{NoCodeGameEditor/PUPInvincibility.cpp@{NoCodeGameEditor/PUPInvincibility.cpp}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}PUPInvincibility.h"{}}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ PUPInvincibility::PUPInvincibility(sf::Vector2f\ t\_InvincibilityPos,\ TextureManager\&\ textureManager)\ :\ invincibilityPos(t\_InvincibilityPos),\ m\_textureManager(textureManager)}
+\DoxyCodeLine{00004\ \{}
+\DoxyCodeLine{00005\ \ \ \ \ loadFiles();}
+\DoxyCodeLine{00006\ \ \ \ \ setupInvincibility();}
+\DoxyCodeLine{00007\ \}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keywordtype}{void}\ PUPInvincibility::loadFiles()}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ invincibilityTexture\ =\ std::make\_shared<sf::Texture>(m\_textureManager.getTexture(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)invincibility.png"{}}));}
+\DoxyCodeLine{00012\ \ \ \ \ invincibilitySprite.setTexture(*invincibilityTexture);}
+\DoxyCodeLine{00013\ \}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keywordtype}{void}\ PUPInvincibility::setupInvincibility()}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ invincibilitySprite.setOrigin(invincibilitySprite.getLocalBounds().width\ /\ 2,\ invincibilitySprite.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00018\ \ \ \ \ invincibilitySprite.setPosition(sf::Vector2f(invincibilityPos.x\ +\ 15,\ invincibilityPos.y\ +\ 15));}
+\DoxyCodeLine{00019\ \ \ \ \ invincibilitySprite.setScale(0.25,\ 0.25);}
+\DoxyCodeLine{00020\ \}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keywordtype}{void}\ PUPInvincibility::render(sf::RenderWindow\&\ t\_window)}
+\DoxyCodeLine{00023\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ t\_window.draw(invincibilitySprite);}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ sf::Sprite\&\ PUPInvincibility::getInvincibility()}
+\DoxyCodeLine{00029\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordflow}{return}\ invincibilitySprite;}
+\DoxyCodeLine{00031\ \}}
+
+\end{DoxyCode}

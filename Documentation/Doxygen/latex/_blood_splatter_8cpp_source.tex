@@ -1,0 +1,39 @@
+\doxysection{Blood\+Splatter.\+cpp}
+\label{_blood_splatter_8cpp_source}\index{NoCodeGameEditor/BloodSplatter.cpp@{NoCodeGameEditor/BloodSplatter.cpp}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}BloodSplatter.h"{}}}
+\DoxyCodeLine{00009\ BloodSplatter::BloodSplatter(sf::Vector2f\ t\_bloodPos,\ TextureManager\&\ textureManager)\ :\ bloodPos(t\_bloodPos),\ m\_textureManager(textureManager)}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ loadFiles();}
+\DoxyCodeLine{00012\ \ \ \ \ setupSplatter(t\_bloodPos);}
+\DoxyCodeLine{00013\ \}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00020\ \textcolor{keywordtype}{void}\ BloodSplatter::loadFiles()}
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ bloodSplatterTexture\ =\ std::make\_shared<sf::Texture>(m\_textureManager.getTexture(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)BloodSplatter.png"{}}));}
+\DoxyCodeLine{00023\ \ \ \ \ bloodSplatterSprite.setTexture(*bloodSplatterTexture);}
+\DoxyCodeLine{00024\ \}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00033\ \textcolor{keywordtype}{void}\ BloodSplatter::setupSplatter(sf::Vector2f\ t\_pos)}
+\DoxyCodeLine{00034\ \{}
+\DoxyCodeLine{00035\ \ \ \ \ bloodSplatterSprite.setScale(0.3,\ 0.3);}
+\DoxyCodeLine{00036\ \ \ \ \ bloodSplatterSprite.setOrigin(bloodSplatterSprite.getGlobalBounds().width\ /\ 2,\ bloodSplatterSprite.getGlobalBounds().height\ /\ 2);}
+\DoxyCodeLine{00037\ \ \ \ \ bloodSplatterSprite.setPosition(t\_pos.x,\ t\_pos.y);}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{int}\ randRotation\ =\ rand()\ \%\ 359;}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ bloodSplatterSprite.setRotation(randRotation);}
+\DoxyCodeLine{00041\ \}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00049\ \textcolor{keywordtype}{void}\ BloodSplatter::render(sf::RenderWindow\&\ t\_window)}
+\DoxyCodeLine{00050\ \{}
+\DoxyCodeLine{00051\ \ \ \ \ bloodSplatterSprite.setColor(sf::Color(bloodSplatterSprite.getColor().r,\ bloodSplatterSprite.getColor().g,\ bloodSplatterSprite.getColor().b,\ bloodSplatterSprite.getColor().a\ -\/0.000001));}
+\DoxyCodeLine{00052\ \ \ \ \ t\_window.draw(bloodSplatterSprite);}
+\DoxyCodeLine{00053\ \}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00059\ sf::Sprite\&\ BloodSplatter::getSplatter()}
+\DoxyCodeLine{00060\ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordflow}{return}\ bloodSplatterSprite;}
+\DoxyCodeLine{00062\ \}}
+
+\end{DoxyCode}

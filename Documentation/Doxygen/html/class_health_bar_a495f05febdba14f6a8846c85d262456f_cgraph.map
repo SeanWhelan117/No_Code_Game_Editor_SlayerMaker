@@ -1,0 +1,5 @@
+<map id="HealthBar::update" name="HealthBar::update">
+<area shape="rect" id="node1" title=" " alt="" coords="5,31,132,56"/>
+<area shape="rect" id="node2" href="$class_health_bar.html#a097f0c72a0cb38d4f5412a82269c76df" title=" " alt="" coords="180,5,339,31"/>
+<area shape="rect" id="node3" href="$class_health_bar.html#a736449535fdea9af3b3791ad9ffdf0c2" title=" " alt="" coords="185,55,333,80"/>
+</map>

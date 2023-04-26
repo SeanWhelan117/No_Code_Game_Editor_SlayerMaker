@@ -1,0 +1,100 @@
+\doxysection{Choice\+Bar.\+h}
+\label{_choice_bar_8h_source}\index{NoCodeGameEditor/ChoiceBar.h@{NoCodeGameEditor/ChoiceBar.h}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}TextureManager.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }ChoiceBar}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00023\ \ \ \ \ ChoiceBar(\textcolor{keywordtype}{float}\ t\_gameWidth,\ \textcolor{keywordtype}{float}\ t\_gameHeight);}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ loadFiles();}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ setupSprites();}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ update(sf::Time\ t\_deltaTime,\ sf::RenderWindow\&\ t\_window,\ std::string\ t\_currentMode,\ \textcolor{keywordtype}{int}\ t\_chosenGameType);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ render(sf::RenderWindow\&\ t\_window);}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{int}\ currentChoice\ =\ 0;}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{bool}\ choiceMade\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00059\ \ \ \ \ std::string\ currentMode\ =\ \textcolor{stringliteral}{"{}WALLS"{}};}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ }
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{void}\ checkForMousePosAndClick(sf::RenderWindow\&\ t\_window,\ sf::Vector2f\ t\_mousePos);}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{void}\ processMouseClick(sf::FloatRect\ t\_object,\ sf::Vector2f\ t\_mousePos,\ \textcolor{keywordtype}{int}\ t\_numLoops);}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{void}\ resetTools(\textcolor{keywordtype}{int}\ t\_current);\ \textcolor{comment}{//small\ function\ which\ is\ called\ to\ reset\ buttons\ after\ they\ are\ not\ being\ hoverd\ over\ anymore}}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{void}\ changeTools(\textcolor{keywordtype}{int}\ t\_current);}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordtype}{void}\ setToolPosForView(sf::RenderWindow\&\ t\_window);}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordtype}{float}\ gameWidth\ =\ 0;}
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordtype}{float}\ gameHeight\ =\ 0;}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \ \ \ \ sf::Sprite\ choiceBarSprite;}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ MAX\_CHOICES\ =\ 3;}
+\DoxyCodeLine{00107\ \ \ \ \ sf::Sprite\ wallChoiceSprite[MAX\_CHOICES];}
+\DoxyCodeLine{00108\ \ \ \ \ sf::Sprite\ enemyChoiceSprite[MAX\_CHOICES];}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \ \ \ \ sf::Texture\ choiceBarTexture;}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \ \ \ \ sf::Texture\ wallChoiceTex1;}
+\DoxyCodeLine{00113\ \ \ \ \ sf::Texture\ wallChoiceTex2;}
+\DoxyCodeLine{00114\ \ \ \ \ sf::Texture\ wallChoiceTex3;}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \ \ \ \ sf::Texture\ enemyChoiceTex1;}
+\DoxyCodeLine{00117\ \ \ \ \ sf::Texture\ enemyChoiceTex2;}
+\DoxyCodeLine{00118\ \ \ \ \ sf::Texture\ enemyChoiceTex3;}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \ \ \ \ sf::Texture\ coinTexture;}
+\DoxyCodeLine{00121\ \ \ \ \ sf::Texture\ doorTexture;}
+\DoxyCodeLine{00122\ \ \ \ \ sf::Texture\ monumentTexture;}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ sf::Texture\ medkitTexture;}
+\DoxyCodeLine{00125\ \ \ \ \ sf::Texture\ explosiveTexture;}
+\DoxyCodeLine{00126\ \ \ \ \ sf::Texture\ gunTexture;}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \ \ \ \ sf::Texture\ nukeTexture;}
+\DoxyCodeLine{00129\ \ \ \ \ sf::Texture\ invincibilityTexture;}
+\DoxyCodeLine{00130\ \ \ \ \ sf::Texture\ invisibilityTexture;}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ MAX\_OBJECTIVE\_CHOICES\ =\ 2;}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ \ \ \ \ sf::Sprite\ coinSprite;}
+\DoxyCodeLine{00135\ \ \ \ \ }
+\DoxyCodeLine{00136\ \ \ \ \ sf::Sprite\ doorSprite;}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00138\ \ \ \ \ sf::Sprite\ monumentSprite;}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \ \ \ \ sf::Sprite\ medkitSprite;}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \ \ \ \ sf::Sprite\ gunSprite;}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \ \ \ \ sf::Sprite\ explosiveSprite;}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ \ \ \ \ sf::Sprite\ nukeSprite;}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \ \ \ \ sf::Sprite\ invincibilitySprite;}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00150\ \ \ \ \ sf::Sprite\ invisibilitySprite;}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{keywordtype}{int}\ chosenGT\ =\ 0;}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00155\ \};}
+\DoxyCodeLine{00156\ }
+
+\end{DoxyCode}

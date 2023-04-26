@@ -1,0 +1,481 @@
+\doxysection{Game\+Options.\+cpp}
+\label{_game_options_8cpp_source}\index{NoCodeGameEditor/GameOptions.cpp@{NoCodeGameEditor/GameOptions.cpp}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}GameOptions.h"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ GameOptions::GameOptions(\textcolor{keywordtype}{float}\ t\_gameWidth,\ \textcolor{keywordtype}{float}\ t\_gameHeight)}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \ \ \ \ gameSize.x\ =\ t\_gameWidth;}
+\DoxyCodeLine{00013\ \ \ \ \ gameSize.y\ =\ t\_gameHeight;}
+\DoxyCodeLine{00014\ \ \ \ \ loadFiles();}
+\DoxyCodeLine{00015\ \ \ \ \ setupContinueButton();}
+\DoxyCodeLine{00016\ \ \ \ \ setupText();}
+\DoxyCodeLine{00017\ \ \ \ \ setupChooseBackgroundRect();}
+\DoxyCodeLine{00018\ \ \ \ \ setupBGChoices();}
+\DoxyCodeLine{00019\ \ \ \ \ setupGridSizeBox();}
+\DoxyCodeLine{00020\ \ \ \ \ setupTriangles();}
+\DoxyCodeLine{00021\ \ \ \ \ setUpGameName();}
+\DoxyCodeLine{00022\ \ \ \ \ setUpGameType();}
+\DoxyCodeLine{00023\ \ \ \ \ setupGTChoices();}
+\DoxyCodeLine{00024\ \ \ \ \ setUpChoiceRectangles();}
+\DoxyCodeLine{00025\ \}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keywordtype}{void}\ GameOptions::loadFiles()}
+\DoxyCodeLine{00028\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordflow}{if}\ (!m\_font.loadFromFile(\textcolor{stringliteral}{"{}./ASSETS/FONTS/NewYork.ttf"{}}))}
+\DoxyCodeLine{00030\ \ \ \ \ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Error\ loading\ font..."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00032\ \ \ \ \ \}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordflow}{if}\ (!triangleTexture.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)triangle.png"{}}))}
+\DoxyCodeLine{00035\ \ \ \ \ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ triangle\ (triangle)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00038\ \ \ \ \ \}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordflow}{if}\ (!bgChoiceTex1.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)BACKGROUNDS\(\backslash\)\(\backslash\)BGGrass.png"{}}))}
+\DoxyCodeLine{00041\ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ bgChoiceTex1\ (BGGrass)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00044\ \ \ \ \ \}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordflow}{if}\ (!bgChoiceTex2.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)BACKGROUNDS\(\backslash\)\(\backslash\)BGSand.png"{}}))}
+\DoxyCodeLine{00047\ \ \ \ \ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ bgChoiceTex2\ (BGSand)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00050\ \ \ \ \ \}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordflow}{if}\ (!bgChoiceTex3.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)BACKGROUNDS\(\backslash\)\(\backslash\)BGSnow.png"{}}))}
+\DoxyCodeLine{00053\ \ \ \ \ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ bgChoiceTex3\ (BGSnow)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00056\ \ \ \ \ \}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordflow}{if}\ (!gtChoiceTex1.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)GAMETYPES\(\backslash\)\(\backslash\)swarmMode.png"{}}))}
+\DoxyCodeLine{00059\ \ \ \ \ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ gtChoiceTex1\ (swarmMode)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00062\ \ \ \ \ \}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordflow}{if}\ (!gtChoiceTex2.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)GAMETYPES\(\backslash\)\(\backslash\)ProtectAndServeMode.png"{}}))}
+\DoxyCodeLine{00065\ \ \ \ \ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ gtChoiceTex2\ (ProtectAndServeMode)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00068\ \ \ \ \ \}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordflow}{if}\ (!gtChoiceTex3.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)GAMETYPES\(\backslash\)\(\backslash\)CollectAndRunMode.png"{}}))}
+\DoxyCodeLine{00071\ \ \ \ \ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ gtChoiceTex3\ (CollectAndRunMode)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00074\ \ \ \ \ \}}
+\DoxyCodeLine{00075\ \}}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \textcolor{keywordtype}{void}\ GameOptions::update(sf::Time\ t\_deltaTime,\ sf::RenderWindow\&\ t\_window,\ GameState\&\ t\_gameState)}
+\DoxyCodeLine{00078\ \{}
+\DoxyCodeLine{00079\ \ \ \ \ mousePos\ =\ sf::Mouse::getPosition(t\_window);}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ mousePos.x\ <<\ "{}-\/-\/-\/-\/"{}\ <<\ mousePos.y\ <<\ std::endl;}}
+\DoxyCodeLine{00082\ \ \ \ \ checkForMousePos(t\_gameState);}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ gameNameText.setString(gameName);}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordflow}{if}\ (gameName\ !=\ \textcolor{stringliteral}{"{}"{}}\ \&\&\ showBGChoices)}
+\DoxyCodeLine{00087\ \ \ \ \ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ continueButtonText.setFillColor(sf::Color::Green);}
+\DoxyCodeLine{00089\ \ \ \ \ \}}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00091\ \ \ \ \ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ continueButtonText.setFillColor(sf::Color::Red);}
+\DoxyCodeLine{00093\ \ \ \ \ \}}
+\DoxyCodeLine{00094\ \}}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \textcolor{keywordtype}{void}\ GameOptions::render(sf::RenderWindow\&\ t\_window)}
+\DoxyCodeLine{00097\ \{}
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 2;\ i++)}
+\DoxyCodeLine{00099\ \ \ \ \ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ t\_window.draw(choiceRectangles[i]);}
+\DoxyCodeLine{00101\ \ \ \ \ \}}
+\DoxyCodeLine{00102\ \ \ \ \ t\_window.draw(continueButtonText);}
+\DoxyCodeLine{00103\ \ \ \ \ t\_window.draw(chooseGridSizeText);}
+\DoxyCodeLine{00104\ \ \ \ \ }
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \ \ t\_window.draw(gridSizeBox);}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ NUM\_OF\_TRIANGLES;\ i++)}
+\DoxyCodeLine{00108\ \ \ \ \ \{}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ t\_window.draw(triangles[i]);}
+\DoxyCodeLine{00110\ \ \ \ \ \}}
+\DoxyCodeLine{00111\ \ \ \ \ t\_window.draw(currentGridSize);}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \ \ t\_window.draw(chooseGameNameText);}
+\DoxyCodeLine{00114\ \ \ \ \ t\_window.draw(gameNameRect);}
+\DoxyCodeLine{00115\ \ \ \ \ t\_window.draw(gameNameText);}
+\DoxyCodeLine{00116\ \ \ \ \ t\_window.draw(chooseBGRect);}
+\DoxyCodeLine{00117\ \ \ \ \ t\_window.draw(chooseBGText);}
+\DoxyCodeLine{00118\ \ \ \ \ t\_window.draw(choiceSquare);}
+\DoxyCodeLine{00119\ \ \ \ \ t\_window.draw(choiceSquare2);}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordflow}{if}(showBGChoices)}
+\DoxyCodeLine{00122\ \ \ \ \ \{}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ MAX\_BG\_CHOICES;\ i++)}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ t\_window.draw(bgChoiceSprite[i]);}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00127\ \ \ \ \ \}}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \ \ \ \ t\_window.draw(gameTypeRect);}
+\DoxyCodeLine{00130\ \ \ \ \ t\_window.draw(gameTypeText);}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keywordflow}{if}\ (showGameTypeChoices)}
+\DoxyCodeLine{00133\ \ \ \ \ \{}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ MAX\_GAMETYPE\_CHOICES;\ i++)}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ t\_window.draw(gameTypeChoiceSprite[i]);}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00138\ \ \ \ \ \}}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \}}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \textcolor{keywordtype}{void}\ GameOptions::setupText()}
+\DoxyCodeLine{00143\ \{}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00145\ \ \ \ \ continueButtonText.Bold;}
+\DoxyCodeLine{00146\ \ \ \ \ continueButtonText.setFont(m\_font);}
+\DoxyCodeLine{00147\ \ \ \ \ continueButtonText.setString(buttonText);}
+\DoxyCodeLine{00148\ \ \ \ \ continueButtonText.setCharacterSize(64u);}
+\DoxyCodeLine{00149\ \ \ \ \ sf::FloatRect\ continueTextRect\ =\ continueButtonText.getLocalBounds();}
+\DoxyCodeLine{00150\ \ \ \ \ continueButtonText.setOrigin(continueTextRect.width\ /\ 2,\ continueTextRect.height\ /\ 2);}
+\DoxyCodeLine{00151\ \ \ \ \ continueButtonText.setPosition(continueButton.getPosition().x,\ continueButton.getPosition().y);}
+\DoxyCodeLine{00152\ \ \ \ \ continueButtonText.setFillColor(sf::Color::Red);}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00156\ \ \ \ \ chooseGridSizeText.Bold;}
+\DoxyCodeLine{00157\ \ \ \ \ chooseGridSizeText.setFont(m\_font);}
+\DoxyCodeLine{00158\ \ \ \ \ chooseGridSizeText.setString(chooseGridSize);}
+\DoxyCodeLine{00159\ \ \ \ \ chooseGridSizeText.setCharacterSize(40u);}
+\DoxyCodeLine{00160\ \ \ \ \ gridSizeTextRect\ =\ chooseGridSizeText.getLocalBounds();}
+\DoxyCodeLine{00161\ \ \ \ \ chooseGridSizeText.setOrigin(gridSizeTextRect.width\ /\ 2,\ gridSizeTextRect.height\ /\ 2);}
+\DoxyCodeLine{00162\ \ \ \ \ chooseGridSizeText.setPosition(gameSize.x\ /\ 2,\ gameSize.y\ *\ 0.2);}
+\DoxyCodeLine{00163\ \ \ \ \ chooseGridSizeText.setFillColor(sf::Color::Black);}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00166\ \ \ \ \ chooseBGText.Bold;}
+\DoxyCodeLine{00167\ \ \ \ \ chooseBGText.setFont(m\_font);}
+\DoxyCodeLine{00168\ \ \ \ \ chooseBGText.setString(chooseBGString);}
+\DoxyCodeLine{00169\ \ \ \ \ chooseBGText.setCharacterSize(40u);}
+\DoxyCodeLine{00170\ \ \ \ \ chooseBGTextRect\ =\ chooseBGText.getLocalBounds();}
+\DoxyCodeLine{00171\ \ \ \ \ chooseBGText.setOrigin(chooseBGTextRect.width\ /\ 2,\ chooseBGTextRect.height\ /\ 2);}
+\DoxyCodeLine{00172\ \ \ \ \ chooseBGText.setPosition(gameSize.x\ /\ 2,\ gameSize.y\ *\ 0.65);}
+\DoxyCodeLine{00173\ \ \ \ \ chooseBGText.setFillColor(sf::Color::Black);}
+\DoxyCodeLine{00174\ \}}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00176\ \textcolor{keywordtype}{void}\ GameOptions::setupChooseBackgroundRect()}
+\DoxyCodeLine{00177\ \{}
+\DoxyCodeLine{00178\ \ \ \ \ chooseBGRect.setSize(sf::Vector2f(550,\ 75));}
+\DoxyCodeLine{00179\ \ \ \ \ chooseBGRect.setOrigin(chooseBGRect.getSize().x\ /\ 2,\ chooseBGRect.getSize().y\ /\ 2);}
+\DoxyCodeLine{00180\ \ \ \ \ chooseBGRect.setPosition(chooseBGText.getPosition());}
+\DoxyCodeLine{00181\ \ \ \ \ chooseBGRect.setFillColor(sf::Color(0,\ 0,\ 0,\ 0));}
+\DoxyCodeLine{00182\ \}}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00184\ \textcolor{keywordtype}{void}\ GameOptions::setupBGChoices()}
+\DoxyCodeLine{00185\ \{}
+\DoxyCodeLine{00186\ \ \ \ \ \textcolor{keywordtype}{int}\ yPos\ =\ gameSize.y\ *\ 0.2;}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00188\ \ \ \ \ bgChoiceSprite[0].setTexture(bgChoiceTex1);}
+\DoxyCodeLine{00189\ \ \ \ \ bgChoiceSprite[1].setTexture(bgChoiceTex2);}
+\DoxyCodeLine{00190\ \ \ \ \ bgChoiceSprite[2].setTexture(bgChoiceTex3);}
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00192\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ MAX\_BG\_CHOICES;\ i++)}
+\DoxyCodeLine{00193\ \ \ \ \ \{}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ bgChoiceSprite[i].scale(0.4,\ 0.4);}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ bgChoiceSprite[i].setOrigin(bgChoiceSprite[i].getLocalBounds().width\ /\ 2,\ bgChoiceSprite[i].getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ bgChoiceSprite[i].setPosition(gameSize.x\ *\ 0.85,\ yPos);}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ yPos\ +=\ gameSize.y\ *\ 0.28;}
+\DoxyCodeLine{00198\ \ \ \ \ \}}
+\DoxyCodeLine{00199\ }
+\DoxyCodeLine{00200\ \ \ \ \ choiceSquare.setSize(sf::Vector2f(bgChoiceSprite[1].getGlobalBounds().width\ +\ 15,\ bgChoiceSprite[1].getGlobalBounds().height\ +\ 15));}
+\DoxyCodeLine{00201\ \ \ \ \ choiceSquare.setFillColor(sf::Color::Green);}
+\DoxyCodeLine{00202\ \ \ \ \ choiceSquare.setPosition(-\/300,\ -\/300);}
+\DoxyCodeLine{00203\ \ \ \ \ choiceSquare.setOrigin(choiceSquare.getGlobalBounds().width\ /\ 2,\ choiceSquare.getGlobalBounds().height\ /\ 2);}
+\DoxyCodeLine{00204\ }
+\DoxyCodeLine{00205\ \}}
+\DoxyCodeLine{00206\ }
+\DoxyCodeLine{00207\ \textcolor{keywordtype}{void}\ GameOptions::setupContinueButton()}
+\DoxyCodeLine{00208\ \{}
+\DoxyCodeLine{00209\ \ \ \ \ continueButton.setFillColor(sf::Color(0,\ 0,\ 0,\ 0));}
+\DoxyCodeLine{00210\ \ \ \ \ continueButton.setSize(sf::Vector2f(525,\ 125));}
+\DoxyCodeLine{00211\ \ \ \ \ continueButton.setOrigin(continueButton.getSize().x\ /\ 2,\ continueButton.getSize().y\ /\ 2);}
+\DoxyCodeLine{00212\ \ \ \ \ continueButton.setPosition(sf::Vector2f(gameSize.x\ /\ 2,\ gameSize.y\ *\ 0.8));}
+\DoxyCodeLine{00213\ \}}
+\DoxyCodeLine{00214\ }
+\DoxyCodeLine{00215\ }
+\DoxyCodeLine{00216\ \textcolor{keywordtype}{void}\ GameOptions::setupGridSizeBox()}
+\DoxyCodeLine{00217\ \{}
+\DoxyCodeLine{00218\ \ \ \ \ gridSizeBox.setSize(sf::Vector2f(180,\ 65));}
+\DoxyCodeLine{00219\ \ \ \ \ gridSizeBox.setOutlineThickness(5);}
+\DoxyCodeLine{00220\ \ \ \ \ gridSizeBox.setFillColor(sf::Color::White);}
+\DoxyCodeLine{00221\ \ \ \ \ gridSizeBox.setOutlineColor(sf::Color::Black);}
+\DoxyCodeLine{00222\ \ \ \ \ gridSizeBox.setOrigin(gridSizeBox.getSize().x\ /\ 2,\ gridSizeBox.getSize().y\ /\ 2);}
+\DoxyCodeLine{00223\ \ \ \ \ gridSizeBox.setPosition(chooseGridSizeText.getPosition().x,\ chooseGridSizeText.getPosition().y\ +\ gridSizeBox.getSize().y\ +\ (offset\ *\ 2));}
+\DoxyCodeLine{00224\ }
+\DoxyCodeLine{00225\ \ \ \ \ currentGridSize.Bold;}
+\DoxyCodeLine{00226\ \ \ \ \ currentGridSize.setFont(m\_font);}
+\DoxyCodeLine{00227\ \ \ \ \ currentGridSize.setString(gridSizeNums[0]);}
+\DoxyCodeLine{00228\ \ \ \ \ currentGridSize.setCharacterSize(32u);}
+\DoxyCodeLine{00229\ \ \ \ \ sf::FloatRect\ numTextRect\ =\ currentGridSize.getLocalBounds();}
+\DoxyCodeLine{00230\ \ \ \ \ currentGridSize.setOrigin(numTextRect.width\ /\ 2,\ numTextRect.height\ /\ 2);}
+\DoxyCodeLine{00231\ \ \ \ \ currentGridSize.setPosition(gameSize.x\ /\ 2,\ gridSizeBox.getPosition().y);}
+\DoxyCodeLine{00232\ \ \ \ \ currentGridSize.setFillColor(sf::Color::Black);}
+\DoxyCodeLine{00233\ \}}
+\DoxyCodeLine{00234\ }
+\DoxyCodeLine{00235\ \textcolor{keywordtype}{void}\ GameOptions::setupTriangles()}
+\DoxyCodeLine{00236\ \{}
+\DoxyCodeLine{00237\ }
+\DoxyCodeLine{00238\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ NUM\_OF\_TRIANGLES;\ i++)}
+\DoxyCodeLine{00239\ \ \ \ \ \{}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ triangles[i].setTexture(triangleTexture);}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ triangles[i].setScale(0.5,\ 0.5);}
+\DoxyCodeLine{00242\ \ \ \ \ \}}
+\DoxyCodeLine{00243\ }
+\DoxyCodeLine{00244\ \ \ \ \ \textcolor{comment}{//triangle0\ ::\ left\ of\ gridSize}}
+\DoxyCodeLine{00245\ \ \ \ \ \textcolor{comment}{//triangle1\ ::\ right\ of\ gridSize}}
+\DoxyCodeLine{00246\ \ \ \ \ triangles[0].setRotation(180);}
+\DoxyCodeLine{00247\ \ \ \ \ triangles[0].setPosition(gridSizeBox.getPosition().x\ -\/\ gridSizeBox.getOrigin().x\ -\/\ (offset\ *\ 3),\ gridSizeBox.getPosition().y\ \ +\ gridSizeBox.getOrigin().y);}
+\DoxyCodeLine{00248\ }
+\DoxyCodeLine{00249\ \ \ \ \ triangles[1].setPosition(gridSizeBox.getPosition().x\ +\ gridSizeBox.getOrigin().x\ +\ (offset\ *\ 3),\ gridSizeBox.getPosition().y\ -\/\ gridSizeBox.getOrigin().y\ -\/\ offset);}
+\DoxyCodeLine{00250\ \}}
+\DoxyCodeLine{00251\ }
+\DoxyCodeLine{00252\ \textcolor{keywordtype}{void}\ GameOptions::changeGridSize(\textcolor{keywordtype}{int}\ t\_triangleNum)}
+\DoxyCodeLine{00253\ \{}
+\DoxyCodeLine{00254\ \ \ \ \ \textcolor{keywordtype}{int}\ current\ =\ currentGridStringNum;}
+\DoxyCodeLine{00255\ \ \ \ \ \textcolor{keywordtype}{int}\ triangleClicked\ =\ t\_triangleNum;}
+\DoxyCodeLine{00256\ }
+\DoxyCodeLine{00257\ \ \ \ \ \textcolor{keywordflow}{if}\ (triangleClicked\ ==\ 0)}
+\DoxyCodeLine{00258\ \ \ \ \ \{}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (currentGridStringNum\ !=\ 0)}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \ \ \ \ currentGridSize.setString(gridSizeNums[currentGridStringNum\ -\/\ 1]);}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ \ \ \ currentGridStringNum\ =\ currentGridStringNum\ -\/\ 1;}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00264\ \ \ \ \ \}}
+\DoxyCodeLine{00265\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (triangleClicked\ ==\ 1)}
+\DoxyCodeLine{00266\ \ \ \ \ \{}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (currentGridStringNum\ <\ NUM\_OF\_GRIDSIZES\ -\/\ 1)}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \ \ \ \ currentGridSize.setString(gridSizeNums[currentGridStringNum\ +\ 1]);}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \ \ \ \ currentGridStringNum\ =\ currentGridStringNum\ +\ 1;}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00272\ \ \ \ \ \}}
+\DoxyCodeLine{00273\ \}}
+\DoxyCodeLine{00274\ }
+\DoxyCodeLine{00275\ \textcolor{keywordtype}{void}\ GameOptions::checkForMousePos(GameState\&\ t\_gameState)}
+\DoxyCodeLine{00276\ \{}
+\DoxyCodeLine{00277\ \ \ \ \ \textcolor{keywordflow}{if}\ (continueButton.getGlobalBounds().contains(\textcolor{keyword}{static\_cast<}sf::Vector2f\textcolor{keyword}{>}(mousePos)))}
+\DoxyCodeLine{00278\ \ \ \ \ \{}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (gameName\ !=\ \textcolor{stringliteral}{"{}"{}}\ \&\&\ showBGChoices)}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \ \ \ \ continueButtonText.setScale(1.25,\ 1.25);}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ \ \ \ \ continueButton.setScale(1.25,\ 1.25);}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Mouse::isButtonPressed(sf::Mouse::Left))}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00285\ }
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ t\_gameState\ =\ GameState::createGame;}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00289\ \ \ \ \ \}}
+\DoxyCodeLine{00290\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00291\ \ \ \ \ \{}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ continueButtonText.setScale(1,\ 1);}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ continueButton.setScale(1,\ 1);}
+\DoxyCodeLine{00294\ \ \ \ \ \}}
+\DoxyCodeLine{00295\ }
+\DoxyCodeLine{00296\ \ \ \ \ \textcolor{keywordflow}{if}\ (gameNameRect.getGlobalBounds().contains(\textcolor{keyword}{static\_cast<}sf::Vector2f\textcolor{keyword}{>}(mousePos)))}
+\DoxyCodeLine{00297\ \ \ \ \ \{}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Mouse::isButtonPressed(sf::Mouse::Left))}
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \ \ \ \ gameNameRect.setFillColor(sf::Color(128,\ 128,\ 128,\ 64));}
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \ \ \ \ canType\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00303\ \ \ \ \ \}}
+\DoxyCodeLine{00304\ \ \ \ \ \textcolor{keywordflow}{else}\ }
+\DoxyCodeLine{00305\ \ \ \ \ \{}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Mouse::isButtonPressed(sf::Mouse::Left))}
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \ \ \ \ gameNameRect.setFillColor(sf::Color::White);}
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \ \ \ \ canType\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00311\ \ \ \ \ \}}
+\DoxyCodeLine{00312\ }
+\DoxyCodeLine{00313\ \ \ \ \ \textcolor{keywordflow}{if}\ (chooseBGRect.getGlobalBounds().contains(\textcolor{keyword}{static\_cast<}sf::Vector2f\textcolor{keyword}{>}(mousePos)))}
+\DoxyCodeLine{00314\ \ \ \ \ \{}
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ chooseBGText.setScale(1.2,\ 1.2);}
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Mouse::isButtonPressed(sf::Mouse::Left))}
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ "{}TESTTSS"{}\ <<\ std::endl;}}
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \ \ \ \ showBGChoices\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00321\ \ \ \ \ \}}
+\DoxyCodeLine{00322\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00323\ \ \ \ \ \{}
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ chooseBGText.setScale(1,\ 1);}
+\DoxyCodeLine{00325\ \ \ \ \ \}}
+\DoxyCodeLine{00326\ }
+\DoxyCodeLine{00327\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ MAX\_BG\_CHOICES;\ i++)}
+\DoxyCodeLine{00328\ \ \ \ \ \{}
+\DoxyCodeLine{00329\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (bgChoiceSprite[i].getGlobalBounds().contains(\textcolor{keyword}{static\_cast<}sf::Vector2f\textcolor{keyword}{>}(mousePos)))}
+\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Mouse::isButtonPressed(sf::Mouse::Left))}
+\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00333\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ choiceSquare.setPosition(bgChoiceSprite[i].getPosition());}
+\DoxyCodeLine{00334\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ chosenBG\ =\ i;}
+\DoxyCodeLine{00335\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00337\ \ \ \ \ \}}
+\DoxyCodeLine{00338\ }
+\DoxyCodeLine{00339\ \ \ \ \ \textcolor{keywordflow}{if}\ (gameTypeRect.getGlobalBounds().contains(\textcolor{keyword}{static\_cast<}sf::Vector2f\textcolor{keyword}{>}(mousePos)))}
+\DoxyCodeLine{00340\ \ \ \ \ \{}
+\DoxyCodeLine{00341\ \ \ \ \ \ \ \ \ gameTypeText.setScale(1.2,\ 1.2);}
+\DoxyCodeLine{00342\ }
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Mouse::isButtonPressed(sf::Mouse::Left))}
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00345\ \ \ \ \ \ \ \ \ \ \ \ \ showGameTypeChoices\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00346\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00347\ \ \ \ \ \}}
+\DoxyCodeLine{00348\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00349\ \ \ \ \ \{}
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ gameTypeText.setScale(1,\ 1);}
+\DoxyCodeLine{00351\ \ \ \ \ \}}
+\DoxyCodeLine{00352\ }
+\DoxyCodeLine{00353\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ MAX\_GAMETYPE\_CHOICES;\ i++)}
+\DoxyCodeLine{00354\ \ \ \ \ \{}
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (gameTypeChoiceSprite[i].getGlobalBounds().contains(\textcolor{keyword}{static\_cast<}sf::Vector2f\textcolor{keyword}{>}(mousePos)))}
+\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Mouse::isButtonPressed(sf::Mouse::Left)\ \&\&\ showGameTypeChoices)}
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ choiceSquare2.setPosition(gameTypeChoiceSprite[i].getPosition().x\ +\ 110,\ gameTypeChoiceSprite[i].getPosition().y\ -\/\ 35);}
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ chosenGT\ =\ i;}
+\DoxyCodeLine{00361\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00362\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00363\ \ \ \ \ \}}
+\DoxyCodeLine{00364\ }
+\DoxyCodeLine{00365\ \}}
+\DoxyCodeLine{00366\ }
+\DoxyCodeLine{00367\ \textcolor{keywordtype}{int}\ GameOptions::getGridSize()}
+\DoxyCodeLine{00368\ \{}
+\DoxyCodeLine{00369\ }
+\DoxyCodeLine{00370\ \ \ \ \ \textcolor{comment}{//\{\ "{}30\ x\ 30"{},\ "{}40\ x\ 40"{},\ "{}50\ x\ 50"{},\ "{}60\ x\ 60"{},\ "{}70\ x\ 70"{}\ \};}}
+\DoxyCodeLine{00371\ \ \ \ \ \textcolor{keywordtype}{int}\ gridNum\ =\ 0;}
+\DoxyCodeLine{00372\ }
+\DoxyCodeLine{00373\ \ \ \ \ \textcolor{keywordflow}{if}\ (currentGridStringNum\ ==\ 0)}
+\DoxyCodeLine{00374\ \ \ \ \ \{}
+\DoxyCodeLine{00375\ \ \ \ \ \ \ \ \ gridNum\ =\ 30;}
+\DoxyCodeLine{00376\ \ \ \ \ \}}
+\DoxyCodeLine{00377\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentGridStringNum\ ==\ 1)}
+\DoxyCodeLine{00378\ \ \ \ \ \{}
+\DoxyCodeLine{00379\ \ \ \ \ \ \ \ \ gridNum\ =\ 40;}
+\DoxyCodeLine{00380\ \ \ \ \ \}}
+\DoxyCodeLine{00381\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentGridStringNum\ ==\ 2)}
+\DoxyCodeLine{00382\ \ \ \ \ \{}
+\DoxyCodeLine{00383\ \ \ \ \ \ \ \ \ gridNum\ =\ 50;}
+\DoxyCodeLine{00384\ \ \ \ \ \}}
+\DoxyCodeLine{00385\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentGridStringNum\ ==\ 3)}
+\DoxyCodeLine{00386\ \ \ \ \ \{}
+\DoxyCodeLine{00387\ \ \ \ \ \ \ \ \ gridNum\ =\ 60;}
+\DoxyCodeLine{00388\ \ \ \ \ \}}
+\DoxyCodeLine{00389\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentGridStringNum\ ==\ 4)}
+\DoxyCodeLine{00390\ \ \ \ \ \{}
+\DoxyCodeLine{00391\ \ \ \ \ \ \ \ \ gridNum\ =\ 70;}
+\DoxyCodeLine{00392\ \ \ \ \ \}}
+\DoxyCodeLine{00393\ }
+\DoxyCodeLine{00394\ }
+\DoxyCodeLine{00395\ \ \ \ \ \textcolor{keywordflow}{return}\ gridNum;}
+\DoxyCodeLine{00396\ \}}
+\DoxyCodeLine{00397\ }
+\DoxyCodeLine{00398\ \textcolor{keywordtype}{void}\ GameOptions::setUpGameName()}
+\DoxyCodeLine{00399\ \{}
+\DoxyCodeLine{00400\ \ \ \ \ gameNameRect.setSize(sf::Vector2f(350,\ 65));}
+\DoxyCodeLine{00401\ \ \ \ \ gameNameRect.setOutlineThickness(5);}
+\DoxyCodeLine{00402\ \ \ \ \ gameNameRect.setFillColor(sf::Color::White);}
+\DoxyCodeLine{00403\ \ \ \ \ gameNameRect.setOutlineColor(sf::Color::Black);}
+\DoxyCodeLine{00404\ \ \ \ \ gameNameRect.setOrigin(gameNameRect.getSize().x\ /\ 2,\ gameNameRect.getSize().y\ /\ 2);}
+\DoxyCodeLine{00405\ \ \ \ \ gameNameRect.setPosition(gameSize.x\ /\ 2,\ gameSize.y\ *\ 0.4);}
+\DoxyCodeLine{00406\ \ \ \ \ }
+\DoxyCodeLine{00407\ \ \ \ \ gameNameText.Bold;}
+\DoxyCodeLine{00408\ \ \ \ \ gameNameText.setFont(m\_font);}
+\DoxyCodeLine{00409\ \ \ \ \ gameNameText.setCharacterSize(48u);}
+\DoxyCodeLine{00410\ \ \ \ \ sf::FloatRect\ gameNameTextRect\ =\ currentGridSize.getLocalBounds();}
+\DoxyCodeLine{00411\ \ \ \ \ gameNameText.setOrigin(gameNameTextRect.width\ /\ 2,\ gameNameTextRect.height\ /\ 2);}
+\DoxyCodeLine{00412\ \ \ \ \ gameNameText.setPosition(gameNameRect.getPosition().x\ -\/\ 120,\ gameNameRect.getPosition().y\ -\/\ 10);}
+\DoxyCodeLine{00413\ \ \ \ \ gameNameText.setFillColor(sf::Color::Black);}
+\DoxyCodeLine{00414\ }
+\DoxyCodeLine{00415\ }
+\DoxyCodeLine{00416\ \ \ \ \ chooseGameNameText.Bold;}
+\DoxyCodeLine{00417\ \ \ \ \ chooseGameNameText.setFont(m\_font);}
+\DoxyCodeLine{00418\ \ \ \ \ chooseGameNameText.setString(chooseGameName);}
+\DoxyCodeLine{00419\ \ \ \ \ chooseGameNameText.setCharacterSize(40u);}
+\DoxyCodeLine{00420\ }
+\DoxyCodeLine{00421\ \ \ \ \ \textcolor{comment}{//chooseGameNameText.setOrigin(chooseGameNameText.width\ /\ 2,\ gridSizeTextRect.height\ /\ 2);}}
+\DoxyCodeLine{00422\ \ \ \ \ chooseGameNameText.setPosition(gameNameRect.getPosition().x\ -\/\ 300,\ gameNameRect.getPosition().y\ -\/\ 100);}
+\DoxyCodeLine{00423\ \ \ \ \ chooseGameNameText.setFillColor(sf::Color::Black);}
+\DoxyCodeLine{00424\ \}}
+\DoxyCodeLine{00425\ }
+\DoxyCodeLine{00426\ \textcolor{keywordtype}{void}\ GameOptions::setUpGameType()}
+\DoxyCodeLine{00427\ \{}
+\DoxyCodeLine{00428\ \ \ \ \ gameTypeRect.setSize(sf::Vector2f(550,\ 75));}
+\DoxyCodeLine{00429\ \ \ \ \ gameTypeRect.setOutlineThickness(5);}
+\DoxyCodeLine{00430\ \ \ \ \ gameTypeRect.setFillColor(sf::Color(0,\ 0,\ 0,\ 0));}
+\DoxyCodeLine{00431\ \ \ \ \ gameTypeRect.setOrigin(gameTypeRect.getSize().x\ /\ 2,\ gameTypeRect.getSize().y\ /\ 2);}
+\DoxyCodeLine{00432\ \ \ \ \ gameTypeRect.setPosition(gameSize.x\ /\ 2,\ gameSize.y\ /\ 2);}
+\DoxyCodeLine{00433\ }
+\DoxyCodeLine{00434\ }
+\DoxyCodeLine{00435\ \ \ \ \ gameTypeText.Bold;}
+\DoxyCodeLine{00436\ \ \ \ \ gameTypeText.setFont(m\_font);}
+\DoxyCodeLine{00437\ \ \ \ \ gameTypeText.setString(chooseGameTypeString);}
+\DoxyCodeLine{00438\ \ \ \ \ gameTypeText.setCharacterSize(40u);}
+\DoxyCodeLine{00439\ \ \ \ \ sf::FloatRect\ gameTypeTextRect\ =\ gameTypeText.getLocalBounds();}
+\DoxyCodeLine{00440\ \ \ \ \ gameTypeText.setOrigin(gameTypeTextRect.width\ /\ 2,\ gameTypeTextRect.height\ /\ 2);}
+\DoxyCodeLine{00441\ \ \ \ \ gameTypeText.setPosition(gameTypeRect.getPosition().x,\ gameTypeRect.getPosition().y);}
+\DoxyCodeLine{00442\ \ \ \ \ gameTypeText.setFillColor(sf::Color::Black);}
+\DoxyCodeLine{00443\ }
+\DoxyCodeLine{00444\ \}}
+\DoxyCodeLine{00445\ }
+\DoxyCodeLine{00446\ \textcolor{keywordtype}{void}\ GameOptions::setupGTChoices()}
+\DoxyCodeLine{00447\ \{}
+\DoxyCodeLine{00448\ \ \ \ \ \textcolor{keywordtype}{int}\ yPos\ =\ gameSize.y\ *\ 0.2;}
+\DoxyCodeLine{00449\ }
+\DoxyCodeLine{00450\ \ \ \ \ gameTypeChoiceSprite[0].setTexture(gtChoiceTex1);}
+\DoxyCodeLine{00451\ \ \ \ \ gameTypeChoiceSprite[1].setTexture(gtChoiceTex2);}
+\DoxyCodeLine{00452\ \ \ \ \ gameTypeChoiceSprite[2].setTexture(gtChoiceTex3);}
+\DoxyCodeLine{00453\ }
+\DoxyCodeLine{00454\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ MAX\_GAMETYPE\_CHOICES;\ i++)}
+\DoxyCodeLine{00455\ \ \ \ \ \{}
+\DoxyCodeLine{00456\ \ \ \ \ \ \ \ \ gameTypeChoiceSprite[i].scale(1,\ 1);}
+\DoxyCodeLine{00457\ \ \ \ \ \ \ \ \ gameTypeChoiceSprite[i].setOrigin(gameTypeChoiceSprite[i].getLocalBounds().width\ /\ 2,\ gameTypeChoiceSprite[i].getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00458\ \ \ \ \ \ \ \ \ gameTypeChoiceSprite[i].setPosition(gameSize.x\ *\ 0.15,\ yPos);}
+\DoxyCodeLine{00459\ \ \ \ \ \ \ \ \ gameTypeChoiceSprite[i].setScale(0.7,\ 0.7);}
+\DoxyCodeLine{00460\ \ \ \ \ \ \ \ \ yPos\ +=\ gameSize.y\ *\ 0.28;}
+\DoxyCodeLine{00461\ \ \ \ \ \}}
+\DoxyCodeLine{00462\ }
+\DoxyCodeLine{00463\ \ \ \ \ choiceSquare2.setSize(sf::Vector2f(gameTypeChoiceSprite[1].getGlobalBounds().width\ +\ 25,\ gameTypeChoiceSprite[1].getGlobalBounds().height\ -\/\ 50));}
+\DoxyCodeLine{00464\ \ \ \ \ choiceSquare2.setFillColor(sf::Color::Green);}
+\DoxyCodeLine{00465\ \ \ \ \ choiceSquare2.setPosition(-\/3000,\ -\/3000);}
+\DoxyCodeLine{00466\ \ \ \ \ choiceSquare2.setOrigin(choiceSquare.getGlobalBounds().width\ /\ 2,\ choiceSquare.getGlobalBounds().height\ /\ 2);}
+\DoxyCodeLine{00467\ \}}
+\DoxyCodeLine{00468\ }
+\DoxyCodeLine{00469\ \textcolor{keywordtype}{void}\ GameOptions::setUpChoiceRectangles()}
+\DoxyCodeLine{00470\ \{}
+\DoxyCodeLine{00471\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 2;\ i++)}
+\DoxyCodeLine{00472\ \ \ \ \ \{}
+\DoxyCodeLine{00473\ \ \ \ \ \ \ \ \ choiceRectangles[i].setFillColor(sf::Color(81,\ 81,\ 81,\ 150));}
+\DoxyCodeLine{00474\ \ \ \ \ \ \ \ \ choiceRectangles[i].setSize(sf::Vector2f(1000,\ gameSize.y));}
+\DoxyCodeLine{00475\ }
+\DoxyCodeLine{00476\ \ \ \ \ \}}
+\DoxyCodeLine{00477\ \ \ \ \ choiceRectangles[0].setPosition(0,\ 0);}
+\DoxyCodeLine{00478\ \ \ \ \ choiceRectangles[1].setPosition(gameSize.x\ -\/\ 1000,\ 0);}
+\DoxyCodeLine{00479\ \}}
+
+\end{DoxyCode}

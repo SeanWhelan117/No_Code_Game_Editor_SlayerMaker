@@ -1,0 +1,429 @@
+\doxysection{Monument Class Reference}
+\label{class_monument}\index{Monument@{Monument}}
+
+
+{\ttfamily \#include $<$Monument.\+h$>$}
+
+
+
+Collaboration diagram for Monument\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=231pt]{class_monument__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Monument} (sf\+::\+Vector2f t\+\_\+monument\+Pos, \textbf{ Texture\+Manager} \&texture\+Manager)
+\item 
+void \textbf{ load\+Files} ()
+\item 
+void \textbf{ setup\+Monument} ()
+\item 
+void \textbf{ render} (sf\+::\+Render\+Window \&t\+\_\+window)
+\item 
+void \textbf{ update} (bool t\+\_\+invisibility\+Active)
+\item 
+sf\+::\+Sprite \& \textbf{ get\+Monument} ()
+\item 
+void \textbf{ damage\+Monument} (int t\+\_\+damage)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ sf\+::\+Texture $>$ \textbf{ monument\+Texture}
+\item 
+bool \textbf{ game\+Over} = false
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ setup\+Health\+Bar} ()
+\item 
+void \textbf{ change\+Colours} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Texture\+Manager} \& \textbf{ m\+\_\+texture\+Manager}
+\item 
+sf\+::\+Vector2f \textbf{ monument\+Pos}
+\item 
+sf\+::\+Sprite \textbf{ monument\+Sprite}
+\item 
+sf\+::\+Rectangle\+Shape \textbf{ monument\+Health\+Bar}
+\item 
+int \textbf{ max\+Monument\+Health} = 500
+\item 
+int \textbf{ current\+Monument\+Health} = 500
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Sean Whelan 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022/23 @license Attribution-\/\+Non\+Commercial 4.\+0 International 
+\end{DoxyDate}
+
+
+Definition at line \textbf{ 12} of file \textbf{ Monument.\+h}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\label{class_monument_a7f7b3328a3a47cad7c7e884f78cbcc99}} 
+\index{Monument@{Monument}!Monument@{Monument}}
+\index{Monument@{Monument}!Monument@{Monument}}
+\doxysubsubsection{Monument()}
+{\footnotesize\ttfamily Monument\+::\+Monument (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{t\+\_\+monument\+Pos,  }\item[{\textbf{ Texture\+Manager} \&}]{texture\+Manager }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 3} of file \textbf{ Monument.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00003\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ monumentPos(t\_monumentPos),\ m\_textureManager(textureManager) }
+\DoxyCodeLine{00004\ \{}
+\DoxyCodeLine{00005\ \ \ \ \ loadFiles();}
+\DoxyCodeLine{00006\ \ \ \ \ setupMonument();}
+\DoxyCodeLine{00007\ \ \ \ \ setupHealthBar();}
+\DoxyCodeLine{00008\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_monument_a7f7b3328a3a47cad7c7e884f78cbcc99_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{class_monument_a41eb67c6c6e3f654708f620c115ed75d}} 
+\index{Monument@{Monument}!changeColours@{changeColours}}
+\index{changeColours@{changeColours}!Monument@{Monument}}
+\doxysubsubsection{changeColours()}
+{\footnotesize\ttfamily void Monument\+::change\+Colours (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 77} of file \textbf{ Monument.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00078\ \{}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordflow}{if}\ (currentMonumentHealth\ <=\ 300\ \&\&\ currentMonumentHealth\ >\ 150\ \&\&\ monumentHealthBar.getFillColor()\ !=\ sf::Color::Yellow)}
+\DoxyCodeLine{00080\ \ \ \ \ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ monumentHealthBar.setFillColor(sf::Color::Yellow);}
+\DoxyCodeLine{00082\ \ \ \ \ \}}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentMonumentHealth\ <=\ 150\ \&\&\ monumentHealthBar.getFillColor()\ !=\ sf::Color::Red)}
+\DoxyCodeLine{00084\ \ \ \ \ \{}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ monumentHealthBar.setFillColor(sf::Color::Red);}
+\DoxyCodeLine{00086\ \ \ \ \ \}}
+\DoxyCodeLine{00087\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=347pt]{class_monument_a41eb67c6c6e3f654708f620c115ed75d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_monument_aceaf0a956d7520dfb5160afaba11e8c2}} 
+\index{Monument@{Monument}!damageMonument@{damageMonument}}
+\index{damageMonument@{damageMonument}!Monument@{Monument}}
+\doxysubsubsection{damageMonument()}
+{\footnotesize\ttfamily void Monument\+::damage\+Monument (\begin{DoxyParamCaption}\item[{int}]{t\+\_\+damage }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 71} of file \textbf{ Monument.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00072\ \{}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ currentMonumentHealth\ -\/=\ t\_damage;}
+\DoxyCodeLine{00075\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_monument_aceaf0a956d7520dfb5160afaba11e8c2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_monument_af3040c01b0b217e08fac3f49ec90c09f}} 
+\index{Monument@{Monument}!getMonument@{getMonument}}
+\index{getMonument@{getMonument}!Monument@{Monument}}
+\doxysubsubsection{getMonument()}
+{\footnotesize\ttfamily sf\+::\+Sprite \& Monument\+::get\+Monument (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 57} of file \textbf{ Monument.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00058\ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordflow}{return}\ monumentSprite;}
+\DoxyCodeLine{00060\ \}}
+
+\end{DoxyCode}
+\mbox{\label{class_monument_a3536d87261609a5bce2fd7ccb0ed9857}} 
+\index{Monument@{Monument}!loadFiles@{loadFiles}}
+\index{loadFiles@{loadFiles}!Monument@{Monument}}
+\doxysubsubsection{loadFiles()}
+{\footnotesize\ttfamily void Monument\+::load\+Files (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 10} of file \textbf{ Monument.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ monumentTexture\ =\ std::make\_shared<sf::Texture>(m\_textureManager.getTexture(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)monument.png"{}}));}
+\DoxyCodeLine{00013\ \ \ \ \ monumentSprite.setTexture(*monumentTexture);}
+\DoxyCodeLine{00014\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_monument_a3536d87261609a5bce2fd7ccb0ed9857_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=337pt]{class_monument_a3536d87261609a5bce2fd7ccb0ed9857_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_monument_a217223d1318344f0e19b7af001bc4ddd}} 
+\index{Monument@{Monument}!render@{render}}
+\index{render@{render}!Monument@{Monument}}
+\doxysubsubsection{render()}
+{\footnotesize\ttfamily void Monument\+::render (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{t\+\_\+window }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 24} of file \textbf{ Monument.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00025\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ t\_window.draw(monumentSprite);}
+\DoxyCodeLine{00027\ \ \ \ \ t\_window.draw(monumentHealthBar);}
+\DoxyCodeLine{00028\ \}}
+
+\end{DoxyCode}
+\mbox{\label{class_monument_a7d9e68efdb3456eeceec674e939bcf39}} 
+\index{Monument@{Monument}!setupHealthBar@{setupHealthBar}}
+\index{setupHealthBar@{setupHealthBar}!Monument@{Monument}}
+\doxysubsubsection{setupHealthBar()}
+{\footnotesize\ttfamily void Monument\+::setup\+Health\+Bar (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 62} of file \textbf{ Monument.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00063\ \{}
+\DoxyCodeLine{00064\ \ \ \ \ monumentHealthBar.setFillColor(sf::Color::Green);}
+\DoxyCodeLine{00065\ \ \ \ \ monumentHealthBar.setOutlineThickness(1);}
+\DoxyCodeLine{00066\ \ \ \ \ monumentHealthBar.setOutlineColor(sf::Color::Black);}
+\DoxyCodeLine{00067\ \ \ \ \ monumentHealthBar.setOrigin(monumentHealthBar.getLocalBounds().width\ /\ 2,\ monumentHealthBar.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00068\ \ \ \ \ monumentHealthBar.setPosition(monumentSprite.getPosition().x,\ monumentSprite.getPosition().y\ -\/\ 40);}
+\DoxyCodeLine{00069\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_monument_a7d9e68efdb3456eeceec674e939bcf39_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_monument_a2009863d1a83fa25f25ef3f480d04c5e}} 
+\index{Monument@{Monument}!setupMonument@{setupMonument}}
+\index{setupMonument@{setupMonument}!Monument@{Monument}}
+\doxysubsubsection{setupMonument()}
+{\footnotesize\ttfamily void Monument\+::setup\+Monument (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 16} of file \textbf{ Monument.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00017\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ monumentSprite.setOrigin(monumentSprite.getLocalBounds().width\ /\ 2,\ monumentSprite.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00019\ \ \ \ \ monumentSprite.setPosition(sf::Vector2f(monumentPos.x\ +\ 15,\ monumentPos.y\ +\ 15));}
+\DoxyCodeLine{00020\ \ \ \ \ monumentSprite.setScale(0.25,\ 0.25);}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_monument_a2009863d1a83fa25f25ef3f480d04c5e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_monument_a3828e0436dda5bc51f6ab5542ab9078e}} 
+\index{Monument@{Monument}!update@{update}}
+\index{update@{update}!Monument@{Monument}}
+\doxysubsubsection{update()}
+{\footnotesize\ttfamily void Monument\+::update (\begin{DoxyParamCaption}\item[{bool}]{t\+\_\+invisibility\+Active }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 30} of file \textbf{ Monument.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00031\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ monumentHealthBar.setSize(sf::Vector2f(currentMonumentHealth\ /\ 5,\ 10));}
+\DoxyCodeLine{00033\ \ \ \ \ monumentHealthBar.setOrigin(monumentHealthBar.getLocalBounds().width\ /\ 2,\ monumentHealthBar.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00034\ \ \ \ \ changeColours();}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordflow}{if}\ (currentMonumentHealth\ <=\ 0)}
+\DoxyCodeLine{00037\ \ \ \ \ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}GameOver"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ gameOver\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00040\ \ \ \ \ \}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Keyboard::isKeyPressed(sf::Keyboard::P))}
+\DoxyCodeLine{00043\ \ \ \ \ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ currentMonumentHealth\ -\/=\ 5;}
+\DoxyCodeLine{00045\ \ \ \ \ \}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordflow}{if}\ (t\_invisibilityActive)}
+\DoxyCodeLine{00048\ \ \ \ \ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ monumentSprite.setColor(sf::Color(monumentSprite.getColor().r,\ monumentSprite.getColor().g,\ monumentSprite.getColor().b,\ 25));}
+\DoxyCodeLine{00050\ \ \ \ \ \}}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00052\ \ \ \ \ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ monumentSprite.setColor(sf::Color(monumentSprite.getColor().r,\ monumentSprite.getColor().g,\ monumentSprite.getColor().b,\ 255));}
+\DoxyCodeLine{00054\ \ \ \ \ \}}
+\DoxyCodeLine{00055\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=347pt]{class_monument_a3828e0436dda5bc51f6ab5542ab9078e_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\label{class_monument_a0d33c8713f448b1f2aeaba72dec890de}} 
+\index{Monument@{Monument}!currentMonumentHealth@{currentMonumentHealth}}
+\index{currentMonumentHealth@{currentMonumentHealth}!Monument@{Monument}}
+\doxysubsubsection{currentMonumentHealth}
+{\footnotesize\ttfamily int Monument\+::current\+Monument\+Health = 500\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 47} of file \textbf{ Monument.\+h}.
+
+\mbox{\label{class_monument_ad7d59b45bb8d58c54b2e9409b009a7b6}} 
+\index{Monument@{Monument}!gameOver@{gameOver}}
+\index{gameOver@{gameOver}!Monument@{Monument}}
+\doxysubsubsection{gameOver}
+{\footnotesize\ttfamily bool Monument\+::game\+Over = false}
+
+
+
+Definition at line \textbf{ 31} of file \textbf{ Monument.\+h}.
+
+\mbox{\label{class_monument_a642b55ba4c833dcf279beb02171da61a}} 
+\index{Monument@{Monument}!m\_textureManager@{m\_textureManager}}
+\index{m\_textureManager@{m\_textureManager}!Monument@{Monument}}
+\doxysubsubsection{m\_textureManager}
+{\footnotesize\ttfamily \textbf{ Texture\+Manager}\& Monument\+::m\+\_\+texture\+Manager\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 41} of file \textbf{ Monument.\+h}.
+
+\mbox{\label{class_monument_a52c257be90c6240a9cb3331118ae7b4d}} 
+\index{Monument@{Monument}!maxMonumentHealth@{maxMonumentHealth}}
+\index{maxMonumentHealth@{maxMonumentHealth}!Monument@{Monument}}
+\doxysubsubsection{maxMonumentHealth}
+{\footnotesize\ttfamily int Monument\+::max\+Monument\+Health = 500\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 46} of file \textbf{ Monument.\+h}.
+
+\mbox{\label{class_monument_a1d62cb03d49571c3bf0736463669724f}} 
+\index{Monument@{Monument}!monumentHealthBar@{monumentHealthBar}}
+\index{monumentHealthBar@{monumentHealthBar}!Monument@{Monument}}
+\doxysubsubsection{monumentHealthBar}
+{\footnotesize\ttfamily sf\+::\+Rectangle\+Shape Monument\+::monument\+Health\+Bar\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 45} of file \textbf{ Monument.\+h}.
+
+\mbox{\label{class_monument_a6d432b35f5c02b757513bf570a48e349}} 
+\index{Monument@{Monument}!monumentPos@{monumentPos}}
+\index{monumentPos@{monumentPos}!Monument@{Monument}}
+\doxysubsubsection{monumentPos}
+{\footnotesize\ttfamily sf\+::\+Vector2f Monument\+::monument\+Pos\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 42} of file \textbf{ Monument.\+h}.
+
+\mbox{\label{class_monument_af86a0e350f248664926f8e28e2b79fde}} 
+\index{Monument@{Monument}!monumentSprite@{monumentSprite}}
+\index{monumentSprite@{monumentSprite}!Monument@{Monument}}
+\doxysubsubsection{monumentSprite}
+{\footnotesize\ttfamily sf\+::\+Sprite Monument\+::monument\+Sprite\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 43} of file \textbf{ Monument.\+h}.
+
+\mbox{\label{class_monument_a1a59c306f0f1c89541a3d2ef71ddcf48}} 
+\index{Monument@{Monument}!monumentTexture@{monumentTexture}}
+\index{monumentTexture@{monumentTexture}!Monument@{Monument}}
+\doxysubsubsection{monumentTexture}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$sf\+::\+Texture$>$ Monument\+::monument\+Texture}
+
+
+
+Definition at line \textbf{ 29} of file \textbf{ Monument.\+h}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+No\+Code\+Game\+Editor/\textbf{ Monument.\+h}\item 
+No\+Code\+Game\+Editor/\textbf{ Monument.\+cpp}\end{DoxyCompactItemize}

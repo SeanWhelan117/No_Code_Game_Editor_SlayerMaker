@@ -1,0 +1,36 @@
+\doxysection{Sound\+Manager.\+h}
+\label{_sound_manager_8h_source}\index{NoCodeGameEditor/SoundManager.h@{NoCodeGameEditor/SoundManager.h}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <SFML/Audio.hpp>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }SoundManager}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{static}\ SoundManager\&\ getInstance()\ }
+\DoxyCodeLine{00016\ \ \ \ \ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ SoundManager\ instance;}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ instance;}
+\DoxyCodeLine{00019\ \ \ \ \ \}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ loadSound(\textcolor{keyword}{const}\ std::string\&\ t\_soundName,\ \textcolor{keyword}{const}\ std::string\&\ t\_soundFile);}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ playSound(\textcolor{keyword}{const}\ std::string\&\ t\_soundName);}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00027\ \ \ \ \ SoundManager()\ \{\}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ SoundManager(\textcolor{keyword}{const}\ SoundManager\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00030\ \ \ \ \ SoundManager\&\ operator=(\textcolor{keyword}{const}\ SoundManager\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ std::map<std::string,\ sf::SoundBuffer>\ m\_soundBuffers;}
+\DoxyCodeLine{00033\ \};}
+\DoxyCodeLine{00034\ }
+
+\end{DoxyCode}

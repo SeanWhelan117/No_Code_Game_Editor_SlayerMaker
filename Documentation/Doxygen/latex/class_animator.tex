@@ -1,0 +1,179 @@
+\doxysection{Animator Class Reference}
+\label{class_animator}\index{Animator@{Animator}}
+
+
+{\ttfamily \#include $<$Animator.\+h$>$}
+
+
+
+Collaboration diagram for Animator\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=175pt]{class_animator__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Animator} ()
+\begin{DoxyCompactList}\small\item\em \doxyref{Animator}{p.}{class_animator} Constructor. \end{DoxyCompactList}\item 
+sf\+::\+Int\+Rect \textbf{ animate} (sf\+::\+Texture t\+\_\+texture, int t\+\_\+num\+Of\+Frames, int t\+\_\+frame\+Width, int t\+\_\+frame\+Height, int t\+\_\+cols, int t\+\_\+rows, int t\+\_\+time)
+\begin{DoxyCompactList}\small\item\em animate function which is called to animate a sprite sheet. Pass the already loaded texture, as well as the various paramaters to animate the specific spritesheet. Returns an intrect which can be added to a sprite as one frame of the animaion \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \textbf{ animation\+Frame} = 0
+\item 
+int \textbf{ total\+Elapsed} = 0
+\item 
+sf\+::\+Int\+Rect \textbf{ rect\+Source\+Sprite}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Sean Whelan 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022/23 @license Attribution-\/\+Non\+Commercial 4.\+0 International 
+\end{DoxyDate}
+
+
+Definition at line \textbf{ 10} of file \textbf{ Animator.\+h}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\label{class_animator_a701eeb9283612be2027425efb06bbff7}} 
+\index{Animator@{Animator}!Animator@{Animator}}
+\index{Animator@{Animator}!Animator@{Animator}}
+\doxysubsubsection{Animator()}
+{\footnotesize\ttfamily Animator\+::\+Animator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxyref{Animator}{p.}{class_animator} Constructor. 
+
+
+
+Definition at line \textbf{ 5} of file \textbf{ Animator.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00006\ \{}
+\DoxyCodeLine{00007\ \ \ \ \textcolor{comment}{//\ std::cout\ <<\ "{}Animator\ ready"{}\ <<\ std::endl;}}
+\DoxyCodeLine{00008\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{class_animator_a35a9aae1b8eadbe389c13d1cdb6f842d}} 
+\index{Animator@{Animator}!animate@{animate}}
+\index{animate@{animate}!Animator@{Animator}}
+\doxysubsubsection{animate()}
+{\footnotesize\ttfamily sf\+::\+Int\+Rect Animator\+::animate (\begin{DoxyParamCaption}\item[{sf\+::\+Texture}]{t\+\_\+texture,  }\item[{int}]{t\+\_\+num\+Of\+Frames,  }\item[{int}]{t\+\_\+frame\+Width,  }\item[{int}]{t\+\_\+frame\+Height,  }\item[{int}]{t\+\_\+cols,  }\item[{int}]{t\+\_\+rows,  }\item[{int}]{t\+\_\+time }\end{DoxyParamCaption})}
+
+
+
+animate function which is called to animate a sprite sheet. Pass the already loaded texture, as well as the various paramaters to animate the specific spritesheet. Returns an intrect which can be added to a sprite as one frame of the animaion 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t\+\_\+texture} & \\
+\hline
+{\em t\+\_\+num\+Of\+Frames} & \\
+\hline
+{\em t\+\_\+frame\+Width} & \\
+\hline
+{\em t\+\_\+frame\+Height} & \\
+\hline
+{\em t\+\_\+cols} & \\
+\hline
+{\em t\+\_\+rows} & \\
+\hline
+{\em t\+\_\+time} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line \textbf{ 22} of file \textbf{ Animator.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00023\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ totalElapsed++;}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordflow}{if}\ (totalElapsed\ >\ t\_time)}
+\DoxyCodeLine{00027\ \ \ \ \ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ totalElapsed\ =\ 0;}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ animationFrame++;}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (animationFrame\ >\ t\_numOfFrames)\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ animationFrame\ =\ 0;}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00034\ \ \ \ \ \}}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{int}\ col\ =\ animationFrame\ \%\ t\_cols;\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{int}\ row\ =\ animationFrame\ /\ t\_cols;\ }
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ rectSourceSprite.height\ =\ t\_frameHeight;}
+\DoxyCodeLine{00039\ \ \ \ \ rectSourceSprite.width\ =\ t\_frameWidth;}
+\DoxyCodeLine{00040\ \ \ \ \ rectSourceSprite.left\ =\ col\ *\ rectSourceSprite.width;}
+\DoxyCodeLine{00041\ \ \ \ \ rectSourceSprite.top\ =\ row\ *\ rectSourceSprite.height;}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordflow}{return}\ rectSourceSprite;}
+\DoxyCodeLine{00044\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_animator_a35a9aae1b8eadbe389c13d1cdb6f842d_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\label{class_animator_abf2a74165cd511a065d3ec00e78ab92c}} 
+\index{Animator@{Animator}!animationFrame@{animationFrame}}
+\index{animationFrame@{animationFrame}!Animator@{Animator}}
+\doxysubsubsection{animationFrame}
+{\footnotesize\ttfamily int Animator\+::animation\+Frame = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 36} of file \textbf{ Animator.\+h}.
+
+\mbox{\label{class_animator_ae7bcc0364056a23c998a8100251cb343}} 
+\index{Animator@{Animator}!rectSourceSprite@{rectSourceSprite}}
+\index{rectSourceSprite@{rectSourceSprite}!Animator@{Animator}}
+\doxysubsubsection{rectSourceSprite}
+{\footnotesize\ttfamily sf\+::\+Int\+Rect Animator\+::rect\+Source\+Sprite\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 40} of file \textbf{ Animator.\+h}.
+
+\mbox{\label{class_animator_a92e64c2ba7241e1c4d0b1f17907950ec}} 
+\index{Animator@{Animator}!totalElapsed@{totalElapsed}}
+\index{totalElapsed@{totalElapsed}!Animator@{Animator}}
+\doxysubsubsection{totalElapsed}
+{\footnotesize\ttfamily int Animator\+::total\+Elapsed = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 37} of file \textbf{ Animator.\+h}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+No\+Code\+Game\+Editor/\textbf{ Animator.\+h}\item 
+No\+Code\+Game\+Editor/\textbf{ Animator.\+cpp}\end{DoxyCompactItemize}

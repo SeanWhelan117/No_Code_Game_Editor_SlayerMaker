@@ -1,0 +1,407 @@
+\doxysection{Game\+Over Class Reference}
+\label{class_game_over}\index{GameOver@{GameOver}}
+
+
+{\ttfamily \#include $<$Game\+Over.\+h$>$}
+
+
+
+Collaboration diagram for Game\+Over\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=235pt]{class_game_over__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Game\+Over} (float t\+\_\+game\+Width, float t\+\_\+game\+Height)
+\item 
+void \textbf{ load\+Files} ()
+\item 
+void \textbf{ update} (sf\+::\+Time t\+\_\+delta\+Time)
+\item 
+void \textbf{ render} (sf\+::\+Render\+Window \&t\+\_\+window)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \textbf{ button\+Pressed} = -\/10
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ setup\+Buttons} ()
+\item 
+void \textbf{ setup\+Button\+Text} ()
+\item 
+void \textbf{ check\+For\+Mouse\+Pos\+And\+Click} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float \textbf{ game\+Width}
+\item 
+float \textbf{ game\+Height}
+\item 
+sf\+::\+Rectangle\+Shape \textbf{ buttons} [\textbf{ MAX\+\_\+\+BUTTONS}]
+\item 
+sf\+::\+Text \textbf{ button1\+Text}
+\item 
+sf\+::\+Text \textbf{ button2\+Text}
+\item 
+sf\+::\+Font \textbf{ button\+Font}
+\item 
+sf\+::\+Vector2f \textbf{ mouse\+Pos}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const int \textbf{ MAX\+\_\+\+BUTTONS} = 2
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Sean Whelan 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022/23 @license Attribution-\/\+Non\+Commercial 4.\+0 International 
+\end{DoxyDate}
+
+
+Definition at line \textbf{ 10} of file \textbf{ Game\+Over.\+h}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\label{class_game_over_a1fe891199919e747e876b1f9b3159e87}} 
+\index{GameOver@{GameOver}!GameOver@{GameOver}}
+\index{GameOver@{GameOver}!GameOver@{GameOver}}
+\doxysubsubsection{GameOver()}
+{\footnotesize\ttfamily Game\+Over\+::\+Game\+Over (\begin{DoxyParamCaption}\item[{float}]{t\+\_\+game\+Width,  }\item[{float}]{t\+\_\+game\+Height }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 3} of file \textbf{ Game\+Over.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00004\ \{}
+\DoxyCodeLine{00005\ \ \ \ \ gameWidth\ =\ t\_gameWidth;}
+\DoxyCodeLine{00006\ \ \ \ \ gameHeight\ =\ t\_gameHeight;}
+\DoxyCodeLine{00007\ \ \ \ \ loadFiles();}
+\DoxyCodeLine{00008\ \ \ \ \ setupButtons();}
+\DoxyCodeLine{00009\ \ \ \ \ setupButtonText();}
+\DoxyCodeLine{00010\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_over_a1fe891199919e747e876b1f9b3159e87_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{class_game_over_af8e1500bf2c714e12d24f0122c5af7bd}} 
+\index{GameOver@{GameOver}!checkForMousePosAndClick@{checkForMousePosAndClick}}
+\index{checkForMousePosAndClick@{checkForMousePosAndClick}!GameOver@{GameOver}}
+\doxysubsubsection{checkForMousePosAndClick()}
+{\footnotesize\ttfamily void Game\+Over\+::check\+For\+Mouse\+Pos\+And\+Click (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 67} of file \textbf{ Game\+Over.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00068\ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ MAX\_BUTTONS;\ i++)}
+\DoxyCodeLine{00070\ \ \ \ \ \{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (buttons[i].getGlobalBounds().contains(mousePos))}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Mouse::isButtonPressed(sf::Mouse::Left))}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buttonPressed\ =\ i;}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00078\ \ \ \ \ \}}
+\DoxyCodeLine{00079\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_over_af8e1500bf2c714e12d24f0122c5af7bd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_over_acde04006702a44189e371a2fc5267a80}} 
+\index{GameOver@{GameOver}!loadFiles@{loadFiles}}
+\index{loadFiles@{loadFiles}!GameOver@{GameOver}}
+\doxysubsubsection{loadFiles()}
+{\footnotesize\ttfamily void Game\+Over\+::load\+Files (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 12} of file \textbf{ Game\+Over.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordflow}{if}\ (!buttonFont.loadFromFile(\textcolor{stringliteral}{"{}./ASSETS/FONTS/NewYork.ttf"{}}))}
+\DoxyCodeLine{00015\ \ \ \ \ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Error\ loading\ font..."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00017\ \ \ \ \ \}}
+\DoxyCodeLine{00018\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=337pt]{class_game_over_acde04006702a44189e371a2fc5267a80_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_over_a29c4b3cc0e4fa0c2f6c173f702670845}} 
+\index{GameOver@{GameOver}!render@{render}}
+\index{render@{render}!GameOver@{GameOver}}
+\doxysubsubsection{render()}
+{\footnotesize\ttfamily void Game\+Over\+::render (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{t\+\_\+window }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 25} of file \textbf{ Game\+Over.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00026\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ mousePos\ =\ t\_window.mapPixelToCoords(sf::Mouse::getPosition(t\_window));}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ MAX\_BUTTONS;\ i++)}
+\DoxyCodeLine{00029\ \ \ \ \ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ t\_window.draw(buttons[i]);}
+\DoxyCodeLine{00031\ \ \ \ \ \}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ t\_window.draw(button1Text);}
+\DoxyCodeLine{00034\ \ \ \ \ t\_window.draw(button2Text);}
+\DoxyCodeLine{00035\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_over_a29c4b3cc0e4fa0c2f6c173f702670845_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_over_af4ffece91ee9a1a00f0be624a9b9ddfa}} 
+\index{GameOver@{GameOver}!setupButtons@{setupButtons}}
+\index{setupButtons@{setupButtons}!GameOver@{GameOver}}
+\doxysubsubsection{setupButtons()}
+{\footnotesize\ttfamily void Game\+Over\+::setup\+Buttons (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 37} of file \textbf{ Game\+Over.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00038\ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{comment}{//button\ 0\ return\ to\ mainmenu,\ button\ 1\ restart\ gam}}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{int}\ xPos\ =\ gameWidth\ /\ 3;}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ MAX\_BUTTONS;\ i++)}
+\DoxyCodeLine{00042\ \ \ \ \ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ buttons[i].setFillColor(sf::Color::Yellow);}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ buttons[i].setSize(sf::Vector2f(500,\ 250));}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ buttons[i].setOrigin(buttons[i].getLocalBounds().width\ /\ 2,\ buttons[i].getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ buttons[i].setPosition(xPos,\ gameHeight\ /\ 2);}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ xPos\ +=\ gameWidth\ /\ 3;}
+\DoxyCodeLine{00049\ \ \ \ \ \}}
+\DoxyCodeLine{00050\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_over_af4ffece91ee9a1a00f0be624a9b9ddfa_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_over_a697fb10d67743ecd54ceaeb76f28392a}} 
+\index{GameOver@{GameOver}!setupButtonText@{setupButtonText}}
+\index{setupButtonText@{setupButtonText}!GameOver@{GameOver}}
+\doxysubsubsection{setupButtonText()}
+{\footnotesize\ttfamily void Game\+Over\+::setup\+Button\+Text (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 52} of file \textbf{ Game\+Over.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00053\ \{}
+\DoxyCodeLine{00054\ \ \ \ \ button1Text.setFont(buttonFont);}
+\DoxyCodeLine{00055\ \ \ \ \ button1Text.setFillColor(sf::Color::Black);}
+\DoxyCodeLine{00056\ \ \ \ \ button1Text.setCharacterSize(30u);}
+\DoxyCodeLine{00057\ \ \ \ \ button1Text.setString(\textcolor{stringliteral}{"{}Main\ Menu"{}});}
+\DoxyCodeLine{00058\ \ \ \ \ button1Text.setPosition(buttons[0].getPosition());}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ button2Text.setFont(buttonFont);}
+\DoxyCodeLine{00061\ \ \ \ \ button2Text.setFillColor(sf::Color::Black);}
+\DoxyCodeLine{00062\ \ \ \ \ button2Text.setCharacterSize(30u);}
+\DoxyCodeLine{00063\ \ \ \ \ button2Text.setString(\textcolor{stringliteral}{"{}Restart\ Game"{}});}
+\DoxyCodeLine{00064\ \ \ \ \ button2Text.setPosition(buttons[1].getPosition());}
+\DoxyCodeLine{00065\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_over_a697fb10d67743ecd54ceaeb76f28392a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_over_a6e52b2841f67e3338cba5f18d07d4287}} 
+\index{GameOver@{GameOver}!update@{update}}
+\index{update@{update}!GameOver@{GameOver}}
+\doxysubsubsection{update()}
+{\footnotesize\ttfamily void Game\+Over\+::update (\begin{DoxyParamCaption}\item[{sf\+::\+Time}]{t\+\_\+delta\+Time }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 20} of file \textbf{ Game\+Over.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ checkForMousePosAndClick();}
+\DoxyCodeLine{00023\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_over_a6e52b2841f67e3338cba5f18d07d4287_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_over_a6e52b2841f67e3338cba5f18d07d4287_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\label{class_game_over_ab03a21518f2c41cf67b9ad128c0f5db3}} 
+\index{GameOver@{GameOver}!button1Text@{button1Text}}
+\index{button1Text@{button1Text}!GameOver@{GameOver}}
+\doxysubsubsection{button1Text}
+{\footnotesize\ttfamily sf\+::\+Text Game\+Over\+::button1\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 34} of file \textbf{ Game\+Over.\+h}.
+
+\mbox{\label{class_game_over_ab8198707d5ab92284994384949500f3c}} 
+\index{GameOver@{GameOver}!button2Text@{button2Text}}
+\index{button2Text@{button2Text}!GameOver@{GameOver}}
+\doxysubsubsection{button2Text}
+{\footnotesize\ttfamily sf\+::\+Text Game\+Over\+::button2\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 35} of file \textbf{ Game\+Over.\+h}.
+
+\mbox{\label{class_game_over_a52764566727aa492300ce8443f8dd418}} 
+\index{GameOver@{GameOver}!buttonFont@{buttonFont}}
+\index{buttonFont@{buttonFont}!GameOver@{GameOver}}
+\doxysubsubsection{buttonFont}
+{\footnotesize\ttfamily sf\+::\+Font Game\+Over\+::button\+Font\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 37} of file \textbf{ Game\+Over.\+h}.
+
+\mbox{\label{class_game_over_a01c98f3d97a462f0580f7673695b19c3}} 
+\index{GameOver@{GameOver}!buttonPressed@{buttonPressed}}
+\index{buttonPressed@{buttonPressed}!GameOver@{GameOver}}
+\doxysubsubsection{buttonPressed}
+{\footnotesize\ttfamily int Game\+Over\+::button\+Pressed = -\/10}
+
+
+
+Definition at line \textbf{ 22} of file \textbf{ Game\+Over.\+h}.
+
+\mbox{\label{class_game_over_a07b7cfc7cfc1ee0a00706e336e01655c}} 
+\index{GameOver@{GameOver}!buttons@{buttons}}
+\index{buttons@{buttons}!GameOver@{GameOver}}
+\doxysubsubsection{buttons}
+{\footnotesize\ttfamily sf\+::\+Rectangle\+Shape Game\+Over\+::buttons[\textbf{ MAX\+\_\+\+BUTTONS}]\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 32} of file \textbf{ Game\+Over.\+h}.
+
+\mbox{\label{class_game_over_ac1a8cc57a6e706c7a444fcf52afcd987}} 
+\index{GameOver@{GameOver}!gameHeight@{gameHeight}}
+\index{gameHeight@{gameHeight}!GameOver@{GameOver}}
+\doxysubsubsection{gameHeight}
+{\footnotesize\ttfamily float Game\+Over\+::game\+Height\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 29} of file \textbf{ Game\+Over.\+h}.
+
+\mbox{\label{class_game_over_a3bea67cf0c4274cd034a3d5fe29fe07a}} 
+\index{GameOver@{GameOver}!gameWidth@{gameWidth}}
+\index{gameWidth@{gameWidth}!GameOver@{GameOver}}
+\doxysubsubsection{gameWidth}
+{\footnotesize\ttfamily float Game\+Over\+::game\+Width\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 28} of file \textbf{ Game\+Over.\+h}.
+
+\mbox{\label{class_game_over_a1acfe2f12ee026033fd7fc3f1f1e8df5}} 
+\index{GameOver@{GameOver}!MAX\_BUTTONS@{MAX\_BUTTONS}}
+\index{MAX\_BUTTONS@{MAX\_BUTTONS}!GameOver@{GameOver}}
+\doxysubsubsection{MAX\_BUTTONS}
+{\footnotesize\ttfamily const int Game\+Over\+::\+MAX\+\_\+\+BUTTONS = 2\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 31} of file \textbf{ Game\+Over.\+h}.
+
+\mbox{\label{class_game_over_adf62fd0dc3d5f00a25decc16bdbef9bf}} 
+\index{GameOver@{GameOver}!mousePos@{mousePos}}
+\index{mousePos@{mousePos}!GameOver@{GameOver}}
+\doxysubsubsection{mousePos}
+{\footnotesize\ttfamily sf\+::\+Vector2f Game\+Over\+::mouse\+Pos\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 38} of file \textbf{ Game\+Over.\+h}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+No\+Code\+Game\+Editor/\textbf{ Game\+Over.\+h}\item 
+No\+Code\+Game\+Editor/\textbf{ Game\+Over.\+cpp}\end{DoxyCompactItemize}

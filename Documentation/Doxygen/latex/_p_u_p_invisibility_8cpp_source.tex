@@ -1,0 +1,36 @@
+\doxysection{PUPInvisibility.\+cpp}
+\label{_p_u_p_invisibility_8cpp_source}\index{NoCodeGameEditor/PUPInvisibility.cpp@{NoCodeGameEditor/PUPInvisibility.cpp}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}PUPInvisibility.h"{}}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ PUPInvisibility::PUPInvisibility(sf::Vector2f\ t\_invisibilityPos,\ TextureManager\&\ textureManager)\ :\ invisibilityPos(t\_invisibilityPos),\ m\_textureManager(textureManager)}
+\DoxyCodeLine{00004\ \{}
+\DoxyCodeLine{00005\ \ \ \ \ loadFiles();}
+\DoxyCodeLine{00006\ \ \ \ \ setupInvisibility();}
+\DoxyCodeLine{00007\ \}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keywordtype}{void}\ PUPInvisibility::loadFiles()}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ invisibilityTexture\ =\ std::make\_shared<sf::Texture>(m\_textureManager.getTexture(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)invisibility.png"{}}));}
+\DoxyCodeLine{00012\ \ \ \ \ invisibilitySprite.setTexture(*invisibilityTexture);}
+\DoxyCodeLine{00013\ \}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keywordtype}{void}\ PUPInvisibility::setupInvisibility()}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ invisibilitySprite.setOrigin(invisibilitySprite.getLocalBounds().width\ /\ 2,\ invisibilitySprite.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00018\ \ \ \ \ invisibilitySprite.setPosition(sf::Vector2f(invisibilityPos.x\ +\ 15,\ invisibilityPos.y\ +\ 15));}
+\DoxyCodeLine{00019\ \ \ \ \ invisibilitySprite.setScale(0.25,\ 0.25);}
+\DoxyCodeLine{00020\ \}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keywordtype}{void}\ PUPInvisibility::render(sf::RenderWindow\&\ t\_window)}
+\DoxyCodeLine{00023\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ t\_window.draw(invisibilitySprite);}
+\DoxyCodeLine{00025\ \}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ sf::Sprite\&\ PUPInvisibility::getInvisibility()}
+\DoxyCodeLine{00028\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordflow}{return}\ invisibilitySprite;}
+\DoxyCodeLine{00030\ \}}
+
+\end{DoxyCode}

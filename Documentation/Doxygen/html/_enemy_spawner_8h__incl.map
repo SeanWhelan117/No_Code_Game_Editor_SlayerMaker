@@ -1,0 +1,15 @@
+<map id="NoCodeGameEditor/EnemySpawner.h" name="NoCodeGameEditor/EnemySpawner.h">
+<area shape="rect" id="node1" title=" " alt="" coords="209,5,452,31"/>
+<area shape="rect" id="node2" title=" " alt="" coords="172,445,244,471"/>
+<area shape="rect" id="node3" title=" " alt="" coords="552,445,691,471"/>
+<area shape="rect" id="node4" href="$_enemy_8h.html" title=" " alt="" coords="256,79,331,104"/>
+<area shape="rect" id="node6" href="$_texture_manager_8h.html" title=" " alt="" coords="305,225,431,251"/>
+<area shape="rect" id="node7" href="$_wall_8h.html" title=" " alt="" coords="557,152,616,177"/>
+<area shape="rect" id="node13" href="$_monument_8h.html" title=" " alt="" coords="134,152,229,177"/>
+<area shape="rect" id="node5" href="$_animator_8h.html" title=" " alt="" coords="296,372,381,397"/>
+<area shape="rect" id="node8" href="$_grid_8h.html" title=" " alt="" coords="659,299,717,324"/>
+<area shape="rect" id="node12" href="$_tool_bar_8h.html" title=" " alt="" coords="573,225,651,251"/>
+<area shape="rect" id="node9" href="$_cell_8h.html" title=" " alt="" coords="790,372,845,397"/>
+<area shape="rect" id="node11" title=" " alt="" coords="709,372,765,397"/>
+<area shape="rect" id="node10" title=" " alt="" coords="877,445,923,471"/>
+</map>

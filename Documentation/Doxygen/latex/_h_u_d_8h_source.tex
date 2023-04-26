@@ -1,0 +1,41 @@
+\doxysection{HUD.\+h}
+\label{_h_u_d_8h_source}\index{NoCodeGameEditor/HUD.h@{NoCodeGameEditor/HUD.h}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}Clock.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}HealthBar.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}ExplosiveUI.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }HUD}
+\DoxyCodeLine{00014\ \{}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ Clock\ myClock;}
+\DoxyCodeLine{00018\ \ \ \ \ HealthBar\ myHealthBar;}
+\DoxyCodeLine{00019\ \ \ \ \ ExplosiveUI\ myExplosiveUI;}
+\DoxyCodeLine{00020\ \ \ \ \ HUD(\textcolor{keywordtype}{float}\ t\_gameWidth,\ \textcolor{keywordtype}{float}\ t\_gameHeight);}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ loadFiles();}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ update(sf::Time\ t\_deltaTime,\ sf::RenderWindow\&\ t\_window,\ sf::Vector2f\ t\_playerPos,\ \textcolor{keywordtype}{bool}\&\ t\_addHealth,\ \textcolor{keywordtype}{int}\ t\_explosivesCollected,\ \textcolor{keywordtype}{bool}\ t\_invincibilityActive);}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ render(sf::RenderWindow\&\ t\_window);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ }
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ setUIElementsLocations(sf::RenderWindow\&\ t\_window,\ sf::Vector2f\ t\_playerPos);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{float}\ gameWidth\ =\ 0;}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{float}\ gameHeight\ =\ 0;}
+\DoxyCodeLine{00038\ \};}
+\DoxyCodeLine{00039\ }
+
+\end{DoxyCode}

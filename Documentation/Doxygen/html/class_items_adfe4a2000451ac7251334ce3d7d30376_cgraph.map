@@ -1,0 +1,5 @@
+<map id="Items::playerCollision" name="Items::playerCollision">
+<area shape="rect" id="node1" title=" " alt="" coords="5,31,152,56"/>
+<area shape="rect" id="node2" href="$class_items.html#ae937b4158a243f8a52b5a77614023829" title=" " alt="" coords="219,5,340,31"/>
+<area shape="rect" id="node3" href="$class_items.html#a80bb1e9fc149d67d9bcb9929fb8f7689" title=" " alt="" coords="200,55,359,80"/>
+</map>

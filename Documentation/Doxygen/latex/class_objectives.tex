@@ -1,0 +1,374 @@
+\doxysection{Objectives Class Reference}
+\label{class_objectives}\index{Objectives@{Objectives}}
+
+
+{\ttfamily \#include $<$Objectives.\+h$>$}
+
+
+
+Collaboration diagram for Objectives\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=219pt]{class_objectives__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Objectives} (\textbf{ Texture\+Manager} \&texture\+Manager)
+\item 
+void \textbf{ update} (sf\+::\+Time t\+\_\+delta\+Time, sf\+::\+Render\+Window \&t\+\_\+window, sf\+::\+Float\+Rect t\+\_\+player\+Rect, int t\+\_\+coins\+Collected, int t\+\_\+max\+Coins, bool t\+\_\+invisibility\+Active)
+\item 
+void \textbf{ render} (sf\+::\+Render\+Window \&t\+\_\+window)
+\item 
+void \textbf{ add\+To\+Vector} (sf\+::\+Vector2f t\+\_\+objective\+Position, int t\+\_\+objective\+Type)
+\item 
+bool \textbf{ is\+Colliding} (sf\+::\+Float\+Rect t\+\_\+obj1, sf\+::\+Float\+Rect t\+\_\+obj2)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \textbf{ Coin} $>$ $>$ \textbf{ coin\+Vector}
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \textbf{ Door} $>$ $>$ \textbf{ door\+Vector}
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \textbf{ Monument} $>$ $>$ \textbf{ monument\+Vector}
+\item 
+bool \textbf{ game\+Over} = false
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ player\+Collision} (sf\+::\+Float\+Rect t\+\_\+player\+Rect)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Vector2f \textbf{ objective\+Pos}
+\item 
+\textbf{ Texture\+Manager} \& \textbf{ m\+\_\+texture\+Manager}
+\item 
+bool \textbf{ all\+Coins\+Collected} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Sean Whelan 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022/23 @license Attribution-\/\+Non\+Commercial 4.\+0 International 
+\end{DoxyDate}
+
+
+Definition at line \textbf{ 15} of file \textbf{ Objectives.\+h}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\label{class_objectives_abf939985d273bca918d471d5cd4ad7f5}} 
+\index{Objectives@{Objectives}!Objectives@{Objectives}}
+\index{Objectives@{Objectives}!Objectives@{Objectives}}
+\doxysubsubsection{Objectives()}
+{\footnotesize\ttfamily Objectives\+::\+Objectives (\begin{DoxyParamCaption}\item[{\textbf{ Texture\+Manager} \&}]{texture\+Manager }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 3} of file \textbf{ Objectives.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00003\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ m\_textureManager(textureManager) }
+\DoxyCodeLine{00004\ \{}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{class_objectives_a3cc8dfd629d3493887d1a24835992ea2}} 
+\index{Objectives@{Objectives}!addToVector@{addToVector}}
+\index{addToVector@{addToVector}!Objectives@{Objectives}}
+\doxysubsubsection{addToVector()}
+{\footnotesize\ttfamily void Objectives\+::add\+To\+Vector (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{t\+\_\+objective\+Position,  }\item[{int}]{t\+\_\+objective\+Type }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 45} of file \textbf{ Objectives.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00046\ \{}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordflow}{if}\ (t\_objectiveType\ ==\ 0)}
+\DoxyCodeLine{00049\ \ \ \ \ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ Coin\ tempCoin(t\_objectivePosition,\ m\_textureManager);}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ coinVector.emplace\_back(\textcolor{keyword}{new}\ Coin(tempCoin));}
+\DoxyCodeLine{00052\ \ \ \ \ \}}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (t\_objectiveType\ ==\ 1)}
+\DoxyCodeLine{00054\ \ \ \ \ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ Door\ tempDoor(t\_objectivePosition,\ m\_textureManager);}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ doorVector.emplace\_back(\textcolor{keyword}{new}\ Door(tempDoor));}
+\DoxyCodeLine{00057\ \ \ \ \ \}}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (t\_objectiveType\ ==\ 2)}
+\DoxyCodeLine{00059\ \ \ \ \ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ Monument\ tempMonument(t\_objectivePosition,\ m\_textureManager);}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ monumentVector.emplace\_back(\textcolor{keyword}{new}\ Monument(tempMonument));}
+\DoxyCodeLine{00062\ \ \ \ \ \}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_objectives_a3cc8dfd629d3493887d1a24835992ea2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_objectives_aa46244beecf706ed1d929f2b18bc1f5d}} 
+\index{Objectives@{Objectives}!isColliding@{isColliding}}
+\index{isColliding@{isColliding}!Objectives@{Objectives}}
+\doxysubsubsection{isColliding()}
+{\footnotesize\ttfamily bool Objectives\+::is\+Colliding (\begin{DoxyParamCaption}\item[{sf\+::\+Float\+Rect}]{t\+\_\+obj1,  }\item[{sf\+::\+Float\+Rect}]{t\+\_\+obj2 }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 66} of file \textbf{ Objectives.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00067\ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordflow}{return}\ t\_obj1.intersects(t\_obj2);}
+\DoxyCodeLine{00069\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_objectives_aa46244beecf706ed1d929f2b18bc1f5d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_objectives_a5723b4973f95b9521a498fdb7da3b1d8}} 
+\index{Objectives@{Objectives}!playerCollision@{playerCollision}}
+\index{playerCollision@{playerCollision}!Objectives@{Objectives}}
+\doxysubsubsection{playerCollision()}
+{\footnotesize\ttfamily void Objectives\+::player\+Collision (\begin{DoxyParamCaption}\item[{sf\+::\+Float\+Rect}]{t\+\_\+player\+Rect }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 71} of file \textbf{ Objectives.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00072\ \{}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ coinVector.size();\ i++)}
+\DoxyCodeLine{00074\ \ \ \ \ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (coinVector.at(i).get()-\/>getCoin().getGlobalBounds().intersects(t\_playerRect))}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::unique\_ptr<Coin>>::iterator\ begin\ =\ coinVector.begin();}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ begin\ +=\ i;}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ coinVector.erase(begin);}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00081\ \ \ \ \ \}}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ doorVector.size();\ i++)}
+\DoxyCodeLine{00084\ \ \ \ \ \{}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (doorVector.at(i).get()-\/>doorAccesible\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isColliding(doorVector.at(i).get()-\/>getDoor().getGlobalBounds(),\ t\_playerRect))}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}GameOver"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gameOver\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00093\ \ \ \ \ \}}
+\DoxyCodeLine{00094\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_objectives_a5723b4973f95b9521a498fdb7da3b1d8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_objectives_a5723b4973f95b9521a498fdb7da3b1d8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_objectives_a2b6e1586d5b6c9282e93be8d63c448a8}} 
+\index{Objectives@{Objectives}!render@{render}}
+\index{render@{render}!Objectives@{Objectives}}
+\doxysubsubsection{render()}
+{\footnotesize\ttfamily void Objectives\+::render (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{t\+\_\+window }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 27} of file \textbf{ Objectives.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00028\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ coinVector.size();\ i++)}
+\DoxyCodeLine{00030\ \ \ \ \ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ coinVector.at(i).get()-\/>render(t\_window);}
+\DoxyCodeLine{00032\ \ \ \ \ \}}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ doorVector.size();\ i++)}
+\DoxyCodeLine{00034\ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ doorVector.at(i).get()-\/>render(t\_window);}
+\DoxyCodeLine{00036\ \ \ \ \ \}}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ monumentVector.size();\ i++)}
+\DoxyCodeLine{00038\ \ \ \ \ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ monumentVector.at(i).get()-\/>render(t\_window);}
+\DoxyCodeLine{00040\ \ \ \ \ \}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_objectives_a2b6e1586d5b6c9282e93be8d63c448a8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_objectives_a36cbc701662c53815e15036f0227a94e}} 
+\index{Objectives@{Objectives}!update@{update}}
+\index{update@{update}!Objectives@{Objectives}}
+\doxysubsubsection{update()}
+{\footnotesize\ttfamily void Objectives\+::update (\begin{DoxyParamCaption}\item[{sf\+::\+Time}]{t\+\_\+delta\+Time,  }\item[{sf\+::\+Render\+Window \&}]{t\+\_\+window,  }\item[{sf\+::\+Float\+Rect}]{t\+\_\+player\+Rect,  }\item[{int}]{t\+\_\+coins\+Collected,  }\item[{int}]{t\+\_\+max\+Coins,  }\item[{bool}]{t\+\_\+invisibility\+Active }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 8} of file \textbf{ Objectives.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00009\ \{}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ "{}t\_coinsCollected\ =\ "{}\ <<\ t\_coinsCollected\ <<\ "{}\ t\_maxCoins\ =\ "{}\ <<\ t\_maxCoins\ <<\ std::endl;}}
+\DoxyCodeLine{00012\ \ \ \ \ playerCollision(t\_playerRect);}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordflow}{if}\ (t\_coinsCollected\ >=\ t\_maxCoins\ \&\&\ allCoinsCollected\ ==\ \textcolor{keyword}{false}\ \&\&\ t\_coinsCollected\ !=\ 0)}
+\DoxyCodeLine{00014\ \ \ \ \ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ allCoinsCollected\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ doorVector.size();\ i++)}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ doorVector.at(i).get()-\/>doorOpened();}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00020\ \ \ \ \ \}}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordflow}{if}\ (monumentVector.size()\ !=\ 0)}
+\DoxyCodeLine{00022\ \ \ \ \ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ monumentVector.at(0).get()-\/>update(t\_invisibilityActive);}
+\DoxyCodeLine{00024\ \ \ \ \ \}}
+\DoxyCodeLine{00025\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_objectives_a36cbc701662c53815e15036f0227a94e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_objectives_a36cbc701662c53815e15036f0227a94e_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\label{class_objectives_afed15a3eccffd853cc5848fcce706b4c}} 
+\index{Objectives@{Objectives}!allCoinsCollected@{allCoinsCollected}}
+\index{allCoinsCollected@{allCoinsCollected}!Objectives@{Objectives}}
+\doxysubsubsection{allCoinsCollected}
+{\footnotesize\ttfamily bool Objectives\+::all\+Coins\+Collected = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 45} of file \textbf{ Objectives.\+h}.
+
+\mbox{\label{class_objectives_a8e6f555bb5a452a500745d111a5206ff}} 
+\index{Objectives@{Objectives}!coinVector@{coinVector}}
+\index{coinVector@{coinVector}!Objectives@{Objectives}}
+\doxysubsubsection{coinVector}
+{\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$\textbf{ Coin}$>$ $>$ Objectives\+::coin\+Vector}
+
+
+
+Definition at line \textbf{ 29} of file \textbf{ Objectives.\+h}.
+
+\mbox{\label{class_objectives_a85365ee262bddbfc9893234fd589ca42}} 
+\index{Objectives@{Objectives}!doorVector@{doorVector}}
+\index{doorVector@{doorVector}!Objectives@{Objectives}}
+\doxysubsubsection{doorVector}
+{\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$\textbf{ Door}$>$ $>$ Objectives\+::door\+Vector}
+
+
+
+Definition at line \textbf{ 30} of file \textbf{ Objectives.\+h}.
+
+\mbox{\label{class_objectives_a2634fb98af09dd483dcf1c9a4c37f501}} 
+\index{Objectives@{Objectives}!gameOver@{gameOver}}
+\index{gameOver@{gameOver}!Objectives@{Objectives}}
+\doxysubsubsection{gameOver}
+{\footnotesize\ttfamily bool Objectives\+::game\+Over = false}
+
+
+
+Definition at line \textbf{ 37} of file \textbf{ Objectives.\+h}.
+
+\mbox{\label{class_objectives_a731e3640e58a48145f34557d26bd1455}} 
+\index{Objectives@{Objectives}!m\_textureManager@{m\_textureManager}}
+\index{m\_textureManager@{m\_textureManager}!Objectives@{Objectives}}
+\doxysubsubsection{m\_textureManager}
+{\footnotesize\ttfamily \textbf{ Texture\+Manager}\& Objectives\+::m\+\_\+texture\+Manager\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 41} of file \textbf{ Objectives.\+h}.
+
+\mbox{\label{class_objectives_ade358d59de78f9796b83b8d8967134d6}} 
+\index{Objectives@{Objectives}!monumentVector@{monumentVector}}
+\index{monumentVector@{monumentVector}!Objectives@{Objectives}}
+\doxysubsubsection{monumentVector}
+{\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$\textbf{ Monument}$>$ $>$ Objectives\+::monument\+Vector}
+
+
+
+Definition at line \textbf{ 31} of file \textbf{ Objectives.\+h}.
+
+\mbox{\label{class_objectives_ae91f3542ed1566a5c0517f25d68f504a}} 
+\index{Objectives@{Objectives}!objectivePos@{objectivePos}}
+\index{objectivePos@{objectivePos}!Objectives@{Objectives}}
+\doxysubsubsection{objectivePos}
+{\footnotesize\ttfamily sf\+::\+Vector2f Objectives\+::objective\+Pos\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 40} of file \textbf{ Objectives.\+h}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+No\+Code\+Game\+Editor/\textbf{ Objectives.\+h}\item 
+No\+Code\+Game\+Editor/\textbf{ Objectives.\+cpp}\end{DoxyCompactItemize}

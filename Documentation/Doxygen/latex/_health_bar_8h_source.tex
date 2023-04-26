@@ -1,0 +1,48 @@
+\doxysection{Health\+Bar.\+h}
+\label{_health_bar_8h_source}\index{NoCodeGameEditor/HealthBar.h@{NoCodeGameEditor/HealthBar.h}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }HealthBar}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ \ \ \ \ HealthBar();}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{void}\ loadFiles();}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{void}\ update(sf::Time\ t\_deltaTime,\ \textcolor{keywordtype}{bool}\ t\_invincibilityActive);}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ render(sf::RenderWindow\&\ t\_window);}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ minusHealth(\textcolor{keywordtype}{int}\ t\_health);}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ plusHealth(\textcolor{keywordtype}{int}\ t\_health);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ sf::Sprite\ healthBarSprite;}
+\DoxyCodeLine{00029\ \ \ \ \ sf::RectangleShape\ healthRect;}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{bool}\ gameOver\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00032\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ setupHealthBarSprite();}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ setupHealthRect();}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ }
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ sf::Texture\ healthBarTexture;}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{int}\ fullHealthBar\ =\ 0;}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{int}\ currentHealth\ =\ 0;}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ sf::Clock\ colourChangeTimer;}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \};}
+\DoxyCodeLine{00046\ }
+
+\end{DoxyCode}

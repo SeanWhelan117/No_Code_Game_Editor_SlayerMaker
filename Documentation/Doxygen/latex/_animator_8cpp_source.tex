@@ -1,0 +1,34 @@
+\doxysection{Animator.\+cpp}
+\label{_animator_8cpp_source}\index{NoCodeGameEditor/Animator.cpp@{NoCodeGameEditor/Animator.cpp}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}Animator.h"{}}}
+\DoxyCodeLine{00005\ Animator::Animator()}
+\DoxyCodeLine{00006\ \{}
+\DoxyCodeLine{00007\ \ \ \ \textcolor{comment}{//\ std::cout\ <<\ "{}Animator\ ready"{}\ <<\ std::endl;}}
+\DoxyCodeLine{00008\ \}}
+\DoxyCodeLine{00022\ sf::IntRect\ Animator::animate(sf::Texture\ t\_texture,\ \textcolor{keywordtype}{int}\ t\_numOfFrames,\ \textcolor{keywordtype}{int}\ t\_frameWidth,\ \textcolor{keywordtype}{int}\ t\_frameHeight,\ \textcolor{keywordtype}{int}\ t\_cols,\ \textcolor{keywordtype}{int}\ t\_rows,\ \textcolor{keywordtype}{int}\ t\_time)}
+\DoxyCodeLine{00023\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ totalElapsed++;}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordflow}{if}\ (totalElapsed\ >\ t\_time)}
+\DoxyCodeLine{00027\ \ \ \ \ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ totalElapsed\ =\ 0;}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ animationFrame++;}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (animationFrame\ >\ t\_numOfFrames)\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ animationFrame\ =\ 0;}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00034\ \ \ \ \ \}}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{int}\ col\ =\ animationFrame\ \%\ t\_cols;\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{int}\ row\ =\ animationFrame\ /\ t\_cols;\ }
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ rectSourceSprite.height\ =\ t\_frameHeight;}
+\DoxyCodeLine{00039\ \ \ \ \ rectSourceSprite.width\ =\ t\_frameWidth;}
+\DoxyCodeLine{00040\ \ \ \ \ rectSourceSprite.left\ =\ col\ *\ rectSourceSprite.width;}
+\DoxyCodeLine{00041\ \ \ \ \ rectSourceSprite.top\ =\ row\ *\ rectSourceSprite.height;}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordflow}{return}\ rectSourceSprite;}
+\DoxyCodeLine{00044\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,37 @@
+\doxysection{Coin.\+cpp}
+\label{_coin_8cpp_source}\index{NoCodeGameEditor/Coin.cpp@{NoCodeGameEditor/Coin.cpp}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}Coin.h"{}}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ Coin::Coin(sf::Vector2f\ t\_coinPos,\ TextureManager\&\ textureManager)\ :\ coinPos(t\_coinPos),\ m\_textureManager(textureManager)}
+\DoxyCodeLine{00004\ \{}
+\DoxyCodeLine{00005\ \ \ \ \ loadFiles();}
+\DoxyCodeLine{00006\ \ \ \ \ setupCoin();}
+\DoxyCodeLine{00007\ \}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keywordtype}{void}\ Coin::loadFiles()}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ coinTexture\ =\ std::make\_shared<sf::Texture>(m\_textureManager.getTexture(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)coin.png"{}}));}
+\DoxyCodeLine{00012\ \ \ \ \ coinSprite.setTexture(*coinTexture);}
+\DoxyCodeLine{00013\ \}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keywordtype}{void}\ Coin::setupCoin()}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ coinSprite.setOrigin(coinSprite.getLocalBounds().width\ /\ 2,\ coinSprite.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00018\ \ \ \ \ coinSprite.setPosition(sf::Vector2f(coinPos.x\ +\ 15,\ coinPos.y\ +\ 15));}
+\DoxyCodeLine{00019\ \ \ \ \ coinSprite.setScale(0.25,\ 0.25);}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keywordtype}{void}\ Coin::render(sf::RenderWindow\&\ t\_window)}
+\DoxyCodeLine{00024\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ t\_window.draw(coinSprite);}
+\DoxyCodeLine{00026\ \}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ sf::Sprite\&\ Coin::getCoin()}
+\DoxyCodeLine{00029\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordflow}{return}\ coinSprite;}
+\DoxyCodeLine{00031\ \}}
+
+\end{DoxyCode}

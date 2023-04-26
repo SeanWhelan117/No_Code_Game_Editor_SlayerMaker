@@ -1,0 +1,12 @@
+<map id="Game::createLevel" name="Game::createLevel">
+<area shape="rect" id="node1" title=" " alt="" coords="5,203,136,228"/>
+<area shape="rect" id="node2" href="$class_items.html#a4c8453c8ca81fcc12b5aadb061efcbd0" title=" " alt="" coords="218,5,353,31"/>
+<area shape="rect" id="node3" href="$class_objectives.html#a3cc8dfd629d3493887d1a24835992ea2" title=" " alt="" coords="204,55,367,80"/>
+<area shape="rect" id="node4" href="$class_powerups.html#a3042545500725dfaf0539c7b1a8f5b31" title=" " alt="" coords="205,104,365,129"/>
+<area shape="rect" id="node5" href="$class_game.html#a306f7eb96c3cc930508d35c31989419f" title=" " alt="" coords="216,153,355,179"/>
+<area shape="rect" id="node6" href="$class_game.html#af1ef9f2ac8c746501f63058526429ca3" title=" " alt="" coords="184,203,387,228"/>
+<area shape="rect" id="node7" href="$class_game.html#ab8a2f51fb92121baa5f579856ba83600" title=" " alt="" coords="196,252,375,277"/>
+<area shape="rect" id="node8" href="$class_player.html#a616b6524096fbcf47573a5a5823ca6ab" title=" " alt="" coords="224,301,347,327"/>
+<area shape="rect" id="node9" href="$class_health_bar.html#a736449535fdea9af3b3791ad9ffdf0c2" title=" " alt="" coords="211,351,359,376"/>
+<area shape="rect" id="node10" href="$class_clock.html#a49c49eaeb838598f7b6b608a973c6ea4" title=" " alt="" coords="224,400,347,425"/>
+</map>

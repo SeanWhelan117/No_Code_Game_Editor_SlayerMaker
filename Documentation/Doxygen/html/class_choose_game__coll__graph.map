@@ -1,0 +1,5 @@
+<map id="ChooseGame" name="ChooseGame">
+<area shape="rect" id="node1" title=" " alt="" coords="106,424,265,912"/>
+<area shape="rect" id="node2" href="$class_load_from_file.html" title=" " alt="" coords="5,5,176,361"/>
+<area shape="rect" id="node3" href="$class_network_manager.html" title=" " alt="" coords="200,123,363,244"/>
+</map>

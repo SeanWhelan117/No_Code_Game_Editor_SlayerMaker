@@ -1,0 +1,4 @@
+<map id="Bullet::setupSprites" name="Bullet::setupSprites">
+<area shape="rect" id="node1" title="sets the simple fill color, size and initial position of the the bullet" alt="" coords="149,5,285,31"/>
+<area shape="rect" id="node2" href="$class_bullet.html#a22f3646a1e8f0eeca15d03d334c34f3a" title="Bullet constructor, takes the sf window and the player position as parameters Sets up a mouse positio..." alt="" coords="5,5,101,31"/>
+</map>

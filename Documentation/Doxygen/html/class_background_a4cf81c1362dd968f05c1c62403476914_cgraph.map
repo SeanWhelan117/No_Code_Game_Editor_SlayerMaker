@@ -1,0 +1,4 @@
+<map id="Background::update" name="Background::update">
+<area shape="rect" id="node1" title="checks if the passed t_choice is not the same as the currentChoice. If its not assign it to choice an..." alt="" coords="5,5,144,31"/>
+<area shape="rect" id="node2" href="$class_background.html#aeb1df5cbe63cb310d2f786f06ed105c5" title="Checks what choice is and sets the texture of the Background sprite based on this outputs an error me..." alt="" coords="192,5,392,31"/>
+</map>

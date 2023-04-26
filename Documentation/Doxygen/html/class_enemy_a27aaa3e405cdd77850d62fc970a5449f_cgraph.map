@@ -1,0 +1,9 @@
+<map id="Enemy::Enemy" name="Enemy::Enemy">
+<area shape="rect" id="node1" title=" " alt="" coords="5,55,117,80"/>
+<area shape="rect" id="node2" href="$class_enemy.html#ad5b18a5dd94946dce3754307e7ca744b" title=" " alt="" coords="189,5,311,31"/>
+<area shape="rect" id="node4" href="$class_enemy.html#a456bce97463f25089468e398e15a6ce4" title=" " alt="" coords="178,55,322,80"/>
+<area shape="rect" id="node7" href="$class_enemy.html#a00cbe804cef8847d4d7451bfc7969cb8" title=" " alt="" coords="165,104,335,129"/>
+<area shape="rect" id="node3" href="$class_texture_manager.html#a6c7ddda59194e9b951835477daf37fca" title=" " alt="" coords="394,5,578,31"/>
+<area shape="rect" id="node5" href="$class_enemy.html#a5a6968990cbd39418b95285641ba635f" title=" " alt="" coords="390,55,582,80"/>
+<area shape="rect" id="node6" href="$class_enemy.html#a72d44e6b7ea286d8347b92861ba95ebb" title=" " alt="" coords="383,104,589,129"/>
+</map>

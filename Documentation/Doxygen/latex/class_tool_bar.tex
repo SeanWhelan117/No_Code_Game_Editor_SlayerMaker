@@ -1,0 +1,1390 @@
+\doxysection{Tool\+Bar Class Reference}
+\label{class_tool_bar}\index{ToolBar@{ToolBar}}
+
+
+{\ttfamily \#include $<$Tool\+Bar.\+h$>$}
+
+
+
+Collaboration diagram for Tool\+Bar\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{class_tool_bar__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Tool\+Bar} (float t\+\_\+game\+Width, float t\+\_\+game\+Height)
+\item 
+void \textbf{ load\+Files} ()
+\item 
+void \textbf{ setup\+Sprites} ()
+\item 
+void \textbf{ update} (sf\+::\+Time t\+\_\+delta\+Time, sf\+::\+Render\+Window \&t\+\_\+window, std\+::vector$<$ std\+::vector$<$ \textbf{ Cell} $>$ $>$ \&t\+\_\+grid, int t\+\_\+grid\+Params, bool t\+\_\+choice, int t\+\_\+choice\+Num)
+\item 
+void \textbf{ render} (sf\+::\+Render\+Window \&t\+\_\+window)
+\item 
+void \textbf{ check\+For\+Mouse\+Pos\+And\+Click} (sf\+::\+Render\+Window \&t\+\_\+window, sf\+::\+Vector2f t\+\_\+mouse\+Pos)
+\item 
+void \textbf{ reset\+Tools} (int t\+\_\+current)
+\item 
+void \textbf{ change\+Tools} (int t\+\_\+current\+Tool)
+\item 
+void \textbf{ set\+Grid\+Cell\+To\+Marked} (std\+::vector$<$ std\+::vector$<$ \textbf{ Cell} $>$ $>$ \&t\+\_\+grid, int t\+\_\+grid\+Params, sf\+::\+Vector2f t\+\_\+mouse\+Pos, std\+::string t\+\_\+tool\+Chosen, int t\+\_\+choice\+Num)
+\item 
+void \textbf{ set\+Tool\+Pos\+For\+View} (sf\+::\+Render\+Window \&t\+\_\+window)
+\item 
+void \textbf{ pulse\+Triangles} ()
+\item 
+void \textbf{ change\+Mode} (int t\+\_\+triangle\+Clicked)
+\item 
+void \textbf{ create\+Selection\+Square} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \textbf{ walls\+Placed} = false
+\item 
+bool \textbf{ enemy\+Spawners\+Placed} = false
+\item 
+bool \textbf{ objectives\+Placed} = false
+\item 
+bool \textbf{ items\+Placed\+Bool} = false
+\item 
+bool \textbf{ powerups\+Placed} = false
+\item 
+bool \textbf{ saved} = false
+\item 
+bool \textbf{ testing\+Game} = false
+\item 
+bool \textbf{ brush\+Tool\+Selected} = false
+\item 
+bool \textbf{ rubber\+Tool\+Selected} = false
+\item 
+bool \textbf{ fill\+Tool\+Selected} = false
+\item 
+sf\+::\+Sprite \textbf{ tool\+Bar\+Sprite}
+\item 
+std\+::string \textbf{ current\+Mode} = \char`\"{}WALLS\char`\"{}
+\item 
+int \textbf{ enemy\+One\+Spawns\+Placed} = 0
+\item 
+int \textbf{ enemy\+Two\+Spawns\+Placed} = 0
+\item 
+int \textbf{ enemy\+Three\+Spawns\+Placed} = 0
+\item 
+int \textbf{ coins\+Placed} = 0
+\item 
+int \textbf{ doors\+Placed} = 0
+\item 
+sf\+::\+Sprite \textbf{ navigation\+Triangles} [\textbf{ MAX\+\_\+\+NAV\+\_\+\+TRIANGLES}]
+\item 
+bool \textbf{ navigating} = false
+\item 
+std\+::map$<$ std\+::string, int $>$ \textbf{ items\+Placed}
+\item 
+sf\+::\+Vector2f \textbf{ selection\+Square\+Start\+Pos}
+\item 
+sf\+::\+Rectangle\+Shape \textbf{ selection\+Square}
+\item 
+bool \textbf{ selecting} = false
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const int \textbf{ MAX\+\_\+\+NAV\+\_\+\+TRIANGLES} = 2
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Texture \textbf{ tool\+Bar\+Texture}
+\item 
+sf\+::\+Sprite \textbf{ brush\+Tool\+Sprite}
+\item 
+sf\+::\+Texture \textbf{ brush\+Tool\+Texture}
+\item 
+sf\+::\+Sprite \textbf{ fill\+Tool\+Sprite}
+\item 
+sf\+::\+Texture \textbf{ fill\+Tool\+Texture}
+\item 
+sf\+::\+Sprite \textbf{ rubber\+Tool\+Sprite}
+\item 
+sf\+::\+Texture \textbf{ rubber\+Tool\+Texture}
+\item 
+float \textbf{ game\+Width} = 0
+\item 
+float \textbf{ game\+Height} = 0
+\item 
+sf\+::\+Rectangle\+Shape \textbf{ add\+Walls\+Button}
+\item 
+sf\+::\+Rectangle\+Shape \textbf{ save\+Button}
+\item 
+sf\+::\+Rectangle\+Shape \textbf{ test\+Game\+Button}
+\item 
+sf\+::\+Rectangle\+Shape \textbf{ add\+Enemy\+Spawners\+Button}
+\item 
+sf\+::\+Vector2f \textbf{ Mouse\+Pos\+Real}
+\item 
+sf\+::\+Texture \textbf{ nav\+Triangle\+Texture}
+\item 
+sf\+::\+Vector2f \textbf{ max\+Scale} = sf\+::\+Vector2f(1.\+8, 1.\+8)
+\item 
+sf\+::\+Vector2f \textbf{ min\+Scale} = sf\+::\+Vector2f(1.\+2, 1.\+2)
+\item 
+bool \textbf{ scaling\+Up} = true
+\item 
+bool \textbf{ scaling\+Down} = false
+\item 
+bool \textbf{ pulse\+The\+Triangles} = true
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Sean Whelan 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022/23 @license Attribution-\/\+Non\+Commercial 4.\+0 International 
+\end{DoxyDate}
+
+
+Definition at line \textbf{ 13} of file \textbf{ Tool\+Bar.\+h}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\label{class_tool_bar_aa0bfc2509a438fd3ff5eadfeb83ebd95}} 
+\index{ToolBar@{ToolBar}!ToolBar@{ToolBar}}
+\index{ToolBar@{ToolBar}!ToolBar@{ToolBar}}
+\doxysubsubsection{ToolBar()}
+{\footnotesize\ttfamily Tool\+Bar\+::\+Tool\+Bar (\begin{DoxyParamCaption}\item[{float}]{t\+\_\+game\+Width,  }\item[{float}]{t\+\_\+game\+Height }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 3} of file \textbf{ Tool\+Bar.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00004\ \{}
+\DoxyCodeLine{00005\ \ \ \ \ loadFiles();}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \ \ \ \ gameWidth\ =\ t\_gameWidth;}
+\DoxyCodeLine{00008\ \ \ \ \ gameHeight\ =\ t\_gameHeight;}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \ \ \ \ setupSprites();}
+\DoxyCodeLine{00011\ \ \ \ \ createSelectionSquare();}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \ \ \ \ addWallsButton.setFillColor(sf::Color::Green);}
+\DoxyCodeLine{00014\ \ \ \ \ addWallsButton.setSize(sf::Vector2f(150,\ 100));}
+\DoxyCodeLine{00015\ \ \ \ \ addWallsButton.setOrigin(75,\ 50);}
+\DoxyCodeLine{00016\ \ \ \ \ addWallsButton.setPosition(gameWidth\ /\ 2\ +\ 350,\ 100);}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ saveButton.setFillColor(sf::Color::Blue);}
+\DoxyCodeLine{00019\ \ \ \ \ saveButton.setSize(sf::Vector2f(150,\ 100));}
+\DoxyCodeLine{00020\ \ \ \ \ saveButton.setOrigin(75,\ 50);}
+\DoxyCodeLine{00021\ \ \ \ \ saveButton.setPosition(gameWidth\ /\ 2\ +\ 550,\ 100);}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ testGameButton.setFillColor(sf::Color::Red);}
+\DoxyCodeLine{00025\ \ \ \ \ testGameButton.setSize(sf::Vector2f(150,\ 100));}
+\DoxyCodeLine{00026\ \ \ \ \ testGameButton.setOrigin(75,\ 50);}
+\DoxyCodeLine{00027\ \ \ \ \ testGameButton.setPosition(gameWidth\ /\ 2\ +\ 750,\ 100);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ addEnemySpawnersButton.setFillColor(sf::Color::Green);}
+\DoxyCodeLine{00030\ \ \ \ \ addEnemySpawnersButton.setSize(sf::Vector2f(150,\ 100));}
+\DoxyCodeLine{00031\ \ \ \ \ addEnemySpawnersButton.setOrigin(75,\ 50);}
+\DoxyCodeLine{00032\ \ \ \ \ addEnemySpawnersButton.setPosition(gameWidth\ /\ 2\ +\ 350,\ 100);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ itemsPlaced\ =\ \{\ \{\textcolor{stringliteral}{"{}Spawner1"{}},\ 0\},\ \{\textcolor{stringliteral}{"{}Spawner2"{}},\ 0\},\ \{\textcolor{stringliteral}{"{}Spawner3"{}},\ 0\},\ \{\textcolor{stringliteral}{"{}Coins"{}},\ 0\},\ \{\textcolor{stringliteral}{"{}Doors"{}},\ 0\},\ \{\textcolor{stringliteral}{"{}Monuments"{}},\ 0\},\ \{\textcolor{stringliteral}{"{}Medkits"{}},\ 0\},\ \{\textcolor{stringliteral}{"{}Explosives"{}},\ 0\},\ \{\textcolor{stringliteral}{"{}Guns"{}},\ 0\},\ \{\textcolor{stringliteral}{"{}Nukes"{}},\ 0\}\ ,\ \{\textcolor{stringliteral}{"{}Invicibility"{}},\ 0\}\ ,\ \{\textcolor{stringliteral}{"{}Invisibility"{}},\ 0\}\ \};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{class_tool_bar_aa0bfc2509a438fd3ff5eadfeb83ebd95_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{class_tool_bar_a7a2bf662e732cfe5736e748b5fd70f90}} 
+\index{ToolBar@{ToolBar}!changeMode@{changeMode}}
+\index{changeMode@{changeMode}!ToolBar@{ToolBar}}
+\doxysubsubsection{changeMode()}
+{\footnotesize\ttfamily void Tool\+Bar\+::change\+Mode (\begin{DoxyParamCaption}\item[{int}]{t\+\_\+triangle\+Clicked }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 440} of file \textbf{ Tool\+Bar.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00441\ \{}
+\DoxyCodeLine{00442\ \ \ \ \ \textcolor{keywordtype}{bool}\ set\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00443\ \ \ \ \ \textcolor{keywordflow}{if}\ (navigating)}
+\DoxyCodeLine{00444\ \ \ \ \ \{}
+\DoxyCodeLine{00445\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (currentMode\ ==\ \textcolor{stringliteral}{"{}WALLS"{}}\ \&\&\ t\_triangleClicked\ ==\ 0)}
+\DoxyCodeLine{00446\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00447\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ do\ nothing\ for\ now...}}
+\DoxyCodeLine{00448\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00449\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentMode\ ==\ \textcolor{stringliteral}{"{}WALLS"{}}\ \&\&\ t\_triangleClicked\ ==\ 1)}
+\DoxyCodeLine{00450\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00451\ \ \ \ \ \ \ \ \ \ \ \ \ currentMode\ =\ \textcolor{stringliteral}{"{}ENEMIES"{}};}
+\DoxyCodeLine{00452\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}1"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00453\ \ \ \ \ \ \ \ \ \ \ \ \ set\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00454\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00455\ }
+\DoxyCodeLine{00456\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (currentMode\ ==\ \textcolor{stringliteral}{"{}ENEMIES"{}}\ \&\&\ t\_triangleClicked\ ==\ 0)}
+\DoxyCodeLine{00457\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00458\ \ \ \ \ \ \ \ \ \ \ \ \ currentMode\ =\ \textcolor{stringliteral}{"{}WALLS"{}};}
+\DoxyCodeLine{00459\ \ \ \ \ \ \ \ \ \ \ \ \ set\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00460\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00461\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentMode\ ==\ \textcolor{stringliteral}{"{}ENEMIES"{}}\ \&\&\ t\_triangleClicked\ ==\ 1\ \&\&\ set\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00462\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00463\ \ \ \ \ \ \ \ \ \ \ \ \ currentMode\ =\ \textcolor{stringliteral}{"{}OBJECTIVES"{}};}
+\DoxyCodeLine{00464\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}1"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00465\ \ \ \ \ \ \ \ \ \ \ \ \ set\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00466\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00467\ }
+\DoxyCodeLine{00468\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (currentMode\ ==\ \textcolor{stringliteral}{"{}OBJECTIVES"{}}\ \&\&\ t\_triangleClicked\ ==\ 0)}
+\DoxyCodeLine{00469\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00470\ \ \ \ \ \ \ \ \ \ \ \ \ currentMode\ =\ \textcolor{stringliteral}{"{}ENEMIES"{}};}
+\DoxyCodeLine{00471\ \ \ \ \ \ \ \ \ \ \ \ \ set\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00472\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00473\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentMode\ ==\ \textcolor{stringliteral}{"{}OBJECTIVES"{}}\ \&\&\ t\_triangleClicked\ ==\ 1\ \&\&\ set\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00474\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00475\ \ \ \ \ \ \ \ \ \ \ \ \ currentMode\ =\ \textcolor{stringliteral}{"{}ITEMS"{}};}
+\DoxyCodeLine{00476\ \ \ \ \ \ \ \ \ \ \ \ \ set\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00477\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00478\ }
+\DoxyCodeLine{00479\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (currentMode\ ==\ \textcolor{stringliteral}{"{}ITEMS"{}}\ \&\&\ t\_triangleClicked\ ==\ 0)}
+\DoxyCodeLine{00480\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00481\ \ \ \ \ \ \ \ \ \ \ \ \ currentMode\ =\ \textcolor{stringliteral}{"{}OBJECTIVES"{}};}
+\DoxyCodeLine{00482\ \ \ \ \ \ \ \ \ \ \ \ \ set\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00483\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00484\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentMode\ ==\ \textcolor{stringliteral}{"{}ITEMS"{}}\ \&\&\ t\_triangleClicked\ ==\ 1\ \&\&\ set\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00485\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00486\ \ \ \ \ \ \ \ \ \ \ \ \ currentMode\ =\ \textcolor{stringliteral}{"{}POWERUPS"{}};}
+\DoxyCodeLine{00487\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00488\ }
+\DoxyCodeLine{00489\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (currentMode\ ==\ \textcolor{stringliteral}{"{}POWERUPS"{}}\ \&\&\ t\_triangleClicked\ ==\ 0)}
+\DoxyCodeLine{00490\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00491\ \ \ \ \ \ \ \ \ \ \ \ \ currentMode\ =\ \textcolor{stringliteral}{"{}ITEMS"{}};}
+\DoxyCodeLine{00492\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00493\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentMode\ ==\ \textcolor{stringliteral}{"{}POWERUPS"{}}\ \&\&\ t\_triangleClicked\ ==\ 1\ \&\&\ set\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00494\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00495\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//future\ stuff,\ nothing\ now}}
+\DoxyCodeLine{00496\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00497\ \ \ \ \ \}}
+\DoxyCodeLine{00498\ \ \ \ \ }
+\DoxyCodeLine{00499\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_tool_bar_a7a2bf662e732cfe5736e748b5fd70f90_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_tool_bar_a28803a5be32774efbe22331891c44f58}} 
+\index{ToolBar@{ToolBar}!changeTools@{changeTools}}
+\index{changeTools@{changeTools}!ToolBar@{ToolBar}}
+\doxysubsubsection{changeTools()}
+{\footnotesize\ttfamily void Tool\+Bar\+::change\+Tools (\begin{DoxyParamCaption}\item[{int}]{t\+\_\+current\+Tool }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 306} of file \textbf{ Tool\+Bar.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00307\ \{}
+\DoxyCodeLine{00308\ \ \ \ \ \textcolor{keywordflow}{if}\ (t\_currentTool\ ==\ 1)}
+\DoxyCodeLine{00309\ \ \ \ \ \{}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ rubberToolSprite.setScale(0.5,\ 0.5);}
+\DoxyCodeLine{00311\ \ \ \ \ \}}
+\DoxyCodeLine{00312\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (t\_currentTool\ ==\ 2)}
+\DoxyCodeLine{00313\ \ \ \ \ \{}
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ brushToolSprite.setScale(0.5,\ 0.5);}
+\DoxyCodeLine{00315\ \ \ \ \ \}}
+\DoxyCodeLine{00316\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (t\_currentTool\ ==\ 3)}
+\DoxyCodeLine{00317\ \ \ \ \ \{}
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ fillToolSprite.setScale(0.65,\ 0.65);}
+\DoxyCodeLine{00319\ \ \ \ \ \}}
+\DoxyCodeLine{00320\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_tool_bar_a28803a5be32774efbe22331891c44f58_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_tool_bar_a3b65903d6b9f02d7423d656ad3445287}} 
+\index{ToolBar@{ToolBar}!checkForMousePosAndClick@{checkForMousePosAndClick}}
+\index{checkForMousePosAndClick@{checkForMousePosAndClick}!ToolBar@{ToolBar}}
+\doxysubsubsection{checkForMousePosAndClick()}
+{\footnotesize\ttfamily void Tool\+Bar\+::check\+For\+Mouse\+Pos\+And\+Click (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{t\+\_\+window,  }\item[{sf\+::\+Vector2f}]{t\+\_\+mouse\+Pos }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 194} of file \textbf{ Tool\+Bar.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00195\ \{}
+\DoxyCodeLine{00196\ \ \ \ \ \textcolor{comment}{//1\ is\ rubberTool,\ 2\ is\ brush\ tool,\ \ 3\ is\ fill\ tool}}
+\DoxyCodeLine{00197\ }
+\DoxyCodeLine{00198\ \ \ \ \ \textcolor{keywordflow}{if}\ (rubberToolSprite.getGlobalBounds().contains(t\_mousePos))}
+\DoxyCodeLine{00199\ \ \ \ \ \{}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ changeTools(1);}
+\DoxyCodeLine{00201\ }
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Mouse::isButtonPressed(sf::Mouse::Left))}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//brush\ is\ selected}}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ rubberToolSelected\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ brushToolSelected\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ fillToolSelected\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00209\ \ \ \ \ \}}
+\DoxyCodeLine{00210\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00211\ \ \ \ \ \{}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ resetTools(1);}
+\DoxyCodeLine{00213\ \ \ \ \ \}}
+\DoxyCodeLine{00214\ }
+\DoxyCodeLine{00215\ \ \ \ \ \textcolor{keywordflow}{if}\ (brushToolSprite.getGlobalBounds().contains(t\_mousePos))}
+\DoxyCodeLine{00216\ \ \ \ \ \{}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ changeTools(2);}
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Mouse::isButtonPressed(sf::Mouse::Left))}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//brush\ is\ selected}}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ brushToolSelected\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ rubberToolSelected\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ fillToolSelected\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00226\ \ \ \ \ \}}
+\DoxyCodeLine{00227\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00228\ \ \ \ \ \{}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ resetTools(2);}
+\DoxyCodeLine{00230\ \ \ \ \ \}}
+\DoxyCodeLine{00231\ }
+\DoxyCodeLine{00232\ \ \ \ \ \textcolor{keywordflow}{if}\ (fillToolSprite.getGlobalBounds().contains(t\_mousePos))}
+\DoxyCodeLine{00233\ \ \ \ \ \{}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ changeTools(3);}
+\DoxyCodeLine{00235\ }
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Mouse::isButtonPressed(sf::Mouse::Left))}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//brush\ is\ selected}}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \ \ \ \ fillToolSelected\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \ \ \ \ brushToolSelected\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \ \ \ \ rubberToolSelected\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00243\ \ \ \ \ \}}
+\DoxyCodeLine{00244\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00245\ \ \ \ \ \{}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ resetTools(3);}
+\DoxyCodeLine{00247\ \ \ \ \ \}}
+\DoxyCodeLine{00248\ }
+\DoxyCodeLine{00249\ \ \ \ \ }
+\DoxyCodeLine{00250\ }
+\DoxyCodeLine{00251\ \ \ \ \ \textcolor{keywordflow}{if}\ (addWallsButton.getGlobalBounds().contains(t\_mousePos))}
+\DoxyCodeLine{00252\ \ \ \ \ \{}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Mouse::isButtonPressed(sf::Mouse::Left))}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \ \ \ \ wallsPlaced\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00257\ \ \ \ \ \}}
+\DoxyCodeLine{00258\ }
+\DoxyCodeLine{00259\ \ \ \ \ \textcolor{keywordflow}{if}\ (saveButton.getGlobalBounds().contains(t\_mousePos))}
+\DoxyCodeLine{00260\ \ \ \ \ \{}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Mouse::isButtonPressed(sf::Mouse::Left))}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \ \ \ \ saved\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00265\ \ \ \ \ \}}
+\DoxyCodeLine{00266\ }
+\DoxyCodeLine{00267\ \ \ \ \ \textcolor{keywordflow}{if}\ (testGameButton.getGlobalBounds().contains(t\_mousePos))}
+\DoxyCodeLine{00268\ \ \ \ \ \{}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Mouse::isButtonPressed(sf::Mouse::Left))}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \ \ \ \ testingGame\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00273\ \ \ \ \ \}}
+\DoxyCodeLine{00274\ }
+\DoxyCodeLine{00275\ \ \ \ \ \textcolor{keywordflow}{if}\ (addEnemySpawnersButton.getGlobalBounds().contains(t\_mousePos))}
+\DoxyCodeLine{00276\ \ \ \ \ \{}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Mouse::isButtonPressed(sf::Mouse::Left))}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \ \ \ \ enemySpawnersPlaced\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00281\ \ \ \ \ \}}
+\DoxyCodeLine{00282\ }
+\DoxyCodeLine{00283\ \ \ \ \ \textcolor{comment}{//for\ (int\ i\ =\ 0;\ i\ <\ MAX\_NAV\_TRIANGLES;\ i++)}}
+\DoxyCodeLine{00284\ \ \ \ \ \textcolor{comment}{//\{}}
+\DoxyCodeLine{00285\ \ \ \ \ \textcolor{comment}{//\ \ if\ (navigationTriangles[i].getGlobalBounds().contains(t\_mousePos))}}
+\DoxyCodeLine{00286\ \ \ \ \ \textcolor{comment}{//\ \ \{}}
+\DoxyCodeLine{00287\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ if\ (sf::Mouse::isButtonPressed(sf::Mouse::Left))}}
+\DoxyCodeLine{00288\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \{}}
+\DoxyCodeLine{00289\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ changeMode(i);}}
+\DoxyCodeLine{00290\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \}}}
+\DoxyCodeLine{00291\ \ \ \ \ \textcolor{comment}{//\ \ \}}}
+\DoxyCodeLine{00292\ \ \ \ \ \textcolor{comment}{//\}}}
+\DoxyCodeLine{00293\ }
+\DoxyCodeLine{00294\ \ \ \ \ \textcolor{keywordflow}{if}\ (navigationTriangles[0].getGlobalBounds().contains(t\_mousePos)\ ||\ navigationTriangles[1].getGlobalBounds().contains(t\_mousePos))}
+\DoxyCodeLine{00295\ \ \ \ \ \{}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ pulseTheTriangles\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00297\ \ \ \ \ \}}
+\DoxyCodeLine{00298\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00299\ \ \ \ \ \{}
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ pulseTheTriangles\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00301\ \ \ \ \ \}}
+\DoxyCodeLine{00302\ }
+\DoxyCodeLine{00303\ \ \ \ \ }
+\DoxyCodeLine{00304\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_tool_bar_a3b65903d6b9f02d7423d656ad3445287_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_tool_bar_a3b65903d6b9f02d7423d656ad3445287_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_tool_bar_ae0b63c258ee3a61208a5af80e22f2c52}} 
+\index{ToolBar@{ToolBar}!createSelectionSquare@{createSelectionSquare}}
+\index{createSelectionSquare@{createSelectionSquare}!ToolBar@{ToolBar}}
+\doxysubsubsection{createSelectionSquare()}
+{\footnotesize\ttfamily void Tool\+Bar\+::create\+Selection\+Square (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 501} of file \textbf{ Tool\+Bar.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00502\ \{}
+\DoxyCodeLine{00503\ \ \ \ \ selectionSquare.setPosition(-\/1000,\ -\/1000);}
+\DoxyCodeLine{00504\ \ \ \ \ selectionSquare.setFillColor(sf::Color(0,\ 255,\ 0,\ 128));}
+\DoxyCodeLine{00505\ \ \ \ \ selectionSquare.setOutlineThickness(2);}
+\DoxyCodeLine{00506\ \ \ \ \ selectionSquare.setOutlineColor(sf::Color::Black);}
+\DoxyCodeLine{00507\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{class_tool_bar_ae0b63c258ee3a61208a5af80e22f2c52_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_tool_bar_a81305d12f00fdd9bbad7d74a863329d2}} 
+\index{ToolBar@{ToolBar}!loadFiles@{loadFiles}}
+\index{loadFiles@{loadFiles}!ToolBar@{ToolBar}}
+\doxysubsubsection{loadFiles()}
+{\footnotesize\ttfamily void Tool\+Bar\+::load\+Files (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 39} of file \textbf{ Tool\+Bar.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00040\ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordflow}{if}\ (!toolBarTexture.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)toolbar.png"{}}))}
+\DoxyCodeLine{00042\ \ \ \ \ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ toolbar\ (toolBarTexture)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00045\ \ \ \ \ \}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordflow}{if}\ (!brushToolTexture.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)paintTool.png"{}}))}
+\DoxyCodeLine{00048\ \ \ \ \ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ paintTool\ (paintTool)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00051\ \ \ \ \ \}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordflow}{if}\ (!fillToolTexture.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)FillTool.png"{}}))}
+\DoxyCodeLine{00054\ \ \ \ \ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ FillTool\ (FillTool)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00057\ \ \ \ \ \}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordflow}{if}\ (!rubberToolTexture.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)rubberTool.png"{}}))}
+\DoxyCodeLine{00060\ \ \ \ \ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ rubberTool\ (rubberTool)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00063\ \ \ \ \ \}}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordflow}{if}\ (!navTriangleTexture.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)triangle.png"{}}))}
+\DoxyCodeLine{00066\ \ \ \ \ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ triangle\ (triangle)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00069\ \ \ \ \ \}}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=300pt]{class_tool_bar_a81305d12f00fdd9bbad7d74a863329d2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_tool_bar_ac1555b2a70df32421ec7bc00351bd482}} 
+\index{ToolBar@{ToolBar}!pulseTriangles@{pulseTriangles}}
+\index{pulseTriangles@{pulseTriangles}!ToolBar@{ToolBar}}
+\doxysubsubsection{pulseTriangles()}
+{\footnotesize\ttfamily void Tool\+Bar\+::pulse\+Triangles (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 409} of file \textbf{ Tool\+Bar.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00410\ \{}
+\DoxyCodeLine{00411\ \ \ \ \ }
+\DoxyCodeLine{00412\ \ \ \ \ \textcolor{keywordflow}{if}\ (scalingUp\ \&\&\ navigationTriangles[0].getScale().x\ <\ maxScale.x)}
+\DoxyCodeLine{00413\ \ \ \ \ \{}
+\DoxyCodeLine{00414\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ MAX\_NAV\_TRIANGLES;\ i++)}
+\DoxyCodeLine{00415\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00416\ \ \ \ \ \ \ \ \ \ \ \ \ navigationTriangles[i].setScale(navigationTriangles[i].getScale().x\ +\ 0.01,\ navigationTriangles[i].getScale().y\ +\ 0.01);}
+\DoxyCodeLine{00417\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00418\ \ \ \ \ \}}
+\DoxyCodeLine{00419\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (scalingDown\ \&\&\ navigationTriangles[0].getScale().x\ >\ minScale.x)}
+\DoxyCodeLine{00420\ \ \ \ \ \{}
+\DoxyCodeLine{00421\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ MAX\_NAV\_TRIANGLES;\ i++)}
+\DoxyCodeLine{00422\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00423\ \ \ \ \ \ \ \ \ \ \ \ \ navigationTriangles[i].setScale(navigationTriangles[i].getScale().x\ -\/\ 0.01,\ navigationTriangles[i].getScale().y\ -\/\ 0.01);}
+\DoxyCodeLine{00424\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00425\ \ \ \ \ \}}
+\DoxyCodeLine{00426\ }
+\DoxyCodeLine{00427\ \ \ \ \ \textcolor{keywordflow}{if}\ (navigationTriangles[0].getScale().x\ <=\ minScale.x)}
+\DoxyCodeLine{00428\ \ \ \ \ \{}
+\DoxyCodeLine{00429\ \ \ \ \ \ \ \ \ scalingUp\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00430\ \ \ \ \ \ \ \ \ scalingDown\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00431\ \ \ \ \ \}}
+\DoxyCodeLine{00432\ }
+\DoxyCodeLine{00433\ \ \ \ \ \textcolor{keywordflow}{if}\ (navigationTriangles[0].getScale().x\ >=\ maxScale.x)}
+\DoxyCodeLine{00434\ \ \ \ \ \{}
+\DoxyCodeLine{00435\ \ \ \ \ \ \ \ \ scalingDown\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00436\ \ \ \ \ \ \ \ \ scalingUp\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00437\ \ \ \ \ \}}
+\DoxyCodeLine{00438\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_tool_bar_ac1555b2a70df32421ec7bc00351bd482_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_tool_bar_a01172b44d8d5ce7e01e430c936f0a703}} 
+\index{ToolBar@{ToolBar}!render@{render}}
+\index{render@{render}!ToolBar@{ToolBar}}
+\doxysubsubsection{render()}
+{\footnotesize\ttfamily void Tool\+Bar\+::render (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{t\+\_\+window }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 167} of file \textbf{ Tool\+Bar.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00168\ \{}
+\DoxyCodeLine{00169\ \ \ \ \ t\_window.draw(toolBarSprite);}
+\DoxyCodeLine{00170\ \ \ \ \ t\_window.draw(brushToolSprite);}
+\DoxyCodeLine{00171\ \ \ \ \ t\_window.draw(rubberToolSprite);}
+\DoxyCodeLine{00172\ \ \ \ \ t\_window.draw(saveButton);}
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00174\ \ \ \ \ \textcolor{keywordflow}{if}\ (currentMode\ ==\ \textcolor{stringliteral}{"{}WALLS"{}})}
+\DoxyCodeLine{00175\ \ \ \ \ \{}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ t\_window.draw(addWallsButton);}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ t\_window.draw(fillToolSprite);}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ t\_window.draw(selectionSquare);}
+\DoxyCodeLine{00179\ \ \ \ \ \}}
+\DoxyCodeLine{00180\ \ \ \ \ \textcolor{keywordflow}{if}\ (currentMode\ ==\ \textcolor{stringliteral}{"{}ENEMIES"{}})}
+\DoxyCodeLine{00181\ \ \ \ \ \{}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ t\_window.draw(addEnemySpawnersButton);}
+\DoxyCodeLine{00183\ \ \ \ \ \}}
+\DoxyCodeLine{00184\ \ \ \ \ }
+\DoxyCodeLine{00185\ \ \ \ \ t\_window.draw(testGameButton);}
+\DoxyCodeLine{00186\ \ \ \ \ }
+\DoxyCodeLine{00187\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ MAX\_NAV\_TRIANGLES;\ i++)}
+\DoxyCodeLine{00188\ \ \ \ \ \{}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ t\_window.draw(navigationTriangles[i]);}
+\DoxyCodeLine{00190\ \ \ \ \ \}}
+\DoxyCodeLine{00191\ \ \ \ \ }
+\DoxyCodeLine{00192\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_tool_bar_a01172b44d8d5ce7e01e430c936f0a703_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_tool_bar_a61260b91637cb2d81e3aab4878b115b9}} 
+\index{ToolBar@{ToolBar}!resetTools@{resetTools}}
+\index{resetTools@{resetTools}!ToolBar@{ToolBar}}
+\doxysubsubsection{resetTools()}
+{\footnotesize\ttfamily void Tool\+Bar\+::reset\+Tools (\begin{DoxyParamCaption}\item[{int}]{t\+\_\+current }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 322} of file \textbf{ Tool\+Bar.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00323\ \{}
+\DoxyCodeLine{00324\ \ \ \ \ \textcolor{keywordflow}{if}\ (t\_current\ ==\ 1)}
+\DoxyCodeLine{00325\ \ \ \ \ \{}
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ rubberToolSprite.setScale(0.3,\ 0.3);}
+\DoxyCodeLine{00327\ \ \ \ \ \}}
+\DoxyCodeLine{00328\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (t\_current\ ==\ 2)}
+\DoxyCodeLine{00329\ \ \ \ \ \{}
+\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ brushToolSprite.setScale(0.3,\ 0.3);}
+\DoxyCodeLine{00331\ \ \ \ \ \}}
+\DoxyCodeLine{00332\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (t\_current\ ==\ 3)}
+\DoxyCodeLine{00333\ \ \ \ \ \{}
+\DoxyCodeLine{00334\ \ \ \ \ \ \ \ \ fillToolSprite.setScale(0.5,\ 0.5);}
+\DoxyCodeLine{00335\ \ \ \ \ \}}
+\DoxyCodeLine{00336\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_tool_bar_a61260b91637cb2d81e3aab4878b115b9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_tool_bar_a1a41c7b20e83ff2997ea787c42135b21}} 
+\index{ToolBar@{ToolBar}!setGridCellToMarked@{setGridCellToMarked}}
+\index{setGridCellToMarked@{setGridCellToMarked}!ToolBar@{ToolBar}}
+\doxysubsubsection{setGridCellToMarked()}
+{\footnotesize\ttfamily void Tool\+Bar\+::set\+Grid\+Cell\+To\+Marked (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ \textbf{ Cell} $>$ $>$ \&}]{t\+\_\+grid,  }\item[{int}]{t\+\_\+grid\+Params,  }\item[{sf\+::\+Vector2f}]{t\+\_\+mouse\+Pos,  }\item[{std\+::string}]{t\+\_\+tool\+Chosen,  }\item[{int}]{t\+\_\+choice\+Num }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 338} of file \textbf{ Tool\+Bar.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00339\ \{}
+\DoxyCodeLine{00340\ \ \ \ \ \textcolor{keywordtype}{int}\ tempCount\ =\ 0;}
+\DoxyCodeLine{00341\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ t\_gridParams;\ i++)}
+\DoxyCodeLine{00342\ \ \ \ \ \{}
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ m\ =\ 0;\ m\ <\ t\_gridParams;\ m++)}
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00345\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (t\_grid.at(m).at(i).getCellShape().getGlobalBounds().contains(t\_mousePos))}
+\DoxyCodeLine{00346\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Mouse::isButtonPressed(sf::Mouse::Left))}
+\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00349\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (t\_toolChosen\ ==\ \textcolor{stringliteral}{"{}Brush"{}})}
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ t\_grid.at(m).at(i).setMarked(t\_choiceNum,\ itemsPlaced);}
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (t\_toolChosen\ ==\ \textcolor{stringliteral}{"{}Rubber"{}})}
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ t\_grid.at(m).at(i).setUnmarked(itemsPlaced);}
+\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (t\_toolChosen\ ==\ \textcolor{stringliteral}{"{}Fill"{}})}
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00361\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (selecting\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00362\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00363\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (t\_grid.at(m).at(i).getCellShape().getGlobalBounds().intersects(selectionSquare.getGlobalBounds()))}
+\DoxyCodeLine{00364\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00365\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ t\_grid.at(m).at(i).setMarked(t\_choiceNum,\ itemsPlaced);}
+\DoxyCodeLine{00366\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ t\_grid.at(m).at(i).getCellShape().setFillColor(sf::Color::Transparent);}
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tempCount++;}
+\DoxyCodeLine{00368\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00369\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00370\ }
+\DoxyCodeLine{00371\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00372\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00373\ \ \ \ \ \}}
+\DoxyCodeLine{00374\ \ \ \ \ \textcolor{keywordflow}{if}\ (tempCount\ >\ 0)}
+\DoxyCodeLine{00375\ \ \ \ \ \{}
+\DoxyCodeLine{00376\ \ \ \ \ \ \ \ \ tempCount\ =\ 0;}
+\DoxyCodeLine{00377\ \ \ \ \ \ \ \ \ wallsPlaced\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00378\ \ \ \ \ \}}
+\DoxyCodeLine{00379\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_tool_bar_a1a41c7b20e83ff2997ea787c42135b21_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_tool_bar_a8fec827b188cd6b09892e5d5fd9eb90b}} 
+\index{ToolBar@{ToolBar}!setToolPosForView@{setToolPosForView}}
+\index{setToolPosForView@{setToolPosForView}!ToolBar@{ToolBar}}
+\doxysubsubsection{setToolPosForView()}
+{\footnotesize\ttfamily void Tool\+Bar\+::set\+Tool\+Pos\+For\+View (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{t\+\_\+window }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 381} of file \textbf{ Tool\+Bar.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00382\ \{}
+\DoxyCodeLine{00383\ \ \ \ \ sf::Vector2f\ pos(gameWidth\ /\ 2,\ 100);}
+\DoxyCodeLine{00384\ \ \ \ \ pos\ =\ t\_window.mapPixelToCoords(\textcolor{keyword}{static\_cast<}sf::Vector2i\textcolor{keyword}{>}(pos));}
+\DoxyCodeLine{00385\ \ \ \ \ toolBarSprite.setPosition(pos);}
+\DoxyCodeLine{00386\ }
+\DoxyCodeLine{00387\ \ \ \ \ sf::Vector2f\ pos2(gameWidth\ /\ 2,\ 100);}
+\DoxyCodeLine{00388\ \ \ \ \ pos2\ =\ t\_window.mapPixelToCoords(\textcolor{keyword}{static\_cast<}sf::Vector2i\textcolor{keyword}{>}(pos2));}
+\DoxyCodeLine{00389\ \ \ \ \ brushToolSprite.setPosition(pos2);}
+\DoxyCodeLine{00390\ }
+\DoxyCodeLine{00391\ \ \ \ \ sf::Vector2f\ pos3(gameWidth\ /\ 2\ +\ toolBarSprite.getLocalBounds().width\ /\ 3,\ 100);}
+\DoxyCodeLine{00392\ \ \ \ \ pos3\ =\ t\_window.mapPixelToCoords(\textcolor{keyword}{static\_cast<}sf::Vector2i\textcolor{keyword}{>}(pos3));}
+\DoxyCodeLine{00393\ \ \ \ \ fillToolSprite.setPosition(pos3);}
+\DoxyCodeLine{00394\ }
+\DoxyCodeLine{00395\ \ \ \ \ sf::Vector2f\ pos4(gameWidth\ /\ 2\ -\/\ toolBarSprite.getLocalBounds().width\ /\ 3,\ 100);}
+\DoxyCodeLine{00396\ \ \ \ \ pos4\ =\ t\_window.mapPixelToCoords(\textcolor{keyword}{static\_cast<}sf::Vector2i\textcolor{keyword}{>}(pos4));}
+\DoxyCodeLine{00397\ \ \ \ \ rubberToolSprite.setPosition(pos4);}
+\DoxyCodeLine{00398\ }
+\DoxyCodeLine{00399\ \ \ \ \ sf::Vector2f\ pos5(125,\ 125);}
+\DoxyCodeLine{00400\ \ \ \ \ pos5\ =\ t\_window.mapPixelToCoords(\textcolor{keyword}{static\_cast<}sf::Vector2i\textcolor{keyword}{>}(pos5));}
+\DoxyCodeLine{00401\ \ \ \ \ navigationTriangles[0].setPosition(pos5);}
+\DoxyCodeLine{00402\ }
+\DoxyCodeLine{00403\ \ \ \ \ sf::Vector2f\ pos6(gameWidth\ -\/\ 125,\ 125);}
+\DoxyCodeLine{00404\ \ \ \ \ pos6\ =\ t\_window.mapPixelToCoords(\textcolor{keyword}{static\_cast<}sf::Vector2i\textcolor{keyword}{>}(pos6));}
+\DoxyCodeLine{00405\ \ \ \ \ navigationTriangles[1].setPosition(pos6);}
+\DoxyCodeLine{00406\ }
+\DoxyCodeLine{00407\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_tool_bar_a8fec827b188cd6b09892e5d5fd9eb90b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_tool_bar_aa8e72a83e3752c566eb3e65d8de56083}} 
+\index{ToolBar@{ToolBar}!setupSprites@{setupSprites}}
+\index{setupSprites@{setupSprites}!ToolBar@{ToolBar}}
+\doxysubsubsection{setupSprites()}
+{\footnotesize\ttfamily void Tool\+Bar\+::setup\+Sprites (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 73} of file \textbf{ Tool\+Bar.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00074\ \{}
+\DoxyCodeLine{00075\ \ \ \ \ toolBarSprite.setTexture(toolBarTexture);}
+\DoxyCodeLine{00076\ \ \ \ \ toolBarSprite.setScale(1,\ 1);}
+\DoxyCodeLine{00077\ \ \ \ \ toolBarSprite.setOrigin(toolBarSprite.getLocalBounds().width\ /\ 2,\ toolBarSprite.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00078\ \ \ \ \ toolBarSprite.setPosition(gameWidth\ /\ 2,\ 100);}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ brushToolSprite.setTexture(brushToolTexture);}
+\DoxyCodeLine{00082\ \ \ \ \ brushToolSprite.setScale(0.3,\ 0.3);}
+\DoxyCodeLine{00083\ \ \ \ \ brushToolSprite.setOrigin(brushToolSprite.getLocalBounds().width\ /\ 2,\ brushToolSprite.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00084\ \ \ \ \ brushToolSprite.setPosition(toolBarSprite.getPosition().x,\ toolBarSprite.getPosition().y);}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ fillToolSprite.setTexture(fillToolTexture);}
+\DoxyCodeLine{00088\ \ \ \ \ fillToolSprite.setScale(0.5,\ 0.5);}
+\DoxyCodeLine{00089\ \ \ \ \ fillToolSprite.setOrigin(fillToolSprite.getLocalBounds().width\ /\ 2,\ fillToolSprite.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00090\ \ \ \ \ fillToolSprite.setPosition(toolBarSprite.getPosition().x\ +\ toolBarSprite.getLocalBounds().width\ /\ 3,\ toolBarSprite.getPosition().y);}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \ \ \ \ rubberToolSprite.setTexture(rubberToolTexture);}
+\DoxyCodeLine{00093\ \ \ \ \ rubberToolSprite.setScale(0.3,\ 0.3);}
+\DoxyCodeLine{00094\ \ \ \ \ rubberToolSprite.setOrigin(rubberToolSprite.getLocalBounds().width\ /\ 2,\ rubberToolSprite.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00095\ \ \ \ \ rubberToolSprite.setPosition(toolBarSprite.getPosition().x\ -\/\ toolBarSprite.getLocalBounds().width\ /\ 3,\ toolBarSprite.getPosition().y);}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ }
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ MAX\_NAV\_TRIANGLES;\ i++)}
+\DoxyCodeLine{00100\ \ \ \ \ \{}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ navigationTriangles[i].setTexture(navTriangleTexture);}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ navigationTriangles[i].setScale(1.5,\ 1.5);}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ navigationTriangles[i].setOrigin(navigationTriangles[i].getLocalBounds().width\ /\ 2,\ navigationTriangles[i].getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \ \ \}}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ navigationTriangles[0].setRotation(180);}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ navigationTriangles[0].setPosition(125,\ toolBarSprite.getPosition().y\ +\ 25);}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ navigationTriangles[1].setRotation(0);}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ navigationTriangles[1].setPosition(gameWidth\ -\/\ 125,\ toolBarSprite.getPosition().y\ +25);}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=315pt]{class_tool_bar_aa8e72a83e3752c566eb3e65d8de56083_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_tool_bar_aeaf506211bf39907adb738e395991516}} 
+\index{ToolBar@{ToolBar}!update@{update}}
+\index{update@{update}!ToolBar@{ToolBar}}
+\doxysubsubsection{update()}
+{\footnotesize\ttfamily void Tool\+Bar\+::update (\begin{DoxyParamCaption}\item[{sf\+::\+Time}]{t\+\_\+delta\+Time,  }\item[{sf\+::\+Render\+Window \&}]{t\+\_\+window,  }\item[{std\+::vector$<$ std\+::vector$<$ \textbf{ Cell} $>$ $>$ \&}]{t\+\_\+grid,  }\item[{int}]{t\+\_\+grid\+Params,  }\item[{bool}]{t\+\_\+choice,  }\item[{int}]{t\+\_\+choice\+Num }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 115} of file \textbf{ Tool\+Bar.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00116\ \{}
+\DoxyCodeLine{00117\ \ \ \ \ setToolPosForView(t\_window);}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \ \ sf::Vector2i\ mousePos\ =\ sf::Mouse::getPosition(t\_window);}
+\DoxyCodeLine{00120\ \ \ \ \ MousePosReal\ =\ t\_window.mapPixelToCoords(mousePos);}
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ mousePos.x\ <<\ "{}-\/-\/-\/-\/"{}\ <<\ mousePos.y\ <<\ std::endl;}}
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ mousePos.x\ <<\ "{}-\/-\/-\/-\/"{}\ <<\ mousePos.y\ <<\ std::endl;}}
+\DoxyCodeLine{00123\ \ \ \ \ checkForMousePosAndClick(t\_window,\ MousePosReal);}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keywordflow}{if}\ (brushToolSelected\ ==\ \textcolor{keyword}{true}\ \&\&\ t\_choice\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{00126\ \ \ \ \ \{}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ setGridCellToMarked(t\_grid,\ t\_gridParams,\ MousePosReal,\ \textcolor{stringliteral}{"{}Brush"{}},\ t\_choiceNum);}
+\DoxyCodeLine{00128\ \ \ \ \ \}}
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (rubberToolSelected\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{00130\ \ \ \ \ \{}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ setGridCellToMarked(t\_grid,\ t\_gridParams,\ MousePosReal,\ \textcolor{stringliteral}{"{}Rubber"{}},\ t\_choiceNum);}
+\DoxyCodeLine{00132\ \ \ \ \ \}}
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (fillToolSelected\ ==\ \textcolor{keyword}{true}\ \&\&\ t\_choice\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{00134\ \ \ \ \ \{}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ setGridCellToMarked(t\_grid,\ t\_gridParams,\ MousePosReal,\ \textcolor{stringliteral}{"{}Fill"{}},\ t\_choiceNum);}
+\DoxyCodeLine{00136\ \ \ \ \ \}}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{keywordflow}{if}\ (pulseTheTriangles\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{00139\ \ \ \ \ \{}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ pulseTriangles();}
+\DoxyCodeLine{00141\ \ \ \ \ \}}
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keywordflow}{if}\ (currentMode\ ==\ \textcolor{stringliteral}{"{}WALLS"{}})}
+\DoxyCodeLine{00143\ \ \ \ \ \{}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (selecting)}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Vector2f\ size(MousePosReal\ -\/\ selectionSquareStartPos);}
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ selectionSquare.setPosition(selectionSquareStartPos);}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ selectionSquare.setSize(size);}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ selectionSquare.setPosition(-\/1000,\ -\/1000);}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ selectionSquare.setSize(sf::Vector2f(1,\ 1));}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00157\ \ \ \ \ \}}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00159\ \ \ \ \ \textcolor{keywordflow}{if}\ (!fillToolSelected)}
+\DoxyCodeLine{00160\ \ \ \ \ \{}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ selecting\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00162\ \ \ \ \ \}}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_tool_bar_aeaf506211bf39907adb738e395991516_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_tool_bar_aeaf506211bf39907adb738e395991516_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\label{class_tool_bar_ab11b855497a22c3d3602ce2e7415550a}} 
+\index{ToolBar@{ToolBar}!addEnemySpawnersButton@{addEnemySpawnersButton}}
+\index{addEnemySpawnersButton@{addEnemySpawnersButton}!ToolBar@{ToolBar}}
+\doxysubsubsection{addEnemySpawnersButton}
+{\footnotesize\ttfamily sf\+::\+Rectangle\+Shape Tool\+Bar\+::add\+Enemy\+Spawners\+Button\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 95} of file \textbf{ Tool\+Bar.\+h}.
+
+\mbox{\label{class_tool_bar_a323824c1e752082b290411b7dc4332c6}} 
+\index{ToolBar@{ToolBar}!addWallsButton@{addWallsButton}}
+\index{addWallsButton@{addWallsButton}!ToolBar@{ToolBar}}
+\doxysubsubsection{addWallsButton}
+{\footnotesize\ttfamily sf\+::\+Rectangle\+Shape Tool\+Bar\+::add\+Walls\+Button\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 91} of file \textbf{ Tool\+Bar.\+h}.
+
+\mbox{\label{class_tool_bar_afb7667a950f50add1ade7ff90c90686d}} 
+\index{ToolBar@{ToolBar}!brushToolSelected@{brushToolSelected}}
+\index{brushToolSelected@{brushToolSelected}!ToolBar@{ToolBar}}
+\doxysubsubsection{brushToolSelected}
+{\footnotesize\ttfamily bool Tool\+Bar\+::brush\+Tool\+Selected = false}
+
+
+
+Definition at line \textbf{ 47} of file \textbf{ Tool\+Bar.\+h}.
+
+\mbox{\label{class_tool_bar_ab2c3f509c3489d97b80ac13330119488}} 
+\index{ToolBar@{ToolBar}!brushToolSprite@{brushToolSprite}}
+\index{brushToolSprite@{brushToolSprite}!ToolBar@{ToolBar}}
+\doxysubsubsection{brushToolSprite}
+{\footnotesize\ttfamily sf\+::\+Sprite Tool\+Bar\+::brush\+Tool\+Sprite\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 76} of file \textbf{ Tool\+Bar.\+h}.
+
+\mbox{\label{class_tool_bar_a6ebd1dc39147803ff58cd4065e4efcf9}} 
+\index{ToolBar@{ToolBar}!brushToolTexture@{brushToolTexture}}
+\index{brushToolTexture@{brushToolTexture}!ToolBar@{ToolBar}}
+\doxysubsubsection{brushToolTexture}
+{\footnotesize\ttfamily sf\+::\+Texture Tool\+Bar\+::brush\+Tool\+Texture\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 77} of file \textbf{ Tool\+Bar.\+h}.
+
+\mbox{\label{class_tool_bar_a28974a393951b974ff5c21aa781c65e6}} 
+\index{ToolBar@{ToolBar}!coinsPlaced@{coinsPlaced}}
+\index{coinsPlaced@{coinsPlaced}!ToolBar@{ToolBar}}
+\doxysubsubsection{coinsPlaced}
+{\footnotesize\ttfamily int Tool\+Bar\+::coins\+Placed = 0}
+
+
+
+Definition at line \textbf{ 59} of file \textbf{ Tool\+Bar.\+h}.
+
+\mbox{\label{class_tool_bar_a80280aacbdec24c8a40f77a6d99c17ab}} 
+\index{ToolBar@{ToolBar}!currentMode@{currentMode}}
+\index{currentMode@{currentMode}!ToolBar@{ToolBar}}
+\doxysubsubsection{currentMode}
+{\footnotesize\ttfamily std\+::string Tool\+Bar\+::current\+Mode = \char`\"{}WALLS\char`\"{}}
+
+
+
+Definition at line \textbf{ 53} of file \textbf{ Tool\+Bar.\+h}.
+
+\mbox{\label{class_tool_bar_a801bb33b6c0b551bc2443cbdc490b3c4}} 
+\index{ToolBar@{ToolBar}!doorsPlaced@{doorsPlaced}}
+\index{doorsPlaced@{doorsPlaced}!ToolBar@{ToolBar}}
+\doxysubsubsection{doorsPlaced}
+{\footnotesize\ttfamily int Tool\+Bar\+::doors\+Placed = 0}
+
+
+
+Definition at line \textbf{ 60} of file \textbf{ Tool\+Bar.\+h}.
+
+\mbox{\label{class_tool_bar_a923d3baa4e948f8a336b9ea7d75a6bc4}} 
+\index{ToolBar@{ToolBar}!enemyOneSpawnsPlaced@{enemyOneSpawnsPlaced}}
+\index{enemyOneSpawnsPlaced@{enemyOneSpawnsPlaced}!ToolBar@{ToolBar}}
+\doxysubsubsection{enemyOneSpawnsPlaced}
+{\footnotesize\ttfamily int Tool\+Bar\+::enemy\+One\+Spawns\+Placed = 0}
+
+
+
+Definition at line \textbf{ 55} of file \textbf{ Tool\+Bar.\+h}.
+
+\mbox{\label{class_tool_bar_a7da795205e1511783b40ba0e6ead416f}} 
+\index{ToolBar@{ToolBar}!enemySpawnersPlaced@{enemySpawnersPlaced}}
+\index{enemySpawnersPlaced@{enemySpawnersPlaced}!ToolBar@{ToolBar}}
+\doxysubsubsection{enemySpawnersPlaced}
+{\footnotesize\ttfamily bool Tool\+Bar\+::enemy\+Spawners\+Placed = false}
+
+
+
+Definition at line \textbf{ 38} of file \textbf{ Tool\+Bar.\+h}.
+
+\mbox{\label{class_tool_bar_a7ffc5bbe2112d77e3d8bff6c343f120e}} 
+\index{ToolBar@{ToolBar}!enemyThreeSpawnsPlaced@{enemyThreeSpawnsPlaced}}
+\index{enemyThreeSpawnsPlaced@{enemyThreeSpawnsPlaced}!ToolBar@{ToolBar}}
+\doxysubsubsection{enemyThreeSpawnsPlaced}
+{\footnotesize\ttfamily int Tool\+Bar\+::enemy\+Three\+Spawns\+Placed = 0}
+
+
+
+Definition at line \textbf{ 57} of file \textbf{ Tool\+Bar.\+h}.
+
+\mbox{\label{class_tool_bar_ab45e0293f91fc8c387282c9f5150290e}} 
+\index{ToolBar@{ToolBar}!enemyTwoSpawnsPlaced@{enemyTwoSpawnsPlaced}}
+\index{enemyTwoSpawnsPlaced@{enemyTwoSpawnsPlaced}!ToolBar@{ToolBar}}
+\doxysubsubsection{enemyTwoSpawnsPlaced}
+{\footnotesize\ttfamily int Tool\+Bar\+::enemy\+Two\+Spawns\+Placed = 0}
+
+
+
+Definition at line \textbf{ 56} of file \textbf{ Tool\+Bar.\+h}.
+
+\mbox{\label{class_tool_bar_ac3b1a483d9d731f610a0fc02f516004b}} 
+\index{ToolBar@{ToolBar}!fillToolSelected@{fillToolSelected}}
+\index{fillToolSelected@{fillToolSelected}!ToolBar@{ToolBar}}
+\doxysubsubsection{fillToolSelected}
+{\footnotesize\ttfamily bool Tool\+Bar\+::fill\+Tool\+Selected = false}
+
+
+
+Definition at line \textbf{ 49} of file \textbf{ Tool\+Bar.\+h}.
+
+\mbox{\label{class_tool_bar_a6d3c32e24d8fb316c48be762b39f69b2}} 
+\index{ToolBar@{ToolBar}!fillToolSprite@{fillToolSprite}}
+\index{fillToolSprite@{fillToolSprite}!ToolBar@{ToolBar}}
+\doxysubsubsection{fillToolSprite}
+{\footnotesize\ttfamily sf\+::\+Sprite Tool\+Bar\+::fill\+Tool\+Sprite\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 79} of file \textbf{ Tool\+Bar.\+h}.
+
+\mbox{\label{class_tool_bar_aab4689901050c4d71c6071b4530acfae}} 
+\index{ToolBar@{ToolBar}!fillToolTexture@{fillToolTexture}}
+\index{fillToolTexture@{fillToolTexture}!ToolBar@{ToolBar}}
+\doxysubsubsection{fillToolTexture}
+{\footnotesize\ttfamily sf\+::\+Texture Tool\+Bar\+::fill\+Tool\+Texture\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 80} of file \textbf{ Tool\+Bar.\+h}.
+
+\mbox{\label{class_tool_bar_afa8ddc064be08908d0117a67aaba74e2}} 
+\index{ToolBar@{ToolBar}!gameHeight@{gameHeight}}
+\index{gameHeight@{gameHeight}!ToolBar@{ToolBar}}
+\doxysubsubsection{gameHeight}
+{\footnotesize\ttfamily float Tool\+Bar\+::game\+Height = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 87} of file \textbf{ Tool\+Bar.\+h}.
+
+\mbox{\label{class_tool_bar_af68b0ded3836c56c2cd607dbdfc4500e}} 
+\index{ToolBar@{ToolBar}!gameWidth@{gameWidth}}
+\index{gameWidth@{gameWidth}!ToolBar@{ToolBar}}
+\doxysubsubsection{gameWidth}
+{\footnotesize\ttfamily float Tool\+Bar\+::game\+Width = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 86} of file \textbf{ Tool\+Bar.\+h}.
+
+\mbox{\label{class_tool_bar_a7e9ce5542324ec18eee67a2044f92f71}} 
+\index{ToolBar@{ToolBar}!itemsPlaced@{itemsPlaced}}
+\index{itemsPlaced@{itemsPlaced}!ToolBar@{ToolBar}}
+\doxysubsubsection{itemsPlaced}
+{\footnotesize\ttfamily std\+::map$<$std\+::string, int$>$ Tool\+Bar\+::items\+Placed}
+
+
+
+Definition at line \textbf{ 67} of file \textbf{ Tool\+Bar.\+h}.
+
+\mbox{\label{class_tool_bar_aa46af2f191cb2b7588cbfdb5ebe01664}} 
+\index{ToolBar@{ToolBar}!itemsPlacedBool@{itemsPlacedBool}}
+\index{itemsPlacedBool@{itemsPlacedBool}!ToolBar@{ToolBar}}
+\doxysubsubsection{itemsPlacedBool}
+{\footnotesize\ttfamily bool Tool\+Bar\+::items\+Placed\+Bool = false}
+
+
+
+Definition at line \textbf{ 40} of file \textbf{ Tool\+Bar.\+h}.
+
+\mbox{\label{class_tool_bar_aea253dcbf79332f5ff731d9a48e47590}} 
+\index{ToolBar@{ToolBar}!MAX\_NAV\_TRIANGLES@{MAX\_NAV\_TRIANGLES}}
+\index{MAX\_NAV\_TRIANGLES@{MAX\_NAV\_TRIANGLES}!ToolBar@{ToolBar}}
+\doxysubsubsection{MAX\_NAV\_TRIANGLES}
+{\footnotesize\ttfamily const int Tool\+Bar\+::\+MAX\+\_\+\+NAV\+\_\+\+TRIANGLES = 2\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \textbf{ 62} of file \textbf{ Tool\+Bar.\+h}.
+
+\mbox{\label{class_tool_bar_a0267138c6eef5f4d7547796511558ccf}} 
+\index{ToolBar@{ToolBar}!maxScale@{maxScale}}
+\index{maxScale@{maxScale}!ToolBar@{ToolBar}}
+\doxysubsubsection{maxScale}
+{\footnotesize\ttfamily sf\+::\+Vector2f Tool\+Bar\+::max\+Scale = sf\+::\+Vector2f(1.\+8, 1.\+8)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 103} of file \textbf{ Tool\+Bar.\+h}.
+
+\mbox{\label{class_tool_bar_adcc6715208d9b705409e4114dfc68558}} 
+\index{ToolBar@{ToolBar}!minScale@{minScale}}
+\index{minScale@{minScale}!ToolBar@{ToolBar}}
+\doxysubsubsection{minScale}
+{\footnotesize\ttfamily sf\+::\+Vector2f Tool\+Bar\+::min\+Scale = sf\+::\+Vector2f(1.\+2, 1.\+2)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 104} of file \textbf{ Tool\+Bar.\+h}.
+
+\mbox{\label{class_tool_bar_a88ba8be8e2d44107391ac5e4dfe30627}} 
+\index{ToolBar@{ToolBar}!MousePosReal@{MousePosReal}}
+\index{MousePosReal@{MousePosReal}!ToolBar@{ToolBar}}
+\doxysubsubsection{MousePosReal}
+{\footnotesize\ttfamily sf\+::\+Vector2f Tool\+Bar\+::\+Mouse\+Pos\+Real\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 98} of file \textbf{ Tool\+Bar.\+h}.
+
+\mbox{\label{class_tool_bar_adafec5e80646a397f3eef3b682570717}} 
+\index{ToolBar@{ToolBar}!navigating@{navigating}}
+\index{navigating@{navigating}!ToolBar@{ToolBar}}
+\doxysubsubsection{navigating}
+{\footnotesize\ttfamily bool Tool\+Bar\+::navigating = false}
+
+
+
+Definition at line \textbf{ 65} of file \textbf{ Tool\+Bar.\+h}.
+
+\mbox{\label{class_tool_bar_a3f4b95912017cd5ae7fbec2b9a1b3833}} 
+\index{ToolBar@{ToolBar}!navigationTriangles@{navigationTriangles}}
+\index{navigationTriangles@{navigationTriangles}!ToolBar@{ToolBar}}
+\doxysubsubsection{navigationTriangles}
+{\footnotesize\ttfamily sf\+::\+Sprite Tool\+Bar\+::navigation\+Triangles[\textbf{ MAX\+\_\+\+NAV\+\_\+\+TRIANGLES}]}
+
+
+
+Definition at line \textbf{ 63} of file \textbf{ Tool\+Bar.\+h}.
+
+\mbox{\label{class_tool_bar_ab041afa637e9743a8cc2d1f0c31bfbfe}} 
+\index{ToolBar@{ToolBar}!navTriangleTexture@{navTriangleTexture}}
+\index{navTriangleTexture@{navTriangleTexture}!ToolBar@{ToolBar}}
+\doxysubsubsection{navTriangleTexture}
+{\footnotesize\ttfamily sf\+::\+Texture Tool\+Bar\+::nav\+Triangle\+Texture\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 101} of file \textbf{ Tool\+Bar.\+h}.
+
+\mbox{\label{class_tool_bar_a6e20d82b67e00226342dcd49da4e7d6b}} 
+\index{ToolBar@{ToolBar}!objectivesPlaced@{objectivesPlaced}}
+\index{objectivesPlaced@{objectivesPlaced}!ToolBar@{ToolBar}}
+\doxysubsubsection{objectivesPlaced}
+{\footnotesize\ttfamily bool Tool\+Bar\+::objectives\+Placed = false}
+
+
+
+Definition at line \textbf{ 39} of file \textbf{ Tool\+Bar.\+h}.
+
+\mbox{\label{class_tool_bar_a30f8cca302746224a4ba048c113805ba}} 
+\index{ToolBar@{ToolBar}!powerupsPlaced@{powerupsPlaced}}
+\index{powerupsPlaced@{powerupsPlaced}!ToolBar@{ToolBar}}
+\doxysubsubsection{powerupsPlaced}
+{\footnotesize\ttfamily bool Tool\+Bar\+::powerups\+Placed = false}
+
+
+
+Definition at line \textbf{ 41} of file \textbf{ Tool\+Bar.\+h}.
+
+\mbox{\label{class_tool_bar_ab1971a5e384df49ba28fb9e287192712}} 
+\index{ToolBar@{ToolBar}!pulseTheTriangles@{pulseTheTriangles}}
+\index{pulseTheTriangles@{pulseTheTriangles}!ToolBar@{ToolBar}}
+\doxysubsubsection{pulseTheTriangles}
+{\footnotesize\ttfamily bool Tool\+Bar\+::pulse\+The\+Triangles = true\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 108} of file \textbf{ Tool\+Bar.\+h}.
+
+\mbox{\label{class_tool_bar_a45efc103ca70657e01ac45f5b60ed9f9}} 
+\index{ToolBar@{ToolBar}!rubberToolSelected@{rubberToolSelected}}
+\index{rubberToolSelected@{rubberToolSelected}!ToolBar@{ToolBar}}
+\doxysubsubsection{rubberToolSelected}
+{\footnotesize\ttfamily bool Tool\+Bar\+::rubber\+Tool\+Selected = false}
+
+
+
+Definition at line \textbf{ 48} of file \textbf{ Tool\+Bar.\+h}.
+
+\mbox{\label{class_tool_bar_a7113042137755cb4a61a5910c2c68b66}} 
+\index{ToolBar@{ToolBar}!rubberToolSprite@{rubberToolSprite}}
+\index{rubberToolSprite@{rubberToolSprite}!ToolBar@{ToolBar}}
+\doxysubsubsection{rubberToolSprite}
+{\footnotesize\ttfamily sf\+::\+Sprite Tool\+Bar\+::rubber\+Tool\+Sprite\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 82} of file \textbf{ Tool\+Bar.\+h}.
+
+\mbox{\label{class_tool_bar_a227d7c6809b49f347eb4f08b606489e1}} 
+\index{ToolBar@{ToolBar}!rubberToolTexture@{rubberToolTexture}}
+\index{rubberToolTexture@{rubberToolTexture}!ToolBar@{ToolBar}}
+\doxysubsubsection{rubberToolTexture}
+{\footnotesize\ttfamily sf\+::\+Texture Tool\+Bar\+::rubber\+Tool\+Texture\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 83} of file \textbf{ Tool\+Bar.\+h}.
+
+\mbox{\label{class_tool_bar_aafa8e9ded997155e72fae9062f4ee5f9}} 
+\index{ToolBar@{ToolBar}!saveButton@{saveButton}}
+\index{saveButton@{saveButton}!ToolBar@{ToolBar}}
+\doxysubsubsection{saveButton}
+{\footnotesize\ttfamily sf\+::\+Rectangle\+Shape Tool\+Bar\+::save\+Button\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 92} of file \textbf{ Tool\+Bar.\+h}.
+
+\mbox{\label{class_tool_bar_ae138f968db7b05fbb287ce79716802b7}} 
+\index{ToolBar@{ToolBar}!saved@{saved}}
+\index{saved@{saved}!ToolBar@{ToolBar}}
+\doxysubsubsection{saved}
+{\footnotesize\ttfamily bool Tool\+Bar\+::saved = false}
+
+
+
+Definition at line \textbf{ 43} of file \textbf{ Tool\+Bar.\+h}.
+
+\mbox{\label{class_tool_bar_af2b56b0d6c1547ebbe08a86b4dac05dd}} 
+\index{ToolBar@{ToolBar}!scalingDown@{scalingDown}}
+\index{scalingDown@{scalingDown}!ToolBar@{ToolBar}}
+\doxysubsubsection{scalingDown}
+{\footnotesize\ttfamily bool Tool\+Bar\+::scaling\+Down = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 107} of file \textbf{ Tool\+Bar.\+h}.
+
+\mbox{\label{class_tool_bar_a12edd8004cb375b3f4aa0655c52af679}} 
+\index{ToolBar@{ToolBar}!scalingUp@{scalingUp}}
+\index{scalingUp@{scalingUp}!ToolBar@{ToolBar}}
+\doxysubsubsection{scalingUp}
+{\footnotesize\ttfamily bool Tool\+Bar\+::scaling\+Up = true\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 106} of file \textbf{ Tool\+Bar.\+h}.
+
+\mbox{\label{class_tool_bar_a77ab7b266bd449f91b5ec27e9254afc9}} 
+\index{ToolBar@{ToolBar}!selecting@{selecting}}
+\index{selecting@{selecting}!ToolBar@{ToolBar}}
+\doxysubsubsection{selecting}
+{\footnotesize\ttfamily bool Tool\+Bar\+::selecting = false}
+
+
+
+Definition at line \textbf{ 70} of file \textbf{ Tool\+Bar.\+h}.
+
+\mbox{\label{class_tool_bar_a234da3f34b7db44eb31cbb0e09e6ba2f}} 
+\index{ToolBar@{ToolBar}!selectionSquare@{selectionSquare}}
+\index{selectionSquare@{selectionSquare}!ToolBar@{ToolBar}}
+\doxysubsubsection{selectionSquare}
+{\footnotesize\ttfamily sf\+::\+Rectangle\+Shape Tool\+Bar\+::selection\+Square}
+
+
+
+Definition at line \textbf{ 69} of file \textbf{ Tool\+Bar.\+h}.
+
+\mbox{\label{class_tool_bar_acfbc9876e88b9a14d936ee972cbd2053}} 
+\index{ToolBar@{ToolBar}!selectionSquareStartPos@{selectionSquareStartPos}}
+\index{selectionSquareStartPos@{selectionSquareStartPos}!ToolBar@{ToolBar}}
+\doxysubsubsection{selectionSquareStartPos}
+{\footnotesize\ttfamily sf\+::\+Vector2f Tool\+Bar\+::selection\+Square\+Start\+Pos}
+
+
+
+Definition at line \textbf{ 68} of file \textbf{ Tool\+Bar.\+h}.
+
+\mbox{\label{class_tool_bar_a74b1e04d222d57122c90eb0d30f0efdd}} 
+\index{ToolBar@{ToolBar}!testGameButton@{testGameButton}}
+\index{testGameButton@{testGameButton}!ToolBar@{ToolBar}}
+\doxysubsubsection{testGameButton}
+{\footnotesize\ttfamily sf\+::\+Rectangle\+Shape Tool\+Bar\+::test\+Game\+Button\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 93} of file \textbf{ Tool\+Bar.\+h}.
+
+\mbox{\label{class_tool_bar_aed28a284c8c9d2bf7e47188bda51fdac}} 
+\index{ToolBar@{ToolBar}!testingGame@{testingGame}}
+\index{testingGame@{testingGame}!ToolBar@{ToolBar}}
+\doxysubsubsection{testingGame}
+{\footnotesize\ttfamily bool Tool\+Bar\+::testing\+Game = false}
+
+
+
+Definition at line \textbf{ 45} of file \textbf{ Tool\+Bar.\+h}.
+
+\mbox{\label{class_tool_bar_a337c7992c964444b02182aa65ad65dd1}} 
+\index{ToolBar@{ToolBar}!toolBarSprite@{toolBarSprite}}
+\index{toolBarSprite@{toolBarSprite}!ToolBar@{ToolBar}}
+\doxysubsubsection{toolBarSprite}
+{\footnotesize\ttfamily sf\+::\+Sprite Tool\+Bar\+::tool\+Bar\+Sprite}
+
+
+
+Definition at line \textbf{ 51} of file \textbf{ Tool\+Bar.\+h}.
+
+\mbox{\label{class_tool_bar_a580fce37dafef06cdda2da58b4ae0361}} 
+\index{ToolBar@{ToolBar}!toolBarTexture@{toolBarTexture}}
+\index{toolBarTexture@{toolBarTexture}!ToolBar@{ToolBar}}
+\doxysubsubsection{toolBarTexture}
+{\footnotesize\ttfamily sf\+::\+Texture Tool\+Bar\+::tool\+Bar\+Texture\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 74} of file \textbf{ Tool\+Bar.\+h}.
+
+\mbox{\label{class_tool_bar_abacf6ee8dbbb96e6517ca8d107b43e12}} 
+\index{ToolBar@{ToolBar}!wallsPlaced@{wallsPlaced}}
+\index{wallsPlaced@{wallsPlaced}!ToolBar@{ToolBar}}
+\doxysubsubsection{wallsPlaced}
+{\footnotesize\ttfamily bool Tool\+Bar\+::walls\+Placed = false}
+
+
+
+Definition at line \textbf{ 37} of file \textbf{ Tool\+Bar.\+h}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+No\+Code\+Game\+Editor/\textbf{ Tool\+Bar.\+h}\item 
+No\+Code\+Game\+Editor/\textbf{ Tool\+Bar.\+cpp}\end{DoxyCompactItemize}

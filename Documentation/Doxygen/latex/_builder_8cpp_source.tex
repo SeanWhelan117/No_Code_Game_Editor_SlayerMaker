@@ -1,0 +1,63 @@
+\doxysection{Builder.\+cpp}
+\label{_builder_8cpp_source}\index{NoCodeGameEditor/Builder.cpp@{NoCodeGameEditor/Builder.cpp}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}Builder.h"{}}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ Builder::Builder()}
+\DoxyCodeLine{00004\ \{}
+\DoxyCodeLine{00005\ \}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keywordtype}{void}\ Builder::buildGame(std::string\ t\_gameName)}
+\DoxyCodeLine{00008\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{comment}{//std::string\ build\_dir\ =\ "{}build"{};}}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{comment}{//std::filesystem::create\_directory(build\_dir);}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{comment}{//std::filesystem::path\ current\_dir\ =\ std::filesystem::current\_path();}}
+\DoxyCodeLine{00017\ \textcolor{comment}{}\ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{comment}{//if\ (!std::filesystem::exists(current\_dir))}}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{comment}{//\{}}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{comment}{//\ \ //\ handle\ the\ case\ where\ the\ directory\ doesn't\ exist}}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{comment}{//\ \ std::cout\ <<\ "{}doesnt\ exist"{}\ <<\ std::endl;}}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//\}}}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{comment}{//else\ }}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//\{}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{comment}{//\ \ for\ (auto\&\ file\ :\ std::filesystem::directory\_iterator(current\_dir))}}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//\ \ \{}}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ if\ (file.is\_regular\_file()\ \&\&\ (file.path().extension()\ ==\ "{}.cpp"{}\ ||\ file.path().extension()\ ==\ "{}.h"{}))}}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \{}}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ std::filesystem::copy(file.path(),\ build\_dir\ +\ "{}\(\backslash\)\(\backslash\)"{}\ +\ file.path().filename().string());}}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \}}}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{comment}{//\ \ \}}}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{comment}{//\}}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{comment}{//std::string\ compiler\_path\ =\ "{}C:\(\backslash\)\(\backslash\)Program\ Files\ (x86)\(\backslash\)\(\backslash\)Microsoft\ Visual\ Studio\(\backslash\)\(\backslash\)2019\(\backslash\)\(\backslash\)Community\(\backslash\)\(\backslash\)VC\(\backslash\)\(\backslash\)Tools\(\backslash\)\(\backslash\)MSVC\(\backslash\)\(\backslash\)14.29.30133\(\backslash\)\(\backslash\)bin\(\backslash\)\(\backslash\)Hostx86\(\backslash\)\(\backslash\)x86\(\backslash\)\(\backslash\)cl.exe"{};}}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{comment}{//std::string\ command\ =\ "{}\(\backslash\)"{}"{}\ +\ compiler\_path\ +\ "{}\(\backslash\)"{}\ /EHsc\ \(\backslash\)"{}"{}\ +\ build\_dir\ +\ "{}\(\backslash\)\(\backslash\)main.cpp\(\backslash\)"{}\ /Fe:\(\backslash\)"{}"{}\ +\ build\_dir\ +\ "{}\(\backslash\)\(\backslash\)newGame.exe\(\backslash\)"{}"{};}}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{comment}{//std::system(command.c\_str());}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{comment}{//std::string\ sfml\_dir\ =\ "{}C:\(\backslash\)\(\backslash\)SFML-\/2.5.1\(\backslash\)\(\backslash\)bin"{};}}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{comment}{//for\ (auto\&\ file\ :\ std::filesystem::directory\_iterator(sfml\_dir))}}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{comment}{//\{}}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{comment}{//\ \ if\ (file.is\_regular\_file()\ \&\&\ file.path().extension()\ ==\ "{}.dll"{})}}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{comment}{//\ \ \{}}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ std::filesystem::copy(file.path(),\ build\_dir\ +\ "{}\(\backslash\)\(\backslash\)"{}\ +\ file.path().filename().string());}}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{comment}{//\ \ \}}}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{comment}{//\}}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{comment}{//std::string\ asset\_dir\ =\ "{}ASSETS"{};}}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{comment}{//for\ (auto\&\ file\ :\ std::filesystem::recursive\_directory\_iterator(asset\_dir))}}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{comment}{//\{}}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{comment}{//\ \ if\ (file.is\_regular\_file())}}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{comment}{//\ \ \{}}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ auto\ relative\_path\ =\ std::filesystem::relative(file.path(),\ asset\_dir);}}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ auto\ dest\_path\ =\ build\_dir\ /\ relative\_path;}}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ std::filesystem::create\_directories(dest\_path.parent\_path());}}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ std::filesystem::copy(file.path(),\ dest\_path);}}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{comment}{//\ \ \}}}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{comment}{//\}}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ "{}Game\ executable\ built:\ "{}\ <<\ std::endl;}}
+\DoxyCodeLine{00063\ \}}
+
+\end{DoxyCode}

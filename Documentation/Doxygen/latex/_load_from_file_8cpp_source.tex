@@ -1,0 +1,167 @@
+\doxysection{Load\+From\+File.\+cpp}
+\label{_load_from_file_8cpp_source}\index{NoCodeGameEditor/LoadFromFile.cpp@{NoCodeGameEditor/LoadFromFile.cpp}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}LoadFromFile.h"{}}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ LoadFromFile::LoadFromFile()}
+\DoxyCodeLine{00004\ \{}
+\DoxyCodeLine{00005\ \}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keywordtype}{void}\ LoadFromFile::loadFile(std::string\ t\_gameName)}
+\DoxyCodeLine{00008\ \{}
+\DoxyCodeLine{00009\ \ \ \ \ resetParamsForGame();}
+\DoxyCodeLine{00010\ \ \ \ \ std::fstream\ myFile;}
+\DoxyCodeLine{00011\ \ \ \ \ myFile.open(\textcolor{stringliteral}{"{}.\(\backslash\)\(\backslash\)ASSETS\(\backslash\)\(\backslash\)GAMEDATA\(\backslash\)\(\backslash\)"{}}\ +\ t\_gameName\ +\ \textcolor{stringliteral}{"{}.csv"{}});}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordflow}{while}\ (!myFile.eof())}
+\DoxyCodeLine{00014\ \ \ \ \ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ std::string\ temp;}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ temp\ <<\ std::endl;}}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ getline(myFile,\ temp);}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ gameData.push\_back(temp);}
+\DoxyCodeLine{00019\ \ \ \ \ \}}
+\DoxyCodeLine{00020\ \ \ \ \ }
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ myFile.close();}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{comment}{//myFile\ <<\ "{}XPOS,YPOS,TYPE,OBJECT,\(\backslash\)n"{};}}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordflow}{if}\ (gameData.at(0)\ ==\ \textcolor{stringliteral}{"{}XPOS,YPOS,TYPE,OBJECT"{}})}
+\DoxyCodeLine{00025\ \ \ \ \ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ "{}Wahey"{}\ <<\ std::endl;}}
+\DoxyCodeLine{00027\ \ \ \ \ \}}
+\DoxyCodeLine{00028\ \ \ \ \ gameData.erase(gameData.begin());}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ createData();}
+\DoxyCodeLine{00031\ \}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{keywordtype}{void}\ LoadFromFile::update(sf::Time\ t\_deltaTime)}
+\DoxyCodeLine{00034\ \{}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keywordtype}{void}\ LoadFromFile::createData()}
+\DoxyCodeLine{00039\ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{comment}{//letters\ used:\ W,S,C,D,M,H,E,G,Z}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{comment}{//Each\ String\ =\ x,\ y\ ,\ textureNum,\ ObjectType}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ gameData.size();\ i++)}
+\DoxyCodeLine{00045\ \ \ \ \ \{}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ std::stringstream\ ss(gameData.at(i));}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ std::vector<std::string>\ substrings;}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ std::string\ substring;}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ std::string\ currentData\ =\ gameData.at(i);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Use\ getline\ with\ ','\ delimiter\ to\ extract\ substrings\ from\ stringstream}}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (std::getline(ss,\ substring,\ \textcolor{charliteral}{','}))}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ substrings.push\_back(substring);}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (substrings.size()\ >\ 0)}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!substrings.at(0).empty())}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ xPos\ =\ substrings.at(0);}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!substrings.at(1).empty())}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ yPos\ =\ substrings.at(1);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!substrings.at(2).empty())}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ textureNum\ =\ substrings.at(2);}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!xPos.empty()\ \&\&\ !yPos.empty()\ \&\&\ !textureNum.empty())}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sf::Vector3f\ tempVector\ =\ \{\ std::stof(xPos),\ std::stof(yPos),\ std::stof(textureNum)\ \};}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (currentData.find(\textcolor{stringliteral}{"{}W"{}})\ !=\ std::string::npos)}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wallData.push\_back(tempVector);}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentData.find(\textcolor{stringliteral}{"{}S"{}})\ !=\ std::string::npos)}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ spawnerData.push\_back(tempVector);}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentData.find(\textcolor{stringliteral}{"{}C"{}})\ !=\ std::string::npos)}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ coinData.push\_back(tempVector);}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentData.find(\textcolor{stringliteral}{"{}D"{}})\ !=\ std::string::npos)}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ doorData.push\_back(tempVector);}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentData.find(\textcolor{stringliteral}{"{}M"{}})\ !=\ std::string::npos)}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ monumentData.push\_back(tempVector);}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentData.find(\textcolor{stringliteral}{"{}H"{}})\ !=\ std::string::npos)}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ medkitData.push\_back(tempVector);}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentData.find(\textcolor{stringliteral}{"{}E"{}})\ !=\ std::string::npos)}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ explosiveData.push\_back(tempVector);}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentData.find(\textcolor{stringliteral}{"{}N"{}})\ !=\ std::string::npos)}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nukeData.push\_back(tempVector);}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentData.find(\textcolor{stringliteral}{"{}I"{}})\ !=\ std::string::npos)}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ invinceData.push\_back(tempVector);}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentData.find(\textcolor{stringliteral}{"{}V"{}})\ !=\ std::string::npos)}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ invisData.push\_back(tempVector);}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentData.find(\textcolor{stringliteral}{"{}Z"{}})\ !=\ std::string::npos)}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BGGTChoices\ =\ tempVector;}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00124\ \ \ \ \ \}}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ "{}Wall\ Data\ \ Size\ =\ "{}\ <<\ wallData.size()\ <<\ std::endl;}}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{comment}{//for\ (int\ i\ =\ 0;\ i\ <\ wallData.size();\ i++)}}
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{comment}{//\{}}
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{comment}{//\ \ std::cout\ <<\ wallData.at(i).x\ <<\ "{}\ -\/-\/-\/\ "{}\ <<\ wallData.at(i).y\ <<\ "{}\ -\/-\/-\/\ "{}\ <<\ wallData.at(i).z\ <<\ std::endl;}}
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{comment}{//\}}}
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ "{}Spawner\ Data\ \ Size\ =\ "{}\ <<\ spawnerData.size()\ <<\ std::endl;}}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{comment}{//for\ (int\ i\ =\ 0;\ i\ <\ spawnerData.size();\ i++)}}
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{comment}{//\{}}
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{comment}{//\ \ std::cout\ <<\ spawnerData.at(i).x\ <<\ "{}\ -\/-\/-\/\ "{}\ <<\ spawnerData.at(i).y\ <<\ "{}\ -\/-\/-\/\ "{}\ <<\ spawnerData.at(i).z\ <<\ std::endl;}}
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{comment}{//\}}}
+\DoxyCodeLine{00140\ \}}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \textcolor{keywordtype}{void}\ LoadFromFile::resetParamsForGame()}
+\DoxyCodeLine{00143\ \{}
+\DoxyCodeLine{00144\ \ \ \ \ gameData.clear();}
+\DoxyCodeLine{00145\ \ \ \ \ xPos\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00146\ \ \ \ \ yPos\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00147\ \ \ \ \ textureNum\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00148\ \ \ \ \ wallData.clear();}
+\DoxyCodeLine{00149\ \ \ \ \ spawnerData.clear();}
+\DoxyCodeLine{00150\ \ \ \ \ coinData.clear();}
+\DoxyCodeLine{00151\ \ \ \ \ doorData.clear();}
+\DoxyCodeLine{00152\ \ \ \ \ monumentData.clear();}
+\DoxyCodeLine{00153\ \ \ \ \ explosiveData.clear();}
+\DoxyCodeLine{00154\ \ \ \ \ medkitData.clear();}
+\DoxyCodeLine{00155\ \ \ \ \ nukeData.clear();}
+\DoxyCodeLine{00156\ \ \ \ \ invinceData.clear();}
+\DoxyCodeLine{00157\ \ \ \ \ invisData.clear();}
+\DoxyCodeLine{00158\ \ \ \ \ BGGTChoices.x\ =\ 0;}
+\DoxyCodeLine{00159\ \ \ \ \ BGGTChoices.y\ =\ 0;}
+\DoxyCodeLine{00160\ \ \ \ \ BGGTChoices.z\ =\ 0;}
+\DoxyCodeLine{00161\ \}}
+
+\end{DoxyCode}

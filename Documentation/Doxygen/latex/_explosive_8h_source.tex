@@ -1,0 +1,43 @@
+\doxysection{Explosive.\+h}
+\label{_explosive_8h_source}\index{NoCodeGameEditor/Explosive.h@{NoCodeGameEditor/Explosive.h}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}TextureManager.h"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }Explosive}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ \ \ \ \ Explosive(sf::Vector2f\ t\_explosivePos,\ TextureManager\&\ textureManager,\ \textcolor{keywordtype}{bool}\ t\_primed);}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{void}\ loadFiles();}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{void}\ setupExplosive();}
+\DoxyCodeLine{00020\ \ \ \ \ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ update(sf::Time\ t\_deltaTime);}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ render(sf::RenderWindow\&\ t\_window);}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ sf::Sprite\&\ getExplosive();}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ std::shared\_ptr<sf::Texture>\ explosiveTexture;}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{bool}\ primed;}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{bool}\ exploded\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00030\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00031\ \ \ \ \ TextureManager\&\ m\_textureManager;}
+\DoxyCodeLine{00032\ \ \ \ \ sf::Vector2f\ explosivePos;}
+\DoxyCodeLine{00033\ \ \ \ \ sf::Sprite\ explosiveSprite;}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ flashDynamite();}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{int}\ flashCount\ =\ 0;}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{int}\ timer\ =\ 0;}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{bool}\ red\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00040\ \};}
+\DoxyCodeLine{00041\ }
+
+\end{DoxyCode}

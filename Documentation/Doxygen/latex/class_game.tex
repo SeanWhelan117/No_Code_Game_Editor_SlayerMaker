@@ -1,0 +1,3055 @@
+\doxysection{Game Class Reference}
+\label{class_game}\index{Game@{Game}}
+
+
+include guards used so we don\textquotesingle{}t process this file twice same as \#pragma once Don\textquotesingle{}t forget the endif at the bottom  
+
+
+
+
+{\ttfamily \#include $<$Game.\+h$>$}
+
+
+
+Collaboration diagram for Game\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Game} ()
+\begin{DoxyCompactList}\small\item\em default constructor setup the window properties load and setup the text load and setup thne image \end{DoxyCompactList}\item 
+\textbf{ $\sim$\+Game} ()
+\begin{DoxyCompactList}\small\item\em default destructor we didn\textquotesingle{}t dynamically allocate anything so we don\textquotesingle{}t need to free it, but mthod needs to be here \end{DoxyCompactList}\item 
+void \textbf{ run} ()
+\begin{DoxyCompactList}\small\item\em main method for game \end{DoxyCompactList}\item 
+void \textbf{ check\+Mouse\+Pos} ()
+\item 
+\textbf{ Wall} \textbf{ create\+Individual\+Wall} (sf\+::\+Vector2f t\+\_\+wall\+Pos, int t\+\_\+wall\+Text\+Num)
+\item 
+\textbf{ Enemy\+Spawner} \textbf{ create\+Individual\+Spawner} (sf\+::\+Vector2f t\+\_\+spawner\+Pos, int t\+\_\+spawner\+Text\+Num)
+\item 
+void \textbf{ remove\+Wall\+Vector} ()
+\item 
+void \textbf{ remove\+Enemy\+Spawner\+Vector} ()
+\item 
+void \textbf{ remove\+Objective\+Vector} ()
+\item 
+void \textbf{ remove\+Item\+Vector} ()
+\item 
+void \textbf{ remove\+Powerup\+Vector} ()
+\item 
+void \textbf{ views\+Creation} ()
+\item 
+void \textbf{ save\+Data\+To\+CSV} ()
+\item 
+void \textbf{ create\+Level} ()
+\item 
+void \textbf{ clear\+Vectors} ()
+\item 
+void \textbf{ collision\+Detection} ()
+\item 
+\textbf{ Blood\+Splatter} \textbf{ spawn\+Blood\+Splatter} (sf\+::\+Vector2f t\+\_\+splatter\+Pos)
+\item 
+bool \textbf{ is\+Colliding} (sf\+::\+Float\+Rect t\+\_\+obj1, sf\+::\+Float\+Rect t\+\_\+obj2)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+unsigned \textbf{ game\+Width} = sf\+::\+Video\+Mode\+::get\+Desktop\+Mode().width $\ast$ 1
+\item 
+unsigned \textbf{ game\+Height} = sf\+::\+Video\+Mode\+::get\+Desktop\+Mode().height $\ast$ 1
+\item 
+\textbf{ Texture\+Manager} \textbf{ texture\+Manager}
+\item 
+\textbf{ Network\+Manager} \textbf{ network\+Manager}
+\item 
+\textbf{ Animator} \textbf{ animator}
+\item 
+\textbf{ Main\+Menu} \textbf{ my\+Menu} \{ \textbf{ game\+Width}, \textbf{ game\+Height} \}
+\item 
+\textbf{ Game\+Options} \textbf{ game\+Options} \{ \textbf{ game\+Width}, \textbf{ game\+Height} \}
+\item 
+\textbf{ Grid} \textbf{ my\+Grid} \{ \textbf{ game\+Width}, \textbf{ game\+Height} \}
+\item 
+\textbf{ Game\+State} \textbf{ my\+State} \{ Game\+State\+::mainmenu \}
+\item 
+\textbf{ Tool\+Bar} \textbf{ my\+Tools} \{ \textbf{ game\+Width}, \textbf{ game\+Height} \}
+\item 
+\textbf{ Player} \textbf{ my\+Player} \{ \textbf{ game\+Width}, \textbf{ game\+Height}, \textbf{ animator} \}
+\item 
+\textbf{ Crosshair} \textbf{ my\+Crosshair}
+\item 
+\textbf{ Background} \textbf{ my\+Background} \{\textbf{ game\+Width}, \textbf{ game\+Height}\}
+\item 
+\textbf{ Choose\+Game} \textbf{ game\+Choice} \{ \textbf{ game\+Width}, \textbf{ game\+Height}, \textbf{ network\+Manager} \}
+\item 
+\textbf{ HUD} \textbf{ player\+HUD} \{ \textbf{ game\+Width}, \textbf{ game\+Height} \}
+\item 
+\textbf{ Choice\+Bar} \textbf{ my\+Choice} \{ \textbf{ game\+Width}, \textbf{ game\+Height}\}
+\item 
+\textbf{ Objectives} \textbf{ objectives} \{ \textbf{ texture\+Manager} \}
+\item 
+\textbf{ Game\+Over} \textbf{ game\+Over} \{ \textbf{ game\+Width}, \textbf{ game\+Height} \}
+\item 
+\textbf{ Builder} \textbf{ my\+Builder}
+\item 
+\textbf{ Items} \textbf{ items} \{ \textbf{ texture\+Manager} \}
+\item 
+\textbf{ Powerups} \textbf{ powerups} \{ \textbf{ texture\+Manager} \}
+\item 
+sf\+::\+View \textbf{ main\+View}
+\item 
+sf\+::\+View \textbf{ test\+View}
+\item 
+bool \textbf{ change\+Grid\+Size} = false
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \textbf{ Wall} $>$ $>$ \textbf{ wall\+Vector}
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \textbf{ Enemy\+Spawner} $>$ $>$ \textbf{ enemy\+Spawner\+Vector}
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \textbf{ Blood\+Splatter} $>$ $>$ \textbf{ blood\+Splatter\+Vector}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ process\+Events} ()
+\begin{DoxyCompactList}\small\item\em handle user and system events/ input get key presses/ mouse moves etc. from OS and user \+:: Don\textquotesingle{}t do game update here \end{DoxyCompactList}\item 
+void \textbf{ process\+Keys} (sf\+::\+Event t\+\_\+event)
+\begin{DoxyCompactList}\small\item\em deal with key presses from the user \end{DoxyCompactList}\item 
+void \textbf{ process\+Mouse\+Clicks} (sf\+::\+Event t\+\_\+event)
+\item 
+void \textbf{ process\+Text\+Entered} (sf\+::\+Event t\+\_\+event)
+\item 
+void \textbf{ process\+Mouse\+Wheel} (sf\+::\+Event t\+\_\+event)
+\item 
+void \textbf{ process\+Mouse\+Release} (sf\+::\+Event t\+\_\+event)
+\item 
+void \textbf{ update} (sf\+::\+Time t\+\_\+delta\+Time)
+\begin{DoxyCompactList}\small\item\em Update the game world. \end{DoxyCompactList}\item 
+void \textbf{ render} ()
+\begin{DoxyCompactList}\small\item\em draw the frame and then switch buffers \end{DoxyCompactList}\item 
+void \textbf{ create\+Wall\+Vector} ()
+\item 
+void \textbf{ create\+Spawner\+Vector} ()
+\item 
+void \textbf{ create\+Objectives} ()
+\item 
+void \textbf{ create\+Items} ()
+\item 
+void \textbf{ create\+Powerups} ()
+\item 
+void \textbf{ check\+Wall\+Health} ()
+\item 
+void \textbf{ check\+Enemies\+Emptied} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Vector2f \textbf{ mouse\+Pos}
+\item 
+sf\+::\+Render\+Window \textbf{ m\+\_\+window}
+\item 
+bool \textbf{ m\+\_\+exit\+Game}
+\item 
+bool \textbf{ grid\+Created} = false
+\item 
+int \textbf{ grid\+Size} = 30
+\item 
+int \textbf{ num\+Of\+Walls} = 0
+\item 
+int \textbf{ num\+Of\+Spawners} = 0
+\item 
+int \textbf{ num\+Of\+Coins} = 0
+\item 
+int \textbf{ num\+Of\+Doors} = 0
+\item 
+int \textbf{ num\+Of\+Monuments} = 0
+\item 
+int \textbf{ num\+Of\+Medkits} = 0
+\item 
+int \textbf{ num\+Of\+Explosives} = 0
+\item 
+int \textbf{ num\+Of\+Guns} = 0
+\item 
+int \textbf{ num\+Of\+Nukes} = 0
+\item 
+int \textbf{ num\+Of\+Invinces} = 0
+\item 
+int \textbf{ num\+Of\+Invises} = 0
+\item 
+bool \textbf{ wall\+Vector\+Created} = false
+\item 
+bool \textbf{ enemy\+Spawner\+Vector\+Created} = false
+\item 
+bool \textbf{ objective\+Vector\+Created} = false
+\item 
+bool \textbf{ item\+Vector\+Created} = false
+\item 
+bool \textbf{ powerup\+Vector\+Created} = false
+\item 
+bool \textbf{ main\+View\+Active} = true
+\item 
+bool \textbf{ test\+View\+Active} = false
+\item 
+double \textbf{ zoom\+Amount} = 1
+\item 
+bool \textbf{ zooming} = false
+\item 
+bool \textbf{ scrollingX} = false
+\item 
+int \textbf{ scroll\+Speed} = 30
+\item 
+int \textbf{ coins\+Collected} = 0
+\item 
+int \textbf{ max\+Coins} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+include guards used so we don\textquotesingle{}t process this file twice same as \#pragma once Don\textquotesingle{}t forget the endif at the bottom 
+
+\begin{DoxyAuthor}{Author}
+Sean Whelan 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022/23 @license Attribution-\/\+Non\+Commercial 4.\+0 International 
+\end{DoxyDate}
+
+
+Definition at line \textbf{ 42} of file \textbf{ Game.\+h}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\label{class_game_ad59df6562a58a614fda24622d3715b65}} 
+\index{Game@{Game}!Game@{Game}}
+\index{Game@{Game}!Game@{Game}}
+\doxysubsubsection{Game()}
+{\footnotesize\ttfamily Game\+::\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+default constructor setup the window properties load and setup the text load and setup thne image 
+
+\begin{DoxyAuthor}{Author}
+Sean Whelan 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022 @license Attribution-\/\+Non\+Commercial 4.\+0 International 
+\end{DoxyDate}
+
+
+Definition at line \textbf{ 17} of file \textbf{ Game.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{00018\ \ \ \ \ m\_window\{\ sf::VideoMode\{\ \ gameWidth,\ gameHeight,\ 32U\ \},\ \textcolor{stringliteral}{"{}SlayerMaker"{}}\ \},}
+\DoxyCodeLine{00019\ \ \ \ \ m\_exitGame\{\textcolor{keyword}{false}\}\ \textcolor{comment}{//when\ true\ game\ will\ exit}}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ m\_window.setActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{00022\ \ \ \ \ viewsCreation();}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{comment}{//if\ (\_\_cplusplus\ ==\ 202101L)\ std::cout\ <<\ "{}C++23"{};}}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//else\ if\ (\_\_cplusplus\ ==\ 202002L)\ std::cout\ <<\ "{}C++20"{};}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{comment}{//else\ if\ (\_\_cplusplus\ ==\ 201703L)\ std::cout\ <<\ "{}C++17"{};}}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//else\ if\ (\_\_cplusplus\ ==\ 201402L)\ std::cout\ <<\ "{}C++14"{};}}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{comment}{//else\ if\ (\_\_cplusplus\ ==\ 201103L)\ std::cout\ <<\ "{}C++11"{};}}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//else\ if\ (\_\_cplusplus\ ==\ 199711L)\ std::cout\ <<\ "{}C++98"{};}}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//else\ std::cout\ <<\ "{}pre-\/standard\ C++."{}\ <<\ \_\_cplusplus;}}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ "{}\(\backslash\)n"{};}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=299pt]{class_game_ad59df6562a58a614fda24622d3715b65_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_ae3d112ca6e0e55150d2fdbc704474530}} 
+\index{Game@{Game}!````~Game@{$\sim$Game}}
+\index{````~Game@{$\sim$Game}!Game@{Game}}
+\doxysubsubsection{$\sim$Game()}
+{\footnotesize\ttfamily Game\+::$\sim$\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+default destructor we didn\textquotesingle{}t dynamically allocate anything so we don\textquotesingle{}t need to free it, but mthod needs to be here 
+
+
+
+Definition at line \textbf{ 38} of file \textbf{ Game.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00039\ \{}
+\DoxyCodeLine{00040\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{class_game_ada23484a7fbb44822afb81fe81a05b51}} 
+\index{Game@{Game}!checkEnemiesEmptied@{checkEnemiesEmptied}}
+\index{checkEnemiesEmptied@{checkEnemiesEmptied}!Game@{Game}}
+\doxysubsubsection{checkEnemiesEmptied()}
+{\footnotesize\ttfamily void Game\+::check\+Enemies\+Emptied (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 1473} of file \textbf{ Game.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01474\ \{}
+\DoxyCodeLine{01475\ \ \ \ \ \textcolor{keywordflow}{if}\ (powerups.nukeEnemies\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{01476\ \ \ \ \ \{}
+\DoxyCodeLine{01477\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ count\ =\ 0;}
+\DoxyCodeLine{01478\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ enemySpawnerVector.size();\ i++)}
+\DoxyCodeLine{01479\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01480\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (enemySpawnerVector.at(i).get()-\/>enemyVector.size()\ ==\ 0)}
+\DoxyCodeLine{01481\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01482\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ count++;}
+\DoxyCodeLine{01483\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01484\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01485\ \ \ \ \ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ "{}count\ is:\ "{}\ <<\ count\ <<\ "{}\ spawnerVecSize\ is:\ "{}\ <<\ enemySpawnerVector.size()\ <<\ std::endl;}}
+\DoxyCodeLine{01486\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (count\ ==\ enemySpawnerVector.size())}
+\DoxyCodeLine{01487\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01488\ \ \ \ \ \ \ \ \ \ \ \ \ powerups.nukeEnemies\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{01489\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01490\ }
+\DoxyCodeLine{01491\ \ \ \ \ \}}
+\DoxyCodeLine{01492\ }
+\DoxyCodeLine{01493\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_ada23484a7fbb44822afb81fe81a05b51_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_ab508e5b66f023cd712cc9ee60e7e1925}} 
+\index{Game@{Game}!checkMousePos@{checkMousePos}}
+\index{checkMousePos@{checkMousePos}!Game@{Game}}
+\doxysubsubsection{checkMousePos()}
+{\footnotesize\ttfamily void Game\+::check\+Mouse\+Pos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 724} of file \textbf{ Game.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00725\ \{}
+\DoxyCodeLine{00726\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ gameOptions.NUM\_OF\_TRIANGLES;\ i++)}
+\DoxyCodeLine{00727\ \ \ \ \ \{}
+\DoxyCodeLine{00728\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (gameOptions.triangles[i].getGlobalBounds().contains(mousePos))}
+\DoxyCodeLine{00729\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00730\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (changeGridSize\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{00731\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00732\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ changeGridSize\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00733\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gameOptions.changeGridSize(i);}
+\DoxyCodeLine{00734\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00735\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00736\ }
+\DoxyCodeLine{00737\ \ \ \ \ \}}
+\DoxyCodeLine{00738\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_ab508e5b66f023cd712cc9ee60e7e1925_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_ab508e5b66f023cd712cc9ee60e7e1925_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_af7c7139ec502f089e3028f17d7461622}} 
+\index{Game@{Game}!checkWallHealth@{checkWallHealth}}
+\index{checkWallHealth@{checkWallHealth}!Game@{Game}}
+\doxysubsubsection{checkWallHealth()}
+{\footnotesize\ttfamily void Game\+::check\+Wall\+Health (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 1460} of file \textbf{ Game.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01461\ \{}
+\DoxyCodeLine{01462\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ wallVector.size();\ i++)}
+\DoxyCodeLine{01463\ \ \ \ \ \{}
+\DoxyCodeLine{01464\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (wallVector.at(i).get()-\/>getWallHealth()\ <=\ 0)}
+\DoxyCodeLine{01465\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01466\ \ \ \ \ \ \ \ \ \ \ \ \ vector<unique\_ptr<Wall\ >>::iterator\ begin\ =\ wallVector.begin();}
+\DoxyCodeLine{01467\ \ \ \ \ \ \ \ \ \ \ \ \ begin\ +=\ i;}
+\DoxyCodeLine{01468\ \ \ \ \ \ \ \ \ \ \ \ \ wallVector.erase(begin);}
+\DoxyCodeLine{01469\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01470\ \ \ \ \ \}}
+\DoxyCodeLine{01471\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_af7c7139ec502f089e3028f17d7461622_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_a306f7eb96c3cc930508d35c31989419f}} 
+\index{Game@{Game}!clearVectors@{clearVectors}}
+\index{clearVectors@{clearVectors}!Game@{Game}}
+\doxysubsubsection{clearVectors()}
+{\footnotesize\ttfamily void Game\+::clear\+Vectors (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 1366} of file \textbf{ Game.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01367\ \{}
+\DoxyCodeLine{01368\ \ \ \ \ wallVector.clear();}
+\DoxyCodeLine{01369\ \ \ \ \ enemySpawnerVector.clear();}
+\DoxyCodeLine{01370\ \ \ \ \ bloodSplatterVector.clear();}
+\DoxyCodeLine{01371\ }
+\DoxyCodeLine{01372\ \ \ \ \ objectives.coinVector.clear();}
+\DoxyCodeLine{01373\ \ \ \ \ objectives.doorVector.clear();}
+\DoxyCodeLine{01374\ \ \ \ \ objectives.monumentVector.clear();}
+\DoxyCodeLine{01375\ }
+\DoxyCodeLine{01376\ \ \ \ \ items.medkitVector.clear();}
+\DoxyCodeLine{01377\ \ \ \ \ items.explosiveVector.clear();}
+\DoxyCodeLine{01378\ \ \ \ \ powerups.nukeVector.clear();}
+\DoxyCodeLine{01379\ \ \ \ \ powerups.invinceVector.clear();}
+\DoxyCodeLine{01380\ \ \ \ \ powerups.invisVector.clear();}
+\DoxyCodeLine{01381\ }
+\DoxyCodeLine{01382\ \ \ \ \ map<string,\ int>::iterator\ it;}
+\DoxyCodeLine{01383\ }
+\DoxyCodeLine{01384\ \ \ \ \ \textcolor{keywordflow}{for}\ (it\ =\ myTools.itemsPlaced.begin();\ it\ !=\ myTools.itemsPlaced.end();\ it++)}
+\DoxyCodeLine{01385\ \ \ \ \ \{}
+\DoxyCodeLine{01386\ \ \ \ \ \ \ \ \ it-\/>second\ =\ 0;}
+\DoxyCodeLine{01387\ \ \ \ \ \}}
+\DoxyCodeLine{01388\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_a306f7eb96c3cc930508d35c31989419f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_a04598b31d30614a0eda08dd8b3dcecb9}} 
+\index{Game@{Game}!collisionDetection@{collisionDetection}}
+\index{collisionDetection@{collisionDetection}!Game@{Game}}
+\doxysubsubsection{collisionDetection()}
+{\footnotesize\ttfamily void Game\+::collision\+Detection (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 1395} of file \textbf{ Game.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01396\ \{}
+\DoxyCodeLine{01397\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ spawnerIt\ =\ enemySpawnerVector.begin();\ spawnerIt\ !=\ enemySpawnerVector.end();\ ++spawnerIt)}
+\DoxyCodeLine{01398\ \ \ \ \ \{}
+\DoxyCodeLine{01399\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ spawner\ =\ *spawnerIt;}
+\DoxyCodeLine{01400\ }
+\DoxyCodeLine{01401\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ enemyIt\ =\ spawner-\/>enemyVector.begin();\ enemyIt\ !=\ spawner-\/>enemyVector.end();\ )}
+\DoxyCodeLine{01402\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01403\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ enemy\ =\ *enemyIt;}
+\DoxyCodeLine{01404\ }
+\DoxyCodeLine{01405\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ bulletIt\ =\ myPlayer.bulletVector.begin();\ bulletIt\ !=\ myPlayer.bulletVector.end();\ )}
+\DoxyCodeLine{01406\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01407\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ bullet\ =\ *bulletIt;}
+\DoxyCodeLine{01408\ }
+\DoxyCodeLine{01409\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isColliding(bullet.get()-\/>getBullet().getGlobalBounds(),\ enemy-\/>getEnemy().getGlobalBounds()))}
+\DoxyCodeLine{01410\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01411\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (enemy-\/>getHealth()\ >\ 0)}
+\DoxyCodeLine{01412\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01413\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ enemy-\/>setHealth(5);}
+\DoxyCodeLine{01414\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01415\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (enemy-\/>getHealth()\ <=\ 0)}
+\DoxyCodeLine{01416\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01417\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bloodSplatterVector.emplace\_back(\textcolor{keyword}{new}\ BloodSplatter(spawnBloodSplatter(enemy-\/>getEnemy().getPosition())));}
+\DoxyCodeLine{01418\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ enemyIt\ =\ spawner-\/>enemyVector.erase(enemyIt);}
+\DoxyCodeLine{01419\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{01420\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01421\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{01422\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bulletIt\ =\ myPlayer.bulletVector.erase(bulletIt);}
+\DoxyCodeLine{01423\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01424\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ }
+\DoxyCodeLine{01425\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01426\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++bulletIt;}
+\DoxyCodeLine{01427\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01428\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01429\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (enemyIt\ !=\ spawner-\/>enemyVector.end())\ }
+\DoxyCodeLine{01430\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01431\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++enemyIt;}
+\DoxyCodeLine{01432\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01433\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01434\ \ \ \ \ \}}
+\DoxyCodeLine{01435\ }
+\DoxyCodeLine{01436\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ enemySpawnerVector.size();\ i++)}
+\DoxyCodeLine{01437\ \ \ \ \ \{}
+\DoxyCodeLine{01438\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ p\ =\ 0;\ p\ <\ enemySpawnerVector.at(i).get()-\/>enemyVector.size();\ p++)}
+\DoxyCodeLine{01439\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01440\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isColliding(enemySpawnerVector.at(i).get()-\/>enemyVector.at(p).get()-\/>getEnemy().getGlobalBounds(),\ myPlayer.getPlayer().getGlobalBounds()))}
+\DoxyCodeLine{01441\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01442\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!powerups.invincibilityActive)}
+\DoxyCodeLine{01443\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01444\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ playerHUD.myHealthBar.minusHealth(2);}
+\DoxyCodeLine{01445\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01446\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01447\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01448\ \ \ \ \ \}}
+\DoxyCodeLine{01449\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_a04598b31d30614a0eda08dd8b3dcecb9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_a04598b31d30614a0eda08dd8b3dcecb9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_af1ef9f2ac8c746501f63058526429ca3}} 
+\index{Game@{Game}!createIndividualSpawner@{createIndividualSpawner}}
+\index{createIndividualSpawner@{createIndividualSpawner}!Game@{Game}}
+\doxysubsubsection{createIndividualSpawner()}
+{\footnotesize\ttfamily \textbf{ Enemy\+Spawner} Game\+::create\+Individual\+Spawner (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{t\+\_\+spawner\+Pos,  }\item[{int}]{t\+\_\+spawner\+Text\+Num }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 808} of file \textbf{ Game.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00809\ \{}
+\DoxyCodeLine{00810\ \ \ \ \ EnemySpawner\ tempSpawner\{\ t\_spawnerTextNum,\ t\_spawnerPos,\ textureManager\ \};}
+\DoxyCodeLine{00811\ }
+\DoxyCodeLine{00812\ \ \ \ \ \textcolor{keywordflow}{return}\ tempSpawner;}
+\DoxyCodeLine{00813\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_af1ef9f2ac8c746501f63058526429ca3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_ab8a2f51fb92121baa5f579856ba83600}} 
+\index{Game@{Game}!createIndividualWall@{createIndividualWall}}
+\index{createIndividualWall@{createIndividualWall}!Game@{Game}}
+\doxysubsubsection{createIndividualWall()}
+{\footnotesize\ttfamily \textbf{ Wall} Game\+::create\+Individual\+Wall (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{t\+\_\+wall\+Pos,  }\item[{int}]{t\+\_\+wall\+Text\+Num }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 770} of file \textbf{ Game.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00771\ \{}
+\DoxyCodeLine{00772\ \ \ \ \ Wall\ tempWall\{\ t\_wallTextNum,\ t\_wallPos,\ textureManager\ \};}
+\DoxyCodeLine{00773\ }
+\DoxyCodeLine{00774\ \ \ \ \ \textcolor{keywordflow}{return}\ tempWall;}
+\DoxyCodeLine{00775\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_ab8a2f51fb92121baa5f579856ba83600_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_a439f1a313ddba94dcfe1f4cd62028849}} 
+\index{Game@{Game}!createItems@{createItems}}
+\index{createItems@{createItems}!Game@{Game}}
+\doxysubsubsection{createItems()}
+{\footnotesize\ttfamily void Game\+::create\+Items (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 846} of file \textbf{ Game.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00847\ \{}
+\DoxyCodeLine{00848\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ gridSize;\ i++)}
+\DoxyCodeLine{00849\ \ \ \ \ \{}
+\DoxyCodeLine{00850\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ m\ =\ 0;\ m\ <\ gridSize;\ m++)}
+\DoxyCodeLine{00851\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00852\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (myGrid.theGrid.at(m).at(i).getType()\ ==\ \textcolor{stringliteral}{"{}item1"{}}\ \&\&\ myGrid.theGrid.at(m).at(i).filled\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00853\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00854\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ myGrid.theGrid.at(m).at(i).filled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00855\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ items.addToVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(),\ 0);}
+\DoxyCodeLine{00856\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ numOfMedkits++;}
+\DoxyCodeLine{00857\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00858\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (myGrid.theGrid.at(m).at(i).getType()\ ==\ \textcolor{stringliteral}{"{}item2"{}}\ \&\&\ myGrid.theGrid.at(m).at(i).filled\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00859\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00860\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ myGrid.theGrid.at(m).at(i).filled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00861\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ items.addToVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(),\ 1);}
+\DoxyCodeLine{00862\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ numOfExplosives++;}
+\DoxyCodeLine{00863\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00864\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (myGrid.theGrid.at(m).at(i).getType()\ ==\ \textcolor{stringliteral}{"{}item3"{}}\ \&\&\ myGrid.theGrid.at(m).at(i).filled\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00865\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00866\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ myGrid.theGrid.at(m).at(i).filled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00867\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ items.addToVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(),\ 2);}
+\DoxyCodeLine{00868\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ numOfGuns++;}
+\DoxyCodeLine{00869\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00870\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00871\ \ \ \ \ \}}
+\DoxyCodeLine{00872\ }
+\DoxyCodeLine{00873\ \ \ \ \ itemVectorCreated\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00874\ \ \ \ \ myTools.itemsPlacedBool\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00875\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=317pt]{class_game_a439f1a313ddba94dcfe1f4cd62028849_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_a439f1a313ddba94dcfe1f4cd62028849_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_a6321fce717c8dad076d084e639d641c9}} 
+\index{Game@{Game}!createLevel@{createLevel}}
+\index{createLevel@{createLevel}!Game@{Game}}
+\doxysubsubsection{createLevel()}
+{\footnotesize\ttfamily void Game\+::create\+Level (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 1292} of file \textbf{ Game.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01293\ \{}
+\DoxyCodeLine{01294\ \ \ \ \ clearVectors();}
+\DoxyCodeLine{01295\ \ \ \ \ playerHUD.myHealthBar.plusHealth(1000);}
+\DoxyCodeLine{01296\ \ \ \ \ playerHUD.myClock.startClock();}
+\DoxyCodeLine{01297\ \ \ \ \ coinsCollected\ =\ 0;}
+\DoxyCodeLine{01298\ \ \ \ \ myPlayer.getPlayer().setPosition(sf::Vector2f(gameWidth\ /\ 2,\ gameHeight\ /\ 2));}
+\DoxyCodeLine{01299\ }
+\DoxyCodeLine{01300\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ gameChoice.loader.wallData.size();\ i++)}
+\DoxyCodeLine{01301\ \ \ \ \ \{}
+\DoxyCodeLine{01302\ \ \ \ \ \ \ \ \ sf::Vector2f\ tempWallPos\ =\ \{\ gameChoice.loader.wallData.at(i).x\ ,\ gameChoice.loader.wallData.at(i).y\ \};}
+\DoxyCodeLine{01303\ \ \ \ \ \ \ \ \ wallVector.emplace\_back(\textcolor{keyword}{new}\ Wall(createIndividualWall(tempWallPos,\ gameChoice.loader.wallData.at(i).z)));}
+\DoxyCodeLine{01304\ \ \ \ \ \}}
+\DoxyCodeLine{01305\ }
+\DoxyCodeLine{01306\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ gameChoice.loader.spawnerData.size();\ i++)}
+\DoxyCodeLine{01307\ \ \ \ \ \{}
+\DoxyCodeLine{01308\ \ \ \ \ \ \ \ \ sf::Vector2f\ tempSpawnerPos\ =\ \{\ gameChoice.loader.spawnerData.at(i).x\ ,\ gameChoice.loader.spawnerData.at(i).y\ \};}
+\DoxyCodeLine{01309\ \ \ \ \ \ \ \ \ enemySpawnerVector.emplace\_back(\textcolor{keyword}{new}\ EnemySpawner(createIndividualSpawner(tempSpawnerPos,\ gameChoice.loader.spawnerData.at(i).z)));}
+\DoxyCodeLine{01310\ \ \ \ \ \}}
+\DoxyCodeLine{01311\ }
+\DoxyCodeLine{01312\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ gameChoice.loader.coinData.size();\ i++)}
+\DoxyCodeLine{01313\ \ \ \ \ \{}
+\DoxyCodeLine{01314\ \ \ \ \ \ \ \ \ sf::Vector2f\ tempCoinPos\ =\ \{\ gameChoice.loader.coinData.at(i).x\ ,\ gameChoice.loader.coinData.at(i).y\ \};}
+\DoxyCodeLine{01315\ \ \ \ \ \ \ \ \ objectives.addToVector(tempCoinPos,\ 0);}
+\DoxyCodeLine{01316\ \ \ \ \ \}}
+\DoxyCodeLine{01317\ }
+\DoxyCodeLine{01318\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ gameChoice.loader.doorData.size();\ i++)}
+\DoxyCodeLine{01319\ \ \ \ \ \{}
+\DoxyCodeLine{01320\ \ \ \ \ \ \ \ \ sf::Vector2f\ tempDoorPos\ =\ \{\ gameChoice.loader.doorData.at(i).x\ ,\ gameChoice.loader.doorData.at(i).y\ \};}
+\DoxyCodeLine{01321\ \ \ \ \ \ \ \ \ objectives.addToVector(tempDoorPos,\ 1);}
+\DoxyCodeLine{01322\ \ \ \ \ \}}
+\DoxyCodeLine{01323\ }
+\DoxyCodeLine{01324\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ gameChoice.loader.monumentData.size();\ i++)}
+\DoxyCodeLine{01325\ \ \ \ \ \{}
+\DoxyCodeLine{01326\ \ \ \ \ \ \ \ \ sf::Vector2f\ tempMonumentPos\ =\ \{\ gameChoice.loader.monumentData.at(i).x\ ,\ gameChoice.loader.monumentData.at(i).y\ \};}
+\DoxyCodeLine{01327\ \ \ \ \ \ \ \ \ objectives.addToVector(tempMonumentPos,\ 2);}
+\DoxyCodeLine{01328\ \ \ \ \ \}}
+\DoxyCodeLine{01329\ }
+\DoxyCodeLine{01330\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ gameChoice.loader.medkitData.size();\ i++)}
+\DoxyCodeLine{01331\ \ \ \ \ \{}
+\DoxyCodeLine{01332\ \ \ \ \ \ \ \ \ sf::Vector2f\ tempMedkitPos\ =\ \{\ gameChoice.loader.medkitData.at(i).x\ ,\ gameChoice.loader.medkitData.at(i).y\ \};}
+\DoxyCodeLine{01333\ \ \ \ \ \ \ \ \ items.addToVector(tempMedkitPos,\ 0);}
+\DoxyCodeLine{01334\ \ \ \ \ \}}
+\DoxyCodeLine{01335\ }
+\DoxyCodeLine{01336\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ gameChoice.loader.explosiveData.size();\ i++)}
+\DoxyCodeLine{01337\ \ \ \ \ \{}
+\DoxyCodeLine{01338\ \ \ \ \ \ \ \ \ sf::Vector2f\ tempExplosivePos\ =\ \{\ gameChoice.loader.explosiveData.at(i).x\ ,\ gameChoice.loader.explosiveData.at(i).y\ \};}
+\DoxyCodeLine{01339\ \ \ \ \ \ \ \ \ items.addToVector(tempExplosivePos,\ 1);}
+\DoxyCodeLine{01340\ \ \ \ \ \}}
+\DoxyCodeLine{01341\ }
+\DoxyCodeLine{01342\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ gameChoice.loader.nukeData.size();\ i++)}
+\DoxyCodeLine{01343\ \ \ \ \ \{}
+\DoxyCodeLine{01344\ \ \ \ \ \ \ \ \ sf::Vector2f\ tempNukePos\ =\ \{\ gameChoice.loader.nukeData.at(i).x\ ,\ gameChoice.loader.nukeData.at(i).y\ \};}
+\DoxyCodeLine{01345\ \ \ \ \ \ \ \ \ powerups.addToVector(tempNukePos,\ 0);}
+\DoxyCodeLine{01346\ \ \ \ \ \}}
+\DoxyCodeLine{01347\ }
+\DoxyCodeLine{01348\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ gameChoice.loader.invinceData.size();\ i++)}
+\DoxyCodeLine{01349\ \ \ \ \ \{}
+\DoxyCodeLine{01350\ \ \ \ \ \ \ \ \ sf::Vector2f\ tempInvincePos\ =\ \{\ gameChoice.loader.invinceData.at(i).x\ ,\ gameChoice.loader.invinceData.at(i).y\ \};}
+\DoxyCodeLine{01351\ \ \ \ \ \ \ \ \ powerups.addToVector(tempInvincePos,\ 1);}
+\DoxyCodeLine{01352\ \ \ \ \ \}}
+\DoxyCodeLine{01353\ }
+\DoxyCodeLine{01354\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ gameChoice.loader.invisData.size();\ i++)}
+\DoxyCodeLine{01355\ \ \ \ \ \{}
+\DoxyCodeLine{01356\ \ \ \ \ \ \ \ \ sf::Vector2f\ tempInvisPos\ =\ \{\ gameChoice.loader.invisData.at(i).x\ ,\ gameChoice.loader.invisData.at(i).y\ \};}
+\DoxyCodeLine{01357\ \ \ \ \ \ \ \ \ powerups.addToVector(tempInvisPos,\ 2);}
+\DoxyCodeLine{01358\ \ \ \ \ \}}
+\DoxyCodeLine{01359\ }
+\DoxyCodeLine{01360\ \ \ \ \ gameOptions.chosenBG\ =\ gameChoice.loader.BGGTChoices.x;}
+\DoxyCodeLine{01361\ \ \ \ \ gameOptions.chosenGT\ =\ gameChoice.loader.BGGTChoices.y;}
+\DoxyCodeLine{01362\ }
+\DoxyCodeLine{01363\ \ \ \ \ maxCoins\ =\ gameChoice.loader.coinData.size();}
+\DoxyCodeLine{01364\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_a6321fce717c8dad076d084e639d641c9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_a6321fce717c8dad076d084e639d641c9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_a020b30e9501ee13950d796421dfed615}} 
+\index{Game@{Game}!createObjectives@{createObjectives}}
+\index{createObjectives@{createObjectives}!Game@{Game}}
+\doxysubsubsection{createObjectives()}
+{\footnotesize\ttfamily void Game\+::create\+Objectives (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 815} of file \textbf{ Game.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00816\ \{}
+\DoxyCodeLine{00817\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ gridSize;\ i++)}
+\DoxyCodeLine{00818\ \ \ \ \ \{}
+\DoxyCodeLine{00819\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ m\ =\ 0;\ m\ <\ gridSize;\ m++)}
+\DoxyCodeLine{00820\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00821\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (myGrid.theGrid.at(m).at(i).getType()\ ==\ \textcolor{stringliteral}{"{}objective1"{}}\ \&\&\ myGrid.theGrid.at(m).at(i).filled\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00822\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00823\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ myGrid.theGrid.at(m).at(i).filled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00824\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ objectives.addToVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(),\ 0);}
+\DoxyCodeLine{00825\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ numOfCoins++;}
+\DoxyCodeLine{00826\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00827\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (myGrid.theGrid.at(m).at(i).getType()\ ==\ \textcolor{stringliteral}{"{}objective2"{}}\ \&\&\ myGrid.theGrid.at(m).at(i).filled\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00828\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00829\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ myGrid.theGrid.at(m).at(i).filled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00830\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ objectives.addToVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(),\ 1);\ \ \ }
+\DoxyCodeLine{00831\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ numOfDoors++;}
+\DoxyCodeLine{00832\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00833\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (myGrid.theGrid.at(m).at(i).getType()\ ==\ \textcolor{stringliteral}{"{}objective3"{}}\ \&\&\ myGrid.theGrid.at(m).at(i).filled\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00834\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00835\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ myGrid.theGrid.at(m).at(i).filled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00836\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ objectives.addToVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(),\ 2);}
+\DoxyCodeLine{00837\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ numOfMonuments++;}
+\DoxyCodeLine{00838\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00839\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00840\ \ \ \ \ \}}
+\DoxyCodeLine{00841\ }
+\DoxyCodeLine{00842\ \ \ \ \ objectiveVectorCreated\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00843\ \ \ \ \ myTools.objectivesPlaced\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00844\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_a020b30e9501ee13950d796421dfed615_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_a020b30e9501ee13950d796421dfed615_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_a9e68110ecd77dfa51149484b08c49203}} 
+\index{Game@{Game}!createPowerups@{createPowerups}}
+\index{createPowerups@{createPowerups}!Game@{Game}}
+\doxysubsubsection{createPowerups()}
+{\footnotesize\ttfamily void Game\+::create\+Powerups (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 877} of file \textbf{ Game.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00878\ \{}
+\DoxyCodeLine{00879\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ gridSize;\ i++)}
+\DoxyCodeLine{00880\ \ \ \ \ \{}
+\DoxyCodeLine{00881\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ m\ =\ 0;\ m\ <\ gridSize;\ m++)}
+\DoxyCodeLine{00882\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00883\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (myGrid.theGrid.at(m).at(i).getType()\ ==\ \textcolor{stringliteral}{"{}powerup1"{}}\ \&\&\ myGrid.theGrid.at(m).at(i).filled\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00884\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00885\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ myGrid.theGrid.at(m).at(i).filled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00886\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ powerups.addToVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(),\ 0);}
+\DoxyCodeLine{00887\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ numOfNukes++;}
+\DoxyCodeLine{00888\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00889\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (myGrid.theGrid.at(m).at(i).getType()\ ==\ \textcolor{stringliteral}{"{}powerup2"{}}\ \&\&\ myGrid.theGrid.at(m).at(i).filled\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00890\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00891\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ myGrid.theGrid.at(m).at(i).filled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00892\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ powerups.addToVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(),\ 1);}
+\DoxyCodeLine{00893\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ numOfInvinces++;}
+\DoxyCodeLine{00894\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00895\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (myGrid.theGrid.at(m).at(i).getType()\ ==\ \textcolor{stringliteral}{"{}powerup3"{}}\ \&\&\ myGrid.theGrid.at(m).at(i).filled\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00896\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00897\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ myGrid.theGrid.at(m).at(i).filled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00898\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ powerups.addToVector(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(),\ 2);}
+\DoxyCodeLine{00899\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ numOfInvises++;}
+\DoxyCodeLine{00900\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00901\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00902\ \ \ \ \ \}}
+\DoxyCodeLine{00903\ }
+\DoxyCodeLine{00904\ \ \ \ \ powerupVectorCreated\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00905\ \ \ \ \ myTools.powerupsPlaced\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00906\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_a9e68110ecd77dfa51149484b08c49203_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_a9e68110ecd77dfa51149484b08c49203_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_a4a7c75faa68e0659f4e3d6cfef427062}} 
+\index{Game@{Game}!createSpawnerVector@{createSpawnerVector}}
+\index{createSpawnerVector@{createSpawnerVector}!Game@{Game}}
+\doxysubsubsection{createSpawnerVector()}
+{\footnotesize\ttfamily void Game\+::create\+Spawner\+Vector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 777} of file \textbf{ Game.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00778\ \{}
+\DoxyCodeLine{00779\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ gridSize;\ i++)}
+\DoxyCodeLine{00780\ \ \ \ \ \{}
+\DoxyCodeLine{00781\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ m\ =\ 0;\ m\ <\ gridSize;\ m++)}
+\DoxyCodeLine{00782\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00783\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (myGrid.theGrid.at(m).at(i).getType()\ ==\ \textcolor{stringliteral}{"{}enemy1"{}}\ \&\&\ myGrid.theGrid.at(m).at(i).filled\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00784\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00785\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ myGrid.theGrid.at(m).at(i).filled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00786\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ enemySpawnerVector.emplace\_back(\textcolor{keyword}{new}\ EnemySpawner(createIndividualSpawner(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(),\ 0)));}
+\DoxyCodeLine{00787\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ numOfSpawners++;}
+\DoxyCodeLine{00788\ }
+\DoxyCodeLine{00789\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00790\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (myGrid.theGrid.at(m).at(i).getType()\ ==\ \textcolor{stringliteral}{"{}enemy2"{}}\ \&\&\ myGrid.theGrid.at(m).at(i).filled\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00791\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00792\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ myGrid.theGrid.at(m).at(i).filled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00793\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ enemySpawnerVector.emplace\_back(\textcolor{keyword}{new}\ EnemySpawner(createIndividualSpawner(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(),\ 1)));}
+\DoxyCodeLine{00794\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ numOfSpawners++;}
+\DoxyCodeLine{00795\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00796\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (myGrid.theGrid.at(m).at(i).getType()\ ==\ \textcolor{stringliteral}{"{}enemy3"{}}\ \&\&\ myGrid.theGrid.at(m).at(i).filled\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00797\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00798\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ myGrid.theGrid.at(m).at(i).filled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00799\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ enemySpawnerVector.emplace\_back(\textcolor{keyword}{new}\ EnemySpawner(createIndividualSpawner(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(),\ 2)));}
+\DoxyCodeLine{00800\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ numOfSpawners++;}
+\DoxyCodeLine{00801\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00802\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00803\ \ \ \ \ \}}
+\DoxyCodeLine{00804\ \ \ \ \ enemySpawnerVectorCreated\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00805\ \ \ \ \ myTools.enemySpawnersPlaced\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00806\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_a4a7c75faa68e0659f4e3d6cfef427062_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_a4a7c75faa68e0659f4e3d6cfef427062_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_aafbaa472c6b1fb6acca5faa24dd3e71e}} 
+\index{Game@{Game}!createWallVector@{createWallVector}}
+\index{createWallVector@{createWallVector}!Game@{Game}}
+\doxysubsubsection{createWallVector()}
+{\footnotesize\ttfamily void Game\+::create\+Wall\+Vector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 740} of file \textbf{ Game.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00741\ \{}
+\DoxyCodeLine{00742\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ gridSize;\ i++)}
+\DoxyCodeLine{00743\ \ \ \ \ \{}
+\DoxyCodeLine{00744\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ m\ =\ 0;\ m\ <\ gridSize;\ m++)}
+\DoxyCodeLine{00745\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00746\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (myGrid.theGrid.at(m).at(i).getType()\ ==\ \textcolor{stringliteral}{"{}wall1"{}}\ \&\&\ myGrid.theGrid.at(m).at(i).filled\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00747\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00748\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ myGrid.theGrid.at(m).at(i).filled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00749\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wallVector.emplace\_back(\textcolor{keyword}{new}\ Wall(createIndividualWall(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(),\ 0)));}
+\DoxyCodeLine{00750\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ numOfWalls++;}
+\DoxyCodeLine{00751\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00752\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (myGrid.theGrid.at(m).at(i).getType()\ ==\ \textcolor{stringliteral}{"{}wall2"{}}\ \&\&\ myGrid.theGrid.at(m).at(i).filled\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00753\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00754\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ myGrid.theGrid.at(m).at(i).filled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00755\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wallVector.emplace\_back(\textcolor{keyword}{new}\ Wall(createIndividualWall(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(),\ 1)));}
+\DoxyCodeLine{00756\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ numOfWalls++;}
+\DoxyCodeLine{00757\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00758\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (myGrid.theGrid.at(m).at(i).getType()\ ==\ \textcolor{stringliteral}{"{}wall3"{}}\ \&\&\ myGrid.theGrid.at(m).at(i).filled\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00759\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00760\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ myGrid.theGrid.at(m).at(i).filled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00761\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wallVector.emplace\_back(\textcolor{keyword}{new}\ Wall(createIndividualWall(myGrid.theGrid.at(m).at(i).getCellShape().getPosition(),\ 2)));}
+\DoxyCodeLine{00762\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ numOfWalls++;}
+\DoxyCodeLine{00763\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00764\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00765\ \ \ \ \ \}}
+\DoxyCodeLine{00766\ \ \ \ \ myTools.wallsPlaced\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00767\ \ \ \ \ wallVectorCreated\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00768\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_aafbaa472c6b1fb6acca5faa24dd3e71e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_aafbaa472c6b1fb6acca5faa24dd3e71e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_a60286b4fa6c847e149b9adcdc5a897f5}} 
+\index{Game@{Game}!isColliding@{isColliding}}
+\index{isColliding@{isColliding}!Game@{Game}}
+\doxysubsubsection{isColliding()}
+{\footnotesize\ttfamily bool Game\+::is\+Colliding (\begin{DoxyParamCaption}\item[{sf\+::\+Float\+Rect}]{t\+\_\+obj1,  }\item[{sf\+::\+Float\+Rect}]{t\+\_\+obj2 }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 1390} of file \textbf{ Game.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01391\ \{}
+\DoxyCodeLine{01392\ \ \ \ \ \textcolor{keywordflow}{return}\ t\_obj1.intersects(t\_obj2);}
+\DoxyCodeLine{01393\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_a60286b4fa6c847e149b9adcdc5a897f5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_a79f698dda206dd7a9bed28b3f88bdc38}} 
+\index{Game@{Game}!processEvents@{processEvents}}
+\index{processEvents@{processEvents}!Game@{Game}}
+\doxysubsubsection{processEvents()}
+{\footnotesize\ttfamily void Game\+::process\+Events (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+handle user and system events/ input get key presses/ mouse moves etc. from OS and user \+:: Don\textquotesingle{}t do game update here 
+
+
+
+Definition at line \textbf{ 74} of file \textbf{ Game.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00075\ \{}
+\DoxyCodeLine{00076\ \ \ \ \ sf::Event\ newEvent;}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordflow}{while}\ (m\_window.pollEvent(newEvent))}
+\DoxyCodeLine{00078\ \ \ \ \ \{}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ sf::Event::Closed\ ==\ newEvent.type)\ \textcolor{comment}{//\ window\ message}}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ m\_exitGame\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Event::KeyPressed\ ==\ newEvent.type)\ \textcolor{comment}{//user\ pressed\ a\ key}}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ processKeys(newEvent);}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Event::MouseButtonPressed\ ==\ newEvent.type)}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ processMouseClicks(newEvent);}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Event::TextEntered\ ==\ newEvent.type)}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ processTextEntered(newEvent);}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Event::MouseWheelScrolled\ ==\ newEvent.type)}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ newEvent.mouseWheelScroll.delta\ <<\ std::endl;}}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ processMouseWheel(newEvent);}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Event::MouseButtonReleased\ ==\ newEvent.type)}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ processMouseRelease(newEvent);}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00104\ \ \ \ \ \}}
+\DoxyCodeLine{00105\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_a79f698dda206dd7a9bed28b3f88bdc38_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_a79f698dda206dd7a9bed28b3f88bdc38_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_adf2eb2e773dbad1322db8d6798705ea1}} 
+\index{Game@{Game}!processKeys@{processKeys}}
+\index{processKeys@{processKeys}!Game@{Game}}
+\doxysubsubsection{processKeys()}
+{\footnotesize\ttfamily void Game\+::process\+Keys (\begin{DoxyParamCaption}\item[{sf\+::\+Event}]{t\+\_\+event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+deal with key presses from the user 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t\+\_\+event} & key press event\\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \textbf{ 112} of file \textbf{ Game.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00113\ \{}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Keyboard::Escape\ ==\ t\_event.key.code)}
+\DoxyCodeLine{00115\ \ \ \ \ \{}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ m\_exitGame\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00117\ \ \ \ \ \}}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Keyboard::Tab\ ==\ t\_event.key.code)}
+\DoxyCodeLine{00120\ \ \ \ \ \{}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (myState\ ==\ GameState::gameOptions)}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ myState\ =\ GameState::mainmenu;}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ gameChoice.findFiles();}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (myState\ ==\ GameState::createGame)}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ myState\ =\ GameState::gameOptions;}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ clearVectors();}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (myState\ ==\ GameState::chooseGame)}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ myState\ =\ GameState::mainmenu;}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ clearVectors();}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (myState\ ==\ GameState::options)}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ myState\ =\ GameState::mainmenu;}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (myState\ ==\ GameState::testGame)}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ myState\ =\ GameState::createGame;}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (myState\ ==\ GameState::play)}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ myState\ =\ GameState::chooseGame;}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00149\ \ \ \ \ \}}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00151\ \ \ \ \ \textcolor{keywordflow}{if}\ (gameOptions.canType\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{00152\ \ \ \ \ \{}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Keyboard::BackSpace\ ==\ t\_event.key.code)}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!gameOptions.gameName.empty())}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gameOptions.gameName.pop\_back();}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00161\ \ \ \ \ \}}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00163\ \ \ \ \ }
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Keyboard::Space\ ==\ t\_event.key.code)}
+\DoxyCodeLine{00165\ \ \ \ \ \{}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (myState\ ==\ GameState::play)}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//drop\ bomb}}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ playerHUD.myExplosiveUI.minusExplosives();}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (items.explosivesCollected\ !=\ 0)}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ items.explosivesCollected\ -\/=\ 1;}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ items.dropBomb(myPlayer.getPlayer().getPosition());}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00176\ \ \ \ \ \}}
+\DoxyCodeLine{00177\ }
+\DoxyCodeLine{00178\ \ \ \ \ }
+\DoxyCodeLine{00179\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_adf2eb2e773dbad1322db8d6798705ea1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_adf2eb2e773dbad1322db8d6798705ea1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_adbdd3d51597f050ccf78b5f22972aa08}} 
+\index{Game@{Game}!processMouseClicks@{processMouseClicks}}
+\index{processMouseClicks@{processMouseClicks}!Game@{Game}}
+\doxysubsubsection{processMouseClicks()}
+{\footnotesize\ttfamily void Game\+::process\+Mouse\+Clicks (\begin{DoxyParamCaption}\item[{sf\+::\+Event}]{t\+\_\+event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 181} of file \textbf{ Game.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00182\ \{}
+\DoxyCodeLine{00183\ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Mouse::Left\ ==\ t\_event.mouseButton.button)}
+\DoxyCodeLine{00184\ \ \ \ \ \{}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ changeGridSize\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00186\ \ \ \ \ \}}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00188\ \ \ \ \ \textcolor{keywordflow}{if}\ (myTools.fillToolSelected)}
+\DoxyCodeLine{00189\ \ \ \ \ \{}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Mouse::Left\ ==\ t\_event.mouseButton.button)}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ myTools.selectionSquareStartPos\ =\ mousePos;}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ myTools.selecting\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00195\ \ \ \ \ \}}
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00197\ }
+\DoxyCodeLine{00198\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_adbdd3d51597f050ccf78b5f22972aa08_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_a220ae5e7673aa64d123ca7ffefef50d2}} 
+\index{Game@{Game}!processMouseRelease@{processMouseRelease}}
+\index{processMouseRelease@{processMouseRelease}!Game@{Game}}
+\doxysubsubsection{processMouseRelease()}
+{\footnotesize\ttfamily void Game\+::process\+Mouse\+Release (\begin{DoxyParamCaption}\item[{sf\+::\+Event}]{t\+\_\+event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 267} of file \textbf{ Game.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00268\ \{}
+\DoxyCodeLine{00269\ \ \ \ \ \textcolor{keywordflow}{if}\ (myState\ ==\ GameState::createGame)}
+\DoxyCodeLine{00270\ \ \ \ \ \{}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Mouse::Left\ ==\ t\_event.mouseButton.button)}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (myTools.fillToolSelected)}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ myTools.selecting\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00277\ }
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (myChoice.currentMode\ ==\ \textcolor{stringliteral}{"{}WALLS"{}})}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ myTools.wallsPlaced\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (myChoice.currentMode\ ==\ \textcolor{stringliteral}{"{}ENEMIES"{}})}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ myTools.enemySpawnersPlaced\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (myChoice.currentMode\ ==\ \textcolor{stringliteral}{"{}OBJECTIVES"{}})}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ myTools.objectivesPlaced\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (myChoice.currentMode\ ==\ \textcolor{stringliteral}{"{}ITEMS"{}})}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ myTools.itemsPlacedBool\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (myChoice.currentMode\ ==\ \textcolor{stringliteral}{"{}POWERUPS"{}})}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ myTools.powerupsPlaced\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00298\ }
+\DoxyCodeLine{00299\ }
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ myTools.MAX\_NAV\_TRIANGLES;\ i++)}
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (myTools.navigationTriangles[i].getGlobalBounds().contains(mousePos))}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ myTools.navigating\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ myTools.changeMode(i);}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ myTools.navigating\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00307\ }
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00310\ }
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00313\ \ \ \ \ \}}
+\DoxyCodeLine{00314\ }
+\DoxyCodeLine{00315\ \ \ \ \ \textcolor{keywordflow}{if}\ (myState\ ==\ GameState::mainmenu)}
+\DoxyCodeLine{00316\ \ \ \ \ \{}
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Mouse::Left\ ==\ t\_event.mouseButton.button)}
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \ \ \ \ myMenu.buttonClicked\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00321\ \ \ \ \ \}}
+\DoxyCodeLine{00322\ \ \ \ \ \textcolor{keywordflow}{if}\ (myState\ ==\ GameState::chooseGame)}
+\DoxyCodeLine{00323\ \ \ \ \ \{}
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Mouse::Left\ ==\ t\_event.mouseButton.button)}
+\DoxyCodeLine{00325\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ \ \ \ \ gameChoice.buttonClicked\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00328\ \ \ \ \ \}}
+\DoxyCodeLine{00329\ }
+\DoxyCodeLine{00330\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_a220ae5e7673aa64d123ca7ffefef50d2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_a220ae5e7673aa64d123ca7ffefef50d2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_a48f0e553555fe4fc52f7030edbc3c8a6}} 
+\index{Game@{Game}!processMouseWheel@{processMouseWheel}}
+\index{processMouseWheel@{processMouseWheel}!Game@{Game}}
+\doxysubsubsection{processMouseWheel()}
+{\footnotesize\ttfamily void Game\+::process\+Mouse\+Wheel (\begin{DoxyParamCaption}\item[{sf\+::\+Event}]{t\+\_\+event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 214} of file \textbf{ Game.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00215\ \{}
+\DoxyCodeLine{00216\ \ \ \ \ }
+\DoxyCodeLine{00217\ \ \ \ \ \textcolor{keywordflow}{if}\ (mainViewActive\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{00218\ \ \ \ \ \{}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (zooming\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (t\_event.mouseWheelScroll.delta\ ==\ 1)}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Zooming\ In}}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ zoomAmount\ -\/=\ 0.1;}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mainView.zoom(zoomAmount);}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (t\_event.mouseWheelScroll.delta\ ==\ -\/1)}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ zoomAmount\ +=\ 0.1;}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mainView.zoom(zoomAmount);}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ zoomAmount\ <<\ std::endl;}}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ zoomAmount\ =\ 1;}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (zooming\ ==\ \textcolor{keyword}{false}\ \&\&\ scrollingX\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Vector2f\ viewPos\ =\ mainView.getCenter();}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (t\_event.mouseWheelScroll.delta\ ==\ 1)}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ viewPos.y\ -\/=\ scrollSpeed;}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mainView.setCenter(viewPos);}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (t\_event.mouseWheelScroll.delta\ ==\ -\/1)}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ viewPos.y\ +=\ scrollSpeed;}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mainView.setCenter(viewPos);}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (scrollingX)}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Vector2f\ viewPos\ =\ mainView.getCenter();}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (t\_event.mouseWheelScroll.delta\ ==\ 1)}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ viewPos.x\ -\/=\ scrollSpeed;}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mainView.setCenter(viewPos);}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (t\_event.mouseWheelScroll.delta\ ==\ -\/1)}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ viewPos.x\ +=\ scrollSpeed;}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mainView.setCenter(viewPos);}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00264\ \ \ \ \ \}}
+\DoxyCodeLine{00265\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_a48f0e553555fe4fc52f7030edbc3c8a6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_ad9acf294c2205f9af1ec0099e232e789}} 
+\index{Game@{Game}!processTextEntered@{processTextEntered}}
+\index{processTextEntered@{processTextEntered}!Game@{Game}}
+\doxysubsubsection{processTextEntered()}
+{\footnotesize\ttfamily void Game\+::process\+Text\+Entered (\begin{DoxyParamCaption}\item[{sf\+::\+Event}]{t\+\_\+event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 200} of file \textbf{ Game.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00201\ \{}
+\DoxyCodeLine{00202\ \ \ \ \ \textcolor{keywordflow}{if}\ (gameOptions.canType\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{00203\ \ \ \ \ \{}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (t\_event.text.unicode\ !=\ 8\ \&\&\ t\_event.text.unicode\ !=\ 32\ \&\&\ t\_event.text.unicode\ !=\ 39)}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (gameOptions.gameName.size()\ <\ 12)}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gameOptions.gameName\ +=\ t\_event.text.unicode;}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00211\ \ \ \ \ \}}
+\DoxyCodeLine{00212\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_ad9acf294c2205f9af1ec0099e232e789_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_a80a786532fb65e3381910bc88354afe2}} 
+\index{Game@{Game}!removeEnemySpawnerVector@{removeEnemySpawnerVector}}
+\index{removeEnemySpawnerVector@{removeEnemySpawnerVector}!Game@{Game}}
+\doxysubsubsection{removeEnemySpawnerVector()}
+{\footnotesize\ttfamily void Game\+::remove\+Enemy\+Spawner\+Vector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 933} of file \textbf{ Game.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00934\ \{}
+\DoxyCodeLine{00935\ \ \ \ \ \textcolor{keywordflow}{if}\ (enemySpawnerVectorCreated\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{00936\ \ \ \ \ \{}
+\DoxyCodeLine{00937\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!enemySpawnerVector.empty())}
+\DoxyCodeLine{00938\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00939\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ enemySpawnerVector.size();\ i++)}
+\DoxyCodeLine{00940\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00941\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (enemySpawnerVector.at(i)-\/>getSpawner().getGlobalBounds().contains(mousePos))}
+\DoxyCodeLine{00942\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00943\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Mouse::isButtonPressed(sf::Mouse::Left()))}
+\DoxyCodeLine{00944\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00945\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (myTools.rubberToolSelected)}
+\DoxyCodeLine{00946\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00947\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vector<std::unique\_ptr<EnemySpawner>>::iterator\ begin\ =\ enemySpawnerVector.begin();}
+\DoxyCodeLine{00948\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ begin\ +=\ i;}
+\DoxyCodeLine{00949\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ enemySpawnerVector.erase(begin);}
+\DoxyCodeLine{00950\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00951\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00952\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00953\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00954\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00955\ \ \ \ \ \}}
+\DoxyCodeLine{00956\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_a80a786532fb65e3381910bc88354afe2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_a55ce510073850739d18666cf136c0bdf}} 
+\index{Game@{Game}!removeItemVector@{removeItemVector}}
+\index{removeItemVector@{removeItemVector}!Game@{Game}}
+\doxysubsubsection{removeItemVector()}
+{\footnotesize\ttfamily void Game\+::remove\+Item\+Vector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 1021} of file \textbf{ Game.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01022\ \{}
+\DoxyCodeLine{01023\ \ \ \ \ \textcolor{keywordflow}{if}\ (itemVectorCreated\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{01024\ \ \ \ \ \{}
+\DoxyCodeLine{01025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!items.medkitVector.empty())}
+\DoxyCodeLine{01026\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ items.medkitVector.size();\ i++)}
+\DoxyCodeLine{01028\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (items.medkitVector.at(i)-\/>getMedkit().getGlobalBounds().contains(mousePos))}
+\DoxyCodeLine{01030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Mouse::isButtonPressed(sf::Mouse::Left()))}
+\DoxyCodeLine{01032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (myTools.rubberToolSelected)}
+\DoxyCodeLine{01034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vector<std::unique\_ptr<Medkit>>::iterator\ begin\ =\ items.medkitVector.begin();}
+\DoxyCodeLine{01036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ begin\ +=\ i;}
+\DoxyCodeLine{01037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ items.medkitVector.erase(begin);}
+\DoxyCodeLine{01038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01041\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01042\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01043\ }
+\DoxyCodeLine{01044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!items.explosiveVector.empty())}
+\DoxyCodeLine{01045\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ items.explosiveVector.size();\ i++)}
+\DoxyCodeLine{01047\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (items.explosiveVector.at(i)-\/>getExplosive().getGlobalBounds().contains(mousePos))}
+\DoxyCodeLine{01049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Mouse::isButtonPressed(sf::Mouse::Left()))}
+\DoxyCodeLine{01051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (myTools.rubberToolSelected)}
+\DoxyCodeLine{01053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vector<std::unique\_ptr<Explosive>>::iterator\ begin\ =\ items.explosiveVector.begin();}
+\DoxyCodeLine{01055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ begin\ +=\ i;}
+\DoxyCodeLine{01056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ items.explosiveVector.erase(begin);}
+\DoxyCodeLine{01057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01060\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01061\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01062\ \ \ \ \ \}}
+\DoxyCodeLine{01063\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_a55ce510073850739d18666cf136c0bdf_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_a4f13448efd2d30e9a7103e39d8dccaa7}} 
+\index{Game@{Game}!removeObjectiveVector@{removeObjectiveVector}}
+\index{removeObjectiveVector@{removeObjectiveVector}!Game@{Game}}
+\doxysubsubsection{removeObjectiveVector()}
+{\footnotesize\ttfamily void Game\+::remove\+Objective\+Vector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 958} of file \textbf{ Game.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00959\ \{}
+\DoxyCodeLine{00960\ \ \ \ \ \textcolor{keywordflow}{if}\ (objectiveVectorCreated\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{00961\ \ \ \ \ \{}
+\DoxyCodeLine{00962\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!objectives.coinVector.empty())}
+\DoxyCodeLine{00963\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00964\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ objectives.coinVector.size();\ i++)}
+\DoxyCodeLine{00965\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00966\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (objectives.coinVector.at(i)-\/>getCoin().getGlobalBounds().contains(mousePos))}
+\DoxyCodeLine{00967\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00968\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Mouse::isButtonPressed(sf::Mouse::Left()))}
+\DoxyCodeLine{00969\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00970\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (myTools.rubberToolSelected)}
+\DoxyCodeLine{00971\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00972\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vector<std::unique\_ptr<Coin>>::iterator\ begin\ =\ objectives.coinVector.begin();}
+\DoxyCodeLine{00973\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ begin\ +=\ i;}
+\DoxyCodeLine{00974\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ objectives.coinVector.erase(begin);}
+\DoxyCodeLine{00975\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00976\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00977\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00978\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00979\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00980\ }
+\DoxyCodeLine{00981\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!objectives.doorVector.empty())}
+\DoxyCodeLine{00982\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00983\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ objectives.doorVector.size();\ i++)}
+\DoxyCodeLine{00984\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00985\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (objectives.doorVector.at(i)-\/>getDoor().getGlobalBounds().contains(mousePos))}
+\DoxyCodeLine{00986\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00987\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Mouse::isButtonPressed(sf::Mouse::Left()))}
+\DoxyCodeLine{00988\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00989\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (myTools.rubberToolSelected)}
+\DoxyCodeLine{00990\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00991\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vector<std::unique\_ptr<Door>>::iterator\ begin\ =\ objectives.doorVector.begin();}
+\DoxyCodeLine{00992\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ begin\ +=\ i;}
+\DoxyCodeLine{00993\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ objectives.doorVector.erase(begin);}
+\DoxyCodeLine{00994\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00995\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00996\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00997\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00998\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00999\ }
+\DoxyCodeLine{01000\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!objectives.monumentVector.empty())}
+\DoxyCodeLine{01001\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01002\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ objectives.monumentVector.size();\ i++)}
+\DoxyCodeLine{01003\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01004\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (objectives.monumentVector.at(i)-\/>getMonument().getGlobalBounds().contains(mousePos))}
+\DoxyCodeLine{01005\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01006\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Mouse::isButtonPressed(sf::Mouse::Left()))}
+\DoxyCodeLine{01007\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01008\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (myTools.rubberToolSelected)}
+\DoxyCodeLine{01009\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01010\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vector<std::unique\_ptr<Monument>>::iterator\ begin\ =\ objectives.monumentVector.begin();}
+\DoxyCodeLine{01011\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ begin\ +=\ i;}
+\DoxyCodeLine{01012\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ objectives.monumentVector.erase(begin);}
+\DoxyCodeLine{01013\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01014\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01015\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01016\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01017\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01018\ \ \ \ \ \}}
+\DoxyCodeLine{01019\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_a4f13448efd2d30e9a7103e39d8dccaa7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_aace866deb3859b2b858774d685b970aa}} 
+\index{Game@{Game}!removePowerupVector@{removePowerupVector}}
+\index{removePowerupVector@{removePowerupVector}!Game@{Game}}
+\doxysubsubsection{removePowerupVector()}
+{\footnotesize\ttfamily void Game\+::remove\+Powerup\+Vector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 1065} of file \textbf{ Game.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01066\ \{}
+\DoxyCodeLine{01067\ \ \ \ \ \textcolor{keywordflow}{if}\ (powerupVectorCreated\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{01068\ \ \ \ \ \{}
+\DoxyCodeLine{01069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!powerups.nukeVector.empty())}
+\DoxyCodeLine{01070\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01071\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ powerups.nukeVector.size();\ i++)}
+\DoxyCodeLine{01072\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (powerups.nukeVector.at(i)-\/>getNuke().getGlobalBounds().contains(mousePos))}
+\DoxyCodeLine{01074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Mouse::isButtonPressed(sf::Mouse::Left()))}
+\DoxyCodeLine{01076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (myTools.rubberToolSelected)}
+\DoxyCodeLine{01078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vector<std::unique\_ptr<PUPNuke>>::iterator\ begin\ =\ powerups.nukeVector.begin();}
+\DoxyCodeLine{01080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ begin\ +=\ i;}
+\DoxyCodeLine{01081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ powerups.nukeVector.erase(begin);}
+\DoxyCodeLine{01082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01085\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01086\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01087\ }
+\DoxyCodeLine{01088\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!powerups.invinceVector.empty())}
+\DoxyCodeLine{01089\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ powerups.invinceVector.size();\ i++)}
+\DoxyCodeLine{01091\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (powerups.invinceVector.at(i)-\/>getInvincibility().getGlobalBounds().contains(mousePos))}
+\DoxyCodeLine{01093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Mouse::isButtonPressed(sf::Mouse::Left()))}
+\DoxyCodeLine{01095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (myTools.rubberToolSelected)}
+\DoxyCodeLine{01097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vector<std::unique\_ptr<PUPInvincibility>>::iterator\ begin\ =\ powerups.invinceVector.begin();}
+\DoxyCodeLine{01099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ begin\ +=\ i;}
+\DoxyCodeLine{01100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ powerups.invinceVector.erase(begin);}
+\DoxyCodeLine{01101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01104\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01105\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01106\ }
+\DoxyCodeLine{01107\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!powerups.invisVector.empty())}
+\DoxyCodeLine{01108\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01109\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ powerups.invisVector.size();\ i++)}
+\DoxyCodeLine{01110\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (powerups.invisVector.at(i)-\/>getInvisibility().getGlobalBounds().contains(mousePos))}
+\DoxyCodeLine{01112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Mouse::isButtonPressed(sf::Mouse::Left()))}
+\DoxyCodeLine{01114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (myTools.rubberToolSelected)}
+\DoxyCodeLine{01116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vector<std::unique\_ptr<PUPInvisibility>>::iterator\ begin\ =\ powerups.invisVector.begin();}
+\DoxyCodeLine{01118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ begin\ +=\ i;}
+\DoxyCodeLine{01119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ powerups.invisVector.erase(begin);}
+\DoxyCodeLine{01120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01123\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01124\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01125\ \ \ \ \ \}}
+\DoxyCodeLine{01126\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_aace866deb3859b2b858774d685b970aa_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_a9beb165ef2bec0bf7f20f14c929538cc}} 
+\index{Game@{Game}!removeWallVector@{removeWallVector}}
+\index{removeWallVector@{removeWallVector}!Game@{Game}}
+\doxysubsubsection{removeWallVector()}
+{\footnotesize\ttfamily void Game\+::remove\+Wall\+Vector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 908} of file \textbf{ Game.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00909\ \{}
+\DoxyCodeLine{00910\ \ \ \ \ \textcolor{keywordflow}{if}\ (wallVectorCreated\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{00911\ \ \ \ \ \{}
+\DoxyCodeLine{00912\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!wallVector.empty())}
+\DoxyCodeLine{00913\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00914\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ wallVector.size();\ i++)}
+\DoxyCodeLine{00915\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00916\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (wallVector.at(i)-\/>getWall().getGlobalBounds().contains(mousePos))}
+\DoxyCodeLine{00917\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00918\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Mouse::isButtonPressed(sf::Mouse::Left()))}
+\DoxyCodeLine{00919\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00920\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (myTools.rubberToolSelected)}
+\DoxyCodeLine{00921\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00922\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vector<unique\_ptr<Wall\ >>::iterator\ begin\ =\ wallVector.begin();}
+\DoxyCodeLine{00923\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ begin\ +=\ i;}
+\DoxyCodeLine{00924\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wallVector.erase(begin);}
+\DoxyCodeLine{00925\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00926\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00927\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00928\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00929\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00930\ \ \ \ \ \}}
+\DoxyCodeLine{00931\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_a9beb165ef2bec0bf7f20f14c929538cc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_a15ddd769261d923827a3cdf41499c843}} 
+\index{Game@{Game}!render@{render}}
+\index{render@{render}!Game@{Game}}
+\doxysubsubsection{render()}
+{\footnotesize\ttfamily void Game\+::render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+draw the frame and then switch buffers 
+
+
+
+Definition at line \textbf{ 604} of file \textbf{ Game.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00605\ \{}
+\DoxyCodeLine{00606\ \ \ \ \ m\_window.clear(sf::Color::White);}
+\DoxyCodeLine{00607\ \ \ \ \ \textcolor{keywordflow}{if}\ (myState\ ==\ GameState::createGame)}
+\DoxyCodeLine{00608\ \ \ \ \ \{}
+\DoxyCodeLine{00609\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (gridCreated\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{00610\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00611\ \ \ \ \ \ \ \ \ \ \ \ \ gridSize\ =\ gameOptions.getGridSize();}
+\DoxyCodeLine{00612\ \ \ \ \ \ \ \ \ \ \ \ \ myGrid.render(m\_window,\ gridSize);}
+\DoxyCodeLine{00613\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00614\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (wallVectorCreated\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{00615\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00616\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ wallVector.size();\ i++)}
+\DoxyCodeLine{00617\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00618\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wallVector.at(i)-\/>render(m\_window);}
+\DoxyCodeLine{00619\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00620\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00621\ }
+\DoxyCodeLine{00622\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (enemySpawnerVectorCreated\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{00623\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00624\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ enemySpawnerVector.size();\ i++)}
+\DoxyCodeLine{00625\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00626\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ enemySpawnerVector.at(i)-\/>render(m\_window,\ \textcolor{stringliteral}{"{}create"{}});}
+\DoxyCodeLine{00627\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00628\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00629\ }
+\DoxyCodeLine{00630\ \ \ \ \ \ \ \ \ \ \ \ \ objectives.render(m\_window);}
+\DoxyCodeLine{00631\ \ \ \ \ \ \ \ \ \ \ \ \ items.render(m\_window);}
+\DoxyCodeLine{00632\ \ \ \ \ \ \ \ \ \ \ \ \ powerups.render(m\_window);}
+\DoxyCodeLine{00633\ \ \ \ \ \ \ \ \ \ \ \ \ myTools.render(m\_window);}
+\DoxyCodeLine{00634\ \ \ \ \ \ \ \ \ \ \ \ \ myChoice.render(m\_window);}
+\DoxyCodeLine{00635\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00636\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00637\ \ \ \ \ \}}
+\DoxyCodeLine{00638\ }
+\DoxyCodeLine{00639\ \ \ \ \ \textcolor{keywordflow}{if}\ (myState\ ==\ GameState::mainmenu)}
+\DoxyCodeLine{00640\ \ \ \ \ \{}
+\DoxyCodeLine{00641\ \ \ \ \ \ \ \ \ myMenu.render(m\_window);}
+\DoxyCodeLine{00642\ \ \ \ \ \}}
+\DoxyCodeLine{00643\ }
+\DoxyCodeLine{00644\ \ \ \ \ \textcolor{keywordflow}{if}\ (myState\ ==\ GameState::gameOptions)}
+\DoxyCodeLine{00645\ \ \ \ \ \{}
+\DoxyCodeLine{00646\ \ \ \ \ \ \ \ \ gameOptions.render(m\_window);}
+\DoxyCodeLine{00647\ \ \ \ \ \}}
+\DoxyCodeLine{00648\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00649\ \ \ \ \ \{}
+\DoxyCodeLine{00650\ \ \ \ \ \ \ \ \ changeGridSize\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00651\ \ \ \ \ \}}
+\DoxyCodeLine{00652\ }
+\DoxyCodeLine{00653\ \ \ \ \ \textcolor{keywordflow}{if}\ (myState\ ==\ GameState::testGame)}
+\DoxyCodeLine{00654\ \ \ \ \ \{}
+\DoxyCodeLine{00655\ \ \ \ \ \ \ \ \ myBackground.render(m\_window);}
+\DoxyCodeLine{00656\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ bloodSplatterVector.size();\ i++)}
+\DoxyCodeLine{00657\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00658\ \ \ \ \ \ \ \ \ \ \ \ \ bloodSplatterVector.at(i)-\/>render(m\_window);}
+\DoxyCodeLine{00659\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00660\ \ \ \ \ \ \ \ \ myPlayer.render(m\_window);}
+\DoxyCodeLine{00661\ }
+\DoxyCodeLine{00662\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ wallVector.size();\ i++)}
+\DoxyCodeLine{00663\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00664\ \ \ \ \ \ \ \ \ \ \ \ \ wallVector.at(i)-\/>render(m\_window);}
+\DoxyCodeLine{00665\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00666\ }
+\DoxyCodeLine{00667\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ enemySpawnerVector.size();\ i++)}
+\DoxyCodeLine{00668\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00669\ \ \ \ \ \ \ \ \ \ \ \ \ enemySpawnerVector.at(i)-\/>render(m\_window,\ \textcolor{stringliteral}{"{}test"{}});}
+\DoxyCodeLine{00670\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00671\ }
+\DoxyCodeLine{00672\ \ \ \ \ \ \ \ \ objectives.render(m\_window);}
+\DoxyCodeLine{00673\ \ \ \ \ \ \ \ \ items.render(m\_window);}
+\DoxyCodeLine{00674\ \ \ \ \ \ \ \ \ powerups.render(m\_window);}
+\DoxyCodeLine{00675\ }
+\DoxyCodeLine{00676\ \ \ \ \ \ \ \ \ myCrosshair.render(m\_window);}
+\DoxyCodeLine{00677\ \ \ \ \ \}}
+\DoxyCodeLine{00678\ }
+\DoxyCodeLine{00679\ \ \ \ \ \textcolor{keywordflow}{if}\ (myState\ ==\ GameState::chooseGame)}
+\DoxyCodeLine{00680\ \ \ \ \ \{}
+\DoxyCodeLine{00681\ \ \ \ \ \ \ \ \ gameChoice.render(m\_window);}
+\DoxyCodeLine{00682\ \ \ \ \ \}}
+\DoxyCodeLine{00683\ }
+\DoxyCodeLine{00684\ \ \ \ \ \textcolor{keywordflow}{if}\ (myState\ ==\ GameState::play)}
+\DoxyCodeLine{00685\ \ \ \ \ \{}
+\DoxyCodeLine{00686\ \ \ \ \ \ \ \ \ myBackground.render(m\_window);}
+\DoxyCodeLine{00687\ }
+\DoxyCodeLine{00688\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ bloodSplatterVector.size();\ i++)}
+\DoxyCodeLine{00689\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00690\ \ \ \ \ \ \ \ \ \ \ \ \ bloodSplatterVector.at(i)-\/>render(m\_window);}
+\DoxyCodeLine{00691\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00692\ }
+\DoxyCodeLine{00693\ \ \ \ \ \ \ \ \ myPlayer.render(m\_window);}
+\DoxyCodeLine{00694\ }
+\DoxyCodeLine{00695\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ wallVector.size();\ i++)}
+\DoxyCodeLine{00696\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00697\ \ \ \ \ \ \ \ \ \ \ \ \ wallVector.at(i)-\/>render(m\_window);}
+\DoxyCodeLine{00698\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00699\ }
+\DoxyCodeLine{00700\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ enemySpawnerVector.size();\ i++)}
+\DoxyCodeLine{00701\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00702\ \ \ \ \ \ \ \ \ \ \ \ \ enemySpawnerVector.at(i)-\/>render(m\_window,\ \textcolor{stringliteral}{"{}test"{}});}
+\DoxyCodeLine{00703\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00704\ }
+\DoxyCodeLine{00705\ \ \ \ \ \ \ \ \ objectives.render(m\_window);}
+\DoxyCodeLine{00706\ \ \ \ \ \ \ \ \ items.render(m\_window);}
+\DoxyCodeLine{00707\ \ \ \ \ \ \ \ \ powerups.render(m\_window);}
+\DoxyCodeLine{00708\ }
+\DoxyCodeLine{00709\ }
+\DoxyCodeLine{00710\ \ \ \ \ \ \ \ \ myCrosshair.render(m\_window);}
+\DoxyCodeLine{00711\ }
+\DoxyCodeLine{00712\ \ \ \ \ \ \ \ \ playerHUD.render(m\_window);}
+\DoxyCodeLine{00713\ \ \ \ \ \}}
+\DoxyCodeLine{00714\ }
+\DoxyCodeLine{00715\ \ \ \ \ \textcolor{keywordflow}{if}\ (myState\ ==\ GameState::gameOver)}
+\DoxyCodeLine{00716\ \ \ \ \ \{}
+\DoxyCodeLine{00717\ \ \ \ \ \ \ \ \ gameOver.render(m\_window);}
+\DoxyCodeLine{00718\ \ \ \ \ \}}
+\DoxyCodeLine{00719\ }
+\DoxyCodeLine{00720\ \ \ \ \ m\_window.display();}
+\DoxyCodeLine{00721\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_a15ddd769261d923827a3cdf41499c843_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{class_game_a15ddd769261d923827a3cdf41499c843_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_a1ab78f5ed0d5ea879157357cf2fb2afa}} 
+\index{Game@{Game}!run@{run}}
+\index{run@{run}!Game@{Game}}
+\doxysubsubsection{run()}
+{\footnotesize\ttfamily void Game\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+main method for game 
+
+main game loop update 60 times per second, process update as often as possible and at least 60 times per second draw as often as possible but only updates are on time if updates run slow then don\textquotesingle{}t render frames 
+
+Definition at line \textbf{ 50} of file \textbf{ Game.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00051\ \{\ \ \ }
+\DoxyCodeLine{00052\ \ \ \ \ sf::Clock\ clock;}
+\DoxyCodeLine{00053\ \ \ \ \ sf::Time\ timeSinceLastUpdate\ =\ sf::Time::Zero;}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ fps\{\ 60.0f\ \};}
+\DoxyCodeLine{00055\ \ \ \ \ sf::Time\ timePerFrame\ =\ sf::seconds(1.0f\ /\ fps);\ \textcolor{comment}{//\ 60\ fps}}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordflow}{while}\ (m\_window.isOpen())}
+\DoxyCodeLine{00057\ \ \ \ \ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ processEvents();\ \textcolor{comment}{//\ as\ many\ as\ possible}}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ timeSinceLastUpdate\ +=\ clock.restart();}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (timeSinceLastUpdate\ >\ timePerFrame)}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ timeSinceLastUpdate\ -\/=\ timePerFrame;}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ processEvents();\ \textcolor{comment}{//\ at\ least\ 60\ fps}}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ update(timePerFrame);\ \textcolor{comment}{//60\ fps}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ render();\ \textcolor{comment}{//\ as\ many\ as\ possible}}
+\DoxyCodeLine{00067\ \ \ \ \ \}}
+\DoxyCodeLine{00068\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_game_a1ab78f5ed0d5ea879157357cf2fb2afa_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{class_game_a1ab78f5ed0d5ea879157357cf2fb2afa_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_af9e7bd9cf43787776ed733921538a581}} 
+\index{Game@{Game}!saveDataToCSV@{saveDataToCSV}}
+\index{saveDataToCSV@{saveDataToCSV}!Game@{Game}}
+\doxysubsubsection{saveDataToCSV()}
+{\footnotesize\ttfamily void Game\+::save\+Data\+To\+CSV (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 1136} of file \textbf{ Game.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01137\ \{}
+\DoxyCodeLine{01138\ \ \ \ \ \textcolor{comment}{//letters\ used:\ W,S,C,D,M,H,E,G,Z,N,I,V}}
+\DoxyCodeLine{01139\ \ \ \ \ std::ofstream\ myFile;}
+\DoxyCodeLine{01140\ \ \ \ \ myFile.open(\textcolor{stringliteral}{"{}.\(\backslash\)\(\backslash\)ASSETS\(\backslash\)\(\backslash\)GAMEDATA\(\backslash\)\(\backslash\)"{}}\ +\ gameOptions.gameName\ +\ \textcolor{stringliteral}{"{}.csv"{}});}
+\DoxyCodeLine{01141\ \ \ \ \ }
+\DoxyCodeLine{01142\ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{}XPOS,YPOS,TYPE,OBJECT,\(\backslash\)n"{}};}
+\DoxyCodeLine{01143\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ wallVector.size();\ i++)}
+\DoxyCodeLine{01144\ \ \ \ \ \{}
+\DoxyCodeLine{01145\ \ \ \ \ \ \ \ \ myFile\ <<\ static\_cast<int>(wallVector.at(i)-\/>getWall().getPosition().x);}
+\DoxyCodeLine{01146\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{},"{}};}
+\DoxyCodeLine{01147\ \ \ \ \ \ \ \ \ myFile\ <<\ static\_cast<int>(wallVector.at(i)-\/>getWall().getPosition().y);}
+\DoxyCodeLine{01148\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{},"{}};}
+\DoxyCodeLine{01149\ \ \ \ \ \ \ \ \ myFile\ <<\ wallVector.at(i)-\/>wallTextureNumber;}
+\DoxyCodeLine{01150\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{},"{}};}
+\DoxyCodeLine{01151\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{}W"{}};}
+\DoxyCodeLine{01152\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{01153\ \ \ \ \ \}}
+\DoxyCodeLine{01154\ }
+\DoxyCodeLine{01155\ }
+\DoxyCodeLine{01156\ \ \ \ \ \textcolor{comment}{//myFile\ <<\ "{}SPAWNERS,\(\backslash\)n"{};}}
+\DoxyCodeLine{01157\ \ \ \ \ \textcolor{comment}{//myFile\ <<\ "{}X,Y,Type,Object,\(\backslash\)n"{};}}
+\DoxyCodeLine{01158\ }
+\DoxyCodeLine{01159\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ enemySpawnerVector.size();\ i++)}
+\DoxyCodeLine{01160\ \ \ \ \ \{}
+\DoxyCodeLine{01161\ \ \ \ \ \ \ \ \ myFile\ <<\ static\_cast<int>(enemySpawnerVector.at(i)-\/>getSpawner().getPosition().x);}
+\DoxyCodeLine{01162\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{},"{}};}
+\DoxyCodeLine{01163\ \ \ \ \ \ \ \ \ myFile\ <<\ static\_cast<int>(enemySpawnerVector.at(i)-\/>getSpawner().getPosition().y);}
+\DoxyCodeLine{01164\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{},"{}};}
+\DoxyCodeLine{01165\ \ \ \ \ \ \ \ \ myFile\ <<\ enemySpawnerVector.at(i)-\/>spawnerTextureNumber;}
+\DoxyCodeLine{01166\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{},"{}};}
+\DoxyCodeLine{01167\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{}S"{}};}
+\DoxyCodeLine{01168\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{01169\ \ \ \ \ \}}
+\DoxyCodeLine{01170\ }
+\DoxyCodeLine{01171\ \ \ \ \ \textcolor{comment}{//myFile\ <<\ "{}OBJECTIVES,\(\backslash\)n"{};}}
+\DoxyCodeLine{01172\ \ \ \ \ \textcolor{comment}{//myFile\ <<\ "{}X,Y,Type,Object,\(\backslash\)n"{};}}
+\DoxyCodeLine{01173\ }
+\DoxyCodeLine{01174\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ objectives.coinVector.size();\ i++)}
+\DoxyCodeLine{01175\ \ \ \ \ \{}
+\DoxyCodeLine{01176\ \ \ \ \ \ \ \ \ myFile\ <<\ static\_cast<int>(objectives.coinVector.at(i).get()-\/>getCoin().getPosition().x);}
+\DoxyCodeLine{01177\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{},"{}};}
+\DoxyCodeLine{01178\ \ \ \ \ \ \ \ \ myFile\ <<\ static\_cast<int>(objectives.coinVector.at(i).get()-\/>getCoin().getPosition().y);}
+\DoxyCodeLine{01179\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{},"{}};}
+\DoxyCodeLine{01180\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{}0"{}};}
+\DoxyCodeLine{01181\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{},"{}};}
+\DoxyCodeLine{01182\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{}C"{}};}
+\DoxyCodeLine{01183\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{01184\ \ \ \ \ \}}
+\DoxyCodeLine{01185\ }
+\DoxyCodeLine{01186\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ objectives.doorVector.size();\ i++)}
+\DoxyCodeLine{01187\ \ \ \ \ \{}
+\DoxyCodeLine{01188\ \ \ \ \ \ \ \ \ myFile\ <<\ static\_cast<int>(objectives.doorVector.at(i).get()-\/>getDoor().getPosition().x);}
+\DoxyCodeLine{01189\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{},"{}};}
+\DoxyCodeLine{01190\ \ \ \ \ \ \ \ \ myFile\ <<\ static\_cast<int>(objectives.doorVector.at(i).get()-\/>getDoor().getPosition().y);}
+\DoxyCodeLine{01191\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{},"{}};}
+\DoxyCodeLine{01192\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{}1"{}};}
+\DoxyCodeLine{01193\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{},"{}};}
+\DoxyCodeLine{01194\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{}D"{}};}
+\DoxyCodeLine{01195\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{01196\ \ \ \ \ \}}
+\DoxyCodeLine{01197\ }
+\DoxyCodeLine{01198\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ objectives.monumentVector.size();\ i++)}
+\DoxyCodeLine{01199\ \ \ \ \ \{}
+\DoxyCodeLine{01200\ \ \ \ \ \ \ \ \ myFile\ <<\ static\_cast<int>(objectives.monumentVector.at(i).get()-\/>getMonument().getPosition().x);}
+\DoxyCodeLine{01201\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{},"{}};}
+\DoxyCodeLine{01202\ \ \ \ \ \ \ \ \ myFile\ <<\ static\_cast<int>(objectives.monumentVector.at(i).get()-\/>getMonument().getPosition().y);}
+\DoxyCodeLine{01203\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{},"{}};}
+\DoxyCodeLine{01204\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{}2"{}};}
+\DoxyCodeLine{01205\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{},"{}};}
+\DoxyCodeLine{01206\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{}M"{}};}
+\DoxyCodeLine{01207\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{01208\ \ \ \ \ \}}
+\DoxyCodeLine{01209\ }
+\DoxyCodeLine{01210\ \ \ \ \ \textcolor{comment}{//myFile\ <<\ "{}ITEMS,\(\backslash\)n"{};}}
+\DoxyCodeLine{01211\ \ \ \ \ \textcolor{comment}{//myFile\ <<\ "{}X,Y,Type,Object,\(\backslash\)n"{};}}
+\DoxyCodeLine{01212\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ items.medkitVector.size();\ i++)}
+\DoxyCodeLine{01213\ \ \ \ \ \{}
+\DoxyCodeLine{01214\ \ \ \ \ \ \ \ \ myFile\ <<\ static\_cast<int>(items.medkitVector.at(i).get()-\/>getMedkit().getPosition().x);}
+\DoxyCodeLine{01215\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{},"{}};}
+\DoxyCodeLine{01216\ \ \ \ \ \ \ \ \ myFile\ <<\ static\_cast<int>(items.medkitVector.at(i).get()-\/>getMedkit().getPosition().y);}
+\DoxyCodeLine{01217\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{},"{}};}
+\DoxyCodeLine{01218\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{}0"{}};}
+\DoxyCodeLine{01219\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{},"{}};}
+\DoxyCodeLine{01220\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{}H"{}};}
+\DoxyCodeLine{01221\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{01222\ \ \ \ \ \}}
+\DoxyCodeLine{01223\ }
+\DoxyCodeLine{01224\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ items.explosiveVector.size();\ i++)}
+\DoxyCodeLine{01225\ \ \ \ \ \{}
+\DoxyCodeLine{01226\ \ \ \ \ \ \ \ \ myFile\ <<\ static\_cast<int>(items.explosiveVector.at(i).get()-\/>getExplosive().getPosition().x);}
+\DoxyCodeLine{01227\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{},"{}};}
+\DoxyCodeLine{01228\ \ \ \ \ \ \ \ \ myFile\ <<\ static\_cast<int>(items.explosiveVector.at(i).get()-\/>getExplosive().getPosition().y);}
+\DoxyCodeLine{01229\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{},"{}};}
+\DoxyCodeLine{01230\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{}0"{}};}
+\DoxyCodeLine{01231\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{},"{}};}
+\DoxyCodeLine{01232\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{}E"{}};}
+\DoxyCodeLine{01233\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{01234\ \ \ \ \ \}}
+\DoxyCodeLine{01235\ }
+\DoxyCodeLine{01236\ }
+\DoxyCodeLine{01237\ \ \ \ \ \textcolor{comment}{//myFile\ <<\ "{}POWERUPS,\(\backslash\)n"{};}}
+\DoxyCodeLine{01238\ \ \ \ \ \textcolor{comment}{//myFile\ <<\ "{}X,Y,Type,Object,\(\backslash\)n"{};}}
+\DoxyCodeLine{01239\ }
+\DoxyCodeLine{01240\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ powerups.nukeVector.size();\ i++)}
+\DoxyCodeLine{01241\ \ \ \ \ \{}
+\DoxyCodeLine{01242\ \ \ \ \ \ \ \ \ myFile\ <<\ static\_cast<int>(powerups.nukeVector.at(i).get()-\/>getNuke().getPosition().x);}
+\DoxyCodeLine{01243\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{},"{}};}
+\DoxyCodeLine{01244\ \ \ \ \ \ \ \ \ myFile\ <<\ static\_cast<int>(powerups.nukeVector.at(i).get()-\/>getNuke().getPosition().y);}
+\DoxyCodeLine{01245\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{},"{}};}
+\DoxyCodeLine{01246\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{}0"{}};}
+\DoxyCodeLine{01247\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{},"{}};}
+\DoxyCodeLine{01248\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{}N"{}};}
+\DoxyCodeLine{01249\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{01250\ \ \ \ \ \}}
+\DoxyCodeLine{01251\ }
+\DoxyCodeLine{01252\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ powerups.invinceVector.size();\ i++)}
+\DoxyCodeLine{01253\ \ \ \ \ \{}
+\DoxyCodeLine{01254\ \ \ \ \ \ \ \ \ myFile\ <<\ static\_cast<int>(powerups.invinceVector.at(i).get()-\/>getInvincibility().getPosition().x);}
+\DoxyCodeLine{01255\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{},"{}};}
+\DoxyCodeLine{01256\ \ \ \ \ \ \ \ \ myFile\ <<\ static\_cast<int>(powerups.invinceVector.at(i).get()-\/>getInvincibility().getPosition().y);}
+\DoxyCodeLine{01257\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{},"{}};}
+\DoxyCodeLine{01258\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{}0"{}};}
+\DoxyCodeLine{01259\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{},"{}};}
+\DoxyCodeLine{01260\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{}I"{}};}
+\DoxyCodeLine{01261\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{01262\ \ \ \ \ \}}
+\DoxyCodeLine{01263\ }
+\DoxyCodeLine{01264\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ powerups.invisVector.size();\ i++)}
+\DoxyCodeLine{01265\ \ \ \ \ \{}
+\DoxyCodeLine{01266\ \ \ \ \ \ \ \ \ myFile\ <<\ static\_cast<int>(powerups.invisVector.at(i).get()-\/>getInvisibility().getPosition().x);}
+\DoxyCodeLine{01267\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{},"{}};}
+\DoxyCodeLine{01268\ \ \ \ \ \ \ \ \ myFile\ <<\ static\_cast<int>(powerups.invisVector.at(i).get()-\/>getInvisibility().getPosition().y);}
+\DoxyCodeLine{01269\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{},"{}};}
+\DoxyCodeLine{01270\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{}0"{}};}
+\DoxyCodeLine{01271\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{},"{}};}
+\DoxyCodeLine{01272\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{}V"{}};}
+\DoxyCodeLine{01273\ \ \ \ \ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{01274\ \ \ \ \ \}}
+\DoxyCodeLine{01275\ }
+\DoxyCodeLine{01276\ \ \ \ \ \textcolor{comment}{//myFile\ <<\ "{}GAMEOPTIONS,\(\backslash\)n"{};}}
+\DoxyCodeLine{01277\ \ \ \ \ \textcolor{comment}{//myFile\ <<\ "{}BGChoice,GTChoice,Type,Object\(\backslash\)n"{};}}
+\DoxyCodeLine{01278\ }
+\DoxyCodeLine{01279\ \ \ \ \ myFile\ <<\ gameOptions.chosenBG;}
+\DoxyCodeLine{01280\ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{},"{}};}
+\DoxyCodeLine{01281\ \ \ \ \ myFile\ <<\ gameOptions.chosenGT;}
+\DoxyCodeLine{01282\ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{},"{}};}
+\DoxyCodeLine{01283\ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{}0"{}};}
+\DoxyCodeLine{01284\ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{},"{}};}
+\DoxyCodeLine{01285\ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{}Z"{}};}
+\DoxyCodeLine{01286\ \ \ \ \ myFile\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{01287\ }
+\DoxyCodeLine{01288\ }
+\DoxyCodeLine{01289\ \ \ \ \ myFile.close();}
+\DoxyCodeLine{01290\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_af9e7bd9cf43787776ed733921538a581_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_a33d7f7a7cd7abc09513da7401aa83145}} 
+\index{Game@{Game}!spawnBloodSplatter@{spawnBloodSplatter}}
+\index{spawnBloodSplatter@{spawnBloodSplatter}!Game@{Game}}
+\doxysubsubsection{spawnBloodSplatter()}
+{\footnotesize\ttfamily \textbf{ Blood\+Splatter} Game\+::spawn\+Blood\+Splatter (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{t\+\_\+splatter\+Pos }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 1453} of file \textbf{ Game.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01454\ \{}
+\DoxyCodeLine{01455\ \ \ \ \ BloodSplatter\ tempBlood\{t\_splatterPos,\ textureManager\};}
+\DoxyCodeLine{01456\ }
+\DoxyCodeLine{01457\ \ \ \ \ \textcolor{keywordflow}{return}\ tempBlood;}
+\DoxyCodeLine{01458\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_a33d7f7a7cd7abc09513da7401aa83145_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_a1d2aee62bac8e228344e1f44fab504e0}} 
+\index{Game@{Game}!update@{update}}
+\index{update@{update}!Game@{Game}}
+\doxysubsubsection{update()}
+{\footnotesize\ttfamily void Game\+::update (\begin{DoxyParamCaption}\item[{sf\+::\+Time}]{t\+\_\+delta\+Time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Update the game world. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t\+\_\+delta\+Time} & time interval per frame\\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \textbf{ 336} of file \textbf{ Game.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00337\ \{}
+\DoxyCodeLine{00338\ \ \ \ \ mousePos\ =\ m\_window.mapPixelToCoords(sf::Mouse::getPosition(m\_window));}
+\DoxyCodeLine{00339\ }
+\DoxyCodeLine{00340\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_exitGame\ ||\ myState\ ==\ GameState::exitGame)}
+\DoxyCodeLine{00341\ \ \ \ \ \{}
+\DoxyCodeLine{00342\ \ \ \ \ \ \ \ \ m\_window.close();}
+\DoxyCodeLine{00343\ \ \ \ \ \}}
+\DoxyCodeLine{00344\ }
+\DoxyCodeLine{00345\ \ \ \ \ \textcolor{keywordflow}{if}\ (myState\ !=\ GameState::testGame\ \&\&\ myState\ !=\ GameState::play)}
+\DoxyCodeLine{00346\ \ \ \ \ \{}
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ m\_window.setView(mainView);}
+\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (myState\ !=\ GameState::createGame)}
+\DoxyCodeLine{00349\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \ \ \ \ mainView.reset(sf::FloatRect(0,\ 0,\ gameWidth,\ gameHeight));}
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ m\_window.setMouseCursorVisible(\textcolor{keyword}{true});}
+\DoxyCodeLine{00353\ \ \ \ \ \}}
+\DoxyCodeLine{00354\ }
+\DoxyCodeLine{00355\ \ \ \ \ \textcolor{comment}{//CREATE\ GAME\ CREATE\ GAME\ CREATE\ GAME\ CREATE\ GAME\ CREATE\ GAME\ CREATE\ GAME\ CREATE\ GAME\ CREATE\ GAME\ CREATE\ GAME}}
+\DoxyCodeLine{00356\ \ \ \ \ \textcolor{comment}{//CREATE\ GAME\ CREATE\ GAME\ CREATE\ GAME\ CREATE\ GAME\ CREATE\ GAME\ CREATE\ GAME\ CREATE\ GAME\ CREATE\ GAME\ CREATE\ GAME\ }}
+\DoxyCodeLine{00357\ \ \ \ \ \textcolor{comment}{//CREATE\ GAME\ CREATE\ GAME\ CREATE\ GAME\ CREATE\ GAME\ CREATE\ GAME\ CREATE\ GAME\ CREATE\ GAME\ CREATE\ GAME\ CREATE\ GAME\ }}
+\DoxyCodeLine{00358\ \ \ \ \ \textcolor{keywordflow}{if}\ (myState\ ==\ GameState::createGame)}
+\DoxyCodeLine{00359\ \ \ \ \ \{}
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00361\ \ \ \ \ \ \ \ \ mainViewActive\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00362\ \ \ \ \ \ \ \ \ testViewActive\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00363\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (gridCreated\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00364\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00365\ \ \ \ \ \ \ \ \ \ \ \ \ gridSize\ =\ gameOptions.getGridSize();}
+\DoxyCodeLine{00366\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (myGrid.theGrid.size()\ >\ 0)}
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00368\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ myGrid.theGrid.clear();}
+\DoxyCodeLine{00369\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00370\ \ \ \ \ \ \ \ \ \ \ \ \ myGrid.setupGrid(gridSize);}
+\DoxyCodeLine{00371\ \ \ \ \ \ \ \ \ \ \ \ \ gridCreated\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00372\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00373\ \ \ \ \ \ \ \ \ myGrid.update(t\_deltaTime);}
+\DoxyCodeLine{00374\ }
+\DoxyCodeLine{00375\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (myTools.wallsPlaced\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{00376\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00377\ \ \ \ \ \ \ \ \ \ \ \ \ createWallVector();}
+\DoxyCodeLine{00378\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00379\ }
+\DoxyCodeLine{00380\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (myTools.enemySpawnersPlaced\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{00381\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00382\ \ \ \ \ \ \ \ \ \ \ \ \ createSpawnerVector();}
+\DoxyCodeLine{00383\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00384\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (myTools.objectivesPlaced\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{00385\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00386\ \ \ \ \ \ \ \ \ \ \ \ \ createObjectives();}
+\DoxyCodeLine{00387\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00388\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (myTools.itemsPlacedBool\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{00389\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00390\ \ \ \ \ \ \ \ \ \ \ \ \ createItems();}
+\DoxyCodeLine{00391\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00392\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (myTools.powerupsPlaced\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{00393\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00394\ \ \ \ \ \ \ \ \ \ \ \ \ createPowerups();}
+\DoxyCodeLine{00395\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00396\ \ \ \ \ \ \ \ \ myTools.update(t\_deltaTime,\ m\_window,\ myGrid.theGrid,\ gridSize,\ myChoice.choiceMade,\ myChoice.currentChoice);}
+\DoxyCodeLine{00397\ \ \ \ \ \ \ \ \ myChoice.update(t\_deltaTime,\ m\_window,\ myTools.currentMode,\ gameOptions.chosenGT);}
+\DoxyCodeLine{00398\ }
+\DoxyCodeLine{00399\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (enemySpawnerVectorCreated\ \&\&\ wallVectorCreated\ \&\&\ myTools.saved)}
+\DoxyCodeLine{00400\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00401\ \ \ \ \ \ \ \ \ \ \ \ \ saveDataToCSV();}
+\DoxyCodeLine{00402\ \ \ \ \ \ \ \ \ \ \ \ \ myTools.saved\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00403\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00404\ }
+\DoxyCodeLine{00405\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Keyboard::isKeyPressed(sf::Keyboard::LAlt))}
+\DoxyCodeLine{00406\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00407\ \ \ \ \ \ \ \ \ \ \ \ \ zooming\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00408\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00409\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00410\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00411\ \ \ \ \ \ \ \ \ \ \ \ \ zooming\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00412\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00413\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Keyboard::isKeyPressed(sf::Keyboard::LControl))}
+\DoxyCodeLine{00414\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00415\ \ \ \ \ \ \ \ \ \ \ \ \ scrollingX\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00416\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00417\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00418\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00419\ \ \ \ \ \ \ \ \ \ \ \ \ scrollingX\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00420\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00421\ }
+\DoxyCodeLine{00422\ \ \ \ \ \ \ \ \ removeWallVector();}
+\DoxyCodeLine{00423\ \ \ \ \ \ \ \ \ removeEnemySpawnerVector();}
+\DoxyCodeLine{00424\ \ \ \ \ \ \ \ \ removeObjectiveVector();}
+\DoxyCodeLine{00425\ \ \ \ \ \ \ \ \ removeItemVector();}
+\DoxyCodeLine{00426\ \ \ \ \ \ \ \ \ removePowerupVector();}
+\DoxyCodeLine{00427\ }
+\DoxyCodeLine{00428\ \ \ \ \ \ \ \ \ objectives.update(t\_deltaTime,\ m\_window,\ myPlayer.getPlayer().getGlobalBounds(),\ coinsCollected,\ maxCoins,\ powerups.invisibilityActive);}
+\DoxyCodeLine{00429\ \ \ \ \ \}}
+\DoxyCodeLine{00430\ }
+\DoxyCodeLine{00431\ \ \ \ \ \textcolor{comment}{//MAINMENU\ MAINMENU\ MAINMENU\ MAINMENU\ MAINMENU\ MAINMENU\ MAINMENU\ MAINMENU\ MAINMENU\ MAINMENU\ MAINMENU\ MAINMENU\ }}
+\DoxyCodeLine{00432\ \ \ \ \ \textcolor{comment}{//MAINMENU\ MAINMENU\ MAINMENU\ MAINMENU\ MAINMENU\ MAINMENU\ MAINMENU\ MAINMENU\ MAINMENU\ MAINMENU\ MAINMENU\ MAINMENU\ }}
+\DoxyCodeLine{00433\ \ \ \ \ \textcolor{comment}{//MAINMENU\ MAINMENU\ MAINMENU\ MAINMENU\ MAINMENU\ MAINMENU\ MAINMENU\ MAINMENU\ MAINMENU\ MAINMENU\ MAINMENU\ MAINMENU\ }}
+\DoxyCodeLine{00434\ }
+\DoxyCodeLine{00435\ \ \ \ \ \textcolor{keywordflow}{if}\ (myState\ ==\ GameState::mainmenu)}
+\DoxyCodeLine{00436\ \ \ \ \ \{}
+\DoxyCodeLine{00437\ \ \ \ \ \ \ \ \ gridCreated\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00438\ \ \ \ \ \ \ \ \ myMenu.update(myState,\ m\_window);}
+\DoxyCodeLine{00439\ }
+\DoxyCodeLine{00440\ \ \ \ \ \}}
+\DoxyCodeLine{00441\ \ \ \ \ }
+\DoxyCodeLine{00442\ \ \ \ \ \textcolor{comment}{//GAME\ OPTIONS\ GAME\ OPTIONS\ GAME\ OPTIONS\ GAME\ OPTIONS\ GAME\ OPTIONS\ GAME\ OPTIONS\ GAME\ OPTIONS\ GAME\ OPTIONS\ }}
+\DoxyCodeLine{00443\ \ \ \ \ \textcolor{comment}{//GAME\ OPTIONS\ GAME\ OPTIONS\ GAME\ OPTIONS\ GAME\ OPTIONS\ GAME\ OPTIONS\ GAME\ OPTIONS\ GAME\ OPTIONS\ GAME\ OPTIONS\ }}
+\DoxyCodeLine{00444\ \ \ \ \ \textcolor{comment}{//GAME\ OPTIONS\ GAME\ OPTIONS\ GAME\ OPTIONS\ GAME\ OPTIONS\ GAME\ OPTIONS\ GAME\ OPTIONS\ GAME\ OPTIONS\ GAME\ OPTIONS\ }}
+\DoxyCodeLine{00445\ }
+\DoxyCodeLine{00446\ \ \ \ \ \textcolor{keywordflow}{if}\ (myState\ ==\ GameState::gameOptions)}
+\DoxyCodeLine{00447\ \ \ \ \ \{}
+\DoxyCodeLine{00448\ \ \ \ \ \ \ \ \ gridCreated\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00449\ \ \ \ \ \ \ \ \ gameOptions.update(t\_deltaTime,\ m\_window,\ myState);}
+\DoxyCodeLine{00450\ \ \ \ \ \ \ \ \ checkMousePos();}
+\DoxyCodeLine{00451\ }
+\DoxyCodeLine{00452\ \ \ \ \ \}}
+\DoxyCodeLine{00453\ }
+\DoxyCodeLine{00454\ \ \ \ \ \textcolor{comment}{//TEST\ GAME\ TEST\ GAME\ TEST\ GAME\ TEST\ GAME\ TEST\ GAME\ TEST\ GAME\ TEST\ GAME\ TEST\ GAME\ TEST\ GAME\ TEST\ GAME\ TEST\ GAME}}
+\DoxyCodeLine{00455\ \ \ \ \ \textcolor{comment}{//TEST\ GAME\ TEST\ GAME\ TEST\ GAME\ TEST\ GAME\ TEST\ GAME\ TEST\ GAME\ TEST\ GAME\ TEST\ GAME\ TEST\ GAME\ TEST\ GAME\ TEST\ GAME}}
+\DoxyCodeLine{00456\ \ \ \ \ \textcolor{comment}{//TEST\ GAME\ TEST\ GAME\ TEST\ GAME\ TEST\ GAME\ TEST\ GAME\ TEST\ GAME\ TEST\ GAME\ TEST\ GAME\ TEST\ GAME\ TEST\ GAME\ TEST\ GAME}}
+\DoxyCodeLine{00457\ }
+\DoxyCodeLine{00458\ \ \ \ \ \textcolor{keywordflow}{if}\ (myState\ ==\ GameState::testGame)}
+\DoxyCodeLine{00459\ \ \ \ \ \{}
+\DoxyCodeLine{00460\ \ \ \ \ \ \ \ \ myPlayer.update(m\_window,\ powerups.invincibilityActive,\ powerups.invisibilityActive,\ wallVector);}
+\DoxyCodeLine{00461\ \ \ \ \ \ \ \ \ myCrosshair.update(m\_window);}
+\DoxyCodeLine{00462\ \ \ \ \ \ \ \ \ m\_window.setMouseCursorVisible(\textcolor{keyword}{false});}
+\DoxyCodeLine{00463\ \ \ \ \ \ \ \ \ myBackground.update(gameOptions.chosenBG);}
+\DoxyCodeLine{00464\ \ \ \ \ \ \ \ \ testView.setCenter(myPlayer.getPlayer().getPosition());}
+\DoxyCodeLine{00465\ }
+\DoxyCodeLine{00466\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (enemySpawnerVectorCreated\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{00467\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00468\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ enemySpawnerVector.size();\ i++)}
+\DoxyCodeLine{00469\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00470\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (gameOptions.chosenGT\ ==\ 0\ ||\ gameOptions.chosenGT\ ==\ 2)}
+\DoxyCodeLine{00471\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00472\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ enemySpawnerVector.at(i)-\/>update(myPlayer.getPlayer().getPosition(),\ wallVector,\ t\_deltaTime,\ gameOptions.chosenGT,\ objectives.monumentVector,\ powerups.nukeEnemies,\ powerups.invisibilityActive);}
+\DoxyCodeLine{00473\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00474\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (gameOptions.chosenGT\ ==\ 1)}
+\DoxyCodeLine{00475\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00476\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (objectives.monumentVector.size()\ >\ 0)}
+\DoxyCodeLine{00477\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00478\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ enemySpawnerVector.at(i)-\/>update(objectives.monumentVector.at(0).get()-\/>getMonument().getPosition(),\ wallVector,\ t\_deltaTime,\ gameOptions.chosenGT,\ objectives.monumentVector,\ powerups.nukeEnemies,\ powerups.invisibilityActive);}
+\DoxyCodeLine{00479\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00480\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00481\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00482\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00483\ \ \ \ \ \ \ \ \ checkWallHealth();}
+\DoxyCodeLine{00484\ \ \ \ \ \ \ \ \ collisionDetection();}
+\DoxyCodeLine{00485\ \ \ \ \ \ \ \ \ m\_window.setView(testView);}
+\DoxyCodeLine{00486\ }
+\DoxyCodeLine{00487\ \ \ \ \ \ \ \ \ objectives.update(t\_deltaTime,\ m\_window,\ myPlayer.getPlayer().getGlobalBounds(),\ coinsCollected,\ maxCoins,\ powerups.invisibilityActive);}
+\DoxyCodeLine{00488\ \ \ \ \ \}}
+\DoxyCodeLine{00489\ }
+\DoxyCodeLine{00490\ \ \ \ \ \textcolor{comment}{//CHOOSE\ GAME\ CHOOSE\ GAME\ CHOOSE\ GAME\ CHOOSE\ GAME\ CHOOSE\ GAME\ CHOOSE\ GAME\ CHOOSE\ GAME\ CHOOSE\ GAME\ CHOOSE\ GAME\ CHOOSE\ GAME}}
+\DoxyCodeLine{00491\ \ \ \ \ \textcolor{comment}{//CHOOSE\ GAME\ CHOOSE\ GAME\ CHOOSE\ GAME\ CHOOSE\ GAME\ CHOOSE\ GAME\ CHOOSE\ GAME\ CHOOSE\ GAME\ CHOOSE\ GAME\ CHOOSE\ GAME\ CHOOSE\ GAME\ }}
+\DoxyCodeLine{00492\ \ \ \ \ \textcolor{comment}{//CHOOSE\ GAME\ CHOOSE\ GAME\ CHOOSE\ GAME\ CHOOSE\ GAME\ CHOOSE\ GAME\ CHOOSE\ GAME\ CHOOSE\ GAME\ CHOOSE\ GAME\ CHOOSE\ GAME\ CHOOSE\ GAME\ }}
+\DoxyCodeLine{00493\ }
+\DoxyCodeLine{00494\ \ \ \ \ \textcolor{keywordflow}{if}\ (myState\ ==\ GameState::chooseGame)}
+\DoxyCodeLine{00495\ \ \ \ \ \{}
+\DoxyCodeLine{00496\ \ \ \ \ \ \ \ \ gameChoice.update(t\_deltaTime,\ m\_window);}
+\DoxyCodeLine{00497\ }
+\DoxyCodeLine{00498\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (gameChoice.gameChosen\ \&\&\ !gameChoice.gameBuilt)}
+\DoxyCodeLine{00499\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00500\ \ \ \ \ \ \ \ \ \ \ \ \ myState\ =\ GameState::play;}
+\DoxyCodeLine{00501\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00502\ \ \ \ \ \ \ \ \ \ \ \ \ createLevel();}
+\DoxyCodeLine{00503\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00504\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (gameChoice.gameChosen\ \&\&\ gameChoice.gameBuilt)}
+\DoxyCodeLine{00505\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00506\ \ \ \ \ \ \ \ \ \ \ \ \ createLevel();}
+\DoxyCodeLine{00507\ \ \ \ \ \ \ \ \ \ \ \ \ myBuilder.buildGame(gameChoice.chosenGame);}
+\DoxyCodeLine{00508\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00509\ \ \ \ \ \}}
+\DoxyCodeLine{00510\ }
+\DoxyCodeLine{00511\ \ \ \ \ \textcolor{comment}{//PLAY\ GAME\ PLAY\ GAME\ PLAY\ GAME\ PLAY\ GAME\ PLAY\ GAME\ PLAY\ GAME\ PLAY\ GAME\ PLAY\ GAME\ PLAY\ GAME\ PLAY\ GAME\ PLAY\ GAME\ PLAY\ GAME}}
+\DoxyCodeLine{00512\ \ \ \ \ \textcolor{comment}{//PLAY\ GAME\ PLAY\ GAME\ PLAY\ GAME\ PLAY\ GAME\ PLAY\ GAME\ PLAY\ GAME\ PLAY\ GAME\ PLAY\ GAME\ PLAY\ GAME\ PLAY\ GAME\ PLAY\ GAME\ PLAY\ GAME}}
+\DoxyCodeLine{00513\ \ \ \ \ \textcolor{comment}{//PLAY\ GAME\ PLAY\ GAME\ PLAY\ GAME\ PLAY\ GAME\ PLAY\ GAME\ PLAY\ GAME\ PLAY\ GAME\ PLAY\ GAME\ PLAY\ GAME\ PLAY\ GAME\ PLAY\ GAME\ PLAY\ GAME}}
+\DoxyCodeLine{00514\ }
+\DoxyCodeLine{00515\ \ \ \ \ \textcolor{keywordflow}{if}\ (myState\ ==\ GameState::play)}
+\DoxyCodeLine{00516\ \ \ \ \ \{}
+\DoxyCodeLine{00517\ \ \ \ \ \ \ \ \ gameChoice.gameChosen\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00518\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00519\ \ \ \ \ \ \ \ \ myPlayer.update(m\_window,\ powerups.invincibilityActive,\ powerups.invisibilityActive,\ wallVector);}
+\DoxyCodeLine{00520\ \ \ \ \ \ \ \ \ myCrosshair.update(m\_window);}
+\DoxyCodeLine{00521\ \ \ \ \ \ \ \ \ m\_window.setMouseCursorVisible(\textcolor{keyword}{false});}
+\DoxyCodeLine{00522\ \ \ \ \ \ \ \ \ myBackground.update(gameOptions.chosenBG);}
+\DoxyCodeLine{00523\ \ \ \ \ \ \ \ \ testView.setCenter(myPlayer.getPlayer().getPosition());}
+\DoxyCodeLine{00524\ \ \ \ \ \ \ \ \ playerHUD.update(t\_deltaTime,\ m\_window,\ myPlayer.getPlayer().getPosition(),\ items.addHealth,\ items.explosivesCollected,\ powerups.invincibilityActive);}
+\DoxyCodeLine{00525\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00526\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00527\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ enemySpawnerVector.size();\ i++)}
+\DoxyCodeLine{00528\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00529\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (gameOptions.chosenGT\ ==\ 0\ ||\ gameOptions.chosenGT\ ==\ 2)}
+\DoxyCodeLine{00530\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00531\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ enemySpawnerVector.at(i)-\/>update(myPlayer.getPlayer().getPosition(),\ wallVector,\ t\_deltaTime,\ gameOptions.chosenGT,\ objectives.monumentVector,\ powerups.nukeEnemies,\ powerups.invisibilityActive);}
+\DoxyCodeLine{00532\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00533\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (gameOptions.chosenGT\ ==\ 1)}
+\DoxyCodeLine{00534\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00535\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (objectives.monumentVector.size()\ >\ 0)}
+\DoxyCodeLine{00536\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00537\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ enemySpawnerVector.at(i)-\/>update(objectives.monumentVector.at(0).get()-\/>getMonument().getPosition(),\ wallVector,\ t\_deltaTime,\ gameOptions.chosenGT,\ objectives.monumentVector,\ powerups.nukeEnemies,\ powerups.invisibilityActive);}
+\DoxyCodeLine{00538\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00539\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00540\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00541\ }
+\DoxyCodeLine{00542\ \ \ \ \ \ \ \ \ collisionDetection();}
+\DoxyCodeLine{00543\ \ \ \ \ \ \ \ \ checkWallHealth();}
+\DoxyCodeLine{00544\ }
+\DoxyCodeLine{00545\ \ \ \ \ \ \ \ \ m\_window.setView(testView);}
+\DoxyCodeLine{00546\ }
+\DoxyCodeLine{00547\ \ \ \ \ \ \ \ \ objectives.update(t\_deltaTime,\ m\_window,\ myPlayer.getPlayer().getGlobalBounds(),\ coinsCollected,\ maxCoins,\ powerups.invisibilityActive);}
+\DoxyCodeLine{00548\ \ \ \ \ \ \ \ \ items.update(t\_deltaTime,\ m\_window,\ myPlayer.getPlayer().getGlobalBounds());}
+\DoxyCodeLine{00549\ \ \ \ \ \ \ \ \ powerups.update(t\_deltaTime,\ m\_window,\ myPlayer.getPlayer().getGlobalBounds());}
+\DoxyCodeLine{00550\ }
+\DoxyCodeLine{00551\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (objectives.gameOver\ ==\ \textcolor{keyword}{true}\ ||\ playerHUD.myHealthBar.gameOver\ ==\ \textcolor{keyword}{true}\ )}
+\DoxyCodeLine{00552\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00553\ \ \ \ \ \ \ \ \ \ \ \ \ objectives.gameOver\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00554\ \ \ \ \ \ \ \ \ \ \ \ \ playerHUD.myHealthBar.gameOver\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00555\ \ \ \ \ \ \ \ \ \ \ \ \ objectives.gameOver\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00556\ \ \ \ \ \ \ \ \ \ \ \ \ myState\ =\ GameState::gameOver;}
+\DoxyCodeLine{00557\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00558\ }
+\DoxyCodeLine{00559\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (objectives.monumentVector.size()\ >\ 0)}
+\DoxyCodeLine{00560\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00561\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (objectives.monumentVector.at(0).get()-\/>gameOver\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{00562\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00563\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ objectives.gameOver\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00564\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ playerHUD.myHealthBar.gameOver\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00565\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ objectives.gameOver\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00566\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ myState\ =\ GameState::gameOver;}
+\DoxyCodeLine{00567\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00568\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00569\ }
+\DoxyCodeLine{00570\ \ \ \ \ \ \ \ \ checkEnemiesEmptied();}
+\DoxyCodeLine{00571\ \ \ \ \ \}}
+\DoxyCodeLine{00572\ }
+\DoxyCodeLine{00573\ \ \ \ \ \textcolor{keywordflow}{if}\ (myState\ ==\ GameState::gameOver)}
+\DoxyCodeLine{00574\ \ \ \ \ \{}
+\DoxyCodeLine{00575\ \ \ \ \ \ \ \ \ gameOver.update(t\_deltaTime);}
+\DoxyCodeLine{00576\ }
+\DoxyCodeLine{00577\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (gameOver.buttonPressed\ ==\ 0)}
+\DoxyCodeLine{00578\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00579\ \ \ \ \ \ \ \ \ \ \ \ \ gameOver.buttonPressed\ =\ -\/10;}
+\DoxyCodeLine{00580\ \ \ \ \ \ \ \ \ \ \ \ \ myState\ =\ GameState::mainmenu;}
+\DoxyCodeLine{00581\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00582\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (gameOver.buttonPressed\ ==\ 1)}
+\DoxyCodeLine{00583\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00584\ \ \ \ \ \ \ \ \ \ \ \ \ gameOver.buttonPressed\ =\ -\/10;}
+\DoxyCodeLine{00585\ \ \ \ \ \ \ \ \ \ \ \ \ gameChoice.gameChosen\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00586\ \ \ \ \ \ \ \ \ \ \ \ \ myState\ =\ GameState::play;}
+\DoxyCodeLine{00587\ \ \ \ \ \ \ \ \ \ \ \ \ createLevel();}
+\DoxyCodeLine{00588\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00589\ \ \ \ \ \}}
+\DoxyCodeLine{00590\ }
+\DoxyCodeLine{00591\ \ \ \ \ \textcolor{keywordflow}{if}\ (myTools.testingGame\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{00592\ \ \ \ \ \{}
+\DoxyCodeLine{00593\ \ \ \ \ \ \ \ \ myState\ =\ GameState::testGame;}
+\DoxyCodeLine{00594\ \ \ \ \ \ \ \ \ myTools.testingGame\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00595\ }
+\DoxyCodeLine{00596\ \ \ \ \ \}}
+\DoxyCodeLine{00597\ \ \ \ \ }
+\DoxyCodeLine{00598\ \ \ \ \ coinsCollected\ =\ maxCoins\ -\/\ objectives.coinVector.size();}
+\DoxyCodeLine{00599\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_game_a1d2aee62bac8e228344e1f44fab504e0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=330pt]{class_game_a1d2aee62bac8e228344e1f44fab504e0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_game_a569a22a282febb9279050ac2c62ad8d9}} 
+\index{Game@{Game}!viewsCreation@{viewsCreation}}
+\index{viewsCreation@{viewsCreation}!Game@{Game}}
+\doxysubsubsection{viewsCreation()}
+{\footnotesize\ttfamily void Game\+::views\+Creation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 1130} of file \textbf{ Game.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{01131\ \{}
+\DoxyCodeLine{01132\ \ \ \ \ mainView.reset(sf::FloatRect(0,0,\ gameWidth,\ gameHeight\ ));}
+\DoxyCodeLine{01133\ \ \ \ \ testView.reset(sf::FloatRect(100,100,\ gameWidth\ *\ 0.3,\ gameHeight\ *\ 0.3));}
+\DoxyCodeLine{01134\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=299pt]{class_game_a569a22a282febb9279050ac2c62ad8d9_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\label{class_game_ac2806bb3057a9939fd1cad773ec9dba1}} 
+\index{Game@{Game}!animator@{animator}}
+\index{animator@{animator}!Game@{Game}}
+\doxysubsubsection{animator}
+{\footnotesize\ttfamily \textbf{ Animator} Game\+::animator}
+
+
+
+Definition at line \textbf{ 52} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_a94b320cbff577f08c123712450970306}} 
+\index{Game@{Game}!bloodSplatterVector@{bloodSplatterVector}}
+\index{bloodSplatterVector@{bloodSplatterVector}!Game@{Game}}
+\doxysubsubsection{bloodSplatterVector}
+{\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$\textbf{ Blood\+Splatter}$>$ $>$ Game\+::blood\+Splatter\+Vector}
+
+
+
+Definition at line \textbf{ 110} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_a67d674ebdd8914c880ed313732dc2de8}} 
+\index{Game@{Game}!changeGridSize@{changeGridSize}}
+\index{changeGridSize@{changeGridSize}!Game@{Game}}
+\doxysubsubsection{changeGridSize}
+{\footnotesize\ttfamily bool Game\+::change\+Grid\+Size = false}
+
+
+
+Definition at line \textbf{ 106} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_a363ad6436f419adf9909dcc37518d365}} 
+\index{Game@{Game}!coinsCollected@{coinsCollected}}
+\index{coinsCollected@{coinsCollected}!Game@{Game}}
+\doxysubsubsection{coinsCollected}
+{\footnotesize\ttfamily int Game\+::coins\+Collected = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 167} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_a7760c467ee2d5e5a4eee59195e40e791}} 
+\index{Game@{Game}!enemySpawnerVector@{enemySpawnerVector}}
+\index{enemySpawnerVector@{enemySpawnerVector}!Game@{Game}}
+\doxysubsubsection{enemySpawnerVector}
+{\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$\textbf{ Enemy\+Spawner}$>$ $>$ Game\+::enemy\+Spawner\+Vector}
+
+
+
+Definition at line \textbf{ 109} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_a81ab942507eb2ab980aefe0f5336197b}} 
+\index{Game@{Game}!enemySpawnerVectorCreated@{enemySpawnerVectorCreated}}
+\index{enemySpawnerVectorCreated@{enemySpawnerVectorCreated}!Game@{Game}}
+\doxysubsubsection{enemySpawnerVectorCreated}
+{\footnotesize\ttfamily bool Game\+::enemy\+Spawner\+Vector\+Created = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 147} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_a2c6adbc6c21706765b24e920bdc6294f}} 
+\index{Game@{Game}!gameChoice@{gameChoice}}
+\index{gameChoice@{gameChoice}!Game@{Game}}
+\doxysubsubsection{gameChoice}
+{\footnotesize\ttfamily \textbf{ Choose\+Game} Game\+::game\+Choice \{ \textbf{ game\+Width}, \textbf{ game\+Height}, \textbf{ network\+Manager} \}}
+
+
+
+Definition at line \textbf{ 61} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_a072b33c94843e1f0b962dfcc1ed0d9f5}} 
+\index{Game@{Game}!gameHeight@{gameHeight}}
+\index{gameHeight@{gameHeight}!Game@{Game}}
+\doxysubsubsection{gameHeight}
+{\footnotesize\ttfamily unsigned Game\+::game\+Height = sf\+::\+Video\+Mode\+::get\+Desktop\+Mode().height $\ast$ 1}
+
+
+
+Definition at line \textbf{ 46} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_a8d19ae49c93e245e0230cda962f52be0}} 
+\index{Game@{Game}!gameOptions@{gameOptions}}
+\index{gameOptions@{gameOptions}!Game@{Game}}
+\doxysubsubsection{gameOptions}
+{\footnotesize\ttfamily \textbf{ Game\+Options} Game\+::game\+Options \{ \textbf{ game\+Width}, \textbf{ game\+Height} \}}
+
+
+
+Definition at line \textbf{ 54} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_aaa3816603bc03fe1b08d096881210aa5}} 
+\index{Game@{Game}!gameOver@{gameOver}}
+\index{gameOver@{gameOver}!Game@{Game}}
+\doxysubsubsection{gameOver}
+{\footnotesize\ttfamily \textbf{ Game\+Over} Game\+::game\+Over \{ \textbf{ game\+Width}, \textbf{ game\+Height} \}}
+
+
+
+Definition at line \textbf{ 65} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_ac41d32877f8ec3b5c534738a087bbcf5}} 
+\index{Game@{Game}!gameWidth@{gameWidth}}
+\index{gameWidth@{gameWidth}!Game@{Game}}
+\doxysubsubsection{gameWidth}
+{\footnotesize\ttfamily unsigned Game\+::game\+Width = sf\+::\+Video\+Mode\+::get\+Desktop\+Mode().width $\ast$ 1}
+
+
+
+Definition at line \textbf{ 45} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_a26d8cbeb867dcdba08ba89e2b2ade8a3}} 
+\index{Game@{Game}!gridCreated@{gridCreated}}
+\index{gridCreated@{gridCreated}!Game@{Game}}
+\doxysubsubsection{gridCreated}
+{\footnotesize\ttfamily bool Game\+::grid\+Created = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 129} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_a96f244be5fc43e639f7f82b865555922}} 
+\index{Game@{Game}!gridSize@{gridSize}}
+\index{gridSize@{gridSize}!Game@{Game}}
+\doxysubsubsection{gridSize}
+{\footnotesize\ttfamily int Game\+::grid\+Size = 30\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 131} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_aac227597d61ba000896955c32f0e2457}} 
+\index{Game@{Game}!items@{items}}
+\index{items@{items}!Game@{Game}}
+\doxysubsubsection{items}
+{\footnotesize\ttfamily \textbf{ Items} Game\+::items \{ \textbf{ texture\+Manager} \}}
+
+
+
+Definition at line \textbf{ 67} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_a9c4447daf3c464f8ba98ea60c1ceec5e}} 
+\index{Game@{Game}!itemVectorCreated@{itemVectorCreated}}
+\index{itemVectorCreated@{itemVectorCreated}!Game@{Game}}
+\doxysubsubsection{itemVectorCreated}
+{\footnotesize\ttfamily bool Game\+::item\+Vector\+Created = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 151} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_a5452d49a7b3f2d2ea3c7e2072fe8a828}} 
+\index{Game@{Game}!m\_exitGame@{m\_exitGame}}
+\index{m\_exitGame@{m\_exitGame}!Game@{Game}}
+\doxysubsubsection{m\_exitGame}
+{\footnotesize\ttfamily bool Game\+::m\+\_\+exit\+Game\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 127} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_a22a61b5ea27c609be8cf2724c33d7ae5}} 
+\index{Game@{Game}!m\_window@{m\_window}}
+\index{m\_window@{m\_window}!Game@{Game}}
+\doxysubsubsection{m\_window}
+{\footnotesize\ttfamily sf\+::\+Render\+Window Game\+::m\+\_\+window\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 126} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_a28e09ea403fcf58036eb9b0cd7d79395}} 
+\index{Game@{Game}!mainView@{mainView}}
+\index{mainView@{mainView}!Game@{Game}}
+\doxysubsubsection{mainView}
+{\footnotesize\ttfamily sf\+::\+View Game\+::main\+View}
+
+
+
+Definition at line \textbf{ 71} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_af129b01f5316bdc12d08b8d1a532d081}} 
+\index{Game@{Game}!mainViewActive@{mainViewActive}}
+\index{mainViewActive@{mainViewActive}!Game@{Game}}
+\doxysubsubsection{mainViewActive}
+{\footnotesize\ttfamily bool Game\+::main\+View\+Active = true\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 155} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_aac33dd2c262e20a1a8503d0de648e589}} 
+\index{Game@{Game}!maxCoins@{maxCoins}}
+\index{maxCoins@{maxCoins}!Game@{Game}}
+\doxysubsubsection{maxCoins}
+{\footnotesize\ttfamily int Game\+::max\+Coins = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 168} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_adebd39694b7303196ccb463411e756f5}} 
+\index{Game@{Game}!mousePos@{mousePos}}
+\index{mousePos@{mousePos}!Game@{Game}}
+\doxysubsubsection{mousePos}
+{\footnotesize\ttfamily sf\+::\+Vector2f Game\+::mouse\+Pos\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 113} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_ab3d311da3d07c1ddcae756ba94ee6f27}} 
+\index{Game@{Game}!myBackground@{myBackground}}
+\index{myBackground@{myBackground}!Game@{Game}}
+\doxysubsubsection{myBackground}
+{\footnotesize\ttfamily \textbf{ Background} Game\+::my\+Background \{\textbf{ game\+Width}, \textbf{ game\+Height}\}}
+
+
+
+Definition at line \textbf{ 60} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_a72fb9fda047f61ca99a8d72a22de0634}} 
+\index{Game@{Game}!myBuilder@{myBuilder}}
+\index{myBuilder@{myBuilder}!Game@{Game}}
+\doxysubsubsection{myBuilder}
+{\footnotesize\ttfamily \textbf{ Builder} Game\+::my\+Builder}
+
+
+
+Definition at line \textbf{ 66} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_ac0eaad32656e7654ccc00e0729a93458}} 
+\index{Game@{Game}!myChoice@{myChoice}}
+\index{myChoice@{myChoice}!Game@{Game}}
+\doxysubsubsection{myChoice}
+{\footnotesize\ttfamily \textbf{ Choice\+Bar} Game\+::my\+Choice \{ \textbf{ game\+Width}, \textbf{ game\+Height}\}}
+
+
+
+Definition at line \textbf{ 63} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_aae14fa30e9f2a30c56f2200a01b338e6}} 
+\index{Game@{Game}!myCrosshair@{myCrosshair}}
+\index{myCrosshair@{myCrosshair}!Game@{Game}}
+\doxysubsubsection{myCrosshair}
+{\footnotesize\ttfamily \textbf{ Crosshair} Game\+::my\+Crosshair}
+
+
+
+Definition at line \textbf{ 59} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_aff6a12e5e97c27874b588d129eac70bc}} 
+\index{Game@{Game}!myGrid@{myGrid}}
+\index{myGrid@{myGrid}!Game@{Game}}
+\doxysubsubsection{myGrid}
+{\footnotesize\ttfamily \textbf{ Grid} Game\+::my\+Grid \{ \textbf{ game\+Width}, \textbf{ game\+Height} \}}
+
+
+
+Definition at line \textbf{ 55} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_af9344d3ce2d4d374e882139b737180e3}} 
+\index{Game@{Game}!myMenu@{myMenu}}
+\index{myMenu@{myMenu}!Game@{Game}}
+\doxysubsubsection{myMenu}
+{\footnotesize\ttfamily \textbf{ Main\+Menu} Game\+::my\+Menu \{ \textbf{ game\+Width}, \textbf{ game\+Height} \}}
+
+
+
+Definition at line \textbf{ 53} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_ac3355cde8f45a9bce0f37cf75804eb8f}} 
+\index{Game@{Game}!myPlayer@{myPlayer}}
+\index{myPlayer@{myPlayer}!Game@{Game}}
+\doxysubsubsection{myPlayer}
+{\footnotesize\ttfamily \textbf{ Player} Game\+::my\+Player \{ \textbf{ game\+Width}, \textbf{ game\+Height}, \textbf{ animator} \}}
+
+
+
+Definition at line \textbf{ 58} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_ad8510556084e0bf1003cea2f808cd85e}} 
+\index{Game@{Game}!myState@{myState}}
+\index{myState@{myState}!Game@{Game}}
+\doxysubsubsection{myState}
+{\footnotesize\ttfamily \textbf{ Game\+State} Game\+::my\+State \{ Game\+State\+::mainmenu \}}
+
+
+
+Definition at line \textbf{ 56} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_aa6a1074b3409ddcc964b98a73531cbef}} 
+\index{Game@{Game}!myTools@{myTools}}
+\index{myTools@{myTools}!Game@{Game}}
+\doxysubsubsection{myTools}
+{\footnotesize\ttfamily \textbf{ Tool\+Bar} Game\+::my\+Tools \{ \textbf{ game\+Width}, \textbf{ game\+Height} \}}
+
+
+
+Definition at line \textbf{ 57} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_a648193cdbbe232253bfc7faa0df674f2}} 
+\index{Game@{Game}!networkManager@{networkManager}}
+\index{networkManager@{networkManager}!Game@{Game}}
+\doxysubsubsection{networkManager}
+{\footnotesize\ttfamily \textbf{ Network\+Manager} Game\+::network\+Manager}
+
+
+
+Definition at line \textbf{ 51} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_ab921250f27c1ee9861b7b3e82962f5fb}} 
+\index{Game@{Game}!numOfCoins@{numOfCoins}}
+\index{numOfCoins@{numOfCoins}!Game@{Game}}
+\doxysubsubsection{numOfCoins}
+{\footnotesize\ttfamily int Game\+::num\+Of\+Coins = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 135} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_a517275fd5e60cda2d4b29e39fcb058e4}} 
+\index{Game@{Game}!numOfDoors@{numOfDoors}}
+\index{numOfDoors@{numOfDoors}!Game@{Game}}
+\doxysubsubsection{numOfDoors}
+{\footnotesize\ttfamily int Game\+::num\+Of\+Doors = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 136} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_a8d91be67fc547d90f7ff8cf68dc8ebbd}} 
+\index{Game@{Game}!numOfExplosives@{numOfExplosives}}
+\index{numOfExplosives@{numOfExplosives}!Game@{Game}}
+\doxysubsubsection{numOfExplosives}
+{\footnotesize\ttfamily int Game\+::num\+Of\+Explosives = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 139} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_a9ce4e6a6fcd9089193af6a69ae7bfb4b}} 
+\index{Game@{Game}!numOfGuns@{numOfGuns}}
+\index{numOfGuns@{numOfGuns}!Game@{Game}}
+\doxysubsubsection{numOfGuns}
+{\footnotesize\ttfamily int Game\+::num\+Of\+Guns = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 140} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_a5692e777fb24dc7821592b942538a42e}} 
+\index{Game@{Game}!numOfInvinces@{numOfInvinces}}
+\index{numOfInvinces@{numOfInvinces}!Game@{Game}}
+\doxysubsubsection{numOfInvinces}
+{\footnotesize\ttfamily int Game\+::num\+Of\+Invinces = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 142} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_a587d64897f89d813d19add5aa1875933}} 
+\index{Game@{Game}!numOfInvises@{numOfInvises}}
+\index{numOfInvises@{numOfInvises}!Game@{Game}}
+\doxysubsubsection{numOfInvises}
+{\footnotesize\ttfamily int Game\+::num\+Of\+Invises = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 143} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_a22e0fb4446e72607fbd74521db9e425f}} 
+\index{Game@{Game}!numOfMedkits@{numOfMedkits}}
+\index{numOfMedkits@{numOfMedkits}!Game@{Game}}
+\doxysubsubsection{numOfMedkits}
+{\footnotesize\ttfamily int Game\+::num\+Of\+Medkits = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 138} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_a20c7bc24284d30672fe8bcd72e344e80}} 
+\index{Game@{Game}!numOfMonuments@{numOfMonuments}}
+\index{numOfMonuments@{numOfMonuments}!Game@{Game}}
+\doxysubsubsection{numOfMonuments}
+{\footnotesize\ttfamily int Game\+::num\+Of\+Monuments = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 137} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_a9854f910563862fe21d043b20658a996}} 
+\index{Game@{Game}!numOfNukes@{numOfNukes}}
+\index{numOfNukes@{numOfNukes}!Game@{Game}}
+\doxysubsubsection{numOfNukes}
+{\footnotesize\ttfamily int Game\+::num\+Of\+Nukes = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 141} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_a08ed32d1bc853be417e16ec28a8f6a68}} 
+\index{Game@{Game}!numOfSpawners@{numOfSpawners}}
+\index{numOfSpawners@{numOfSpawners}!Game@{Game}}
+\doxysubsubsection{numOfSpawners}
+{\footnotesize\ttfamily int Game\+::num\+Of\+Spawners = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 134} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_a0e4d552472319ce238fd78bfc0604f4b}} 
+\index{Game@{Game}!numOfWalls@{numOfWalls}}
+\index{numOfWalls@{numOfWalls}!Game@{Game}}
+\doxysubsubsection{numOfWalls}
+{\footnotesize\ttfamily int Game\+::num\+Of\+Walls = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 133} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_ab22226fc4e997757955c4f181ceec59d}} 
+\index{Game@{Game}!objectives@{objectives}}
+\index{objectives@{objectives}!Game@{Game}}
+\doxysubsubsection{objectives}
+{\footnotesize\ttfamily \textbf{ Objectives} Game\+::objectives \{ \textbf{ texture\+Manager} \}}
+
+
+
+Definition at line \textbf{ 64} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_a402c4540025074968192dd3900c428b8}} 
+\index{Game@{Game}!objectiveVectorCreated@{objectiveVectorCreated}}
+\index{objectiveVectorCreated@{objectiveVectorCreated}!Game@{Game}}
+\doxysubsubsection{objectiveVectorCreated}
+{\footnotesize\ttfamily bool Game\+::objective\+Vector\+Created = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 149} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_afd3901299c1151134c2a3e112804f78c}} 
+\index{Game@{Game}!playerHUD@{playerHUD}}
+\index{playerHUD@{playerHUD}!Game@{Game}}
+\doxysubsubsection{playerHUD}
+{\footnotesize\ttfamily \textbf{ HUD} Game\+::player\+HUD \{ \textbf{ game\+Width}, \textbf{ game\+Height} \}}
+
+
+
+Definition at line \textbf{ 62} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_ae3b5a4464c5f5f1b1406d33ff689fad9}} 
+\index{Game@{Game}!powerups@{powerups}}
+\index{powerups@{powerups}!Game@{Game}}
+\doxysubsubsection{powerups}
+{\footnotesize\ttfamily \textbf{ Powerups} Game\+::powerups \{ \textbf{ texture\+Manager} \}}
+
+
+
+Definition at line \textbf{ 68} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_a20da3c093beb12ebc1bed5eaa9636349}} 
+\index{Game@{Game}!powerupVectorCreated@{powerupVectorCreated}}
+\index{powerupVectorCreated@{powerupVectorCreated}!Game@{Game}}
+\doxysubsubsection{powerupVectorCreated}
+{\footnotesize\ttfamily bool Game\+::powerup\+Vector\+Created = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 153} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_aa0aad388ddc2fc5def97b1c540c361c1}} 
+\index{Game@{Game}!scrollingX@{scrollingX}}
+\index{scrollingX@{scrollingX}!Game@{Game}}
+\doxysubsubsection{scrollingX}
+{\footnotesize\ttfamily bool Game\+::scrollingX = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 163} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_a007b293c997d5987ba41cb28eee8ce5f}} 
+\index{Game@{Game}!scrollSpeed@{scrollSpeed}}
+\index{scrollSpeed@{scrollSpeed}!Game@{Game}}
+\doxysubsubsection{scrollSpeed}
+{\footnotesize\ttfamily int Game\+::scroll\+Speed = 30\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 165} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_ae4eaa5f98f7c7596429c5613da5824f2}} 
+\index{Game@{Game}!testView@{testView}}
+\index{testView@{testView}!Game@{Game}}
+\doxysubsubsection{testView}
+{\footnotesize\ttfamily sf\+::\+View Game\+::test\+View}
+
+
+
+Definition at line \textbf{ 72} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_a6b19ebfab9e1b93b8d1f7e89b866dd8d}} 
+\index{Game@{Game}!testViewActive@{testViewActive}}
+\index{testViewActive@{testViewActive}!Game@{Game}}
+\doxysubsubsection{testViewActive}
+{\footnotesize\ttfamily bool Game\+::test\+View\+Active = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 157} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_aa252b7f25cc33bed7dcc8b1836026a91}} 
+\index{Game@{Game}!textureManager@{textureManager}}
+\index{textureManager@{textureManager}!Game@{Game}}
+\doxysubsubsection{textureManager}
+{\footnotesize\ttfamily \textbf{ Texture\+Manager} Game\+::texture\+Manager}
+
+
+
+Definition at line \textbf{ 50} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_a201919f2e416314909876868e515b985}} 
+\index{Game@{Game}!wallVector@{wallVector}}
+\index{wallVector@{wallVector}!Game@{Game}}
+\doxysubsubsection{wallVector}
+{\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$\textbf{ Wall}$>$ $>$ Game\+::wall\+Vector}
+
+
+
+Definition at line \textbf{ 108} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_a30f6b16b0a3e69fe448c9e11449110cd}} 
+\index{Game@{Game}!wallVectorCreated@{wallVectorCreated}}
+\index{wallVectorCreated@{wallVectorCreated}!Game@{Game}}
+\doxysubsubsection{wallVectorCreated}
+{\footnotesize\ttfamily bool Game\+::wall\+Vector\+Created = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 145} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_a18147f2559bfee93a4818a47a66e8dc5}} 
+\index{Game@{Game}!zoomAmount@{zoomAmount}}
+\index{zoomAmount@{zoomAmount}!Game@{Game}}
+\doxysubsubsection{zoomAmount}
+{\footnotesize\ttfamily double Game\+::zoom\+Amount = 1\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 159} of file \textbf{ Game.\+h}.
+
+\mbox{\label{class_game_a8ed939801d3ae9e7e9f40c0d3a3e0df4}} 
+\index{Game@{Game}!zooming@{zooming}}
+\index{zooming@{zooming}!Game@{Game}}
+\doxysubsubsection{zooming}
+{\footnotesize\ttfamily bool Game\+::zooming = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 161} of file \textbf{ Game.\+h}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+No\+Code\+Game\+Editor/\textbf{ Game.\+h}\item 
+No\+Code\+Game\+Editor/\textbf{ Game.\+cpp}\end{DoxyCompactItemize}

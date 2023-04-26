@@ -1,0 +1,85 @@
+\doxysection{Game\+Over.\+cpp}
+\label{_game_over_8cpp_source}\index{NoCodeGameEditor/GameOver.cpp@{NoCodeGameEditor/GameOver.cpp}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}GameOver.h"{}}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ GameOver::GameOver(\textcolor{keywordtype}{float}\ t\_gameWidth,\ \textcolor{keywordtype}{float}\ t\_gameHeight)}
+\DoxyCodeLine{00004\ \{}
+\DoxyCodeLine{00005\ \ \ \ \ gameWidth\ =\ t\_gameWidth;}
+\DoxyCodeLine{00006\ \ \ \ \ gameHeight\ =\ t\_gameHeight;}
+\DoxyCodeLine{00007\ \ \ \ \ loadFiles();}
+\DoxyCodeLine{00008\ \ \ \ \ setupButtons();}
+\DoxyCodeLine{00009\ \ \ \ \ setupButtonText();}
+\DoxyCodeLine{00010\ \}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keywordtype}{void}\ GameOver::loadFiles()}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordflow}{if}\ (!buttonFont.loadFromFile(\textcolor{stringliteral}{"{}./ASSETS/FONTS/NewYork.ttf"{}}))}
+\DoxyCodeLine{00015\ \ \ \ \ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Error\ loading\ font..."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00017\ \ \ \ \ \}}
+\DoxyCodeLine{00018\ \}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keywordtype}{void}\ GameOver::update(sf::Time\ t\_deltaTime)}
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ checkForMousePosAndClick();}
+\DoxyCodeLine{00023\ \}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keywordtype}{void}\ GameOver::render(sf::RenderWindow\&\ t\_window)}
+\DoxyCodeLine{00026\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ mousePos\ =\ t\_window.mapPixelToCoords(sf::Mouse::getPosition(t\_window));}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ MAX\_BUTTONS;\ i++)}
+\DoxyCodeLine{00029\ \ \ \ \ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ t\_window.draw(buttons[i]);}
+\DoxyCodeLine{00031\ \ \ \ \ \}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ t\_window.draw(button1Text);}
+\DoxyCodeLine{00034\ \ \ \ \ t\_window.draw(button2Text);}
+\DoxyCodeLine{00035\ \}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{keywordtype}{void}\ GameOver::setupButtons()}
+\DoxyCodeLine{00038\ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{comment}{//button\ 0\ return\ to\ mainmenu,\ button\ 1\ restart\ gam}}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{int}\ xPos\ =\ gameWidth\ /\ 3;}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ MAX\_BUTTONS;\ i++)}
+\DoxyCodeLine{00042\ \ \ \ \ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ buttons[i].setFillColor(sf::Color::Yellow);}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ buttons[i].setSize(sf::Vector2f(500,\ 250));}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ buttons[i].setOrigin(buttons[i].getLocalBounds().width\ /\ 2,\ buttons[i].getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ buttons[i].setPosition(xPos,\ gameHeight\ /\ 2);}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ xPos\ +=\ gameWidth\ /\ 3;}
+\DoxyCodeLine{00049\ \ \ \ \ \}}
+\DoxyCodeLine{00050\ \}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{keywordtype}{void}\ GameOver::setupButtonText()}
+\DoxyCodeLine{00053\ \{}
+\DoxyCodeLine{00054\ \ \ \ \ button1Text.setFont(buttonFont);}
+\DoxyCodeLine{00055\ \ \ \ \ button1Text.setFillColor(sf::Color::Black);}
+\DoxyCodeLine{00056\ \ \ \ \ button1Text.setCharacterSize(30u);}
+\DoxyCodeLine{00057\ \ \ \ \ button1Text.setString(\textcolor{stringliteral}{"{}Main\ Menu"{}});}
+\DoxyCodeLine{00058\ \ \ \ \ button1Text.setPosition(buttons[0].getPosition());}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ button2Text.setFont(buttonFont);}
+\DoxyCodeLine{00061\ \ \ \ \ button2Text.setFillColor(sf::Color::Black);}
+\DoxyCodeLine{00062\ \ \ \ \ button2Text.setCharacterSize(30u);}
+\DoxyCodeLine{00063\ \ \ \ \ button2Text.setString(\textcolor{stringliteral}{"{}Restart\ Game"{}});}
+\DoxyCodeLine{00064\ \ \ \ \ button2Text.setPosition(buttons[1].getPosition());}
+\DoxyCodeLine{00065\ \}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \textcolor{keywordtype}{void}\ GameOver::checkForMousePosAndClick()}
+\DoxyCodeLine{00068\ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ MAX\_BUTTONS;\ i++)}
+\DoxyCodeLine{00070\ \ \ \ \ \{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (buttons[i].getGlobalBounds().contains(mousePos))}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Mouse::isButtonPressed(sf::Mouse::Left))}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buttonPressed\ =\ i;}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00078\ \ \ \ \ \}}
+\DoxyCodeLine{00079\ \}}
+
+\end{DoxyCode}

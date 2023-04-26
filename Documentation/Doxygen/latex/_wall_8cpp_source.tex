@@ -1,0 +1,62 @@
+\doxysection{Wall.\+cpp}
+\label{_wall_8cpp_source}\index{NoCodeGameEditor/Wall.cpp@{NoCodeGameEditor/Wall.cpp}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}Wall.h"{}}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ Wall::Wall(\textcolor{keywordtype}{int}\ t\_wallTextNum,\ sf::Vector2f\ t\_wallPos,\ TextureManager\&\ textureManager)\ :\ wallTextureNumber(t\_wallTextNum),\ wallPos(t\_wallPos),\ m\_textureManager(textureManager)}
+\DoxyCodeLine{00004\ \{}
+\DoxyCodeLine{00005\ \ \ \ \ \textcolor{comment}{//wallTextureNumber\ =\ t\_wallTextNum;}}
+\DoxyCodeLine{00006\ \ \ \ \ loadFiles();}
+\DoxyCodeLine{00007\ \ \ \ \ setupWall(t\_wallPos);}
+\DoxyCodeLine{00008\ \}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keywordtype}{void}\ Wall::loadFiles()}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ wallTexture\ =\ std::make\_shared<sf::Texture>(m\_textureManager.getTexture(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)WALLS\(\backslash\)\(\backslash\)wallGrey.png"{}}));}
+\DoxyCodeLine{00013\ \ \ \ \ wallTexture2\ =\ std::make\_shared<sf::Texture>(m\_textureManager.getTexture(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)WALLS\(\backslash\)\(\backslash\)wallBrown.png"{}}));}
+\DoxyCodeLine{00014\ \ \ \ \ wallTexture3\ =\ std::make\_shared<sf::Texture>(m\_textureManager.getTexture(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)WALLS\(\backslash\)\(\backslash\)wallRed.png"{}}));}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordflow}{if}\ (wallTextureNumber\ ==\ 0)}
+\DoxyCodeLine{00016\ \ \ \ \ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ wallSprite.setTexture(*wallTexture);}
+\DoxyCodeLine{00018\ \ \ \ \ \}}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (wallTextureNumber\ ==\ 1)}
+\DoxyCodeLine{00020\ \ \ \ \ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ wallSprite.setTexture(*wallTexture2);}
+\DoxyCodeLine{00022\ \ \ \ \ \}}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (wallTextureNumber\ ==\ 2)}
+\DoxyCodeLine{00024\ \ \ \ \ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ wallSprite.setTexture(*wallTexture3);}
+\DoxyCodeLine{00026\ \ \ \ \ \}}
+\DoxyCodeLine{00027\ \}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keywordtype}{void}\ Wall::setupWall(sf::Vector2f\ t\_pos)}
+\DoxyCodeLine{00030\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ }
+\DoxyCodeLine{00032\ \ \ \ \ wallSprite.setOrigin(wallSprite.getGlobalBounds().width\ /\ 2,\ wallSprite.getGlobalBounds().height\ /\ 2);}
+\DoxyCodeLine{00033\ \ \ \ \ wallSprite.setPosition(t\_pos.x\ +\ offset,\ t\_pos.y\ +\ offset);}
+\DoxyCodeLine{00034\ \}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{keywordtype}{void}\ Wall::render(sf::RenderWindow\&\ t\_window)}
+\DoxyCodeLine{00037\ \{}
+\DoxyCodeLine{00038\ \ \ \ \ t\_window.draw(wallSprite);}
+\DoxyCodeLine{00039\ \}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{keywordtype}{void}\ Wall::damageWall(\textcolor{keywordtype}{int}\ t\_damageTaken)}
+\DoxyCodeLine{00042\ \{}
+\DoxyCodeLine{00043\ \ \ \ \ wallHealth\ -\/=\ t\_damageTaken;}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{keywordtype}{int}\ Wall::getWallHealth()}
+\DoxyCodeLine{00048\ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordflow}{return}\ wallHealth;}
+\DoxyCodeLine{00050\ \}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ sf::Sprite\&\ Wall::getWall()}
+\DoxyCodeLine{00053\ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordflow}{return}\ wallSprite;}
+\DoxyCodeLine{00055\ \}}
+\DoxyCodeLine{00056\ }
+
+\end{DoxyCode}

@@ -1,0 +1,70 @@
+\doxysection{Explosive.\+cpp}
+\label{_explosive_8cpp_source}\index{NoCodeGameEditor/Explosive.cpp@{NoCodeGameEditor/Explosive.cpp}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}Explosive.h"{}}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ Explosive::Explosive(sf::Vector2f\ t\_explosivePos,\ TextureManager\&\ textureManager,\ \textcolor{keywordtype}{bool}\ t\_primed)\ :\ explosivePos(t\_explosivePos),\ m\_textureManager(textureManager),\ primed(t\_primed)}
+\DoxyCodeLine{00004\ \{}
+\DoxyCodeLine{00005\ \ \ \ \ loadFiles();}
+\DoxyCodeLine{00006\ \ \ \ \ setupExplosive();}
+\DoxyCodeLine{00007\ \}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keywordtype}{void}\ Explosive::loadFiles()}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ explosiveTexture\ =\ std::make\_shared<sf::Texture>(m\_textureManager.getTexture(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)dynamite.png"{}}));}
+\DoxyCodeLine{00012\ \ \ \ \ explosiveSprite.setTexture(*explosiveTexture);}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keywordtype}{void}\ Explosive::setupExplosive()}
+\DoxyCodeLine{00017\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ explosiveSprite.setOrigin(explosiveSprite.getLocalBounds().width\ /\ 2,\ explosiveSprite.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00019\ \ \ \ \ explosiveSprite.setPosition(sf::Vector2f(explosivePos.x\ +\ 15,\ explosivePos.y\ +\ 15));}
+\DoxyCodeLine{00020\ \ \ \ \ explosiveSprite.setScale(0.25,\ 0.25);}
+\DoxyCodeLine{00021\ \}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keywordtype}{void}\ Explosive::update(sf::Time\ t\_deltaTime)}
+\DoxyCodeLine{00024\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordflow}{if}\ (primed\ ==\ \textcolor{keyword}{true}\ \&\&\ exploded\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00026\ \ \ \ \ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ flashDynamite();}
+\DoxyCodeLine{00028\ \ \ \ \ \}}
+\DoxyCodeLine{00029\ \}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{keywordtype}{void}\ Explosive::render(sf::RenderWindow\&\ t\_window)}
+\DoxyCodeLine{00032\ \{}
+\DoxyCodeLine{00033\ \ \ \ \ t\_window.draw(explosiveSprite);}
+\DoxyCodeLine{00034\ \}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ sf::Sprite\&\ Explosive::getExplosive()}
+\DoxyCodeLine{00037\ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordflow}{return}\ explosiveSprite;}
+\DoxyCodeLine{00039\ \}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{keywordtype}{void}\ Explosive::flashDynamite()}
+\DoxyCodeLine{00042\ \{}
+\DoxyCodeLine{00043\ \ \ \ \ timer++;}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ "{}timer\ "{}\ <<\ timer\ <<\ std::endl;}}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordflow}{if}\ (timer\ >\ 20)}
+\DoxyCodeLine{00046\ \ \ \ \ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ timer\ =\ 0;}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ flashCount\ +=\ 1;}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (red\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ explosiveSprite.setColor(sf::Color(176,\ 16,\ 16,\ 255));}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ red\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (red\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ explosiveSprite.setColor(sf::Color(242,\ 244,\ 247,\ 255));}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ red\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00059\ \ \ \ \ \}}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordflow}{if}\ (flashCount\ >\ 6)}
+\DoxyCodeLine{00061\ \ \ \ \ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ exploded\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00063\ \ \ \ \ \}}
+\DoxyCodeLine{00064\ \}}
+
+\end{DoxyCode}

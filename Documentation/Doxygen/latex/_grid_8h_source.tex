@@ -1,0 +1,40 @@
+\doxysection{Grid.\+h}
+\label{_grid_8h_source}\index{NoCodeGameEditor/Grid.h@{NoCodeGameEditor/Grid.h}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}SFML/Graphics.hpp"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}Cell.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00013\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }Grid}
+\DoxyCodeLine{00017\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ Cell*\ myCell;}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ MAX\_CELLS\ =\ 900;}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ MAX\_ROWS\ =\ 30;}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ MAX\_COLS\ =\ 30;}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{float}\ gameWidth\ =\ 0;}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{float}\ gameHeight\ =\ 0;}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00029\ \ \ \ \ std::vector<std::vector<Cell>>\ theGrid;}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ Grid(\textcolor{keywordtype}{float}\ t\_gameWidth,\ \textcolor{keywordtype}{float}\ t\_gameHeight);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ setupGrid(\textcolor{keywordtype}{int}\ t\_gridParams);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ update(sf::Time\&\ t\_deltaTime);}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ render(sf::RenderWindow\&\ t\_window,\ \textcolor{keywordtype}{int}\ t\_gridParams);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \};}
+
+\end{DoxyCode}

@@ -1,0 +1,489 @@
+\doxysection{Choice\+Bar.\+cpp}
+\label{_choice_bar_8cpp_source}\index{NoCodeGameEditor/ChoiceBar.cpp@{NoCodeGameEditor/ChoiceBar.cpp}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}ChoiceBar.h"{}}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ ChoiceBar::ChoiceBar(\textcolor{keywordtype}{float}\ t\_gameWidth,\ \textcolor{keywordtype}{float}\ t\_gameHeight)\ :\ gameWidth(t\_gameWidth),\ gameHeight(t\_gameHeight)}
+\DoxyCodeLine{00004\ \{}
+\DoxyCodeLine{00005\ \ \ \ \ loadFiles();}
+\DoxyCodeLine{00006\ \ \ \ \ setupSprites();}
+\DoxyCodeLine{00007\ \}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keywordtype}{void}\ ChoiceBar::loadFiles()}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keywordflow}{if}\ (!choiceBarTexture.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)choicebar.png"{}}))}
+\DoxyCodeLine{00012\ \ \ \ \ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ toolbar\ (choicebar.png)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00015\ \ \ \ \ \}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{comment}{//WALLS-\/-\/WALLS-\/-\/WALLS-\/-\/WALLS-\/-\/WALLS-\/-\/WALLS-\/-\/WALLS-\/-\/WALLS-\/-\/WALLS-\/-\/WALLS-\/-\/WALLS-\/-\/WALLS-\/-\/WALLS-\/-\/WALLS-\/-\/WALLS-\/-\/WALLS-\/-\/WALLS-\/-\/WALLS-\/-\/WALLS-\/-\/WALLS-\/-\/WALLS}}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{comment}{//WALLS-\/-\/WALLS-\/-\/WALLS-\/-\/WALLS-\/-\/WALLS-\/-\/WALLS-\/-\/WALLS-\/-\/WALLS-\/-\/WALLS-\/-\/WALLS-\/-\/WALLS-\/-\/WALLS-\/-\/WALLS-\/-\/WALLS-\/-\/WALLS-\/-\/WALLS-\/-\/WALLS-\/-\/WALLS-\/-\/WALLS-\/-\/WALLS-\/-\/WALLS}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordflow}{if}\ (!wallChoiceTex1.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)WALLS\(\backslash\)\(\backslash\)wallGrey.png"{}}))}
+\DoxyCodeLine{00021\ \ \ \ \ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ wall\ (wallGrey)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00024\ \ \ \ \ \}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordflow}{if}\ (!wallChoiceTex2.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)WALLS\(\backslash\)\(\backslash\)wallBrown.png"{}}))}
+\DoxyCodeLine{00027\ \ \ \ \ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ wall\ (wallBrown)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00030\ \ \ \ \ \}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordflow}{if}\ (!wallChoiceTex3.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)WALLS\(\backslash\)\(\backslash\)wallRed.png"{}}))}
+\DoxyCodeLine{00033\ \ \ \ \ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ wall\ (wallRed)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00036\ \ \ \ \ \}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{comment}{//ENEMIES-\/-\/ENEMIES-\/-\/ENEMIES-\/-\/ENEMIES-\/-\/ENEMIES-\/-\/ENEMIES-\/-\/ENEMIES-\/-\/ENEMIES-\/-\/ENEMIES-\/-\/ENEMIES-\/-\/ENEMIES-\/-\/ENEMIES-\/-\/ENEMIES-\/-\/ENEMIES-\/-\/ENEMIES-\/-\/ENEMIES}}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{comment}{//ENEMIES-\/-\/ENEMIES-\/-\/ENEMIES-\/-\/ENEMIES-\/-\/ENEMIES-\/-\/ENEMIES-\/-\/ENEMIES-\/-\/ENEMIES-\/-\/ENEMIES-\/-\/ENEMIES-\/-\/ENEMIES-\/-\/ENEMIES-\/-\/ENEMIES-\/-\/ENEMIES-\/-\/ENEMIES-\/-\/ENEMIES}}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordflow}{if}\ (!enemyChoiceTex1.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)ENEMIES\(\backslash\)\(\backslash\)ENEMY1\(\backslash\)\(\backslash\)Enemy1-\/choice.png"{}}))}
+\DoxyCodeLine{00041\ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ enemyChoiceTex1\ (Enemy1-\/choice)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00044\ \ \ \ \ \}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordflow}{if}\ (!enemyChoiceTex2.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)ENEMIES\(\backslash\)\(\backslash\)ENEMY2\(\backslash\)\(\backslash\)Enemy2-\/choice.png"{}}))}
+\DoxyCodeLine{00047\ \ \ \ \ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ enemyChoiceTex2\ (Enemy2-\/choice)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00050\ \ \ \ \ \}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordflow}{if}\ (!enemyChoiceTex3.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)ENEMIES\(\backslash\)\(\backslash\)ENEMY3\(\backslash\)\(\backslash\)Enemy3-\/choice.png"{}}))}
+\DoxyCodeLine{00053\ \ \ \ \ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ enemyChoiceTex3\ (Enemy3-\/choice)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00056\ \ \ \ \ \}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{comment}{//OBJECTIVES-\/-\/OBJECTIVES-\/-\/OBJECTIVES-\/-\/OBJECTIVES-\/-\/OBJECTIVES-\/-\/OBJECTIVES-\/-\/OBJECTIVES-\/-\/OBJECTIVES-\/-\/OBJECTIVES-\/-\/OBJECTIVES-\/-\/OBJECTIVES-\/-\/OBJECTIVES}}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{comment}{//OBJECTIVES-\/-\/OBJECTIVES-\/-\/OBJECTIVES-\/-\/OBJECTIVES-\/-\/OBJECTIVES-\/-\/OBJECTIVES-\/-\/OBJECTIVES-\/-\/OBJECTIVES-\/-\/OBJECTIVES-\/-\/OBJECTIVES-\/-\/OBJECTIVES-\/-\/OBJECTIVES}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordflow}{if}\ (!coinTexture.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)coin.png"{}}))}
+\DoxyCodeLine{00062\ \ \ \ \ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ coinTexture\ (coin)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00065\ \ \ \ \ \}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordflow}{if}\ (!doorTexture.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)door.png"{}}))}
+\DoxyCodeLine{00068\ \ \ \ \ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ doorTexture\ (door)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00071\ \ \ \ \ \}}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordflow}{if}\ (!monumentTexture.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)monument.png"{}}))}
+\DoxyCodeLine{00074\ \ \ \ \ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ monumentTexture\ (monument)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00077\ \ \ \ \ \}}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{comment}{//ITEMS-\/-\/ITEMS-\/-\/ITEMS-\/-\/ITEMS-\/-\/ITEMS-\/-\/ITEMS-\/-\/ITEMS-\/-\/ITEMS-\/-\/ITEMS-\/-\/ITEMS-\/-\/ITEMS-\/-\/ITEMS-\/-\/ITEMS-\/-\/ITEMS-\/-\/ITEMS-\/-\/ITEMS-\/-\/ITEMS-\/-\/ITEMS-\/-\/ITEMS-\/-\/ITEMS-\/-\/ITEMS}}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{comment}{//ITEMS-\/-\/ITEMS-\/-\/ITEMS-\/-\/ITEMS-\/-\/ITEMS-\/-\/ITEMS-\/-\/ITEMS-\/-\/ITEMS-\/-\/ITEMS-\/-\/ITEMS-\/-\/ITEMS-\/-\/ITEMS-\/-\/ITEMS-\/-\/ITEMS-\/-\/ITEMS-\/-\/ITEMS-\/-\/ITEMS-\/-\/ITEMS-\/-\/ITEMS-\/-\/ITEMS-\/-\/ITEMS}}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordflow}{if}\ (!medkitTexture.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)medkit.png"{}}))}
+\DoxyCodeLine{00083\ \ \ \ \ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ medkitTexture\ (medkit)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00086\ \ \ \ \ \}}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordflow}{if}\ (!explosiveTexture.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)dynamite.png"{}}))}
+\DoxyCodeLine{00089\ \ \ \ \ \{}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ explosiveTexture\ (dynamite)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00092\ \ \ \ \ \}}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{comment}{//POWERUPS-\/-\/POWERUPS-\/-\/POWERUPS-\/-\/POWERUPS-\/-\/POWERUPS-\/-\/POWERUPS-\/-\/POWERUPS-\/-\/POWERUPS-\/-\/POWERUPS-\/-\/POWERUPS-\/-\/POWERUPS-\/-\/POWERUPS-\/-\/POWERUPS-\/-\/POWERUPS-\/-\/POWERUPS}}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{comment}{//POWERUPS-\/-\/POWERUPS-\/-\/POWERUPS-\/-\/POWERUPS-\/-\/POWERUPS-\/-\/POWERUPS-\/-\/POWERUPS-\/-\/POWERUPS-\/-\/POWERUPS-\/-\/POWERUPS-\/-\/POWERUPS-\/-\/POWERUPS-\/-\/POWERUPS-\/-\/POWERUPS-\/-\/POWERUPS}}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordflow}{if}\ (!nukeTexture.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)nuke.png"{}}))}
+\DoxyCodeLine{00099\ \ \ \ \ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ nukeTexture\ (nuke)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00102\ \ \ \ \ \}}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordflow}{if}\ (!invincibilityTexture.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)invincibility.png"{}}))}
+\DoxyCodeLine{00105\ \ \ \ \ \{}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ invincibilityTexture\ (invincibility)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00108\ \ \ \ \ \}}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keywordflow}{if}\ (!invisibilityTexture.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)invisibility.png"{}}))}
+\DoxyCodeLine{00111\ \ \ \ \ \{}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ invisibility\ (invisibility)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00114\ \ \ \ \ \}}
+\DoxyCodeLine{00115\ \}}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \textcolor{keywordtype}{void}\ ChoiceBar::setupSprites()}
+\DoxyCodeLine{00118\ \{}
+\DoxyCodeLine{00119\ \ \ \ \ choiceBarSprite.setTexture(choiceBarTexture);}
+\DoxyCodeLine{00120\ \ \ \ \ wallChoiceSprite[0].setTexture(wallChoiceTex1);}
+\DoxyCodeLine{00121\ \ \ \ \ wallChoiceSprite[1].setTexture(wallChoiceTex2);}
+\DoxyCodeLine{00122\ \ \ \ \ wallChoiceSprite[2].setTexture(wallChoiceTex3);}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ enemyChoiceSprite[0].setTexture(enemyChoiceTex1);}
+\DoxyCodeLine{00125\ \ \ \ \ enemyChoiceSprite[1].setTexture(enemyChoiceTex2);}
+\DoxyCodeLine{00126\ \ \ \ \ enemyChoiceSprite[2].setTexture(enemyChoiceTex3);}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \ \ \ \ coinSprite.setTexture(coinTexture);}
+\DoxyCodeLine{00129\ \ \ \ \ doorSprite.setTexture(doorTexture);}
+\DoxyCodeLine{00130\ \ \ \ \ monumentSprite.setTexture(monumentTexture);}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \ \ \ \ medkitSprite.setTexture(medkitTexture);}
+\DoxyCodeLine{00133\ \ \ \ \ explosiveSprite.setTexture(explosiveTexture);}
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{comment}{//gunSprite.setTexture(gunTexture);}}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \ \ \ \ nukeSprite.setTexture(nukeTexture);}
+\DoxyCodeLine{00137\ \ \ \ \ invincibilitySprite.setTexture(invincibilityTexture);}
+\DoxyCodeLine{00138\ \ \ \ \ invisibilitySprite.setTexture(invisibilityTexture);}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \ \ \ \ choiceBarSprite.setScale(1,\ 1);}
+\DoxyCodeLine{00141\ \ \ \ \ choiceBarSprite.setOrigin(choiceBarSprite.getLocalBounds().width\ /\ 2,\ choiceBarSprite.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00142\ \ \ \ \ choiceBarSprite.setPosition(100,\ gameHeight\ /\ 2);}
+\DoxyCodeLine{00143\ \ \ \ \ std::cout\ <<\ choiceBarSprite.getPosition().y\ <<\ std::endl;}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{keywordtype}{int}\ yPos\ =\ choiceBarSprite.getPosition().y\ -\/\ choiceBarSprite.getLocalBounds().height\ /\ 3;}
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ MAX\_CHOICES;\ i++)}
+\DoxyCodeLine{00147\ \ \ \ \ \{}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ wallChoiceSprite[i].scale(3,\ 3);}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ wallChoiceSprite[i].setOrigin(wallChoiceSprite[i].getLocalBounds().width\ /\ 2,\ wallChoiceSprite[i].getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ wallChoiceSprite[i].setPosition(choiceBarSprite.getPosition().x,\ yPos);}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ enemyChoiceSprite[i].scale(3,\ 3);}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ enemyChoiceSprite[i].setOrigin(enemyChoiceSprite[i].getLocalBounds().width\ /\ 2,\ enemyChoiceSprite[i].getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ enemyChoiceSprite[i].setPosition(choiceBarSprite.getPosition().x,\ yPos);}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ yPos\ +=\ choiceBarSprite.getLocalBounds().height\ /\ 3;}
+\DoxyCodeLine{00158\ \ \ \ \ \}}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00160\ \ \ \ \ coinSprite.setOrigin(coinSprite.getLocalBounds().width\ /\ 2,\ coinSprite.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00161\ \ \ \ \ coinSprite.setPosition(choiceBarSprite.getPosition().x,\ choiceBarSprite.getPosition().y\ -\/\ choiceBarSprite.getLocalBounds().height\ /\ 3);}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ \ \ \ \ doorSprite.setOrigin(doorSprite.getLocalBounds().width\ /\ 2,\ doorSprite.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00165\ \ \ \ \ doorSprite.setPosition(choiceBarSprite.getPosition().x,\ choiceBarSprite.getPosition().y);}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00167\ \ \ \ \ monumentSprite.setOrigin(monumentSprite.getLocalBounds().width\ /\ 2,\ monumentSprite.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00168\ \ \ \ \ monumentSprite.setPosition(choiceBarSprite.getPosition().x,\ choiceBarSprite.getPosition().y\ +\ choiceBarSprite.getLocalBounds().height\ /\ 3);}
+\DoxyCodeLine{00169\ \ \ \ \ }
+\DoxyCodeLine{00170\ \ \ \ \ medkitSprite.setOrigin(medkitSprite.getLocalBounds().width\ /\ 2,\ medkitSprite.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00171\ \ \ \ \ medkitSprite.setPosition(choiceBarSprite.getPosition().x,\ choiceBarSprite.getPosition().y\ -\/\ choiceBarSprite.getLocalBounds().height\ /\ 3);}
+\DoxyCodeLine{00172\ \ \ \ \ }
+\DoxyCodeLine{00173\ \ \ \ \ explosiveSprite.setOrigin(explosiveSprite.getLocalBounds().width\ /\ 2,\ explosiveSprite.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00174\ \ \ \ \ explosiveSprite.setPosition(choiceBarSprite.getPosition().x,\ choiceBarSprite.getPosition().y);}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00176\ \ \ \ \ nukeSprite.setOrigin(nukeSprite.getLocalBounds().width\ /\ 2,\ nukeSprite.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00177\ \ \ \ \ nukeSprite.setPosition(choiceBarSprite.getPosition().x,\ choiceBarSprite.getPosition().y\ -\/\ choiceBarSprite.getLocalBounds().height\ /\ 3);}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00179\ \ \ \ \ invincibilitySprite.setOrigin(invincibilitySprite.getLocalBounds().width\ /\ 2,\ invincibilitySprite.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00180\ \ \ \ \ invincibilitySprite.setPosition(choiceBarSprite.getPosition().x,\ choiceBarSprite.getPosition().y);}
+\DoxyCodeLine{00181\ }
+\DoxyCodeLine{00182\ \ \ \ \ invisibilitySprite.setOrigin(invisibilitySprite.getLocalBounds().width\ /\ 2,\ invisibilitySprite.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00183\ \ \ \ \ invisibilitySprite.setPosition(choiceBarSprite.getPosition().x,\ choiceBarSprite.getPosition().y\ +\ choiceBarSprite.getLocalBounds().height\ /\ 3);}
+\DoxyCodeLine{00184\ \}}
+\DoxyCodeLine{00185\ }
+\DoxyCodeLine{00186\ \textcolor{keywordtype}{void}\ ChoiceBar::update(sf::Time\ t\_deltaTime,\ sf::RenderWindow\&\ t\_window,\ std::string\ t\_currentMode,\ \textcolor{keywordtype}{int}\ t\_chosenGameType)}
+\DoxyCodeLine{00187\ \{}
+\DoxyCodeLine{00188\ \ \ \ \ \textcolor{keywordflow}{if}\ (chosenGT\ !=\ t\_chosenGameType)}
+\DoxyCodeLine{00189\ \ \ \ \ \{}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ chosenGT\ =\ t\_chosenGameType;}
+\DoxyCodeLine{00191\ \ \ \ \ \}}
+\DoxyCodeLine{00192\ }
+\DoxyCodeLine{00193\ \ \ \ \ setToolPosForView(t\_window);}
+\DoxyCodeLine{00194\ \ \ \ \ currentMode\ =\ t\_currentMode;}
+\DoxyCodeLine{00195\ }
+\DoxyCodeLine{00196\ \ \ \ \ sf::Vector2f\ mousePos\ =\ t\_window.mapPixelToCoords(sf::Mouse::getPosition(t\_window));}
+\DoxyCodeLine{00197\ \ \ \ \ checkForMousePosAndClick(t\_window,\ mousePos);}
+\DoxyCodeLine{00198\ \}}
+\DoxyCodeLine{00199\ }
+\DoxyCodeLine{00200\ \textcolor{keywordtype}{void}\ ChoiceBar::render(sf::RenderWindow\&\ t\_window)}
+\DoxyCodeLine{00201\ \{}
+\DoxyCodeLine{00202\ \ \ \ \ }
+\DoxyCodeLine{00203\ \ \ \ \ t\_window.draw(choiceBarSprite);}
+\DoxyCodeLine{00204\ }
+\DoxyCodeLine{00205\ }
+\DoxyCodeLine{00206\ \ \ \ \ \textcolor{keywordflow}{if}\ (currentMode\ ==\ \textcolor{stringliteral}{"{}WALLS"{}})}
+\DoxyCodeLine{00207\ \ \ \ \ \{}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ MAX\_CHOICES;\ i++)}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ t\_window.draw(wallChoiceSprite[i]);}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00212\ \ \ \ \ \}}
+\DoxyCodeLine{00213\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentMode\ ==\ \textcolor{stringliteral}{"{}ENEMIES"{}})}
+\DoxyCodeLine{00214\ \ \ \ \ \{}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ MAX\_CHOICES;\ i++)}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ t\_window.draw(enemyChoiceSprite[i]);}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00219\ \ \ \ \ \}}
+\DoxyCodeLine{00220\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentMode\ ==\ \textcolor{stringliteral}{"{}OBJECTIVES"{}})}
+\DoxyCodeLine{00221\ \ \ \ \ \{}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (chosenGT\ !=\ 0)}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (chosenGT\ ==\ 1)}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ t\_window.draw(monumentSprite);}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (chosenGT\ ==\ 2)}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ t\_window.draw(coinSprite);}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ t\_window.draw(doorSprite);}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00234\ \ \ \ \ \}}
+\DoxyCodeLine{00235\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentMode\ ==\ \textcolor{stringliteral}{"{}ITEMS"{}})}
+\DoxyCodeLine{00236\ \ \ \ \ \{}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ t\_window.draw(medkitSprite);}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ t\_window.draw(explosiveSprite);}
+\DoxyCodeLine{00239\ \ \ \ \ \}}
+\DoxyCodeLine{00240\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentMode\ ==\ \textcolor{stringliteral}{"{}POWERUPS"{}})}
+\DoxyCodeLine{00241\ \ \ \ \ \{}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ t\_window.draw(nukeSprite);}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ t\_window.draw(invincibilitySprite);}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ t\_window.draw(invisibilitySprite);}
+\DoxyCodeLine{00245\ \ \ \ \ \}}
+\DoxyCodeLine{00246\ \}}
+\DoxyCodeLine{00247\ }
+\DoxyCodeLine{00248\ \textcolor{keywordtype}{void}\ ChoiceBar::checkForMousePosAndClick(sf::RenderWindow\&\ t\_window,\ sf::Vector2f\ t\_mousePos)}
+\DoxyCodeLine{00249\ \{}
+\DoxyCodeLine{00250\ \ \ \ \ }
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ MAX\_CHOICES;\ i++)}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (currentMode\ ==\ \textcolor{stringliteral}{"{}WALLS"{}})}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ processMouseClick(wallChoiceSprite[i].getGlobalBounds(),\ t\_mousePos,\ i);}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentMode\ ==\ \textcolor{stringliteral}{"{}ENEMIES"{}})}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ processMouseClick(enemyChoiceSprite[i].getGlobalBounds(),\ t\_mousePos,\ i);}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00263\ }
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (currentMode\ ==\ \textcolor{stringliteral}{"{}OBJECTIVES"{}})}
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (chosenGT\ !=\ 0)}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (chosenGT\ ==\ 1)}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ processMouseClick(monumentSprite.getGlobalBounds(),\ t\_mousePos,\ 8);}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (chosenGT\ ==\ 2)}
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ processMouseClick(coinSprite.getGlobalBounds(),\ t\_mousePos,\ 6);}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ processMouseClick(doorSprite.getGlobalBounds(),\ t\_mousePos,\ 7);}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00279\ }
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (currentMode\ ==\ \textcolor{stringliteral}{"{}ITEMS"{}})}
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ \ \ \ \ processMouseClick(medkitSprite.getGlobalBounds(),\ t\_mousePos,\ 9);}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \ \ \ \ processMouseClick(explosiveSprite.getGlobalBounds(),\ t\_mousePos,\ 10);}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//11}}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00286\ }
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (currentMode\ ==\ \textcolor{stringliteral}{"{}POWERUPS"{}})}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \ \ \ \ processMouseClick(nukeSprite.getGlobalBounds(),\ t\_mousePos,\ 12);}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \ \ \ \ processMouseClick(invincibilitySprite.getGlobalBounds(),\ t\_mousePos,\ 13);}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \ \ \ \ processMouseClick(invisibilitySprite.getGlobalBounds(),\ t\_mousePos,\ 14);}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00293\ \}}
+\DoxyCodeLine{00294\ }
+\DoxyCodeLine{00295\ \textcolor{keywordtype}{void}\ ChoiceBar::processMouseClick(sf::FloatRect\ t\_object,\ sf::Vector2f\ t\_mousePos,\ \textcolor{keywordtype}{int}\ t\_numLoops)}
+\DoxyCodeLine{00296\ \{}
+\DoxyCodeLine{00297\ \ \ \ \ \textcolor{keywordflow}{if}\ (t\_object.contains(t\_mousePos))}
+\DoxyCodeLine{00298\ \ \ \ \ \{}
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ changeTools(t\_numLoops);}
+\DoxyCodeLine{00300\ }
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Mouse::isButtonPressed(sf::Mouse::Left))}
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (currentMode\ ==\ \textcolor{stringliteral}{"{}ENEMIES"{}})}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ currentChoice\ =\ t\_numLoops\ +\ 3;}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ currentChoice\ =\ t\_numLoops;}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ \ \ \ \ choiceMade\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00313\ \ \ \ \ \}}
+\DoxyCodeLine{00314\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00315\ \ \ \ \ \{}
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ resetTools(t\_numLoops);}
+\DoxyCodeLine{00317\ \ \ \ \ \}}
+\DoxyCodeLine{00318\ \}}
+\DoxyCodeLine{00319\ }
+\DoxyCodeLine{00320\ \textcolor{keywordtype}{void}\ ChoiceBar::resetTools(\textcolor{keywordtype}{int}\ t\_current)}
+\DoxyCodeLine{00321\ \{}
+\DoxyCodeLine{00322\ \ \ \ \ \textcolor{keywordflow}{if}\ (currentMode\ ==\ \textcolor{stringliteral}{"{}WALLS"{}})}
+\DoxyCodeLine{00323\ \ \ \ \ \{}
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ wallChoiceSprite[t\_current].setScale(3,\ 3);}
+\DoxyCodeLine{00325\ }
+\DoxyCodeLine{00326\ \ \ \ \ \}}
+\DoxyCodeLine{00327\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentMode\ ==\ \textcolor{stringliteral}{"{}ENEMIES"{}})}
+\DoxyCodeLine{00328\ \ \ \ \ \{}
+\DoxyCodeLine{00329\ \ \ \ \ \ \ \ \ enemyChoiceSprite[t\_current].setScale(3,\ 3);}
+\DoxyCodeLine{00330\ }
+\DoxyCodeLine{00331\ \ \ \ \ \}}
+\DoxyCodeLine{00332\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentMode\ ==\ \textcolor{stringliteral}{"{}OBJECTIVES"{}})}
+\DoxyCodeLine{00333\ \ \ \ \ \{}
+\DoxyCodeLine{00334\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (t\_current)}
+\DoxyCodeLine{00335\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 6:}
+\DoxyCodeLine{00337\ \ \ \ \ \ \ \ \ \ \ \ \ coinSprite.setScale(1,\ 1);}
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00339\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 7:}
+\DoxyCodeLine{00340\ \ \ \ \ \ \ \ \ \ \ \ \ doorSprite.setScale(1,\ 1);}
+\DoxyCodeLine{00341\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00342\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 8:}
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ \ \ \ \ monumentSprite.setScale(1,\ 1);}
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00345\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00346\ \ \ \ \ \}}
+\DoxyCodeLine{00347\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentMode\ ==\ \textcolor{stringliteral}{"{}ITEMS"{}})}
+\DoxyCodeLine{00348\ \ \ \ \ \{}
+\DoxyCodeLine{00349\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (t\_current)}
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 9:}
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ \ \ \ \ medkitSprite.setScale(1,\ 1);}
+\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 10:}
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ \ \ \ \ explosiveSprite.setScale(1,\ 1);}
+\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 11:}
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Yaknow"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00361\ \ \ \ \ \}}
+\DoxyCodeLine{00362\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentMode\ ==\ \textcolor{stringliteral}{"{}POWERUPS"{}})}
+\DoxyCodeLine{00363\ \ \ \ \ \{}
+\DoxyCodeLine{00364\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (t\_current)}
+\DoxyCodeLine{00365\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00366\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 12:}
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ \ \ \ \ nukeSprite.setScale(1,\ 1);}
+\DoxyCodeLine{00368\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00369\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 13:}
+\DoxyCodeLine{00370\ \ \ \ \ \ \ \ \ \ \ \ \ invincibilitySprite.setScale(1,\ 1);}
+\DoxyCodeLine{00371\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00372\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 14:}
+\DoxyCodeLine{00373\ \ \ \ \ \ \ \ \ \ \ \ \ invisibilitySprite.setScale(1,\ 1);}
+\DoxyCodeLine{00374\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00375\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00376\ \ \ \ \ \}}
+\DoxyCodeLine{00377\ \}}
+\DoxyCodeLine{00378\ }
+\DoxyCodeLine{00379\ \textcolor{keywordtype}{void}\ ChoiceBar::changeTools(\textcolor{keywordtype}{int}\ t\_current)}
+\DoxyCodeLine{00380\ \{}
+\DoxyCodeLine{00381\ \ \ \ \ \textcolor{keywordflow}{if}\ (currentMode\ ==\ \textcolor{stringliteral}{"{}WALLS"{}})}
+\DoxyCodeLine{00382\ \ \ \ \ \{}
+\DoxyCodeLine{00383\ \ \ \ \ \ \ \ \ wallChoiceSprite[t\_current].setScale(4,\ 4);}
+\DoxyCodeLine{00384\ }
+\DoxyCodeLine{00385\ \ \ \ \ \}}
+\DoxyCodeLine{00386\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentMode\ ==\ \textcolor{stringliteral}{"{}ENEMIES"{}})}
+\DoxyCodeLine{00387\ \ \ \ \ \{}
+\DoxyCodeLine{00388\ \ \ \ \ \ \ \ \ enemyChoiceSprite[t\_current].setScale(4,\ 4);}
+\DoxyCodeLine{00389\ }
+\DoxyCodeLine{00390\ \ \ \ \ \}}
+\DoxyCodeLine{00391\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentMode\ ==\ \textcolor{stringliteral}{"{}OBJECTIVES"{}})}
+\DoxyCodeLine{00392\ \ \ \ \ \{}
+\DoxyCodeLine{00393\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (t\_current)}
+\DoxyCodeLine{00394\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00395\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 6:}
+\DoxyCodeLine{00396\ \ \ \ \ \ \ \ \ \ \ \ \ coinSprite.setScale(1.3,\ 1.3);}
+\DoxyCodeLine{00397\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00398\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 7:}
+\DoxyCodeLine{00399\ \ \ \ \ \ \ \ \ \ \ \ \ doorSprite.setScale(1.3,\ 1.3);}
+\DoxyCodeLine{00400\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00401\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 8:}
+\DoxyCodeLine{00402\ \ \ \ \ \ \ \ \ \ \ \ \ monumentSprite.setScale(1.3,\ 1.3);}
+\DoxyCodeLine{00403\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00404\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00405\ \ \ \ \ \}}
+\DoxyCodeLine{00406\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentMode\ ==\ \textcolor{stringliteral}{"{}ITEMS"{}})}
+\DoxyCodeLine{00407\ \ \ \ \ \{}
+\DoxyCodeLine{00408\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (t\_current)}
+\DoxyCodeLine{00409\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00410\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 9:}
+\DoxyCodeLine{00411\ \ \ \ \ \ \ \ \ \ \ \ \ medkitSprite.setScale(1.3,\ 1.3);}
+\DoxyCodeLine{00412\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00413\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 10:}
+\DoxyCodeLine{00414\ \ \ \ \ \ \ \ \ \ \ \ \ explosiveSprite.setScale(1.3,\ 1.3);}
+\DoxyCodeLine{00415\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00416\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 11:}
+\DoxyCodeLine{00417\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Yaknow"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00418\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00419\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00420\ \ \ \ \ \}}
+\DoxyCodeLine{00421\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentMode\ ==\ \textcolor{stringliteral}{"{}POWERUPS"{}})}
+\DoxyCodeLine{00422\ \ \ \ \ \{}
+\DoxyCodeLine{00423\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (t\_current)}
+\DoxyCodeLine{00424\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00425\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 12:}
+\DoxyCodeLine{00426\ \ \ \ \ \ \ \ \ \ \ \ \ nukeSprite.setScale(1.3,\ 1.3);}
+\DoxyCodeLine{00427\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00428\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 13:}
+\DoxyCodeLine{00429\ \ \ \ \ \ \ \ \ \ \ \ \ invincibilitySprite.setScale(1.3,\ 1.3);}
+\DoxyCodeLine{00430\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00431\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 14:}
+\DoxyCodeLine{00432\ \ \ \ \ \ \ \ \ \ \ \ \ invisibilitySprite.setScale(1.3,\ 1.3);}
+\DoxyCodeLine{00433\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00434\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00435\ \ \ \ \ \}}
+\DoxyCodeLine{00436\ \}}
+\DoxyCodeLine{00437\ }
+\DoxyCodeLine{00438\ \textcolor{keywordtype}{void}\ ChoiceBar::setToolPosForView(sf::RenderWindow\&\ t\_window)}
+\DoxyCodeLine{00439\ \{}
+\DoxyCodeLine{00440\ \ \ \ \ sf::Vector2f\ pos(100,\ gameHeight\ /\ 2);}
+\DoxyCodeLine{00441\ \ \ \ \ pos\ =\ t\_window.mapPixelToCoords(\textcolor{keyword}{static\_cast<}sf::Vector2i\textcolor{keyword}{>}(pos));}
+\DoxyCodeLine{00442\ \ \ \ \ choiceBarSprite.setPosition(pos);}
+\DoxyCodeLine{00443\ }
+\DoxyCodeLine{00444\ \ \ \ \ \textcolor{keywordtype}{int}\ yPos\ =\ gameHeight\ /\ 2\ -\/\ choiceBarSprite.getLocalBounds().height\ /\ 3;}
+\DoxyCodeLine{00445\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ MAX\_CHOICES;\ i++)}
+\DoxyCodeLine{00446\ \ \ \ \ \{}
+\DoxyCodeLine{00447\ }
+\DoxyCodeLine{00448\ \ \ \ \ \ \ \ \ sf::Vector2f\ pos2(100,\ yPos);}
+\DoxyCodeLine{00449\ \ \ \ \ \ \ \ \ pos2\ =\ t\_window.mapPixelToCoords(\textcolor{keyword}{static\_cast<}sf::Vector2i\textcolor{keyword}{>}(pos2));}
+\DoxyCodeLine{00450\ \ \ \ \ \ \ \ \ wallChoiceSprite[i].setPosition(pos2);}
+\DoxyCodeLine{00451\ }
+\DoxyCodeLine{00452\ \ \ \ \ \ \ \ \ sf::Vector2f\ pos3(100,\ yPos);}
+\DoxyCodeLine{00453\ \ \ \ \ \ \ \ \ pos3\ =\ t\_window.mapPixelToCoords(\textcolor{keyword}{static\_cast<}sf::Vector2i\textcolor{keyword}{>}(pos3));}
+\DoxyCodeLine{00454\ \ \ \ \ \ \ \ \ enemyChoiceSprite[i].setPosition(pos3);}
+\DoxyCodeLine{00455\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ ==\ 0)}
+\DoxyCodeLine{00456\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00457\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Vector2f\ pos4(100,\ yPos);}
+\DoxyCodeLine{00458\ \ \ \ \ \ \ \ \ \ \ \ \ pos4\ =\ t\_window.mapPixelToCoords(\textcolor{keyword}{static\_cast<}sf::Vector2i\textcolor{keyword}{>}(pos4));}
+\DoxyCodeLine{00459\ \ \ \ \ \ \ \ \ \ \ \ \ coinSprite.setPosition(pos4);}
+\DoxyCodeLine{00460\ \ \ \ \ \ \ \ \ \ \ \ \ medkitSprite.setPosition(pos4);}
+\DoxyCodeLine{00461\ \ \ \ \ \ \ \ \ \ \ \ \ nukeSprite.setPosition(pos4);}
+\DoxyCodeLine{00462\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00463\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (i\ ==\ 1)}
+\DoxyCodeLine{00464\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00465\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Vector2f\ pos5(100,\ yPos);}
+\DoxyCodeLine{00466\ \ \ \ \ \ \ \ \ \ \ \ \ pos5\ =\ t\_window.mapPixelToCoords(\textcolor{keyword}{static\_cast<}sf::Vector2i\textcolor{keyword}{>}(pos5));}
+\DoxyCodeLine{00467\ \ \ \ \ \ \ \ \ \ \ \ \ doorSprite.setPosition(pos5);}
+\DoxyCodeLine{00468\ \ \ \ \ \ \ \ \ \ \ \ \ explosiveSprite.setPosition(pos5);}
+\DoxyCodeLine{00469\ \ \ \ \ \ \ \ \ \ \ \ \ invincibilitySprite.setPosition(pos5);}
+\DoxyCodeLine{00470\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00471\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (i\ ==\ 2)}
+\DoxyCodeLine{00472\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00473\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Vector2f\ pos6(100,\ yPos);}
+\DoxyCodeLine{00474\ \ \ \ \ \ \ \ \ \ \ \ \ pos6\ =\ t\_window.mapPixelToCoords(\textcolor{keyword}{static\_cast<}sf::Vector2i\textcolor{keyword}{>}(pos6));}
+\DoxyCodeLine{00475\ \ \ \ \ \ \ \ \ \ \ \ \ monumentSprite.setPosition(pos6);}
+\DoxyCodeLine{00476\ \ \ \ \ \ \ \ \ \ \ \ \ gunSprite.setPosition(pos6);}
+\DoxyCodeLine{00477\ \ \ \ \ \ \ \ \ \ \ \ \ invisibilitySprite.setPosition(pos6);}
+\DoxyCodeLine{00478\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00479\ }
+\DoxyCodeLine{00480\ \ \ \ \ \ \ \ \ yPos\ +=\ choiceBarSprite.getLocalBounds().height\ /\ 3;}
+\DoxyCodeLine{00481\ \ \ \ \ \}}
+\DoxyCodeLine{00482\ }
+\DoxyCodeLine{00483\ \}}
+
+\end{DoxyCode}

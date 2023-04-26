@@ -1,0 +1,160 @@
+\doxysection{Powerups.\+cpp}
+\label{_powerups_8cpp_source}\index{NoCodeGameEditor/Powerups.cpp@{NoCodeGameEditor/Powerups.cpp}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}Powerups.h"{}}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ Powerups::Powerups(TextureManager\&\ textureManager)\ :\ m\_textureManager(textureManager)}
+\DoxyCodeLine{00004\ \{}
+\DoxyCodeLine{00005\ \ \ \ \ setupNukeFlash();}
+\DoxyCodeLine{00006\ \}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keywordtype}{void}\ Powerups::update(sf::Time\ t\_deltaTime,\ sf::RenderWindow\&\ t\_window,\ sf::FloatRect\ t\_playerRect)}
+\DoxyCodeLine{00009\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ playerCollision(t\_playerRect);}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordflow}{if}\ (nukeEnemies\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{00013\ \ \ \ \ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ flashActive\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00015\ \ \ \ \ \}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordflow}{if}\ (flashActive\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{00018\ \ \ \ \ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ "{}NukeLocation\ "{}\ <<\ tempNukeLocation.x\ <<\ "{}\ -\/-\/-\/\ "{}\ <<\ tempNukeLocation.y\ <<\ std::endl;}}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ nukeFlash.setPosition(tempNukeLocation);}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nukeFlash.getScale().x\ <=\ 600)}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ nukeFlash.setPosition(tempNukeLocation);}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ nukeFlash.setScale(nukeFlash.getScale().x\ +\ 10,\ nukeFlash.getScale().y\ +\ 10);}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nukeFlash.getFillColor().a\ <\ 253)}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nukeFlash.setFillColor(sf::Color(255,\ 255,\ 255,\ nukeFlash.getFillColor().a\ +\ 3));}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ setupNukeFlash();}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00034\ \ \ \ \ \}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordflow}{if}\ (invincibilityActive)}
+\DoxyCodeLine{00037\ \ \ \ \ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (invinceTimer.getElapsedTime().asSeconds()\ >=\ 8)}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ invincibilityActive\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ invinceTimer.restart();}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00043\ \ \ \ \ \}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordflow}{if}\ (invisibilityActive)}
+\DoxyCodeLine{00046\ \ \ \ \ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (invisTimer.getElapsedTime().asSeconds()\ >=\ 8)}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ invisibilityActive\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ invisTimer.restart();}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00052\ \ \ \ \ \}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Keyboard::isKeyPressed(sf::Keyboard::M))}
+\DoxyCodeLine{00055\ \ \ \ \ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ invisibilityActive\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ invisTimer.restart();}
+\DoxyCodeLine{00058\ \ \ \ \ \}}
+\DoxyCodeLine{00059\ \}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \textcolor{keywordtype}{void}\ Powerups::render(sf::RenderWindow\&\ t\_window)}
+\DoxyCodeLine{00062\ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ nukeVector.size();\ i++)}
+\DoxyCodeLine{00064\ \ \ \ \ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ nukeVector.at(i).get()-\/>render(t\_window);}
+\DoxyCodeLine{00066\ \ \ \ \ \}}
+\DoxyCodeLine{00067\ \ \ \ \ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ invinceVector.size();\ i++)}
+\DoxyCodeLine{00069\ \ \ \ \ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ invinceVector.at(i).get()-\/>render(t\_window);}
+\DoxyCodeLine{00071\ \ \ \ \ \}}
+\DoxyCodeLine{00072\ \ \ \ \ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ invisVector.size();\ i++)}
+\DoxyCodeLine{00074\ \ \ \ \ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ invisVector.at(i).get()-\/>render(t\_window);}
+\DoxyCodeLine{00076\ \ \ \ \ \}}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ t\_window.draw(nukeFlash);}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \}}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \textcolor{keywordtype}{void}\ Powerups::addToVector(sf::Vector2f\ t\_powerupPosition,\ \textcolor{keywordtype}{int}\ t\_powerupType)}
+\DoxyCodeLine{00083\ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordflow}{if}\ (t\_powerupType\ ==\ 0)}
+\DoxyCodeLine{00085\ \ \ \ \ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ PUPNuke\ tempNuke(t\_powerupPosition,\ m\_textureManager);}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ nukeVector.emplace\_back(\textcolor{keyword}{new}\ PUPNuke(tempNuke));}
+\DoxyCodeLine{00088\ \ \ \ \ \}}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (t\_powerupType\ ==\ 1)}
+\DoxyCodeLine{00090\ \ \ \ \ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ PUPInvincibility\ tempInvince(t\_powerupPosition,\ m\_textureManager);}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ invinceVector.emplace\_back(\textcolor{keyword}{new}\ PUPInvincibility(tempInvince));}
+\DoxyCodeLine{00093\ \ \ \ \ \}}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (t\_powerupType\ ==\ 2)}
+\DoxyCodeLine{00095\ \ \ \ \ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ PUPInvisibility\ tempInvis(t\_powerupPosition,\ m\_textureManager);}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ invisVector.emplace\_back(\textcolor{keyword}{new}\ PUPInvisibility(tempInvis));}
+\DoxyCodeLine{00098\ \ \ \ \ \}}
+\DoxyCodeLine{00099\ \}}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \textcolor{keywordtype}{bool}\ Powerups::isColliding(sf::FloatRect\ t\_obj1,\ sf::FloatRect\ t\_obj2)}
+\DoxyCodeLine{00102\ \{}
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordflow}{return}\ t\_obj1.intersects(t\_obj2);}
+\DoxyCodeLine{00104\ \}}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \textcolor{keywordtype}{void}\ Powerups::playerCollision(sf::FloatRect\ t\_playerRect)}
+\DoxyCodeLine{00107\ \{}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ nukeVector.size();\ i++)}
+\DoxyCodeLine{00110\ \ \ \ \ \{}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isColliding(nukeVector.at(i).get()-\/>getNuke().getGlobalBounds(),\ t\_playerRect))}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ tempNukeLocation\ =\ nukeVector.at(i).get()-\/>getNuke().getPosition();}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::unique\_ptr<PUPNuke>>::iterator\ begin\ =\ nukeVector.begin();}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ begin\ +=\ i;}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ nukeVector.erase(begin);}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ nukeEnemies\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00119\ \ \ \ \ \}}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ invinceVector.size();\ i++)}
+\DoxyCodeLine{00122\ \ \ \ \ \{}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isColliding(invinceVector.at(i).get()-\/>getInvincibility().getGlobalBounds(),\ t\_playerRect))}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::unique\_ptr<PUPInvincibility>>::iterator\ begin\ =\ invinceVector.begin();}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ begin\ +=\ i;}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ invinceVector.erase(begin);}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ invincibilityActive\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ invinceTimer.restart();}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00131\ \ \ \ \ \}}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ invisVector.size();\ i++)}
+\DoxyCodeLine{00134\ \ \ \ \ \{}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isColliding(invisVector.at(i).get()-\/>getInvisibility().getGlobalBounds(),\ t\_playerRect))}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::unique\_ptr<PUPInvisibility>>::iterator\ begin\ =\ invisVector.begin();}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ begin\ +=\ i;}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ invisVector.erase(begin);}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ invisibilityActive\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ invisTimer.restart();}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00143\ \ \ \ \ \}}
+\DoxyCodeLine{00144\ \}}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ \textcolor{keywordtype}{void}\ Powerups::setupNukeFlash()}
+\DoxyCodeLine{00147\ \{}
+\DoxyCodeLine{00148\ \ \ \ \ flashActive\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00149\ \ \ \ \ nukeFlash.setPosition(-\/10000,\ -\/10000);}
+\DoxyCodeLine{00150\ \ \ \ \ nukeFlash.setRadius(10);}
+\DoxyCodeLine{00151\ \ \ \ \ nukeFlash.setScale(1,1);}
+\DoxyCodeLine{00152\ \ \ \ \ nukeFlash.setOrigin(nukeFlash.getRadius()\ /\ 2,\ nukeFlash.getRadius()\ /\ 2);}
+\DoxyCodeLine{00153\ \ \ \ \ nukeFlash.setFillColor(sf::Color(255,\ 255,\ 255,\ 30));}
+\DoxyCodeLine{00154\ \}}
+
+\end{DoxyCode}

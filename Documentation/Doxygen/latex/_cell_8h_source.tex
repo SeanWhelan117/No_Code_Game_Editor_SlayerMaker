@@ -1,0 +1,49 @@
+\doxysection{Cell.\+h}
+\label{_cell_8h_source}\index{NoCodeGameEditor/Cell.h@{NoCodeGameEditor/Cell.h}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}SFML/Graphics.hpp"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }Cell}
+\DoxyCodeLine{00014\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \ \ Cell();}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ setPos(sf::Vector2f\ t\_pos);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ setupCells();}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ setID(\textcolor{keywordtype}{int}\ t\_id);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ setMarked(\textcolor{keywordtype}{int}\ t\_choiceNum,\ std::map<std::string,\ int>\&\ t\_itemsPlaced);}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ setUnmarked(std::map<std::string,\ int>\&\ t\_itemsPlaced);}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{int}\ getID();}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00067\ \ \ \ \ std::string\ getType();}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{void}\ setType(std::string\ t\_newType);}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{int}\ xPos;}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{int}\ yPos;}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00083\ \ \ \ \ sf::RectangleShape\&\ getCellShape();}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ std::string\ type\ =\ \textcolor{stringliteral}{"{}empty"{}};}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{bool}\ filled\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00089\ \ \ \ \ sf::RectangleShape\ cellShape;}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{int}\ cellID;}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \};}
+
+\end{DoxyCode}

@@ -1,0 +1,1103 @@
+\doxysection{Choose\+Game Class Reference}
+\label{class_choose_game}\index{ChooseGame@{ChooseGame}}
+
+
+{\ttfamily \#include $<$Choose\+Game.\+h$>$}
+
+
+
+Collaboration diagram for Choose\+Game\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_choose_game__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Choose\+Game} (float t\+\_\+game\+Width, float t\+\_\+game\+Height, \textbf{ Network\+Manager} \&t\+\_\+network\+Manager)
+\item 
+void \textbf{ load\+Font\+And\+Sprites} ()
+\item 
+void \textbf{ find\+Files} ()
+\item 
+void \textbf{ setup\+Sprites} ()
+\item 
+void \textbf{ setup\+Names} ()
+\item 
+void \textbf{ update} (sf\+::\+Time t\+\_\+delta\+Time, sf\+::\+Render\+Window \&t\+\_\+window)
+\item 
+void \textbf{ render} (sf\+::\+Render\+Window \&t\+\_\+window)
+\item 
+bool \textbf{ contains\+Mouse} (sf\+::\+Float\+Rect t\+\_\+rect\+Shape)
+\item 
+void \textbf{ check\+For\+Mouse\+Pos} ()
+\item 
+void \textbf{ reset\+Buttons} (sf\+::\+Rectangle\+Shape \&t\+\_\+rect)
+\item 
+void \textbf{ change\+Buttons} (sf\+::\+Rectangle\+Shape \&t\+\_\+rect)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Load\+From\+File} \textbf{ loader}
+\item 
+std\+::vector$<$ sf\+::\+Rectangle\+Shape $>$ \textbf{ games}
+\item 
+int \textbf{ file\+Count} = 0
+\item 
+bool \textbf{ game\+Chosen} = false
+\item 
+bool \textbf{ game\+Built} = false
+\item 
+std\+::string \textbf{ chosen\+Game}
+\item 
+bool \textbf{ button\+Clicked} = false
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ setup\+Buttons} ()
+\item 
+void \textbf{ delete\+File} (std\+::string t\+\_\+filename)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Network\+Manager} \& \textbf{ m\+\_\+network\+Manager}
+\item 
+float \textbf{ game\+Width} = 0
+\item 
+float \textbf{ game\+Height} = 0
+\item 
+sf\+::\+Vector2f \textbf{ initial\+Pos} = \{ 200, 300 \}
+\item 
+bool \textbf{ level\+Rects\+Created} = false
+\item 
+std\+::vector$<$ std\+::string $>$ \textbf{ game\+Names}
+\item 
+std\+::vector$<$ sf\+::\+Text $>$ \textbf{ name\+Texts}
+\item 
+sf\+::\+Text \textbf{ title\+Text}
+\item 
+sf\+::\+Font \textbf{ font}
+\item 
+sf\+::\+Vector2f \textbf{ mouse\+Pos}
+\item 
+std\+::vector$<$ sf\+::\+Rectangle\+Shape $>$ \textbf{ build\+Buttons}
+\item 
+std\+::vector$<$ sf\+::\+Rectangle\+Shape $>$ \textbf{ upload\+Buttons}
+\item 
+std\+::vector$<$ sf\+::\+Rectangle\+Shape $>$ \textbf{ delete\+Buttons}
+\item 
+std\+::vector$<$ sf\+::\+Rectangle\+Shape $>$ \textbf{ bg\+Rects}
+\item 
+sf\+::\+Texture \textbf{ build\+Texture}
+\item 
+sf\+::\+Texture \textbf{ upload\+Texture}
+\item 
+sf\+::\+Texture \textbf{ delete\+Texture}
+\item 
+std\+::vector$<$ sf\+::\+Sprite $>$ \textbf{ build\+Sprites}
+\item 
+std\+::vector$<$ sf\+::\+Sprite $>$ \textbf{ upload\+Sprites}
+\item 
+std\+::vector$<$ sf\+::\+Sprite $>$ \textbf{ delete\+Sprites}
+\item 
+sf\+::\+Rectangle\+Shape \textbf{ download\+Button}
+\item 
+float \textbf{ offset}
+\item 
+sf\+::\+Vector2f \textbf{ button\+Size}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Sean Whelan 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2022/23 @license Attribution-\/\+Non\+Commercial 4.\+0 International 
+\end{DoxyDate}
+
+
+Definition at line \textbf{ 15} of file \textbf{ Choose\+Game.\+h}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\label{class_choose_game_a1d585ffc0d17f2f86abf4118dba5be17}} 
+\index{ChooseGame@{ChooseGame}!ChooseGame@{ChooseGame}}
+\index{ChooseGame@{ChooseGame}!ChooseGame@{ChooseGame}}
+\doxysubsubsection{ChooseGame()}
+{\footnotesize\ttfamily Choose\+Game\+::\+Choose\+Game (\begin{DoxyParamCaption}\item[{float}]{t\+\_\+game\+Width,  }\item[{float}]{t\+\_\+game\+Height,  }\item[{\textbf{ Network\+Manager} \&}]{t\+\_\+network\+Manager }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 3} of file \textbf{ Choose\+Game.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00003\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ gameWidth(t\_gameWidth),\ gameHeight(t\_gameHeight),\ m\_networkManager(t\_networkManager) }
+\DoxyCodeLine{00004\ \{}
+\DoxyCodeLine{00005\ \ \ \ \ loadFontAndSprites();}
+\DoxyCodeLine{00006\ \ \ \ \ findFiles();}
+\DoxyCodeLine{00007\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_choose_game_a1d585ffc0d17f2f86abf4118dba5be17_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{class_choose_game_aacfda545009617f0d67e91e837642c4e}} 
+\index{ChooseGame@{ChooseGame}!changeButtons@{changeButtons}}
+\index{changeButtons@{changeButtons}!ChooseGame@{ChooseGame}}
+\doxysubsubsection{changeButtons()}
+{\footnotesize\ttfamily void Choose\+Game\+::change\+Buttons (\begin{DoxyParamCaption}\item[{sf\+::\+Rectangle\+Shape \&}]{t\+\_\+rect }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 264} of file \textbf{ Choose\+Game.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00265\ \{}
+\DoxyCodeLine{00266\ \ \ \ \ t\_rect.setScale(1.2,\ 1.2);}
+\DoxyCodeLine{00267\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_choose_game_aacfda545009617f0d67e91e837642c4e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_choose_game_a8f329831a7ddb52396b6922f650b5de4}} 
+\index{ChooseGame@{ChooseGame}!checkForMousePos@{checkForMousePos}}
+\index{checkForMousePos@{checkForMousePos}!ChooseGame@{ChooseGame}}
+\doxysubsubsection{checkForMousePos()}
+{\footnotesize\ttfamily void Choose\+Game\+::check\+For\+Mouse\+Pos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 168} of file \textbf{ Choose\+Game.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00169\ \{}
+\DoxyCodeLine{00170\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ games.size();\ i++)}
+\DoxyCodeLine{00171\ \ \ \ \ \{}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (containsMouse(games.at(i).getGlobalBounds()))}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ changeButtons(games.at(i));}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (buttonClicked)}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ gameNames.at(i)\ <<\ std::endl;}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ loader.loadFile(gameNames.at(i));}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gameChosen\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buttonClicked\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gameChosen\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ resetButtons(games.at(i));}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (containsMouse(buildButtons.at(i).getGlobalBounds()))}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ changeButtons(buildButtons.at(i));}
+\DoxyCodeLine{00195\ }
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (buttonClicked\ \&\&\ gameBuilt\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*gameBuilt\ =\ true; }}
+\DoxyCodeLine{00199\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ chosenGame\ =\ gameNames.at(i); }}
+\DoxyCodeLine{00200\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ loader.loadFile(gameNames.at(i)); }}
+\DoxyCodeLine{00201\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gameChosen\ =\ true;*/}}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buttonClicked\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ resetButtons(buildButtons.at(i));}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00209\ }
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (containsMouse(uploadButtons.at(i).getGlobalBounds()))}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ changeButtons(uploadButtons.at(i));}
+\DoxyCodeLine{00213\ }
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (buttonClicked)}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buttonClicked\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_networkManager.writeGameDataToDB(gameNames.at(i));}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ resetButtons(uploadButtons.at(i));}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (containsMouse(deleteButtons.at(i).getGlobalBounds()))}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ changeButtons(deleteButtons.at(i));}
+\DoxyCodeLine{00229\ }
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (buttonClicked)}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ deleteFile(gameNames.at(i));}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buttonClicked\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \ \ \ \ resetButtons(deleteButtons.at(i));}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00240\ \ \ \ \ \}}
+\DoxyCodeLine{00241\ }
+\DoxyCodeLine{00242\ \ \ \ \ \textcolor{keywordflow}{if}\ (containsMouse(downloadButton.getGlobalBounds()))}
+\DoxyCodeLine{00243\ \ \ \ \ \{}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ changeButtons(downloadButton);}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (buttonClicked)}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \ \ \ \ m\_networkManager.exportDBToCSV();}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \ \ \ \ buttonClicked\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ \ findFiles();}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00251\ \ \ \ \ \}}
+\DoxyCodeLine{00252\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00253\ \ \ \ \ \{}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ resetButtons(downloadButton);}
+\DoxyCodeLine{00255\ \ \ \ \ \}}
+\DoxyCodeLine{00256\ \ \ \ \ buttonClicked\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00257\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_choose_game_a8f329831a7ddb52396b6922f650b5de4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_choose_game_a8f329831a7ddb52396b6922f650b5de4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_choose_game_ade70207cbb5872203c2b02a5f86fb45b}} 
+\index{ChooseGame@{ChooseGame}!containsMouse@{containsMouse}}
+\index{containsMouse@{containsMouse}!ChooseGame@{ChooseGame}}
+\doxysubsubsection{containsMouse()}
+{\footnotesize\ttfamily bool Choose\+Game\+::contains\+Mouse (\begin{DoxyParamCaption}\item[{sf\+::\+Float\+Rect}]{t\+\_\+rect\+Shape }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 163} of file \textbf{ Choose\+Game.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00164\ \{}
+\DoxyCodeLine{00165\ \ \ \ \ \textcolor{keywordflow}{return}\ t\_rectShape.contains(mousePos);}
+\DoxyCodeLine{00166\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_choose_game_ade70207cbb5872203c2b02a5f86fb45b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_choose_game_aa39be4100325d09f2def6bc2ad42ba5e}} 
+\index{ChooseGame@{ChooseGame}!deleteFile@{deleteFile}}
+\index{deleteFile@{deleteFile}!ChooseGame@{ChooseGame}}
+\doxysubsubsection{deleteFile()}
+{\footnotesize\ttfamily void Choose\+Game\+::delete\+File (\begin{DoxyParamCaption}\item[{std\+::string}]{t\+\_\+filename }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 339} of file \textbf{ Choose\+Game.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00340\ \{}
+\DoxyCodeLine{00341\ }
+\DoxyCodeLine{00342\ \ \ \ \ std::filesystem::path\ directoryPath(\textcolor{stringliteral}{"{}.\(\backslash\)\(\backslash\)ASSETS\(\backslash\)\(\backslash\)GAMEDATA\(\backslash\)\(\backslash\)"{}});}
+\DoxyCodeLine{00343\ \ \ \ \ std::filesystem::path\ filePath\ =\ directoryPath\ /\ (t\_filename\ +\ \textcolor{stringliteral}{"{}.csv"{}});}
+\DoxyCodeLine{00344\ }
+\DoxyCodeLine{00345\ \ \ \ \ \textcolor{comment}{//std::filesystem::path\ filePath("{}.\(\backslash\)\(\backslash\)NoCodeGameEditor\(\backslash\)\(\backslash\)ASSETS\(\backslash\)\(\backslash\)GAMEDATA\(\backslash\)\(\backslash\)"{}\ +\ t\_filename\ +\ "{}.csv"{});}}
+\DoxyCodeLine{00346\ }
+\DoxyCodeLine{00347\ \ \ \ \ \textcolor{comment}{//\ Check\ if\ the\ file\ exists}}
+\DoxyCodeLine{00348\ \ \ \ \ \textcolor{keywordflow}{if}\ (std::filesystem::exists(filePath))}
+\DoxyCodeLine{00349\ \ \ \ \ \{}
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Delete\ the\ file}}
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ std::filesystem::remove(filePath);}
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}File\ "{}}\ <<\ t\_filename\ <<\ \textcolor{stringliteral}{"{}\ deleted\ successfully."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ findFiles();}
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00355\ \ \ \ \ \}}
+\DoxyCodeLine{00356\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00357\ \ \ \ \ \{}
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}File\ "{}}\ <<\ t\_filename\ <<\ \textcolor{stringliteral}{"{}\ does\ not\ exist."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00359\ \ \ \ \ \}}
+\DoxyCodeLine{00360\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_choose_game_aa39be4100325d09f2def6bc2ad42ba5e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_choose_game_aa39be4100325d09f2def6bc2ad42ba5e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_choose_game_aac7d4b18af1bb5f21e210493b1011e86}} 
+\index{ChooseGame@{ChooseGame}!findFiles@{findFiles}}
+\index{findFiles@{findFiles}!ChooseGame@{ChooseGame}}
+\doxysubsubsection{findFiles()}
+{\footnotesize\ttfamily void Choose\+Game\+::find\+Files (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 35} of file \textbf{ Choose\+Game.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00036\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordflow}{if}\ (gameNames.size()\ !=\ 0)}
+\DoxyCodeLine{00038\ \ \ \ \ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ gameNames.clear();}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ fileCount\ =\ 0;}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ games.clear();}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ nameTexts.clear();}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ buildButtons.clear();}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ uploadButtons.clear();}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ deleteButtons.clear();}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ buildSprites.clear();}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ uploadSprites.clear();}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ deleteSprites.clear();}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ bgRects.clear();}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ initialPos\ =\ sf::Vector2f(200,\ 300);}
+\DoxyCodeLine{00051\ \ \ \ \ \}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ std::filesystem::path\ p1\{\ \textcolor{stringliteral}{"{}.\(\backslash\)\(\backslash\)ASSETS\(\backslash\)\(\backslash\)GAMEDATA"{}}\ \};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ p\ :\ std::filesystem::directory\_iterator(p1))}
+\DoxyCodeLine{00056\ \ \ \ \ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ p.path()\ <<\ std::endl;}}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ std::string\ tempString\ =\ p.path().string();}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ tempString.erase(0,\ 18);}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 4;\ i++)}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ tempString.pop\_back();}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ gameNames.push\_back(tempString);}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ ++fileCount;}
+\DoxyCodeLine{00067\ \ \ \ \ \}}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\#\ of\ files\ in\ "{}}\ <<\ p1\ <<\ \textcolor{stringliteral}{"{}:\ "{}}\ <<\ fileCount\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ setupSprites();}
+\DoxyCodeLine{00072\ \ \ \ \ setupButtons();}
+\DoxyCodeLine{00073\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_choose_game_aac7d4b18af1bb5f21e210493b1011e86_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_choose_game_aac7d4b18af1bb5f21e210493b1011e86_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_choose_game_af2e7f1fe2a75fdcba9af18919ebc2666}} 
+\index{ChooseGame@{ChooseGame}!loadFontAndSprites@{loadFontAndSprites}}
+\index{loadFontAndSprites@{loadFontAndSprites}!ChooseGame@{ChooseGame}}
+\doxysubsubsection{loadFontAndSprites()}
+{\footnotesize\ttfamily void Choose\+Game\+::load\+Font\+And\+Sprites (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 9} of file \textbf{ Choose\+Game.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keywordflow}{if}\ (!font.loadFromFile(\textcolor{stringliteral}{"{}./ASSETS/FONTS/NewYork.ttf"{}}))}
+\DoxyCodeLine{00012\ \ \ \ \ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Error\ loading\ font..."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00014\ \ \ \ \ \}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordflow}{if}\ (!buildTexture.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)buttonBuild.png"{}}))}
+\DoxyCodeLine{00017\ \ \ \ \ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ buildTexture\ (buttonBuild)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00020\ \ \ \ \ \}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordflow}{if}\ (!uploadTexture.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)buttonUpDown.png"{}}))}
+\DoxyCodeLine{00023\ \ \ \ \ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ uploadTexture\ (buttonUpDown)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00026\ \ \ \ \ \}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordflow}{if}\ (!deleteTexture.loadFromFile(\textcolor{stringliteral}{"{}ASSETS\(\backslash\)\(\backslash\)IMAGES\(\backslash\)\(\backslash\)buttonDelete.png"{}}))}
+\DoxyCodeLine{00029\ \ \ \ \ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ simple\ error\ message\ if\ previous\ call\ fails}}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}problem\ loading\ deleteTexture\ (buttonDelete)"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00032\ \ \ \ \ \}}
+\DoxyCodeLine{00033\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_choose_game_af2e7f1fe2a75fdcba9af18919ebc2666_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_choose_game_aa2a8f0944c399f98eff887088360104f}} 
+\index{ChooseGame@{ChooseGame}!render@{render}}
+\index{render@{render}!ChooseGame@{ChooseGame}}
+\doxysubsubsection{render()}
+{\footnotesize\ttfamily void Choose\+Game\+::render (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{t\+\_\+window }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 140} of file \textbf{ Choose\+Game.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00141\ \{}
+\DoxyCodeLine{00142\ \ \ \ \ t\_window.clear(sf::Color(81,\ 81,\ 81,\ 150));}
+\DoxyCodeLine{00143\ \ \ \ \ t\_window.draw(titleText);}
+\DoxyCodeLine{00144\ \ \ \ \ t\_window.draw(downloadButton);}
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{keywordflow}{if}\ (levelRectsCreated)}
+\DoxyCodeLine{00146\ \ \ \ \ \{}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ games.size();\ i++)}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ t\_window.draw(bgRects.at(i));}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ t\_window.draw(games.at(i));}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ t\_window.draw(nameTexts.at(i));}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ t\_window.draw(buildButtons.at(i));}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ t\_window.draw(uploadButtons.at(i));}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ t\_window.draw(deleteButtons.at(i));}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ t\_window.draw(buildSprites.at(i));}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ t\_window.draw(uploadSprites.at(i));}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ t\_window.draw(deleteSprites.at(i));}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00160\ \ \ \ \ \}}
+\DoxyCodeLine{00161\ \ \ \ \ }
+\DoxyCodeLine{00162\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_choose_game_aa2a8f0944c399f98eff887088360104f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_choose_game_a2fbabdf7aac08b3bb5d8dc409d07328e}} 
+\index{ChooseGame@{ChooseGame}!resetButtons@{resetButtons}}
+\index{resetButtons@{resetButtons}!ChooseGame@{ChooseGame}}
+\doxysubsubsection{resetButtons()}
+{\footnotesize\ttfamily void Choose\+Game\+::reset\+Buttons (\begin{DoxyParamCaption}\item[{sf\+::\+Rectangle\+Shape \&}]{t\+\_\+rect }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 259} of file \textbf{ Choose\+Game.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00260\ \{}
+\DoxyCodeLine{00261\ \ \ \ \ t\_rect.setScale(1,\ 1);}
+\DoxyCodeLine{00262\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_choose_game_a2fbabdf7aac08b3bb5d8dc409d07328e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_choose_game_a1594d4e1f726ffadbb97555da98a104a}} 
+\index{ChooseGame@{ChooseGame}!setupButtons@{setupButtons}}
+\index{setupButtons@{setupButtons}!ChooseGame@{ChooseGame}}
+\doxysubsubsection{setupButtons()}
+{\footnotesize\ttfamily void Choose\+Game\+::setup\+Buttons (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 269} of file \textbf{ Choose\+Game.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00270\ \{}
+\DoxyCodeLine{00271\ \ \ \ \ \textcolor{keywordflow}{if}\ (games.size()\ >\ 0)}
+\DoxyCodeLine{00272\ \ \ \ \ \{}
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ offset\ =\ games.at(0).getLocalBounds().width\ /\ 3;}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ buttonSize\ =\ sf::Vector2f(games.at(0).getLocalBounds().width\ /\ 3,\ 75);}
+\DoxyCodeLine{00275\ \ \ \ \ \}}
+\DoxyCodeLine{00276\ \ \ \ \ }
+\DoxyCodeLine{00277\ }
+\DoxyCodeLine{00278\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ games.size();\ i++)}
+\DoxyCodeLine{00279\ \ \ \ \ \{}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ sf::RectangleShape\ tempRect;}
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ tempRect.setFillColor(sf::Color::Green);}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ tempRect.setSize(buttonSize);}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ tempRect.setOrigin(tempRect.getLocalBounds().width\ /\ 2,\ tempRect.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ tempRect.setPosition(games.at(i).getPosition().x\ -\/\ offset,\ games.at(i).getPosition().y\ +\ games.at(i).getLocalBounds().height\ /\ 2\ +\ tempRect.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ buildButtons.push\_back(tempRect);}
+\DoxyCodeLine{00286\ }
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ sf::RectangleShape\ tempRect2;}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ tempRect2.setFillColor(sf::Color::Blue);}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ tempRect2.setSize(buttonSize);}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ tempRect2.setOrigin(tempRect2.getLocalBounds().width\ /\ 2,\ tempRect2.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ tempRect2.setPosition(games.at(i).getPosition().x,\ games.at(i).getPosition().y\ +\ games.at(i).getLocalBounds().height\ /\ 2\ +\ tempRect2.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ uploadButtons.push\_back(tempRect2);}
+\DoxyCodeLine{00293\ }
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ sf::RectangleShape\ tempRect3;}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ tempRect3.setFillColor(sf::Color::Red);}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ tempRect3.setSize(buttonSize);}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ tempRect3.setOrigin(tempRect3.getLocalBounds().width\ /\ 2,\ tempRect3.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ tempRect3.setPosition(games.at(i).getPosition().x\ +\ offset,\ games.at(i).getPosition().y\ +\ games.at(i).getLocalBounds().height\ /\ 2\ +\ tempRect3.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ deleteButtons.push\_back(tempRect3);}
+\DoxyCodeLine{00300\ }
+\DoxyCodeLine{00301\ }
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ sf::RectangleShape\ tempRect4;}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ tempRect4.setFillColor(sf::Color(120,\ 120,\ 120,\ 175));}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ tempRect4.setSize(sf::Vector2f(350,\ 250));}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ tempRect4.setOrigin(tempRect4.getLocalBounds().width\ /\ 2,\ tempRect4.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ tempRect4.setPosition(games.at(i).getPosition().x\ ,\ games.at(i).getPosition().y\ +\ games.at(i).getGlobalBounds().height\ /\ 2);}
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ bgRects.push\_back(tempRect4);}
+\DoxyCodeLine{00308\ \ \ \ \ \}}
+\DoxyCodeLine{00309\ }
+\DoxyCodeLine{00310\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ games.size();\ i++)}
+\DoxyCodeLine{00311\ \ \ \ \ \{}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ sf::Sprite\ tempSprite;}
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ tempSprite.setTexture(buildTexture);}
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ tempSprite.setOrigin(tempSprite.getGlobalBounds().width\ /\ 2,\ tempSprite.getGlobalBounds().height\ /\ 2);}
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ tempSprite.setPosition(buildButtons.at(i).getPosition());}
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ buildSprites.push\_back(tempSprite);}
+\DoxyCodeLine{00317\ }
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ sf::Sprite\ tempSprite2;}
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ tempSprite2.setTexture(uploadTexture);}
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ tempSprite2.setOrigin(tempSprite2.getGlobalBounds().width\ /\ 2,\ tempSprite2.getGlobalBounds().height\ /\ 2);}
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ tempSprite2.setPosition(uploadButtons.at(i).getPosition());}
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ uploadSprites.push\_back(tempSprite2);}
+\DoxyCodeLine{00323\ }
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ sf::Sprite\ tempSprite3;}
+\DoxyCodeLine{00325\ \ \ \ \ \ \ \ \ tempSprite3.setTexture(deleteTexture);}
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ tempSprite3.setOrigin(tempSprite3.getGlobalBounds().width\ /\ 2,\ tempSprite3.getGlobalBounds().height\ /\ 2);}
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ tempSprite3.setPosition(deleteButtons.at(i).getPosition());}
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ deleteSprites.push\_back(tempSprite3);}
+\DoxyCodeLine{00329\ \ \ \ \ \}}
+\DoxyCodeLine{00330\ }
+\DoxyCodeLine{00331\ \ \ \ \ }
+\DoxyCodeLine{00332\ \ \ \ \ downloadButton.setFillColor(sf::Color::Blue);}
+\DoxyCodeLine{00333\ \ \ \ \ downloadButton.setSize(sf::Vector2f(300,100));}
+\DoxyCodeLine{00334\ \ \ \ \ downloadButton.setScale(1,\ 1);}
+\DoxyCodeLine{00335\ \ \ \ \ downloadButton.setOrigin(downloadButton.getLocalBounds().width\ /\ 2,\ downloadButton.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00336\ \ \ \ \ downloadButton.setPosition(gameWidth\ -\/\ 200,\ 100);}
+\DoxyCodeLine{00337\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_choose_game_a1594d4e1f726ffadbb97555da98a104a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_choose_game_a36c0f4fb95549583866c471ac0dff865}} 
+\index{ChooseGame@{ChooseGame}!setupNames@{setupNames}}
+\index{setupNames@{setupNames}!ChooseGame@{ChooseGame}}
+\doxysubsubsection{setupNames()}
+{\footnotesize\ttfamily void Choose\+Game\+::setup\+Names (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 108} of file \textbf{ Choose\+Game.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00109\ \{}
+\DoxyCodeLine{00110\ \ \ \ \ titleText.setFont(font);}
+\DoxyCodeLine{00111\ \ \ \ \ titleText.setFillColor(sf::Color::Black);}
+\DoxyCodeLine{00112\ \ \ \ \ titleText.setCharacterSize(85u);}
+\DoxyCodeLine{00113\ \ \ \ \ titleText.setString(\textcolor{stringliteral}{"{}Choose\ a\ Game\ to\ Play"{}});}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{comment}{//titleText.setOrigin(titleText.getLocalBounds().width\ /\ 2,\ titleText.getLocalBounds().height\ /\ 2);}}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \ \ \ \ titleText.setPosition(50,50);}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ fileCount;\ i++)}
+\DoxyCodeLine{00118\ \ \ \ \ \{}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ sf::Text\ tempText;}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ tempText.setFont(font);}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ tempText.setFillColor(sf::Color::Black);}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ tempText.setCharacterSize(30u);}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ tempText.setString(gameNames.at(i));}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ tempText.setOrigin(tempText.getLocalBounds().width\ /\ 2,\ tempText.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ tempText.setPosition(games.at(i).getPosition());}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ nameTexts.push\_back(tempText);}
+\DoxyCodeLine{00127\ \ \ \ \ \}}
+\DoxyCodeLine{00128\ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_choose_game_a36c0f4fb95549583866c471ac0dff865_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_choose_game_ac4c882a8716f1e44fb5c15a9520f8128}} 
+\index{ChooseGame@{ChooseGame}!setupSprites@{setupSprites}}
+\index{setupSprites@{setupSprites}!ChooseGame@{ChooseGame}}
+\doxysubsubsection{setupSprites()}
+{\footnotesize\ttfamily void Choose\+Game\+::setup\+Sprites (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 75} of file \textbf{ Choose\+Game.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00076\ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{int}\ count\ =\ 0;}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ fileCount;\ i++)}
+\DoxyCodeLine{00079\ \ \ \ \ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ sf::RectangleShape\ testRect;}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ testRect.setFillColor(sf::Color::Yellow);}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ testRect.setSize(sf::Vector2f(\ 300,\ 100));}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ testRect.setOrigin(testRect.getLocalBounds().width\ /\ 2,\ testRect.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ testRect.setPosition(initialPos);}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ count++;}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (count\ >\ 7)}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ count\ =\ 0;}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ initialPos.x\ =\ 200;}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ initialPos.y\ +=\ 350;}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ initialPos.x\ +=\ 400;}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ games.push\_back(testRect);}
+\DoxyCodeLine{00097\ \ \ \ \ \}}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ gameNames.size();\ i++)}
+\DoxyCodeLine{00100\ \ \ \ \ \{}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ std::cout\ <<\ gameNames.at(i)\ <<\ std::endl;}
+\DoxyCodeLine{00102\ \ \ \ \ \}}
+\DoxyCodeLine{00103\ \ \ \ \ }
+\DoxyCodeLine{00104\ \ \ \ \ levelRectsCreated\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00105\ \ \ \ \ setupNames();}
+\DoxyCodeLine{00106\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_choose_game_ac4c882a8716f1e44fb5c15a9520f8128_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_choose_game_ac4c882a8716f1e44fb5c15a9520f8128_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_choose_game_aa5651bef4f80ed2074f60e62119b38fc}} 
+\index{ChooseGame@{ChooseGame}!update@{update}}
+\index{update@{update}!ChooseGame@{ChooseGame}}
+\doxysubsubsection{update()}
+{\footnotesize\ttfamily void Choose\+Game\+::update (\begin{DoxyParamCaption}\item[{sf\+::\+Time}]{t\+\_\+delta\+Time,  }\item[{sf\+::\+Render\+Window \&}]{t\+\_\+window }\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 130} of file \textbf{ Choose\+Game.\+cpp}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00131\ \{}
+\DoxyCodeLine{00132\ \ \ \ \ mousePos\ =\ t\_window.mapPixelToCoords(sf::Mouse::getPosition(t\_window));}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ \ \ \ \ checkForMousePos();}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \ \ \ \ loader.update(t\_deltaTime);}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00138\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_choose_game_aa5651bef4f80ed2074f60e62119b38fc_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_choose_game_aa5651bef4f80ed2074f60e62119b38fc_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\label{class_choose_game_acf45036876fa4c6cf9e0009d9fac0d3d}} 
+\index{ChooseGame@{ChooseGame}!bgRects@{bgRects}}
+\index{bgRects@{bgRects}!ChooseGame@{ChooseGame}}
+\doxysubsubsection{bgRects}
+{\footnotesize\ttfamily std\+::vector$<$sf\+::\+Rectangle\+Shape$>$ Choose\+Game\+::bg\+Rects\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 73} of file \textbf{ Choose\+Game.\+h}.
+
+\mbox{\label{class_choose_game_a4d14d4f65c35c7d782a23ee3845d3984}} 
+\index{ChooseGame@{ChooseGame}!buildButtons@{buildButtons}}
+\index{buildButtons@{buildButtons}!ChooseGame@{ChooseGame}}
+\doxysubsubsection{buildButtons}
+{\footnotesize\ttfamily std\+::vector$<$sf\+::\+Rectangle\+Shape$>$ Choose\+Game\+::build\+Buttons\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 70} of file \textbf{ Choose\+Game.\+h}.
+
+\mbox{\label{class_choose_game_a926d707aa0a509434cf5464d18e2710d}} 
+\index{ChooseGame@{ChooseGame}!buildSprites@{buildSprites}}
+\index{buildSprites@{buildSprites}!ChooseGame@{ChooseGame}}
+\doxysubsubsection{buildSprites}
+{\footnotesize\ttfamily std\+::vector$<$sf\+::\+Sprite$>$ Choose\+Game\+::build\+Sprites\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 79} of file \textbf{ Choose\+Game.\+h}.
+
+\mbox{\label{class_choose_game_aaadda8b3407cb9cdd30ee5b20d0beefb}} 
+\index{ChooseGame@{ChooseGame}!buildTexture@{buildTexture}}
+\index{buildTexture@{buildTexture}!ChooseGame@{ChooseGame}}
+\doxysubsubsection{buildTexture}
+{\footnotesize\ttfamily sf\+::\+Texture Choose\+Game\+::build\+Texture\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 75} of file \textbf{ Choose\+Game.\+h}.
+
+\mbox{\label{class_choose_game_a83b89d9f57653120e3656550167e3cf2}} 
+\index{ChooseGame@{ChooseGame}!buttonClicked@{buttonClicked}}
+\index{buttonClicked@{buttonClicked}!ChooseGame@{ChooseGame}}
+\doxysubsubsection{buttonClicked}
+{\footnotesize\ttfamily bool Choose\+Game\+::button\+Clicked = false}
+
+
+
+Definition at line \textbf{ 49} of file \textbf{ Choose\+Game.\+h}.
+
+\mbox{\label{class_choose_game_afe9b9d5ff9113e92d28012d16217b1d2}} 
+\index{ChooseGame@{ChooseGame}!buttonSize@{buttonSize}}
+\index{buttonSize@{buttonSize}!ChooseGame@{ChooseGame}}
+\doxysubsubsection{buttonSize}
+{\footnotesize\ttfamily sf\+::\+Vector2f Choose\+Game\+::button\+Size\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 85} of file \textbf{ Choose\+Game.\+h}.
+
+\mbox{\label{class_choose_game_a878acf193d20161d28605852814dc068}} 
+\index{ChooseGame@{ChooseGame}!chosenGame@{chosenGame}}
+\index{chosenGame@{chosenGame}!ChooseGame@{ChooseGame}}
+\doxysubsubsection{chosenGame}
+{\footnotesize\ttfamily std\+::string Choose\+Game\+::chosen\+Game}
+
+
+
+Definition at line \textbf{ 48} of file \textbf{ Choose\+Game.\+h}.
+
+\mbox{\label{class_choose_game_a6f382c246a1a5dba9ef710fd45c804e4}} 
+\index{ChooseGame@{ChooseGame}!deleteButtons@{deleteButtons}}
+\index{deleteButtons@{deleteButtons}!ChooseGame@{ChooseGame}}
+\doxysubsubsection{deleteButtons}
+{\footnotesize\ttfamily std\+::vector$<$sf\+::\+Rectangle\+Shape$>$ Choose\+Game\+::delete\+Buttons\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 72} of file \textbf{ Choose\+Game.\+h}.
+
+\mbox{\label{class_choose_game_afcc844d5415e3c8cddacc81849770345}} 
+\index{ChooseGame@{ChooseGame}!deleteSprites@{deleteSprites}}
+\index{deleteSprites@{deleteSprites}!ChooseGame@{ChooseGame}}
+\doxysubsubsection{deleteSprites}
+{\footnotesize\ttfamily std\+::vector$<$sf\+::\+Sprite$>$ Choose\+Game\+::delete\+Sprites\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 81} of file \textbf{ Choose\+Game.\+h}.
+
+\mbox{\label{class_choose_game_a0eaa645091847c2482faa262ee6fbc31}} 
+\index{ChooseGame@{ChooseGame}!deleteTexture@{deleteTexture}}
+\index{deleteTexture@{deleteTexture}!ChooseGame@{ChooseGame}}
+\doxysubsubsection{deleteTexture}
+{\footnotesize\ttfamily sf\+::\+Texture Choose\+Game\+::delete\+Texture\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 77} of file \textbf{ Choose\+Game.\+h}.
+
+\mbox{\label{class_choose_game_a847bf174bb44320f1ddbae0caa37e06f}} 
+\index{ChooseGame@{ChooseGame}!downloadButton@{downloadButton}}
+\index{downloadButton@{downloadButton}!ChooseGame@{ChooseGame}}
+\doxysubsubsection{downloadButton}
+{\footnotesize\ttfamily sf\+::\+Rectangle\+Shape Choose\+Game\+::download\+Button\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 83} of file \textbf{ Choose\+Game.\+h}.
+
+\mbox{\label{class_choose_game_af841a46a68b5788aad7a813e6a5327a6}} 
+\index{ChooseGame@{ChooseGame}!fileCount@{fileCount}}
+\index{fileCount@{fileCount}!ChooseGame@{ChooseGame}}
+\doxysubsubsection{fileCount}
+{\footnotesize\ttfamily int Choose\+Game\+::file\+Count = 0}
+
+
+
+Definition at line \textbf{ 43} of file \textbf{ Choose\+Game.\+h}.
+
+\mbox{\label{class_choose_game_aa76b1f76214fe58a867c7624ec4b8104}} 
+\index{ChooseGame@{ChooseGame}!font@{font}}
+\index{font@{font}!ChooseGame@{ChooseGame}}
+\doxysubsubsection{font}
+{\footnotesize\ttfamily sf\+::\+Font Choose\+Game\+::font\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 66} of file \textbf{ Choose\+Game.\+h}.
+
+\mbox{\label{class_choose_game_a1633a730c1624da1c22443c911c6659b}} 
+\index{ChooseGame@{ChooseGame}!gameBuilt@{gameBuilt}}
+\index{gameBuilt@{gameBuilt}!ChooseGame@{ChooseGame}}
+\doxysubsubsection{gameBuilt}
+{\footnotesize\ttfamily bool Choose\+Game\+::game\+Built = false}
+
+
+
+Definition at line \textbf{ 46} of file \textbf{ Choose\+Game.\+h}.
+
+\mbox{\label{class_choose_game_ac4f452b023b1ad3f54aebf52162f981a}} 
+\index{ChooseGame@{ChooseGame}!gameChosen@{gameChosen}}
+\index{gameChosen@{gameChosen}!ChooseGame@{ChooseGame}}
+\doxysubsubsection{gameChosen}
+{\footnotesize\ttfamily bool Choose\+Game\+::game\+Chosen = false}
+
+
+
+Definition at line \textbf{ 45} of file \textbf{ Choose\+Game.\+h}.
+
+\mbox{\label{class_choose_game_a4fe17d42224e443010083729a1da9d8a}} 
+\index{ChooseGame@{ChooseGame}!gameHeight@{gameHeight}}
+\index{gameHeight@{gameHeight}!ChooseGame@{ChooseGame}}
+\doxysubsubsection{gameHeight}
+{\footnotesize\ttfamily float Choose\+Game\+::game\+Height = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 58} of file \textbf{ Choose\+Game.\+h}.
+
+\mbox{\label{class_choose_game_ab42bbe9885068f6faaf43d66357f002e}} 
+\index{ChooseGame@{ChooseGame}!gameNames@{gameNames}}
+\index{gameNames@{gameNames}!ChooseGame@{ChooseGame}}
+\doxysubsubsection{gameNames}
+{\footnotesize\ttfamily std\+::vector$<$std\+::string$>$ Choose\+Game\+::game\+Names\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 62} of file \textbf{ Choose\+Game.\+h}.
+
+\mbox{\label{class_choose_game_a3d2bc7c6d7be31ad46ffc0213502332c}} 
+\index{ChooseGame@{ChooseGame}!games@{games}}
+\index{games@{games}!ChooseGame@{ChooseGame}}
+\doxysubsubsection{games}
+{\footnotesize\ttfamily std\+::vector$<$sf\+::\+Rectangle\+Shape$>$ Choose\+Game\+::games}
+
+
+
+Definition at line \textbf{ 42} of file \textbf{ Choose\+Game.\+h}.
+
+\mbox{\label{class_choose_game_a4b99034f33e9f71b2f1092a0cfae716c}} 
+\index{ChooseGame@{ChooseGame}!gameWidth@{gameWidth}}
+\index{gameWidth@{gameWidth}!ChooseGame@{ChooseGame}}
+\doxysubsubsection{gameWidth}
+{\footnotesize\ttfamily float Choose\+Game\+::game\+Width = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 57} of file \textbf{ Choose\+Game.\+h}.
+
+\mbox{\label{class_choose_game_a1c95989080783d19f928e4438bb03ea8}} 
+\index{ChooseGame@{ChooseGame}!initialPos@{initialPos}}
+\index{initialPos@{initialPos}!ChooseGame@{ChooseGame}}
+\doxysubsubsection{initialPos}
+{\footnotesize\ttfamily sf\+::\+Vector2f Choose\+Game\+::initial\+Pos = \{ 200, 300 \}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 59} of file \textbf{ Choose\+Game.\+h}.
+
+\mbox{\label{class_choose_game_a024e88116d55cadbd4bba1175a0473e7}} 
+\index{ChooseGame@{ChooseGame}!levelRectsCreated@{levelRectsCreated}}
+\index{levelRectsCreated@{levelRectsCreated}!ChooseGame@{ChooseGame}}
+\doxysubsubsection{levelRectsCreated}
+{\footnotesize\ttfamily bool Choose\+Game\+::level\+Rects\+Created = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 61} of file \textbf{ Choose\+Game.\+h}.
+
+\mbox{\label{class_choose_game_a7ebe7fe190acac6cf656d138b7c6bfa2}} 
+\index{ChooseGame@{ChooseGame}!loader@{loader}}
+\index{loader@{loader}!ChooseGame@{ChooseGame}}
+\doxysubsubsection{loader}
+{\footnotesize\ttfamily \textbf{ Load\+From\+File} Choose\+Game\+::loader}
+
+
+
+Definition at line \textbf{ 20} of file \textbf{ Choose\+Game.\+h}.
+
+\mbox{\label{class_choose_game_abd41761966a0aaef0c5a9c875b7989ab}} 
+\index{ChooseGame@{ChooseGame}!m\_networkManager@{m\_networkManager}}
+\index{m\_networkManager@{m\_networkManager}!ChooseGame@{ChooseGame}}
+\doxysubsubsection{m\_networkManager}
+{\footnotesize\ttfamily \textbf{ Network\+Manager}\& Choose\+Game\+::m\+\_\+network\+Manager\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 51} of file \textbf{ Choose\+Game.\+h}.
+
+\mbox{\label{class_choose_game_a598a08dcb7071dd6498e4e209c00c749}} 
+\index{ChooseGame@{ChooseGame}!mousePos@{mousePos}}
+\index{mousePos@{mousePos}!ChooseGame@{ChooseGame}}
+\doxysubsubsection{mousePos}
+{\footnotesize\ttfamily sf\+::\+Vector2f Choose\+Game\+::mouse\+Pos\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 68} of file \textbf{ Choose\+Game.\+h}.
+
+\mbox{\label{class_choose_game_a462d48c22b3ff646d7668c00d74d10d0}} 
+\index{ChooseGame@{ChooseGame}!nameTexts@{nameTexts}}
+\index{nameTexts@{nameTexts}!ChooseGame@{ChooseGame}}
+\doxysubsubsection{nameTexts}
+{\footnotesize\ttfamily std\+::vector$<$sf\+::\+Text$>$ Choose\+Game\+::name\+Texts\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 64} of file \textbf{ Choose\+Game.\+h}.
+
+\mbox{\label{class_choose_game_a3dcd05e6779b3021f230e022bdc02dec}} 
+\index{ChooseGame@{ChooseGame}!offset@{offset}}
+\index{offset@{offset}!ChooseGame@{ChooseGame}}
+\doxysubsubsection{offset}
+{\footnotesize\ttfamily float Choose\+Game\+::offset\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 84} of file \textbf{ Choose\+Game.\+h}.
+
+\mbox{\label{class_choose_game_ad0fe9ff5ab694edd21a24262c7a66798}} 
+\index{ChooseGame@{ChooseGame}!titleText@{titleText}}
+\index{titleText@{titleText}!ChooseGame@{ChooseGame}}
+\doxysubsubsection{titleText}
+{\footnotesize\ttfamily sf\+::\+Text Choose\+Game\+::title\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 65} of file \textbf{ Choose\+Game.\+h}.
+
+\mbox{\label{class_choose_game_abea5a2c1a3524e9c9b24b2fb12147cb2}} 
+\index{ChooseGame@{ChooseGame}!uploadButtons@{uploadButtons}}
+\index{uploadButtons@{uploadButtons}!ChooseGame@{ChooseGame}}
+\doxysubsubsection{uploadButtons}
+{\footnotesize\ttfamily std\+::vector$<$sf\+::\+Rectangle\+Shape$>$ Choose\+Game\+::upload\+Buttons\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 71} of file \textbf{ Choose\+Game.\+h}.
+
+\mbox{\label{class_choose_game_ab42068fa90e0951f9e6057c2df11cc55}} 
+\index{ChooseGame@{ChooseGame}!uploadSprites@{uploadSprites}}
+\index{uploadSprites@{uploadSprites}!ChooseGame@{ChooseGame}}
+\doxysubsubsection{uploadSprites}
+{\footnotesize\ttfamily std\+::vector$<$sf\+::\+Sprite$>$ Choose\+Game\+::upload\+Sprites\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 80} of file \textbf{ Choose\+Game.\+h}.
+
+\mbox{\label{class_choose_game_add8143b5a9fed24fb8612eccd2a1d2be}} 
+\index{ChooseGame@{ChooseGame}!uploadTexture@{uploadTexture}}
+\index{uploadTexture@{uploadTexture}!ChooseGame@{ChooseGame}}
+\doxysubsubsection{uploadTexture}
+{\footnotesize\ttfamily sf\+::\+Texture Choose\+Game\+::upload\+Texture\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \textbf{ 76} of file \textbf{ Choose\+Game.\+h}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+No\+Code\+Game\+Editor/\textbf{ Choose\+Game.\+h}\item 
+No\+Code\+Game\+Editor/\textbf{ Choose\+Game.\+cpp}\end{DoxyCompactItemize}

@@ -9,6 +9,8 @@
 #include <SFML/Graphics.hpp>
 #include "Bullet.h"
 #include "Animator.h"
+#include "Wall.h"
+
 
 class Player
 {
@@ -19,7 +21,7 @@ public:
 
 	void setupPlayer();
 
-	void update(sf::RenderWindow& t_window, bool t_invincibilityActive, bool t_invisibilityActive);
+	void update(sf::RenderWindow& t_window, bool t_invincibilityActive, bool t_invisibilityActive, std::vector<std::unique_ptr<Wall>>& t_walls);
 
 	void render(sf::RenderWindow& t_window);
 
@@ -30,6 +32,7 @@ public:
 	std::vector<std::unique_ptr<Bullet >> bulletVector;
 
 	void removeBullet(int t_bulletNum);
+	void handleCollisions(std::vector<std::unique_ptr<Wall>>& walls);
 private:
 	Animator m_animator;
 	void playerMovement();

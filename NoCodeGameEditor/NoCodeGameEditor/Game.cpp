@@ -457,7 +457,7 @@ void Game::update(sf::Time t_deltaTime)
 
 	if (myState == GameState::testGame)
 	{
-		myPlayer.update(m_window, powerups.invincibilityActive, powerups.invisibilityActive);
+		myPlayer.update(m_window, powerups.invincibilityActive, powerups.invisibilityActive, wallVector);
 		myCrosshair.update(m_window);
 		m_window.setMouseCursorVisible(false);
 		myBackground.update(gameOptions.chosenBG);
@@ -516,7 +516,7 @@ void Game::update(sf::Time t_deltaTime)
 	{
 		gameChoice.gameChosen = false;
 		
-		myPlayer.update(m_window, powerups.invincibilityActive, powerups.invisibilityActive);
+		myPlayer.update(m_window, powerups.invincibilityActive, powerups.invisibilityActive, wallVector);
 		myCrosshair.update(m_window);
 		m_window.setMouseCursorVisible(false);
 		myBackground.update(gameOptions.chosenBG);

@@ -30,13 +30,13 @@ void Player::setupPlayer()
 	ogColor = playerSprite.getColor();
 }
 
-void Player::update(sf::RenderWindow& t_window, bool t_invincibilityActive, bool t_invisibilityActive)
+void Player::update(sf::RenderWindow& t_window, bool t_invincibilityActive, bool t_invisibilityActive, std::vector<std::unique_ptr<Wall>>& t_walls)
 {
 	mousePos = t_window.mapPixelToCoords(sf::Mouse::getPosition(t_window));
 
 	playerMovement();
 	rotatePlayerView();
-
+	//handleCollisions(t_walls);
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 	{
 		shoot(t_window);
@@ -126,9 +126,6 @@ void Player::playerMovement()
 		currentPos.x += speed;
 	}
 	
-	//move(speedX, speedY);
-
-	//player.setPosition(position);
 	playerSprite.setPosition(currentPos);
 }
 
@@ -177,4 +174,51 @@ void Player::removeBullet(int t_bulletNum)
 		begin++;
 	}
 	bulletVector.erase(begin);
+}
+
+void Player::handleCollisions(std::vector<std::unique_ptr<Wall>>& t_walls)
+{
+	for (const auto& wall : t_walls)
+	{
+		if (playerSprite.getGlobalBounds().intersects(wall->getWall().getGlobalBounds()))
+		{
+			// Determine the direction of the collision
+			float playerLeft = playerSprite.getPosition().x;
+			float playerRight = playerSprite.getPosition().x + playerSprite.getGlobalBounds().width;
+			float playerTop = playerSprite.getPosition().y;
+			float playerBottom = playerSprite.getPosition().y + playerSprite.getGlobalBounds().height;
+			float wallLeft = wall->getWall().getPosition().x;
+			float wallRight = wall->getWall().getPosition().x + wall->getWall().getGlobalBounds().width;
+			float wallTop = wall->getWall().getPosition().y;
+			float wallBottom = wall->getWall().getPosition().y + wall->getWall().getGlobalBounds().height;
+
+			float xOverlap = std::min(playerRight, wallRight) - std::max(playerLeft, wallLeft);
+			float yOverlap = std::min(playerBottom, wallBottom) - std::max(playerTop, wallTop);
+
+			if (std::abs(xOverlap) < std::abs(yOverlap))
+			{
+				// horizontal -- x
+				if (playerLeft < wallLeft)
+				{
+					playerSprite.setPosition(wallLeft - playerSprite.getGlobalBounds().width, playerSprite.getPosition().y);
+				}
+				else
+				{
+					playerSprite.setPosition(wallRight, playerSprite.getPosition().y);
+				}
+			}
+			else
+			{
+				//vertical -- y
+				if (playerTop < wallTop)
+				{
+					playerSprite.setPosition(playerSprite.getPosition().x, wallTop - playerSprite.getGlobalBounds().height);
+				}
+				else
+				{
+					playerSprite.setPosition(playerSprite.getPosition().x, wallBottom);
+				}
+			}
+		}
+	}
 }

@@ -422,6 +422,8 @@ void Game::update(sf::Time t_deltaTime)
 		removeWallVector();
 		removeEnemySpawnerVector();
 		removeObjectiveVector();
+		removeItemVector();
+		removePowerupVector();
 
 		objectives.update(t_deltaTime, m_window, myPlayer.getPlayer().getGlobalBounds(), coinsCollected, maxCoins, powerups.invisibilityActive);
 	}
@@ -1015,6 +1017,115 @@ void Game::removeObjectiveVector()
 		}
 	}
 }
+
+void Game::removeItemVector()
+{
+	if (itemVectorCreated == true)
+	{
+		if (!items.medkitVector.empty())
+		{
+			for (int i = 0; i < items.medkitVector.size(); i++)
+			{
+				if (items.medkitVector.at(i)->getMedkit().getGlobalBounds().contains(mousePos))
+				{
+					if (sf::Mouse::isButtonPressed(sf::Mouse::Left()))
+					{
+						if (myTools.rubberToolSelected)
+						{
+							vector<std::unique_ptr<Medkit>>::iterator begin = items.medkitVector.begin();
+							begin += i;
+							items.medkitVector.erase(begin);
+						}
+					}
+				}
+			}
+		}
+
+		if (!items.explosiveVector.empty())
+		{
+			for (int i = 0; i < items.explosiveVector.size(); i++)
+			{
+				if (items.explosiveVector.at(i)->getExplosive().getGlobalBounds().contains(mousePos))
+				{
+					if (sf::Mouse::isButtonPressed(sf::Mouse::Left()))
+					{
+						if (myTools.rubberToolSelected)
+						{
+							vector<std::unique_ptr<Explosive>>::iterator begin = items.explosiveVector.begin();
+							begin += i;
+							items.explosiveVector.erase(begin);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+void Game::removePowerupVector()
+{
+	if (powerupVectorCreated == true)
+	{
+		if (!powerups.nukeVector.empty())
+		{
+			for (int i = 0; i < powerups.nukeVector.size(); i++)
+			{
+				if (powerups.nukeVector.at(i)->getNuke().getGlobalBounds().contains(mousePos))
+				{
+					if (sf::Mouse::isButtonPressed(sf::Mouse::Left()))
+					{
+						if (myTools.rubberToolSelected)
+						{
+							vector<std::unique_ptr<PUPNuke>>::iterator begin = powerups.nukeVector.begin();
+							begin += i;
+							powerups.nukeVector.erase(begin);
+						}
+					}
+				}
+			}
+		}
+
+		if (!powerups.invinceVector.empty())
+		{
+			for (int i = 0; i < powerups.invinceVector.size(); i++)
+			{
+				if (powerups.invinceVector.at(i)->getInvincibility().getGlobalBounds().contains(mousePos))
+				{
+					if (sf::Mouse::isButtonPressed(sf::Mouse::Left()))
+					{
+						if (myTools.rubberToolSelected)
+						{
+							vector<std::unique_ptr<PUPInvincibility>>::iterator begin = powerups.invinceVector.begin();
+							begin += i;
+							powerups.invinceVector.erase(begin);
+						}
+					}
+				}
+			}
+		}
+
+		if (!powerups.invisVector.empty())
+		{
+			for (int i = 0; i < powerups.invisVector.size(); i++)
+			{
+				if (powerups.invisVector.at(i)->getInvisibility().getGlobalBounds().contains(mousePos))
+				{
+					if (sf::Mouse::isButtonPressed(sf::Mouse::Left()))
+					{
+						if (myTools.rubberToolSelected)
+						{
+							vector<std::unique_ptr<PUPInvisibility>>::iterator begin = powerups.invisVector.begin();
+							begin += i;
+							powerups.invisVector.erase(begin);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
 
 void Game::viewsCreation()
 {

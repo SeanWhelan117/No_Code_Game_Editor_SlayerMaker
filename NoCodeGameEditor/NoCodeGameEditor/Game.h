@@ -87,7 +87,8 @@ public:
 	void removeEnemySpawnerVector();
 
 	void removeObjectiveVector();
-
+	void removeItemVector();
+	void removePowerupVector();
 	void viewsCreation();
 
 	void saveDataToCSV();
